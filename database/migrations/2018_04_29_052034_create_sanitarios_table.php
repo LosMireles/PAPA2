@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAsesoriasTable extends Migration
+class CreateSanitariosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,15 @@ class CreateAsesoriasTable extends Migration
      */
     public function up()
     {
-        Schema::create('asesorias', function (Blueprint $table) {
-            $table->increments('IdAsesoria');
+        Schema::create('sanitarios', function (Blueprint $table) {
+            $table->increments('IdSanitario');
 			$table->string('Tipo', 25);
 			$table->string('InicioHora', 10);
 			$table->string('FinHora', 10);
 			$table->string('InicioDia', 10);
 			$table->string('FinDia', 10);
-			$table->string('Materia', 45);
+			$table->integer('Limpieza');
+			$table->integer('CantidadPersonal');
             $table->timestamps();
         });
     }
@@ -32,6 +33,6 @@ class CreateAsesoriasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('asesorias');
+        Schema::dropIfExists('sanitarios');
     }
 }
