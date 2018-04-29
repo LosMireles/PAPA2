@@ -19,6 +19,7 @@ class CreateCursosTable extends Migration
             $table->integer('grupo');
             $table->integer('noEstudiantes');
             $table->string('tipoAula');
+            $table->string('tipo');
 
             $table->timestamps();
         });

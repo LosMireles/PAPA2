@@ -11,7 +11,7 @@ class Software extends Model
     //DEFINICION DE RELACIONES
     //un equipo tiene muchos software
     public function equipo(){
-        return $this->BelongsTo(Equipo::class);
+        return $this->BelongsTo(Equipo::class, 'serial', 'serial');
 
     }
 }

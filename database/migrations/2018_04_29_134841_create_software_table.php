@@ -13,12 +13,13 @@ class CreateSoftwareTable extends Migration
      */
     public function up()
     {
-        Schema::create('software', function (Blueprint $table) {
+        Schema::create('softwares', function (Blueprint $table) {
             $table->char('nombre', 45)->primary();
             $table->boolean('manualUsuario');
             $table->string('licencia');
             $table->string('disponibilidad');
             $table->string('clase');
+            $table->string("serial");
 
             $table->timestamps();
         });
