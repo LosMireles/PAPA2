@@ -18,3 +18,6 @@ Route::get('/infraestructura', 'RoutesController@infraestructura');
 
 Route::get('/equipamiento', 'RoutesController@equipamiento');
 Route::get('/equipamiento/equipos', 'RoutesController@equipamiento');
+
+Route::get('insertarCubiculo','CubiculoController@insertform');
+Route::post('CrearCubiculo','CubiculoController@store');
