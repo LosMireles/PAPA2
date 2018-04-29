@@ -11,13 +11,7 @@
 |
 */
 
-<<<<<<< HEAD
-=======
-Route::get('/', function () {
-    return view('welcome');
-});
 
->>>>>>> e7cf9aeea73d0a2406a6552b398153f67b365396
 Route::get('/', 'RoutesController@index');
 
 Route::get('/infraestructura', 'RoutesController@infraestructura');
