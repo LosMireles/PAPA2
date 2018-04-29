@@ -15,9 +15,11 @@
 Route::get('/', 'RoutesController@index');
 
 Route::get('/infraestructura', 'RoutesController@infraestructura');
+Route::get('/infraestructura/cubiculo', 'RoutesController@Cubiculo');
 
 Route::get('/equipamiento', 'RoutesController@equipamiento');
 Route::get('/equipamiento/equipos', 'RoutesController@equipamiento');
+
 
 Route::get('insertarCubiculo','CubiculoController@insertform');
 Route::post('CrearCubiculo','CubiculoController@store');

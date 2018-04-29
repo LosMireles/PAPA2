@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'equipamiento')
+@section('title', 'infraestructura')
 
 @section('content')
 	<a href="{{ url()->previous() }}">Regresar</a>
@@ -10,7 +10,7 @@
 			<a href="#">Inmobiliario</a> 
 			<ul>
 				<li> <a href="#">Aula</a> </li>
-				<li> <a href="#">Cubículo</a> </li>
+				<li> <a href="/infraestructura/cubiculo">Cubículo</a> </li>
 				<li> <a href="#">Asesoría</a> </li>
 				<li> <a href="#">Baños</a> </li>
 				<li> <a href="#">Auditorios</a> </li>
