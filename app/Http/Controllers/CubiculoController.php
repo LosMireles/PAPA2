@@ -49,7 +49,8 @@ class CubiculoController extends Controller {
 	  	return view('infraestructura/cubiculo_delete_view',['cubiculos'=>$cubiculos]);
 	}
 	public function destroy($id) {
-		DB::delete('delete from cubiculos where IdCubiculo = ?',[$id]);
+		//DB::delete('delete from cubiculos where IdCubiculo = ?',[$id]);
+		Cubiculo::where('IdCubiculo', $id)->delete();
 		echo "Record deleted successfully.<br/>";
 		echo '<a href = "/borrarCubiculo">Click Here</a> to go back.';
 	}
