@@ -11,6 +11,6 @@ class Espacio extends Model
     //DEFINICION DE RELACIONES
     //un espacio tiene muchos cursos
     public function cursos(){
-        return $this->hasMany(Curso::class);
+        return $this->hasMany(Curso::class, 'tipo');
     }
 }

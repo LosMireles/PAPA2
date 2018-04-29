@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Cursos extends Model
+class Curso extends Model
 {
     //Define explicitamente el nombre de la tabla
     protected $table = 'cursos';
@@ -12,6 +12,6 @@ class Cursos extends Model
     //DEFINICION DE RELACIONES
     //un espacio tiene muchos cursos
     public function espacio(){
-        return $this->BelongsTo(Espacio::class);
+        return $this->BelongsTo(Espacio::class, 'tipo', 'tipo');
     }
 }
