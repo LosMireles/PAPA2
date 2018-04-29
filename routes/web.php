@@ -26,3 +26,7 @@ Route::get('verCubiculo','CubiculoController@indexVer');
 
 Route::get('borrarCubiculo','CubiculoController@indexBorrar');
 Route::post('deleteCubiculo','CubiculoController@destroy');
+
+Route::get('editarCubiculo','CubiculoController@index');
+Route::get('edit/{id}','CubiculoController@show');
+Route::post('edit/{id}','CubiculoController@edit');
