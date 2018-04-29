@@ -56,18 +56,19 @@ class CubiculoController extends Controller {
 
 	//*-----------------------------------------------------------------
 	public function index(){
-	  	$cubiculos = DB::select('select * from cubiculos');
+	  	$cubiculos  = Cubiculo::all();
 	  	return view('infraestructura/cubiculo_edit_view',['cubiculos'=>$cubiculos]);
 	}
 	public function show($id) {
-	  	$cubiculos = DB::select('select * from cubiculos where IdCubiculo= ?',[$id]);
+		$cubiculos  = Cubiculo::where('IdCubiculo', $id)->first();
 	  	return view('infraestructura/cubiculo_update',['cubiculos'=>$cubiculos]);
 	}
 	public function edit(Request $request,$id) {
 	  	$Tipo = $request->input('Tipo');
 		$Profesor = $request->input('Profesor');
 		$CantidadEquipo = $request->input('CantidadEquipo');
-	  	DB::update('update cubiculos set Tipo = ?,Profesor = ?,CantidadEquipo = ? where IdCubiculo = ?',[$Tipo,$Profesor,$CantidadEquipo ,$id]);
+
+		Cubiculo::where('IdCubiculo', $id)->update(['Tipo' => $Tipo, 'Profesor'=>$Profesor,'CantidadEquipo'=>$CantidadEquipo]);
 	  	echo "Record updated successfully.<br/>";
 	  	echo '<a href = "/editarCubiculo">Click Here</a> to go back.';
 	}
