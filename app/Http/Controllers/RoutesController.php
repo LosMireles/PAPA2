@@ -19,8 +19,12 @@ class RoutesController extends Controller
 	public function equipamiento(){
     	return view('equipamiento/equipamiento_index');
     }
-	
+
     public function Cubiculo(){
     	return view('infraestructura/cubiculo/cubiculo_index');
-    }    
+    }
+
+    public function Software(){
+    	return view('equipamiento/software/software_index');
+    }
 }
