@@ -9,9 +9,16 @@ use App\Http\Controllers\Controller;
 use App\Cubiculo;
 
 class CubiculoController extends Controller {
-   public function insertform(){
-      return view('infraestructura/cubiculo_create');
+	
+      public function indexVer(){
+      //$cubiculos = DB::select('select * from cubiculos');
+      $cubiculos  = Cubiculo::all();
+      return view('infraestructura/Cubiculo_view',['cubiculos'=>$cubiculos]);
    }
+//----------------------------------------------------------------
+	public function insertform(){
+	  return view('infraestructura/cubiculo_create');
+	}
 	
 
 	/**
@@ -27,11 +34,23 @@ class CubiculoController extends Controller {
         $cubiculo = new Cubiculo;
 
         $cubiculo->Tipo = $request->Tipo;
-	$cubiculo->Profesor = $request->Profesor;
-	$cubiculo->CantidadEquipo = $request->CantidadEquipo;
+		$cubiculo->Profesor = $request->Profesor;
+		$cubiculo->CantidadEquipo = $request->CantidadEquipo;
 
         $cubiculo->save();
-	echo "Record inserted successfully.<br/>";
+		echo "Record inserted successfully.<br/>";
         echo '<a href = "/insertarCubiculo">Click Here</a> to go back.';
     }
+	//-----------------------------------------------------------
+
+
+	public function indexBorrar(){
+  		$cubiculos = DB::select('select * from cubiculos');
+	  	return view('infraestructura/cubiculo_delete_view',['cubiculos'=>$cubiculos]);
+	}
+	public function destroy($id) {
+		DB::delete('delete from cubiculos where IdCubiculo = ?',[$id]);
+		echo "Record deleted successfully.<br/>";
+		echo '<a href = "/borrarCubiculo">Click Here</a> to go back.';
+	}
 }

@@ -21,3 +21,8 @@ Route::get('/equipamiento/equipos', 'RoutesController@equipamiento');
 
 Route::get('insertarCubiculo','CubiculoController@insertform');
 Route::post('CrearCubiculo','CubiculoController@store');
+Route::get('verCubiculo','CubiculoController@indexVer');
+
+
+Route::get('borrarCubiculo','CubiculoController@indexBorrar');
+Route::get('delete/{id}','CubiculoController@destroy');
