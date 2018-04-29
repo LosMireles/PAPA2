@@ -25,4 +25,4 @@ Route::get('verCubiculo','CubiculoController@indexVer');
 
 
 Route::get('borrarCubiculo','CubiculoController@indexBorrar');
-Route::get('delete/{id}','CubiculoController@destroy');
+Route::post('deleteCubiculo','CubiculoController@destroy');

@@ -43,15 +43,18 @@ class CubiculoController extends Controller {
     }
 	//-----------------------------------------------------------
 
-
 	public function indexBorrar(){
-  		$cubiculos = DB::select('select * from cubiculos');
-	  	return view('infraestructura/cubiculo_delete_view',['cubiculos'=>$cubiculos]);
+		$cubiculos  = Cubiculo::all();
+      	return view('infraestructura/cubiculo_delete',['cubiculos'=>$cubiculos]);
 	}
-	public function destroy($id) {
-		//DB::delete('delete from cubiculos where IdCubiculo = ?',[$id]);
-		Cubiculo::where('IdCubiculo', $id)->delete();
-		echo "Record deleted successfully.<br/>";
-		echo '<a href = "/borrarCubiculo">Click Here</a> to go back.';
+	public function destroy(Request $request){
+	  	$Tipo = $request->input('Tipo');
+	  	DB::delete('delete from cubiculos where Tipo = ?',[$Tipo]);
+	  	echo "Record deleted successfully.<br/>";
+	  	echo '<a href = "/borrarCubiculo">Click Here</a> to go back.';
 	}
+
+
+
+
 }
