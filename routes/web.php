@@ -11,10 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'RoutesController@index');
 
-Route::get('prueba', function() {
-	return 'funciopna [ps';
-});
+Route::get('/infraestructura', 'RoutesController@infraestructura');
+
+Route::get('/equipamiento', 'RoutesController@equipamiento');
+Route::get('/equipamiento/equipos', 'RoutesController@equipamiento');
