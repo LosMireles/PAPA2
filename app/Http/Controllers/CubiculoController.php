@@ -13,7 +13,7 @@ class CubiculoController extends Controller {
       public function indexVer(){
       //$cubiculos = DB::select('select * from cubiculos');
       $cubiculos  = Cubiculo::all();
-      return view('infraestructura/Cubiculo_view',['cubiculos'=>$cubiculos]);
+      return view('infraestructura/cubiculo_view',['cubiculos'=>$cubiculos]);
    }
 //----------------------------------------------------------------
 	public function insertform(){

@@ -1,12 +1,10 @@
+@extends('layouts.app')
 
-<html>
-   
-   <head>
-      <title>View Cubiculo</title>
-   </head>
-   
-   <body>
-      <table border = 1>
+@section('title', 'equipamiento')
+
+@section('content')
+	<a href="/infraestructura/cubiculo">Regresar</a>
+	<table border = 1>
          <tr>
             <td>IdCubiculo</td>
             <td>Tipo</td>
@@ -23,6 +21,4 @@
          </tr>
          @endforeach
       </table>
-   
-   </body>
-</html>
+@endsection

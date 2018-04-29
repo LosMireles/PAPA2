@@ -1,11 +1,10 @@
-<html>
-   
-   <head>
-      <title>Student Management | Edit</title>
-   </head>
-   
-   <body>
-      <form action = "/edit/<?php echo $cubiculos->IdCubiculo; ?>" method = "post">
+@extends('layouts.app')
+
+@section('title', 'Cubiculo Management | Edit')
+
+@section('content')
+	<a href="/editarCubiculo">Regresar</a>
+	<form action = "/edit/<?php echo $cubiculos->IdCubiculo; ?>" method = "post">
          <input type = "hidden" name = "_token" value = "<?php echo csrf_token(); ?>">
       
          <table>
@@ -35,6 +34,4 @@
          </table>
 
       </form>
-   
-   </body>
-</html>
+@endsection

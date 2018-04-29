@@ -1,11 +1,10 @@
-<html>
+@extends('layouts.app')
 
-   <head>
-      <title>Cubiculo Management | Delete</title>
-   </head>
-   
-   <body>
-      <form action = "/deleteCubiculo" method = "post">
+@section('title', 'Cubiculo Management | Delete')
+
+@section('content')
+	<a href="/infraestructura/cubiculo">Regresar</a>
+	<form action = "/deleteCubiculo" method = "post">
          <input type = "hidden" name = "_token" value = "<?php echo csrf_token(); ?>">
       
          <table>
@@ -38,6 +37,5 @@
          </tr>
          @endforeach
       </table>
-   
-   </body>
-</html>
+@endsection
+

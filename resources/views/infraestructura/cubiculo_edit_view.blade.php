@@ -1,11 +1,10 @@
-<html>
-   
-   <head>
-      <title>View Cubiculo</title>
-   </head>
-   
-   <body>
-      <table border = 1>
+@extends('layouts.app')
+
+@section('title', 'View Cubiculo')
+
+@section('content')
+	<a href="/infraestructura/cubiculo">Regresar</a>
+	<table border = 1>
          <tr>
             <td>IdCubiculo</td>
             <td>Tipo</td>
@@ -22,6 +21,4 @@
          </tr>
          @endforeach
       </table>
-   
-   </body>
-</html>
+@endsection

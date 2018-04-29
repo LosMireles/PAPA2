@@ -1,11 +1,10 @@
-<html>
+@extends('layouts.app')
 
-   <head>
-      <title>Cubiculo Management | Add</title>
-   </head>
-   
-   <body>
-      <form action = "/CrearCubiculo" method = "post">
+@section('title', 'Cubiculo Management | Add')
+
+@section('content')
+	<a href="/infraestructura/cubiculo">Regresar</a>
+	<form action = "/CrearCubiculo" method = "post">
          <input type = "hidden" name = "_token" value = "<?php echo csrf_token(); ?>">
       
          <table>
@@ -29,6 +28,4 @@
          </table>
 			
       </form>
-   
-   </body>
-</html>
+@endsection
