@@ -13,11 +13,11 @@ class CubiculoController extends Controller {
       public function indexVer(){
       //$cubiculos = DB::select('select * from cubiculos');
       $cubiculos  = Cubiculo::all();
-      return view('infraestructura/cubiculo_view',['cubiculos'=>$cubiculos]);
+      return view('infraestructura/cubiculo/cubiculo_view',['cubiculos'=>$cubiculos]);
    }
 //----------------------------------------------------------------
 	public function insertform(){
-	  return view('infraestructura/cubiculo_create');
+	  return view('infraestructura/cubiculo/cubiculo_create');
 	}
 	
 
@@ -45,7 +45,7 @@ class CubiculoController extends Controller {
 
 	public function indexBorrar(){
 		$cubiculos  = Cubiculo::all();
-      	return view('infraestructura/cubiculo_delete',['cubiculos'=>$cubiculos]);
+      	return view('infraestructura/cubiculo/cubiculo_delete',['cubiculos'=>$cubiculos]);
 	}
 	public function destroy(Request $request){
 	  	$Tipo = $request->input('Tipo');
@@ -57,11 +57,11 @@ class CubiculoController extends Controller {
 	//*-----------------------------------------------------------------
 	public function index(){
 	  	$cubiculos  = Cubiculo::all();
-	  	return view('infraestructura/cubiculo_edit_view',['cubiculos'=>$cubiculos]);
+	  	return view('infraestructura/cubiculo/cubiculo_edit_view',['cubiculos'=>$cubiculos]);
 	}
 	public function show($id) {
 		$cubiculos  = Cubiculo::where('IdCubiculo', $id)->first();
-	  	return view('infraestructura/cubiculo_update',['cubiculos'=>$cubiculos]);
+	  	return view('infraestructura/cubiculo/cubiculo_update',['cubiculos'=>$cubiculos]);
 	}
 	public function edit(Request $request,$id) {
 	  	$Tipo = $request->input('Tipo');

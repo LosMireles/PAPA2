@@ -21,6 +21,6 @@ class RoutesController extends Controller
     }
 	
     public function Cubiculo(){
-    	return view('infraestructura/cubiculo_index');
+    	return view('infraestructura/cubiculo/cubiculo_index');
     }    
 }
