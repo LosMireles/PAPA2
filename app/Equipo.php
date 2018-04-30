@@ -10,6 +10,8 @@ class Equipo extends Model
     /// Serializar para poder meter un arreglo
     protected $casts = ['software'=>'array'];
 
+    protected $fillable = ['serial', 'manualUsuario', 'operable', 'localizacion', 'software'];
+
     //DEFINICION DE RELACIONES
     //un equipo tiene muchos software
     public function softwares(){

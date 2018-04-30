@@ -14,7 +14,8 @@ class CreateEquiposTable extends Migration
     public function up()
     {
         Schema::create('equipos', function (Blueprint $table) {
-            $table->char('serial', 45)->primary();
+            $table->increments('id')->unique();
+            $table->char('serial', 45)->unique();
             $table->boolean('manualUsuario');
             $table->boolean('operable');
             $table->char('localizacion',100);

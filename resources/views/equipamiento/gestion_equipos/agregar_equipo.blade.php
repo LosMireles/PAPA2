@@ -22,13 +22,13 @@
 		<label for="localizacion">Localización: </label>
 		<select name="localizacion">
 			@foreach($espacios as $espacio)
-				<option value={{$espacio->clase}}>{{$espacio->clase}}</option>
+				<option value="{{$espacio->clase}}">{{$espacio->clase}}</option>
 			@endforeach
 		</select><br><br>
 
 		<label for="software">Software: </label><br>
 		@foreach($software as $single_software)
-			<input type="checkbox" name="software[]" value={{$single_software->nombre}}> {{$single_software->nombre}}<br>
+			<input type="checkbox" name="software[]" value="{{$single_software->nombre}}"> {{$single_software->nombre}}<br>
 		@endforeach
 
 		<input type = 'submit' value = "Agregar equipo"/>

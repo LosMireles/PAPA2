@@ -38,7 +38,7 @@ class EquipoController extends Controller
     }
 
     public function mostrar_datos_equipo($id){
-    	$equipo  = Equipo::where('serial', $id)->first();
+    	$equipo  = 	Equipo::where('serial', $id)->first();
     	$software = DB::table('softwares')->get();
     	$espacios = DB::table('espacios')->get();
     	return view('equipamiento/gestion_equipos/actualizar_equipo',['equipo'=>$equipo, 'software'=>$software, 'espacios'=>$espacios]);
@@ -58,14 +58,14 @@ class EquipoController extends Controller
 
     	$equipo->save();
     	echo "Record inserted successfully.<br/>";
-        echo '<a href = "/insertarCubiculo">Click Here</a> to go back.';
+        echo '<a href = "/">Click Here</a> to go home.';
     }
 
     public function gestion_equipo_borrar(Request $request){
     	$serial = $request->serial;
 	  	DB::delete('delete from equipos where serial = ?',[$serial]);
 	  	echo "Record deleted successfully.<br/>";
-	  	echo '<a href = "#">Click Here</a> to go back.';
+	  	echo '<a href = "/">Click Here</a> to go home.';
     }
 
     public function gestion_equipo_modificar(Request $request){
@@ -75,12 +75,19 @@ class EquipoController extends Controller
     	$localizacion = $request->localizacion;
     	$software = $request->software;
 
-    	Equipo::where('serial', $serial)->update([
-            'serial' => $serial, 'manualUsuario' => $manualUsuario,'operable'=>$operable,
-            'localizacion'=>$localizacion, 'software' => $software
+    	$software_a = json_encode($software, true);
+
+    	$id = $request->id;
+
+    	///$id = Equipo::where('serial', $serial)->first();
+
+    	DB::table('equipos')->where('id', $id)->update([
+            'manualUsuario' => $manualUsuario,'operable'=>$operable,
+            'localizacion'=>$localizacion, 'software' => $software_a,
+            'serial' => $serial
         ]);
 
         echo "Record updated successfully.<br/>";
-	  	echo '<a href = "/editarSoftware">Click Here</a> to go back.';
+	  	echo '<a href = "/">Click here</a> to go home.';
     }
 }
