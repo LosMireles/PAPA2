@@ -13,8 +13,9 @@
                <td><input type='text' name='nombre' /></td>
             </tr>
             <tr>
-               <td>manual usuario</td>
-               <td><input type='text' name='manualUsuario' /></td>
+                <td><label for="manual">Se cuenta con manual: </label> </td>
+                <td><input type="radio" name="manualUsuario" value="1" checked="">Sí <br>
+                <input type="radio" name="manualUsuario" value="0"> No <br><br></td>
             </tr>
             <tr>
                <td>licencia</td>

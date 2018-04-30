@@ -3,8 +3,8 @@
 @section('title', 'Software Management | Edit')
 
 @section('content')
-	<a href="/editarSoftware">Regresar</a>
-	<form action = "/edit/<?php echo $softwares->nombre; ?>" method = "post">
+	<a href="/editSoftware">Regresar</a>
+	<form action = "/editSoftware/<?php echo $softwares->nombre; ?>" method = "post">
          <input type = "hidden" name = "_token" value = "<?php echo csrf_token(); ?>">
 
          <table>
@@ -16,11 +16,14 @@
                </td>
             </tr>
             <tr>
-               <td>manual usuario</td>
-                <td>
-                    <input type='text' name='manual usuario'
-                     value = '<?php echo$softwares->manualUsuario; ?>'/>
-                </td>
+                <td><label for="manual">Se cuenta con manual: </label> </td>
+                @if($softwares->manualUsuario == 1)
+                    <td><input type="radio" name="manualUsuario" value="1" checked>Sí
+                    <input type="radio" name="manualUsuario" value="0" >No </td>
+                @else
+                    <td><input type="radio" name="manualUsuario" value="1"> Sí
+                    <input type="radio" name="manualUsuario" value="0" checked>No</td>
+                @endif
             </tr>
             <tr>
                <td>licencia</td>
