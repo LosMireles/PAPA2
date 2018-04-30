@@ -7,6 +7,6 @@
 	<h1>Equipamiento</h1>
 	<ul>
 		<li> <a href="equipamiento/software">Software</a> </li>
-		<li> <a href="#">Equipos</a> </li>
+		<li> <a href="/equipamiento/equipos">Equipos</a> </li>
 	</ul>
 @endsection

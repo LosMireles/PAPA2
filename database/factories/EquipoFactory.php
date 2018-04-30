@@ -18,9 +18,7 @@ $factory->define(App\Equipo::class, function (Faker $faker) {
         'serial' => $faker->word(12),
         'manualUsuario' => $faker->numberBetween(0, 1),
         'operable' => $faker->numberBetween(0, 1),
-        'inicioHora' => $faker->time(),
-        'finHora' => $faker->time(),
-        'inicioDia' => $faker->date(),
-        'finDia' => $faker->date(),
+        'localizacion' => $faker->word(10),
+        'software' => [$faker->word(10)],
     ];
 });

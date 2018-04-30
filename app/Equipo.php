@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Equipo extends Model
 {
     protected $table = 'equipos';
+    /// Serializar para poder meter un arreglo
+    protected $casts = ['software'=>'array'];
 
     //DEFINICION DE RELACIONES
     //un equipo tiene muchos software
