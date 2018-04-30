@@ -38,6 +38,7 @@ Route::get('/infraestructura/cubiculo', 'RoutesController@Cubiculo');
 
 Route::get('insertarCubiculo','CubiculoController@insertform');
 Route::post('CrearCubiculo','CubiculoController@store');
+
 Route::get('verCubiculo','CubiculoController@indexVer');
 
 Route::get('borrarCubiculo','CubiculoController@indexBorrar');
@@ -46,3 +47,6 @@ Route::post('deleteCubiculo','CubiculoController@destroy');
 Route::get('editarCubiculo','CubiculoController@indexEditar');
 Route::get('editCubiculo/{id}','CubiculoController@show');
 Route::post('editCubiculo/{id}','CubiculoController@edit');
+//aula
+Route::get('insertarAula','AulaController@insertform');
+Route::post('CrearAula','AulaController@store');
