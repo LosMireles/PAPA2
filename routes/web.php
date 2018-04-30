@@ -29,6 +29,21 @@ Route::post('/gestion_equipo_agregar', 'EquipoController@gestion_equipo_agregar'
 Route::post('/gestion_equipo_borrar', 'EquipoController@gestion_equipo_borrar');
 Route::post('/gestion_equipo_modificar', 'EquipoController@gestion_equipo_modificar');
 
+//espacios
+Route::get('/infraestructura/espacio', 'RoutesController@Espacio');
+
+Route::get('insertarEspacio','EspacioController@insertform');
+Route::post('CrearEspacio','EspacioController@store');
+
+Route::get('verEspacio','EspacioController@indexVer');
+
+Route::get('borrarEspacio','EspacioController@indexBorrar');
+Route::post('deleteEspacio','EspacioController@destroy');
+
+Route::get('editarEspacio','EspacioController@index');
+Route::get('editEspacio/{id}','EspacioController@show');
+Route::post('editEspacio/{id}','EspacioController@edit');
+
 //software
 Route::get('/equipamiento/software', 'RoutesController@Software');
 
@@ -57,6 +72,7 @@ Route::post('deleteCubiculo','CubiculoController@destroy');
 Route::get('editarCubiculo','CubiculoController@indexEditar');
 Route::get('editCubiculo/{id}','CubiculoController@show');
 Route::post('editCubiculo/{id}','CubiculoController@edit');
+
 //aula
 Route::get('/infraestructura/aula', 'RoutesController@aula');
 

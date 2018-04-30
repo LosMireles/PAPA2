@@ -62,10 +62,10 @@ class EspacioController extends Controller {
 	  	return view('infraestructura/espacio/espacio_update',['espacios'=>$espacios]);
 	}
 	public function edit(Request $request, $id) {
-        $espacio->tipo = $request->input('tipo');
-		$espacio->superficie = $request->input('superficie');
-		$espacio->cantidad = $request->input('cantidad');
-		$espacio->clase = $request->input('clase');
+        $tipo = $request->input('tipo');
+		$superficie= $request->input('superficie');
+		$cantidad= $request->input('cantidad');
+		$clase = $request->input('clase');
 
 		Espacio::where('tipo', $id)->update([
             'tipo' => $tipo, 'superficie' => $superficie,'cantidad'=>$cantidad,
