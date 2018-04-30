@@ -9,7 +9,7 @@
 		<li> 	
 			<a href="#">Inmobiliario</a> 
 			<ul>
-				<li> <a href="#">Aula</a> </li>
+				<li> <a href="/infraestructura/aula">Aula</a> </li>
 				<li> <a href="/infraestructura/cubiculo">Cubículo</a> </li>
 				<li> <a href="#">Asesoría</a> </li>
 				<li> <a href="#">Baños</a> </li>
