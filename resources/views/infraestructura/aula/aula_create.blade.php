@@ -43,10 +43,6 @@
                <td><input type='text' name='Ventilacion' /></td>
         </tr>
 		<tr>
-               <td>Ventilacion</td>
-               <td><input type='text' name='Ventilacion' /></td>
-        </tr>
-		<tr>
                <td>Temperatura</td>
                <td><input type='text' name='Temperatura' /></td>
         </tr>

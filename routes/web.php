@@ -56,3 +56,6 @@ Route::get('verAula','AulaController@indexVer');
 Route::get('borrarAula','AulaController@indexBorrar');
 Route::post('deleteAula','AulaController@destroy');
 
+Route::get('editarAula','AulaController@indexEditar');
+Route::get('editAula/{id}','AulaController@show');
+Route::post('editAula/{id}','AulaController@edit');

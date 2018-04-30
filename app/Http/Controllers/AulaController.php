@@ -101,5 +101,84 @@ class AulaController extends Controller
 	  	echo "Record deleted successfully.<br/>";
 	  	echo '<a href = "/borrarAula">Click Here</a> to go back.';
 	}
+	
+	//--------------------------------------------------------------
+	public function indexEditar(){
+	  	$aulas  = Aula::all();
+	  	return view('infraestructura/aula/aula_edit_view',['aulas'=>$aulas]);
+	}
+	public function show($id) {
+		$aulas  = Aula::where('IdAula', $id)->first();
+	  	return view('infraestructura/aula/aula_update',['aulas'=>$aulas]);
+	}
+	public function edit(Request $request,$id) {
+	  	$Tipo = $request->Tipo;
+		$CantidadEquipo = $request->CantidadEquipo;
+		$CantidadAV = $request->CantidadAV;
+		$Capacidad = $request->Capacidad;
+		if(isset($request->SillasPaleta) && 
+		$request->SillasPaleta == '1') 
+		{
+			$SillasPaleta = '1';
+		}
+		else
+		{
+			$SillasPaleta = '0';
+		}
+		if(isset($request->MesasTrabajo) && 
+		$request->MesasTrabajo == '1') 
+		{
+			$MesasTrabajo = '1';
+		}
+		else
+		{
+			$MesasTrabajo = '0';
+		}
+		if(isset($request->Isotopica) && 
+		$request->Isotopica == '1') 
+		{
+			$Isotopica = '1';
+		}
+		else
+		{
+			$Isotopica = '0';
+		}	
+		if(isset($request->Estrado) && 
+		$request->Estrado == '1') 
+		{
+			$Estrado = '1';
+		}
+		else
+		{
+			$Estrado = '0';
+		}
+		$Pizarron = $request->Pizarron;
+		$Illuminacion = $request->Illuminacion;
+		$AislamientoR = $request->AislamientoR;
+		$Ventilacion = $request->Ventilacion;
+		$Temperatura = $request->Temperatura;
+		$Espacio = $request->Espacio;
+		$Mobilario = $request->Mobilario;
+		$Conexiones = $request->Conexiones;
+
+		Aula::where('IdAula', $id)->update(['Tipo' => $Tipo, 
+											'CantidadEquipo'=>$CantidadEquipo,
+											'CantidadAV'=>$CantidadAV,
+											'Capacidad'=>$Capacidad,
+											'SillasPaleta'=>$SillasPaleta,
+											'MesasTrabajo'=>$MesasTrabajo,
+											'Isotopica'=>$Isotopica,
+											'Estrado'=>$Estrado,
+											'Pizarron'=>$Pizarron,
+											'Illuminacion'=>$Illuminacion,
+											'AislamientoR'=>$AislamientoR,
+											'Ventilacion'=>$Ventilacion,
+											'Temperatura'=>$Temperatura,
+											'Espacio'=>$Espacio,
+											'Mobilario'=>$Mobilario,
+											'Conexiones'=>$Conexiones]);
+	  	echo "Record updated successfully.<br/>";
+	  	echo '<a href = "/editarAula">Click Here</a> to go back.';
+	}
 
 }
