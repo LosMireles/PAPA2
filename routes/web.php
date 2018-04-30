@@ -50,3 +50,9 @@ Route::post('editCubiculo/{id}','CubiculoController@edit');
 //aula
 Route::get('insertarAula','AulaController@insertform');
 Route::post('CrearAula','AulaController@store');
+
+Route::get('verAula','AulaController@indexVer');
+
+Route::get('borrarAula','AulaController@indexBorrar');
+Route::post('deleteAula','AulaController@destroy');
+

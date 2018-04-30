@@ -10,13 +10,11 @@ use App\Aula;
 
 class AulaController extends Controller
 {
-/*
     public function indexVer(){
       //$cubiculos = DB::select('select * from cubiculos');
       $aulas  = Aula::all();
-      return view('infraestructura/cubiculo/aula_view',['aulas'=>$aulas]);
+      return view('infraestructura/aula/aula_view',['aulas'=>$aulas]);
     }
-*/
 
 //--------------------------------------------------------
 	public function insertform(){
@@ -89,5 +87,19 @@ class AulaController extends Controller
 		echo "Record inserted successfully.<br/>";
         echo '<a href = "/insertarAula">Click Here</a> to go back.';
     }
+
+
+	//-----------------------------------------------------------
+
+	public function indexBorrar(){
+		$aulas  = Aula::all();
+      	return view('infraestructura/aula/aula_delete',['aulas'=>$aulas]);
+	}
+	public function destroy(Request $request){
+	  	$Tipo = $request->input('Tipo');
+	  	DB::delete('delete from aulas where Tipo = ?',[$Tipo]);
+	  	echo "Record deleted successfully.<br/>";
+	  	echo '<a href = "/borrarAula">Click Here</a> to go back.';
+	}
 
 }
