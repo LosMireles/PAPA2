@@ -55,7 +55,7 @@ class CubiculoController extends Controller {
 	}
 
 	//*-----------------------------------------------------------------
-	public function index(){
+	public function indexEditar(){
 	  	$cubiculos  = Cubiculo::all();
 	  	return view('infraestructura/cubiculo/cubiculo_edit_view',['cubiculos'=>$cubiculos]);
 	}

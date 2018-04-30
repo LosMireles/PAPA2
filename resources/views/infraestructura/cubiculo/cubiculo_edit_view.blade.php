@@ -17,7 +17,7 @@
             <td>{{ $cubiculo->Tipo }}</td>
 			<td>{{ $cubiculo->Profesor }}</td>
 			<td>{{ $cubiculo->CantidadEquipo }}</td>
-			<td><a href = 'edit/{{ $cubiculo->IdCubiculo  }}'>Edit</a></td>
+			<td><a href = 'editCubiculo/{{ $cubiculo->IdCubiculo  }}'>Edit</a></td>
          </tr>
          @endforeach
       </table>

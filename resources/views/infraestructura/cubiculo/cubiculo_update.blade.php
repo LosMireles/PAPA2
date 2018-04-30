@@ -4,7 +4,7 @@
 
 @section('content')
 	<a href="/editarCubiculo">Regresar</a>
-	<form action = "/edit/<?php echo $cubiculos->IdCubiculo; ?>" method = "post">
+	<form action = "/editCubiculo/<?php echo $cubiculos->IdCubiculo; ?>" method = "post">
          <input type = "hidden" name = "_token" value = "<?php echo csrf_token(); ?>">
       
          <table>

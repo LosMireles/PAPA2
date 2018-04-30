@@ -15,7 +15,6 @@
 Route::get('/', 'RoutesController@index');
 
 Route::get('/infraestructura', 'RoutesController@infraestructura');
-Route::get('/infraestructura/cubiculo', 'RoutesController@Cubiculo');
 
 Route::get('/equipamiento', 'RoutesController@equipamiento');
 Route::get('/equipamiento/equipos', 'RoutesController@equipamiento');
@@ -35,6 +34,8 @@ Route::get('editSoftware/{id}','SoftwareController@show');
 Route::post('editSoftware/{id}','SoftwareController@edit');
 
 //cubiculo
+Route::get('/infraestructura/cubiculo', 'RoutesController@Cubiculo');
+
 Route::get('insertarCubiculo','CubiculoController@insertform');
 Route::post('CrearCubiculo','CubiculoController@store');
 Route::get('verCubiculo','CubiculoController@indexVer');
@@ -42,6 +43,6 @@ Route::get('verCubiculo','CubiculoController@indexVer');
 Route::get('borrarCubiculo','CubiculoController@indexBorrar');
 Route::post('deleteCubiculo','CubiculoController@destroy');
 
-Route::get('editarCubiculo','CubiculoController@index');
-Route::get('edit/{id}','CubiculoController@show');
-Route::post('edit/{id}','CubiculoController@edit');
+Route::get('editarCubiculo','CubiculoController@indexEditar');
+Route::get('editCubiculo/{id}','CubiculoController@show');
+Route::post('editCubiculo/{id}','CubiculoController@edit');
