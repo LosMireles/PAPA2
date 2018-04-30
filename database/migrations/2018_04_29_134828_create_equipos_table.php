@@ -17,10 +17,8 @@ class CreateEquiposTable extends Migration
             $table->char('serial', 45)->primary();
             $table->boolean('manualUsuario');
             $table->boolean('operable');
-            $table->time('inicioHora');
-            $table->time('finHora');
-            $table->date('inicioDia');
-            $table->date('finDia');
+            $table->char('localizacion',100);
+            $table->char('software',100);
 
             $table->timestamps();
         });
