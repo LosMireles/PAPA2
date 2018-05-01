@@ -35,6 +35,7 @@ Route::get('/infraestructura/espacio', 'RoutesController@Espacio');
 Route::get('insertarEspacio','EspacioController@insertform');
 Route::post('CrearEspacio','EspacioController@store');
 
+
 Route::get('verEspacio','EspacioController@indexVer');
 
 Route::get('borrarEspacio','EspacioController@indexBorrar');
@@ -78,6 +79,7 @@ Route::get('/infraestructura/aula', 'RoutesController@aula');
 
 Route::get('insertarAula','AulaController@insertform');
 Route::post('CrearAula','AulaController@store');
+Route::get('insertarAulas','AulaController@dummie');
 
 Route::get('verAula','AulaController@indexVer');
 

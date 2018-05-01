@@ -6,7 +6,7 @@
 	<a href="/infraestructura/">Regresar</a>
 	<h1>Aula</h1>
 	<ul>
-		<li> <a href="/insertarAula">Insertar</a> </li>
+		<li> <a href="/insertarAulas">Insertar</a> </li>
 		<li> <a href="/editarAula">Editar</a> </li>
 		<li> <a href="/verAula">Ver</a> </li>
 		<li> <a href="/borrarAula">Borrar</a> </li>

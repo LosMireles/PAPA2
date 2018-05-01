@@ -21,7 +21,10 @@ class AulaController extends Controller
 	  return view('infraestructura/aula/aula_create');
 	}
 	
-
+	public function dummie(){
+		header("Location: http://127.0.0.1:8000/insertarAula?tipo=".urlencode(""));
+	  	die();
+	}
 	/**
      * Create a new cubiculo instance.
      *
