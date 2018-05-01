@@ -10,7 +10,7 @@
          <table>
             <tr>
                <td>Tipo</td>
-               <td><input type='text' name='Tipo' /></td>
+               <td><input type='text' name='Tipo' value = '<?php $tipo = $_GET['tipo']; if (!empty($tipo))echo $tipo;?>'/></td>
             </tr>
 	    <tr>
                <td>Profesor</td>

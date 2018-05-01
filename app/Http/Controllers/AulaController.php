@@ -88,7 +88,7 @@ class AulaController extends Controller
 		
         $aula->save();
 		echo "Record inserted successfully.<br/>";
-        echo '<a href = "/insertarAula">Click Here</a> to go back.';
+        echo '<a href = "/insertarAulas">Click Here</a> to go back.';
     }
 
 

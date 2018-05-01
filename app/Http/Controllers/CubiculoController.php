@@ -19,7 +19,11 @@ class CubiculoController extends Controller {
 	public function insertform(){
 	  return view('infraestructura/cubiculo/cubiculo_create');
 	}
-	
+
+	public function dummie(){
+		header("Location: http://127.0.0.1:8000/insertarCubiculo?tipo=".urlencode(""));
+	  	die();
+	}
 
 	/**
      * Create a new cubiculo instance.
@@ -39,7 +43,7 @@ class CubiculoController extends Controller {
 
         $cubiculo->save();
 		echo "Record inserted successfully.<br/>";
-        echo '<a href = "/insertarCubiculo">Click Here</a> to go back.';
+        echo '<a href = "/insertarCubiculos">Click Here</a> to go back.';
     }
 	//-----------------------------------------------------------
 

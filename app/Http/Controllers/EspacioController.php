@@ -46,7 +46,7 @@ class EspacioController extends Controller {
 		}
 		if($clase == 'Cubiculo') 
 		{
-			header("Location: http://127.0.0.1:8000/insertarCubiculo");
+			header("Location: http://127.0.0.1:8000/insertarCubiculo?tipo=".urlencode($request->input('tipo')));
 			die();
 		}
 	

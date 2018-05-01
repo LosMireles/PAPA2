@@ -64,6 +64,7 @@ Route::get('/infraestructura/cubiculo', 'RoutesController@Cubiculo');
 
 Route::get('insertarCubiculo','CubiculoController@insertform');
 Route::post('CrearCubiculo','CubiculoController@store');
+Route::get('insertarCubiculos','CubiculoController@dummie');
 
 Route::get('verCubiculo','CubiculoController@indexVer');
 
