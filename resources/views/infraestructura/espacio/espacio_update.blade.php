@@ -25,10 +25,13 @@
                      value = '<?php echo$espacios->cantidad; ?>'/>
                </td>
                <td>Clase</td>
-               <td>
-                  <input type = 'text' name = 'clase'
-                     value = '<?php echo$espacios->clase; ?>'/>
-               </td>
+               
+               <td><select name="clase">
+					<option value="Aula" <?php if($espacios->clase == 'Aula'){echo("selected");}?>>Aula</option>
+					<option  value="Cubiculo" <?php if($espacios->clase == 'Cubiculo'){echo("selected");}?>  >Cubiculo</option>
+				  	</select>
+				</td>
+		
 
             </tr>
             <tr>

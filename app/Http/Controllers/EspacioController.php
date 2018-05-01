@@ -36,6 +36,20 @@ class EspacioController extends Controller {
 		$espacio->clase = $request->clase;
 
         $espacio->save();
+
+		$clase =$request->input('clase');
+
+		if($clase == 'Aula') 
+		{
+			header("Location: http://127.0.0.1:8000/insertarAula");
+			die();
+		}
+		if($clase == 'Cubiculo') 
+		{
+			header("Location: http://127.0.0.1:8000/insertarCubiculo");
+			die();
+		}
+	
 		echo "Record inserted successfully.<br/>";
         echo '<a href = "/insertarEspacio">Click Here</a> to go back.';
     }

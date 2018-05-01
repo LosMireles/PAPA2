@@ -22,7 +22,10 @@
             </tr>
             <tr>
                <td>clase</td>
-               <td><input type='text' name='clase' /></td>
+               <td><select name="clase">
+		    <option value="Aula">Aula</option>
+		    <option value="Cubiculo">Cubiculo</option>
+		  </select></td>
             </tr>
 
             <tr>
