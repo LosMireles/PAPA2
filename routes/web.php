@@ -90,5 +90,20 @@ Route::post('deleteAula','AulaController@destroy');
 Route::get('editarAula','AulaController@indexEditar');
 Route::get('editAula/{id}','AulaController@show');
 Route::post('editAula/{id}','AulaController@edit');
-//comentario para pushear
+
+//Sanitario
+Route::get('/infraestructura/sanitario', 'RoutesController@sanitario');
+
+Route::get('insertarSanitario','SanitarioController@insertform');
+Route::post('CrearSanitario','SanitarioController@store');
+
+Route::get('verSanitario','SanitarioController@indexVer');
+
+Route::get('borrarSanitario','SanitarioController@indexBorrar');
+Route::post('deleteSanitario','SanitarioController@destroy');
+
+Route::get('editarSanitario','SanitarioController@indexEditar');
+Route::get('editSanitario/{id}','SanitarioController@show');
+Route::post('editSanitario/{id}','SanitarioController@edit');
+
 
