@@ -1,4 +1,4 @@
-<?php
+ <?php
 
 /*
 |--------------------------------------------------------------------------
@@ -91,7 +91,8 @@ Route::get('editarAula','AulaController@indexEditar');
 Route::get('editAula/{id}','AulaController@show');
 Route::post('editAula/{id}','AulaController@edit');
 
-//Sanitario
+
+//Sanitaro
 Route::get('/infraestructura/sanitario', 'RoutesController@sanitario');
 
 Route::get('insertarSanitario','SanitarioController@insertform');
@@ -106,4 +107,32 @@ Route::get('editarSanitario','SanitarioController@indexEditar');
 Route::get('editSanitario/{id}','SanitarioController@show');
 Route::post('editSanitario/{id}','SanitarioController@edit');
 
+// Asesoria
+Route::get('/infraestructura/asesoria', 'RoutesController@asesoria');
 
+Route::get('insertarAsesoria','AsesoriaController@insertform');
+Route::post('CrearAsesoria','AsesoriaController@store');
+
+Route::get('verAsesoria','AsesoriaController@indexVer');
+
+Route::get('borrarAsesoria','AsesoriaController@indexBorrar');
+Route::post('deleteAsesoria','AsesoriaController@destroy');
+
+Route::get('editarAsesoria','AsesoriaController@indexEditar');
+Route::get('editAsesoria/{id}','AsesoriaController@show');
+Route::post('editAsesoria/{id}','AsesoriaController@edit');
+
+// Auditorio
+Route::get('/infraestructura/auditorio', 'RoutesController@auditorio');
+
+Route::get('insertarAuditorio','AuditorioController@insertform');
+Route::post('CrearAuditorio','AuditorioController@store');
+
+Route::get('verAuditorio','AuditorioController@indexVer');
+
+Route::get('borrarAuditorio','AuditorioController@indexBorrar');
+Route::post('deleteAuditorio','AuditorioController@destroy');
+
+Route::get('editarAuditorio','AuditorioController@indexEditar');
+Route::get('editAuditorio/{id}','AuditorioController@show');
+Route::post('editAuditorio/{id}','AuditorioController@edit');
