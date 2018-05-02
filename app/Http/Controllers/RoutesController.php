@@ -35,4 +35,8 @@ class RoutesController extends Controller
     public function Software(){
     	return view('equipamiento/software/software_index');
     }
+	
+    public function Sanitario(){
+      return view('infraestructura/sanitario/sanitario_index');
+    }
 }
