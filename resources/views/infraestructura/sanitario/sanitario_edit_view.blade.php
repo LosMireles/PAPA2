@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'View Cubiculo')
+@section('title', 'View Sanitario')
 
 @section('content')
       <a href="/infraestructura/sanitario">Regresar</a>
