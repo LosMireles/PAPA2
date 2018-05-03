@@ -18,6 +18,6 @@ $factory->define(App\Espacio::class, function (Faker $faker) {
         'tipo' => $faker->unique()->word,
         'superficie' => $faker->randomNumber(),
         'cantidad' => $faker->randomNumber(),
-        'clase' => $faker->word(9),
+        'clase' => $faker->randomElement(['Aula', 'Cubiculo']),
     ];
 });
