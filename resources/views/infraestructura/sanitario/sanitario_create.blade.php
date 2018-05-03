@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Aula Management | Add')
+@section('title', 'Sanitario Management | Add')
 
 @section('content')
 	<a href="/infraestructura/sanitario">Regresar</a>
