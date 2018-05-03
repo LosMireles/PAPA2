@@ -11,12 +11,11 @@
 			<ul>
 				<li> <a href="/infraestructura/aula">Aula</a> </li>
 				<li> <a href="/infraestructura/cubiculo">Cubículo</a> </li>
-				<li> <a href="#">Asesoría</a> </li>
-				<li> <a href="#">Baños</a> </li>
-				<li> <a href="#">Auditorios</a> </li>
+				<li> <a href="/infraestructura/asesoria">Asesoría</a> </li>
+				<li> <a href="/infraestructura/sanitario">Sanitario</a> </li>
+				<li> <a href="/infraestructura/auditorio">Auditorios</a> </li>
 			</ul>
 		</li>
 		<li> <a href="#">Cursos</a> </li>
 	</ul>
 @endsection
-
