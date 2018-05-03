@@ -21,6 +21,11 @@ class SanitarioController extends Controller
 	  return view('infraestructura/sanitario/sanitario_create');
 	}
 
+	public function dummie(){
+		header("Location: http://127.0.0.1:8000/insertarSanitario?tipo=".urlencode(""));
+	  	die();
+	}
+
 
 	/**
      * Create a new sanitario instance.
@@ -44,7 +49,7 @@ class SanitarioController extends Controller
 
         $sanitario->save();
 		    echo "Record inserted successfully.<br/>";
-        echo '<a href = "/insertarSanitario">Click Here</a> to go back.';
+        echo '<a href = "/insertarSanitarios">Click Here</a> to go back.';
     }
 
 

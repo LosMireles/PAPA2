@@ -49,6 +49,21 @@ class EspacioController extends Controller {
 			header("Location: http://127.0.0.1:8000/insertarCubiculo?tipo=".urlencode($request->input('tipo')));
 			die();
 		}
+		if($clase == 'Sanitario') 
+		{
+			header("Location: http://127.0.0.1:8000/insertarSanitario?tipo=".urlencode($request->input('tipo')));
+			die();
+		}
+		if($clase == 'Asesoria') 
+		{
+			header("Location: http://127.0.0.1:8000/insertarAsesoria?tipo=".urlencode($request->input('tipo')));
+			die();
+		}
+		if($clase == 'Auditorio') 
+		{
+			header("Location: http://127.0.0.1:8000/insertarAuditorio?tipo=".urlencode($request->input('tipo')));
+			die();
+		}
 	
 		echo "Record inserted successfully.<br/>";
         echo '<a href = "/insertarEspacio">Click Here</a> to go back.';

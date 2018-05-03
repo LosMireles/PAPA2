@@ -25,6 +25,10 @@
                <td><select name="clase">
 		    <option value="Aula">Aula</option>
 		    <option value="Cubiculo">Cubiculo</option>
+		    <option value="Sanitario">Sanitario</option>
+		    <option value="Asesoria">Asesoria</option>
+		    <option value="Auditorio">Auditorio</option>
+
 		  </select></td>
             </tr>
 

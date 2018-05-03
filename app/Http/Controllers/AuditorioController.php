@@ -30,6 +30,8 @@ class AuditorioController extends Controller
      		header("Location: http://127.0.0.1:8000/insertarAuditorio?tipo=".urlencode(""));
      	  	die();
      	}
+
+	
     /**
      * Store a newly created resource in storage.
      *
@@ -49,7 +51,7 @@ class AuditorioController extends Controller
 
         $auditorio->save();
         echo "Record inserted successfully.<br/>";
-        echo '<a href = "/insertarAuditorio">Click Here</a> to go back.';
+        echo '<a href = "/insertarAuditorios">Click Here</a> to go back.';
 
     }
 

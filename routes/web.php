@@ -97,6 +97,7 @@ Route::get('/infraestructura/sanitario', 'RoutesController@sanitario');
 
 Route::get('insertarSanitario','SanitarioController@insertform');
 Route::post('CrearSanitario','SanitarioController@store');
+Route::get('insertarSanitarios','SanitarioController@dummie');
 
 Route::get('verSanitario','SanitarioController@indexVer');
 
@@ -112,6 +113,7 @@ Route::get('/infraestructura/asesoria', 'RoutesController@asesoria');
 
 Route::get('insertarAsesoria','AsesoriaController@insertform');
 Route::post('CrearAsesoria','AsesoriaController@store');
+Route::get('insertarAsesorias','AsesoriaController@dummie');
 
 Route::get('verAsesoria','AsesoriaController@indexVer');
 
@@ -127,6 +129,7 @@ Route::get('/infraestructura/auditorio', 'RoutesController@auditorio');
 
 Route::get('insertarAuditorio','AuditorioController@insertform');
 Route::post('CrearAuditorio','AuditorioController@store');
+Route::get('insertarAuditorios','AuditorioController@dummie');
 
 Route::get('verAuditorio','AuditorioController@indexVer');
 

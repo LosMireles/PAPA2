@@ -27,6 +27,11 @@ class AsesoriaController extends Controller
         return view('infraestructura/asesoria/asesoria_create');
     }
 
+	public function dummie(){
+		header("Location: http://127.0.0.1:8000/insertarAsesoria?tipo=".urlencode(""));
+	  	die();
+	}
+
     /**
      * Store a newly created resource in storage.
      *
@@ -47,7 +52,7 @@ class AsesoriaController extends Controller
 
         $asesoria->save();
         echo "Record inserted successfully.<br/>";
-        echo '<a href = "/insertarAsesoria">Click Here</a> to go back.';
+        echo '<a href = "/insertarAsesorias">Click Here</a> to go back.';
 
     }
 //--------------------------------------------------------
