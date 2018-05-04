@@ -16,6 +16,6 @@
 				<li> <a href="/infraestructura/auditorio">Auditorios</a> </li>
 			</ul>
 		</li>
-		<li> <a href="#">Cursos</a> </li>
+		<li> <a href="/infraestructura/curso">Cursos</a> </li>
 	</ul>
 @endsection
