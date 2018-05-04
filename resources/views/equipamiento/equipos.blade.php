@@ -3,7 +3,7 @@
 @section('title', 'equipamiento')
 
 @section('content')
-	<a href="{{ url('/') }}">Home</a>
+	<a href="/equipamiento/">Regresar</a>
 	<br>
 	
 	<h1>Equipos</h1>

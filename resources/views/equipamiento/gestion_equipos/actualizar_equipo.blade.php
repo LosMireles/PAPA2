@@ -3,7 +3,7 @@
 @section('title', 'equipamiento')
 
 @section('content')
-	<a href="{{ url('/') }}">Home</a>
+	<a href="/equipamiento/equipos/">Home</a>
 	<form action="/gestion_equipo_modificar" method="POST">
 		<input type = "hidden" name = "_token" value = "<?php echo csrf_token(); ?>">
 

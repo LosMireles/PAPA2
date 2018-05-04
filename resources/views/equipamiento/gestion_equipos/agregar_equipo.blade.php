@@ -3,7 +3,7 @@
 @section('title', 'equipamiento')
 
 @section('content')
-	<a href="{{ url('/gestion_equipo_agregar') }}">Home</a>
+	<a href="/equipamiento/equipos/">Regresar</a>
 	<h1>Formulario para agregar un equipo</h1>
 	<form action="/gestion_equipo_agregar" method="POST">
 		<input type = "hidden" name = "_token" value = "<?php echo csrf_token(); ?>">
