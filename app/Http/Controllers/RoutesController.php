@@ -47,4 +47,8 @@ class RoutesController extends Controller
     public function Auditorio(){
         return view('infraestructura/auditorio/auditorio_index');
     }
+	
+    public function Curso(){
+      return view('infraestructura/curso/curso_index');
+    }
 }
