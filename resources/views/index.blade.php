@@ -8,5 +8,7 @@
 	<a href="{{ url('/infraestructura') }}">9.1 Infraestructura</a>
 	<br>
 	<a href="{{ url('/equipamiento') }}">9.2 Equipamiento</a>
+	<br>
+	<a href="{{ url('/asignaturas') }}"> Asignaturas</a>
 @endsection
 

@@ -139,3 +139,33 @@ Route::post('deleteAuditorio','AuditorioController@destroy');
 Route::get('editarAuditorio','AuditorioController@indexEditar');
 Route::get('editAuditorio/{id}','AuditorioController@show');
 Route::post('editAuditorio/{id}','AuditorioController@edit');
+
+// Asignaturas
+Route::get('/asignaturas', 'AsignaturaController@index_ver');
+
+Route::get('/asignaturas/agregar_asignatura', 'AsignaturaController@agregar_asignatura');
+Route::post('/asignaturas/agregar_asignatura/agregar', 'AsignaturaController@agregar_asignatura_post');
+
+Route::get('/asignaturas/actualizar_asignatura', 'AsignaturaController@actualizar_asignaturas');
+Route::get('/asignaturas/actualizar_asignatura/{id}', 'AsignaturaController@actualizar_asignaturas_especifico');
+Route::post('/asignaturas/actualizar_asignatura_actualizar', 'AsignaturaController@actualizar_asignaturas_post');
+
+Route::get('/asignaturas/ver_asignaturas', 'AsignaturaController@ver_asignaturas');
+
+Route::get('/asignaturas/eliminar_asignatura', 'AsignaturaController@eliminar_asignatura');
+Route::post('/asignaturas/eliminar_asignatura/eliminar', 'AsignaturaController@eliminar_asignatura_post');
+
+//Curso
+Route::get('/infraestructura/curso', 'RoutesController@curso');
+
+Route::get('insertarCurso','CursoController@insertform');
+Route::post('CrearCurso','CursoController@store');
+
+Route::get('verCurso','CursoController@indexVer');
+
+Route::get('borrarCurso','CursoController@indexBorrar');
+Route::post('deleteCurso','CursoController@destroy');
+
+Route::get('editarCurso','CursoController@indexEditar');
+Route::get('editCurso/{id}','CursoController@show');
+Route::post('editCurso/{id}','CursoController@edit');

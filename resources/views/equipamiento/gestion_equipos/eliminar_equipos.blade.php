@@ -4,6 +4,7 @@
 
 @section('content')
 	<a href="/equipamiento/equipos/">Regresar</a>
+
 	<form action="/gestion_equipo_borrar" method="POST">
 		<input type = "hidden" name = "_token" value = "<?php echo csrf_token(); ?>">
          <label for="serial">Serial</label><br>

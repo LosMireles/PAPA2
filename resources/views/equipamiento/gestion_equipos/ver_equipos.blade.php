@@ -3,7 +3,8 @@
 @section('title', 'equipamiento')
 
 @section('content')
-	<a href="/equipamiento/equipos/">Home</a>
+	<a href="/equipamiento/equipos/">Regresar</a>
+
 	<br>
 	<table border="1">
 		<tr>

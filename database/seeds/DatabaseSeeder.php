@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
             CursoTableSeeder::class,
             EquipoTableSeeder::class,
             SoftwareTableSeeder::class,
+            AsignaturaTableSeeder::class,
         ]);
     }
 }
