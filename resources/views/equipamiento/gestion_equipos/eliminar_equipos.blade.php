@@ -3,7 +3,7 @@
 @section('title', 'equipamiento')
 
 @section('content')
-	<a href="{{ url('/') }}">Home</a>
+	<a href="{{ url()->previous() }}">Regresar</a>
 	<form action="/gestion_equipo_borrar" method="POST">
 		<input type = "hidden" name = "_token" value = "<?php echo csrf_token(); ?>">
          <label for="serial">Serial</label><br>
