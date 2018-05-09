@@ -11,49 +11,64 @@
 		<table>
 			<tr>
 				<td>
-					<label for="serial">Serial: </label>		
+					<div class="tooltip">
+						<label for="serial">Serial: </label>
+						<span class="tooltiptext">Serial del equipo</span>
+					</div>
 				</td>
 				<td>
-					<input type="text" name="serial" placeholder="ID del equipo"> <br><br>
+					<input type="text" name="serial" placeholder="Serial del equipo">
 				</td>
 			</tr>
 
 			<tr>
 				<td>
-					<label for="manual">Se cuenta con manual: </label> <br>
+					<div class="tooltip">
+						<label for="manual">Se cuenta con manual: </label> <br>
+						<span class="tooltiptext">Indique si el equipo cuenta con un manual de usuario</span>
+					</div>
 				</td>
 				<td>
 					<input type="radio" name="manual" value="1" checked="">Sí <br>
-					<input type="radio" name="manual" value="0"> No <br><br>				
+					<input type="radio" name="manual" value="0"> No				
 				</td>
 			</tr>
 
 			<tr>
 				<td>
-					<label for="operable">Se encuentra operable: </label> <br>
+					<div class="tooltip">
+						<label for="operable">Se encuentra operable: </label>
+						<span class="tooltiptext">Indique si el equipo se encuentra operable actualmente</span>
+					</div>
 				</td>
 				<td>				
 					<input type="radio" name="operable" value="1" checked="">Sí <br>
-					<input type="radio" name="operable" value="0"> No <br><br>
+					<input type="radio" name="operable" value="0"> No
 				</td>
 			</tr>
 
 			<tr>
 				<td>
-					<label for="localizacion">Localización: </label>
+					<div class="tooltip">
+						<label for="localizacion">Localización: </label>
+						<span class="tooltiptext">Seleccione la ubicación del equipo</span>
+					</div>
 				</td>
 				<td>
 					<select name="localizacion">
 						@foreach($espacios as $espacio)
 							<option value="{{$espacio->clase}}">{{$espacio->clase}}</option>
 						@endforeach
-					</select><br><br>
+					</select>
 				</td>
 			</tr>
 
 			<tr>
-				<td>	
-					<label for="software">Software: </label><br>
+				<td>
+					<div class="tooltip">
+						<label for="software">Software: </label><br>
+						<span class="tooltiptext">Seleccione el equipo que se encuentra instalado en el equipo</span>
+					</div>
 				</td>
 				<td>
 					@foreach($software as $single_software)
