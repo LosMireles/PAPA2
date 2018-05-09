@@ -14,7 +14,7 @@
     color: #fff;
     text-align: center;
     border-radius: 6px;
-    padding: 5px 0;
+    padding: 5px;
 
     /* Position the tooltip */
     position: absolute;

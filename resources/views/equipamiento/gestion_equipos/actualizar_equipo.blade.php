@@ -4,7 +4,7 @@
 
 @section('content')
 	<a href="/equipamiento/equipos/">Home</a>
-
+	<h1>Formulario para la edición del equipo {{$equipo->serial}}</h1>
 	<form action="/gestion_equipo_modificar" method="POST">
 		<input type = "hidden" name = "_token" value = "<?php echo csrf_token(); ?>">
 		<input type="hidden" name="id" value="{{$equipo->id}}">

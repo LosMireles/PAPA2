@@ -12,15 +12,21 @@
 		<table>
 			<tr>
 				<td>
-					<label for="asignatura">Nombre de la asigatura: </label>
+					<div class="tooltip">
+						<label for="asignatura">Nombre de la asigatura: </label>
+						<span class="tooltiptext">Nombre de la asignatura</span>	
+					</div>	
 				</td>
 				<td>
-					<input type="text" name="asignatura" placeholder="asigatura"> <br><br>			
+					<input type="text" name="asignatura" placeholder="Asigatura">
 				</td>
 			</tr>
 			<tr>
 				<td>
-					<label for="descripcion">Descripción: </label>			
+					<div class="tooltip">
+						<label for="descripcion">Descripción: </label>
+						<span class="tooltiptext">Descripción para la asignatura</span>
+					</div>
 				</td>
 				<td>
 					<textarea rows="4" cols="45" name="descripcion" placeholder="Inserte una descripción"></textarea>			
