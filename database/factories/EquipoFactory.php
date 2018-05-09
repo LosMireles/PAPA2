@@ -15,7 +15,7 @@ use Faker\Generator as Faker;
 
 $factory->define(App\Equipo::class, function (Faker $faker) {
     return [
-        'serial' => $faker->word(12),
+        'serial' => $faker->unique()->word(12),
         'manualUsuario' => $faker->numberBetween(0, 1),
         'operable' => $faker->numberBetween(0, 1),
         'localizacion' => $faker->word(10),
