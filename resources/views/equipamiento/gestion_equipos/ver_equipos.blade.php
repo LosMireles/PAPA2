@@ -5,6 +5,8 @@
 @section('content')
 	<a href="/equipamiento/equipos/">Regresar</a>
 
+	<h1>Equipos registrados</h1>
+
 	<br>
 	<table border="1">
 		<tr>

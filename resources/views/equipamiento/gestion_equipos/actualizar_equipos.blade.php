@@ -6,6 +6,7 @@
 	<a href="/equipamiento/equipos/">Regresar</a>
 
 	<br>
+	<h1>Edición de equipos</h1>
 	<table border="1">
 		<tr>
 			<th>

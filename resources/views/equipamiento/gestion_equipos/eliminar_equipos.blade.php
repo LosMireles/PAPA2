@@ -5,10 +5,19 @@
 @section('content')
 	<a href="/equipamiento/equipos/">Regresar</a>
 
+	<h1>Borrar equipos</h1>
+
 	<form action="/gestion_equipo_borrar" method="POST">
 		<input type = "hidden" name = "_token" value = "<?php echo csrf_token(); ?>">
-         <label for="serial">Serial</label><br>
-         <input type="text" name="serial">
+         	
+         <div class="tooltip">
+         	<label for="serial">Serial</label>
+         	<span class="tooltiptext">Serial del equipo que desea borrar</span>
+         </div>
+
+         <br>
+
+         <input type="text" name="serial" placeholder="Serial">
          <input type = 'submit' value = "Borrar equipo"/>
 	</form>
 	<br>
