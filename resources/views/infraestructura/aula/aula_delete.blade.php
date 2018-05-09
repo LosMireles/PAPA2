@@ -9,7 +9,7 @@
       
          <table>
             <tr>
-               <td>Tipo</td>
+               <td>Codigo del aula</td>
                <td><input type='text' name='Tipo' /></td>
             </tr>
             <tr>
@@ -23,43 +23,17 @@
 
       <table border = 1>
          <tr>
-            <td>IdAula</td>
-            <td>Tipo</td>
-            <td>CantidadAV</td>
-            <td>Cantidad equipo</td>
-            <td>Capacidad </td>
-			<td>SillasPaleta </td>
-			<td> MesasTrabajo </td>
-			<td> Isotopica </td>
-			<td> Estrado </td>
-			<td> Pizarron </td>
-			<td> Illuminacion </td>
-			<td> AislamientoR </td>
-			<td> Ventilacion </td>
-			<td> Temperatura </td>
-			<td> Espacio </td>
-			<td> Mobilario </td>
-			<td>Conexiones </td>
+            	<td><div class="tooltip">Codigo del aula<span class="tooltiptext">Nombre escrito en las puertas</span></div></td>
+	    	<td><div class="tooltip">Cantidad de equipo.<span class="tooltiptext">Cantidad de equipo audiovisual hay en el aula</span></td>
+	    	<td><div class="tooltip">Cantidad de computadoras.<span class="tooltiptext">Cantidad de computadoras hay en el aula</span></td>
+	    	<td><div class="tooltip">Capacidad.<span class="tooltiptext">Capacidad maxima del aula</span> </td>
          </tr>
          @foreach ($aulas as $aula)
          <tr>
-            <td>{{ $aula->IdAula }}</td>
-            <td>{{ $aula->Tipo }}</td>
-			<td>{{ $aula->CantidadAV }}</td>
-			<td>{{ $aula->CantidadEquipo }}</td>
-			<td>{{ $aula->Capacidad }}</td>
-			<td>{{ $aula->SillasPaleta }}</td>
-			<td>{{ $aula->MesasTrabajo }}</td>
-			<td>{{ $aula->Isotopica }}</td>
-			<td>{{ $aula->Estrado }}</td>
-			<td>{{ $aula->Pizarron }}</td>
-			<td>{{ $aula->Illuminacion }}</td>
-			<td>{{ $aula->AislamientoR }}</td>
-			<td>{{ $aula->Ventilacion }}</td>
-			<td>{{ $aula->Temperatura }}</td>
-			<td>{{ $aula->Espacio }}</td>
-			<td>{{ $aula->Mobilario }}</td>
-			<td>{{ $aula->Conexiones }}</td>
+            	<td>{{ $aula->Tipo }}</td>
+		<td>{{ $aula->CantidadAV }}</td>
+		<td>{{ $aula->CantidadEquipo }}</td>
+		<td>{{ $aula->Capacidad }}</td>
          </tr>
          @endforeach
       </table>
