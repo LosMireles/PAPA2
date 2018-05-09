@@ -4,12 +4,19 @@
 
 @section('content')
 	<a href="{{ url()->previous() }}">Regresar</a>
-	<br>
+	<h1>Borrar asignaturas</h1>
 	<form action="{{ url('/asignaturas/eliminar_asignatura/eliminar') }}" method="POST">
 		<input type = "hidden" name = "_token" value = "<?php echo csrf_token(); ?>">
-		<label for="nombre">Nombre: </label><br>
+
+		<div class="tooltip">
+    		<label for="nombre">Nombre: </label>
+         	<span class="tooltiptext">Nombre de la materia que desea borrar</span>
+         </div>
+
+         <br>
+
 		<input type="text" name="nombre" placeholder="nombre">
-		<input type = 'submit' value = "Eliminar equipo"/>	
+		<input type = 'submit' value = "Borrar asignatura"/>	
 	</form>
 	
 	<table border="1">
