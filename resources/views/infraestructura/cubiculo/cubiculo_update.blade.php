@@ -9,17 +9,17 @@
       
          <table>
             <tr>
-               <td>Tipo</td>
+               <td><div class="tooltip">Codigo del cubiculo<span class="tooltiptext">Numero del cubiculo</span></div></td>
                <td>
                   <input type = 'text' name = 'Tipo' 
                      value = '<?php echo$cubiculos->Tipo; ?>'/>
                </td>
-               <td>Profesor</td>
+               <td><div class="tooltip">Profesor<span class="tooltiptext">El encargado del cubiculo</span></div></td>
                <td>
                   <input type = 'text' name = 'Profesor' 
                      value = '<?php echo$cubiculos->Profesor; ?>'/>
                </td>
-               <td>Cantidad Equipo</td>
+               <td><div class="tooltip">Cantidad de equipo.<span class="tooltiptext">Cantidad de computadoras hay en el cubiculo</span></div></td>
                <td>
                   <input type = 'text' name = 'CantidadEquipo' 
                      value = '<?php echo$cubiculos->CantidadEquipo; ?>'/>
@@ -28,7 +28,7 @@
             </tr>
             <tr>
                <td colspan = '2'>
-                  <input type = 'submit' value = "Update Cubiculo" />
+                  <input type = 'submit' value = "Editar Cubiculo" />
                </td>
             </tr>
          </table>
