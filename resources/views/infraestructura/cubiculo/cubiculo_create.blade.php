@@ -9,15 +9,22 @@
       
          <table>
             <tr>
-               <td>Tipo</td>
+               <td><div class="tooltip">Tipo
+		  <span class="tooltiptext">Es culpa de conaic el nombre feo</span>
+		</div>
+		</td>
                <td><input type='text' name='Tipo' value = '<?php $tipo = $_GET['tipo']; if (!empty($tipo))echo $tipo;?>'/></td>
             </tr>
 	    <tr>
-               <td>Profesor</td>
+               <td><div class="tooltip">Profesor
+		  <span class="tooltiptext">El men/mena que ahi esta</span>
+		</div></td>
                <td><input type='text' name='Profesor' /></td>
             </tr>
 	    <tr>
-               <td>CantidadEquipo</td>
+               <td><div class="tooltip">Cantidad de equipo.
+		  <span class="tooltiptext">Cuantas computadoras hay</span>
+		</div></td>
                <td><input type='text' name='CantidadEquipo' /></td>
             </tr>
             <tr>
