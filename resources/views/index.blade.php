@@ -9,6 +9,6 @@
 	<br>
 	<a href="{{ url('/equipamiento') }}">9.2 Equipamiento</a>
 	<br>
-	<a href="{{ url('/asignaturas') }}"> Asignaturas</a>
+	<!--<a href="{{ url('/asignaturas') }}"> Asignaturas</a>-->
 @endsection
 
