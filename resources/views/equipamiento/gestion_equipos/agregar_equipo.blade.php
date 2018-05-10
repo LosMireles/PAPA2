@@ -67,7 +67,7 @@
 				<td>
 					<div class="tooltip">
 						<label for="software">Software: </label><br>
-						<span class="tooltiptext">Seleccione el equipo que se encuentra instalado en el equipo</span>
+						<span class="tooltiptext">Seleccione el software que se encuentra instalado en el equipo</span>
 					</div>
 				</td>
 				<td>
