@@ -55,7 +55,7 @@ class CursoController extends Controller {
 	}
 
 	//*-----------------------------------------------------------------
-	public function index(){
+	public function indexEditar(){
 	  	$cursos  = Curso::all();
 	  	return view('infraestructura/curso/curso_edit_view',['cursos'=>$cursos]);
 	}
