@@ -9,23 +9,33 @@
 
 	<table>
 		<tr>
-               		<td>Tipo</td>
+               		<td><div class="tooltip">Nombre<span class="tooltiptext">
+				Nombre del auditorio
+			</span></div></td>
                		<td><input type='text' name='Tipo' value = '<?php $tipo = $_GET['tipo']; if (!empty($tipo))echo $tipo;?>'/></td>
             	</tr>
 		<tr>
-			<td>Cantidad Equipo</td>
+			<td><div class="tooltip">Cantidad de equipo<span class="tooltiptext">
+				Cantidad de equipo de computo disponible en el auditorio
+			</span></div></td>
 			<td><input type='text' name='CantidadEquipo' /></td>
 		</tr>
 		<tr>
-			<td>Cantidad AV</td>
+			<td><div class="tooltip">Cantidad de equipo audiovisual<span class="tooltiptext">
+				Cantidad de equipo audiovisual disponible en el auditorio (proyectores, televisores, etc.)
+			</span></div></td>
 			<td><input type='text' name='CantidadAV' /></td>
 		</tr>
 		<tr>
-			<td>Capacidad</td>
+			<td><div class="tooltip">Capacidad<span class="tooltiptext">
+				Capacidad máxima de personas que soporta el auditorio.
+			</span></div></td>
 			<td><input type='text' name='Capacidad' /></td>
 		</tr>
 		<tr>
-			<td>Cantidad Sanitarios</td>
+			<td><div class="tooltip">Cantidad de sanitarios<span class="tooltiptext">
+				Cantidad de sanitarios disponibles en el auditorio
+			</span></div></td>
 			<td><input type='text' name='CantidadSanitarios' /></td>
 		</tr>
 		<tr>
