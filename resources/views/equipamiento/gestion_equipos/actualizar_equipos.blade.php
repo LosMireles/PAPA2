@@ -5,45 +5,15 @@
 @section('content')
 	<a href="/equipamiento/equipos/">Regresar</a>
 
-	<br>
-	<h1>Edición de equipos</h1>
-	<table border="1">
-		<tr>
-			<th>
-				<div class="tooltip">
-					Serial del equipo
-					<span class="tooltiptext">Serial que pertenece al equipo</span>
-				</div>
-			</th>
+	<h1 class="text-center">Edición de equipos</h1>
 
-			<th>
-				<div class="tooltip">
-					Manual de usuario
-					<span class="tooltiptext">El equipo dispone de manual de usuario</span>
-				</div>	
-			</th>
-			
-			<th>
-				<div class="tooltip">
-					Operable
-					<span class="tooltiptext">El equipo se encuentra actualmente operable</span>
-				</div>	
-			</th>
-			
-			<th>
-				<div class="tooltip">
-					Localización
-					<span class="tooltiptext">Ubicación donde se encuentra el equipo</span>
-				</div>	
-			</th>
-			
-			<th>
-				<div class="tooltip">
-					Software
-					<span class="tooltiptext">Software que se encuentra instalado en el equipo</span>
-				</div>	
-			</th>
-			
+	<table class="table table-hover">
+		<tr>
+			<th data-toggle="tooltip" title="Serial que pertenece al equipo"> Serial del equipo</th>
+			<th data-toggle="tooltip" title="El equipo dispone de manual de usuario"> Manual de usuario</th>
+			<th data-toggle="tooltip" title="El equipo se encuentra actualmente operable">Operable</th>
+			<th data-toggle="tooltip" title="Ubicación donde se encuentra el equipo">Localización</th>
+			<th data-toggle="tooltip" title="Software que se encuentra instalado en el equipo">Software</th>
 		</tr>
 		@foreach($equipos as $equipo)
 			<tr>
