@@ -11,8 +11,10 @@ class EquipoTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Equipo::class, 3)->create()->each(function ($u) {
-            $u->softwares()->save(factory(App\Software::class)->make());
-        });
+        //factory(App\Equipo::class, 3)->create()->each(function ($u) {
+        //    $u->softwares()->save(factory(App\Software::class)->make());
+        //});
+
+        factory(App\Equipo::class, 10)->create();
     }
 }

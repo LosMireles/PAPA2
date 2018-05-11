@@ -15,11 +15,11 @@ use Faker\Generator as Faker;
 
 $factory->define(App\Software::class, function (Faker $faker) {
     return [
-        'nombre' => $faker->word(12),
+        'nombre' => $faker->unique()->word(12),
         'manualUsuario' => $faker->numberBetween(0,1),
         'licencia' => $faker->word(8),
         'disponibilidad' => $faker->word(9),
         'clase' => $faker->word(9),
-        'serial' => factory(App\Equipo::class)->create()->serial,
+        //'serial' => factory(App\Equipo::class)->create()->serial,
     ];
 });

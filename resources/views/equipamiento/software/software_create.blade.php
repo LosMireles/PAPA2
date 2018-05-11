@@ -30,7 +30,7 @@
                <td><input type='text' name='clase' /></td>
             </tr>
             <tr>
-               <td><div class="tooltip">Serial<span class="tooltiptext">Serial de computadora que use el software</span></div></td>
+               <td><div class="tooltip">Equipos<span class="tooltiptext">Equipos que tienen instalado el software</span></div></td>
                <td><input type='text' name='serial' /></td>
             </tr>
             <tr>

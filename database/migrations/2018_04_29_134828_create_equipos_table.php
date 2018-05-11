@@ -19,7 +19,7 @@ class CreateEquiposTable extends Migration
             $table->boolean('manualUsuario');
             $table->boolean('operable');
             $table->char('localizacion',100);
-            $table->char('software',100);
+            //$table->char('software',100);
 
             $table->timestamps();
         });

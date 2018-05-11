@@ -11,8 +11,9 @@ class SoftwareTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Software::class, 2)->create()->each(function ($u) {
-            $u->save();
-        });
+        //factory(App\Software::class, 2)->create()->each(function ($u) {
+        //    $u->save();
+        //});
+        factory(App\Software::class, 10)->create();
     }
 }

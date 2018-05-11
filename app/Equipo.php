@@ -7,14 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 class Equipo extends Model
 {
     protected $table = 'equipos';
-    /// Serializar para poder meter un arreglo
-    protected $casts = ['software'=>'array'];
+    protected $guarded = array();
 
-    protected $fillable = ['serial', 'manualUsuario', 'operable', 'localizacion', 'software'];
+    /// Serializar para poder meter un arreglo
+    //protected $casts = ['software'=>'array'];
+
+    //protected $fillable = ['serial', 'manualUsuario', 'operable', 'localizacion', 'software'];
 
     //DEFINICION DE RELACIONES
-    //un equipo tiene muchos software
+    //un equipo pertenece a muchos software (muchos a muchos)
     public function softwares(){
-        return $this->hasMany(Software::class, 'serial');
+        return $this->BelongsToMany(Software::class);
     }
 }
