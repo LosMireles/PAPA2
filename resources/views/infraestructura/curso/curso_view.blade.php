@@ -7,12 +7,12 @@
 	<a href="/infraestructura/curso">Regresar</a>
 	<table border = 1>
          <tr>
-            <td>nombre</td>
-            <td>periodo</td>
-            <td>grupo</td>
-            <td>noEstudiantes</td>
-            <td>tipoAula</td>
-            <td>tipos</td>
+			 <td><div class="tooltip">Nombre<span class="tooltiptext">Nombre del Curso</span></div></td>
+ 			<td>Periodo</td>
+ 	       <td>Grupo</td>
+ 	       <td>Numero de Estudiantes</td>
+ 	       <td>Tipo de Aula</td>
+ 			<td><div class="tooltip">Tipo<span class="tooltiptext">Identificador del curso</span></div></td>
          </tr>
          @foreach ($cursos as $curso)
          <tr>

@@ -8,48 +8,36 @@
          <input type = "hidden" name = "_token" value = "<?php echo csrf_token(); ?>">
 
          <table>
-            <tr>
-               <td>nombre</td>
-               <td>
-                  <input type = 'text' name = 'nombre'
-                     value = '<?php echo$cursos->nombre; ?>'/>
-               </td>
-            </tr>
-            <tr>
-               <td>periodo</td>
-               <td>
-                  <input type = 'text' name = 'periodo'
-                     value = '<?php echo$cursos->periodo; ?>'/>
-               </td>
-            </tr>
-            <tr>
-               <td>grupo</td>
-               <td>
-                  <input type = 'text' name = 'grupo'
-                     value = '<?php echo$cursos->grupo; ?>'/>
-               </td>
-            </tr>
-            <tr>
-               <td>noEstudiantes</td>
-               <td>
-                  <input type = 'text' name = 'noEstudiantes'
-                     value = '<?php echo$cursos->noEstudiantes; ?>'/>
-               </td>
-            </tr>
-            <tr>
-               <td>tipoAula</td>
-               <td>
-                  <input type = 'text' name = 'tipoAula'
-                     value = '<?php echo$cursos->tipoAula; ?>'/>
-               </td>
-            </tr>
-						<tr>
-               <td>tipo</td>
-               <td>
-                  <input type = 'text' name = 'tipo'
-                     value = '<?php echo$cursos->tipo; ?>'/>
-               </td>
-            </tr>
+	            <tr>
+					<td><div class="tooltip">Nombre<span class="tooltiptext">Nombre del Curso</span></div></td>
+	               	<td><input type='text' name='nombre' /></td>
+	            </tr>
+				<tr>
+	               <td>Periodo</td>
+	               <td><input type='text' name='periodo' /></td>
+	            </tr>
+							<tr>
+	               <td>Grupo</td>
+	               <td><input type='text' name='grupo' /></td>
+	            </tr>
+							<tr>
+	               <td>Numero de Estudiantes</td>
+	               <td><input type='text' name='noEstudiantes' /></td>
+	            </tr>
+							<tr>
+	               <td>Tipo de Aula</td>
+	               <td><input type='text' name='tipoAula' /></td>
+	            </tr>
+				<tr>
+					<td><div class="tooltip">Tipo<span class="tooltiptext">Identificador del curso</span></div></td>
+	               	<td><input type='text' name='tipo' /></td>
+	            </tr>
+
+	            <tr>
+	               <td colspan = '2'>
+	                  <input type = 'submit' value = "Add Curso"/>
+	               </td>
+	            </tr>
             <tr>
                <td colspan = '2'>
                   <input type = 'submit' value = "Update Curso"/>
