@@ -16,12 +16,12 @@
          </tr>
          @foreach ($cursos as $curso)
          <tr>
-            <td>{{ $curso->nombre }}</td>
-            <td>{{ $curso->periodo }}</td>
-            <td>{{ $curso->grupo }}</td>
-						<td>{{ $curso->noEstudiantes }}</td>
-						<td>{{ $curso->tipoAula }}</td>
-						<td>{{ $curso->tipos }}</td>
+			 <td>{{ $curso->nombre }}</td>
+ 			<td>{{ $curso->periodo }}</td>
+ 			<td>{{ $curso->grupo }}</td>
+ 			<td>{{ $curso->noEstudiantes }}</td>
+ 			<td>{{ $curso->tipoAula }}</td>
+ 			<td>{{ $curso->tipo }}</td>
          </tr>
          @endforeach
       </table>
