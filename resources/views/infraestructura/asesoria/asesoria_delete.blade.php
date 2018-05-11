@@ -23,13 +23,13 @@
 
       <table border = 1>
          <tr>
-            <td>IdAsesoria</td>
-			<td>Tipo</td>
-            <td>InicioHora</td>
-			<td>FinHora</td>
-			<td>InicioDia</td>
-			<td>FinDia</td>
-	        <td>Materia</td>
+			<td><div class="tooltip">IdAsesoria<span class="tooltiptext">Numero de entrada en base de datos </span></div></td>
+			<td><div class="tooltip">Tipo<span class="tooltiptext">Identificador propio de la asesoria</span></div></td>
+            <td>Hora de inicio</td>
+			<td>Hora de finalizacion</td>
+			<td>Dia de inicio</td>
+			<td>Dia de finalizacion</td>
+			<td><div class="tooltip">Materia<span class="tooltiptext">Clave de Materia o nombre de la misma</span></div></td>
          </tr>
          @foreach ($asesorias as $asesoria)
          <tr>
