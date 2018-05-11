@@ -17,6 +17,7 @@
          @foreach ($asesorias as $asesoria)
          <tr>
 			 <td>{{ $asesoria->IdAsesoria }}</td>
+            <td>{{ $asesoria->Tipo }}</td>
  			<td>{{ $asesoria->InicioHora }}</td>
  			<td>{{ $asesoria->FinHora }}</td>
  			<td>{{ $asesoria->InicioDia }}</td>
