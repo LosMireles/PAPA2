@@ -14,8 +14,9 @@ class SoftwareController extends Controller {
       return view('equipamiento/software/software_view',['softwares'=>$softwares]);
    }
 //----------------------------------------------------------------
-	public function insertform(){
-	  return view('equipamiento/software/software_create');
+    public function insertform(){
+        $equipos = DB::table('equipos')->get();
+        return view('equipamiento/software/software_create', ['equipos'=>$equipos]);
 	}
 
 	/**
@@ -26,8 +27,7 @@ class SoftwareController extends Controller {
      */
     public function store(Request $request)
     {
-        // Validate the request...
-
+        /// Tomar todos los equipos de la base de datos
         $software = new Software;
 
         $software->nombre = $request->nombre;
@@ -35,7 +35,11 @@ class SoftwareController extends Controller {
 		$software->licencia = $request->licencia;
 		$software->disponibilidad = $request->disponibilidad;
 		$software->clase = $request->clase;
-		$software->serial = $request->serial;
+
+        //busca el id del equipo con el serial seleccionado
+        $equipoId = DB::table('equipos')->where('serial', $request->serial)->value('id');
+        dd($equipoId);
+		$software->equipos()->attach($equipoId);
 
         $software->save();
 		echo "Record inserted successfully.<br/>";
