@@ -7,11 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 class Software extends Model
 {
     protected $table = 'softwares';
+    protected $guarded = array();
 
     //DEFINICION DE RELACIONES
-    //un equipo tiene muchos software
+    //un software pertenece a muchos equipos (muchos a muchos)
     public function equipo(){
-        return $this->BelongsTo(Equipo::class, 'serial', 'serial');
+        return $this->BelongsToMany(Equipo::class);
 
     }
 }

@@ -11,12 +11,15 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call([
-            EspacioTableSeeder::class,
-            CursoTableSeeder::class,
-            EquipoTableSeeder::class,
-            SoftwareTableSeeder::class,
-            AsignaturaTableSeeder::class,
-        ]);
+        $this->call(EspacioTableSeeder::class);
+        $this->call(CursoTableSeeder::class);
+        $this->call(EquipoTableSeeder::class);
+        $this->call(SoftwareTableSeeder::class);
+        $this->call(AsignaturaTableSeeder::class);
+
+        $equipos = App\Equipo::all();
+        foreach($equipos as $equipo){
+            $equipo->softwares()->attach(rand(1, 10));
+        }
     }
 }
