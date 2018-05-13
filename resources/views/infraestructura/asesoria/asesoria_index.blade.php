@@ -6,7 +6,7 @@
 
 @section('descipcion')
 	<a href="/infraestructura/" class="btn btn-primary">Regresar</a>
-	<h1 class="text-center">Asesoria</h1>
+	<h1 class="text-center">Asesorías</h1>
 @endsection
 
 @section('cabeza_tabla') 

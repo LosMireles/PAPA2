@@ -1,5 +1,3 @@
-
-
 @extends('layouts.insertar')
 
 @section('title')
