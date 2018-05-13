@@ -60,7 +60,7 @@
                     </div>
                 </td>
                 <td>
-                    <input type = 'text' name = 'disponibilidad' value "{{$softwares->disponibilidad}}">
+                    <input type = 'text' name = 'disponibilidad' value = "{{$softwares->disponibilidad}}">
                 </td>
             </tr>
 

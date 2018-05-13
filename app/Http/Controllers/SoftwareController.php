@@ -83,15 +83,22 @@ class SoftwareController extends Controller {
 	  	$licencia = $request->input('licencia');
 	  	$disponibilidad = $request->input('disponibilidad');
 	  	$clase = $request->input('clase');
-	  	$equipos = $request->input('equipos');
+	  	$serialEquipos = $request->input('equipos');
 
-		Software::where('nombre', $nombre)->update([
+        $idEquipos = [];
+        foreach($serialEquipos as $serial){
+            $idEquipos[] = DB::table('equipos')->where('serial', $serial)->value('id');
+        }
+
+        $software = Software::where('nombre', $nombre)->first();
+		$software->update([
             'nombre' => $nombre, 'manualUsuario' => $manualUsuario,'licencia'=>$licencia,
             'disponibilidad'=>$disponibilidad, 'clase' => $clase
         ]);
 
         //hay que hacer sync para que los equipos palomeados se agreguen a los software
         //y los no palomeados sean removidos
+        $software->equipos()->sync($idEquipos);
 
 	  	echo "Record updated successfully.<br/>";
 	  	echo '<a href = "/editarSoftware">Click Here</a> to go back.';
