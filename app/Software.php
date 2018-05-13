@@ -11,8 +11,7 @@ class Software extends Model
 
     //DEFINICION DE RELACIONES
     //un software pertenece a muchos equipos (muchos a muchos)
-    public function equipo(){
+    public function equipos(){
         return $this->BelongsToMany(Equipo::class);
-
     }
 }
