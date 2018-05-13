@@ -89,12 +89,11 @@
                     </div>
                 </td>
                 <td>
-                    @if(!empty($software->equipos))
-                        @foreach($software->equipo as $equipo)
-                            <input type = 'text' name = 'equipos'
-                            values = "{{$equipo->serial}}"> <br>
-                        @endforeach
-                    @endif
+                    @foreach($equipos as $equipo)
+                        <input type = 'checkbox' name = 'equipos[]'
+                        checked value = "{{$equipo->serial}}">
+                        {{$equipo->serial}} <br>
+                    @endforeach
                </td>
             </tr>
             <tr>
@@ -106,3 +105,4 @@
 
       </form>
 @endsection
+

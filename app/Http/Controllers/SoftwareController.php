@@ -67,12 +67,14 @@ class SoftwareController extends Controller {
 	//*-----------------------------------------------------------------
 	public function index(){
 	  	$softwares  = Software::all();
-	  	return view('equipamiento/software/software_edit_view',['softwares'=>$softwares]);
+	  	return view('equipamiento/software/software_edit_view', ['softwares'=>$softwares]);
 	}
 
 	public function show($nombre) {
 		$software  = Software::where('nombre', $nombre)->first();
-	  	return view('equipamiento/software/software_update',['softwares'=>$software]);
+	  	$equipos    = Equipo::all();
+	  	return view('equipamiento/software/software_update',
+	  	['softwares'=>$software, 'equipos' => $equipos]);
 	}
 
 	public function edit(Request $request, $nombre) {
@@ -81,12 +83,16 @@ class SoftwareController extends Controller {
 	  	$licencia = $request->input('licencia');
 	  	$disponibilidad = $request->input('disponibilidad');
 	  	$clase = $request->input('clase');
-	  	$serial = $request->input('serial');
+	  	$equipos = $request->input('equipos');
 
 		Software::where('nombre', $nombre)->update([
             'nombre' => $nombre, 'manualUsuario' => $manualUsuario,'licencia'=>$licencia,
-            'disponibilidad'=>$disponibilidad, 'clase' => $clase, 'serial' => $serial
+            'disponibilidad'=>$disponibilidad, 'clase' => $clase
         ]);
+
+        //hay que hacer sync para que los equipos palomeados se agreguen a los software
+        //y los no palomeados sean removidos
+
 	  	echo "Record updated successfully.<br/>";
 	  	echo '<a href = "/editarSoftware">Click Here</a> to go back.';
 	}
