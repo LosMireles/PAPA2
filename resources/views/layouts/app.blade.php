@@ -18,17 +18,17 @@
 
     <style>
 
-    .formulario_equipo_registro table tr td {
+    /*.formulario_registro table tr td {
         padding-right: 20px;
         padding-bottom: 10px;
         padding-top: 10px;
     }
 
-    .formulario_equipo_update table tr td {
+    .formulario_update table tr td {
         padding-right: 20px;
         padding-bottom: 10px;
         padding-top: 10px;   
-    }
+    }*/
 
     .tooltip {
         position: relative;
