@@ -12,7 +12,7 @@
            <td><div class="tooltip">Licencia<span class="tooltiptext">Tipo de licencia que se tiene del software (por ejemplo, libre)</span></div></td>
            <td><div class="tooltip">Lugar de obtencion<span class="tooltiptext">Se refiere a donde se consigui el software</span></div></td>
            <td><div class="tooltip">Clase<span class="tooltiptext">Se refiere a que clase de la licenciatura hace uso del software</span></div></td>
-           <td><div class="tooltip">Serial<span class="tooltiptext">Serial de computadora que use el software</span></div></td>
+           <td><div class="tooltip">Equipos<span class="tooltiptext">Equipos que tienen instalado el software</span></div></td>
 
          </tr>
          @foreach ($softwares as $software)
@@ -22,9 +22,18 @@
             <td>{{ $software->licencia }}</td>
 			<td>{{ $software->disponibilidad }}</td>
 			<td>{{ $software->clase }}</td>
-			<td>{{ $software->serial }}</td>
-			<td><a href = 'editSoftware/{{ $software->nombre  }}'>Edit</a></td>
+
+            <td>
+                @if(!empty($software->equipos))
+                    @foreach($software->equipos as $equipo)
+                        {{$equipo->serial}} <br>
+                    @endforeach
+                @endif
+            </td>
+
+			<td><a href='editSoftware/{{ $software->nombre  }}'>Edit</a></td>
          </tr>
          @endforeach
       </table>
 @endsection
+
