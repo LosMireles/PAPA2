@@ -5,7 +5,7 @@
 @endsection
 
 @section('descipcion')
-	<a href="/infraestructura/">Regresar</a>
+	<a href="/infraestructura/" class="btn btn-primary">Regresar</a>
 	<h1 class="text-center">Sanitarios</h1>
 @endsection
 
@@ -19,7 +19,7 @@
 @section('cuerpo_tabla')
 	<tr>
 		<td>
-			<a href="/insertarSanitarios">Insertar</a>
+			<a href="/insertarEspacio">Insertar</a>
 		</td>
 	</tr>
 	<tr>

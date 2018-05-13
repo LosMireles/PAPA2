@@ -1,31 +1,40 @@
-@extends('layouts.app')
+@extends('layouts.insertar')
 
-@section('title', 'Cubiculo Management | Add')
+@section('title')
+   insertar un cubículo
+@endsection
 
-@section('content')
-	<a href="/infraestructura/cubiculo">Regresar</a>
-	<form action = "/CrearCubiculo" method = "post">
-         <input type = "hidden" name = "_token" value = "<?php echo csrf_token(); ?>">
+@section('descripcion')
+   <a href="/infraestructura/cubiculo" class="btn btn-primary">Regresar</a>
+   <h1 class="text-center">Formulario para agregar un cubículo</h1>
+@endsection
+
+@section('accion')
+   action="/CrearCubiculo"
+@endsection
+
+@section('contenido_formulario')
+   <div class="form-group">
+      <label for="Tipo" class="col-sm-4 control-label" data-toggle="tooltip" title="Número del cubículo">Código del cubículo</label>
       
-         <table>
-            <tr>
-               <td><div class="tooltip">Codigo del cubiculo<span class="tooltiptext">Numero del cubiculo</span></div></td>
-               <td><input type='text' name='Tipo' value = '<?php $tipo = $_GET['tipo']; if (!empty($tipo))echo $tipo;?>'/></td>
-            </tr>
-	    <tr>
-               <td><div class="tooltip">Profesor<span class="tooltiptext">El encargado del cubiculo</span></div></td>
-               <td><input type='text' name='Profesor' /></td>
-            </tr>
-	    <tr>
-               <td><div class="tooltip">Cantidad de equipo.<span class="tooltiptext">Cantidad de computadoras hay en el cubiculo</span></div></td>
-               <td><input type='text' name='CantidadEquipo' /></td>
-            </tr>
-            <tr>
-               <td colspan = '2'>
-                  <input type = 'submit' value = "Insertar Cubiculo"/>
-               </td>
-            </tr>
-         </table>
-			
-      </form>
+      <div class="col-sm-8">
+         <input type='text' class="form-control" name='Tipo' value="<?php $tipo = $_GET['tipo']; if (!empty($tipo))echo $tipo;?>" required>
+      </div>
+   </div>
+
+   <div class="form-group">
+      <label for="Profesor" class="col-sm-4 control-label" data-toggle="tooltip" title="El encargado del cubículo">Profesor</label>
+      
+      <div class="col-sm-8">
+         <input type='text' class="form-control" name='Profesor' id="Profesor" placeholder="Nombre" required>
+      </div>
+   </div>
+
+   <div class="form-group">
+      <label for="CantidadEquipo" class="col-sm-4 control-label" data-toggle="tooltip" title="Cantidad de computadoras hay en el cubículo">Cantidad de equipo</label>
+      
+      <div class="col-sm-8">
+         <input type='text' class="form-control" name='CantidadEquipo' id="CantidadEquipo" placeholder="1" required>
+      </div>
+   </div>
 @endsection

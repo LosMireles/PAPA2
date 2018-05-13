@@ -5,8 +5,8 @@
 @endsection
 
 @section('descipcion')
-	<a href="/infraestructura/">Regresar</a>
-	<h1 class="text-center">Espacios</h1>
+	<a href="/infraestructura/" class="btn btn-primary">Regresar</a>
+	<h1 class="text-center">Espacios físicos</h1>
 @endsection
 
 @section('cabeza_tabla') 

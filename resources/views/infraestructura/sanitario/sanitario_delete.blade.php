@@ -1,48 +1,55 @@
-@extends('layouts.app')
+@extends('layouts.ver')
+@section('title')
+	Eliminar sanitario
+@endsection
 
-@section('title', 'Sanitario Management | Delete')
+@section('descripcion')
+ 	<a href="/infraestructura/sanitario" class="btn btn-primary">Regresar</a>
 
-@section('content')
-	<a href="/infraestructura/sanitario">Regresar</a>
-	<form action = "/deleteSanitario" method = "post">
-         <input type = "hidden" name = "_token" value = "<?php echo csrf_token(); ?>">
+	<form action="/deleteSanitario" method="POST" class="form-horizontal">
+		<input type = "hidden" name = "_token" value = "<?php echo csrf_token(); ?>">
 
-         <table>
-            <tr>
-               <td>Tipo</td>
-               <td><input type='text' name='Tipo' /></td>
-            </tr>
-            <tr>
-               <td colspan = '2'>
-                  <input type = 'submit' value = "Delete Sanitario"/>
-               </td>
-            </tr>
-         </table>
+		<div class="form-group">
+			<label for="Tipo" class="col-sm-2 control-label"> Tipo: </label>
 
-      </form>
+			<div class="col-sm-10">
+            	<input type='text' name='Tipo' class="form-control" placeholder="Nombre" required>
+			</div>
+		</div>
 
-      <table border = 1>
-         <tr>
-            <td>IdSanitario</td>
-            <td>Tipo</td>
-            <td>InicioHora</td>
-            <td>FinHora</td>
-            <td>InicioDia </td>
-						<td>FinDia </td>
-						<td> Limpieza </td>
-						<td> CantidadPersonal </td>
-         </tr>
-         @foreach ($sanitarios as $sanitario)
-         <tr>
-						<td>{{ $sanitario->IdSanitario }}</td>
-						<td>{{ $sanitario->Tipo }}</td>
-						<td>{{ $sanitario->InicioHora }}</td>
-						<td>{{ $sanitario->FinHora }}</td>
-						<td>{{ $sanitario->InicioDia }}</td>
-						<td>{{ $sanitario->FinDia }}</td>
-						<td>{{ $sanitario->Limpieza }}</td>
-						<td>{{ $sanitario->CantidadPersonal }}</td>
-         </tr>
-         @endforeach
-      </table>
+		<div class="form-group">
+			<div class="col-sm-offset-2 col-sm-10">
+				<button type="submit" class="btn btn-danger">Borrar</button>
+			</div>
+		</div>
+	</form>
+
+  	<h1 class="text-center">Listado de sanitarios</h1>
+@endsection
+
+@section('cabeza_tabla')
+  	<tr>
+		<th>Tipo</th>
+		<th>Hora de inicio del servicio</th>
+		<th>Hora de fin del servicio</th>
+		<th>Laborable desde</th>
+		<th>Laborable hasta</th>
+		<th>Limpieza</th>
+		<th>Cantidad de personal de limpieza</th>
+	</tr>
+@endsection
+
+
+@section('cuerpo_tabla')
+  	@foreach ($sanitarios as $sanitario)
+		<tr>
+            <td>{{ $sanitario->Tipo }}</td>
+			<td>{{ $sanitario->InicioHora }}</td>
+			<td>{{ $sanitario->FinHora }}</td>
+			<td>{{ $sanitario->InicioDia }}</td>
+			<td>{{ $sanitario->FinDia }}</td>
+			<td>{{ $sanitario->Limpieza }}</td>
+			<td>{{ $sanitario->CantidadPersonal }}</td>
+		</tr>
+	@endforeach
 @endsection

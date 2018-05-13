@@ -4,35 +4,35 @@
 @endsection
 
 @section('descripcion')
-  <a href="/infraestructura/espacio">Regresar</a>
+ 	<a href="/infraestructura/espacio" class="btn btn-primary">Regresar</a>
 
-  <form action = "/deleteEspacio" method = "post">
+	<form action="/deleteEspacio" method="POST" class="form-horizontal">
 		<input type = "hidden" name = "_token" value = "<?php echo csrf_token(); ?>">
-		<table>
-            <tr>
-            	<td><label for="tipo" data-toggle="tooltip" title="Un identificador único (por ejemplo A202)"> Nombre espacio: </label></td>
-            	<td><input type='text' name='tipo' class="form-control" placeholder="Nombre" /></td>
-            </tr>
-            <tr>
-               <td colspan = '2'>
-                  <input type = 'submit' value = "Borrar espacio"/>
-               </td>
-            </tr>
-         </table>
+
+		<div class="form-group">
+			<label for="tipo" class="col-sm-2 control-label" data-toggle="tooltip" title="Un identificador único (por ejemplo A202)"> Nombre espacio[?]: </label>
+
+			<div class="col-sm-10">
+            	<input type='text' name='tipo' class="form-control" placeholder="Nombre" required>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<div class="col-sm-offset-2 col-sm-10">
+				<button type="submit" class="btn btn-danger">Borrar</button>
+			</div>
+		</div>
 	</form>
 
-  <h1 class="text-center">Listado de espacios</h1>
+  	<h1 class="text-center">Listado de espacios</h1>
 @endsection
 
 @section('cabeza_tabla')
   <tr>
-    <th data-toggle="tooltip" title="Un identificador único (por ejemplo A202)">Nombre del espacio</th>
-
-    <th data-toggle="tooltip" title="Metros cuadrados de superficie que abarca el espacio">Superficie</th>
-    
-    <th data-toggle="tooltip" title="Cantidad de espacios con el mismo nombre y características">Cantidad</th>
-    
-    <th data-toggle="tooltip" title="Uno de los 5 posibles espacios fisicos (Aula, Cubiculo, Sanitarios, Asesorias, Auditorio)">Clase</th>
+    <th >Nombre del espacio</th>
+    <th>Superficie</th>
+    <th>Cantidad</th>
+    <th>Clase</th>
   </tr>
 @endsection
 
