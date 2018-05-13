@@ -1,14 +1,40 @@
-@extends('layouts.app')
+@extends('layouts.menus')
 
-@section('title', 'espacio')
+@section('title')
+	gestión de espacios
+@endsection
 
-@section('content')
+@section('descipcion')
 	<a href="/infraestructura/">Regresar</a>
-	<h1>Espacio</h1>
-	<ul>
-		<li> <a href="/insertarEspacio">Insertar</a> </li>
-		<li> <a href="/editarEspacio">Editar</a> </li>
-		<li> <a href="/verEspacio">Ver</a> </li>
-		<li> <a href="/borrarEspacio">Borrar</a> </li>
-	</ul>
+	<h1 class="text-center">Espacios</h1>
+@endsection
+
+@section('cabeza_tabla') 
+	<tr>
+		<th class="text-center">Seleccione una opción</th>
+	</tr>
+@endsection
+
+
+@section('cuerpo_tabla')
+	<tr>
+		<td>
+			<a href="/insertarEspacio">Insertar</a>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<a href="/editarEspacio">Editar</a>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<a href="/verEspacio">Ver</a>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<a href="/borrarEspacio">Borrar</a>
+		</td>
+	</tr>
 @endsection

@@ -1,25 +1,33 @@
-@extends('layouts.app')
+@extends('layouts.ver')
+@section('title')
+	ver espacios
+@endsection
 
-@section('title', 'View Espacio')
-
-@section('content')
+@section('descripcion')
 	<a href="/infraestructura/espacio">Regresar</a>
-	<table border = 1>
-         <tr>
+	<h1 class="text-center">Listado de espacios</h1>
+@endsection
 
-           <td><div class="tooltip">Nombre espacio<span class="tooltiptext">Un identificador unico (por ejemplo A202)</span></div></td>
-           <td><div class="tooltip">Superficie<span class="tooltiptext">Metros cuadrados de superficie que abarca el espacio</span></div></td>
-           <td><div class="tooltip">Cantidad<span class="tooltiptext">Cantidad de espacios con las con el mismo nombre y caracteristicas</span></div></td>
-           <td><div class="tooltip">Clase<span class="tooltiptext">Uno de los 5 posibles espacios fisicos (Aula, Cubiculo, Sanitarios, Asesorias, Auditorio)</span></div></td>
+@section('cabeza_tabla')
+	<tr>
+		<th data-toggle="tooltip" title="Un identificador único (por ejemplo A202)">Nombre del espacio</th>
 
-         </tr>
-         @foreach ($espacios as $espacio)
-         <tr>
-            <td>{{ $espacio->tipo }}</td>
+		<th data-toggle="tooltip" title="Metros cuadrados de superficie que abarca el espacio">Superficie</th>
+		
+		<th data-toggle="tooltip" title="Cantidad de espacios con el mismo nombre y características">Cantidad</th>
+		
+		<th data-toggle="tooltip" title="Uno de los 5 posibles espacios fisicos (Aula, Cubiculo, Sanitarios, Asesorias, Auditorio)">Clase</th>
+	</tr>
+@endsection
+
+
+@section('cuerpo_tabla')
+	@foreach ($espacios as $espacio)
+		<tr>
+			<td>{{ $espacio->tipo }}</td>
 			<td>{{ $espacio->superficie }}</td>
-            <td>{{ $espacio->cantidad }}</td>
+			<td>{{ $espacio->cantidad }}</td>
 			<td>{{ $espacio->clase }}</td>
-         </tr>
-         @endforeach
-      </table>
+		</tr>
+	@endforeach
 @endsection

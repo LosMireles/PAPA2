@@ -1,14 +1,40 @@
-@extends('layouts.app')
+@extends('layouts.menus')
 
-@section('title', 'Asesoria')
+@section('title')
+	gestión de espacios para asesorias
+@endsection
 
-@section('content')
+@section('descipcion')
 	<a href="/infraestructura/">Regresar</a>
-	<h1>Asesoria</h1>
-	<ul>
-		<li> <a href="/insertarAsesorias">Insertar</a> </li>
-		<li> <a href="/editarAsesoria">Editar</a> </li>
-		<li> <a href="/verAsesoria">Ver</a> </li>
-		<li> <a href="/borrarAsesoria">Borrar</a> </li>
-	</ul>
+	<h1 class="text-center">Asesoria</h1>
+@endsection
+
+@section('cabeza_tabla') 
+	<tr>
+		<th class="text-center">Seleccione una opción</th>
+	</tr>
+@endsection
+
+
+@section('cuerpo_tabla')
+	<tr>
+		<td>
+			<a href="/insertarAsesorias">Insertar</a>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<a href="/editarAsesoria">Editar</a>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<a href="/verAsesoria">Ver</a>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<a href="/borrarAsesoria">Borrar</a>
+		</td>
+	</tr>
 @endsection

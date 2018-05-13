@@ -1,14 +1,40 @@
-@extends('layouts.app')
+@extends('layouts.menus')
 
-@section('title', 'Auditorio')
+@section('title')
+	gestión de espacios para los auditorios
+@endsection
 
-@section('content')
+@section('descipcion')
 	<a href="/infraestructura/">Regresar</a>
-	<h1>Auditorio</h1>
-	<ul>
-		<li> <a href="/insertarAuditorios">Insertar</a> </li>
-		<li> <a href="/editarAuditorio">Editar</a> </li>
-		<li> <a href="/verAuditorio">Ver</a> </li>
-		<li> <a href="/borrarAuditorio">Borrar</a> </li>
-	</ul>
+	<h1 class="text-center">Auditorio</h1>
+@endsection
+
+@section('cabeza_tabla') 
+	<tr>
+		<th class="text-center">Seleccione una opción</th>
+	</tr>
+@endsection
+
+
+@section('cuerpo_tabla')
+	<tr>
+		<td>
+			<a href="/insertarAuditorios">Insertar</a>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<a href="/editarAuditorio">Editar</a>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<a href="/verAuditorio">Ver</a>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<a href="/borrarAuditorio">Borrar</a>
+		</td>
+	</tr>
 @endsection

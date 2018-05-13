@@ -1,14 +1,40 @@
-@extends('layouts.app')
+@extends('layouts.menus')
 
-@section('title', 'Aula')
+@section('title')
+	gestión de espacios para las aulas
+@endsection
 
-@section('content')
+@section('descipcion')
 	<a href="/infraestructura/">Regresar</a>
-	<h1>Aula</h1>
-	<ul>
-		<li> <a href="/insertarAulas">Insertar</a> </li>
-		<li> <a href="/editarAula">Editar</a> </li>
-		<li> <a href="/verAula">Ver</a> </li>
-		<li> <a href="/borrarAula">Borrar</a> </li>
-	</ul>
+	<h1 class="text-center">Aula</h1>
+@endsection
+
+@section('cabeza_tabla') 
+	<tr>
+		<th class="text-center">Seleccione una opción</th>
+	</tr>
+@endsection
+
+
+@section('cuerpo_tabla')
+	<tr>
+		<td>
+			<a href="/insertarAulas">Insertar</a>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<a href="/editarAula">Editar</a>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<a href="/verAula">Ver</a>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<a href="/borrarAula">Borrar</a>
+		</td>
+	</tr>
 @endsection

@@ -1,12 +1,24 @@
-@extends('layouts.app')
+@extends('layouts.menus')
 
-@section('title', 'infraestructura')
+@section('title')
+	infraestructura
+@endsection
 
-@section('content')
+@section('descipcion')
 	<a href="/">Regresar</a>
-	<h1>Infraestructura</h1>
-	<ul>
-		<li>
+	<h1 class="text-center">Infraestructura</h1>
+@endsection
+
+@section('cabeza_tabla') 
+	<tr>
+		<th class="text-center">Gestión de ...</th>
+	</tr>
+@endsection
+
+
+@section('cuerpo_tabla')
+	<tr>
+		<td>
 			<a href="/infraestructura/espacio">Espacio</a>
 			<ul>
 				<li> <a href="/infraestructura/aula">Aula</a> </li>
@@ -15,8 +27,10 @@
 				<li> <a href="/infraestructura/sanitario">Sanitario</a> </li>
 				<li> <a href="/infraestructura/auditorio">Auditorios</a> </li>
 			</ul>
-		</li>
-		<!--<li> <a href="/infraestructura/curso">Cursos</a> </li>-->
+		</td>
+	</tr>
 
-	</ul>
+	<!--<tr>
+		<td><a href="/infraestructura/curso">Cursos</a></td>
+	</tr>-->
 @endsection
