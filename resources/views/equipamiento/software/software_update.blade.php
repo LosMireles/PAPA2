@@ -4,7 +4,7 @@
 
 @section('content')
 	<a href="/editarSoftware">Regresar</a>
-	<form action = "/editSoftware/<?php echo $softwares->nombre; ?>" method = "post">
+	<form action = "/editSoftware/<?php echo $software->nombre; ?>" method = "post">
         <input type = "hidden" name = "_token" value = "<?php echo csrf_token(); ?>">
 
         <table>
@@ -15,7 +15,7 @@
                         <span class="tooltiptext">Nombre del software</span>
                     </div>
                     <td>
-                        <input type = 'text' name = 'nombre' value = "{{$softwares->nombre}}">
+                        <input type = 'text' name = 'nombre' value = "{{$software->nombre}}">
                     </td>
                 </td>
             </tr>
@@ -27,7 +27,7 @@
                         <span class="tooltiptext">Si se cuenta con un manual de uso del software o no</span>
                     </div>
                 </td>
-                @if($softwares->manualUsuario == 1)
+                @if($software->manualUsuario == 1)
                     <td><input type="radio" name="manualUsuario" value="1" checked>Sí
                     <input type="radio" name="manualUsuario" value="0" >No </td>
                 @else
@@ -46,7 +46,7 @@
                     </div>
                 </td>
                 <td>
-                  <input type = 'text' name = 'licencia' value = "{{$softwares->licencia}}">
+                  <input type = 'text' name = 'licencia' value = "{{$software->licencia}}">
                </td>
             </tr>
 
@@ -60,7 +60,7 @@
                     </div>
                 </td>
                 <td>
-                    <input type = 'text' name = 'disponibilidad' value = "{{$softwares->disponibilidad}}">
+                    <input type = 'text' name = 'disponibilidad' value = "{{$software->disponibilidad}}">
                 </td>
             </tr>
 
@@ -74,7 +74,17 @@
                     </div>
                 </td>
                 <td>
-                    <input type = 'text' name = 'clase' value = "{{$softwares->clase}}">
+                    <select name="clase">
+                        @foreach($clases as $clase)
+                            @if($software->clase == $clase)
+                                <option value="{{$software->clase}}" selected>
+                                {{$software->clase}}</option>
+                            @else
+                                <option value="{{$clase}}">
+                                {{$clase}}</option>
+                            @endif
+                        @endforeach
+                    </select>
                 </td>
             </tr>
 

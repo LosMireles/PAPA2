@@ -14,7 +14,7 @@
     <tr>
         <td>
             <div class="tooltip">
-                <label for="nombre"> Nombre: <\label>
+                <label for="nombre"> Nombre: </label>
                 <span class="tooltiptext">Nombre del software</span>
            </div>
         </td>
@@ -26,7 +26,7 @@
     <tr>
         <td>
             <div class="tooltip">
-                <label for="nombre"> Se cuenta con manual: <\label>
+                <label for="nombre"> Se cuenta con manual: </label>
                 <span class="tooltiptext">Si se cuenta con un manual de uso del software o no</span>
             </div>
         </td>
@@ -39,7 +39,7 @@
     <tr>
         <td>
             <div class="tooltip">
-                <label for="nombre"> Licencia: <\label>
+                <label for="nombre"> Licencia: </label>
                 <span class="tooltiptext">Si se cuenta con un manual de uso del software o no</span>
                 <span class="tooltiptext">
                     Tipo de licencia que se tiene del software (por ejemplo, libre)
@@ -52,7 +52,7 @@
     <tr>
         <td>
             <div class="tooltip">
-                <label for="nombre"> Lugar de obtencion: <\label>
+                <label for="nombre"> Lugar de obtencion: </label>
                 <span class="tooltiptext">Se refiere a donde se consiguio el software</span>
             </div>
         </td>
@@ -62,19 +62,25 @@
     <tr>
         <td>
             <div class="tooltip">
-                <label for="nombre"> Clase: <\label>
+                <label for="clase"> Clase: </label>
                 <span class="tooltiptext">
-                    Se refiere a que clase de la licenciatura hace uso del software
+                    Si es un lenguaje, una libreria o una herramienta CASE
                 </span>
             </div>
         </td>
-       <td><input type='text' name='clase' /></td>
+        <td>
+            <select name="clase">
+                @foreach($clases as $clase)
+                    <option value="{{$clase}}">{{$clase}}</option>
+                @endforeach
+            </select>
+        </td>
     </tr>
 
     <tr>
         <td>
             <div class="tooltip">
-                <label for="nombre"> Equipos: <\label>
+                <label for="nombre"> Equipos: </label>
                 <span class="tooltiptext">
                     Equipos que tienen instalado el software
                 </span>

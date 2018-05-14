@@ -9,7 +9,14 @@ use App\Http\Controllers\Controller;
 use App\Software;
 use App\Equipo;
 
+//////Arreglo de posibles clases
+//////Puesto aqui para no ponerlo en un
+//////modelo y repetir informacion
+//////Pero deberia estar en otro lado
+//////
 class SoftwareController extends Controller {
+
+    private $clases = ['lenguaje', 'libreria', 'case'];
 
     public function indexVer(){
         $softwares  = Software::all();
@@ -19,7 +26,8 @@ class SoftwareController extends Controller {
     //----------------------------------------------------------------
     public function insertform(){
         $equipos = Equipo::all();
-        return view('equipamiento/software/software_create', ['equipos'=>$equipos]);
+        return view('equipamiento/software/software_create',
+            ['equipos'=>$equipos, 'clases' => $this->clases]);
 	}
 
 	/**
@@ -74,7 +82,9 @@ class SoftwareController extends Controller {
 		$software  = Software::where('nombre', $nombre)->first();
 	  	$equipos    = Equipo::all();
 	  	return view('equipamiento/software/software_update',
-	  	['softwares'=>$software, 'equipos' => $equipos]);
+	  	    ['software' =>$software,
+            'equipos'   => $equipos,
+            'clases'    => $this->clases]);
 	}
 
 	public function edit(Request $request, $nombre) {
