@@ -26,7 +26,7 @@
     <tr>
         <td>
             <div class="tooltip">
-                Se cuenta con manual
+                <label for="nombre"> Se cuenta con manual: <\label>
                 <span class="tooltiptext">Si se cuenta con un manual de uso del software o no</span>
             </div>
         </td>
@@ -39,7 +39,8 @@
     <tr>
         <td>
             <div class="tooltip">
-                Licencia
+                <label for="nombre"> Licencia: <\label>
+                <span class="tooltiptext">Si se cuenta con un manual de uso del software o no</span>
                 <span class="tooltiptext">
                     Tipo de licencia que se tiene del software (por ejemplo, libre)
                 </span>
@@ -51,8 +52,8 @@
     <tr>
         <td>
             <div class="tooltip">
-                Lugar de obtencion
-                <span class="tooltiptext">Se refiere a donde se consigui el software</span>
+                <label for="nombre"> Lugar de obtencion: <\label>
+                <span class="tooltiptext">Se refiere a donde se consiguio el software</span>
             </div>
         </td>
        <td><input type='text' name='disponibilidad' /></td>
@@ -61,7 +62,7 @@
     <tr>
         <td>
             <div class="tooltip">
-                Clase
+                <label for="nombre"> Clase: <\label>
                 <span class="tooltiptext">
                     Se refiere a que clase de la licenciatura hace uso del software
                 </span>
@@ -73,7 +74,7 @@
     <tr>
         <td>
             <div class="tooltip">
-                Equipos
+                <label for="nombre"> Equipos: <\label>
                 <span class="tooltiptext">
                     Equipos que tienen instalado el software
                 </span>

@@ -30,7 +30,7 @@
 				</td>
 				<td>
 					<input type="radio" name="manual" value="1" checked="">Sí <br>
-					<input type="radio" name="manual" value="0"> No				
+					<input type="radio" name="manual" value="0"> No
 				</td>
 			</tr>
 
@@ -41,7 +41,7 @@
 						<span class="tooltiptext">Indique si el equipo se encuentra operable actualmente</span>
 					</div>
 				</td>
-				<td>				
+				<td>
 					<input type="radio" name="operable" value="1" checked="">Sí <br>
 					<input type="radio" name="operable" value="0"> No
 				</td>
@@ -66,13 +66,17 @@
 			<tr>
 				<td>
 					<div class="tooltip">
-						<label for="software">Software: </label><br>
-						<span class="tooltiptext">Seleccione el software que se encuentra instalado en el equipo</span>
+						<label for="nombres">Softwares: </label><br>
+						<span class="tooltiptext">
+                            Seleccione el software que se encuentra instalado
+                            en el equipo
+                        </span>
 					</div>
 				</td>
 				<td>
-					@foreach($software as $single_software)
-						<input type="checkbox" name="software[]" value="{{$single_software->nombre}}"> {{$single_software->nombre}}<br>
+					@foreach($softwares as $single_software)
+						<input type="checkbox" name="nombres[]" value="{{$single_software->nombre}}">
+						{{$single_software->nombre}}<br>
 					@endforeach
 				</td>
 			</tr>
@@ -82,10 +86,11 @@
 				</td>
 			</tr>
 		</table>
-		
 
 
 
-	
+
+
 	</form>
 @endsection
+

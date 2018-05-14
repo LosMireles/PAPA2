@@ -18,7 +18,7 @@ class SoftwareController extends Controller {
 
     //----------------------------------------------------------------
     public function insertform(){
-        $equipos = DB::table('equipos')->get();
+        $equipos = Equipo::all();
         return view('equipamiento/software/software_create', ['equipos'=>$equipos]);
 	}
 

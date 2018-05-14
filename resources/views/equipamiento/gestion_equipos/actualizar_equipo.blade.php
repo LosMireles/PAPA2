@@ -62,31 +62,22 @@
 					</select>
 				</td>
 			</tr>
+
 			<tr>
 				<td>
-					<label for="software">Software: </label>
+					<label for="nombre_software">Software: </label>
 				</td>
 				<td>
-					@foreach($software as $single_software)
-						<?php $temp = 0 ?>
-						
-						@foreach($equipo->software as $a)
-							@if($single_software->nombre == $a)
-								<?php $temp = 1 ?>
-							@endif
-						@endforeach
-
-						@if($temp == 1)
-							<input type="checkbox" name="software[]" checked value="{{$single_software->nombre}}"> {{$single_software->nombre}}<br>
-						@else
-							<input type="checkbox" name="software[]" value="{{$single_software->nombre}}"> {{$single_software->nombre}}<br>
-						@endif
-					@endforeach
+                    @foreach($softwares as $software)
+                        <input type = 'checkbox' name = 'nombre_software[]'
+                        checked value = "{{$software->nombre}}">
+                        {{$software->nombre}} <br>
+                    @endforeach
 				</td>
 			</tr>
 			<tr>
 				<td>
-					<input type = 'submit' value = "Modificar equipo"/>	
+					<input type = 'submit' value = "Modificar equipo"/>
 				</td>
 			</tr>
 		</table>

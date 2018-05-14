@@ -6,7 +6,9 @@ use DB;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\Software;
 use App\Equipo;
+use App\Espacio;
 
 class EquipoController extends Controller
 {
@@ -17,31 +19,36 @@ class EquipoController extends Controller
     public function agregar_equipo(){
     	/// Tomar todos los espacios de la base de datos
     	$espacios = DB::table('espacios')->get();
-    	/// Tomar todos los softwares de la base de datos
-    	$software = DB::table('softwares')->get();
-        return view('equipamiento/gestion_equipos/agregar_equipo', ['espacios'=>$espacios, 'software'=>$software]);
+    	/// Tomar todos los softwares de la base de datos || no necesario
+    	$softwares = DB::table('softwares')->get();
+        return view('equipamiento/gestion_equipos/agregar_equipo', ['espacios'=>$espacios, 'softwares'=>$softwares]);
     }
 
     public function ver_equipos(){
-    	$equipos = DB::table('equipos')->get();
+    	$equipos = Equipo::all();
+
     	return view('equipamiento/gestion_equipos/ver_equipos', ['equipos'=>$equipos]);
     }
 
     public function eliminar_equipos(){
-    	$equipos = DB::table('equipos')->get();
+    	$equipos = Equipo::all();
     	return view('equipamiento/gestion_equipos/eliminar_equipos',['equipos'=>$equipos]);
     }
 
     public function actualizar_equipos(){
-    	$equipos = DB::table('equipos')->get();
-    	return view('equipamiento/gestion_equipos/actualizar_equipos',['equipos'=>$equipos]);	
+    	$equipos = Equipo::all();
+        $softwares = Software::all();
+    	return view('equipamiento/gestion_equipos/actualizar_equipos',
+    	    ['equipos'=>$equipos, 'softwares' => $softwares]);
     }
 
     public function mostrar_datos_equipo($id){
-    	$equipo  = 	Equipo::where('serial', $id)->first();
-    	$software = DB::table('softwares')->get();
-    	$espacios = DB::table('espacios')->get();
-    	return view('equipamiento/gestion_equipos/actualizar_equipo',['equipo'=>$equipo, 'software'=>$software, 'espacios'=>$espacios]);
+    	$equipo     = Equipo::where('serial', $id)->first();
+    	$espacios   = Espacio::all();
+        $softwares  = Software::all();
+
+    	return view('equipamiento/gestion_equipos/actualizar_equipo',
+    	    ['equipo'=>$equipo, 'espacios'=>$espacios, 'softwares' => $softwares]);
     }
 
 
@@ -54,9 +61,13 @@ class EquipoController extends Controller
     	$equipo->operable = $request->operable;
     	$equipo->localizacion = $request->localizacion;
 
-    	$equipo->software = $request->software;
-
     	$equipo->save();
+
+        foreach($request->nombres as $nombreSoftware){
+            $softwareId = DB::table('softwares')->where('nombre', $nombreSoftware)->value('id');
+            $equipo->softwares()->attach($softwareId);
+        }
+
     	echo "Record inserted successfully.<br/>";
         echo '<a href = "/">Click Here</a> to go home.';
     }
@@ -64,6 +75,7 @@ class EquipoController extends Controller
     public function gestion_equipo_borrar(Request $request){
     	$serial = $request->serial;
 	  	DB::delete('delete from equipos where serial = ?',[$serial]);
+
 	  	echo "Record deleted successfully.<br/>";
 	  	echo '<a href = "/">Click Here</a> to go home.';
     }
@@ -73,21 +85,24 @@ class EquipoController extends Controller
     	$manualUsuario = $request->manual;
     	$operable = $request->operable;
     	$localizacion = $request->localizacion;
-    	$software = $request->software;
+    	$nombre_softwares = $request->nombre_software;
 
-    	$software_a = json_encode($software, true);
+        $idSoftwares = [];
+        foreach($nombre_softwares as $nombre){
+            $idSoftwares[] = DB::table('softwares')->where('nombre', $nombre)->value('id');
+        }
 
-    	$id = $request->id;
 
-    	///$id = Equipo::where('serial', $serial)->first();
-
-    	DB::table('equipos')->where('id', $id)->update([
+        $equipo = Equipo::where('serial', $serial)->first();
+    	$equipo->update([
             'manualUsuario' => $manualUsuario,'operable'=>$operable,
-            'localizacion'=>$localizacion, 'software' => $software_a,
-            'serial' => $serial
+            'localizacion'=>$localizacion, 'serial' => $serial
         ]);
+
+        $equipo->softwares()->sync($idSoftwares);
 
         echo "Record updated successfully.<br/>";
 	  	echo '<a href = "/">Click here</a> to go home.';
     }
 }
+
