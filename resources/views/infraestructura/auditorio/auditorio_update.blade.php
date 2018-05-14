@@ -10,23 +10,37 @@
          <table>
      		<tr>
      			<td>Tipo</td>
-     			<td><input type='text' name='Tipo' /></td>
+     			<td>
+						<input type='text' name='Tipo' value = '<?php echo $auditorios->Tipo; ?>'/>
+					</td>
      		</tr>
      		<tr>
      			<td>Cantidad Equipo</td>
-     			<td><input type='text' name='CantidadEquipos' /></td>
+     			<td>
+						<input type='text' name='CantidadEquipos' <input type='text'
+							name='CantidadEquipo' value = '<?php echo $auditorios->CantidadEquipo; ?>'/>
+					</td>
      		</tr>
      		<tr>
      			<td>Cantidad AV</td>
-     			<td><input type='text' name='Cantidad AV' /></td>
+     			<td>
+						<input type='text' name='Cantidad AV'
+							name='CantidadAV' value = '<?php echo $auditorios->CantidadAV; ?>'/>
+					</td>
      		</tr>
      		<tr>
      			<td>Capacidad</td>
-     			<td><input type='text' name='Capacidad' /></td>
+     			<td>
+						<input type='text' name='Capacidad'
+						name='Capacidad' value = '<?php echo $auditorios->Capacidad; ?>'/>
+					</td>
      		</tr>
      		<tr>
      			<td>Cantidad Sanitarios</td>
-     			<td><input type='text' name='CantidadSanitarios' /></td>
+     			<td>
+						<input type='text' name='CantidadSanitarios'
+						name='CantidadSanitarios' value = '<?php echo $auditorios->CantidadSanitarios; ?>'/>
+					</td>
      		</tr>
      		<tr>
      			<td colspan = '2'>
@@ -38,3 +52,4 @@
 
       </form>
 @endsection
+
