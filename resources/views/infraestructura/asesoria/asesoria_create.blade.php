@@ -9,27 +9,27 @@
 
 	<table>
 		<tr>
-               		<td>Tipo</td>
-               		<td><input type='text' name='Tipo' value = '<?php $tipo = $_GET['tipo']; if (!empty($tipo))echo $tipo;?>'/></td>
-            	</tr>
+			<td><div class="tooltip">Tipo<span class="tooltiptext">Identificador de la asesoria</span></div></td>
+        	<td><input type='text' name='Tipo' value = '<?php $tipo = $_GET['tipo']; if (!empty($tipo))echo $tipo;?>'/></td>
+    	</tr>
 		<tr>
-			<td>InicioHora</td>
+			<td>Hora de inicio</td>
 			<td><input type='text' name='InicioHora' /></td>
 		</tr>
 		<tr>
-			<td>FinHora</td>
+			<td>Hora de finalizacion</td>
 			<td><input type='text' name='FinHora' /></td>
 		</tr>
 		<tr>
-			<td>InicioDia</td>
+			<td>Dia de inicio</td>
 			<td><input type='text' name='InicioDia' /></td>
 		</tr>
 		<tr>
-			<td>FinDia</td>
+			<td>Dia de finalizacion</td>
 			<td><input type='text' name='FinDia' /></td>
 		</tr>
 		<tr>
-			<td>Materia</td>
+			<td><div class="tooltip">Materia<span class="tooltiptext">Clave de Materia o nombre de la misma</span></div></td>
 			<td><input type='text' name='Materia' /></td>
 		</tr>
 		<tr>
