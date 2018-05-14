@@ -1,44 +1,64 @@
-@extends('layouts.app')
+@extends('layouts.insertar')
 
-@section('title', 'Curso Management | Add')
+@section('title')
+   insertar un curso
+@endsection
 
-@section('content')
-	<a href="/infraestructura/curso">Regresar</a>
-	<form action = "/CrearCurso" method = "post">
-         <input type = "hidden" name = "_token" value = "<?php echo csrf_token(); ?>">
+@section('descripcion')
+   <a href="/infraestructura/curso" class="btn btn-primary">Regresar</a>
+   <h1 class="text-center">Formulario para agregar un curso</h1>
+@endsection
 
-         <table>
-            <tr>
-				<td><div class="tooltip">Nombre<span class="tooltiptext">Nombre del Curso</span></div></td>
-               	<td><input type='text' name='nombre' /></td>
-            </tr>
-			<tr>
-               <td>Periodo</td>
-               <td><input type='text' name='periodo' /></td>
-            </tr>
-						<tr>
-               <td>Grupo</td>
-               <td><input type='text' name='grupo' /></td>
-            </tr>
-						<tr>
-               <td>Numero de Estudiantes</td>
-               <td><input type='text' name='noEstudiantes' /></td>
-            </tr>
-						<tr>
-               <td>Tipo de Aula</td>
-               <td><input type='text' name='tipoAula' /></td>
-            </tr>
-			<tr>
-				<td><div class="tooltip">Tipo<span class="tooltiptext">Identificador del curso</span></div></td>
-               	<td><input type='text' name='tipo' /></td>
-            </tr>
+@section('accion')
+   action="/CrearCurso"
+@endsection
 
-            <tr>
-               <td colspan = '2'>
-                  <input type = 'submit' value = "Add Curso"/>
-               </td>
-            </tr>
-         </table>
+@section('contenido_formulario')
+	<div class="form-group">
+		<label for="nombre" class="col-sm-4 control-label" data-toggle="tooltip" title="Nombre del Curso">Nombre</label>
+		
+		<div class="col-sm-8">
+			<input type='text' class="form-control" name='nombre' id='nombre' placeholder="Nombre" required>
+		</div>
+	</div>
 
-      </form>
+	<div class="form-group">
+		<label for="periodo" class="col-sm-4 control-label" data-toggle="tooltip" title="Período en el que fue impartido">Período</label>
+		
+		<div class="col-sm-8">
+			<input type='text' class="form-control" name='periodo' id="periodo" placeholder="2015-1" required>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="grupo" class="col-sm-4 control-label" data-toggle="tooltip" title="Número del grupo">Grupo</label>
+		
+		<div class="col-sm-8">
+			<input type='text' class="form-control" name='grupo' id="grupo" placeholder="1" required>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="noEstudiantes" class="col-sm-4 control-label" data-toggle="tooltip" title="Número de estudiantes de la licenciatura presentes en el curso">Número de estudiantes</label>
+		
+		<div class="col-sm-8">
+			<input type='text' class="form-control" name='noEstudiantes' id="noEstudiantes" placeholder="1" required>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="tipoAula" class="col-sm-4 control-label" data-toggle="tooltip" title="Esto es: laboratorio, aula, etc">Tipo de aula</label>
+		
+		<div class="col-sm-8">
+			<input type='text' class="form-control" name='tipoAula' id="tipoAula" placeholder="Aula" required>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="tipo" class="col-sm-4 control-label" data-toggle="tooltip" title="Identificador del curso">Tipo</label>
+		
+		<div class="col-sm-8">
+			<input type='text' class="form-control" name='tipo' id="tipo" placeholder="CALC202-1" required>
+		</div>
+	</div>
 @endsection

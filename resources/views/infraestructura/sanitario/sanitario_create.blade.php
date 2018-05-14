@@ -1,64 +1,79 @@
-@extends('layouts.app')
+@extends('layouts.insertar')
 
-@section('title', 'Sanitario Management | Add')
+@section('title')
+   insertar un sanitario
+@endsection
 
-@section('content')
-	<a href="/infraestructura/sanitario">Regresar</a>
-	<form action = "/CrearSanitario" method = "post">
-         <input type = "hidden" name = "_token" value = "<?php echo csrf_token(); ?>">
+@section('descripcion')
+   <a href="/infraestructura/espacio" class="btn btn-primary">Regresar</a>
+   <h1 class="text-center">Formulario para agregar un sanitario</h1>
+@endsection
 
-         <table>
-            <tr>
-                <td><div class="tooltip">Tipo<span class="tooltiptext">
-			Nombre clave para el sanitario donde se indica el tipo de sanitario (hombres o mujeres), piso en el que se
-			se encuentra, para que personas esta disponible (persona, alumnado).
-		 </span></div></td>
-               <td><input type='text' name='Tipo' value = '<?php $tipo = $_GET['tipo']; if (!empty($tipo))echo $tipo;?>'/></td>
-            </tr>
-	    	<tr>
-               <td><div class="tooltip">Hora de inicio<span class="tooltiptext">
-			Hora de inicio al que esta disponible el sanitario en el día.
-		 </span></div></td>
-               <td><input type='text' name='InicioHora' /></td>
-        </tr>
-	    	<tr>
-               <td><div class="tooltip">Hora de terminación<span class="tooltiptext">
-			 Hora a la que el sanitario deja de estar disponible en el día.
-		 </span></div></td>
-               <td><input type='text' name='FinHora' /></td>
-        </tr>
+@section('accion')
+   action="/CrearSanitario"
+@endsection
 
-				<tr>
-               <td><div class="tooltip">Día de inicio<span class="tooltiptext">
-			 Primer día de la semana en que el sanitario esta disponible.
-		 </span></div></td>
-               <td><input type='text' name='InicioDia' /></td>
-        </tr>
-				<tr>
-               <td><div class="tooltip">Día de terminación<span class="tooltiptext">
-			 Último día de la semana en que el sanitario esta disponible.
-		 </span></div></td>
-               <td><input type='text' name='FinDia' /></td>
-        </tr>
-				<tr>
-               <td><div class="tooltip">Limpieza<span class="tooltiptext">
-			 Rango de 0 a 5 donde califique el nivel de limpieza del sanitario (siendo
-			 5 el más alto).
-		 </span></div></td>
-               <td><input type='text' name='Limpieza' /></td>
-        </tr>
-				<tr>
-               <td><div class="tooltip">Cantidad de personal<span class="tooltiptext">
-			 Cantidad de personal dedicado a dar mantenimiento al sanitario.
-		 </span></div></td>
-               <td><input type='text' name='CantidadPersonal' /></td>
-        </tr>
-            <tr>
-               <td colspan = '2'>
-                  <input type = 'submit' value = "Add Sanitario"/>
-               </td>
-            </tr>
-         </table>
+@section('contenido_formulario')
+   	<div class="form-group">
+      	<label for="Tipo" class="col-sm-4 control-label" data-toggle="tooltip" title="Nombre clave para el sanitario donde se indica el tipo de sanitario (hombres o mujeres), piso en el que se encuentra, para que personas esta disponible (persona, alumnado).">Tipo[?]: </label>
 
-      </form>
+      	<div class="col-sm-8">
+      		<?php 
+      			if(!empty($_GET['tipo']))
+      				$tipo = $_GET['tipo'];
+      			else
+      				$tipo = 'Sanitario';
+      		?>
+      		<input type="text-center" class="form-control" name="Tipo" value={{$tipo}}>
+      		
+      </div>
+   </div>
+
+   <div class="form-group">
+      <label for="InicioHora" class="col-sm-4 control-label" data-toggle="tooltip" title="Hora de inicio al que esta disponible el sanitario en el día.">Hora de inicio[?]: </label>
+
+      <div class="col-sm-8">
+      	<input type='text' class="form-control" name='InicioHora' placeholder="00:00" required>
+      </div>
+   </div>
+   
+   	<div class="form-group">
+      	<label for="FinHora" class="col-sm-4 control-label" data-toggle="tooltip" title="Hora a la que el sanitario deja de estar disponible en el día.">Hora de cierre[?]:</label>
+
+      	<div class="col-sm-8">
+      		<input type='text' class="form-control" name='FinHora' placeholder="12:00" required>
+      	</div>
+   	</div>
+
+   	<div class="form-group">
+   		<label for="InicioDia" class="col-sm-4 control-label" data-toggle="tooltip" title="Primer día de la semana en que el sanitario esta disponible.">Día de inicio[?]</label>
+
+   		<div class="col-sm-8">
+   			<input type='text' class="form-control" name='InicioDia' placeholder="Lunes" required>
+   		</div>
+   	</div>
+
+   	<div class="form-group">
+   		<label for="FinDia" class="col-sm-4 control-label" data-toggle="tooltip" title="Último día de la semana en que el sanitario esta disponible.">Día de terminación[?]</label>
+
+   		<div class="col-sm-8">
+   			<input type='text' class="form-control" name='FinDia' placeholder="Sábado" required>
+   		</div>
+   	</div>
+
+   	<div class="form-group">
+   		<label for="Limpieza" class="col-sm-4 control-label" data-toggle="tooltip" title="Rango de 0 a 5 donde califique el nivel de limpieza del sanitario (siendo 5 el más alto).">Limpieza[?]</label>
+
+   		<div class="col-sm-8">
+   			<input type='text' class="form-control" name='Limpieza' placeholder="5" required>
+   		</div>
+   	</div>
+
+   	<div class="form-group">
+   		<label for="CantidadPersonal" class="col-sm-4 control-label" data-toggle="tooltip" title="Cantidad de personal dedicado a dar mantenimiento al sanitario.">Cantidad de personal[?]</label>
+
+   		<div class="col-sm-8">
+   			<input type='text' class="form-control" name='CantidadPersonal' placeholder="1" required>
+   		</div>
+   	</div>
 @endsection

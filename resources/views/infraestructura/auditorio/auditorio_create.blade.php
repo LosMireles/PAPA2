@@ -1,49 +1,56 @@
-@extends('layouts.app')
+@extends('layouts.insertar')
 
-@section('title', 'Auditorio Management | Add')
+@section('title')
+   insertar un auditorio
+@endsection
 
-@section('content')
-	<a href="/infraestructura/auditorio">Regresar</a>
-	<form action = "/CrearAuditorio" method = "post">
-         <input type = "hidden" name = "_token" value = "<?php echo csrf_token(); ?>">
+@section('descripcion')
+   	<a href="/infraestructura/auditorio" class="btn btn-primary">Regresar</a>
+   	<h1 class="text-center">Formulario para agregar un auditorio</h1>
+@endsection
 
-	<table>
-		<tr>
-               		<td><div class="tooltip">Nombre<span class="tooltiptext">
-				Nombre del auditorio
-			</span></div></td>
-               		<td><input type='text' name='Tipo' value = '<?php $tipo = $_GET['tipo']; if (!empty($tipo))echo $tipo;?>'/></td>
-            	</tr>
-		<tr>
-			<td><div class="tooltip">Cantidad de equipo<span class="tooltiptext">
-				Cantidad de equipo de computo disponible en el auditorio
-			</span></div></td>
-			<td><input type='text' name='CantidadEquipo' /></td>
-		</tr>
-		<tr>
-			<td><div class="tooltip">Cantidad de equipo audiovisual<span class="tooltiptext">
-				Cantidad de equipo audiovisual disponible en el auditorio (proyectores, televisores, etc.)
-			</span></div></td>
-			<td><input type='text' name='CantidadAV' /></td>
-		</tr>
-		<tr>
-			<td><div class="tooltip">Capacidad<span class="tooltiptext">
-				Capacidad máxima de personas que soporta el auditorio.
-			</span></div></td>
-			<td><input type='text' name='Capacidad' /></td>
-		</tr>
-		<tr>
-			<td><div class="tooltip">Cantidad de sanitarios<span class="tooltiptext">
-				Cantidad de sanitarios disponibles en el auditorio
-			</span></div></td>
-			<td><input type='text' name='CantidadSanitarios' /></td>
-		</tr>
-		<tr>
-			<td colspan = '2'>
-				<input type = 'submit' value = "Add Auditorio"/>
-			</td>
-		</tr>
-	</table>
+@section('accion')
+   	action="/CrearAuditorio"
+@endsection
 
-      </form>
+@section('contenido_formulario')
+	<div class="form-group">
+		<label for="Tipo" class="col-sm-4 control-label" data-toggle="tooltip" title="Nombre del auditorio">Nombre</label>
+		
+		<div class="col-sm-8">
+			<input type='text' class="form-control" name='Tipo' value = '<?php $tipo = $_GET['tipo']; if (!empty($tipo))echo $tipo;?>' required>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="CantidadEquipo" class="col-sm-4 control-label" data-toggle="tooltip" title="Cantidad de equipo de computo disponible en el auditorio">Cantidad de equipo</label>
+		
+		<div class="col-sm-8">
+			<input type='text' class="form-control" name='CantidadEquipo' id="CantidadEquipo" placeholder="1" required>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="CantidadAV" class="col-sm-4 control-label" data-toggle="tooltip" title="Cantidad de equipo audiovisual disponible en el auditorio (proyectores, televisores, etc.)">Cantidad de equipo audiovisual</label>
+		
+		<div class="col-sm-8">
+			<input type='text' class="form-control" name='CantidadAV' id="CantidadAV" placeholder="1" required>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="Capacidad" class="col-sm-4 control-label" data-toggle="tooltip" title="Capacidad máxima de personas que soporta el auditorio.">Capacidad</label>
+		
+		<div class="col-sm-8">
+			<input type='text' class="form-control" name='Capacidad' id="Capacidad" placeholder="10" required>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="CantidadSanitarios" class="col-sm-4 control-label" data-toggle="tooltip" title="Cantidad de sanitarios disponibles en el auditorio">Cantidad de sanitarios</label>
+		
+		<div class="col-sm-8">
+			<input type='text' class="form-control" name='CantidadSanitarios' id="CantidadSanitarios" placeholder="1" required>
+		</div>
+	</div>
 @endsection

@@ -1,26 +1,35 @@
-@extends('layouts.app')
+@extends('layouts.ver')
+@section('title')
+  	editar espacios
+@endsection
 
-@section('title', 'View Espacio')
+@section('descripcion')
+  	<a href="/infraestructura/espacio" class="btn btn-primary">Regresar</a>
+  	<h1 class="text-center">Listado de espacios</h1>
+@endsection
 
-@section('content')
-	<a href="/infraestructura/espacio">Regresar</a>
-	<table border = 1>
-         <tr>
+@section('cabeza_tabla')
+  	<tr>
+		<th>Nombre del espacio</th>
 
-           <td><div class="tooltip">Nombre espacio<span class="tooltiptext">Un identificador unico (por ejemplo A202)</span></div></td>
-           <td><div class="tooltip">Superficie<span class="tooltiptext">Metros cuadrados de superficie que abarca el espacio</span></div></td>
-           <td><div class="tooltip">Cantidad<span class="tooltiptext">Cantidad de espacios con las con el mismo nombre y caracteristicas</span></div></td>
-           <td><div class="tooltip">Clase<span class="tooltiptext">Uno de los 5 posibles espacios fisicos (Aula, Cubiculo, Sanitarios, Asesorias, Auditorio)</span></div></td>
+		<th>Superficie</th>
+		
+		<th>Cantidad</th>
+		
+		<th>Clase</th>
+		<th></th>
+  </tr>
+@endsection
 
-         </tr>
-         @foreach ($espacios as $espacio)
-         <tr>
-            <td>{{ $espacio->tipo }}</td>
-			<td>{{ $espacio->superficie }}</td>
-			<td>{{ $espacio->cantidad }}</td>
-			<td>{{ $espacio->clase }}</td>
-			<td><a href = 'editEspacio/{{ $espacio->tipo  }}'>Edit</a></td>
-         </tr>
-         @endforeach
-      </table>
+
+@section('cuerpo_tabla')
+  @foreach ($espacios as $espacio)
+	<tr>
+	  <td>{{ $espacio->tipo }}</td>
+	  <td>{{ $espacio->superficie }}</td>
+	  <td>{{ $espacio->cantidad }}</td>
+	  <td>{{ $espacio->clase }}</td>
+	  <td class="text-center"><a href = 'editEspacio/{{ $espacio->tipo  }}' class="btn btn-warning">Editar</a></td>
+	</tr>
+  @endforeach
 @endsection

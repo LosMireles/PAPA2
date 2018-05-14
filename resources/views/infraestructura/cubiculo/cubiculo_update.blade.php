@@ -1,37 +1,40 @@
-@extends('layouts.app')
+@extends('layouts.insertar')
 
-@section('title', 'Cubiculo Management | Edit')
+@section('title')
+   editar cubículo <?php echo$cubiculos->Tipo; ?>
+@endsection
 
-@section('content')
-	<a href="/editarCubiculo">Regresar</a>
-	<form action = "/editCubiculo/<?php echo $cubiculos->IdCubiculo; ?>" method = "post">
-         <input type = "hidden" name = "_token" value = "<?php echo csrf_token(); ?>">
+@section('descripcion')
+   <a href="/editarCubiculo" class="btn btn-primary">Regresar</a>
+   <h1 class="text-center">Formulario para editar un cubículo</h1>
+@endsection
+
+@section('accion')
+   action = "/editCubiculo/<?php echo $cubiculos->IdCubiculo; ?>"
+@endsection
+
+@section('contenido_formulario')
+<div class="form-group">
+      <label for="Tipo" class="col-sm-4 control-label" data-toggle="tooltip" title="Número del cubículo">Código del cubículo</label>
       
-         <table>
-            <tr>
-               <td><div class="tooltip">Codigo del cubiculo<span class="tooltiptext">Numero del cubiculo</span></div></td>
-               <td>
-                  <input type = 'text' name = 'Tipo' 
-                     value = '<?php echo$cubiculos->Tipo; ?>'/>
-               </td>
-               <td><div class="tooltip">Profesor<span class="tooltiptext">El encargado del cubiculo</span></div></td>
-               <td>
-                  <input type = 'text' name = 'Profesor' 
-                     value = '<?php echo$cubiculos->Profesor; ?>'/>
-               </td>
-               <td><div class="tooltip">Cantidad de equipo.<span class="tooltiptext">Cantidad de computadoras hay en el cubiculo</span></div></td>
-               <td>
-                  <input type = 'text' name = 'CantidadEquipo' 
-                     value = '<?php echo$cubiculos->CantidadEquipo; ?>'/>
-               </td>
+      <div class="col-sm-8">
+         <input type='text' class="form-control" name='Tipo' value = '<?php echo$cubiculos->Tipo; ?>' required>
+      </div>
+   </div>
 
-            </tr>
-            <tr>
-               <td colspan = '2'>
-                  <input type = 'submit' value = "Editar Cubiculo" />
-               </td>
-            </tr>
-         </table>
+   <div class="form-group">
+      <label for="Profesor" class="col-sm-4 control-label" data-toggle="tooltip" title="El encargado del cubículo">Profesor</label>
+      
+      <div class="col-sm-8">
+         <input type='text' class="form-control" name='Profesor' id="Profesor" placeholder="Nombre" required value = '<?php echo$cubiculos->Profesor; ?>'>
+      </div>
+   </div>
 
-      </form>
+   <div class="form-group">
+      <label for="CantidadEquipo" class="col-sm-4 control-label" data-toggle="tooltip" title="Cantidad de computadoras hay en el cubículo">Cantidad de equipo</label>
+      
+      <div class="col-sm-8">
+         <input type='text' class="form-control" name='CantidadEquipo' id="CantidadEquipo" placeholder="1" required value = '<?php echo$cubiculos->CantidadEquipo; ?>'>
+      </div>
+   </div>
 @endsection

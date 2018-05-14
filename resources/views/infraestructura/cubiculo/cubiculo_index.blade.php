@@ -1,14 +1,40 @@
-@extends('layouts.app')
+@extends('layouts.menus')
 
-@section('title', 'cubiculo')
+@section('title')
+	gestión de espacios para los cubículos
+@endsection
 
-@section('content')
-	<a href="/infraestructura/">Regresar</a>
-	<h1>Cubiculo</h1>
-	<ul>
-		<li> <a href="/insertarCubiculos">Insertar</a> </li>
-		<li> <a href="/editarCubiculo">Editar</a> </li>
-		<li> <a href="/verCubiculo">Ver</a> </li>
-		<li> <a href="/borrarCubiculo">Borrar</a> </li>
-	</ul>
+@section('descipcion')
+	<a href="/infraestructura/" class="btn btn-primary">Regresar</a>
+	<h1 class="text-center">Cubículo</h1>
+@endsection
+
+@section('cabeza_tabla') 
+	<tr>
+		<th class="text-center">Seleccione una opción</th>
+	</tr>
+@endsection
+
+
+@section('cuerpo_tabla')
+	<tr>
+		<td>
+			<a href="/insertarCubiculos">Insertar</a>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<a href="/editarCubiculo">Editar</a>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<a href="/verCubiculo">Ver</a>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<a href="/borrarCubiculo">Borrar</a>
+		</td>
+	</tr>
 @endsection

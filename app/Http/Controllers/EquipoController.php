@@ -18,9 +18,9 @@ class EquipoController extends Controller
 
     public function agregar_equipo(){
     	/// Tomar todos los espacios de la base de datos
-    	$espacios = DB::table('espacios')->get();
-    	/// Tomar todos los softwares de la base de datos || no necesario
-    	$softwares = DB::table('softwares')->get();
+    	$espacios = Espacio::all();
+    	/// Tomar todos los softwares de la base de datos
+    	$softwares = Software::all();
         return view('equipamiento/gestion_equipos/agregar_equipo', ['espacios'=>$espacios, 'softwares'=>$softwares]);
     }
 

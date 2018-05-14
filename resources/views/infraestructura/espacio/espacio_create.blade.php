@@ -1,43 +1,51 @@
-@extends('layouts.app')
+@extends('layouts.insertar')
 
-@section('title', 'Espacio Management | Add')
+@section('title')
+   insertar un espacio
+@endsection
 
-@section('content')
-	<a href="/infraestructura/espacio">Regresar</a>
-	<form action = "/CrearEspacio" method = "post">
-         <input type = "hidden" name = "_token" value = "<?php echo csrf_token(); ?>">
+@section('descripcion')
+   <a href="/infraestructura/espacio" class="btn btn-primary">Regresar</a>
+   <h1 class="text-center">Formulario para agregar un espacio</h1>
+@endsection
 
-         <table>
-            <tr>
-               <td><div class="tooltip">Nombre espacio<span class="tooltiptext">Un identificador unico (por ejemplo A202)</span></div></td>
-               <td><input type='text' name='tipo' /></td>
-            </tr>
-            <tr>
-               <td><div class="tooltip">Superficie<span class="tooltiptext">Metros cuadrados de superficie que abarca el espacio</span></div></td>
-               <td><input type='text' name='superficie' /></td>
-            </tr>
-            <tr>
-               <td><div class="tooltip">Cantidad<span class="tooltiptext">Cantidad de espacios con las con el mismo nombre y caracteristicas</span></div></td>
-               <td><input type='text' name='cantidad' /></td>
-            </tr>
-            <tr>
-               <td><div class="tooltip">Clase<span class="tooltiptext">Uno de los 5 posibles espacios fisicos (Aula, Cubiculo, Sanitarios, Asesorias, Auditorio)</span></div></td>
-               <td><select name="clase">
-		    <option value="Aula">Aula</option>
-		    <option value="Cubiculo">Cubiculo</option>
-		    <option value="Sanitario">Sanitario</option>
-		    <option value="Asesoria">Asesoria</option>
-		    <option value="Auditorio">Auditorio</option>
+@section('accion')
+   action = "/CrearEspacio"
+@endsection
 
-		  </select></td>
-            </tr>
+@section('contenido_formulario')
+   <div class="form-group">
+      <label for="tipo" class="col-sm-4 control-label" data-toggle="tooltip" title="Un identificador único (por ejemplo A202)">Nombre[?]: </label>
 
-            <tr>
-               <td colspan = '2'>
-                  <input type = 'submit' value = "Add Espacio"/>
-               </td>
-            </tr>
-         </table>
+      <div class="col-sm-8">
+         <input type="text" name="tipo" id="tipo" class="form-control" placeholder="Nombre" required>
+      </div>
+   </div>
+   <div class="form-group">
+   		<label for="superficie" class="col-sm-4 control-label" data-toggle="tooltip" title="Metros cuadrados de superficie que abarca el espacio">Superficie[?]: </label>
 
-      </form>
+   		<div class="col-sm-8">
+   			<input type='text' class="form-control" name='superficie' placeholder="mts2" required>
+   		</div>
+   </div>
+   <div class="form-group">
+   		<label for="cantidad" class="col-sm-4 control-label" data-toggle="tooltip" title="Cantidad de espacios con el mismo nombre y características">Cantidad[?]:</label>
+
+   		<div class="col-sm-8">
+   			<input type='text' class="form-control" name='cantidad' placeholder="Cantidad" required>
+   		</div>
+   </div>
+   <div class="form-group">
+   		<label for="clase" class="col-sm-4 control-label" data-toggle="tooltip" title="Uno de los 5 posibles espacios fisicos (Aula, Cubiculo, Sanitarios, Asesorias, Auditorio)">Clase[?]:  </label>
+
+		<div class="col-sm-8">
+            <select name="clase" class="form-control">
+               <option value="Aula">Aula</option>
+               <option value="Cubiculo">Cubiculo</option>
+               <option value="Sanitario">Sanitario</option>
+               <option value="Asesoria">Asesoria</option>
+               <option value="Auditorio">Auditorio</option>
+           </select>
+   		</div>   		
+   </div>
 @endsection
