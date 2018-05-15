@@ -1,37 +1,46 @@
-@extends('layouts.app')
+@extends('layouts.ver')
+@section('title')
+    Eliminar software
+@endsection
 
-@section('title', 'Software Management | Delete')
+@section('descripcion')
+    <a href="/equipamiento/software" class="btn btn-primary">Regresar</a>
 
-@section('content')
-	<a href="/equipamiento/software">Regresar</a>
-    <form action = "/deleteSoftware" method = "post">
-        <input type = "hidden" name = "_token" value = "<?php echo csrf_token(); ?>">
+    <form action = "/deleteSoftware" method="POST" class="form-horizontal">
+         <input type = "hidden" name = "_token" value = "<?php echo csrf_token(); ?>">
 
-        <table>
-            <tr>
-                <td><div class="tooltip">Nombre<span class="tooltiptext">Nombre del software</span></div></td>
-                <td><input type='text' name='nombre' /></td>
-            </tr>
+         <div class="form-group">
+             <label for="nombre" class="col-sm-2 control-label">Nombre del software: </label>
 
-            <tr>
-                <td colspan = '2'>
-                    <input type = 'submit' value = "Delete Software"/>
-                </td>
-            </tr>
-        </table>
+             <div class="col-sm-10">
+                  <input type='text' name='nombre' class="form-control" placeholder="Nombre" required>
+             </div>
+         </div>
+
+         <div class="form-group">
+             <div class="col-sm-offset-2 col-sm-10">
+                  <button type="submit" class="btn btn-danger">Borrar</button>
+             </div>
+         </div>
     </form>
 
-    <table border = 1>
-        <tr>
-            <td><div class="tooltip">Nombre<span class="tooltiptext">Nombre del software</span></div></td>
-            <td><div class="tooltip">Se cuenta con manual<span class="tooltiptext">Si se cuenta con un manual de uso del software o no</span></div></td>
-            <td><div class="tooltip">Licencia<span class="tooltiptext">Tipo de licencia que se tiene del software (por ejemplo, libre)</span></div></td>
-            <td><div class="tooltip">Lugar de obtencion<span class="tooltiptext">Se refiere a donde se consigui el software</span></div></td>
-            <td><div class="tooltip">Clase<span class="tooltiptext">Si es un lenguaje, una libreria o una herramienta CASE</span></div></td>
-            <td><div class="tooltip">Equipos<span class="tooltiptext">Equipos en los que esta instalado el software</span></div></td>
-        </tr>
+    <h1 class="text-center">Listado de software</h1>
+@endsection
 
-        @foreach ($softwares as $software)
+@section('cabeza_tabla')
+    <tr>
+        <th>Nombre</th>
+        <th>Se cuenta con manual</th>
+        <th>Licencia</th>
+        <th>Lugar de obtención</th>
+        <th>Clase</th>
+        <th>Equipos</th>
+    </tr>
+@endsection
+
+
+@section('cuerpo_tabla')
+    @foreach ($softwares as $software)
         <tr>
             <td>{{ $software->nombre }}</td>
             <td>{{ $software->manualUsuario }}</td>
@@ -46,8 +55,7 @@
                     @endforeach
                 @endif
             </td>
-        </tr>
-        @endforeach
-    </table>
-@endsection
 
+        </tr>
+    @endforeach
+@endsection

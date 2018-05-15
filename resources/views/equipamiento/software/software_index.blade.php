@@ -5,7 +5,7 @@
 @endsection
 
 @section('descipcion')
-	<a href="{{ url('/equipamiento') }}">Regresar</a>
+	<a href="{{ url('/equipamiento') }}" class="btn btn-primary">Regresar</a>
 	<h1 class="text-center">Gestión de software</h1>
 @endsection
 

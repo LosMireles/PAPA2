@@ -79,12 +79,15 @@ class SoftwareController extends Controller {
 	}
 
 	public function show($nombre) {
+        $equipo_softwares = DB::table('equipo_software')->get();
+
 		$software  = Software::where('nombre', $nombre)->first();
 	  	$equipos    = Equipo::all();
 	  	return view('equipamiento/software/software_update',
 	  	    ['software' =>$software,
             'equipos'   => $equipos,
-            'clases'    => $this->clases]);
+            'clases'    => $this->clases,
+            'equipo_softwares' => $equipo_softwares]);
 	}
 
 	public function edit(Request $request, $nombre) {

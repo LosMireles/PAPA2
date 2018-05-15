@@ -24,7 +24,7 @@
          </div>
     </form>
 
-    <h1 class="text-center">Listado de espacios para asesorías</h1>
+    <h1 class="text-center">Listado de asignaturas</h1>
 @endsection
 
 @section('cabeza_tabla')
