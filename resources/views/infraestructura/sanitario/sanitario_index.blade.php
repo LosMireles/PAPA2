@@ -9,7 +9,7 @@
 	<h1 class="text-center">Sanitarios</h1>
 @endsection
 
-@section('cabeza_tabla') 
+@section('cabeza_tabla')
 	<tr>
 		<th class="text-center">Seleccione una opción</th>
 	</tr>

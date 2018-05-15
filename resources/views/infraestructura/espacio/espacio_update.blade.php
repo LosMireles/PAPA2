@@ -42,11 +42,11 @@
             <select name="clase" class="form-control">
                <option value="Aula" <?php if($espacios->clase == 'Aula'){echo("selected");}?>>Aula</option>
                <option  value="Cubiculo" <?php if($espacios->clase == 'Cubiculo'){echo("selected");}?>>Cubiculo</option>
-               
+
                <option value="Sanitario" <?php if($espacios->clase == 'Sanitario'){echo("selected");}?>>Sanitario</option>
                <option value="Asesoria" <?php if($espacios->clase == 'Asesoria'){echo("selected");}?>>Asesoria</option>
                <option value="Auditorio <?php if($espacios->clase == 'Auditorio'){echo("selected");}?>">Auditorio</option>
            </select>
-         </div>         
+         </div>
    </div>
 @endsection

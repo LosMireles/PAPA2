@@ -20,7 +20,7 @@ class AulaController extends Controller
 	public function insertform(){
 	  return view('infraestructura/aula/aula_create');
 	}
-	
+
 	public function dummie(){
 		header("Location: http://127.0.0.1:8000/insertarAula?tipo=".urlencode(""));
 	  	die();
@@ -41,8 +41,8 @@ class AulaController extends Controller
 		$aula->CantidadEquipo = $request->CantidadEquipo;
 		$aula->CantidadAV = $request->CantidadAV;
 		$aula->Capacidad = $request->Capacidad;
-		if(isset($request->SillasPaleta) && 
-		$request->SillasPaleta == '1') 
+		if(isset($request->SillasPaleta) &&
+		$request->SillasPaleta == '1')
 		{
 			$aula->SillasPaleta = '1';
 		}
@@ -50,8 +50,8 @@ class AulaController extends Controller
 		{
 			$aula->SillasPaleta = '0';
 		}
-		if(isset($request->MesasTrabajo) && 
-		$request->MesasTrabajo == '1') 
+		if(isset($request->MesasTrabajo) &&
+		$request->MesasTrabajo == '1')
 		{
 			$aula->MesasTrabajo = '1';
 		}
@@ -59,17 +59,17 @@ class AulaController extends Controller
 		{
 			$aula->MesasTrabajo = '0';
 		}
-		if(isset($request->Isotopica) && 
-		$request->Isotopica == '1') 
+		if(isset($request->Isotopica) &&
+		$request->Isotopica == '1')
 		{
 			$aula->Isotopica = '1';
 		}
 		else
 		{
 			$aula->Isotopica = '0';
-		}	
-		if(isset($request->Estrado) && 
-		$request->Estrado == '1') 
+		}
+		if(isset($request->Estrado) &&
+		$request->Estrado == '1')
 		{
 			$aula->Estrado = '1';
 		}
@@ -85,7 +85,7 @@ class AulaController extends Controller
 		$aula->Espacio = $request->Espacio;
 		$aula->Mobilario = $request->Mobilario;
 		$aula->Conexiones = $request->Conexiones;
-		
+
         $aula->save();
 		echo "Record inserted successfully.<br/>";
         echo '<a href = "/insertarAulas">Click Here</a> to go back.';
@@ -104,7 +104,7 @@ class AulaController extends Controller
 	  	echo "Record deleted successfully.<br/>";
 	  	echo '<a href = "/borrarAula">Click Here</a> to go back.';
 	}
-	
+
 	//--------------------------------------------------------------
 	public function indexEditar(){
 	  	$aulas  = Aula::all();
@@ -119,8 +119,8 @@ class AulaController extends Controller
 		$CantidadEquipo = $request->CantidadEquipo;
 		$CantidadAV = $request->CantidadAV;
 		$Capacidad = $request->Capacidad;
-		if(isset($request->SillasPaleta) && 
-		$request->SillasPaleta == '1') 
+		if(isset($request->SillasPaleta) &&
+		$request->SillasPaleta == '1')
 		{
 			$SillasPaleta = '1';
 		}
@@ -128,8 +128,8 @@ class AulaController extends Controller
 		{
 			$SillasPaleta = '0';
 		}
-		if(isset($request->MesasTrabajo) && 
-		$request->MesasTrabajo == '1') 
+		if(isset($request->MesasTrabajo) &&
+		$request->MesasTrabajo == '1')
 		{
 			$MesasTrabajo = '1';
 		}
@@ -137,17 +137,17 @@ class AulaController extends Controller
 		{
 			$MesasTrabajo = '0';
 		}
-		if(isset($request->Isotopica) && 
-		$request->Isotopica == '1') 
+		if(isset($request->Isotopica) &&
+		$request->Isotopica == '1')
 		{
 			$Isotopica = '1';
 		}
 		else
 		{
 			$Isotopica = '0';
-		}	
-		if(isset($request->Estrado) && 
-		$request->Estrado == '1') 
+		}
+		if(isset($request->Estrado) &&
+		$request->Estrado == '1')
 		{
 			$Estrado = '1';
 		}
@@ -164,7 +164,7 @@ class AulaController extends Controller
 		$Mobilario = $request->Mobilario;
 		$Conexiones = $request->Conexiones;
 
-		Aula::where('IdAula', $id)->update(['Tipo' => $Tipo, 
+		Aula::where('IdAula', $id)->update(['Tipo' => $Tipo,
 											'CantidadEquipo'=>$CantidadEquipo,
 											'CantidadAV'=>$CantidadAV,
 											'Capacidad'=>$Capacidad,

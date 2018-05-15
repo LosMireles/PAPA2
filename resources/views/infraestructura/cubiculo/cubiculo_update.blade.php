@@ -16,7 +16,7 @@
 @section('contenido_formulario')
 <div class="form-group">
       <label for="Tipo" class="col-sm-4 control-label" data-toggle="tooltip" title="Número del cubículo">Código del cubículo</label>
-      
+
       <div class="col-sm-8">
          <input type='text' class="form-control" name='Tipo' value = '<?php echo$cubiculos->Tipo; ?>' required>
       </div>
@@ -24,7 +24,7 @@
 
    <div class="form-group">
       <label for="Profesor" class="col-sm-4 control-label" data-toggle="tooltip" title="El encargado del cubículo">Profesor</label>
-      
+
       <div class="col-sm-8">
          <input type='text' class="form-control" name='Profesor' id="Profesor" placeholder="Nombre" required value = '<?php echo$cubiculos->Profesor; ?>'>
       </div>
@@ -32,7 +32,7 @@
 
    <div class="form-group">
       <label for="CantidadEquipo" class="col-sm-4 control-label" data-toggle="tooltip" title="Cantidad de computadoras hay en el cubículo">Cantidad de equipo</label>
-      
+
       <div class="col-sm-8">
          <input type='text' class="form-control" name='CantidadEquipo' id="CantidadEquipo" placeholder="1" required value = '<?php echo$cubiculos->CantidadEquipo; ?>'>
       </div>

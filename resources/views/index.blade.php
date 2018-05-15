@@ -26,7 +26,7 @@
 @section('cuerpo_tabla_doc')
 	<tr>
 		<td>
-			<a href="#">9.1 Infraestructura</a>			
+			<a href="#">9.1 Infraestructura</a>
 		</td>
 
 		<td>
@@ -41,7 +41,7 @@
 
 	<tr>
 		<td>
-			<a href="#">9.2 Equipamiento</a>			
+			<a href="#">9.2 Equipamiento</a>
 		</td>
 
 		<td>
@@ -72,11 +72,11 @@
 @section('cuerpo_tabla')
 	<tr>
 		<td>
-			<a href="{{ url('/infraestructura') }}">9.1 Infraestructura</a>			
+			<a href="{{ url('/infraestructura') }}">9.1 Infraestructura</a>
 		</td>
 	</tr>
 	<tr>
-		<td>		
+		<td>
 			<a href="{{ url('/equipamiento') }}">9.2 Equipamiento</a>
 		</td>
 	</tr>

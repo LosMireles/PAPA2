@@ -20,7 +20,7 @@ class CreateAuditoriosTable extends Migration
 			$table->integer('CantidadAV');
 			$table->integer('Capacidad');
 			$table->integer('CantidadSanitarios');
-			
+
             $table->timestamps();
         });
     }

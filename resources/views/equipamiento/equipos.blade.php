@@ -9,7 +9,7 @@
 	<h1 class="text-center">Gestión de equipos</h1>
 @endsection
 
-@section('cabeza_tabla') 
+@section('cabeza_tabla')
 	<tr>
 		<th class="text-center">Seleccione una opción</th>
 	</tr>
@@ -19,7 +19,7 @@
 @section('cuerpo_tabla')
 	<tr>
 		<td>
-			<a href="{{ url('/equipamiento/equipos/agregar_equipo') }}">Insertar</a>		
+			<a href="{{ url('/equipamiento/equipos/agregar_equipo') }}">Insertar</a>
 		</td>
 	</tr>
 	<tr>

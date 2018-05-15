@@ -25,7 +25,7 @@ class AsignaturaController extends Controller
 
     public function actualizar_asignaturas_especifico($id){
         $asignatura  =  Asignatura::where('id', $id)->first();
-        
+
         return view('asignaturas/actualizar_asignaturas_especifico', ['asignatura'=>$asignatura]);
     }
 

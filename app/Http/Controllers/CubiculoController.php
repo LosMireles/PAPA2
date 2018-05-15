@@ -9,7 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Cubiculo;
 
 class CubiculoController extends Controller {
-	
+
       public function indexVer(){
       //$cubiculos = DB::select('select * from cubiculos');
       $cubiculos  = Cubiculo::all();

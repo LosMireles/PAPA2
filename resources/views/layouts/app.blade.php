@@ -20,7 +20,7 @@
 </head>
 <body>
     <div class="container">
-        @yield('content')    
+        @yield('content')
 
         <script>
         $(document).ready(function(){

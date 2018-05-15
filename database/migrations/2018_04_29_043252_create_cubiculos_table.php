@@ -18,7 +18,7 @@ class CreateCubiculosTable extends Migration
 			$table->string('Tipo', 25);
 			$table->string('Profesor', 100);
 			$table->integer('CantidadEquipo');
-			
+
 
             $table->timestamps();
         });

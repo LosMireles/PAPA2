@@ -39,32 +39,32 @@ class EspacioController extends Controller {
 
 		$clase =$request->input('clase');
 
-		if($clase == 'Aula') 
+		if($clase == 'Aula')
 		{
 			header("Location: http://127.0.0.1:8000/insertarAula?tipo=".urlencode($request->input('tipo')));
 			die();
 		}
-		if($clase == 'Cubiculo') 
+		if($clase == 'Cubiculo')
 		{
 			header("Location: http://127.0.0.1:8000/insertarCubiculo?tipo=".urlencode($request->input('tipo')));
 			die();
 		}
-		if($clase == 'Sanitario') 
+		if($clase == 'Sanitario')
 		{
 			header("Location: http://127.0.0.1:8000/insertarSanitario?tipo=".urlencode($request->input('tipo')));
 			die();
 		}
-		if($clase == 'Asesoria') 
+		if($clase == 'Asesoria')
 		{
 			header("Location: http://127.0.0.1:8000/insertarAsesoria?tipo=".urlencode($request->input('tipo')));
 			die();
 		}
-		if($clase == 'Auditorio') 
+		if($clase == 'Auditorio')
 		{
 			header("Location: http://127.0.0.1:8000/insertarAuditorio?tipo=".urlencode($request->input('tipo')));
 			die();
 		}
-	
+
 		echo "Record inserted successfully.<br/>";
         echo '<a href = "/insertarEspacio">Click Here</a> to go back.';
     }

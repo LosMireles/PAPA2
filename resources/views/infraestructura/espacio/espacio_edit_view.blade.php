@@ -13,9 +13,9 @@
 		<th>Nombre del espacio</th>
 
 		<th>Superficie</th>
-		
+
 		<th>Cantidad</th>
-		
+
 		<th>Clase</th>
 		<th></th>
   </tr>

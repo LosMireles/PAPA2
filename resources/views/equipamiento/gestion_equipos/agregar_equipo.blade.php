@@ -18,13 +18,13 @@
 		<label for="serial" class="col-sm-4 control-label" data-toggle="tooltip" title="Ingrese el serial del equipo">Serial: </label>
 
 		<div class="col-sm-8">
-			<input type="text" class="form-control" id="serial" name="serial" placeholder="Serial del equipo" required>	
+			<input type="text" class="form-control" id="serial" name="serial" placeholder="Serial del equipo" required>
 		</div>
 	</div>
 
 	<div class="form-group">
 		<label for="manual" class="col-sm-4 control-label" data-toggle="tooltip" title="Indique si el equipo cuenta con manual de usuario">Manual de usuario: </label>
-		
+
 		<div class="col-sm-8">
 			<input type="radio" name="manual" value="1" checked="">Sí <br>
 			<input type="radio" name="manual" value="0"> No
@@ -60,6 +60,6 @@
 				<input type="checkbox" name="nombres[]" value="{{$single_software->nombre}}">
 				{{$single_software->nombre}}<br>
 			@endforeach
-		</div>	
+		</div>
 	</div>
 @endsection

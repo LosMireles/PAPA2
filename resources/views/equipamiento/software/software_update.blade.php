@@ -14,15 +14,15 @@
 @endsection
 
 @section('contenido_formulario')
-	
+
 	<input type="hidden" name="id" value="{{$software->id}}">
-	
+
 	<div class="form-group">
 		<label for="nombre" class="col-sm-4 control-label" data-toggle="tooltip" title="Nombre del software">Nombre: </label>
 
 		<div class="col-sm-8">
 			<input type='text' class="form-control" name='nombre' placeholder="Nombre" required value = "{{$software->nombre}}">
-		</div>     
+		</div>
 	</div>
 
 	<div class="form-group">
@@ -36,7 +36,7 @@
 				<td><input type="radio" name="manualUsuario" value="1"> Sí <br>
 				<input type="radio" name="manualUsuario" value="0" checked>No</td>
 			@endif
-		</div>     
+		</div>
 	</div>
 
 	<div class="form-group">
@@ -44,7 +44,7 @@
 
 		<div class="col-sm-8">
 			<input type="text" class="form-control" name="licencia" placeholder="Tipo de licencia" required value = "{{$software->licencia}}">
-		</div>     
+		</div>
 	</div>
 
 	<div class="form-group">
@@ -52,7 +52,7 @@
 
 		<div class="col-sm-8">
 			<input type="text" class="form-control" name="disponibilidad" placeholder="" required value = "{{$software->disponibilidad}}">
-		</div>     
+		</div>
 	</div>
 
 
@@ -72,7 +72,7 @@
 					@endif
 				@endforeach
 			</select>
-		</div>     
+		</div>
 	</div>
 
 	<div class="form-group">
@@ -93,6 +93,6 @@
 					<input type="checkbox" name="equipos[]" value="{{$equipo->serial}}"> {{$equipo->serial}} <br>
 				@endif
 			@endforeach
-		</div>     
+		</div>
 	</div>
 @endsection

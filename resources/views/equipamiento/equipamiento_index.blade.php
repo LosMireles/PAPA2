@@ -9,7 +9,7 @@
 	<h1 class="text-center">Equipamiento</h1>
 @endsection
 
-@section('cabeza_tabla') 
+@section('cabeza_tabla')
 	<tr>
 		<th class="text-center">Gestionar</th>
 	</tr>
@@ -19,11 +19,11 @@
 @section('cuerpo_tabla')
 	<tr>
 		<td>
-			<a href="{{ url('/equipamiento/software') }}" data-toggle="tooltip" title="Software con el que cuenta la licenciatura."> Software [?]</a> </li>			
+			<a href="{{ url('/equipamiento/software') }}" data-toggle="tooltip" title="Software con el que cuenta la licenciatura."> Software [?]</a> </li>
 		</td>
 	</tr>
 	<tr>
-		<td>		
+		<td>
 			<a href="{{ url('/equipamiento/equipos') }}" data-toggle="tooltip" title="Equipos de cómputo con los que cuenta la licenciatura">Equipos [?]</a> </li>
 		</td>
 	</tr>

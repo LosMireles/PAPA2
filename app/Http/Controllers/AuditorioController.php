@@ -31,7 +31,7 @@ class AuditorioController extends Controller
      	  	die();
      	}
 
-	
+
     /**
      * Store a newly created resource in storage.
      *

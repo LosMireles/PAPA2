@@ -18,14 +18,14 @@
       	<label for="Tipo" class="col-sm-4 control-label" data-toggle="tooltip" title="Nombre clave para el sanitario donde se indica el tipo de sanitario (hombres o mujeres), piso en el que se encuentra, para que personas esta disponible (persona, alumnado).">Tipo[?]: </label>
 
       	<div class="col-sm-8">
-      		<?php 
+      		<?php
       			if(!empty($_GET['tipo']))
       				$tipo = $_GET['tipo'];
       			else
       				$tipo = 'Sanitario';
       		?>
       		<input type="text-center" class="form-control" name="Tipo" value={{$tipo}}>
-      		
+
       </div>
    </div>
 
@@ -36,7 +36,7 @@
       	<input type='text' class="form-control" name='InicioHora' placeholder="00:00" required>
       </div>
    </div>
-   
+
    	<div class="form-group">
       	<label for="FinHora" class="col-sm-4 control-label" data-toggle="tooltip" title="Hora a la que el sanitario deja de estar disponible en el día.">Hora de cierre[?]:</label>
 

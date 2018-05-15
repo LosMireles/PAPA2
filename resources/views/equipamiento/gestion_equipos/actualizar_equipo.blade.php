@@ -15,18 +15,18 @@
 
 @section('contenido_formulario')
 	<input type="hidden" name="id" value="{{$equipo->id}}">
-	
+
 	<div class="form-group">
 		<label for="serial" class="col-sm-4 control-label" data-toggle="tooltip" title="Ingrese el serial del equipo">Serial: </label>
 
 		<div class="col-sm-8">
-			<input type="text" class="form-control" id="serial" name="serial" placeholder="Serial del equipo" required value="{{$equipo->serial}}">	
+			<input type="text" class="form-control" id="serial" name="serial" placeholder="Serial del equipo" required value="{{$equipo->serial}}">
 		</div>
 	</div>
 
 	<div class="form-group">
 		<label for="manual" class="col-sm-4 control-label" data-toggle="tooltip" title="Indique si el equipo cuenta con manual de usuario">Manual de usuario: </label>
-		
+
 		<div class="col-sm-8">
 			@if($equipo->manualEquipo == 1)
 				<input type="radio" name="manual" value="1" checked>Sí <br>
@@ -93,6 +93,6 @@
                 checked value = "{{$software->nombre}}">
                 {{$software->nombre}} <br>
             @endforeach-->
-		</div>	
+		</div>
 	</div>
 @endsection

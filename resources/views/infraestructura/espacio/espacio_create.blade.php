@@ -46,6 +46,6 @@
                <option value="Asesoria">Asesoria</option>
                <option value="Auditorio">Auditorio</option>
            </select>
-   		</div>   		
+   		</div>
    </div>
 @endsection

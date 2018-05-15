@@ -19,7 +19,7 @@
 
 		<div class="col-sm-8">
 			<input type='text' class="form-control" name='nombre' placeholder="Nombre" required>
-		</div>     
+		</div>
 	</div>
 
 	<div class="form-group">
@@ -28,7 +28,7 @@
 		<div class="col-sm-8">
 			<input type="radio" name="manualUsuario" value="1" checked="">Sí <br>
 			<input type="radio" name="manualUsuario" value="0"> No
-		</div>     
+		</div>
 	</div>
 
 	<div class="form-group">
@@ -36,7 +36,7 @@
 
 		<div class="col-sm-8">
 			<input type="text" class="form-control" name="licencia" placeholder="Tipo de licencia" required>
-		</div>     
+		</div>
 	</div>
 
 	<div class="form-group">
@@ -44,7 +44,7 @@
 
 		<div class="col-sm-8">
 			<input type="text" class="form-control" name="disponibilidad" placeholder="" required>
-		</div>     
+		</div>
 	</div>
 
 
@@ -57,7 +57,7 @@
 					<option value="{{$clase}}">{{$clase}}</option>
 				@endforeach
 			</select>
-		</div>     
+		</div>
 	</div>
 
 	<div class="form-group">
@@ -68,6 +68,6 @@
 				<input type="checkbox" name="equipo[]" value="{{$equipo->serial}}">
 				{{$equipo->serial}}<br>
 			@endforeach
-		</div>     
+		</div>
 	</div>
 @endsection
