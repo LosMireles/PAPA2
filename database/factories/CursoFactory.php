@@ -15,11 +15,11 @@ use Faker\Generator as Faker;
 
 $factory->define(App\Curso::class, function (Faker $faker) {
     return [
-        'nombre' => $faker->unique()->word(12),
-        'periodo' => $faker->word(10),
-        'grupo' => $faker->randomNumber(8),
-        'noEstudiantes' => $faker->randomNumber(9),
-        'tipoAula' => $faker->word(9),
-        'tipo' => factory(App\Espacio::class)->create()->tipo,
+        'nombre'        => $faker                      -> unique()         -> word(12),
+        'periodo'       => $faker                      -> word(10),
+        'grupo'         => $faker                      -> randomNumber(8),
+        'noEstudiantes' => $faker                      -> randomNumber(9),
+        'tipoAula'      => $faker                      -> word(9),
+        'tipo'          => factory(App\Espacio::class) -> create()         -> tipo,
     ];
 });

@@ -14,12 +14,12 @@ class CreateSoftwareTable extends Migration
     public function up()
     {
         Schema::create('softwares', function (Blueprint $table) {
-            $table->increments('id')->unique();
-            $table->char('nombre', 45)->unique();
-            $table->boolean('manualUsuario');
-            $table->string('licencia');
-            $table->string('disponibilidad');
-            $table->string('clase');
+            $table -> increments('id')          -> unique();
+            $table -> char('nombre', 45)        -> unique();
+            $table -> boolean('manualUsuario');
+            $table -> string('licencia');
+            $table -> string('disponibilidad');
+            $table -> string('clase');
 
             $table->timestamps();
         });

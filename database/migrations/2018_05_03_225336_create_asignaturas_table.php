@@ -14,10 +14,14 @@ class CreateAsignaturasTable extends Migration
     public function up()
     {
         Schema::create('asignaturas', function (Blueprint $table) {
-            $table->increments('id');
-            $table->char('nombre', 50);
-            $table->char('descripcion', 50);
-            $table->timestamps();
+            $table -> increments('id')         -> unique()         -> unsigned();
+            $table -> char('nombre', 50)       -> unique();
+            $table -> char('descripcion', 50);
+
+            $table -> integer('curso_id')      -> unsigned();
+            $table -> foreign('curso_id')      -> references('id') -> on('cursos') -> onDelete('cascade');
+
+            $table -> timestamps();
         });
     }
 
@@ -31,3 +35,4 @@ class CreateAsignaturasTable extends Migration
         Schema::dropIfExists('asignaturas');
     }
 }
+

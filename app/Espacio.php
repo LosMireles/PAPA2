@@ -9,8 +9,9 @@ class Espacio extends Model
     protected $table = 'espacios';
 
     //DEFINICION DE RELACIONES
-    //un espacio tiene muchos cursos
+    //un espacio pertenece a muchos cursos (muchos a muchos)
     public function cursos(){
-        return $this->hasMany(Curso::class, 'tipo');
+        return $this->belongsToMany(Curso::class);
     }
 }
+

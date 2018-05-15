@@ -15,9 +15,9 @@ use Faker\Generator as Faker;
 
 $factory->define(App\Espacio::class, function (Faker $faker) {
     return [
-        'tipo' => $faker->unique()->word,
-        'superficie' => $faker->randomNumber(),
-        'cantidad' => $faker->randomNumber(),
-        'clase' => $faker->randomElement(['Aula', 'Cubiculo']),
+        'tipo'       => $faker -> unique()                             -> word,
+        'superficie' => $faker -> randomNumber(),
+        'cantidad'   => $faker -> randomNumber(),
+        'clase'      => $faker -> randomElement(['Aula', 'Cubiculo']),
     ];
 });

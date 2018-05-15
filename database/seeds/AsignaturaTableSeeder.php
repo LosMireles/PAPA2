@@ -11,8 +11,6 @@ class AsignaturaTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Asignatura::class, 5)->create()->each(function ($u) {
-            $u->save();
-        });
+        factory(App\Asignatura::class, 10)->create();
     }
 }

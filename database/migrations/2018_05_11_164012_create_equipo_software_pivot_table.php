@@ -14,13 +14,13 @@ class CreateEquipoSoftwarePivotTable extends Migration
     public function up()
     {
         Schema::create('equipo_software', function (Blueprint $table) {
-            $table->integer('equipo_id')->unsigned()->index();
-            $table->foreign('equipo_id')->references('id')->on('equipos')->onDelete('cascade');
-            $table->integer('software_id')->unsigned()->index();
-            $table->foreign('software_id')->references('id')->on('softwares')->onDelete('cascade');
-            $table->primary(['equipo_id', 'software_id']);
+            $table -> integer('equipo_id')                   -> unsigned()       -> index();
+            $table -> foreign('equipo_id')                   -> references('id') -> on('equipos')   -> onDelete('cascade');
+            $table -> integer('software_id')                 -> unsigned()       -> index();
+            $table -> foreign('software_id')                 -> references('id') -> on('softwares') -> onDelete('cascade');
+            $table -> primary(['equipo_id', 'software_id']);
 
-            $table->timestamps();
+            $table -> timestamps();
         });
     }
 
