@@ -1,34 +1,45 @@
-@extends('layouts.app')
+@extends('layouts.ver')
+@section('title')
+    Eliminar asignaturas
+@endsection
 
-@section('title', 'eliminar')
+@section('descripcion')
+    <a href="{{ url('/asignaturas') }}" class="btn btn-primary">Regresar</a>
 
-@section('content')
-	<a href="{{ url()->previous() }}">Regresar</a>
-	<h1>Borrar asignaturas</h1>
-	<form action="{{ url('/asignaturas/eliminar_asignatura/eliminar') }}" method="POST">
-		<input type = "hidden" name = "_token" value = "<?php echo csrf_token(); ?>">
+    <form action="{{ url('/asignaturas/eliminar_asignatura/eliminar') }}" method="POST" class="form-horizontal">
+         <input type = "hidden" name = "_token" value = "<?php echo csrf_token(); ?>">
 
-		<div class="tooltip">
-    		<label for="nombre">Nombre: </label>
-         	<span class="tooltiptext">Nombre de la materia que desea borrar</span>
+         <div class="form-group">
+             <label for="nombre" class="col-sm-2 control-label">Nombre de la asignatura: </label>
+
+             <div class="col-sm-10">
+                  <input type='text' name='nombre' class="form-control" placeholder="Nombre" required>
+             </div>
          </div>
 
-         <br>
+         <div class="form-group">
+             <div class="col-sm-offset-2 col-sm-10">
+                  <button type="submit" class="btn btn-danger">Borrar</button>
+             </div>
+         </div>
+    </form>
 
-		<input type="text" name="nombre" placeholder="nombre">
-		<input type = 'submit' value = "Borrar asignatura"/>	
-	</form>
-	
-	<table border="1">
+    <h1 class="text-center">Listado de espacios para asesorías</h1>
+@endsection
+
+@section('cabeza_tabla')
+  	<tr>
+		<th>Nombre de la asignatura</th>
+		<th>Descripción de la asignatura</th>
+	</tr>
+@endsection
+
+
+@section('cuerpo_tabla')
+   @foreach($asignaturas as $asignatura)
 		<tr>
-			<th>Nombre de la asignatura</th>
-			<th>Descripción de la asignatura</th>
+			<td>{{$asignatura->nombre}}</td>
+			<td>{{$asignatura->descripcion}}</td>
 		</tr>
-		@foreach($asignaturas as $asignatura)
-			<tr>
-				<td>{{$asignatura->nombre}}</td>
-				<td>{{$asignatura->descripcion}}</td>
-			</tr>
-		@endforeach
-	</table>
+	@endforeach
 @endsection

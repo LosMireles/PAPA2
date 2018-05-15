@@ -1,41 +1,33 @@
-@extends('layouts.app')
+@extends('layouts.insertar')
 
-@section('title', 'agregar')
+@section('title')
+   agregar una asignatura
+@endsection
 
-@section('content')
-	<a href="{{ url()->previous() }}">Regresar</a>
-	<h1>Formulario para agregar una asignatura</h1>
-	<form action="{{ url('/asignaturas/agregar_asignatura/agregar') }}" method="POST">
+@section('descripcion')
+   	<a href="{{ url('/asignaturas') }}" class="btn btn-primary">Regresar</a>
+   	<h1 class="text-center">Formulario para agregar una asignatura</h1>
+@endsection
+
+@section('accion')
+   action="{{ url('/asignaturas/agregar_asignatura/agregar') }}"
+@endsection
+
+@section('contenido_formulario')
+   	<div class="form-group">
+		<label for="asignatura" class="col-sm-4 control-label" data-toggle="tooltip" title="Nombre de la asigatura">Nombre</label>
 		
-		<input type = "hidden" name = "_token" value = "<?php echo csrf_token(); ?>">
+		<div class="col-sm-8">
+			<input type='text' class="form-control" name="asignatura" id="asignatura" placeholder="Asignatura" required>
+		</div>
+	</div>
 
-		<table>
-			<tr>
-				<td>
-					<div class="tooltip">
-						<label for="asignatura">Nombre de la asigatura: </label>
-						<span class="tooltiptext">Nombre de la asignatura</span>	
-					</div>	
-				</td>
-				<td>
-					<input type="text" name="asignatura" placeholder="Asigatura">
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<div class="tooltip">
-						<label for="descripcion">Descripción: </label>
-						<span class="tooltiptext">Descripción para la asignatura</span>
-					</div>
-				</td>
-				<td>
-					<textarea rows="4" cols="45" name="descripcion" placeholder="Inserte una descripción"></textarea>			
-				</td>
-			</tr>
-			<tr></tr>
-		</table>
-
-		<input type = 'submit' value = "Agregar equipo"/>
-	
-	</form>
+	<div class="form-group">
+		<label for="descripcion" class="col-sm-4 control-label" data-toggle="tooltip" title="Descripción de la asignatura">Descripción</label>
+		
+		<div class="col-sm-8">
+			<!--<input type='text' class="form-control" name='descripcion' placeholder="Descripción" required>-->
+			<textarea name="descripcion" class="form-control" rows="5" placeholder="Descripción" required=""></textarea>
+		</div>
+	</div>
 @endsection

@@ -82,7 +82,7 @@
 	</tr>
 	<tr>
 		<td>
-			<a href="#">Asignaturas</a>
+			<a href="{{ url('/asignaturas') }}">Asignaturas</a>
 		</td>
 	</tr>
 @endsection

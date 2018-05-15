@@ -1,30 +1,25 @@
-@extends('layouts.app')
+@extends('layouts.ver')
+@section('title')
+	ver asignaturas
+@endsection
 
-@section('title', 'ver asignaturas')
+@section('descripcion')
+	<a href="{{ url('/asignaturas') }}" class="btn btn-primary">Regresar</a>
+	<h1 class="text-center">Listado de asignaturas</h1>
+@endsection
 
-@section('content')
-	<a href="{{ url()->previous() }}">Regresar</a>
-	<h1>Asignaturas registradas</h1>
-	<table border="1">
+@section('cabeza_tabla')
+	<tr>
+		<th>Nombre de la asignatura</th>
+		<th>Descripción de la asignatura</th>
+	</tr>
+@endsection
+
+@section('cuerpo_tabla')
+	@foreach($asignaturas as $asignatura)
 		<tr>
-			<th>
-				<div class="tooltip">
-					Nombre:
-					<span class="tooltiptext">Nombre de la asignatura</span>	
-				</div>
-			</th>
-			<th>
-				<div class="tooltip">
-					Descripción
-					<span class="tooltiptext">Descripción de la asignatura</span>
-				</div>
-			</th>
+			<td>{{$asignatura->nombre}}</td>
+			<td>{{$asignatura->descripcion}}</td>
 		</tr>
-		@foreach($asignaturas as $asignatura)
-			<tr>
-				<td>{{$asignatura->nombre}}</td>
-				<td>{{$asignatura->descripcion}}</td>
-			</tr>
-		@endforeach
-	</table>
+	@endforeach
 @endsection

@@ -1,37 +1,34 @@
-@extends('layouts.app')
+@extends('layouts.insertar')
 
-@section('title', 'actualizar')
+@section('title')
+   agregar una asignatura
+@endsection
 
-@section('content')
-	<a href="{{ url()->previous() }}">Regresar</a>
-	<h1>Edición de la asignatura {{$asignatura->nombre}}</h1>
-	<form action="{{ url('/asignaturas/actualizar_asignatura_actualizar') }}" method="POST">
-		<input type = "hidden" name = "_token" value = "<?php echo csrf_token(); ?>">
-		<input type="hidden" name="id" value="{{$asignatura->id}}">
+@section('descripcion')
+   	<a href="{{ url('/asignaturas/actualizar_asignatura') }}" class="btn btn-primary">Regresar</a>
+   	<h1 class="text-center">Edición de la asignatura {{$asignatura->nombre}}</h1>
+@endsection
 
-		<table>
-			<tr>
-				<td>
-					<div class="tooltip">
-						Nombre:
-						<span class="tooltiptext">Nombre de la asignatura</span>	
-					</div>
-				</td>
-				<td>
-					<input type="text" name="nombre" value="{{$asignatura->nombre}}"><br>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<div class="tooltip">
-						Descripción
-						<span class="tooltiptext">Descripción de la asignatura</span>
-					</div>
-				</td>
-				<td><input type="text" name="descripcion" value="{{$asignatura->descripcion}}"><br></td>
-			</tr>
-		</table>
+@section('accion')
+   action="{{ url('/asignaturas/actualizar_asignatura_actualizar') }}"
+@endsection
 
-		<input type = 'submit' value = "Modificar asignatura"/>
-	</form>
+@section('contenido_formulario')
+	<input type="hidden" name="id" value="{{$asignatura->id}}">
+   	<div class="form-group">
+		<label for="nombre" class="col-sm-4 control-label" data-toggle="tooltip" title="Nombre de la asigatura">Nombre</label>
+		
+		<div class="col-sm-8">
+			<input type='text' class="form-control" name="nombre" id="asignatura" placeholder="Asignatura" required value="{{$asignatura->nombre}}">
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="descripcion" class="col-sm-4 control-label" data-toggle="tooltip" title="Descripción de la asignatura">Descripción</label>
+		
+		<div class="col-sm-8">
+			<!--<input type='text' class="form-control" name='descripcion' placeholder="Descripción" required>-->
+			<textarea name="descripcion" class="form-control" rows="5">{{$asignatura->descripcion}}</textarea>
+		</div>
+	</div>
 @endsection
