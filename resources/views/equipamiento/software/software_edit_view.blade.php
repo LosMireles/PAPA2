@@ -25,7 +25,11 @@
     @foreach ($softwares as $software)
         <tr>
             <td>{{ $software->nombre }}</td>
-            <td>{{ $software->manualUsuario }}</td>
+            @if($software->manualUsuario)
+                <td>Sí</td>
+            @else
+                <td>No</td>
+            @endif
             <td>{{ $software->licencia }}</td>
             <td>{{ $software->disponibilidad }}</td>
             <td>{{ $software->clase }}</td>
