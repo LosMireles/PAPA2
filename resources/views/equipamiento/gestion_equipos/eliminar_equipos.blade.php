@@ -1,96 +1,74 @@
-@extends('layouts.app')
+@extends('layouts.ver')
+@section('title')
+    Eliminar asignaturas
+@endsection
 
-@section('title', 'equipamiento')
+@section('descripcion')
+    <a href="/equipamiento/equipos/" class="btn btn-primary">Regresar</a>
 
-@section('content')
-	<a href="/equipamiento/equipos/">Regresar</a>
+    <form action="/gestion_equipo_borrar" method="POST" class="form-horizontal">
+         <input type = "hidden" name = "_token" value = "<?php echo csrf_token(); ?>">
 
-	<h1>Borrar equipos</h1>
+         <div class="form-group">
+             <label for="serial" class="col-sm-2 control-label">Serial del equipo: </label>
 
-	<form action="/gestion_equipo_borrar" method="POST">
-		<input type = "hidden" name = "_token" value = "<?php echo csrf_token(); ?>">
-
-         <div class="tooltip">
-         	<label for="serial">Serial</label>
-         	<span class="tooltiptext">Serial del equipo que desea borrar</span>
+             <div class="col-sm-10">
+                  <input type='text' name='serial' class="form-control" placeholder="Serial" required>
+             </div>
          </div>
 
-         <br>
+         <div class="form-group">
+             <div class="col-sm-offset-2 col-sm-10">
+                  <button type="submit" class="btn btn-danger">Borrar</button>
+             </div>
+         </div>
+    </form>
 
-         <input type="text" name="serial" placeholder="Serial">
-         <input type = 'submit' value = "Borrar equipo"/>
-	</form>
-	<br>
-	<table border="1">
+    <h1 class="text-center">Listado de equipos</h1>
+@endsection
+
+@section('cabeza_tabla')
+  	<tr>
+		<th>Serial del equipo</th>
+		<th>Dispone de manual de usuario</th>
+		<th>Se encuentra operable</th>
+		<th>Localización</th>
+		<th>Software</th>
+	</tr>
+@endsection
+
+
+@section('cuerpo_tabla')
+   @foreach($equipos as $equipo)
 		<tr>
-			<th>
-				<div class="tooltip">
-					Serial del equipo
-					<span class="tooltiptext">Serial que pertenece al equipo</span>
-				</div>
-			</th>
+			<!--Serial del equipo-->
+			<td>{{$equipo->serial}}</td>
 
-			<th>
-				<div class="tooltip">
-					Manual de usuario
-					<span class="tooltiptext">El equipo dispone de manual de usuario</span>
-				</div>
-			</th>
+			<!--Manual de usuario-->
+			@if($equipo->manualUsuario)
+				<td>Sí</td>
+			@else
+				<td>No</td>
+			@endif
 
-			<th>
-				<div class="tooltip">
-					Operable
-					<span class="tooltiptext">El equipo se encuentra actualmente operable</span>
-				</div>
-			</th>
+			<!--Operable-->
+			@if($equipo->operable)
+				<td>Sí</td>
+			@else
+				<td>No</td>
+			@endif
+			<!--Localizacion-->
+			<td>{{$equipo->localizacion}}</td>
 
-			<th>
-				<div class="tooltip">
-					Localización
-					<span class="tooltiptext">Ubicación donde se encuentra el equipo</span>
-				</div>
-			</th>
-
-			<th>
-				<div class="tooltip">
-					Software
-					<span class="tooltiptext">Software que se encuentra instalado en el equipo</span>
-				</div>
-			</th>
-
+			<!--Localizacion-->
+			<td>
+			    @if(!empty($equipo->softwares))
+                    @foreach($equipo->softwares as $software)
+                        {{ $software->nombre }} <br>
+                    @endforeach
+				@endif
+				</ul>
+			</td>
 		</tr>
-		@foreach($equipos as $equipo)
-			<tr>
-				<!--Serial del equipo-->
-				<td>{{$equipo->serial}}</td>
-
-				<!--Manual de usuario-->
-				@if($equipo->manualUsuario)
-					<td>Sí</td>
-				@else
-					<td>No</td>
-				@endif
-
-				<!--Operable-->
-				@if($equipo->operable)
-					<td>Sí</td>
-				@else
-					<td>No</td>
-				@endif
-
-				<!--Localizacion-->
-				<td>{{$equipo->localizacion}}</td>
-
-				<!--Software-->
-				<td>
-				    @if(!empty($equipo->softwares))
-                        @foreach($equipo->softwares as $software)
-                            {{ $software->nombre }}<br>
-                        @endforeach
-					@endif
-					</ul>
-				</td>
-			</tr>
-		@endforeach
-	</table>
+	@endforeach
 @endsection

@@ -5,7 +5,7 @@
 @endsection
 
 @section('descipcion')
-	<a href="/" class="btn btn-primary" role="button">Regresar</a>
+	<a href="/" class="btn btn-primary" class="btn btn-primary">Regresar</a>
 	<h1 class="text-center">Equipamiento</h1>
 @endsection
 

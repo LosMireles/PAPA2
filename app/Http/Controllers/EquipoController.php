@@ -46,9 +46,10 @@ class EquipoController extends Controller
     	$equipo     = Equipo::where('serial', $id)->first();
     	$espacios   = Espacio::all();
         $softwares  = Software::all();
+        $equipo_softwares = DB::table('equipo_software')->get();
 
     	return view('equipamiento/gestion_equipos/actualizar_equipo',
-    	    ['equipo'=>$equipo, 'espacios'=>$espacios, 'softwares' => $softwares]);
+    	    ['equipo'=>$equipo, 'espacios'=>$espacios, 'softwares' => $softwares, 'equipo_softwares' => $equipo_softwares]);
     }
 
 
@@ -81,7 +82,8 @@ class EquipoController extends Controller
     }
 
     public function gestion_equipo_modificar(Request $request){
-    	$serial = $request->serial;
+    	$id = $request->id;
+        $serial = $request->serial;
     	$manualUsuario = $request->manual;
     	$operable = $request->operable;
     	$localizacion = $request->localizacion;
@@ -92,8 +94,7 @@ class EquipoController extends Controller
             $idSoftwares[] = DB::table('softwares')->where('nombre', $nombre)->value('id');
         }
 
-
-        $equipo = Equipo::where('serial', $serial)->first();
+        $equipo = Equipo::where('id', $id)->first();
     	$equipo->update([
             'manualUsuario' => $manualUsuario,'operable'=>$operable,
             'localizacion'=>$localizacion, 'serial' => $serial

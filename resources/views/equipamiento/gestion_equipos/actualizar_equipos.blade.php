@@ -1,84 +1,56 @@
+@extends('layouts.ver')
+@section('title')
+    editar equipos
+@endsection
 
-@extends('layouts.app')
+@section('descripcion')
+    <a href="/equipamiento/equipos/" class="btn btn-primary">Regresar</a>
+    <h1 class="text-center">Listado de equipos</h1>
+@endsection
 
-@section('title', 'equipamiento')
+@section('cabeza_tabla')
+    <tr>
+		<th>Serial del equipo</th>
+		<th>Dispone de manual de usuario</th>
+		<th>Se encuentra operable</th>
+		<th>Localización</th>
+		<th>Software</th>
+		<th></th>
+	</tr>
+@endsection
 
-@section('content')
-	<a href="/equipamiento/equipos/">Regresar</a>
-
-	<br>
-	<h1>Edición de equipos</h1>
-	<table border="1">
+@section('cuerpo_tabla')
+	@foreach($equipos as $equipo)
 		<tr>
-			<th>
-				<div class="tooltip">
-					Serial del equipo
-					<span class="tooltiptext">Serial que pertenece al equipo</span>
-				</div>
-			</th>
+			<!--Serial del equipo-->
+			<td>{{$equipo->serial}}</td>
 
-			<th>
-				<div class="tooltip">
-					Manual de usuario
-					<span class="tooltiptext">El equipo dispone de manual de usuario</span>
-				</div>
-			</th>
+			<!--Manual de usuario-->
+			@if($equipo->manualUsuario)
+				<td>Sí</td>
+			@else
+				<td>No</td>
+			@endif
 
-			<th>
-				<div class="tooltip">
-					Operable
-					<span class="tooltiptext">El equipo se encuentra actualmente operable</span>
-				</div>
-			</th>
+			<!--Operable-->
+			@if($equipo->operable)
+				<td>Sí</td>
+			@else
+				<td>No</td>
+			@endif
+			<!--Localizacion-->
+			<td>{{$equipo->localizacion}}</td>
 
-			<th>
-				<div class="tooltip">
-					Localización
-					<span class="tooltiptext">Ubicación donde se encuentra el equipo</span>
-				</div>
-			</th>
-
-			<th>
-				<div class="tooltip">
-					Software
-					<span class="tooltiptext">Software que se encuentra instalado en el equipo</span>
-				</div>
-			</th>
-
+			<!--Localizacion-->
+			<td>
+			    @if(!empty($equipo->softwares))
+                    @foreach($equipo->softwares as $software)
+                        {{ $software->nombre }} <br>
+                    @endforeach
+				@endif
+				</ul>
+			</td>
+			<td class="text-center"><a href="{{ url('/equipamiento/equipos/actualizar_equipos/'.$equipo->serial ) }}" class="btn btn-warning">Editar</a></td>
 		</tr>
-		@foreach($equipos as $equipo)
-			<tr>
-				<!--Serial del equipo-->
-				<td>{{$equipo->serial}}</td>
-
-				<!--Manual de usuario-->
-				@if($equipo->manualUsuario)
-					<td>Sí</td>
-				@else
-					<td>No</td>
-				@endif
-
-				<!--Operable-->
-				@if($equipo->operable)
-					<td>Sí</td>
-				@else
-					<td>No</td>
-				@endif
-
-				<!--Localizacion-->
-				<td>{{$equipo->localizacion}}</td>
-
-				<!--Software-->
-				<td>
-                    @if(!empty($equipo->softwares))
-                        @foreach($equipo->softwares as $software)
-                            {{$software->nombre}} <br>
-                        @endforeach
-                    @endif
-					</ul>
-				</td>
-				<td><a href="{{ url('/equipamiento/equipos/actualizar_equipos/'.$equipo->serial ) }}">Editar</td>
-			</tr>
-		@endforeach
-	</table>
+	@endforeach
 @endsection

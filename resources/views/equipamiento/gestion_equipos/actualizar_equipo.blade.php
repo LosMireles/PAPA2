@@ -1,86 +1,98 @@
+@extends('layouts.insertar')
 
-@extends('layouts.app')
+@section('title')
+	actualizar el equipo {{$equipo->serial}}
+@endsection
 
-@section('title', 'equipamiento')
+@section('descripcion')
+	<a href="{{ url('/equipamiento/equipos/actualizar_equipos') }}" class="btn btn-primary">Regresar</a>
+	<h1 class="text-center">Formulario para actualizar un equipo</h1>
+@endsection
 
-@section('content')
-	<a href="/equipamiento/equipos/">Home</a>
-	<h1>Formulario para la edición del equipo {{$equipo->serial}}</h1>
-	<form action="/gestion_equipo_modificar" method="POST">
-		<input type = "hidden" name = "_token" value = "<?php echo csrf_token(); ?>">
-		<input type="hidden" name="id" value="{{$equipo->id}}">
+@section('accion')
+   	action="/gestion_equipo_modificar"
+@endsection
 
-		<table>
-			<tr>
-				<td>
-					<label for="serial">Serial: </label><br>
-				</td>
-				<td>
-					<input type="text" name="serial" value="{{$equipo->serial}}">
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<label for="manual">Manual de usuario: </label>
-				</td>
-				<td>
-					@if($equipo->manualEquipo == 1)
-						<input type="radio" name="manual" value="1" checked>Sí <br>
-						<input type="radio" name="manual" value="0"> No
+@section('contenido_formulario')
+	<input type="hidden" name="id" value="{{$equipo->id}}">
+	
+	<div class="form-group">
+		<label for="serial" class="col-sm-4 control-label" data-toggle="tooltip" title="Ingrese el serial del equipo">Serial: </label>
+
+		<div class="col-sm-8">
+			<input type="text" class="form-control" id="serial" name="serial" placeholder="Serial del equipo" required value="{{$equipo->serial}}">	
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="manual" class="col-sm-4 control-label" data-toggle="tooltip" title="Indique si el equipo cuenta con manual de usuario">Manual de usuario: </label>
+		
+		<div class="col-sm-8">
+			@if($equipo->manualEquipo == 1)
+				<input type="radio" name="manual" value="1" checked>Sí <br>
+				<input type="radio" name="manual" value="0"> No
+			@else
+				<input type="radio" name="manual" value="1">Sí <br>
+				<input type="radio" name="manual" value="0" checked> No
+			@endif
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="operable" class="col-sm-4 control-label" data-toggle="tooltip" title="Indique si el equipo se encuentra operable actualmente">Operable:  </label>
+
+		<div class="col-sm-8">
+			@if($equipo->operable == 1)
+				<input type="radio" name="operable" value="1" checked>Sí <br>
+				<input type="radio" name="operable" value="0"> No
+			@else
+				<input type="radio" name="operable" value="1">Sí <br>
+				<input type="radio" name="operable" value="0" checked> No
+			@endif
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="localizacion" class="col-sm-4 control-label" data-toggle="tooltip" title="Seleccione la ubicación del equipo">Lozalización:  </label>
+
+		<div class="col-sm-8">
+			<select name="localizacion" class="form-control">
+				@foreach($espacios as $espacio)
+					@if($equipo->localizacion == $espacio->tipo)
+						<option value="{{$espacio->tipo}}" selected>{{$espacio->tipo}}</option>
 					@else
-						<input type="radio" name="manual" value="1">Sí <br>
-						<input type="radio" name="manual" value="0" checked> No
+						<option value="{{$espacio->tipo}}">{{$espacio->tipo}}</option>
 					@endif
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<label>Operable: </label>
-				</td>
-				<td>
-					@if($equipo->operable == 1)
-						<input type="radio" name="operable" value="1" checked>Sí <br>
-						<input type="radio" name="operable" value="0"> No
-					@else
-						<input type="radio" name="operable" value="1">Sí <br>
-						<input type="radio" name="operable" value="0" checked> No
-					@endif
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<label for="localizacion">Localización: </label>
-				</td>
-				<td>
-					<select name="localizacion">
-						@foreach($espacios as $espacio)
-							@if($equipo->localizacion == $espacio->clase)
-								<option value="{{$espacio->clase}}" selected>{{$espacio->clase}}</option>
-							@else
-								<option value="{{$espacio->clase}}">{{$espacio->clase}}</option>
-							@endif
-						@endforeach
-					</select>
-				</td>
-			</tr>
+				@endforeach
+			</select>
+		</div>
+	</div>
 
-			<tr>
-				<td>
-					<label for="nombre_software">Software: </label>
-				</td>
-				<td>
-                    @foreach($softwares as $software)
-                        <input type = 'checkbox' name = 'nombre_software[]'
-                        checked value = "{{$software->nombre}}">
-                        {{$software->nombre}} <br>
-                    @endforeach
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<input type = 'submit' value = "Modificar equipo"/>
-				</td>
-			</tr>
-		</table>
-	</form>
+	<div class="form-group">
+		<label for="nombres" class="col-sm-4 control-label" data-toggle="tooltip" title="Seleccione el software que se encuentra instalado en el equipo">Software:  </label>
+
+		<div class="col-sm-8">
+
+			@foreach($softwares as $software)
+				<?php $temp = 0; ?>
+				@foreach($equipo_softwares as $unidad)
+					@if($equipo->id == $unidad->equipo_id && $software->id == $unidad->software_id)
+						<?php $temp = 1; ?>
+					@endif
+				@endforeach
+
+				@if($temp == 1)
+					<input type="checkbox" name="nombre_software[]" checked value="{{$software->nombre}}"> {{$software->nombre}} <br>
+				@else
+					<input type="checkbox" name="nombre_software[]" value="{{$software->nombre}}"> {{$software->nombre}} <br>
+				@endif
+			@endforeach
+
+			<!--@foreach($softwares as $software)
+                <input type = 'checkbox' name = 'nombre_software[]'
+                checked value = "{{$software->nombre}}">
+                {{$software->nombre}} <br>
+            @endforeach-->
+		</div>	
+	</div>
 @endsection
