@@ -14,6 +14,7 @@
 		<th>Superficie</th>
 		<th>Cantidad</th>
 		<th>Clase</th>
+        <th>Cursos</th>
 	</tr>
 @endsection
 
@@ -25,6 +26,17 @@
 			<td>{{ $espacio->superficie }}</td>
 			<td>{{ $espacio->cantidad }}</td>
 			<td>{{ $espacio->clase }}</td>
+
+
+            <td>
+                @if(!empty($espacio->cursos))
+                    @foreach($espacio->cursos as $curso)
+                        {{$curso->nombre}} <br>
+                    @endforeach
+                @endif
+            </td>
+
 		</tr>
 	@endforeach
 @endsection
+

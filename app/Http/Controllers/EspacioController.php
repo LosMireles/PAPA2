@@ -7,15 +7,23 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Espacio;
+use App\Curso;
 
 class EspacioController extends Controller {
-      public function indexVer(){
-      $espacios  = Espacio::all();
-      return view('infraestructura/espacio/espacio_view',['espacios'=>$espacios]);
-   }
+        public function indexVer(){
+        $espacios = Espacio::all();
+        $cursos   = Curso::all();
+
+        return view('infraestructura/espacio/espacio_view',
+            ['espacios' => $espacios,
+             'cursos'   => $cursos]);
+    }
 //----------------------------------------------------------------
-	public function insertform(){
-	  return view('infraestructura/espacio/espacio_create');
+    public function insertform(){
+        $cursos   = Curso::all();
+
+        return view('infraestructura/espacio/espacio_create',
+            ['cursos' => $cursos]);
 	}
 
 	/**
@@ -28,14 +36,19 @@ class EspacioController extends Controller {
     {
         // Validate the request...
 
-        $espacio = new Espacio;
+        $espacio             = new Espacio;
 
-        $espacio->tipo = $request->tipo;
+        $espacio->tipo       = $request->tipo;
 		$espacio->superficie = $request->superficie;
-		$espacio->cantidad = $request->cantidad;
-		$espacio->clase = $request->clase;
+		$espacio->cantidad   = $request->cantidad;
+		$espacio->clase      = $request->clase;
 
         $espacio->save();
+
+        foreach($request->cursos as $nombreCurso){
+            $cursoId = DB::table('cursos')->where('nombre', $nombreCurso)->value('id');
+            $curso->espacios()->attach($cursoId);
+        }
 
 		$clase =$request->input('clase');
 
@@ -86,21 +99,41 @@ class EspacioController extends Controller {
 	  	$espacios  = Espacio::all();
 	  	return view('infraestructura/espacio/espacio_edit_view',['espacios'=>$espacios]);
 	}
-	public function show($id) {
-		$espacios  = Espacio::where('tipo', $id)->first();
-	  	return view('infraestructura/espacio/espacio_update',['espacios'=>$espacios]);
-	}
-	public function edit(Request $request, $id) {
-        $tipo = $request->input('tipo');
-		$superficie= $request->input('superficie');
-		$cantidad= $request->input('cantidad');
-		$clase = $request->input('clase');
 
-		Espacio::where('tipo', $id)->update([
+	public function show($tipo) {
+		$espacio       = Espacio::where('tipo', $tipo)->first();
+        $cursos        = Curso::all();
+        $curso_espacio = DB::table('curso_espacio')->get();
+
+        return view('infraestructura/espacio/espacio_update',
+            ['espacio'       => $espacio,
+             'cursos'        => $cursos,
+             'curso_espacio' => $curso_espacio]);
+	}
+
+	public function edit(Request $request) {
+        $tipo         = $request->tipo;
+		$superficie   = $request->superficie;
+		$cantidad     = $request->cantidad;
+		$clase        = $request->clase;
+        $nombreCursos = $request->cursos;
+
+        $idCursos = [];
+        foreach($nombreCursos as $nombreCurso){
+            $idCursos[] = DB::table('cursos')
+                ->where('nombre', $nombreCurso)->value('id');
+        }
+
+        $espacio =Espacio::where('id', $request->id)->first();
+		$espacio->update([
             'tipo' => $tipo, 'superficie' => $superficie,'cantidad'=>$cantidad,
             'clase' => $clase,
         ]);
+
+        $espacio->cursos()->sync($idCursos);
+
 	  	echo "Record updated successfully.<br/>";
 	  	echo '<a href = "/editarEspacio">Click Here</a> to go back.';
 	}
 }
+

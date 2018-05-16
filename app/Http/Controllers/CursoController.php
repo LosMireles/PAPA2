@@ -79,7 +79,7 @@ class CursoController extends Controller {
              'espacios'      => $espacios,
              'curso_espacio' => $curso_espacio]);
 	}
-	public function edit(Request $request, $nombre) {
+	public function edit(Request $request) {
 	  	$nombre        = $request->input('nombre');
 	  	$periodo       = $request->input('periodo');
 	  	$grupo         = $request->input('grupo');

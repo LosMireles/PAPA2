@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Espacio extends Model
 {
     protected $table = 'espacios';
+    protected $guarded = ['id'];
 
     //DEFINICION DE RELACIONES
     //un espacio pertenece a muchos cursos (muchos a muchos)

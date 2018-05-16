@@ -48,4 +48,17 @@
            </select>
    		</div>
    </div>
+
+	<div class="form-group">
+		<label for="cursos" class="col-sm-4 control-label" data-toggle="tooltip" title="Cursos que se imparten en el espacio">Cursos</label>
+
+		<div class="col-sm-8">
+			@foreach($cursos as $curso)
+				<input type="checkbox" name="cursos[]" value="{{$curso->nombre}}">
+				{{$curso->nombre}}<br>
+			@endforeach
+		</div>
+	</div>
+
 @endsection
+

@@ -17,6 +17,9 @@
 		<th>Cantidad</th>
 
 		<th>Clase</th>
+
+        <th>Cursos</th>
+
 		<th></th>
   </tr>
 @endsection
@@ -25,10 +28,19 @@
 @section('cuerpo_tabla')
   @foreach ($espacios as $espacio)
 	<tr>
-	  <td>{{ $espacio->tipo }}</td>
-	  <td>{{ $espacio->superficie }}</td>
-	  <td>{{ $espacio->cantidad }}</td>
-	  <td>{{ $espacio->clase }}</td>
+	    <td>{{ $espacio->tipo }}</td>
+	    <td>{{ $espacio->superficie }}</td>
+	    <td>{{ $espacio->cantidad }}</td>
+	    <td>{{ $espacio->clase }}</td>
+
+        <td>
+            @if(!empty($espacio->cursos))
+                @foreach($espacio->cursos as $curso)
+                    {{$curso->nombre}} <br>
+                @endforeach
+            @endif
+        </td>
+
 	  <td class="text-center"><a href = 'editEspacio/{{ $espacio->tipo  }}' class="btn btn-warning">Editar</a></td>
 	</tr>
   @endforeach
