@@ -12,7 +12,7 @@
     <tr>
 		<th>Nombre de la asignatura</th>
 		<th>Descripción de la asignatura</th>
-		<th></th>
+		<th>Curso que le correspode a la asignatura</th>
 	</tr>
 @endsection
 
@@ -21,7 +21,10 @@
 		<tr>
 			<td>{{$asignatura->nombre}}</td>
 			<td>{{$asignatura->descripcion}}</td>
+            <td>{{$asignatura->curso_id}}</td>
+
 			<td class="text-center"><a href="{{ url('/asignaturas/actualizar_asignatura/'.$asignatura->id ) }}" class="btn btn-warning">Editar</a></td>
 		</tr>
     @endforeach
 @endsection
+

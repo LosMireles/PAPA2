@@ -31,4 +31,15 @@
 			<textarea name="descripcion" class="form-control" rows="5">{{$asignatura->descripcion}}</textarea>
 		</div>
 	</div>
+
+	<div class="form-group">
+		<label for="curso" class="col-sm-4 control-label" data-toggle="tooltip" title="Curso que le corresponde a la asignatura">Curso</label>
+
+		<div class="col-sm-8">
+			<!--<input type='text' class="form-control" name='curso' placeholder="" required>-->
+            <input name="curso" class="form-control" required value = "{{$asignatura->curso_id}}"></input>
+		</div>
+	</div>
+
 @endsection
+

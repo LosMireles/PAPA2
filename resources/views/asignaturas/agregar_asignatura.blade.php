@@ -30,4 +30,15 @@
 			<textarea name="descripcion" class="form-control" rows="5" placeholder="Descripción" required=""></textarea>
 		</div>
 	</div>
+
+	<div class="form-group">
+		<label for="curso" class="col-sm-4 control-label" data-toggle="tooltip" title="Nombre del curso">Curso</label>
+
+		<div class="col-sm-8">
+			<!--<input type='text' class="form-control" name='curso' placeholder="Descripción" required>-->
+			<input name="curso" class="form-control" placeholder="Curso" required=""></textarea>
+		</div>
+	</div>
+
 @endsection
+

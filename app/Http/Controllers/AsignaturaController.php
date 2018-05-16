@@ -7,6 +7,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Asignatura;
+use App\Curso;
 
 class AsignaturaController extends Controller
 {
@@ -31,7 +32,9 @@ class AsignaturaController extends Controller
 
     public function ver_asignaturas(){
     	$asignaturas = DB::table('asignaturas')->get();
-        return view('asignaturas/ver_asignaturas', ['asignaturas'=>$asignaturas]);
+
+        return view('asignaturas/ver_asignaturas',
+            ['asignaturas' => $asignaturas]);
     }
 
     public function eliminar_asignatura(){
@@ -42,9 +45,9 @@ class AsignaturaController extends Controller
     /// ------------------------------------------------------------------------------
 
     public function agregar_asignatura_post(Request $request){
-        $asignatura = new Asignatura;
+        $asignatura              = new Asignatura;
 
-        $asignatura->nombre = $request->asignatura;
+        $asignatura->nombre      = $request->asignatura;
         $asignatura->descripcion = $request->descripcion;
 
         $asignatura->save();
@@ -53,13 +56,11 @@ class AsignaturaController extends Controller
     }
 
     public function actualizar_asignaturas_post(Request $request){
-        $nombre = $request->nombre;
+        $nombre      = $request->nombre;
         $descripcion = $request->descripcion;
 
-        $id = $request->id;
-
-        DB::table('asignaturas')->where('id', $id)->update([
-            'nombre' => $nombre,'descripcion'=>$descripcion
+        DB::table('asignaturas')->where('id', $request->id)->update([
+            'nombre' => $nombre,'descripcion' => $descripcion
         ]);
 
         echo "Record updated successfully.<br/>";
@@ -73,3 +74,4 @@ class AsignaturaController extends Controller
         echo '<a href = "/">Click Here</a> to go home.';
     }
 }
+

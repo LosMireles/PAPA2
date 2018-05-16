@@ -31,6 +31,7 @@
   	<tr>
 		<th>Nombre de la asignatura</th>
 		<th>Descripción de la asignatura</th>
+        <th>Curso que le corresponde a la asignatura</th>
 	</tr>
 @endsection
 
@@ -40,6 +41,8 @@
 		<tr>
 			<td>{{$asignatura->nombre}}</td>
 			<td>{{$asignatura->descripcion}}</td>
+            <td>{{$asignatura->curso_id}}</td>
 		</tr>
 	@endforeach
 @endsection
+
