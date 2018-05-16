@@ -1,7 +1,7 @@
 @extends('layouts.insertar')
 
 @section('title')
-   editar curso <?php echo $cursos->nombre; ?>
+   editar curso <?php echo $curso->nombre; ?>
 @endsection
 
 @section('descripcion')
@@ -10,15 +10,18 @@
 @endsection
 
 @section('accion')
-   action = "/editCurso/<?php echo $cursos->nombre; ?>"
+   action = "/editCurso/<?php echo $curso->nombre; ?>"
 @endsection
 
 @section('contenido_formulario')
-   <div class="form-group">
+
+    <input type="hidden" name="id" value="{{$curso->id}}">
+
+    <div class="form-group">
 		<label for="nombre" class="col-sm-4 control-label" data-toggle="tooltip" title="Nombre del Curso">Nombre</label>
 
 		<div class="col-sm-8">
-			<input type='text' class="form-control" name='nombre' id='nombre' placeholder="Nombre" required>
+			<input type='text' class="form-control" name='nombre' id='nombre' placeholder="Nombre" required value = "{{$curso->nombre}}">
 		</div>
 	</div>
 
@@ -26,7 +29,7 @@
 		<label for="periodo" class="col-sm-4 control-label" data-toggle="tooltip" title="Período en el que fue impartido">Período</label>
 
 		<div class="col-sm-8">
-			<input type='text' class="form-control" name='periodo' id="periodo" placeholder="2015-1" required>
+			<input type='text' class="form-control" name='periodo' id="periodo" placeholder="2015-1" required value = "{{$curso->periodo}}">
 		</div>
 	</div>
 
@@ -34,7 +37,7 @@
 		<label for="grupo" class="col-sm-4 control-label" data-toggle="tooltip" title="Número del grupo">Grupo</label>
 
 		<div class="col-sm-8">
-			<input type='text' class="form-control" name='grupo' id="grupo" placeholder="1" required>
+			<input type='text' class="form-control" name='grupo' id="grupo" placeholder="1" required value = "{{$curso->grupo}}">
 		</div>
 	</div>
 
@@ -42,7 +45,7 @@
 		<label for="noEstudiantes" class="col-sm-4 control-label" data-toggle="tooltip" title="Número de estudiantes de la licenciatura presentes en el curso">Número de estudiantes</label>
 
 		<div class="col-sm-8">
-			<input type='text' class="form-control" name='noEstudiantes' id="noEstudiantes" placeholder="1" required>
+			<input type='text' class="form-control" name='noEstudiantes' id="noEstudiantes" placeholder="1" required value = "{{$curso->noEstudiantes}}">
 		</div>
 	</div>
 
@@ -50,7 +53,7 @@
 		<label for="tipoAula" class="col-sm-4 control-label" data-toggle="tooltip" title="Esto es: laboratorio, aula, etc">Tipo de aula</label>
 
 		<div class="col-sm-8">
-			<input type='text' class="form-control" name='tipoAula' id="tipoAula" placeholder="Aula" required>
+			<input type='text' class="form-control" name='tipoAula' id="tipoAula" placeholder="Aula" required value = "{{$curso->tipoAula}}">
 		</div>
 	</div>
 
@@ -58,7 +61,31 @@
 		<label for="tipo" class="col-sm-4 control-label" data-toggle="tooltip" title="Identificador del curso">Tipo</label>
 
 		<div class="col-sm-8">
-			<input type='text' class="form-control" name='tipo' id="tipo" placeholder="CALC202-1" required>
+			<input type='text' class="form-control" name='tipo' id="tipo" placeholder="CALC202-1" required value = "{{$curso->tipo}}">
 		</div>
 	</div>
+
+	<div class="form-group">
+		<label for="" class="col-sm-4 control-label" data-toggle="tooltip" title="Espacios donde se imparte el curso">Espacios</label>
+
+		<div class="col-sm-8">
+			@foreach($espacios as $espacio)
+				<?php $temp = 0; ?>
+				@foreach($curso_espacio as $unidad)
+					@if($curso->id == $unidad->curso_id && $espacio->id == $unidad->espacio_id)
+						<?php $temp = 1; ?>
+					@endif
+				@endforeach
+
+				@if($temp == 1)
+					<input type="checkbox" name="espacios[]" checked value="{{$espacio->tipo}}"> {{$espacio->tipo}} <br>
+				@else
+					<input type="checkbox" name="espacios[]" value="{{$espacio->tipo}}"> {{$espacio->tipo}} <br>
+				@endif
+			@endforeach
+		</div>
+	</div>
+
+
 @endsection
+

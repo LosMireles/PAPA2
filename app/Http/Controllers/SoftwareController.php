@@ -9,11 +9,6 @@ use App\Http\Controllers\Controller;
 use App\Software;
 use App\Equipo;
 
-//////Arreglo de posibles clases
-//////Puesto aqui para no ponerlo en un
-//////modelo y repetir informacion
-//////Pero deberia estar en otro lado
-//////
 class SoftwareController extends Controller {
 
     private $clases = ['lenguaje', 'libreria', 'case'];
@@ -80,23 +75,23 @@ class SoftwareController extends Controller {
 
 	public function show($nombre) {
         $equipo_softwares = DB::table('equipo_software')->get();
+		$software         = Software::where('nombre', $nombre)->first();
+	  	$equipos          = Equipo::all();
 
-		$software  = Software::where('nombre', $nombre)->first();
-	  	$equipos    = Equipo::all();
 	  	return view('equipamiento/software/software_update',
-	  	    ['software' =>$software,
-            'equipos'   => $equipos,
-            'clases'    => $this->clases,
-            'equipo_softwares' => $equipo_softwares]);
+	  	    ['software'         => $software,
+             'equipos'          => $equipos,
+             'clases'           => $this->clases,
+             'equipo_softwares' => $equipo_softwares]);
 	}
 
 	public function edit(Request $request, $nombre) {
-	  	$nombre = $request->input('nombre');
-	  	$manualUsuario = $request->input('manualUsuario');
-	  	$licencia = $request->input('licencia');
+	  	$nombre         = $request->input('nombre');
+	  	$manualUsuario  = $request->input('manualUsuario');
+	  	$licencia       = $request->input('licencia');
 	  	$disponibilidad = $request->input('disponibilidad');
-	  	$clase = $request->input('clase');
-	  	$serialEquipos = $request->input('equipos');
+	  	$clase          = $request->input('clase');
+	  	$serialEquipos  = $request->input('equipos');
 
         $idEquipos = [];
         foreach($serialEquipos as $serial){

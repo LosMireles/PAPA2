@@ -16,7 +16,7 @@
 		<td>Numero de Estudiantes</td>
 		<td>Tipo de Aula</td>
 		<td>Tipo</td>
-		<td></td>
+		<td>Espacios</td>
    </tr>
 @endsection
 
@@ -30,6 +30,15 @@
 		<td>{{ $curso->noEstudiantes }}</td>
 		<td>{{ $curso->tipoAula }}</td>
 		<td>{{ $curso->tipo }}</td>
+
+        <td>
+            @if(!empty($curso->espacios))
+                @foreach($curso->espacios as $espacio)
+                    {{$espacio->tipo}} <br>
+                @endforeach
+            @endif
+        </td>
+
 		<td class="text-center"><a href = 'editCurso/{{ $curso->nombre }}' class="btn btn-warning">Editar</a></td>
 	</tr>
 	@endforeach

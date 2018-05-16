@@ -36,3 +36,4 @@ class CreateCursosTable extends Migration
         Schema::dropIfExists('cursos');
     }
 }
+

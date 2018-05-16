@@ -61,4 +61,17 @@
 			<input type='text' class="form-control" name='tipo' id="tipo" placeholder="CALC202-1" required>
 		</div>
 	</div>
+
+	<div class="form-group">
+		<label for="tipo" class="col-sm-4 control-label" data-toggle="tooltip" title="Espacios donde se imparte el curso">Espacios</label>
+
+		<div class="col-sm-8">
+			@foreach($espacios as $espacio)
+				<input type="checkbox" name="espacios[]" value="{{$espacio->tipo}}">
+				{{$espacio->tipo}}<br>
+			@endforeach
+		</div>
+	</div>
+
 @endsection
+

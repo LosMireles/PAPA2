@@ -8,6 +8,7 @@ class Curso extends Model
 {
     //Define explicitamente el nombre de la tabla
     protected $table = 'cursos';
+    protected $guarded = [];
 
     //DEFINICION DE RELACIONES
     //un curso pertenece a muchos espacios (muchos a muchos)
