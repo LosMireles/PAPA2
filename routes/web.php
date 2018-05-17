@@ -169,3 +169,15 @@ Route::post('deleteCurso','CursoController@destroy');
 Route::get('editarCurso','CursoController@indexEditar');
 Route::get('editCurso/{id}','CursoController@show');
 Route::post('editCurso/{id}','CursoController@edit');
+
+// Técnicos académicos -------------------------------------------------------------------
+Route::get('/tecnico_academico','TecnicoAcademicoController@index');
+
+Route::get('/tecnico_academico/insertar', 'TecnicoAcademicoController@insertar');
+Route::post('/tecnico_academico/insertar_tecnico', 'TecnicoAcademicoController@guardar');
+
+Route::get('/tecnico_academico/ver', 'TecnicoAcademicoController@ver');
+
+Route::get('/tecnico_academico/editar', 'TecnicoAcademicoController@update_show');
+
+Route::get('/tecnico_academico/borrar', 'TecnicoAcademicoController@delete_show');

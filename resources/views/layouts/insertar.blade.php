@@ -18,7 +18,7 @@
 
 	<div class="row">
 		<div class="col-md-6 col-md-offset-3">
-			<form class="form-horizontal" @yield('accion') method="POST">
+			<form class="form-horizontal" @yield('accion') method="POST" enctype="multipart/form-data">
 				<input type = "hidden" name = "_token" value = "<?php echo csrf_token(); ?>">
 				@yield('contenido_formulario')
 
