@@ -37,4 +37,9 @@
 			<a href="/borrarCubiculo">Borrar</a>
 		</td>
 	</tr>
+	<tr>
+		<td>
+			<a href="/pruebaPdf">PDF</a>
+		</td>
+	</tr>
 @endsection

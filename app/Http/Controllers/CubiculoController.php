@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
+use PDF;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -76,7 +77,14 @@ class CubiculoController extends Controller {
 	  	echo "Record updated successfully.<br/>";
 	  	echo '<a href = "/editarCubiculo">Click Here</a> to go back.';
 	}
+	//*********************************************************************
+	public function imprimir() {
+	  	$cubiculos  = Cubiculo::all();
+      		//return view('infraestructura/cubiculo/cubiculo_view',['cubiculos'=>$cubiculos]);
 
+		$pdf = PDF::loadView('infraestructura/cubiculo/cubiculo_view', ['cubiculos'=>$cubiculos]);
+	  	return $pdf->download('Cubiculos.pdf');
+	}	
 
 
 

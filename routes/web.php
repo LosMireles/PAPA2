@@ -67,6 +67,7 @@ Route::post('CrearCubiculo','CubiculoController@store');
 Route::get('insertarCubiculos','CubiculoController@dummie');
 
 Route::get('verCubiculo','CubiculoController@indexVer');
+Route::get('pruebaPdf','CubiculoController@imprimir');
 
 Route::get('borrarCubiculo','CubiculoController@indexBorrar');
 Route::post('deleteCubiculo','CubiculoController@destroy');
