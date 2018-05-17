@@ -10,6 +10,7 @@
 			padding: : 15px;
 		}
 	</style>
+	@yield('javascripts')
 @endsection
 
 @section('content')

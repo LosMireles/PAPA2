@@ -19,6 +19,8 @@ $factory->define(App\Equipo::class, function (Faker $faker) {
         'manualUsuario' => $faker->numberBetween(0, 1),
         'operable' => $faker->numberBetween(0, 1),
         'localizacion' => $faker->word(10),
+        'tipo' => $faker->word(10),
+        'descripcion' => $faker->word(10),
         //'software' => [$faker->word(10)],
     ];
 });

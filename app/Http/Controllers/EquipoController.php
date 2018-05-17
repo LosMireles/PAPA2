@@ -61,16 +61,25 @@ class EquipoController extends Controller
     	$equipo->manualUsuario = $request->manual;
     	$equipo->operable = $request->operable;
     	$equipo->localizacion = $request->localizacion;
+        $equipo->tipo = $request->tipo;
+        $equipo->descripcion = $request->especificaciones;
 
-    	$equipo->save();
+        // Si el equipo es de cómputo. El equipo cuenta con software
+        if($request->nombres){    
+        	$equipo->save();
 
-        foreach($request->nombres as $nombreSoftware){
-            $softwareId = DB::table('softwares')->where('nombre', $nombreSoftware)->value('id');
-            $equipo->softwares()->attach($softwareId);
+            foreach($request->nombres as $nombreSoftware){
+                $softwareId = DB::table('softwares')->where('nombre', $nombreSoftware)->value('id');
+                $equipo->softwares()->attach($softwareId);
+            }
+
+        	echo "Record inserted successfully.<br/>";
+            echo '<a href = "/">Click Here</a> to go home.';
+        }else{
+            $equipo->save();
+            echo "Esto no es un equipo de computo";
         }
 
-    	echo "Record inserted successfully.<br/>";
-        echo '<a href = "/">Click Here</a> to go home.';
     }
 
     public function gestion_equipo_borrar(Request $request){
