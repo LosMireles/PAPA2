@@ -66,7 +66,7 @@
 	</div>
 
 	<div class="form-group">
-		<label for="" class="col-sm-4 control-label" data-toggle="tooltip" title="Espacios donde se imparte el curso">Espacios</label>
+		<label for="espacios" class="col-sm-4 control-label" data-toggle="tooltip" title="Espacios donde se imparte el curso">Espacios</label>
 
 		<div class="col-sm-8">
 			@foreach($espacios as $espacio)

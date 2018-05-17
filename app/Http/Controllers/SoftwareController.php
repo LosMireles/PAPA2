@@ -85,7 +85,7 @@ class SoftwareController extends Controller {
              'equipo_softwares' => $equipo_softwares]);
 	}
 
-	public function edit(Request $request, $nombre) {
+	public function edit(Request $request) {
 	  	$nombre         = $request->input('nombre');
 	  	$manualUsuario  = $request->input('manualUsuario');
 	  	$licencia       = $request->input('licencia');
@@ -98,7 +98,7 @@ class SoftwareController extends Controller {
             $idEquipos[] = DB::table('equipos')->where('serial', $serial)->value('id');
         }
 
-        $software = Software::where('nombre', $nombre)->first();
+        $software = Software::where('id', $request->id)->first();
 		$software->update([
             'nombre' => $nombre, 'manualUsuario' => $manualUsuario,'licencia'=>$licencia,
             'disponibilidad'=>$disponibilidad, 'clase' => $clase
