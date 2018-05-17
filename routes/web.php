@@ -182,3 +182,9 @@ Route::get('/tecnico_academico/ver', 'TecnicoAcademicoController@ver');
 Route::get('/tecnico_academico/editar', 'TecnicoAcademicoController@update_show');
 
 Route::get('/tecnico_academico/borrar', 'TecnicoAcademicoController@delete_show');
+
+Route::get('/error/{mensaje?}', function($mensaje = null){
+    return view('general/error', ['mensaje' => $mensaje]);
+});
+
+
