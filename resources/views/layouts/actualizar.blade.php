@@ -18,20 +18,19 @@
 
 	<div class="row">
 		<div class="col-md-6 col-md-offset-3">
-			<form method = "PATCH" @yield('accion') class="form-horizontal" enctype="multipart/form-data">
-                {{csrf_field()}}
-				<input type = "hidden" name = "_method" value = "PATCH">
+            {{ Form::open(['action' => ['SoftwareController@update', $software->nombre],
+                           'class' => 'form-horizontal']) }}
+                {{ Form::hidden('_method', 'PATCH') }}
+
 				<div class="form-group">
                     <input type = "hidden" name = "_token" value = "{{csrf_token()}}">
                     @yield('contenido_formulario')
                 </div>
 
-				<div class="form-group">
-					<div class="col-sm-offset-4 col-sm-8">
-						<button type='submit' class="btn btn-primary">Editar</button>
-					</div>
-				</div>
-			</form>
+            <div class="col-sm-offset-4 col-sm-8">
+                {{ Form::submit('Editar', ['class' => 'btn btn-warning']) }}
+                {{ Form::close() }}
+            </div>
 		</div>
 	</div>
 @endsection

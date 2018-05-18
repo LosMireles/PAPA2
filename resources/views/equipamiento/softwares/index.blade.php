@@ -53,15 +53,16 @@
             </td>
 
             <td class="text-center">
-                <a href="{{action('SoftwareController@edit', ['nombre' => $software->nombre])}}" class="btn btn-warning">
+                <a href="{{action('SoftwareController@edit', [ 'nombre' => $software->nombre])}}" class="btn btn-warning">
                     Editar
                 </a>
             </td>
 
-            <td class="text-center">
-                <a href="{{action('SoftwareController@destroy', ['nombre' => $software->nombre])}}" class="btn btn-warning">
-                    Borrar
-                </a>
+            <td>
+                {{ Form::open(['action' => ['SoftwareController@destroy', $software->nombre]]) }}
+                    {{ Form::hidden('_method', 'DELETE') }}
+                    {{ Form::submit('Borrar', ['class' => 'btn btn-warning']) }}
+                {{ Form::close() }}
             </td>
 
         </tr>

@@ -56,7 +56,7 @@ class SoftwareController extends Controller {
         }
 
 		echo "Elemento insertado exitosamente!";
-        return redirect()->action('SoftwareController@create');
+        return redirect()->action('SoftwareController@index');
     }
 
 	//*-----------------------------------------------------------------
@@ -73,7 +73,7 @@ class SoftwareController extends Controller {
 	}
 
 	//*-----------------------------------------------------------------
-    public function update($nombre){
+    public function update(Request $request, $nombre){
 	  	$nombre         = $request->input('nombre');
 	  	$manualUsuario  = $request->input('manualUsuario');
 	  	$licencia       = $request->input('licencia');

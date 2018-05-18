@@ -78,7 +78,9 @@
 	</div>
 
 	<div class="form-group">
-		<label for="" class="col-sm-4 control-label" data-toggle="tooltip" title="Equipos que tienen instalado el software">Equipos</label>
+        <label for="" class="col-sm-4 control-label" data-toggle="tooltip" title="Equipos que tienen instalado el software">
+            Equipos
+        </label>
 
 		<div class="col-sm-8">
 			@foreach($equipos as $equipo)
