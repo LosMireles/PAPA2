@@ -59,7 +59,15 @@ class CursoController extends Controller {
 	}
 	public function destroy(Request $request){
 	  	$nombre = $request->input('nombre');
-	  	DB::delete('delete from cursos where nombre = ?',[$nombre]);
+
+        $curso = Curso::where('nombre', $nombre)->first();
+        if(!$curso){
+            $mensaje = "No existe curso con nombre: ".$nombre;
+            return view('general/error')
+                ->with(['mensaje' => $mensaje]);
+        }
+        $curso->delete();
+
 	  	echo "Record deleted successfully.<br/>";
 	  	echo '<a href = "/borrarCurso">Click Here</a> to go back.';
 	}

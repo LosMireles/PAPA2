@@ -65,7 +65,7 @@ class EquipoController extends Controller
         $equipo->descripcion = $request->especificaciones;
 
         // Si el equipo es de cómputo. El equipo cuenta con software
-        if($request->nombres){    
+        if($request->nombres){
         	$equipo->save();
 
             foreach($request->nombres as $nombreSoftware){
@@ -83,8 +83,15 @@ class EquipoController extends Controller
     }
 
     public function gestion_equipo_borrar(Request $request){
-    	$serial = $request->serial;
-	  	DB::delete('delete from equipos where serial = ?',[$serial]);
+	  	$serial = $request->serial;
+
+        $equipo = Equipo::where('serial', $serial)->first();
+        if(!$equipo){
+            $mensaje = "No existe equipo con serial: ".$serial;
+            return view('general/error')
+                ->with(['mensaje' => $mensaje]);
+        }
+        $equipo->delete();
 
 	  	echo "Record deleted successfully.<br/>";
 	  	echo '<a href = "/">Click Here</a> to go home.';

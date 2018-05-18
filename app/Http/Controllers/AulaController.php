@@ -100,7 +100,15 @@ class AulaController extends Controller
 	}
 	public function destroy(Request $request){
 	  	$Tipo = $request->input('Tipo');
-	  	DB::delete('delete from aulas where Tipo = ?',[$Tipo]);
+
+        $aula = Aula::where('Tipo', $Tipo)->first();
+        if(!$aula){
+            $mensaje = "No existe aula con Tipo: ".$Tipo;
+            return view('general/error')
+                ->with(['mensaje' => $mensaje]);
+        }
+        $aula->delete();
+
 	  	echo "Record deleted successfully.<br/>";
 	  	echo '<a href = "/borrarAula">Click Here</a> to go back.';
 	}

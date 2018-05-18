@@ -88,8 +88,16 @@ class EspacioController extends Controller {
       	return view('infraestructura/espacio/espacio_delete',['espacios'=>$espacios]);
 	}
 	public function destroy(Request $request){
-	  	$tipo = $request->input('tipo');
-	  	DB::delete('delete from espacios where tipo = ?',[$tipo]);
+	  	$Tipo = $request->tipo;
+
+        $espacio = Espacio::where('Tipo', $Tipo)->first();
+        if(!$espacio){
+            $mensaje = "No existe espacio con Tipo: ".$Tipo;
+            return view('general/error')
+                ->with(['mensaje' => $mensaje]);
+        }
+        $espacio->delete();
+
 	  	echo "Record deleted successfully.<br/>";
 	  	echo '<a href = "/borrarEspacio">Click Here</a> to go back.';
 	}

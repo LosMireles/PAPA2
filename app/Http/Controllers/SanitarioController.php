@@ -60,8 +60,16 @@ class SanitarioController extends Controller
       	return view('infraestructura/sanitario/sanitario_delete',['sanitarios'=>$sanitarios]);
 	}
 	public function destroy(Request $request){
-	  	$Tipo = $request->input('Tipo');
-	  	DB::delete('delete from sanitarios where Tipo = ?',[$Tipo]);
+	  	$Tipo = $request->Tipo;
+
+        $sanitario = Sanitario::where('Tipo', $Tipo)->first();
+        if(!$sanitario){
+            $mensaje = "No existe sanitario con Tipo: ".$Tipo;
+            return view('general/error')
+                ->with(['mensaje' => $mensaje]);
+        }
+        $sanitario->delete();
+
 	  	echo "Record deleted successfully.<br/>";
 	  	echo '<a href = "/borrarSanitario">Click Here</a> to go back.';
 	}

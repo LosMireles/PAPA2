@@ -58,6 +58,7 @@ Route::post('deleteSoftware','SoftwareController@destroy');
 Route::get('editarSoftware','SoftwareController@index');
 Route::get('editSoftware/{id}','SoftwareController@show');
 Route::post('editSoftware/{id}','SoftwareController@edit');
+//Route::resources('softwares', 'SoftwareController');
 
 //cubiculo
 Route::get('/infraestructura/cubiculo', 'RoutesController@Cubiculo');
@@ -183,7 +184,7 @@ Route::get('/tecnico_academico/editar', 'TecnicoAcademicoController@update_show'
 
 Route::get('/tecnico_academico/borrar', 'TecnicoAcademicoController@delete_show');
 
-Route::get('/error/{mensaje?}', function($mensaje = null){
+Route::get('/error', function($mensaje = null){
     return view('general/error', ['mensaje' => $mensaje]);
 });
 

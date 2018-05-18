@@ -62,8 +62,16 @@ class AsesoriaController extends Controller
         return view('infraestructura/asesoria/asesoria_delete',['asesorias'=>$asesorias]);
     }
     public function destroy(Request $request){
-        $Tipo = $request->input('Tipo');
-        DB::delete('delete from asesorias where Tipo = ?',[$Tipo]);
+        $tipo = $request->input('Tipo');
+
+        $asesoria = Asesoria::where('Tipo', $tipo)->first();
+        if(!$asesoria){
+            $mensaje = "No existe asesoria con tipo: ".$tipo;
+            return view('general/error')
+                ->with(['mensaje' => $mensaje]);
+        }
+        $asesoria->delete();
+
         echo "Record deleted successfully.<br/>";
         echo '<a href = "/borrarAsesoria">Click Here</a> to go back.';
     }

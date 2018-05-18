@@ -11,7 +11,7 @@
     </div>
 
         <td class="text-center">
-            <a href='{{url()->previous()}}' class="btn btn-warning">
+            <a href='{{url()->previous()}}' class="btn btn-default">
                 Regresar
             </a>
         </td>

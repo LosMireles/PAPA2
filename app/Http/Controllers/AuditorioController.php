@@ -62,8 +62,16 @@ class AuditorioController extends Controller
         return view('infraestructura/auditorio/auditorio_delete',['auditorios'=>$auditorios]);
     }
     public function destroy(Request $request){
-        $Tipo = $request->input('Tipo');
-        DB::delete('delete from auditorios where Tipo = ?',[$Tipo]);
+	  	$Tipo = $request->Tipo;
+
+        $auditorio = auditorio::where('Tipo', $Tipo)->first();
+        if(!$auditorio){
+            $mensaje = "No existe auditorio con tipo: ".$Tipo;
+            return view('general/error')
+                ->with(['mensaje' => $mensaje]);
+        }
+        $auditorio->delete();
+
         echo "Record deleted successfully.<br/>";
         echo '<a href = "/borrarAuditorio">Click Here</a> to go back.';
     }

@@ -61,10 +61,18 @@ class SoftwareController extends Controller {
 	}
 
 	public function destroy(Request $request){
-	  	$nombre = $request->input('nombre');
-	  	DB::delete('delete from softwares where nombre = ?',[$nombre]);
-	  	echo "Record deleted successfully.<br/>";
-	  	echo '<a href = "/borrarSoftware">Click Here</a> to go back.';
+	  	$nombre = $request->nombre;
+
+        $software = Software::where('nombre', $nombre)->first();
+        if(!$software){
+            $mensaje = "No existe software con nombre: ".$nombre;
+            return view('general/error')
+                ->with(['mensaje' => $mensaje]);
+        }
+        $software->delete();
+
+        echo "Record deleted successfully.<br/>";
+        echo '<a href = "/borrarSoftware">Click Here</a> to go back.';
 	}
 
 	//*-----------------------------------------------------------------

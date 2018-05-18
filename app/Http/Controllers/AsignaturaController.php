@@ -68,8 +68,16 @@ class AsignaturaController extends Controller
     }
 
     public function eliminar_asignatura_post(Request $request){
-        $nombre = $request->nombre;
-        DB::delete('delete from asignaturas where nombre = ?',[$nombre]);
+	  	$nombre = $request->nombre;
+
+        $asignatura = Asignatura::where('nombre', $nombre)->first();
+        if(!$asignatura){
+            $mensaje = "No existe asignatura con nombre: ".$nombre;
+            return view('general/error')
+                ->with(['mensaje' => $mensaje]);
+        }
+        $asignatura->delete();
+
         echo "Record deleted successfully.<br/>";
         echo '<a href = "/">Click Here</a> to go home.';
     }

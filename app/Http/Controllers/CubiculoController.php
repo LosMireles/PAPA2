@@ -54,7 +54,15 @@ class CubiculoController extends Controller {
 	}
 	public function destroy(Request $request){
 	  	$Tipo = $request->input('Tipo');
-	  	DB::delete('delete from cubiculos where Tipo = ?',[$Tipo]);
+
+        $cubiculo = Cubiculo::where('Tipo', $Tipo)->first();
+        if(!$cubiculo){
+            $mensaje = "No existe cubiculo con Tipo: ".$Tipo;
+            return view('general/error')
+                ->with(['mensaje' => $mensaje]);
+        }
+        $cubiculo->delete();
+
 	  	echo "Record deleted successfully.<br/>";
 	  	echo '<a href = "/borrarCubiculo">Click Here</a> to go back.';
 	}
