@@ -46,19 +46,18 @@ Route::get('editEspacio/{id}','EspacioController@show');
 Route::post('editEspacio/{id}','EspacioController@edit');
 
 //software
-Route::get('/equipamiento/software', 'RoutesController@Software');
+//Route::get('/equipamiento/software', 'RoutesController@Software');
 
-Route::get('insertarSoftware','SoftwareController@insertform');
-Route::post('CrearSoftware','SoftwareController@store');
-Route::get('verSoftware','SoftwareController@indexVer');
+//Route::get('insertarSoftware','SoftwareController@insertform');
+//Route::post('CrearSoftware','SoftwareController@store');
+//Route::get('verSoftware','SoftwareController@indexVer');
 
-Route::get('borrarSoftware','SoftwareController@indexBorrar');
-Route::post('deleteSoftware','SoftwareController@destroy');
+//Route::get('borrarSoftware','SoftwareController@indexBorrar');
+//Route::post('deleteSoftware','SoftwareController@destroy');
 
-Route::get('editarSoftware','SoftwareController@index');
-Route::get('editSoftware/{id}','SoftwareController@show');
-Route::post('editSoftware/{id}','SoftwareController@edit');
-//Route::resources('softwares', 'SoftwareController');
+//Route::get('editarSoftware','SoftwareController@index');
+//Route::get('editSoftware/{id}','SoftwareController@show');
+//Route::post('editSoftware/{id}','SoftwareController@edit');
 
 //cubiculo
 Route::get('/infraestructura/cubiculo', 'RoutesController@Cubiculo');
@@ -188,4 +187,6 @@ Route::get('/error', function($mensaje = null){
     return view('general/error', ['mensaje' => $mensaje]);
 });
 
+Route::resource('softwares', 'SoftwareController',
+    ['except' => 'show']);
 

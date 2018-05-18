@@ -19,7 +19,7 @@
 @section('cuerpo_tabla')
 	<tr>
 		<td>
-			<a href="{{ url('/equipamiento/software') }}" data-toggle="tooltip" title="Software con el que cuenta la licenciatura."> Software [?]</a> </li>
+			<a href="{{action('SoftwareController@index')}}" data-toggle="tooltip" title="Software con el que cuenta la licenciatura."> Software [?]</a> </li>
 		</td>
 	</tr>
 	<tr>

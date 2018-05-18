@@ -5,12 +5,12 @@
 @endsection
 
 @section('descripcion')
-	<a href="/equipamiento/software" class="btn btn-primary">Regresar</a>
+	<a href="{{action('SoftwareController@index')}}" class="btn btn-primary">Regresar</a>
 	<h1 class="text-center">Formulario para agregar un software</h1>
 @endsection
 
 @section('accion')
-   action = "/CrearSoftware"
+   action = "{{action('SoftwareController@store')}}"
 @endsection
 
 @section('contenido_formulario')
@@ -64,11 +64,14 @@
 		<label for="" class="col-sm-4 control-label" data-toggle="tooltip" title="Equipos que tienen instalado el software">Equipos</label>
 
 		<div class="col-sm-8">
-			@foreach($equipos as $equipo)
-				<input type="checkbox" name="equipo[]" value="{{$equipo->serial}}">
-				{{$equipo->serial}}<br>
-			@endforeach
+            @if(!empty($equipos))
+                @foreach($equipos as $equipo)
+                    <input type="checkbox" name="equipo[]" value="{{$equipo->serial}}">
+                    {{$equipo->serial}}<br>
+                @endforeach
+            @endif
 		</div>
 	</div>
+
 @endsection
 

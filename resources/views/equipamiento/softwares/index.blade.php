@@ -1,12 +1,23 @@
+<?php use App\Http\Controllers\SoftwareController;?>
 @extends('layouts.ver')
 @section('title')
-    editar software
+    ver software
 @endsection
 
 @section('descripcion')
-    <a href="/equipamiento/software" class="btn btn-primary">Regresar</a>
+    <a href="/equipamiento" class="btn btn-primary">
+        Regresar
+    </a>
+
+    <td class="text-center">
+        <a href="{{action('SoftwareController@create')}}"class="btn btn-warning">
+            Agregar nuevo software
+        </a>
+    </td>
+
     <h1 class="text-center">Listado de software</h1>
 @endsection
+
 
 @section('cabeza_tabla')
     <tr>
@@ -16,7 +27,6 @@
         <th>Lugar de obtención</th>
         <th>Clase</th>
         <th>Equipos</th>
-        <th></th>
     </tr>
 @endsection
 
@@ -41,8 +51,21 @@
                     @endforeach
                 @endif
             </td>
-            <td class="text-center"><a href='editSoftware/{{ $software->nombre  }}'" class="btn btn-warning">Editar</a></td>
+
+            <td class="text-center">
+                <a href="{{action('SoftwareController@edit', ['nombre' => $software->nombre])}}" class="btn btn-warning">
+                    Editar
+                </a>
+            </td>
+
+            <td class="text-center">
+                <a href="{{action('SoftwareController@destroy', ['nombre' => $software->nombre])}}" class="btn btn-warning">
+                    Borrar
+                </a>
+            </td>
+
         </tr>
     @endforeach
+    @endsection
 @endsection
-@endsection
+

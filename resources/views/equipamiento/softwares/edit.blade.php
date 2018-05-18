@@ -1,16 +1,18 @@
-@extends('layouts.insertar')
+@extends('layouts.actualizar')
 
 @section('title')
-	actualizar software
+	Editar software
 @endsection
 
 @section('descripcion')
-	<a href="/editarSoftware" class="btn btn-primary">Regresar</a>
+    <a href="{{action('SoftwareController@index')}}" class="btn btn-primary">
+        Regresar
+    </a>
 	<h1 class="text-center">Edición del software {{$software->nombre}}</h1>
 @endsection
 
 @section('accion')
-   action = "/editSoftware/<?php echo $software->nombre; ?>"
+    action = "{{action('SoftwareController@update', $software->nombre)}}"
 @endsection
 
 @section('contenido_formulario')
@@ -50,7 +52,7 @@
 	<div class="form-group">
 		<label for="disponibilidad" class="col-sm-4 control-label" data-toggle="tooltip" title="Se refiere a donde se consiguio el software">Lugar de obtención: </label>
 
-		<div class="col-sm-8">
+    <div class="col-sm-8">
 			<input type="text" class="form-control" name="disponibilidad" placeholder="" required value = "{{$software->disponibilidad}}">
 		</div>
 	</div>
