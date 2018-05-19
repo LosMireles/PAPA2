@@ -18,7 +18,7 @@
 @section('contenido_formulario')
 	<div class="form-group">
 		<label for="Tipo" class="col-sm-4 control-label" data-toggle="tooltip" title="Nombre escrito en las puertas">Código del aula</label>
-		
+
 		<div class="col-sm-8">
       		<?php
       			if(!empty($_GET['tipo']))

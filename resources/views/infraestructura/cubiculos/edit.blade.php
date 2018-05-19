@@ -1,7 +1,7 @@
 @extends('layouts.actualizar')
 
 @section('title')
-   editar cubículo <?php echo$cubiculos->Tipo; ?>
+   editar cubículo <?php echo$cubiculo->Tipo; ?>
 @endsection
 
 @section('descripcion')
@@ -25,7 +25,7 @@
       <label for="Tipo" class="col-sm-4 control-label" data-toggle="tooltip" title="Número del cubículo">Código del cubículo</label>
 
       <div class="col-sm-8">
-         <input type='text' class="form-control" name='Tipo' value = '<?php echo$cubiculos->Tipo; ?>' required>
+         <input type='text' class="form-control" name='Tipo' value = '<?php echo$cubiculo->Tipo; ?>' required>
       </div>
    </div>
 
@@ -33,7 +33,7 @@
       <label for="Profesor" class="col-sm-4 control-label" data-toggle="tooltip" title="El encargado del cubículo">Profesor</label>
 
       <div class="col-sm-8">
-         <input type='text' class="form-control" name='Profesor' id="Profesor" placeholder="Nombre" required value = '<?php echo$cubiculos->Profesor; ?>'>
+         <input type='text' class="form-control" name='Profesor' id="Profesor" placeholder="Nombre" required value = '<?php echo$cubiculo->Profesor; ?>'>
       </div>
    </div>
 
@@ -41,7 +41,7 @@
       <label for="CantidadEquipo" class="col-sm-4 control-label" data-toggle="tooltip" title="Cantidad de computadoras hay en el cubículo">Cantidad de equipo</label>
 
       <div class="col-sm-8">
-         <input type='text' class="form-control" name='CantidadEquipo' id="CantidadEquipo" placeholder="1" required value = '<?php echo$cubiculos->CantidadEquipo; ?>'>
+         <input type='text' class="form-control" name='CantidadEquipo' id="CantidadEquipo" placeholder="1" required value = '<?php echo$cubiculo->CantidadEquipo; ?>'>
       </div>
    </div>
 @endsection

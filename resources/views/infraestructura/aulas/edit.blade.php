@@ -1,7 +1,7 @@
 @extends('layouts.actualizar')
 
 @section('title')
-	 editar aula <?php echo$aulas->Tipo; ?>
+	 editar aula <?php echo$aula->Tipo; ?>
 @endsection
 
 @section('descripcion')
@@ -25,7 +25,7 @@
 		<label for="Tipo" class="col-sm-4 control-label" data-toggle="tooltip" title="Nombre escrito en las puertas">Código del aula</label>
 
 		<div class="col-sm-8">
-			<input type='text' name='Tipo' class="form-control" value = '<?php echo$aulas->Tipo; ?>' required>
+			<input type='text' name='Tipo' class="form-control" value = '<?php echo$aula->Tipo; ?>' required>
 		</div>
 	</div>
 
@@ -33,7 +33,7 @@
 		<label for="Capacidad" class="col-sm-4 control-label" data-toggle="tooltip" title="Capacidad máxima del aula">Capacidad máxima de personas</label>
 
 		<div class="col-sm-8">
-			<input type='text' class="form-control" name='Capacidad' id="Capacidad" placeholder="10" required value = '<?php echo$aulas->Capacidad; ?>'>
+			<input type='text' class="form-control" name='Capacidad' id="Capacidad" placeholder="10" required value = '<?php echo$aula->Capacidad; ?>'>
 		</div>
 	</div>
 
@@ -41,7 +41,7 @@
 		<label for="CantidadAV" class="col-sm-4 control-label" data-toggle="tooltip" title="Cantidad de equipo audiovisual hay en el aula">Cantidad de equipo audiovisual</label>
 
 		<div class="col-sm-8">
-			<input type='text' class="form-control" name='CantidadAV' id="CantidadAV" placeholder="1" required value = '<?php echo$aulas->CantidadAV; ?>'>
+			<input type='text' class="form-control" name='CantidadAV' id="CantidadAV" placeholder="1" required value = '<?php echo$aula->CantidadAV; ?>'>
 		</div>
 	</div>
 
@@ -49,7 +49,7 @@
 		<label for="CantidadEquipo" class="col-sm-4 control-label" data-toggle="tooltip" title="Cantidad de computadoras hay en el aula">Cantidad de computadoras</label>
 
 		<div class="col-sm-8">
-			<input type='text' class="form-control" name='CantidadEquipo' id="CantidadEquipo" placeholder="1" required value = '<?php echo$aulas->CantidadEquipo; ?>'>
+			<input type='text' class="form-control" name='CantidadEquipo' id="CantidadEquipo" placeholder="1" required value = '<?php echo$aula->CantidadEquipo; ?>'>
 		</div>
 	</div>
 
@@ -69,7 +69,7 @@
 		<label for="Pizarron" class="col-sm-4 control-label" data-toggle="tooltip" title="Calidad en la que se encuentra el pizarrón">Pizarrón</label>
 
 		<div class="col-sm-8">
-			<input type='text' class="form-control" name='Pizarron' id="Pizarron" placeholder="4" required value = '<?php echo$aulas->Pizarron; ?>'>
+			<input type='text' class="form-control" name='Pizarron' id="Pizarron" placeholder="4" required value = '<?php echo$aula->Pizarron; ?>'>
 		</div>
 	</div>
 
@@ -77,7 +77,7 @@
 		<label for="Illuminacion" class="col-sm-4 control-label" data-toggle="tooltip" title="Calidad de la Illuminación en el aula">Illuminación</label>
 
 		<div class="col-sm-8">
-			<input type='text' class="form-control" name='Illuminacion' id="Illuminacion" placeholder="4" required value = '<?php echo$aulas->Illuminacion; ?>'>
+			<input type='text' class="form-control" name='Illuminacion' id="Illuminacion" placeholder="4" required value = '<?php echo$aula->Illuminacion; ?>'>
 		</div>
 	</div>
 
@@ -85,7 +85,7 @@
 		<label for="AislamientoR" class="col-sm-4 control-label" data-toggle="tooltip" title="Que tan aislado está del ruido anterior">Aislamiento al ruido</label>
 
 		<div class="col-sm-8">
-			<input type='text' class="form-control" name='AislamientoR' id="AislamientoR" placeholder="4" required value = '<?php echo$aulas->AislamientoR; ?>'>
+			<input type='text' class="form-control" name='AislamientoR' id="AislamientoR" placeholder="4" required value = '<?php echo$aula->AislamientoR; ?>'>
 		</div>
 	</div>
 
@@ -93,7 +93,7 @@
 		<label for="Ventilacion" class="col-sm-4 control-label" data-toggle="tooltip" title="Califique la ventilación en el aula">Ventilación</label>
 
 		<div class="col-sm-8">
-			<input type='text' class="form-control" name='Ventilacion' id="Ventilacion" placeholder="4" required value = '<?php echo$aulas->Ventilacion; ?>'>
+			<input type='text' class="form-control" name='Ventilacion' id="Ventilacion" placeholder="4" required value = '<?php echo$aula->Ventilacion; ?>'>
 		</div>
 	</div>
 
@@ -101,7 +101,7 @@
 		<label for="Temperatura" class="col-sm-4 control-label" data-toggle="tooltip" title="Califique la calidad de la temperatura en el aula">Temperatura</label>
 
 		<div class="col-sm-8">
-			<input type='text' class="form-control" name='Temperatura' id="Temperatura" placeholder="4" required value = '<?php echo$aulas->Temperatura; ?>'>
+			<input type='text' class="form-control" name='Temperatura' id="Temperatura" placeholder="4" required value = '<?php echo$aula->Temperatura; ?>'>
 		</div>
 	</div>
 
@@ -109,7 +109,7 @@
 		<label for="Espacio" class="col-sm-4 control-label" data-toggle="tooltip" title="Califique el espacio en el aula">Espacio</label>
 
 		<div class="col-sm-8">
-			<input type='text' class="form-control" name='Espacio' id="Espacio" placeholder="4" required value = '<?php echo$aulas->Espacio; ?>'>
+			<input type='text' class="form-control" name='Espacio' id="Espacio" placeholder="4" required value = '<?php echo$aula->Espacio; ?>'>
 		</div>
 	</div>
 
@@ -117,7 +117,7 @@
 		<label for="Mobilario" class="col-sm-4 control-label" data-toggle="tooltip" title="Califique la calidad del mobiliari en el aula">Mobiliario</label>
 
 		<div class="col-sm-8">
-			<input type='text' class="form-control" name='Mobilario' id="Mobilario" placeholder="4" required value = '<?php echo$aulas->Mobilario; ?>'>
+			<input type='text' class="form-control" name='Mobilario' id="Mobilario" placeholder="4" required value = '<?php echo$aula->Mobilario; ?>'>
 		</div>
 	</div>
 
@@ -125,7 +125,7 @@
 		<label for="Conexiones" class="col-sm-4 control-label" data-toggle="tooltip" title="Califique la calidad de las conexiones de todo tipo en el aula">Conexiones</label>
 
 		<div class="col-sm-8">
-			<input type='text' class="form-control" name='Conexiones' id="Conexiones" placeholder="4" required value = '<?php echo$aulas->Conexiones; ?>'>
+			<input type='text' class="form-control" name='Conexiones' id="Conexiones" placeholder="4" required value = '<?php echo$aula->Conexiones; ?>'>
 		</div>
 	</div>
 
@@ -138,7 +138,7 @@
 		<div class="col-sm-8">
 			<input type="checkbox"
 				<?php
-					if($aulas->SillasPaleta == '1')
+					if($aula->SillasPaleta == '1')
 					{
 						echo 'checked';
 					}
@@ -152,7 +152,7 @@
 		<div class="col-sm-8">
 			<input type="checkbox"
 				<?php
-					if($aulas->MesasTrabajo == '1')
+					if($aula->MesasTrabajo == '1')
 					{
 						echo 'checked';
 					}
@@ -166,7 +166,7 @@
 		<div class="col-sm-8">
 			<input type="checkbox"
 				<?php
-					if($aulas->Isotopica == '1')
+					if($aula->Isotopica == '1')
 					{
 						echo 'checked';
 					}
@@ -180,7 +180,7 @@
 		<div class="col-sm-8">
 			<input type="checkbox"
 				<?php
-					if($aulas->Estrado == '1')
+					if($aula->Estrado == '1')
 					{
 						echo 'checked';
 					}

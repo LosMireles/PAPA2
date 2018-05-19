@@ -23,12 +23,6 @@ class AulaController extends Controller
 	}
 
     //----------------------------------------------------------------
-	public function dummie(){
-		header("Location: http://127.0.0.1:8000/insertarAula?tipo=".urlencode(""));
-	  	die();
-	}
-
-    //----------------------------------------------------------------
     public function store(Request $request)
     {
         $aula = new Aula;
@@ -90,17 +84,17 @@ class AulaController extends Controller
     }
 
 	//-----------------------------------------------------------
-	public function edit($id) {
-		$aulas  = Aula::where('IdAula', $id)->first();
+	public function edit($tipo) {
+		$aula  = Aula::where('Tipo', $tipo)->first();
 
         return view('infraestructura.aulas.edit')
-            ->with(['aulas'=>$aulas]);
+            ->with(['aula'=>$aula]);
 	}
 
 	//-----------------------------------------------------------
-	public function update(Request $request, $id) {
-	  	$Tipo           = $request->Tipo;
-		$CantidadAula = $request->CantidadAula;
+	public function update(Request $request, $tipo) {
+	  	$tipo_nuevo     = $request->Tipo;
+		$CantidadEquipo = $request->CantidadEquipo;
 		$CantidadAV     = $request->CantidadAV;
 		$Capacidad      = $request->Capacidad;
 
@@ -150,8 +144,8 @@ class AulaController extends Controller
 		$Mobilario    = $request->Mobilario;
 		$Conexiones   = $request->Conexiones;
 
-		Aula::where('IdAula', $id)->update(['Tipo'           => $Tipo,
-											'CantidadAula' => $CantidadAula,
+		Aula::where('Tipo', $tipo)->update(['Tipo'           => $tipo_nuevo,
+											'CantidadEquipo' => $CantidadEquipo,
 											'CantidadAV'     => $CantidadAV,
 											'Capacidad'      => $Capacidad,
 											'SillasPaleta'   => $SillasPaleta,
@@ -172,10 +166,10 @@ class AulaController extends Controller
 	}
 
 	//--------------------------------------------------------------
-	public function destroy(Request $request, $tipo){
+	public function destroy($tipo){
         $aula = Aula::where('Tipo', $tipo)->first();
         if(!$aula){
-            $mensaje = "No existe aula con Tipo: ".$Tipo;
+            $mensaje = "No existe aula con Tipo: ".$tipo;
             return view('general/error')
                 ->with(['mensaje' => $mensaje]);
         }

@@ -26,12 +26,6 @@ class AsesoriaController extends Controller
     }
 
     //----------------------------------------------------------------
-	public function dummie(){
-		header("Location: http://127.0.0.1:8000/insertarAsesoria?tipo=".urlencode(""));
-	  	die();
-	}
-
-    //----------------------------------------------------------------
     public function store(Request $request)
     {
         $asesoria = new Asesoria;
@@ -50,23 +44,23 @@ class AsesoriaController extends Controller
     }
 
     //----------------------------------------------------------------
-    public function edit($id) {
-          $asesorias  = Asesoria::where('IdAsesoria', $id)->first();
-          return view('infraestructura/asesoria/asesoria_update')
-              ->with(['asesorias'=>$asesorias]);
+    public function edit($tipo) {
+          $asesoria  = Asesoria::where('Tipo', $tipo)->first();
+          return view('infraestructura.asesorias.edit')
+              ->with(['asesoria'=>$asesoria]);
     }
 
     //----------------------------------------------------------------
-    public function update(Request $request, $id) {
-        $asesoria->Tipo       = $request->Tipo;
-		$asesoria->InicioHora = $request->InicioHora;
-		$asesoria->FinHora    = $request->FinHora;
-        $asesoria->InicioDia  = $request->InicioDia;
-		$asesoria->FinDia     = $request->FinDia;
-        $asesoria->Materia    = $request->Materia;
+    public function update(Request $request, $tipo) {
+        $tipo_nuevo = $request->Tipo;
+		$InicioHora = $request->InicioHora;
+		$FinHora    = $request->FinHora;
+        $InicioDia  = $request->InicioDia;
+		$FinDia     = $request->FinDia;
+        $Materia    = $request->Materia;
 
-        Asesoria::where('IdAsesoria', $id)->update([
-            'Tipo'       => $Tipo,
+        Asesoria::where('Tipo', $tipo)->update([
+            'Tipo'       => $tipo_nuevo,
             'InicioHora' => $InicioHora,
             'FinHora'    => $FinHora,
             'InicioDia'  => $InicioDia,
@@ -79,9 +73,7 @@ class AsesoriaController extends Controller
     }
 
     //----------------------------------------------------------------
-    public function destroy(Request $request){
-        $tipo = $request->input('Tipo');
-
+    public function destroy($tipo){
         $asesoria = Asesoria::where('Tipo', $tipo)->first();
         if(!$asesoria){
             $mensaje = "No existe asesoria con tipo: ".$tipo;

@@ -14,7 +14,7 @@ class CreateCubiculosTable extends Migration
     public function up()
     {
         Schema::create('cubiculos', function (Blueprint $table) {
-            $table->increments('IdCubiculo');
+            $table->increments('id')->unique()->unsigned();
 			$table->string('Tipo', 25);
 			$table->string('Profesor', 100);
 			$table->integer('CantidadEquipo');

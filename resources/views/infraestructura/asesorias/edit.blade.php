@@ -1,7 +1,7 @@
 @extends('layouts.actualizar')
 
 @section('title')
-   editar espacio de asesoria <?php echo $asesorias->Tipo; ?>
+   editar espacio de asesoria <?php echo $asesoria->Tipo; ?>
 @endsection
 
 @section('descripcion')
@@ -25,7 +25,7 @@
 		<label for="Tipo" class="col-sm-4 control-label" data-toggle="tooltip" title="Identificador de la asesoria">Tipo</label>
 
 		<div class="col-sm-8">
-			<input type='text' class="form-control" name='Tipo' value = '<?php echo $asesorias->Tipo; ?>'/>
+			<input type='text' class="form-control" name='Tipo' value ="{{$asesoria->Tipo}}">
 		</div>
 	</div>
 
@@ -33,7 +33,7 @@
 		<label for="InicioHora" class="col-sm-4 control-label" data-toggle="tooltip" title="">Hora de inicio</label>
 
 		<div class="col-sm-8">
-			<input type='text' class="form-control" name='InicioHora' placeholder="00:00" required>
+			<input type='time' class="form-control" name='InicioHora' placeholder="00:00" value="{{$asesoria->InicioHora}}"  required>
 		</div>
 	</div>
 
@@ -41,7 +41,7 @@
 		<label for="FinHora" class="col-sm-4 control-label" data-toggle="tooltip" title="">Hora de finalizacion</label>
 
 		<div class="col-sm-8">
-			<input type='text' class="form-control" name='FinHora' placeholder="12:00" required>
+			<input type='time' class="form-control" name='FinHora' placeholder="12:00" value="{{$asesoria->FinHora}}"   required>
 		</div>
 	</div>
 
@@ -49,7 +49,7 @@
 		<label for="InicioDia" class="col-sm-4 control-label" data-toggle="tooltip" title="">Día de inicio</label>
 
 		<div class="col-sm-8">
-			<input type='text' class="form-control" name='InicioDia' placeholder="Lunes" required>
+			<input type='date' class="form-control" name='InicioDia' placeholder="Lunes" value="{{$asesoria->InicioDia}}" required>
 		</div>
 	</div>
 
@@ -57,7 +57,7 @@
 		<label for="FinDia" class="col-sm-4 control-label" data-toggle="tooltip" title="">Día de finalización</label>
 
 		<div class="col-sm-8">
-			<input type='text' class="form-control" name='FinDia' placeholder="Sábado" required>
+			<input type='date' class="form-control" name='FinDia' placeholder="Sábado" value="{{$asesoria->FinDia}}"  required>
 		</div>
 	</div>
 
@@ -65,7 +65,7 @@
 		<label for="Materia" class="col-sm-4 control-label" data-toggle="tooltip" title="">Asignatura: </label>
 
 		<div class="col-sm-8">
-			<input type='text' class="form-control" name='Materia' placeholder="Asignatura" required>
+			<input type='text' class="form-control" name='Materia' placeholder="Asignatura" value="{{$asesoria->Materia}}" required>
 		</div>
 	</div>
 @endsection

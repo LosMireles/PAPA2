@@ -34,14 +34,14 @@
 
         <!--Boton editar-->
         <td class="text-center">
-            <a href="{{action('CubiculosController@edit', [ 'tipo' => $cubiculos->Tipo])}}" class="btn btn-warning">
+            <a href="{{action('CubiculoController@edit', [ 'tipo' => $cubiculo->Tipo])}}" class="btn btn-warning">
                 Editar
             </a>
         </td>
 
         <!--Boton borrar-->
         <td>
-            {{ Form::open(['action' => ['CubiculosController@destroy', $cubiculos->Tipo]]) }}
+            {{ Form::open(['action' => ['CubiculoController@destroy', $cubiculo->Tipo]]) }}
                 {{ Form::hidden('_method', 'DELETE') }}
                 {{ Form::submit('Borrar', ['class' => 'btn btn-warning']) }}
             {{ Form::close() }}

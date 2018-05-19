@@ -23,12 +23,6 @@ class AuditorioController extends Controller
     }
 
     //----------------------------------------------------------------
-    public function dummie(){
-        dummieheader("Location: http://127.0.0.1:8000/insertarAuditorio?tipo=".urlencode(""));
-        die();
-    }
-
-    //----------------------------------------------------------------
     public function store(Request $request){
         $auditorio = new Auditorio;
 
@@ -45,23 +39,23 @@ class AuditorioController extends Controller
     }
 
     //----------------------------------------------------------------
-    public function edit($id) {
-        $auditorios  = Auditorio::where('IdAuditorio', $id)->first();
+    public function edit($tipo) {
+        $auditorio  = Auditorio::where('Tipo', $tipo)->first();
 
         return view('infraestructura.auditorios.edit')
-            ->with(['auditorios'=>$auditorios]);
+            ->with(['auditorio'=>$auditorio]);
     }
 
     //----------------------------------------------------------------
-    public function update(Request $request, $id) {
-        $auditorio->Tipo               = $request->Tipo;
-        $auditorio->CantidadEquipo  = $request->CantidadEquipo;
-        $auditorio->CantidadAV         = $request->CantidadAV;
-        $auditorio->Capacidad          = $request->Capacidad;
-        $auditorio->CantidadSanitarios = $request->CantidadSanitarios;
+    public function update(Request $request, $tipo) {
+        $tipo_nuevo         = $request->Tipo;
+        $CantidadEquipo     = $request->CantidadEquipo;
+        $CantidadAV         = $request->CantidadAV;
+        $Capacidad          = $request->Capacidad;
+        $CantidadSanitarios = $request->CantidadSanitarios;
 
-        Auditorio::where('IdAuditorio', $id)->update([
-            'Tipo'               => $Tipo,
+        Auditorio::where('Tipo', $tipo)->update([
+            'Tipo'               => $tipo_nuevo,
             'CantidadEquipo'     => $CantidadEquipo,
             'CantidadAV'         => $CantidadAV,
             'Capacidad'          => $Capacidad,
@@ -73,12 +67,10 @@ class AuditorioController extends Controller
     }
 
     //----------------------------------------------------------------
-    public function destroy(Request $request){
-	  	$Tipo = $request->Tipo;
-
-        $auditorio = auditorio::where('Tipo', $Tipo)->first();
+    public function destroy($tipo){
+        $auditorio = auditorio::where('Tipo', $tipo)->first();
         if(!$auditorio){
-            $mensaje = "No existe auditorio con tipo: ".$Tipo;
+            $mensaje = "No existe auditorio con tipo: ".$tipo;
             return view('general/error')
                 ->with(['mensaje' => $mensaje]);
         }

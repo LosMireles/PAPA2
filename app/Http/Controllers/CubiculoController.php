@@ -24,12 +24,6 @@ class CubiculoController extends Controller {
 	}
 
     //----------------------------------------------------------------
-	public function dummie(){
-		header("Location: http://127.0.0.1:8000/insertarCubiculo?tipo=".urlencode(""));
-	  	die();
-	}
-
-    //----------------------------------------------------------------
     public function store(Request $request)
     {
         $cubiculo = new Cubiculo;
@@ -45,21 +39,21 @@ class CubiculoController extends Controller {
     }
 
     //----------------------------------------------------------------
-	public function edit($id) {
-		$cubiculos  = Cubiculo::where('IdCubiculo', $id)->first();
+	public function edit($tipo) {
+		$cubiculo  = Cubiculo::where('Tipo', $tipo)->first();
 
         return view('infraestructura.cubiculos.edit')
-            ->with(['cubiculos'=>$cubiculos]);
+            ->with(['cubiculo'=>$cubiculo]);
 	}
 
     //----------------------------------------------------------------
-	public function update(Request $request, $id) {
-	  	$Tipo           = $request->Tipo;
+	public function update(Request $request, $tipo) {
+	  	$tipo_nuevo     = $request->Tipo;
 		$Profesor       = $request->Profesor;
 		$CantidadEquipo = $request->CantidadEquipo;
 
-        Cubiculo::where('IdCubiculo', $id)->update(
-            ['Tipo'           => $Tipo,
+        Cubiculo::where('Tipo', $tipo)->update(
+            ['Tipo'           => $tipo_nuevo,
              'Profesor'       => $Profesor,
              'CantidadEquipo' => $CantidadEquipo]);
 

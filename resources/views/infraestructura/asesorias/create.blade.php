@@ -35,7 +35,7 @@
 		<label for="InicioHora" class="col-sm-4 control-label" data-toggle="tooltip" title="">Hora de inicio</label>
 
 		<div class="col-sm-8">
-			<input type='text' class="form-control" name='InicioHora' placeholder="00:00" required>
+			<input type='time' class="form-control" name='InicioHora' placeholder="00:00" required>
 		</div>
 	</div>
 
@@ -43,7 +43,7 @@
 		<label for="FinHora" class="col-sm-4 control-label" data-toggle="tooltip" title="">Hora de finalizacion</label>
 
 		<div class="col-sm-8">
-			<input type='text' class="form-control" name='FinHora' placeholder="12:00" required>
+			<input type='time' class="form-control" name='FinHora' placeholder="12:00" required>
 		</div>
 	</div>
 
@@ -51,7 +51,7 @@
 		<label for="InicioDia" class="col-sm-4 control-label" data-toggle="tooltip" title="">Día de inicio</label>
 
 		<div class="col-sm-8">
-			<input type='text' class="form-control" name='InicioDia' placeholder="Lunes" required>
+			<input type='date' class="form-control" name='InicioDia' placeholder="Lunes" required>
 		</div>
 	</div>
 
@@ -59,7 +59,7 @@
 		<label for="FinDia" class="col-sm-4 control-label" data-toggle="tooltip" title="">Día de finalización</label>
 
 		<div class="col-sm-8">
-			<input type='text' class="form-control" name='FinDia' placeholder="Sábado" required>
+			<input type='date' class="form-control" name='FinDia' placeholder="Sábado" required>
 		</div>
 	</div>
 

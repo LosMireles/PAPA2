@@ -14,12 +14,12 @@ class CreateSanitariosTable extends Migration
     public function up()
     {
         Schema::create('sanitarios', function (Blueprint $table) {
-            $table->increments('IdSanitario');
+            $table->increments('id')->unique()->unsigned();
 			$table->string('Tipo', 25);
-			$table->string('InicioHora', 10);
-			$table->string('FinHora', 10);
-			$table->string('InicioDia', 10);
-			$table->string('FinDia', 10);
+			$table->time('InicioHora', 10);
+			$table->time('FinHora', 10);
+			$table->date('InicioDia', 10);
+			$table->date('FinDia', 10);
 			$table->integer('Limpieza');
 			$table->integer('CantidadPersonal');
             $table->timestamps();

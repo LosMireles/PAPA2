@@ -14,7 +14,7 @@ class CreateEspaciosTable extends Migration
     public function up()
     {
         Schema::create('espacios', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('id')->unique()->unsigned();
             $table->char('tipo', 45)->unique();
             $table->integer('superficie');
             $table->integer('cantidad');

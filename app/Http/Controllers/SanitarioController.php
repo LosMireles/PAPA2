@@ -23,12 +23,6 @@ class SanitarioController extends Controller
 	}
 
     //--------------------------------------------------------
-	public function dummie(){
-		header("Location: http://127.0.0.1:8000/insertarSanitario?tipo=".urlencode(""));
-	  	die();
-	}
-
-    //--------------------------------------------------------
     public function store(Request $request)
     {
         $sanitario = new Sanitario;
@@ -49,16 +43,16 @@ class SanitarioController extends Controller
 
 
 	//-----------------------------------------------------------
-	public function edit($id) {
-		$sanitarios  = Sanitario::where('IdSanitario', $id)->first();
+	public function edit($tipo) {
+		$sanitario  = Sanitario::where('Tipo', $tipo)->first();
 
         return view('infraestructura.sanitarios.edit')
-            ->with(['sanitarios'=>$sanitarios]);
+            ->with(['sanitario'=>$sanitario]);
 	}
 
 	//--------------------------------------------------------------
-	public function update(Request $request, $id) {
-	    $Tipo             = $request->Tipo;
+	public function update(Request $request, $tipo) {
+	    $tipo_nuevo       = $request->Tipo;
 	    $InicioHora       = $request->InicioHora;
 	    $FinHora          = $request->FinHora;
 		$InicioDia        = $request->InicioDia;
@@ -66,7 +60,7 @@ class SanitarioController extends Controller
         $Limpieza         = $request->Limpieza;
         $CantidadPersonal = $request->CantidadPersonal;
 
-	    Sanitario::where('IdSanitario', $id)->update(['Tipo'   => $Tipo,
+	    Sanitario::where('Tipo', $tipo)->update(['Tipo'        => $tipo_nuevo,
 											'InicioHora'       => $InicioHora,
 											'FinHora'          => $FinHora,
 											'InicioDia'        => $InicioDia,
@@ -79,7 +73,7 @@ class SanitarioController extends Controller
 	}
 
 	//--------------------------------------------------------------
-	public function destroy(Request $request, $tipo){
+	public function destroy($tipo){
         $sanitario = Sanitario::where('Tipo', $tipo)->first();
         if(!$sanitario){
             $mensaje = "No existe sanitario con tipo: ".$tipo;
