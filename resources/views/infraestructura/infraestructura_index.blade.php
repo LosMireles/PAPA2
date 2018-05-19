@@ -19,7 +19,7 @@
 @section('cuerpo_tabla')
 	<tr>
 		<td>
-			<a href="/infraestructura/espacio" data-toggle="tooltip" title="Espacios físicos en general con los que cuenta la licenciatura">Espacio físico[?]</a>
+			<a href="{{action('EspacioController@index')}}" data-toggle="tooltip" title="Espacios físicos en general con los que cuenta la licenciatura">Espacio físico[?]</a>
 
 			<ul class="list-unstyled" style="margin-left: 25px;">
 				<li> <a href="/infraestructura/aula" data-toggle="tooltip" title="Aulas de las que dispone la licenciatura. Subcategoría de 'Espacio'">Aula [?]</a> </li>

@@ -1,21 +1,26 @@
-@extends('layouts.insertar')
+@extends('layouts.actualizar')
 
 @section('title')
-   editar espacio
+   Editar espacio
 @endsection
 
 @section('descripcion')
-   <a href="/infraestructura/espacio" class="btn btn-primary">Regresar</a>
-   <h1 class="text-center">Formulario para editar un espacio</h1>
+    <a href="{{action('EspacioController@index')}}" class="btn btn-primary">
+        Regresar
+    </a>
+	<h1 class="text-center">Edición del espacio {{$espacio->tipo}}</h1>
 @endsection
 
 @section('accion')
-   action = "/editEspacio/<?php echo $espacio->tipo; ?>"
+    action = "{{action('EspacioController@update', $espacio->tipo)}}"
+@endsection
+
+@section('formopen')
+    {{Form::open(['action' => ['EspacioController@update', $espacio->tipo],
+                'class' => 'form-horizontal'])}}
 @endsection
 
 @section('contenido_formulario')
-    <input type="hidden" name="id" value="{{$espacio->id}}">
-
     <div class="form-group">
       <label for="tipo" class="col-sm-4 control-label" data-toggle="tooltip" title="Un identificador único (por ejemplo A202)">Nombre[?]: </label>
 

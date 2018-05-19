@@ -10,32 +10,26 @@ use App\Espacio;
 use App\Curso;
 
 class EspacioController extends Controller {
-        public function indexVer(){
+        public function index(){
         $espacios = Espacio::all();
-        $cursos   = Curso::all();
 
-        return view('infraestructura/espacio/espacio_view',
-            ['espacios' => $espacios,
-             'cursos'   => $cursos]);
+        return view('infraestructura.espacios.index')
+            ->with(['espacios' => $espacios]);
     }
-//----------------------------------------------------------------
-    public function insertform(){
-        $cursos   = Curso::all();
+    //----------------------------------------------------------------
 
-        return view('infraestructura/espacio/espacio_create',
-            ['cursos' => $cursos]);
+    public function create(){
+        $espacios   = Espacio::all();
+        $cursos     = Curso::all();
+
+        return view('infraestructura.espacios.create')
+            ->with(['espacios' => $espacios,
+                    'cursos'   => $cursos]);
 	}
 
-	/**
-     * Create a new espacio instance.
-     *
-     * @param  Request  $request
-     * @return Response
-     */
+    //----------------------------------------------------------------
     public function store(Request $request)
     {
-        // Validate the request...
-
         $espacio             = new Espacio;
 
         $espacio->tipo       = $request->tipo;
@@ -47,7 +41,7 @@ class EspacioController extends Controller {
 
         foreach($request->cursos as $nombreCurso){
             $cursoId = DB::table('cursos')->where('nombre', $nombreCurso)->value('id');
-            $curso->espacios()->attach($cursoId);
+            $espacio->cursos()->attach($cursoId);
         }
 
 		$clase =$request->input('clase');
@@ -78,49 +72,25 @@ class EspacioController extends Controller {
 			die();
 		}
 
-		echo "Record inserted successfully.<br/>";
-        echo '<a href = "/insertarEspacio">Click Here</a> to go back.';
+		echo "Elemento insertado exitosamente!";
+        return redirect()->action('EspacioController@index');
     }
-	//-----------------------------------------------------------
 
-	public function indexBorrar(){
-		$espacios  = Espacio::all();
-      	return view('infraestructura/espacio/espacio_delete',['espacios'=>$espacios]);
-	}
-	public function destroy(Request $request){
-	  	$Tipo = $request->tipo;
-
-        $espacio = Espacio::where('Tipo', $Tipo)->first();
-        if(!$espacio){
-            $mensaje = "No existe espacio con Tipo: ".$Tipo;
-            return view('general/error')
-                ->with(['mensaje' => $mensaje]);
-        }
-        $espacio->delete();
-
-	  	echo "Record deleted successfully.<br/>";
-	  	echo '<a href = "/borrarEspacio">Click Here</a> to go back.';
-	}
-
-	//*-----------------------------------------------------------------
-	public function index(){
-	  	$espacios  = Espacio::all();
-	  	return view('infraestructura/espacio/espacio_edit_view',['espacios'=>$espacios]);
-	}
-
-	public function show($tipo) {
+    //----------------------------------------------------------------
+	public function edit($tipo) {
 		$espacio       = Espacio::where('tipo', $tipo)->first();
         $cursos        = Curso::all();
         $curso_espacio = DB::table('curso_espacio')->get();
 
-        return view('infraestructura/espacio/espacio_update',
-            ['espacio'       => $espacio,
-             'cursos'        => $cursos,
-             'curso_espacio' => $curso_espacio]);
+        return view('infraestructura.espacios.edit')
+            ->with(['espacio'       => $espacio,
+                    'cursos'        => $cursos,
+                    'curso_espacio' => $curso_espacio]);
 	}
 
-	public function edit(Request $request) {
-        $tipo         = $request->tipo;
+    //----------------------------------------------------------------
+	public function update(Request $request, $tipo) {
+        $tipo_nuevo   = $request->tipo;
 		$superficie   = $request->superficie;
 		$cantidad     = $request->cantidad;
 		$clase        = $request->clase;
@@ -132,16 +102,35 @@ class EspacioController extends Controller {
                 ->where('nombre', $nombreCurso)->value('id');
         }
 
-        $espacio =Espacio::where('id', $request->id)->first();
+        $espacio =Espacio::where('tipo', $tipo)->first();
 		$espacio->update([
-            'tipo' => $tipo, 'superficie' => $superficie,'cantidad'=>$cantidad,
-            'clase' => $clase,
+            'tipo'       => $tipo_nuevo,
+            'superficie' => $superficie,
+            'cantidad'   => $cantidad,
+            'clase'      => $clase
         ]);
 
         $espacio->cursos()->sync($idCursos);
 
-	  	echo "Record updated successfully.<br/>";
-	  	echo '<a href = "/editarEspacio">Click Here</a> to go back.';
+		echo "Elemento editado exitosamente!";
+        return redirect()->action('EspacioController@index');
 	}
+
+    //----------------------------------------------------------------
+	public function destroy($tipo){
+        $espacio = Espacio::where('tipo', $tipo)->first();
+        if(!$espacio){
+            $mensaje = "No existe espacio con Tipo: ".$tipo;
+            return view('general.error')
+                ->with(['mensaje' => $mensaje]);
+        }
+        $espacio->delete();
+
+		echo "Elemento borrado exitosamente!";
+        return redirect()->action('EspacioController@index');
+	}
+
+	//*-----------------------------------------------------------------
+
 }
 

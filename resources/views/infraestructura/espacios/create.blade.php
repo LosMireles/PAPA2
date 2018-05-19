@@ -1,16 +1,18 @@
 @extends('layouts.insertar')
 
 @section('title')
-   insertar un espacio
+   Agregar espacio
 @endsection
 
 @section('descripcion')
-   <a href="/infraestructura/espacio" class="btn btn-primary">Regresar</a>
-   <h1 class="text-center">Formulario para agregar un espacio</h1>
+    <a href="{{action('EspacioController@index')}}" class="btn btn-primary">
+        Regresar
+    </a>
+	<h1 class="text-center">Formulario para agregar un espacio</h1>
 @endsection
 
 @section('accion')
-   action = "/CrearEspacio"
+   action = "{{action('EspacioController@store')}}"
 @endsection
 
 @section('contenido_formulario')

@@ -18,22 +18,6 @@ Route::get('/infraestructura', 'RoutesController@infraestructura');
 
 Route::get('/equipamiento', 'RoutesController@equipamiento');
 
-//espacios
-Route::get('/infraestructura/espacio', 'RoutesController@Espacio');
-
-Route::get('insertarEspacio','EspacioController@insertform');
-Route::post('CrearEspacio','EspacioController@store');
-
-
-Route::get('verEspacio','EspacioController@indexVer');
-
-Route::get('borrarEspacio','EspacioController@indexBorrar');
-Route::post('deleteEspacio','EspacioController@destroy');
-
-Route::get('editarEspacio','EspacioController@index');
-Route::get('editEspacio/{id}','EspacioController@show');
-Route::post('editEspacio/{id}','EspacioController@edit');
-
 //cubiculo
 Route::get('/infraestructura/cubiculo', 'RoutesController@Cubiculo');
 
@@ -133,7 +117,8 @@ Route::get('/error', function($mensaje = null){
 });
 
 Route::resources(
-    ['cursos'      => 'CursoController',
+    ['espacios'    => 'EspacioController',
+     'cursos'      => 'CursoController',
      'softwares'   => 'SoftwareController',
      'equipos'     => 'EquipoController',
      'asignaturas' => 'AsignaturaController'],
