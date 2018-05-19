@@ -21,7 +21,6 @@ class CreateEquiposTable extends Migration
             $table->char('localizacion',100);
             $table->char('tipo',100);
             $table->char('descripcion',150);
-            //$table->char('software',100);
 
             $table->timestamps();
         });

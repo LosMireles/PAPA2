@@ -19,12 +19,16 @@
 @section('cuerpo_tabla')
 	<tr>
 		<td>
-			<a href="{{action('SoftwareController@index')}}" data-toggle="tooltip" title="Software con el que cuenta la licenciatura."> Software [?]</a> </li>
+            <a href="{{action('SoftwareController@index')}}" data-toggle="tooltip" title="Software con el que cuenta la licenciatura.">
+                Software [?]
+            </a> </li>
 		</td>
 	</tr>
 	<tr>
 		<td>
-			<a href="{{ url('/equipamiento/equipos') }}" data-toggle="tooltip" title="Equipos de cómputo con los que cuenta la licenciatura">Equipos [?]</a> </li>
+            <a href="{{action('EquipoController@index')}}" data-toggle="tooltip" title="Equipos de cómputo con los que cuenta la licenciatura">
+                Equipos [?]
+            </a> </li>
 		</td>
 	</tr>
 @endsection

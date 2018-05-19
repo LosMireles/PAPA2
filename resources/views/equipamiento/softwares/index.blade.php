@@ -1,7 +1,7 @@
 <?php use App\Http\Controllers\SoftwareController;?>
 @extends('layouts.ver')
 @section('title')
-    ver software
+    Softwares
 @endsection
 
 @section('descripcion')
@@ -31,7 +31,6 @@
 @endsection
 
 @section('cuerpo_tabla')
-    @section('cuerpo_tabla')
     @foreach ($softwares as $software)
         <tr>
             <td>{{ $software->nombre }}</td>
@@ -67,6 +66,5 @@
 
         </tr>
     @endforeach
-    @endsection
 @endsection
 

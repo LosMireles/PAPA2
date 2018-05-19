@@ -15,9 +15,12 @@
     action = "{{action('SoftwareController@update', $software->nombre)}}"
 @endsection
 
-@section('contenido_formulario')
+@section('formopen')
+    {{Form::open(['action' => ['SoftwareController@update', $software->nombre],
+                'class' => 'form-horizontal'])}}
+@endsection
 
-	<input type="hidden" name="id" value="{{$software->id}}">
+@section('contenido_formulario')
 
 	<div class="form-group">
 		<label for="nombre" class="col-sm-4 control-label" data-toggle="tooltip" title="Nombre del software">Nombre: </label>

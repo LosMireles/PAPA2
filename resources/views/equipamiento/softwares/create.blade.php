@@ -1,11 +1,13 @@
 @extends('layouts.insertar')
 
 @section('title')
-   	agregar software
+   	Agregar software
 @endsection
 
 @section('descripcion')
-	<a href="{{action('SoftwareController@index')}}" class="btn btn-primary">Regresar</a>
+    <a href="{{action('SoftwareController@index')}}" class="btn btn-primary">
+        Regresar
+    </a>
 	<h1 class="text-center">Formulario para agregar un software</h1>
 @endsection
 

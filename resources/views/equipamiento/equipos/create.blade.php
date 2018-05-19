@@ -1,14 +1,14 @@
 @extends('layouts.insertar')
 
 @section('title')
-	agregar un equipo
+	Agregar equipo
 @endsection
 
 @section('javascripts')
 	<script type="text/javascript">
 		function activar_software(arreglo_software){
 			var tipo = document.getElementById("tipo").value;
-			
+
 			if (tipo != "computo"){
 				arreglo_software.forEach(desabiliar);
 			}else{
@@ -21,18 +21,20 @@
 		}
 
 		function habilitar(element, index, array){
-			document.getElementById(element.nombre).disabled = false;	
+			document.getElementById(element.nombre).disabled = false;
 		}
 	</script>
 @endsection
 
 @section('descripcion')
-	<a href="/equipamiento/equipos/" class="btn btn-primary">Regresar</a>
+    <a href="{{action('EquipoController@index')}}" class="btn btn-primary">
+        Regresar
+    </a>
 	<h1 class="text-center">Formulario para agregar un equipo</h1>
 @endsection
 
 @section('accion')
-   	action="{{ url('/gestion_equipo_agregar') }}"
+   action = "{{action('EquipoController@store')}}"
 @endsection
 
 @section('contenido_formulario')
@@ -74,7 +76,7 @@
 			</select>
 		</div>
 	</div>
-	
+
 	<!-- **************************** Falta enviar esto desde aquí **************************** -->
 
 	<div class="form-group">
@@ -114,3 +116,4 @@
 
 	<!-- **************************** hasta acá **************************** -->
 @endsection
+

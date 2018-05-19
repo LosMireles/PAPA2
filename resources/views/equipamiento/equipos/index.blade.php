@@ -1,11 +1,20 @@
 @extends('layouts.ver')
 @section('title')
-	equipamiento
+	Equipos
 @endsection
 
 @section('descripcion')
-	<a href="/equipamiento/equipos/" class="btn btn-primary">Regresar</a>
-	<h1 class="text-center">Listado de equipos</h1>
+    <a href="/equipamiento" class="btn btn-primary">
+        Regresar
+    </a>
+
+    <td class="text-center">
+        <a href="{{action('EquipoController@create')}}"class="btn btn-warning">
+            Agregar nuevo equipo
+        </a>
+    </td>
+
+    <h1 class="text-center">Listado de equipos</h1>
 @endsection
 
 @section('cabeza_tabla')
@@ -40,7 +49,7 @@
 			<!--Localizacion-->
 			<td>{{$equipo->localizacion}}</td>
 
-			<!--Localizacion-->
+			<!--Softwares-->
 			<td>
 			    @if(!empty($equipo->softwares))
                     @foreach($equipo->softwares as $software)
@@ -49,6 +58,22 @@
 				@endif
 				</ul>
 			</td>
+
+			<!--Boton editar-->
+            <td class="text-center">
+                <a href="{{action('EquipoController@edit', [ 'serial' => $equipo->serial])}}" class="btn btn-warning">
+                    Editar
+                </a>
+            </td>
+
+			<!--Boton borrar-->
+            <td>
+                {{ Form::open(['action' => ['EquipoController@destroy', $equipo->serial]]) }}
+                    {{ Form::hidden('_method', 'DELETE') }}
+                    {{ Form::submit('Borrar', ['class' => 'btn btn-warning']) }}
+                {{ Form::close() }}
+            </td>
 		</tr>
 	@endforeach
 @endsection
+

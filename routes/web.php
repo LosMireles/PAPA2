@@ -17,17 +17,6 @@ Route::get('/', 'RoutesController@index');
 Route::get('/infraestructura', 'RoutesController@infraestructura');
 
 Route::get('/equipamiento', 'RoutesController@equipamiento');
-Route::get('/equipamiento/equipos', 'EquipoController@equipos');
-
-Route::get('/equipamiento/equipos/agregar_equipo', 'EquipoController@agregar_equipo');
-Route::get('/equipamiento/equipos/ver_equipos', 'EquipoController@ver_equipos');
-Route::get('/equipamiento/equipos/eliminar_equipos', 'EquipoController@eliminar_equipos');
-Route::get('/equipamiento/equipos/actualizar_equipos', 'EquipoController@actualizar_equipos');
-Route::get('/equipamiento/equipos/actualizar_equipos/{id}', 'EquipoController@mostrar_datos_equipo');
-
-Route::post('/gestion_equipo_agregar', 'EquipoController@gestion_equipo_agregar');
-Route::post('/gestion_equipo_borrar', 'EquipoController@gestion_equipo_borrar');
-Route::post('/gestion_equipo_modificar', 'EquipoController@gestion_equipo_modificar');
 
 //espacios
 Route::get('/infraestructura/espacio', 'RoutesController@Espacio');
@@ -187,6 +176,8 @@ Route::get('/error', function($mensaje = null){
     return view('general/error', ['mensaje' => $mensaje]);
 });
 
-Route::resource('softwares', 'SoftwareController',
+Route::resources(
+    ['softwares' => 'SoftwareController',
+     'equipos' => 'EquipoController'],
     ['except' => 'show']);
 

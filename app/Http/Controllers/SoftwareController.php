@@ -74,35 +74,31 @@ class SoftwareController extends Controller {
 
 	//*-----------------------------------------------------------------
     public function update(Request $request, $nombre){
-	  	$nombre         = $request->input('nombre');
-	  	$manualUsuario  = $request->input('manualUsuario');
-	  	$licencia       = $request->input('licencia');
-	  	$disponibilidad = $request->input('disponibilidad');
-	  	$clase          = $request->input('clase');
-	  	$serialEquipos  = $request->input('equipos');
+	  	$nombre_nuevo   = $request->nombre;
+	  	$manualUsuario  = $request->manualUsuario;
+	  	$licencia       = $request->licencia;
+	  	$disponibilidad = $request->disponibilidad;
+	  	$clase          = $request->clase;
+	  	$serialEquipos  = $request->equipos;
 
         $idEquipos = [];
         foreach($serialEquipos as $serial){
-            $idEquipos[] = DB::table('equipos')->where('serial', $serial)->value('id');
+            $idEquipos[] = Equipo::where('serial', $serial)->value('id');
         }
 
-        $software = Software::where('id', $request->id)->first();
+        $software = Software::where('nombre', $nombre)->first();
 		$software->update([
-            'nombre'         => $nombre,
+            'nombre'         => $nombre_nuevo,
             'manualUsuario'  => $manualUsuario,
             'licencia'       => $licencia,
             'disponibilidad' => $disponibilidad,
             'clase'          => $clase
         ]);
 
-        //hay que hacer sync para que los equipos palomeados se agreguen a los software
-        //y los no palomeados sean removidos
         $software->equipos()->sync($idEquipos);
 
 		echo "Elemento editado exitosamente!";
         return redirect()->action('SoftwareController@index');
-        //return redirect()->action('SoftwareController@edit',
-            //['nombre' => $nombre]);
     }
 
     //*-----------------------------------------------------------------
@@ -110,7 +106,7 @@ class SoftwareController extends Controller {
         $software = Software::where('nombre', $nombre)->first();
         if(!$software){
             $mensaje = "No existe software con nombre: ".$nombre;
-            return view('general/error')
+            return view('general.error')
                 ->with(['mensaje' => $mensaje]);
         }
         $software->delete();

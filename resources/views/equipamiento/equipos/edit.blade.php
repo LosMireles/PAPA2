@@ -1,16 +1,23 @@
-@extends('layouts.insertar')
+@extends('layouts.actualizar')
 
 @section('title')
-	actualizar el equipo {{$equipo->serial}}
+	Editar equipo
 @endsection
 
 @section('descripcion')
-	<a href="{{ url('/equipamiento/equipos/actualizar_equipos') }}" class="btn btn-primary">Regresar</a>
-	<h1 class="text-center">Formulario para actualizar un equipo</h1>
+    <a href="{{action('EquipoController@index')}}" class="btn btn-primary">
+        Regresar
+    </a>
+	<h1 class="text-center">Edición del Equipo {{$equipo->serial}}</h1>
 @endsection
 
 @section('accion')
-   	action="/gestion_equipo_modificar"
+    action = "{{action('EquipoController@update', $equipo->serial)}}"
+@endsection
+
+@section('formopen')
+    {{Form::open(['action' => ['EquipoController@update', $equipo->serial],
+                  'class'  => 'form-horizontal'])}}
 @endsection
 
 @section('contenido_formulario')
@@ -96,3 +103,4 @@
 		</div>
 	</div>
 @endsection
+
