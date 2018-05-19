@@ -5,12 +5,14 @@
 @endsection
 
 @section('descripcion')
-   	<a href="/infraestructura/asesoria" class="btn btn-primary">Regresar</a>
-   	<h1 class="text-center">Formulario para agregar un espacio de asesorías</h1>
+    <a href="{{action('AsesoriaController@index')}}" class="btn btn-primary">
+        Regresar
+    </a>
+	<h1 class="text-center">Formulario para agregar un asesoria</h1>
 @endsection
 
 @section('accion')
-   action="/CrearAsesoria"
+   action = "{{action('AsesoriaController@store')}}"
 @endsection
 
 @section('contenido_formulario')
@@ -62,3 +64,4 @@
 		</div>
 	</div>
 @endsection
+

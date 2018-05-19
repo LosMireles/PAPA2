@@ -1,16 +1,18 @@
 @extends('layouts.insertar')
 
 @section('title')
-   insertar un sanitario
+   Agregar sanitario
 @endsection
 
 @section('descripcion')
-   <a href="/infraestructura/espacio" class="btn btn-primary">Regresar</a>
-   <h1 class="text-center">Formulario para agregar un sanitario</h1>
+    <a href="{{action('SanitarioController@index')}}" class="btn btn-primary">
+        Regresar
+    </a>
+	<h1 class="text-center">Formulario para agregar un sanitario</h1>
 @endsection
 
 @section('accion')
-   action="/CrearSanitario"
+   action = "{{action('SanitarioController@store')}}"
 @endsection
 
 @section('contenido_formulario')
@@ -77,3 +79,4 @@
    		</div>
    	</div>
 @endsection
+

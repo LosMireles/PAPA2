@@ -1,16 +1,23 @@
-@extends('layouts.insertar')
+@extends('layouts.actualizar')
 
 @section('title')
    editar espacio de asesoria <?php echo $asesorias->Tipo; ?>
 @endsection
 
 @section('descripcion')
-   <a href="/editarAsesoria" class="btn btn-primary">Regresar</a>
-   <h1 class="text-center">Formulario para editar un espacio de asesorías</h1>
+    <a href="{{action('AsesoriaController@index')}}" class="btn btn-primary">
+        Regresar
+    </a>
+	<h1 class="text-center">Edición del asesoria {{$asesoria->Tipo}}</h1>
 @endsection
 
 @section('accion')
-   action = "/editAsesoria/<?php echo $asesorias->IdAsesoria; ?>"
+    action = "{{action('AsesoriaController@update', $asesoria->Tipo)}}"
+@endsection
+
+@section('formopen')
+    {{Form::open(['action' => ['AsesoriaController@update', $asesoria->Tipo],
+                'class' => 'form-horizontal'])}}
 @endsection
 
 @section('contenido_formulario')
@@ -62,3 +69,4 @@
 		</div>
 	</div>
 @endsection
+

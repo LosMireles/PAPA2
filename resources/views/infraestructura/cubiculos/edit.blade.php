@@ -1,16 +1,23 @@
-@extends('layouts.insertar')
+@extends('layouts.actualizar')
 
 @section('title')
    editar cubículo <?php echo$cubiculos->Tipo; ?>
 @endsection
 
 @section('descripcion')
-   <a href="/editarCubiculo" class="btn btn-primary">Regresar</a>
-   <h1 class="text-center">Formulario para editar un cubículo</h1>
+    <a href="{{action('CubiculoController@index')}}" class="btn btn-primary">
+        Regresar
+    </a>
+	<h1 class="text-center">Edición del cubículo {{$cubiculo->Tipo}}</h1>
 @endsection
 
 @section('accion')
-   action = "/editCubiculo/<?php echo $cubiculos->IdCubiculo; ?>"
+    action = "{{action('CubiculoController@update', $cubiculo->Tipo)}}"
+@endsection
+
+@section('formopen')
+    {{Form::open(['action' => ['CubiculoController@update', $cubiculo->Tipo],
+                'class' => 'form-horizontal'])}}
 @endsection
 
 @section('contenido_formulario')
@@ -38,3 +45,4 @@
       </div>
    </div>
 @endsection
+

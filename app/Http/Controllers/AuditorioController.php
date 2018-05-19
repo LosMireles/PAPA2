@@ -10,57 +10,69 @@ use App\Auditorio;
 
 class AuditorioController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-     public function indexVer()
-     {
-         //
-         $auditorios = Auditorio::all();
-         return view('infraestructura/auditorio/auditorio_view',
-             ['auditorios' => $auditorios]);
+    public function index(){
+        $auditorios = Auditorio::all();
+
+        return view('infraestructura.auditorios.index')
+            ->with(['auditorios' => $auditorios]);
      }
 
-     //----------------------------------------------------------------
-         public function insertform()
-         {
-             return view('infraestructura/auditorio/auditorio_create');
-         }
-         public function dummie(){
-     		header("Location: http://127.0.0.1:8000/insertarAuditorio?tipo=".urlencode(""));
-     	  	die();
-     	}
+    //----------------------------------------------------------------
+    public function create(){
+        return view('infraestructura.auditorios.create');
+    }
 
+    //----------------------------------------------------------------
+    public function dummie(){
+        dummieheader("Location: http://127.0.0.1:8000/insertarAuditorio?tipo=".urlencode(""));
+        die();
+    }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+    //----------------------------------------------------------------
+    public function store(Request $request){
         $auditorio = new Auditorio;
 
-        $auditorio->Tipo = $request->Tipo;
-		$auditorio->CantidadEquipo = $request->CantidadEquipo;
-		$auditorio->CantidadAV = $request->CantidadAV;
-        $auditorio->Capacidad = $request->Capacidad;
+        $auditorio->Tipo               = $request->Tipo;
+		$auditorio->CantidadAuditorio     = $request->CantidadAuditorio;
+		$auditorio->CantidadAV         = $request->CantidadAV;
+        $auditorio->Capacidad          = $request->Capacidad;
 		$auditorio->CantidadSanitarios = $request->CantidadSanitarios;
 
         $auditorio->save();
-        echo "Record inserted successfully.<br/>";
-        echo '<a href = "/insertarAuditorios">Click Here</a> to go back.';
 
+		echo "Elemento insertado exitosamente!";
+        return redirect()->action('AuditorioController@index');
     }
 
-    //--------------------------------------------------------
+    //----------------------------------------------------------------
+    public function edit($id) {
+        $auditorios  = Auditorio::where('IdAuditorio', $id)->first();
 
-    public function indexBorrar(){
-        $auditorios  = Auditorio::all();
-        return view('infraestructura/auditorio/auditorio_delete',['auditorios'=>$auditorios]);
+        return view('infraestructura.auditorios.edit')
+            ->with(['auditorios'=>$auditorios]);
     }
+
+    //----------------------------------------------------------------
+    public function update(Request $request, $id) {
+        $auditorio->Tipo               = $request->Tipo;
+        $auditorio->CantidadAuditorio  = $request->CantidadAuditorio;
+        $auditorio->CantidadAV         = $request->CantidadAV;
+        $auditorio->Capacidad          = $request->Capacidad;
+        $auditorio->CantidadSanitarios = $request->CantidadSanitarios;
+
+        Auditorio::where('IdAuditorio', $id)->update([
+            'Tipo'               => $Tipo,
+            'CantidadAuditorio'  => $CantidadAuditorio,
+            'CantidadAV'         => $CantidadAV,
+            'Capacidad'          => $Capacidad,
+            'CantidadSanitarios' => $CantidadSanitarios
+        ]);
+
+		echo "Elemento editado exitosamente!";
+        return redirect()->action('AuditorioController@index');
+    }
+
+    //----------------------------------------------------------------
     public function destroy(Request $request){
 	  	$Tipo = $request->Tipo;
 
@@ -72,37 +84,8 @@ class AuditorioController extends Controller
         }
         $auditorio->delete();
 
-        echo "Record deleted successfully.<br/>";
-        echo '<a href = "/borrarAuditorio">Click Here</a> to go back.';
+		echo "Elemento borrado exitosamente!";
+        return redirect()->action('AuditorioController@index');
     }
 
-
-//--------------------------------------------------------
-    public function indexEditar(){
-        $auditorios  = Auditorio::all();
-        return view('infraestructura/auditorio/auditorio_edit_view',['auditorios'=>$auditorios]);
-    }
-    public function show($id) {
-          $auditorios  = Auditorio::where('IdAuditorio', $id)->first();
-        return view('infraestructura/auditorio/auditorio_update',['auditorios'=>$auditorios]);
-    }
-    public function edit(Request $request,$id) {
-
-
-        $auditorio->Tipo = $request->Tipo;
-        $auditorio->CantidadEquipo = $request->CantidadEquipo;
-        $auditorio->CantidadAV = $request->CantidadAV;
-        $auditorio->Capacidad = $request->Capacidad;
-        $auditorio->CantidadSanitarios = $request->CantidadSanitarios;
-
-        Auditorio::where('IdAuditorio', $id)->update([
-            'Tipo' => $Tipo,
-            'CantidadEquipo' => $CantidadEquipo,
-            'CantidadAV' => $CantidadAV,
-            'Capacidad' => $Capacidad,
-            'CantidadSanitarios' => $CantidadSanitarios
-        ]);
-        echo "Record updated successfully.<br/>";
-        echo '<a href = "/editarAuditorio">Click Here</a> to go back.';
-    }
 }

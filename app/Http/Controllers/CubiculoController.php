@@ -11,89 +11,84 @@ use App\Cubiculo;
 
 class CubiculoController extends Controller {
 
-      public function indexVer(){
-      //$cubiculos = DB::select('select * from cubiculos');
+      public function index(){
       $cubiculos  = Cubiculo::all();
-      return view('infraestructura/cubiculo/cubiculo_view',['cubiculos'=>$cubiculos]);
+
+      return view('infraestructura.cubiculos.index')
+          ->with(['cubiculos'=>$cubiculos]);
    }
-//----------------------------------------------------------------
-	public function insertform(){
-	  return view('infraestructura/cubiculo/cubiculo_create');
+
+    //----------------------------------------------------------------
+	public function create(){
+	  return view('infraestructura.cubiculos.create');
 	}
 
+    //----------------------------------------------------------------
 	public function dummie(){
 		header("Location: http://127.0.0.1:8000/insertarCubiculo?tipo=".urlencode(""));
 	  	die();
 	}
 
-	/**
-     * Create a new cubiculo instance.
-     *
-     * @param  Request  $request
-     * @return Response
-     */
+    //----------------------------------------------------------------
     public function store(Request $request)
     {
-        // Validate the request...
-
         $cubiculo = new Cubiculo;
 
-        $cubiculo->Tipo = $request->Tipo;
-		$cubiculo->Profesor = $request->Profesor;
+        $cubiculo->Tipo           = $request->Tipo;
+		$cubiculo->Profesor       = $request->Profesor;
 		$cubiculo->CantidadEquipo = $request->CantidadEquipo;
 
         $cubiculo->save();
-		echo "Record inserted successfully.<br/>";
-        echo '<a href = "/insertarCubiculos">Click Here</a> to go back.';
+
+		echo "Elemento insertado exitosamente!";
+        return redirect()->action('CubiculoController@index');
     }
-	//-----------------------------------------------------------
 
-	public function indexBorrar(){
-		$cubiculos  = Cubiculo::all();
-      	return view('infraestructura/cubiculo/cubiculo_delete',['cubiculos'=>$cubiculos]);
+    //----------------------------------------------------------------
+	public function edit($id) {
+		$cubiculos  = Cubiculo::where('IdCubiculo', $id)->first();
+
+        return view('infraestructura.cubiculos.edit')
+            ->with(['cubiculos'=>$cubiculos]);
 	}
-	public function destroy(Request $request){
-	  	$Tipo = $request->input('Tipo');
 
-        $cubiculo = Cubiculo::where('Tipo', $Tipo)->first();
+    //----------------------------------------------------------------
+	public function update(Request $request, $id) {
+	  	$Tipo           = $request->Tipo;
+		$Profesor       = $request->Profesor;
+		$CantidadEquipo = $request->CantidadEquipo;
+
+        Cubiculo::where('IdCubiculo', $id)->update(
+            ['Tipo'           => $Tipo,
+             'Profesor'       => $Profesor,
+             'CantidadEquipo' => $CantidadEquipo]);
+
+		echo "Elemento insertado exitosamente!";
+        return redirect()->action('CubiculoController@index');
+	}
+
+    //----------------------------------------------------------------
+	public function destroy(Request $request, $tipo){
+        $cubiculo = Cubiculo::where('Tipo', $tipo)->first();
         if(!$cubiculo){
-            $mensaje = "No existe cubiculo con Tipo: ".$Tipo;
-            return view('general/error')
+            $mensaje = "No existe cubiculo con tipo: ".$tipo;
+            return view('general.error')
                 ->with(['mensaje' => $mensaje]);
         }
         $cubiculo->delete();
 
-	  	echo "Record deleted successfully.<br/>";
-	  	echo '<a href = "/borrarCubiculo">Click Here</a> to go back.';
+		echo "Elemento borrado exitosamente!";
+        return redirect()->action('CubiculoController@index');
 	}
 
-	//*-----------------------------------------------------------------
-	public function indexEditar(){
-	  	$cubiculos  = Cubiculo::all();
-	  	return view('infraestructura/cubiculo/cubiculo_edit_view',['cubiculos'=>$cubiculos]);
-	}
-	public function show($id) {
-		$cubiculos  = Cubiculo::where('IdCubiculo', $id)->first();
-	  	return view('infraestructura/cubiculo/cubiculo_update',['cubiculos'=>$cubiculos]);
-	}
-	public function edit(Request $request,$id) {
-	  	$Tipo = $request->input('Tipo');
-		$Profesor = $request->input('Profesor');
-		$CantidadEquipo = $request->input('CantidadEquipo');
-
-		Cubiculo::where('IdCubiculo', $id)->update(['Tipo' => $Tipo, 'Profesor'=>$Profesor,'CantidadEquipo'=>$CantidadEquipo]);
-	  	echo "Record updated successfully.<br/>";
-	  	echo '<a href = "/editarCubiculo">Click Here</a> to go back.';
-	}
 	//*********************************************************************
 	public function imprimir() {
 	  	$cubiculos  = Cubiculo::all();
-      		//return view('infraestructura/cubiculo/cubiculo_view',['cubiculos'=>$cubiculos]);
 
-		$pdf = PDF::loadView('infraestructura/cubiculo/cubiculo_view', ['cubiculos'=>$cubiculos]);
+        $pdf = PDF::loadView('infraestructura.cubiculos.index')
+           ->with(['cubiculos'=>$cubiculos]);
 	  	return $pdf->download('Cubiculos.pdf');
-	}	
-
-
+	}
 
 }
+

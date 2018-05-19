@@ -1,16 +1,23 @@
-@extends('layouts.insertar')
+@extends('layouts.actualizar')
 
 @section('title')
 	 editar aula <?php echo$aulas->Tipo; ?>
 @endsection
 
 @section('descripcion')
-	 <a href="/editarAula" class="btn btn-primary">Regresar</a>
-	 <h1 class="text-center">Formulario para editar un aula</h1>
+    <a href="{{action('AulaController@index')}}" class="btn btn-primary">
+        Regresar
+    </a>
+	<h1 class="text-center">Edición del aula {{$aula->Tipo}}</h1>
 @endsection
 
 @section('accion')
-	 action = "/editAula/<?php echo $aulas->IdAula; ?>"
+    action = "{{action('AulaController@update', $aula->Tipo)}}"
+@endsection
+
+@section('formopen')
+    {{Form::open(['action' => ['AulaController@update', $aula->Tipo],
+                'class' => 'form-horizontal'])}}
 @endsection
 
 @section('contenido_formulario')
@@ -182,3 +189,4 @@
 		</div>
 	</div>
 @endsection
+

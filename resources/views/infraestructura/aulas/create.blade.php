@@ -1,16 +1,18 @@
 @extends('layouts.insertar')
 
 @section('title')
-	 insertar un aula
+	 Agregar aula
 @endsection
 
 @section('descripcion')
-	<a  href="/infraestructura/aula" class="btn btn-primary">Regresar</a>
+    <a href="{{action('AulaController@index')}}" class="btn btn-primary">
+        Regresar
+    </a>
 	<h1 class="text-center">Formulario para agregar un aula</h1>
 @endsection
 
 @section('accion')
-	 action="/CrearAula"
+   action = "{{action('AulaController@store')}}"
 @endsection
 
 @section('contenido_formulario')
@@ -154,3 +156,4 @@
 		</div>
 	</div>
 @endsection
+

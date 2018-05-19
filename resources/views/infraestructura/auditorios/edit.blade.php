@@ -1,16 +1,23 @@
-@extends('layouts.insertar')
+@extends('layouts.actualizar')
 
 @section('title')
-   insertar un auditorio
+   editar auditorio <?php echo$auditorios->Tipo; ?>
 @endsection
 
 @section('descripcion')
-   	<a href="/infraestructura/auditorio" class="btn btn-primary">Regresar</a>
-   	<h1 class="text-center">Formulario para agregar un auditorio</h1>
+    <a href="{{action('AuditorioController@index')}}" class="btn btn-primary">
+        Regresar
+    </a>
+	<h1 class="text-center">Edición del auditorio {{$auditorio->Tipo}}</h1>
 @endsection
 
 @section('accion')
-   	action="/CrearAuditorio"
+    action = "{{action('AuditorioController@update', $auditorio->Tipo)}}"
+@endsection
+
+@section('formopen')
+    {{Form::open(['action' => ['AuditorioController@update', $auditorio->Tipo],
+                'class' => 'form-horizontal'])}}
 @endsection
 
 @section('contenido_formulario')
@@ -18,7 +25,7 @@
 		<label for="Tipo" class="col-sm-4 control-label" data-toggle="tooltip" title="Nombre del auditorio">Nombre</label>
 
 		<div class="col-sm-8">
-			<input type='text' class="form-control" name='Tipo' value = '<?php $tipo = $_GET['tipo']; if (!empty($tipo))echo $tipo;?>' required>
+			<input type='text' class="form-control" name='Tipo' value = '<?php echo$auditorios->Tipo; ?>' required>
 		</div>
 	</div>
 
@@ -54,3 +61,4 @@
 		</div>
 	</div>
 @endsection
+
