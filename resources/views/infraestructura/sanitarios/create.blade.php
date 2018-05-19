@@ -24,7 +24,7 @@
       			if(!empty($_GET['tipo']))
       				$tipo = $_GET['tipo'];
       			else
-      				$tipo = 'Sanitario';
+      				$tipo = '';
       		?>
       		<input type="text-center" class="form-control" name="Tipo" value={{$tipo}}>
 

@@ -34,7 +34,7 @@ class AulaController extends Controller
         $aula = new Aula;
 
         $aula->Tipo           = $request->Tipo;
-		$aula->CantidadAula = $request->CantidadAula;
+		$aula->CantidadEquipo = $request->CantidadEquipo;
 		$aula->CantidadAV     = $request->CantidadAV;
 		$aula->Capacidad      = $request->Capacidad;
 
@@ -173,7 +173,7 @@ class AulaController extends Controller
 
 	//--------------------------------------------------------------
 	public function destroy(Request $request, $tipo){
-        $aula = Aula::where('Tipo', $Tipo)->first();
+        $aula = Aula::where('Tipo', $tipo)->first();
         if(!$aula){
             $mensaje = "No existe aula con Tipo: ".$Tipo;
             return view('general/error')

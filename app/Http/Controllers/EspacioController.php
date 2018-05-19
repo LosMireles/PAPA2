@@ -45,31 +45,27 @@ class EspacioController extends Controller {
         }
 
 		$clase =$request->input('clase');
-
+/********************************************************************************************
+***********************************************************************************************/
 		if($clase == 'Aula')
 		{
-			header("Location: http://127.0.0.1:8000/insertarAula?tipo=".urlencode($request->input('tipo')));
-			die();
+			return redirect()->action('AulaController@create');
 		}
 		if($clase == 'Cubiculo')
 		{
-			header("Location: http://127.0.0.1:8000/insertarCubiculo?tipo=".urlencode($request->input('tipo')));
-			die();
+			return redirect()->action('CubiculoController@create');
 		}
 		if($clase == 'Sanitario')
 		{
-			header("Location: http://127.0.0.1:8000/insertarSanitario?tipo=".urlencode($request->input('tipo')));
-			die();
+			return redirect()->action('SanitarioController@create');
 		}
 		if($clase == 'Asesoria')
 		{
-			header("Location: http://127.0.0.1:8000/insertarAsesoria?tipo=".urlencode($request->input('tipo')));
-			die();
+			return redirect()->action('AsesoriaController@create');
 		}
 		if($clase == 'Auditorio')
 		{
-			header("Location: http://127.0.0.1:8000/insertarAuditorio?tipo=".urlencode($request->input('tipo')));
-			die();
+			return redirect()->action('AuditorioController@create');
 		}
 
 		echo "Elemento insertado exitosamente!";

@@ -33,7 +33,7 @@ class AuditorioController extends Controller
         $auditorio = new Auditorio;
 
         $auditorio->Tipo               = $request->Tipo;
-		$auditorio->CantidadAuditorio     = $request->CantidadAuditorio;
+		$auditorio->CantidadEquipo     = $request->CantidadEquipo;
 		$auditorio->CantidadAV         = $request->CantidadAV;
         $auditorio->Capacidad          = $request->Capacidad;
 		$auditorio->CantidadSanitarios = $request->CantidadSanitarios;
@@ -55,14 +55,14 @@ class AuditorioController extends Controller
     //----------------------------------------------------------------
     public function update(Request $request, $id) {
         $auditorio->Tipo               = $request->Tipo;
-        $auditorio->CantidadAuditorio  = $request->CantidadAuditorio;
+        $auditorio->CantidadEquipo  = $request->CantidadEquipo;
         $auditorio->CantidadAV         = $request->CantidadAV;
         $auditorio->Capacidad          = $request->Capacidad;
         $auditorio->CantidadSanitarios = $request->CantidadSanitarios;
 
         Auditorio::where('IdAuditorio', $id)->update([
             'Tipo'               => $Tipo,
-            'CantidadAuditorio'  => $CantidadAuditorio,
+            'CantidadEquipo'     => $CantidadEquipo,
             'CantidadAV'         => $CantidadAV,
             'Capacidad'          => $Capacidad,
             'CantidadSanitarios' => $CantidadSanitarios
