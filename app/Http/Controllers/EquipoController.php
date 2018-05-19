@@ -22,8 +22,8 @@ class EquipoController extends Controller
     public function create(){
     	$espacios  = Espacio::all();
     	$softwares = Software::all();
-        return view('equipamiento.equipos.create',
-            ['espacios'  => $espacios,
+        return view('equipamiento.equipos.create')
+            ->with(['espacios'  => $espacios,
              'softwares' => $softwares]);
     }
 
@@ -61,11 +61,11 @@ class EquipoController extends Controller
         $softwares        = Software::all();
         $equipo_softwares = DB::table('equipo_software')->get();
 
-    	return view('equipamiento.equipos.edit',
-            ['equipo'           => $equipo,
-             'espacios'         => $espacios,
-             'softwares'        => $softwares,
-             'equipo_softwares' => $equipo_softwares]);
+    	return view('equipamiento.equipos.edit')
+            ->with(['equipo'           => $equipo,
+                  'espacios'         => $espacios,
+                  'softwares'        => $softwares,
+                  'equipo_softwares' => $equipo_softwares]);
     }
 
     //----------------------------------------------------------------

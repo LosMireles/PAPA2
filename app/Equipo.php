@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Equipo extends Model
 {
     protected $table = 'equipos';
-    protected $guarded = array();
+    protected $guarded = ['id'];
 
     /// Serializar para poder meter un arreglo
     //protected $casts = ['software'=>'array'];

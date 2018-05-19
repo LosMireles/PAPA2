@@ -178,6 +178,7 @@ Route::get('/error', function($mensaje = null){
 
 Route::resources(
     ['softwares' => 'SoftwareController',
-     'equipos' => 'EquipoController'],
+     'equipos' => 'EquipoController',
+     'asignaturas' => 'AsignaturaController'],
     ['except' => 'show']);
 

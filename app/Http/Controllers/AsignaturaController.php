@@ -11,65 +11,63 @@ use App\Curso;
 
 class AsignaturaController extends Controller
 {
-    public function index_ver(){
-    	return view('asignaturas/index');
+    public function index(){
+        $asignaturas = Asignatura::with('curso')->get();
+        $cursos      = Curso::all();
+        return view('asignaturas.index')
+            ->with(['asignaturas' => $asignaturas,
+                    'cursos'      => $cursos]);
     }
 
-    public function agregar_asignatura(){
-    	return view('asignaturas/agregar_asignatura');
+    //----------------------------------------------------------------
+    public function create(){
+        $cursos = Curso::all();
+        return view('asignaturas.create')
+            ->with(['cursos' => $cursos]);
     }
 
-    public function actualizar_asignaturas(){
-        $asignaturas = DB::table('asignaturas')->get();
-    	return view('asignaturas/actualizar_asignaturas', ['asignaturas'=>$asignaturas]);
-    }
+    //----------------------------------------------------------------
+     public function store(Request $request){
+        $asignatura = new Asignatura;
 
-    public function actualizar_asignaturas_especifico($id){
-        $asignatura  =  Asignatura::where('id', $id)->first();
-
-        return view('asignaturas/actualizar_asignaturas_especifico', ['asignatura'=>$asignatura]);
-    }
-
-    public function ver_asignaturas(){
-    	$asignaturas = DB::table('asignaturas')->get();
-
-        return view('asignaturas/ver_asignaturas',
-            ['asignaturas' => $asignaturas]);
-    }
-
-    public function eliminar_asignatura(){
-        $asignaturas = DB::table('asignaturas')->get();
-    	return view('asignaturas/eliminar_asignatura', ['asignaturas'=>$asignaturas]);
-    }
-
-    /// ------------------------------------------------------------------------------
-
-    public function agregar_asignatura_post(Request $request){
-        $asignatura              = new Asignatura;
-
-        $asignatura->nombre      = $request->asignatura;
+        $asignatura->nombre      = $request->nombre;
         $asignatura->descripcion = $request->descripcion;
+        $asignatura->curso_id    = $request->curso_id;
 
         $asignatura->save();
-        echo "Record inserted successfully.<br/>";
-        echo '<a href = "/">Click Here</a> to go home.';
+
+		echo "Elemento insertado exitosamente!";
+        return redirect()->action('AsignaturaController@index');
     }
 
-    public function actualizar_asignaturas_post(Request $request){
-        $nombre      = $request->nombre;
-        $descripcion = $request->descripcion;
+    //----------------------------------------------------------------
+    public function edit($nombre){
+        $asignatura = Asignatura::where('nombre', $nombre)->first();
+        $cursos     = Curso::all();
+        return view('asignaturas.edit')
+            ->with(['asignatura' => $asignatura,
+                    'cursos'     => $cursos]);
+    }
 
-        DB::table('asignaturas')->where('id', $request->id)->update([
-            'nombre' => $nombre,'descripcion' => $descripcion
+    //----------------------------------------------------------------
+    public function update(Request $request, $nombre){
+        $nombre_nuevo = $request->nombre;
+        $descripcion  = $request->descripcion;
+        $curso_id     = $request->curso_id;
+
+        $asignatura = Asignatura::where('nombre', $nombre)->first();
+        $asignatura->update([
+            'nombre'      => $nombre_nuevo,
+            'descripcion' => $descripcion,
+            'curso_id'    => $curso_id
         ]);
 
-        echo "Record updated successfully.<br/>";
-        echo '<a href = "/">Click here</a> to go home.';
+		echo "Elemento editado exitosamente!";
+        return redirect()->action('AsignaturaController@index');
     }
 
-    public function eliminar_asignatura_post(Request $request){
-	  	$nombre = $request->nombre;
-
+    //----------------------------------------------------------------
+    public function destroy($nombre){
         $asignatura = Asignatura::where('nombre', $nombre)->first();
         if(!$asignatura){
             $mensaje = "No existe asignatura con nombre: ".$nombre;
@@ -78,8 +76,8 @@ class AsignaturaController extends Controller
         }
         $asignatura->delete();
 
-        echo "Record deleted successfully.<br/>";
-        echo '<a href = "/">Click Here</a> to go home.';
+		echo "Elemento borrado exitosamente!";
+        return redirect()->action('AsignaturaController@index');
     }
 }
 
