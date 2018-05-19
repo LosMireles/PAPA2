@@ -16,10 +16,10 @@ class CreateAsesoriasTable extends Migration
         Schema::create('asesorias', function (Blueprint $table) {
             $table->increments('id')->unique()->unsigned();
 			$table->string('Tipo', 25);
-			$table->time('InicioHora', 10);
-			$table->time('FinHora', 10);
-			$table->date('InicioDia', 10);
-			$table->date('FinDia', 10);
+			$table->time('InicioHora');
+			$table->time('FinHora');
+			$table->date('InicioDia');
+			$table->date('FinDia');
 			$table->string('Materia', 45);
             $table->timestamps();
         });
