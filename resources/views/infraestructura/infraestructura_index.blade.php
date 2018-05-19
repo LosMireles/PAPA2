@@ -36,6 +36,6 @@
 	</tr>
 
 	<tr>
-		<td><a href="/infraestructura/curso">Cursos</a></td>
+		<td><a href="{{action('CursoController@index')}}">Cursos</a></td>
 	</tr>
 @endsection

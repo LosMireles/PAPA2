@@ -5,12 +5,14 @@
 @endsection
 
 @section('descripcion')
-   <a href="/infraestructura/curso" class="btn btn-primary">Regresar</a>
-   <h1 class="text-center">Formulario para agregar un curso</h1>
+    <a href="{{action('CursoController@index')}}" class="btn btn-primary">
+        Regresar
+    </a>
+	<h1 class="text-center">Formulario para agregar un curso</h1>
 @endsection
 
 @section('accion')
-   action="/CrearCurso"
+   action = "{{action('CursoController@store')}}"
 @endsection
 
 @section('contenido_formulario')

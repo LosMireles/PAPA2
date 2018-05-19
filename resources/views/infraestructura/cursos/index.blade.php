@@ -1,11 +1,20 @@
 @extends('layouts.ver')
 @section('title')
-   ver cursos
+   Cursos
 @endsection
 
 @section('descripcion')
-   <a href="/infraestructura/curso" class="btn btn-primary">Regresar</a>
-   <h1 class="text-center">Listado de cursos</h1>
+    <a href="/infraestructura" class="btn btn-primary">
+        Regresar
+    </a>
+
+    <td class="text-center">
+        <a href="{{action('CursoController@create')}}"class="btn btn-warning">
+            Agregar nuevo curso
+        </a>
+    </td>
+
+    <h1 class="text-center">Listado de curso</h1>
 @endsection
 
 @section('cabeza_tabla')
@@ -36,6 +45,19 @@
                     {{$espacio->tipo}} <br>
                 @endforeach
             @endif
+        </td>
+
+        <td class="text-center">
+            <a href="{{action('CursoController@edit', [ 'nombre' => $curso->nombre])}}" class="btn btn-warning">
+                Editar
+            </a>
+        </td>
+
+        <td>
+            {{ Form::open(['action' => ['CursoController@destroy', $curso->nombre]]) }}
+                {{ Form::hidden('_method', 'DELETE') }}
+                {{ Form::submit('Borrar', ['class' => 'btn btn-warning']) }}
+            {{ Form::close() }}
         </td>
 
 	</tr>

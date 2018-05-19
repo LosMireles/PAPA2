@@ -10,3 +10,4 @@ class Auditorio extends Model
     protected $guarded = ['id'];
 
 }
+

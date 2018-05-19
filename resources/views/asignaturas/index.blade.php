@@ -1,6 +1,6 @@
 @extends('layouts.ver')
 @section('title')
-	ver asignaturas
+	Asignaturas
 @endsection
 
 @section('descripcion')

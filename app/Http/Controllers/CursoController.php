@@ -10,28 +10,22 @@ use App\Curso;
 use App\Espacio;
 
 class CursoController extends Controller {
-      public function indexVer(){
-      $cursos  = Curso::all();
-      return view('infraestructura/curso/curso_view',
-          ['cursos'=>$cursos]);
-   }
-//----------------------------------------------------------------
-	public function insertform(){
+    public function index(){
+        $cursos  = Curso::all();
+        return view('infraestructura.cursos.index')
+            ->with(['cursos' => $cursos]);
+    }
+
+    //----------------------------------------------------------------
+	public function create(){
         $espacios = Espacio::all();
-        return view('infraestructura/curso/curso_create',
-            ['espacios' => $espacios]);
+        return view('infraestructura.cursos.create')
+            ->with(['espacios' => $espacios]);
 	}
 
-	/**
-     * Create a new curso instance.
-     *
-     * @param  Request  $request
-     * @return Response
-     */
+    //----------------------------------------------------------------
     public function store(Request $request)
     {
-        // Validate the request...
-
         $curso                = new Curso;
 
         $curso->nombre        = $request->nombre;
@@ -40,61 +34,42 @@ class CursoController extends Controller {
         $curso->noEstudiantes = $request->noEstudiantes;
         $curso->tipoAula      = $request->tipoAula;
         $curso->tipo          = $request->tipo;
+        $espacios             = $request->espacios;
 
         $curso->save();
 
-        foreach($request->espacios as $tipoEspacio){
-            $espacioId = DB::table('espacios')->where('tipo', $tipoEspacio)->value('id');
-            $curso->espacios()->attach($espacioId);
+        if(!empty($espacios)){
+            foreach($espacios as $tipoEspacio){
+                $espacioId = DB::table('espacios')->where('tipo', $tipoEspacio)->value('id');
+                $curso->espacios()->attach($espacioId);
+            }
         }
 
-        echo "Record inserted successfully.<br/>";
-        echo '<a href = "/insertarCurso">Click Here</a> to go back.';
+		echo "Elemento insertado exitosamente!";
+        return redirect()->action('CursoController@index');
     }
+
 	//-----------------------------------------------------------
-
-	public function indexBorrar(){
-		$cursos  = Curso::all();
-      	return view('infraestructura/curso/curso_delete',['cursos'=>$cursos]);
-	}
-	public function destroy(Request $request){
-	  	$nombre = $request->input('nombre');
-
-        $curso = Curso::where('nombre', $nombre)->first();
-        if(!$curso){
-            $mensaje = "No existe curso con nombre: ".$nombre;
-            return view('general/error')
-                ->with(['mensaje' => $mensaje]);
-        }
-        $curso->delete();
-
-	  	echo "Record deleted successfully.<br/>";
-	  	echo '<a href = "/borrarCurso">Click Here</a> to go back.';
-	}
-
-	//*-----------------------------------------------------------------
-	public function indexEditar(){
-	  	$cursos  = Curso::all();
-	  	return view('infraestructura/curso/curso_edit_view',['cursos'=>$cursos]);
-	}
-	public function show($nombre) {
+	public function edit($nombre) {
 		$curso         = Curso::where('nombre', $nombre)->first();
-        $espacios      = Espacio::all();
+	  	$espacios      = Espacio::all();
         $curso_espacio = DB::table('curso_espacio')->get();
 
-        return view('infraestructura/curso/curso_update',
-            ['curso'         => $curso,
-             'espacios'      => $espacios,
-             'curso_espacio' => $curso_espacio]);
+	  	return view('infraestructura.cursos.edit')
+	  	    ->with(['curso'         => $curso,
+                    'espacios'      => $espacios,
+                    'curso_espacio' => $curso_espacio]);
 	}
-	public function edit(Request $request) {
-	  	$nombre        = $request->input('nombre');
-	  	$periodo       = $request->input('periodo');
-	  	$grupo         = $request->input('grupo');
-	  	$noEstudiantes = $request->input('noEstudiantes');
-	  	$tipoAula      = $request->input('tipoAula');
-	  	$tipo          = $request->input('tipo');
-        $tipoEspacios  = $request->input('espacios');
+
+	//-----------------------------------------------------------
+    public function update(Request $request, $nombre) {
+	  	$nombre_nuevo  = $request->nombre;
+	  	$periodo       = $request->periodo;
+	  	$grupo         = $request->grupo;
+	  	$noEstudiantes = $request->noEstudiantes;
+	  	$tipoAula      = $request->tipoAula;
+	  	$tipo          = $request->tipo;
+        $tipoEspacios  = $request->espacios;
 
         $idEspacios = [];
         foreach($tipoEspacios as $tipoEspacio){
@@ -102,15 +77,36 @@ class CursoController extends Controller {
                 ->where('tipo', $tipoEspacio)->value('id');
         }
 
-        $curso = Curso::where('id', $request->id)->first();
+        $curso = Curso::where('nombre', $nombre)->first();
 		$curso->update([
-            'nombre' => $nombre, 'periodo' => $periodo,'grupo'=>$grupo,
-            'noEstudiantes'=>$noEstudiantes, 'tipoAula' => $tipoAula, 'tipo' => $tipo
+            'nombre'        => $nombre_nuevo,
+            'periodo'       => $periodo,
+            'grupo'         => $grupo,
+            'noEstudiantes' => $noEstudiantes,
+            'tipoAula'      => $tipoAula,
+            'tipo'          => $tipo
         ]);
 
         $curso->espacios()->sync($idEspacios);
 
-	  	echo "Record updated successfully.<br/>";
-	  	echo '<a href = "/editarCurso">Click Here</a> to go back.';
+		echo "Elemento editado exitosamente!";
+        return redirect()->action('CursoController@index');
 	}
+
+	//-----------------------------------------------------------
+    public function destroy($nombre){
+        $curso = Curso::where('nombre', $nombre)->first();
+        if(!$curso){
+            $mensaje = "No existe curso con nombre: ".$nombre;
+            return view('general.error')
+                ->with(['mensaje' => $mensaje]);
+        }
+        $curso->delete();
+
+		echo "Elemento borrado exitosamente!";
+        return redirect()->action('CursoController@index');
+	}
+
+	//*-----------------------------------------------------------------
 }
+
