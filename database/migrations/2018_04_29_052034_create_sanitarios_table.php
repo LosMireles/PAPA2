@@ -14,15 +14,16 @@ class CreateSanitariosTable extends Migration
     public function up()
     {
         Schema::create('sanitarios', function (Blueprint $table) {
-            $table->increments('id')->unique()->unsigned();
-			$table->string('Tipo', 25);
-			$table->time('InicioHora');
-			$table->time('FinHora');
-			$table->date('InicioDia');
-			$table->date('FinDia');
-			$table->integer('Limpieza');
-			$table->integer('CantidadPersonal');
-            $table->timestamps();
+            $table -> increments('id')                 -> unique()  -> unsigned();
+			$table -> string('Tipo')                   -> unique();
+			$table -> time('InicioHora');
+			$table -> time('FinHora');
+			$table -> date('InicioDia');
+			$table -> date('FinDia');
+			$table -> tinyInteger('Limpieza');
+			$table -> tinyInteger('CantidadPersonal');
+
+            $table -> timestamps();
         });
     }
 
@@ -36,3 +37,4 @@ class CreateSanitariosTable extends Migration
         Schema::dropIfExists('sanitarios');
     }
 }
+

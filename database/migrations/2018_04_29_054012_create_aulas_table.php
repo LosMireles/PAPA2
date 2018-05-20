@@ -14,24 +14,27 @@ class CreateAulasTable extends Migration
     public function up()
     {
         Schema::create('aulas', function (Blueprint $table) {
-            $table->increments('id')->unique()->unsigned();
-			$table->string('Tipo', 25);
-			$table->integer('CantidadEquipo');
-			$table->integer('CantidadAV');
-			$table->integer('Capacidad');
-			$table->boolean('SillasPaleta');
-			$table->boolean('MesasTrabajo');
-			$table->boolean('Isotopica');
-			$table->boolean('Estrado');
-			$table->integer('Pizarron');
-			$table->integer('Illuminacion');
-			$table->integer('AislamientoR');
-			$table->integer('Ventilacion');
-			$table->integer('Temperatura');
-			$table->integer('Espacio');
-			$table->integer('Mobilario');
-			$table->integer('Conexiones');
-            $table->timestamps();
+            $table -> increments('id')             -> unique()  -> unsigned();
+			$table -> string('Tipo')               -> unique();
+			$table -> integer('CantidadEquipo');
+			$table -> integer('CantidadAV');
+			$table -> integer('Capacidad');
+
+			$table -> boolean('SillasPaleta');
+			$table -> boolean('MesasTrabajo');
+			$table -> boolean('Isotopica');
+			$table -> boolean('Estrado');
+
+			$table -> tinyInteger('Pizarron');
+			$table -> tinyInteger('Illuminacion');
+			$table -> tinyInteger('AislamientoR');
+			$table -> tinyInteger('Ventilacion');
+			$table -> tinyInteger('Temperatura');
+			$table -> tinyInteger('Espacio');
+			$table -> tinyInteger('Mobilario');
+			$table -> tinyInteger('Conexiones');
+
+            $table -> timestamps();
         });
     }
 

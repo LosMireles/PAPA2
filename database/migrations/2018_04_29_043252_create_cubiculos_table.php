@@ -14,10 +14,10 @@ class CreateCubiculosTable extends Migration
     public function up()
     {
         Schema::create('cubiculos', function (Blueprint $table) {
-            $table->increments('id')->unique()->unsigned();
-			$table->string('Tipo', 25);
-			$table->string('Profesor', 100);
-			$table->integer('CantidadEquipo');
+            $table -> increments('id')           -> unique()  -> unsigned();
+			$table -> string('Tipo')             -> unique();
+			$table -> string('Profesor');
+			$table -> integer('CantidadEquipo');
 
 
             $table->timestamps();

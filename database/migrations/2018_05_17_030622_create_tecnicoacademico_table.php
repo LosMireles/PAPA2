@@ -18,8 +18,8 @@ class CreateTecnicoacademicoTable extends Migration
             $table -> string('nombre');
             $table -> time('hora_inicio');
             $table -> time('hora_termino');
-            $table -> string('dia_inicio');
-            $table -> string('dia_termino');
+            $table -> date('dia_inicio');
+            $table -> date('dia_termino');
             $table -> string('localizacion');
             $table -> string('curriculum');
             $table -> timestamps();

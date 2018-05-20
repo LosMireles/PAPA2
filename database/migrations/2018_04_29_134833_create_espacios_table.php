@@ -14,11 +14,11 @@ class CreateEspaciosTable extends Migration
     public function up()
     {
         Schema::create('espacios', function (Blueprint $table) {
-            $table->increments('id')->unique()->unsigned();
-            $table->char('tipo', 45)->unique();
-            $table->integer('superficie');
-            $table->integer('cantidad');
-            $table->string('clase');
+            $table -> increments('id')       -> unique()  -> unsigned();
+            $table -> string('tipo')         -> unique();
+            $table -> integer('superficie');
+            $table -> integer('cantidad');
+            $table -> string('clase');
 
             $table->timestamps();
         });

@@ -14,8 +14,8 @@ class CreateSoftwareTable extends Migration
     public function up()
     {
         Schema::create('softwares', function (Blueprint $table) {
-            $table -> increments('id')          -> unique()->unsigned();
-            $table -> char('nombre', 45)        -> unique();
+            $table -> increments('id')          -> unique()  -> unsigned();
+            $table -> string('nombre')          -> unique();
             $table -> boolean('manualUsuario');
             $table -> string('licencia');
             $table -> string('disponibilidad');

@@ -14,12 +14,12 @@ class CreateAuditoriosTable extends Migration
     public function up()
     {
         Schema::create('auditorios', function (Blueprint $table) {
-            $table->increments('id')->unique()->unsigned();
-			$table->string('Tipo', 25);
-			$table->integer('CantidadEquipo');
-			$table->integer('CantidadAV');
-			$table->integer('Capacidad');
-			$table->integer('CantidadSanitarios');
+            $table -> increments('id')               -> unique()  -> unsigned();
+			$table -> string('Tipo')                 -> unique();
+			$table -> integer('CantidadEquipo');
+			$table -> integer('CantidadAV');
+			$table -> integer('Capacidad');
+			$table -> integer('CantidadSanitarios');
 
             $table->timestamps();
         });
