@@ -27,6 +27,8 @@
         <th>Lugar de obtención</th>
         <th>Clase</th>
         <th>Equipos</th>
+        <th></th>
+        <th></th>
     </tr>
 @endsection
 

@@ -20,10 +20,14 @@
 @section('cabeza_tabla')
 	<tr>
 		<th>Serial del equipo</th>
+		<th>Tipo de equipo</th>
 		<th>Dispone de manual de usuario</th>
 		<th>Se encuentra operable</th>
 		<th>Localización</th>
 		<th>Software</th>
+		<th>Descripción</th>
+		<th></th>
+		<th></th>
 	</tr>
 @endsection
 
@@ -32,6 +36,8 @@
 		<tr>
 			<!--Serial del equipo-->
 			<td>{{$equipo->serial}}</td>
+
+			<td>{{$equipo->tipo}}</td>
 
 			<!--Manual de usuario-->
 			@if($equipo->manualUsuario)
@@ -58,6 +64,9 @@
 				@endif
 				</ul>
 			</td>
+
+			<!-- Descripcion -->
+			<td>{{$equipo->descripcion}}</td>
 
 			<!--Boton editar-->
             <td class="text-center">

@@ -24,6 +24,8 @@
 		<th>Cantidad</th>
 		<th>Clase</th>
         <th>Cursos</th>
+        <th></th>
+        <th></th>
 	</tr>
 @endsection
 

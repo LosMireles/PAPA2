@@ -26,6 +26,8 @@
 		<td>Dia de inicio</td>
 		<td>Dia de finalizacion</td>
 		<td>Materia</td>
+        <td></td>
+        <td></td>
 	</tr>
 @endsection
 

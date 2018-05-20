@@ -20,6 +20,7 @@
 </head>
 <body>
     <div class="container">
+        <a href="{{url('/')}}" class="btn btn-primary">Inicio</a>
         @yield('content')
 
         <script>

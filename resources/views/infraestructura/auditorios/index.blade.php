@@ -25,6 +25,8 @@
 		<td>CantidadAV</td>
 		<td>Capacidad</td>
 		<td>CantidadSanitarios</td>
+        <td></td>
+        <td></td>
    	</tr>
 @endsection
 

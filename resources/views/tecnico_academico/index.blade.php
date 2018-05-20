@@ -6,23 +6,55 @@
 
 @section('descipcion')
 	<a href="{{ url('/') }}" class="btn btn-primary">Regresar</a>
+	<a href="{{ action('TecnicoAcademicoController@create') }}" class="btn btn-warning">Agregar un técnico académico</a>
 	<h1 class="text-center">Técnicos académicos</h1>
 @endsection
 
 @section('cabeza_tabla')
 	<tr>
-		<th class="text-center">Seleccione una opción</th>
+		<th>Nombre</th>
+		<th>Horario</th>
+		<th>Días laborales</th>
+		<th>Ubicación</th>
+		<th>Currículo</th>
+		<th></th>
+		<th></th>
 	</tr>
 @endsection
 
 
 @section('cuerpo_tabla')
-	<tr>
-		<td>
-			<a href="{{ url('/tecnico_academico/insertar') }}">Insertar</a>
-		</td>
-	</tr>
-	<tr>
+	@foreach($tecnicos as $tecnico)
+		<tr>
+			<td>{{$tecnico->nombre}}</td>
+			<td>
+				<?php 
+					$inicio = strtotime($tecnico->hora_inicio);
+					$inicio_format = date('H:i', $inicio);
+					$termino = strtotime($tecnico->hora_termino);
+					$termino_format = date('H:i', $termino);
+				?>
+				{{$inicio_format}} - {{$termino_format}}
+			</td>
+			<td>{{$tecnico->dia_inicio}} - {{$tecnico->dia_termino}}</td>
+			<td>{{$tecnico->localizacion}}</td>
+			<td>{{$tecnico->curriculum}}</td>
+			
+			<td class="text-center">
+				{{ Form::open( array('action'=>['TecnicoAcademicoController@edit', $tecnico->id], 'method' => 'get') ) }}
+					{{ Form::submit('Editar', ['class' => 'btn btn-warning']) }}
+				{{ Form::close() }}
+			</td>
+
+            <td class="text-center">
+	            {{ Form::open( array( 'action' => ['TecnicoAcademicoController@destroy', $tecnico->id], 'method' => 'DELETE' ) ) }}
+	            	{{ Form::submit('Borrar', ['class' => 'btn btn-warning']) }}
+	            {{ Form::close() }}
+            </td>
+		</tr>
+	@endforeach
+
+	<!--<tr>
 		<td>
 			<a href="{{ url('/tecnico_academico/editar') }}">Editar</a>
 		</td>
@@ -36,5 +68,5 @@
 		<td>
 			<a href="{{ url('/tecnico_academico/borrar') }}">Borrar</a>
 		</td>
-	</tr>
+	</tr>-->
 @endsection

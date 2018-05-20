@@ -85,5 +85,10 @@
 			<a href="{{ url('/asignaturas') }}">Asignaturas</a>
 		</td>
 	</tr>
+	<tr>
+		<td>
+			<a href="{{ url('/tecnicos_academicos') }}">Técnico académico</a>
+		</td>
+	</tr>
 @endsection
 
