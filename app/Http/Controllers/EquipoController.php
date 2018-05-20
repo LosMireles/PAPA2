@@ -61,11 +61,14 @@ class EquipoController extends Controller
         $softwares        = Software::all();
         $equipo_softwares = DB::table('equipo_software')->get();
 
+        $tipo_equipos = ['computo', 'redes', 'audiovisual'];
+
     	return view('equipamiento.equipos.edit')
             ->with(['equipo'           => $equipo,
                   'espacios'         => $espacios,
                   'softwares'        => $softwares,
-                  'equipo_softwares' => $equipo_softwares]);
+                  'equipo_softwares' => $equipo_softwares,
+                  'tipo_equipos'     => $tipo_equipos]);
     }
 
     //----------------------------------------------------------------
@@ -74,6 +77,8 @@ class EquipoController extends Controller
     	$manualUsuario    = $request->manual;
     	$operable         = $request->operable;
     	$localizacion     = $request->localizacion;
+        $tipo_equipo          = $request->tipo;
+        $equipo_descripcion   = $request->especificaciones;
     	$nombre_softwares = $request->nombre_software;
 
         $idSoftwares = [];
@@ -86,7 +91,9 @@ class EquipoController extends Controller
             'manualUsuario' => $manualUsuario,
             'operable'      => $operable,
             'localizacion'  => $localizacion,
-            'serial'        => $serial_nuevo
+            'serial'        => $serial_nuevo,
+            'tipo'          => $tipo_equipo,
+            'descripcion'   => $descripcion
         ]);
 
         $equipo->softwares()->sync($idSoftwares);
