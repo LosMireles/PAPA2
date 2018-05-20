@@ -14,7 +14,7 @@
         </a>
     </td>
 
-    <h1 class="text-center">Listado de cubiculos</h1>
+    <h1 class="text-center">Listado de cubículos</h1>
 @endsection
 
 @section('cabeza_tabla')
@@ -22,6 +22,8 @@
    		<td>Código del cubículo</td>
         <td>Profesor</td>
         <td>Cantidad de equipo</td>
+        <td></td>
+        <td></td>
    </tr>
 @endsection
 

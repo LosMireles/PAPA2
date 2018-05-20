@@ -26,6 +26,8 @@
 		<th>Laborable hasta</th>
 		<th>Limpieza</th>
 		<th>Cantidad de personal de limpieza</th>
+        <th></th>
+        <th></th>
 	</tr>
 @endsection
 

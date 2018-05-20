@@ -23,6 +23,8 @@
 		<td>Cantidad de equipo</td>
 		<td>Cantidad de computadoras</td>
 		<td>Capacidad</td>
+        <td></td>
+        <td></td>
    	</tr>
 @endsection
 
