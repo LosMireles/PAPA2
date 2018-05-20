@@ -50,7 +50,6 @@ class EspacioController extends Controller {
 		$clase               = $request->clase;
 /********************************************************************************************
 ***********************************************************************************************/
-        /*
 		if($clase == 'Aula')
 		{
             return view('infraestructura.aulas.create')
@@ -59,21 +58,28 @@ class EspacioController extends Controller {
 		}
 		if($clase == 'Cubiculo')
 		{
-			return redirect()->action('CubiculoController@create');
+            return view('infraestructura.cubiculos.create')
+                ->with(['espacio_id'   => $espacio->id,
+                        'espacio_tipo' => $espacio->tipo]);
 		}
 		if($clase == 'Sanitario')
 		{
-			return redirect()->action('SanitarioController@create');
+            return view('infraestructura.sanitarios.create')
+                ->with(['espacio_id'   => $espacio->id,
+                        'espacio_tipo' => $espacio->tipo]);
 		}
 		if($clase == 'Asesoria')
 		{
-			return redirect()->action('AsesoriaController@create');
+            return view('infraestructura.asesorias.create')
+                ->with(['espacio_id'   => $espacio->id,
+                        'espacio_tipo' => $espacio->tipo]);
 		}
 		if($clase == 'Auditorio')
 		{
-			return redirect()->action('AuditorioController@create');
+            return view('infraestructura.auditorios.create')
+                ->with(['espacio_id'   => $espacio->id,
+                        'espacio_tipo' => $espacio->tipo]);
 		}
-         */
 
 		echo "Elemento insertado exitosamente!";
         return redirect()->action('EspacioController@index');

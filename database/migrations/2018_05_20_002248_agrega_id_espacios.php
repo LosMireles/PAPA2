@@ -15,27 +15,27 @@ class AgregaIdEspacios extends Migration
     {
         schema::table('cubiculos', function($table){
             $table->integer('espacio_id')->unsigned();
-            $table->foreign('espacio_id')->references('id')->on('espacios');
+            $table->foreign('espacio_id')->references('id')->on('espacios')->onDelete('cascade');
         });
 
         schema::table('asesorias', function($table){
             $table->integer('espacio_id')->unsigned();
-            $table->foreign('espacio_id')->references('id')->on('espacios');
+            $table->foreign('espacio_id')->references('id')->on('espacios')->onDelete('cascade');
         });
 
         schema::table('sanitarios', function($table){
             $table->integer('espacio_id')->unsigned();
-            $table->foreign('espacio_id')->references('id')->on('espacios');
+            $table->foreign('espacio_id')->references('id')->on('espacios')->onDelete('cascade');
         });
 
         schema::table('auditorios', function($table){
             $table->integer('espacio_id')->unsigned();
-            $table->foreign('espacio_id')->references('id')->on('espacios');
+            $table->foreign('espacio_id')->references('id')->on('espacios')->onDelete('cascade');
         });
 
         schema::table('aulas', function($table){
             $table->integer('espacio_id')->unsigned()->nullable();
-            $table->foreign('espacio_id')->references('id')->on('espacios');
+            $table->foreign('espacio_id')->references('id')->on('espacios')->onDelete('cascade');
         });
 
     }

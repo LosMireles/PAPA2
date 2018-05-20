@@ -47,12 +47,7 @@
 
       <div class="col-sm-8">
             <select name="clase" class="form-control">
-               <option value="Aula" <?php if($espacio->clase == 'Aula'){echo("selected");}?>>Aula</option>
-               <option  value="Cubiculo" <?php if($espacio->clase == 'Cubiculo'){echo("selected");}?>>Cubiculo</option>
-
-               <option value="Sanitario" <?php if($espacio->clase == 'Sanitario'){echo("selected");}?>>Sanitario</option>
-               <option value="Asesoria" <?php if($espacio->clase == 'Asesoria'){echo("selected");}?>>Asesoria</option>
-               <option value="Auditorio <?php if($espacio->clase == 'Auditorio'){echo("selected");}?>">Auditorio</option>
+               <option value="{{$espacio->clase}}" selected>{{$espacio->clase}}</option>
            </select>
          </div>
     </div>

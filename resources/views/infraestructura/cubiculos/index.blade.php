@@ -9,7 +9,7 @@
     </a>
 
     <td class="text-center">
-        <a href="{{action('CubiculoController@create')}}"class="btn btn-warning">
+        <a href="{{action('EspacioController@create')}}"class="btn btn-warning">
             Agregar nuevo cubiculos
         </a>
     </td>

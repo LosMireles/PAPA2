@@ -9,7 +9,7 @@
     </a>
 
     <td class="text-center">
-        <a href="{{action('AsesoriaController@create')}}"class="btn btn-warning">
+        <a href="{{action('EspacioController@create')}}"class="btn btn-warning">
             Agregar nuevo asesoria
         </a>
     </td>
