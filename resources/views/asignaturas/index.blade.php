@@ -22,6 +22,8 @@
 		<th>Nombre de la asignatura</th>
 		<th>Descripción de la asignatura</th>
         <th>Curso de la asignatura</th>
+        <th></th>
+        <th></th>
 	</tr>
 @endsection
 
