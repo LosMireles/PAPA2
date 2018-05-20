@@ -52,15 +52,23 @@
 		<label for="tipoAula" class="col-sm-4 control-label" data-toggle="tooltip" title="Esto es: laboratorio, aula, etc">Tipo de aula</label>
 
 		<div class="col-sm-8">
-			<input type='text' class="form-control" name='tipoAula' id="tipoAula" placeholder="Aula" required>
+            <select name="tipoAula" class="form-control">
+            @foreach($tiposAulas as $tipo)
+               <option value="{{$tipo}}"> {{$tipo}} </option>
+            @endforeach
+            </select>
 		</div>
 	</div>
 
 	<div class="form-group">
-		<label for="tipo" class="col-sm-4 control-label" data-toggle="tooltip" title="Identificador del curso">Tipo</label>
+		<label for="pertenencia" class="col-sm-4 control-label" data-toggle="tooltip" title="A que licenciatura pertenece la materia (LCC, LM, otro)">Pertenencia</label>
 
 		<div class="col-sm-8">
-			<input type='text' class="form-control" name='tipo' id="tipo" placeholder="CALC202-1" required>
+            <select name="pertenencia" class="form-control">
+            @foreach($licenciaturas as $licenciatura)
+               <option value="{{$licenciatura}}" > {{$licenciatura}} </option>
+            @endforeach
+            </select>
 		</div>
 	</div>
 

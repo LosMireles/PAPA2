@@ -56,14 +56,16 @@
         </label>
 
 		<div class="col-sm-8">
+            <select name="curso_id" class="form-control">
             @foreach($cursos as $curso)
                 @if($curso->id == $asignatura->curso_id)
-                    <input type="radio" name="curso_id" value="{{$curso->id}}" checked>
+                    <option value="{{$curso->id}}" checked>
                 @else
-                    <input type="radio" name="curso_id" value="{{$curso->id}}">
+                    <option value="{{$curso->id}}">
                 @endif
                 {{$curso->nombre}} <br>
             @endforeach
+            </select>
 		</div>
 	</div>
 

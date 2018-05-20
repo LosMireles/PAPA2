@@ -10,6 +10,9 @@ use App\Curso;
 use App\Espacio;
 
 class CursoController extends Controller {
+    private $tiposAulas = ["Aula", "Laboratorio", "Otro"];
+    private $licenciaturas = ["LCC", "LM", "Otro"];
+
     public function index(){
         $cursos  = Curso::all();
         return view('infraestructura.cursos.index')
@@ -20,7 +23,9 @@ class CursoController extends Controller {
 	public function create(){
         $espacios = Espacio::all();
         return view('infraestructura.cursos.create')
-            ->with(['espacios' => $espacios]);
+            ->with(['espacios'      => $espacios,
+                    'tiposAulas'    => $this->tiposAulas,
+                    'licenciaturas' => $this->licenciaturas]);
 	}
 
     //----------------------------------------------------------------
@@ -33,7 +38,7 @@ class CursoController extends Controller {
 		$curso->grupo         = $request->grupo;
         $curso->noEstudiantes = $request->noEstudiantes;
         $curso->tipoAula      = $request->tipoAula;
-        $curso->tipo          = $request->tipo;
+        $curso->pertenencia   = $request->pertenencia;
         $espacios             = $request->espacios;
 
         $curso->save();
@@ -58,7 +63,9 @@ class CursoController extends Controller {
 	  	return view('infraestructura.cursos.edit')
 	  	    ->with(['curso'         => $curso,
                     'espacios'      => $espacios,
-                    'curso_espacio' => $curso_espacio]);
+                    'curso_espacio' => $curso_espacio,
+                    'tiposAulas'    => $this->tiposAulas,
+                    'licenciaturas' => $this->licenciaturas]);
 	}
 
 	//-----------------------------------------------------------
@@ -68,13 +75,16 @@ class CursoController extends Controller {
 	  	$grupo         = $request->grupo;
 	  	$noEstudiantes = $request->noEstudiantes;
 	  	$tipoAula      = $request->tipoAula;
-	  	$tipo          = $request->tipo;
+	  	$pertenencia   = $request->pertenencia;
         $tipoEspacios  = $request->espacios;
 
+
         $idEspacios = [];
-        foreach($tipoEspacios as $tipoEspacio){
-            $idEspacios[] = DB::table('espacios')
-                ->where('tipo', $tipoEspacio)->value('id');
+        if(!empty($tipoEspacios)){
+            foreach($tipoEspacios as $tipoEspacio){
+                $idEspacios[] = DB::table('espacios')
+                    ->where('tipo', $tipoEspacio)->value('id');
+            }
         }
 
         $curso = Curso::where('nombre', $nombre)->first();
@@ -84,7 +94,7 @@ class CursoController extends Controller {
             'grupo'         => $grupo,
             'noEstudiantes' => $noEstudiantes,
             'tipoAula'      => $tipoAula,
-            'tipo'          => $tipo
+            'pertenencia'   => $pertenencia
         ]);
 
         $curso->espacios()->sync($idEspacios);

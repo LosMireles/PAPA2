@@ -37,6 +37,7 @@
    			<input type='text' class="form-control" name='cantidad' placeholder="Cantidad" required>
    		</div>
    </div>
+
    <div class="form-group">
    		<label for="clase" class="col-sm-4 control-label" data-toggle="tooltip" title="Uno de los 5 posibles espacios fisicos (Aula, Cubiculo, Sanitarios, Asesorias, Auditorio)">Clase[?]:  </label>
 

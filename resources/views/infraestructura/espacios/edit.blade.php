@@ -47,7 +47,16 @@
 
       <div class="col-sm-8">
             <select name="clase" class="form-control">
-               <option value="{{$espacio->clase}}" selected>{{$espacio->clase}}</option>
+                    <option value="{{$curso->pertenencia}}"  selected>$curso->pertenencia </option>
+                    @if($curso->pertenencia != "LCC")
+                        <option value="LCC"  > LCC  </option>
+                    @endif
+                    @if($curso->pertenencia != "LM")
+                        <option value="LM"   > LM  </option>
+                    @endif
+                    @if($curso->pertenencia != "Otro")
+                        <option value="Otro" > Otro</option>
+                    @endif
            </select>
          </div>
     </div>

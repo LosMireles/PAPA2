@@ -24,7 +24,7 @@
 		<td>Grupo</td>
 		<td>Numero de Estudiantes</td>
 		<td>Tipo de Aula</td>
-		<td>Tipo</td>
+		<td>Pertenencia</td>
         <td>Espacios</td>
    </tr>
 @endsection
@@ -37,7 +37,7 @@
 		<td>{{ $curso->grupo }}</td>
 		<td>{{ $curso->noEstudiantes }}</td>
 		<td>{{ $curso->tipoAula }}</td>
-		<td>{{ $curso->tipo }}</td>
+		<td>{{ $curso->pertenencia }}</td>
 
         <td>
             @if(!empty($curso->espacios))

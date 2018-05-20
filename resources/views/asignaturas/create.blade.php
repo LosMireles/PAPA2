@@ -58,10 +58,12 @@
         </label>
 
 		<div class="col-sm-8">
+            <select name="curso_id" class="form-control">
             @foreach($cursos as $curso)
-                <input type="radio" name="curso_id" value="{{$curso->id}}">
+                <option value="{{$curso->id}}">
                     {{$curso->nombre}} <br>
             @endforeach
+            </select>
 		</div>
 	</div>
 

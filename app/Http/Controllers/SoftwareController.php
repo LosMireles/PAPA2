@@ -11,7 +11,7 @@ use App\Equipo;
 
 class SoftwareController extends Controller {
 
-    private $clases = ['lenguaje', 'libreria', 'case'];
+    private $clases = ["Lenguaje", "Libreria", "Case", "Otro"];
 
     public function index(){
         $softwares  = Software::all();
