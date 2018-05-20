@@ -158,10 +158,18 @@
 		</div>
 	</div>
 
-	<div class="form-group">
+    <div class="form-group">
 		<label for="Estrado" class="col-sm-4 control-label" data-toggle="tooltip" title="Elevación para el profesor">Estrado</label>
 		<div class="col-sm-8">
 			<input type="checkbox" name="Estrado" value="1" >
+		</div>
+    </div>
+
+	<div class="form-group">
+		<label for="espacio_id" class="col-sm-4 control-label" data-toggle="tooltip" title="Espacio donde se ecuentra el aula">Espacio</label>
+
+		<div class="col-sm-8">
+			<input type="radio"  name="espacio_id" value="{{$espacio_id}}" checked> {{$espacio_tipo}}
 		</div>
 	</div>
 @endsection

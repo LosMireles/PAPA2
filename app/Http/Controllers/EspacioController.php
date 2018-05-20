@@ -36,20 +36,26 @@ class EspacioController extends Controller {
 		$espacio->superficie = $request->superficie;
 		$espacio->cantidad   = $request->cantidad;
 		$espacio->clase      = $request->clase;
+        $cursos              = $request->cursos;
 
         $espacio->save();
 
-        foreach($request->cursos as $nombreCurso){
-            $cursoId = DB::table('cursos')->where('nombre', $nombreCurso)->value('id');
-            $espacio->cursos()->attach($cursoId);
+        if(!empty($cursos)){
+            foreach($cursos as $nombreCurso){
+                $cursoId = DB::table('cursos')->where('nombre', $nombreCurso)->value('id');
+                $espacio->cursos()->attach($cursoId);
+            }
         }
 
-		$clase =$request->input('clase');
+		$clase               = $request->clase;
 /********************************************************************************************
 ***********************************************************************************************/
+        /*
 		if($clase == 'Aula')
 		{
-			return redirect()->action('AulaController@create');
+            return view('infraestructura.aulas.create')
+                ->with(['espacio_id'   => $espacio->id,
+                        'espacio_tipo' => $espacio->tipo]);
 		}
 		if($clase == 'Cubiculo')
 		{
@@ -67,6 +73,7 @@ class EspacioController extends Controller {
 		{
 			return redirect()->action('AuditorioController@create');
 		}
+         */
 
 		echo "Elemento insertado exitosamente!";
         return redirect()->action('EspacioController@index');

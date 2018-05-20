@@ -34,3 +34,4 @@ class CreateCubiculosTable extends Migration
         Schema::dropIfExists('cubiculos');
     }
 }
+

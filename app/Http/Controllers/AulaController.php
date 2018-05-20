@@ -31,6 +31,7 @@ class AulaController extends Controller
 		$aula->CantidadEquipo = $request->CantidadEquipo;
 		$aula->CantidadAV     = $request->CantidadAV;
 		$aula->Capacidad      = $request->Capacidad;
+        $aula->espacio_id     = $request->espacio_id;
 
 		if(isset($request->SillasPaleta) &&
 		$request->SillasPaleta == '1')
@@ -159,7 +160,7 @@ class AulaController extends Controller
 											'Temperatura'    => $Temperatura,
 											'Espacio'        => $Espacio,
 											'Mobilario'      => $Mobilario,
-											'Conexiones'     => $Conexiones]);
+                                            'Conexiones'     => $Conexiones]);
 
 		echo "Elemento insertado exitosamente!";
         return redirect()->action('AulaController@index');
