@@ -39,7 +39,22 @@ Route::resources(
      'softwares'   => 'SoftwareController',
      'equipos'     => 'EquipoController',
      'asignaturas' => 'AsignaturaController',
-     'tecnicos_academicos' => 'TecnicoAcademicoController'],
+     'tecnicos_academicos' => 'TecnicoAcademicoController',
+     'inciso_9_1_3' => 'Inciso9_1_3Controller',
+     'inciso_9_1_4' => 'Inciso9_1_4Controller',
+     'inciso_9_1_6' => 'Inciso9_1_6Controller',
+     'inciso_9_1_7' => 'Inciso9_1_7Controller',
+     'inciso_9_1_8' => 'Inciso9_1_8Controller',
+     'inciso_9_1_9' => 'Inciso9_1_9Controller',
+     'inciso_9_1_10' => 'Inciso9_1_10Controller',
+     'inciso_9_1_11' => 'Inciso9_1_11Controller',
+     'inciso_9_1_13' => 'Inciso9_1_13Controller',
+     'inciso_9_2_1' => 'Inciso9_2_1Controller',
+     'inciso_9_2_2' => 'Inciso9_2_2Controller',
+     'inciso_9_2_7' => 'Inciso9_2_7Controller',
+     'inciso_9_2_11' => 'Inciso9_2_11Controller',
+     'inciso_9_2_12' => 'Inciso9_2_12Controller',
+     'inciso_9_2_14' => 'Inciso9_2_14Controller',],
 
     ['except' => 'show']);
 

@@ -13,7 +13,7 @@ class Inciso9_2_7Controller extends Controller
      */
     public function index()
     {
-        //
+        return view('incisos/seccion9_2/9_2_7');
     }
 
     /**
