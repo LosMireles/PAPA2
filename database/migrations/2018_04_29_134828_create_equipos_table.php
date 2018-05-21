@@ -20,7 +20,7 @@ class CreateEquiposTable extends Migration
             $table -> boolean('operable');
             $table -> string('localizacion');
             $table -> string('tipo');
-            $table -> longText('descripcion');
+            $table -> longText('descripcion')->nullable();
 
             $table->timestamps();
         });
