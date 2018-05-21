@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use DB;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 
 use App\Aula;
 
@@ -22,16 +23,22 @@ class AulaController extends Controller
 	    return view('infraestructura.aulas.create');
 	}
 
-    //----------------------------------------------------------------
-    public function store(Request $request)
-    {
-        $aula = new Aula;
+  //----------------------------------------------------------------
+  public function store(Request $request)
+  {
+    if ($request->hasFile('Fotografias')) {
+      if ($request->file('Fotografias')->isValid()) {
+        $request->Fotografias->storeAs('infraestructura/aulas/' . $request->Tipo,
+                                        $request->Fotografias->getClientOriginalName());
+      }
+    }
+    $aula = new Aula;
 
-        $aula->Tipo           = $request->Tipo;
+    $aula->Tipo           = $request->Tipo;
 		$aula->CantidadEquipo = $request->CantidadEquipo;
 		$aula->CantidadAV     = $request->CantidadAV;
 		$aula->Capacidad      = $request->Capacidad;
-        $aula->espacio_id     = $request->espacio_id;
+    $aula->espacio_id     = $request->espacio_id;
 
 		if(isset($request->SillasPaleta) &&
 		$request->SillasPaleta == '1')
@@ -78,11 +85,11 @@ class AulaController extends Controller
 		$aula->Mobilario    = $request->Mobilario;
 		$aula->Conexiones   = $request->Conexiones;
 
-        $aula->save();
+    $aula->save();
 
-		echo "Elemento insertado exitosamente!";
-        return redirect()->action('AulaController@index');
-    }
+		#echo "Elemento insertado exitosamente!";
+    return redirect()->action('AulaController@index');
+  }
 
 	//-----------------------------------------------------------
 	public function edit($tipo) {
@@ -168,13 +175,17 @@ class AulaController extends Controller
 
 	//--------------------------------------------------------------
 	public function destroy($tipo){
-        $aula = Aula::where('Tipo', $tipo)->first();
-        if(!$aula){
-            $mensaje = "No existe aula con Tipo: ".$tipo;
-            return view('general/error')
-                ->with(['mensaje' => $mensaje]);
-        }
-        $aula->delete();
+
+    # Borra los archivos subidos a la carpeta del objeto
+    Storage::deleteDirectory('infraestructura/aulas/'. $tipo . '/');
+
+    $aula = Aula::where('Tipo', $tipo)->first();
+    if(!$aula){
+        $mensaje = "No existe aula con Tipo: ".$tipo;
+        return view('general/error')
+            ->with(['mensaje' => $mensaje]);
+    }
+    $aula->delete();
 
 		echo "Elemento borrado exitosamente!";
         return redirect()->action('AulaController@index');
@@ -183,4 +194,3 @@ class AulaController extends Controller
 	//--------------------------------------------------------------
 
 }
-
