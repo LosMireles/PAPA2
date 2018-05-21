@@ -23,6 +23,14 @@
 		function habilitar(element, index, array){
 			document.getElementById(element.nombre).disabled = false;
 		}
+
+		// Bloquear el software de la pagina al cargar si el equipo no es de software
+		$(document).ready(function(){
+			var tipo_e = $('#tipo').val();
+			if(tipo_e != 'computo'){
+				$('input.soft_check').attr("disabled", true);
+			}
+		});
 	</script>
 @endsection
 
@@ -57,7 +65,7 @@
 		<label for="manual" class="col-sm-4 control-label" data-toggle="tooltip" title="Indique si el equipo cuenta con manual de usuario">Manual de usuario: </label>
 
 		<div class="col-sm-8">
-			@if($equipo->manualEquipo == 1)
+			@if($equipo->manualUsuario == 1)
 				<input type="radio" name="manual" value="1" checked>Sí <br>
 				<input type="radio" name="manual" value="0"> No
 			@else
@@ -103,9 +111,13 @@
 
 		<div class="col-sm-8">
 			<select id="tipo" name="tipo" class="form-control" onchange="activar_software({{$softwares}})">
-				<option value="computo">Cómputo</option>
-				<option value="redes">Redes</option>
-				<option value="audiovisual">Audiovisual</option>
+				@foreach($tipo_equipos as $tipo_equipo)
+					@if($equipo->tipo == $tipo_equipo)
+						<option value="{{$tipo_equipo}}" selected>{{$tipo_equipo}}</option>
+					@else
+						<option value="{{$tipo_equipo}}">{{$tipo_equipo}}</option>
+					@endif
+				@endforeach
 			</select>
 		</div>
 	</div>
@@ -125,9 +137,9 @@
 				@endforeach
 
 				@if($temp == 1)
-					<input type="checkbox" name="nombre_software[]" checked value="{{$software->nombre}}"> {{$software->nombre}} <br>
+					<input type="checkbox" class="soft_check" id="{{$software->nombre}}" name="nombre_software[]" checked value="{{$software->nombre}}"> {{$software->nombre}} <br>
 				@else
-					<input type="checkbox" name="nombre_software[]" value="{{$software->nombre}}"> {{$software->nombre}} <br>
+					<input type="checkbox" class="soft_check" id="{{$software->nombre}}" name="nombre_software[]" value="{{$software->nombre}}"> {{$software->nombre}} <br>
 				@endif
 			@endforeach
 

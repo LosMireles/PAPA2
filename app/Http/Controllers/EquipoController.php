@@ -81,22 +81,32 @@ class EquipoController extends Controller
         $equipo_descripcion   = $request->especificaciones;
     	$nombre_softwares = $request->nombre_software;
 
-        $idSoftwares = [];
-        foreach($nombre_softwares as $nombre){
-            $idSoftwares[] = Software::where('nombre', $nombre)->value('id');
-        }
 
         $equipo = Equipo::where('serial', $serial)->first();
-    	$equipo->update([
+        $tipo_anterior = $equipo->tipo;
+
+        // Quitarle el softwre si era de computo y pasa a ser de otra cosa
+        if($tipo_equipo != $tipo_anterior && $tipo_anterior == 'computo'){
+            $equipo->softwares()->detach();
+        }
+
+        $equipo->update([
             'manualUsuario' => $manualUsuario,
             'operable'      => $operable,
             'localizacion'  => $localizacion,
             'serial'        => $serial_nuevo,
             'tipo'          => $tipo_equipo,
-            'descripcion'   => $descripcion
+            'descripcion'   => $equipo_descripcion
         ]);
 
-        $equipo->softwares()->sync($idSoftwares);
+        /// Condicionar a si no hay software ingresado pues no es de computo
+        if($nombre_softwares){
+            $idSoftwares = [];
+            foreach($nombre_softwares as $nombre){
+                $idSoftwares[] = Software::where('nombre', $nombre)->value('id');
+            }
+            $equipo->softwares()->sync($idSoftwares);
+        }
 
 		echo "Elemento editado exitosamente!";
         return redirect()->action('EquipoController@index');
