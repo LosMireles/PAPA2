@@ -24,6 +24,8 @@ class AuditorioController extends Controller
 
     //----------------------------------------------------------------
     public function store(Request $request){
+        $request->validate($this->rules());
+
         $auditorio = new Auditorio;
 
         $auditorio->Tipo               = $request->Tipo;
@@ -48,6 +50,8 @@ class AuditorioController extends Controller
 
     //----------------------------------------------------------------
     public function update(Request $request, $tipo) {
+        $request->validate($this->rules());
+
         $tipo_nuevo         = $request->Tipo;
         $CantidadEquipo     = $request->CantidadEquipo;
         $CantidadAV         = $request->CantidadAV;
@@ -80,4 +84,14 @@ class AuditorioController extends Controller
         return redirect()->action('AuditorioController@index');
     }
 
+    //----------------------------------------------------------------
+    public function rules(){
+        return [
+            'Tipo'               => 'required|alpha_num',
+            'CantidadEquipo'     => 'required|integer',
+            'CantidadAV'         => 'required|integer',
+            'Capacidad'          => 'required|integer',
+            'CantidadSanitarios' => 'required|integer'
+        ];
+    }
 }

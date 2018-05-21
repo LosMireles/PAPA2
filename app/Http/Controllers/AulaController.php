@@ -26,18 +26,21 @@ class AulaController extends Controller
   //----------------------------------------------------------------
   public function store(Request $request)
   {
+    $request->validate($this->rules());
+
     if ($request->hasFile('Fotografias')) {
       if ($request->file('Fotografias')->isValid()) {
         $request->Fotografias->storeAs('infraestructura/aulas/' . $request->Tipo,
                                         $request->Fotografias->getClientOriginalName());
       }
     }
+
     $aula = new Aula;
 
     $aula->Tipo           = $request->Tipo;
-		$aula->CantidadEquipo = $request->CantidadEquipo;
-		$aula->CantidadAV     = $request->CantidadAV;
-		$aula->Capacidad      = $request->Capacidad;
+	$aula->CantidadEquipo = $request->CantidadEquipo;
+	$aula->CantidadAV     = $request->CantidadAV;
+	$aula->Capacidad      = $request->Capacidad;
     $aula->espacio_id     = $request->espacio_id;
 
 		if(isset($request->SillasPaleta) &&
@@ -85,11 +88,11 @@ class AulaController extends Controller
 		$aula->Mobilario    = $request->Mobilario;
 		$aula->Conexiones   = $request->Conexiones;
 
-    $aula->save();
+        $aula->save();
 
-		#echo "Elemento insertado exitosamente!";
-    return redirect()->action('AulaController@index');
-  }
+        #echo "Elemento insertado exitosamente!";
+        return redirect()->action('AulaController@index');
+    }
 
 	//-----------------------------------------------------------
 	public function edit($tipo) {
@@ -102,13 +105,15 @@ class AulaController extends Controller
 
 	//-----------------------------------------------------------
 	public function update(Request $request, $tipo) {
-    if ($request->hasFile('Fotografias')) {
-      if ($request->file('Fotografias')->isValid()) {
-        $request->Fotografias->storeAs('infraestructura/aulas/' . $request->Tipo,
-                                        $request->Fotografias->getClientOriginalName());
-      }
-    }
-	  $tipo_nuevo     = $request->Tipo;
+        $request->validate($this->rules());
+
+        if ($request->hasFile('Fotografias')) {
+          if ($request->file('Fotografias')->isValid()) {
+            $request->Fotografias->storeAs('infraestructura/aulas/' . $request->Tipo,
+                                            $request->Fotografias->getClientOriginalName());
+          }
+        }
+	  	$tipo_nuevo     = $request->Tipo;
 		$CantidadEquipo = $request->CantidadEquipo;
 		$CantidadAV     = $request->CantidadAV;
 		$Capacidad      = $request->Capacidad;
@@ -199,6 +204,30 @@ class AulaController extends Controller
 	}
 
 	//--------------------------------------------------------------
+    public function rules(){
+        return [
+            'Tipo'           => 'required|alpha_dash',
+            'CantidadEquipo' => 'required|integer',
+            'CantidadAV'     => 'required|integer',
+            'Capacidad'      => 'required|integer',
+
+            'SillasPaleta'   => 'required|boolean',
+            'MesasTrabajo'   => 'required|boolean',
+            'Isotipica'      => 'required|boolean',
+            'Estrado'        => 'required|boolean',
+
+            'Pizarron'       => 'required|integer|min:1|max:4',
+            'Illuminacion'   => 'required|integer|min:1|max:4',
+            'AislamientoR'   => 'required|integer|min:1|max:4',
+            'Ventilacion'    => 'required|integer|min:1|max:4',
+            'Temperatura'    => 'required|integer|min:1|max:4',
+            'Pizarron'       => 'required|integer|min:1|max:4',
+            'Espacio'        => 'required|integer|min:1|max:4',
+            'Mobiliario'     => 'required|integer|min:1|max:4',
+            'Conexiones'     => 'required|integer|min:1|max:4'
+        ];
+    }
+	//--------------------------------------------------------------
 
   public function viewImg($tipo){
     return view('infraestructura.aulas.viewImg')->with(['tipo' => $tipo]);
@@ -209,3 +238,4 @@ class AulaController extends Controller
   #  return redirect()->action('AulaController@viewImg');
   #}
 }
+

@@ -17,7 +17,6 @@ class EspacioController extends Controller {
             ->with(['espacios' => $espacios]);
     }
     //----------------------------------------------------------------
-
     public function create(){
         $espacios   = Espacio::all();
         $cursos     = Curso::all();
@@ -30,6 +29,8 @@ class EspacioController extends Controller {
     //----------------------------------------------------------------
     public function store(Request $request)
     {
+        $request->validate($this->rules());
+
         $espacio             = new Espacio;
 
         $espacio->tipo       = $request->tipo;
@@ -99,16 +100,20 @@ class EspacioController extends Controller {
 
     //----------------------------------------------------------------
 	public function update(Request $request, $tipo) {
+        $request->validate($this->rules());
+
         $tipo_nuevo   = $request->tipo;
 		$superficie   = $request->superficie;
 		$cantidad     = $request->cantidad;
 		$clase        = $request->clase;
         $nombreCursos = $request->cursos;
 
-        $idCursos = [];
-        foreach($nombreCursos as $nombreCurso){
-            $idCursos[] = DB::table('cursos')
-                ->where('nombre', $nombreCurso)->value('id');
+        if(!empty($nombreCursos)){
+            $idCursos = [];
+            foreach($nombreCursos as $nombreCurso){
+                $idCursos[] = DB::table('cursos')
+                    ->where('nombre', $nombreCurso)->value('id');
+            }
         }
 
         $espacio =Espacio::where('tipo', $tipo)->first();
@@ -139,6 +144,15 @@ class EspacioController extends Controller {
         return redirect()->action('EspacioController@index');
 	}
 
+	//*-----------------------------------------------------------------
+    public function rules(){
+        return [
+            'tipo'       => 'required|alpha_num',
+            'superficie' => 'required|alpha_dash', //no bueno pero no se como hacerlo mejor
+            'cantidad'   => 'required|integer',
+            'clase'      => 'required|alpha'
+        ];
+    }
 	//*-----------------------------------------------------------------
 
 }
