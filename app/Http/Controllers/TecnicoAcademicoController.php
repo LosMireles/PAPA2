@@ -13,6 +13,9 @@ use App\Software;
 use App\Equipo;
 use App\Espacio;
 
+use Storage;
+use Response;
+
 class TecnicoAcademicoController extends Controller
 {
     /**
@@ -154,7 +157,8 @@ class TecnicoAcademicoController extends Controller
         return redirect()->action('TecnicoAcademicoController@index');
     }
 
-    public function ver_curriculo(){
-        return view('index');
+    public function ver_curriculo($id){
+        $tecnico = TecnicoAcademico::where('id', $id)->first();
+        return response()->file(public_path('curriculos/' . $tecnico->curriculum));
     }
 }

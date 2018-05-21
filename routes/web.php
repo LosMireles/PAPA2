@@ -26,7 +26,8 @@ Route::get('/error', function($mensaje = null){
     return view('general.error', ['mensaje' => $mensaje]);
 });
 
-Route::get('/tecnicos_academicos/ver_curriculo', 'TecnicoAcademicoController@ver_curriculo');
+Route::get('/tecnicos_academicos/ver_curriculo/{id}', 'TecnicoAcademicoController@ver_curriculo');
+
 Route::resources(
     ['espacios'    => 'EspacioController',
      'aulas'       => 'AulaController',

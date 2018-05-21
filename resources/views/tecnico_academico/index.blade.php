@@ -38,7 +38,9 @@
 			</td>
 			<td>{{$tecnico->dia_inicio}} - {{$tecnico->dia_termino}}</td>
 			<td>{{$tecnico->localizacion}}</td>
-			<td>{{$tecnico->curriculum}}</td>
+			<td>
+				<a href="{{ url('/tecnicos_academicos/ver_curriculo/'. $tecnico->id ) }}">{{$tecnico->curriculum}}</a>
+			</td>
 			
 			<td class="text-center">
 				{{ Form::open( array('action'=>['TecnicoAcademicoController@edit', $tecnico->id], 'method' => 'get') ) }}
