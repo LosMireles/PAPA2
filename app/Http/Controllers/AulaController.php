@@ -213,20 +213,14 @@ class AulaController extends Controller
             'CantidadAV'     => 'required|integer',
             'Capacidad'      => 'required|integer',
 
-            'SillasPaleta'   => 'required|boolean',
-            'MesasTrabajo'   => 'required|boolean',
-            'Isotipica'      => 'required|boolean',
-            'Estrado'        => 'required|boolean',
-
-            'Pizarron'       => 'required|integer|min:1|max:4',
-            'Illuminacion'   => 'required|integer|min:1|max:4',
-            'AislamientoR'   => 'required|integer|min:1|max:4',
-            'Ventilacion'    => 'required|integer|min:1|max:4',
-            'Temperatura'    => 'required|integer|min:1|max:4',
-            'Pizarron'       => 'required|integer|min:1|max:4',
-            'Espacio'        => 'required|integer|min:1|max:4',
-            'Mobiliario'     => 'required|integer|min:1|max:4',
-            'Conexiones'     => 'required|integer|min:1|max:4'
+            'Pizarron'     => 'required|integer|min:1|max:4',
+            'Illuminacion' => 'required|integer|min:1|max:4',
+            'AislamientoR' => 'required|integer|min:1|max:4',
+            'Ventilacion'  => 'required|integer|min:1|max:4',
+            'Temperatura'  => 'required|integer|min:1|max:4',
+            'Espacio'      => 'required|integer|min:1|max:4',
+            'Mobilario'    => 'required|integer|min:1|max:4',
+            'Conexiones'   => 'required|integer|min:1|max:4'
         ];
     }
 	//--------------------------------------------------------------
