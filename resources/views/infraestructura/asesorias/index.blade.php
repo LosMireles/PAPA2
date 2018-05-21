@@ -28,6 +28,7 @@
 		<td>Materia</td>
         <td></td>
         <td></td>
+				<td></td>
 	</tr>
 @endsection
 
@@ -57,7 +58,13 @@
             {{ Form::close() }}
         </td>
 
+				<!--Boton ver fotos-->
+        <td class="text-center">
+            <a href="{{action('AsesoriaController@viewImg', [ 'tipo' => $asesoria->Tipo])}}" class="btn btn-warning">
+                Fotografías
+            </a>
+        </td>
+
 	 </tr>
 	 @endforeach
 @endsection
-

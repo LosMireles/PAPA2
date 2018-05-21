@@ -11,11 +11,11 @@ use App\Cubiculo;
 
 class CubiculoController extends Controller {
 
-      public function index(){
-      $cubiculos  = Cubiculo::all();
+  public function index(){
+    $cubiculos  = Cubiculo::all();
 
-      return view('infraestructura.cubiculos.index')
-          ->with(['cubiculos'=>$cubiculos]);
+    return view('infraestructura.cubiculos.index')
+        ->with(['cubiculos'=>$cubiculos]);
    }
 
     //----------------------------------------------------------------
@@ -24,55 +24,69 @@ class CubiculoController extends Controller {
 	}
 
     //----------------------------------------------------------------
-    public function store(Request $request)
-    {
-        $cubiculo = new Cubiculo;
+  public function store(Request $request)
+  {
+    if ($request->hasFile('Fotografias')) {
+      if ($request->file('Fotografias')->isValid()) {
+        $request->Fotografias->storeAs('infraestructura/cubiculos/' . $request->Tipo,
+                                        $request->Fotografias->getClientOriginalName());
+      }
+    }
+    $cubiculo = new Cubiculo;
 
-        $cubiculo->Tipo           = $request->Tipo;
+    $cubiculo->Tipo           = $request->Tipo;
 		$cubiculo->Profesor       = $request->Profesor;
 		$cubiculo->CantidadEquipo = $request->CantidadEquipo;
+    $cubiculo->espacio_id = $request->espacio_id;
 
-        $cubiculo->save();
+    $cubiculo->save();
 
-		echo "Elemento insertado exitosamente!";
-        return redirect()->action('CubiculoController@index');
-    }
+    echo "Elemento insertado exitosamente!";
+    return redirect()->action('CubiculoController@index');
+  }
 
     //----------------------------------------------------------------
 	public function edit($tipo) {
 		$cubiculo  = Cubiculo::where('Tipo', $tipo)->first();
 
-        return view('infraestructura.cubiculos.edit')
-            ->with(['cubiculo'=>$cubiculo]);
+    return view('infraestructura.cubiculos.edit')
+        ->with(['cubiculo'=>$cubiculo]);
 	}
 
     //----------------------------------------------------------------
 	public function update(Request $request, $tipo) {
-	  	$tipo_nuevo     = $request->Tipo;
+    if ($request->hasFile('Fotografias')) {
+      if ($request->file('Fotografias')->isValid()) {
+        $request->Fotografias->storeAs('infraestructura/cubiculos/' . $request->Tipo,
+                                        $request->Fotografias->getClientOriginalName());
+      }
+    }
+  	$tipo_nuevo     = $request->Tipo;
 		$Profesor       = $request->Profesor;
 		$CantidadEquipo = $request->CantidadEquipo;
 
-        Cubiculo::where('Tipo', $tipo)->update(
-            ['Tipo'           => $tipo_nuevo,
-             'Profesor'       => $Profesor,
-             'CantidadEquipo' => $CantidadEquipo]);
+    Cubiculo::where('Tipo', $tipo)->update(
+        ['Tipo'           => $tipo_nuevo,
+         'Profesor'       => $Profesor,
+         'CantidadEquipo' => $CantidadEquipo]);
 
 		echo "Elemento insertado exitosamente!";
-        return redirect()->action('CubiculoController@index');
+    return redirect()->action('CubiculoController@index');
 	}
 
     //----------------------------------------------------------------
 	public function destroy(Request $request, $tipo){
-        $cubiculo = Cubiculo::where('Tipo', $tipo)->first();
-        if(!$cubiculo){
-            $mensaje = "No existe cubiculo con tipo: ".$tipo;
-            return view('general.error')
-                ->with(['mensaje' => $mensaje]);
-        }
-        $cubiculo->delete();
+    Storage::deleteDirectory('infraestructura/cubiculos/'. $tipo . '/');
+    $cubiculo = Cubiculo::where('Tipo', $tipo)->first();
+    if(!$cubiculo){
+        $mensaje = "No existe cubiculo con tipo: ".$tipo;
+        return view('general.error')
+            ->with(['mensaje' => $mensaje]);
+    }
+    $cubiculo->delete();
 
 		echo "Elemento borrado exitosamente!";
-        return redirect()->action('CubiculoController@index');
+    return redirect()->action('CubiculoController@index');
 	}
 
 	//*********************************************************************
@@ -84,5 +98,9 @@ class CubiculoController extends Controller {
 	  	return $pdf->download('Cubiculos.pdf');
 	}
 
-}
+  //----------------------------------------------------------------
+  public function viewImg($tipo){
+    return view('infraestructura.cubiculos.viewImg')->with(['tipo' => $tipo]);
+  }
 
+}

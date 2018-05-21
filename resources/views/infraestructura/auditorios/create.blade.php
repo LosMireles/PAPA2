@@ -62,5 +62,16 @@
 			<input type='text' class="form-control" name='CantidadSanitarios' id="CantidadSanitarios" placeholder="1" required>
 		</div>
 	</div>
-@endsection
 
+  <div class="form-group">
+		<h3 class="text-center">Evidencias: </h3>
+	</div>
+
+	<div class="form-group">
+		<label for="Fotografias" class="col-sm-4 control-label" data-toggle="tooltip" title="Suba evidencias fotograficas">Fotografias</label>
+
+		<div class="col-sm-8">
+			<input type='file' class="form-control" name='Fotografias' id="Fotografias" accept=".jpg, .png, .jpeg">
+		</div>
+	</div>
+@endsection

@@ -28,6 +28,7 @@
 		<th>Cantidad de personal de limpieza</th>
         <th></th>
         <th></th>
+				<th></th>
 	</tr>
 @endsection
 
@@ -58,7 +59,13 @@
                 {{ Form::close() }}
             </td>
 
+						<!--Boton ver fotos-->
+		        <td class="text-center">
+		            <a href="{{action('SanitarioController@viewImg', [ 'tipo' => $sanitario->Tipo])}}" class="btn btn-warning">
+		                Fotografías
+		            </a>
+		        </td>
+
 		</tr>
 	@endforeach
 @endsection
-

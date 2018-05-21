@@ -29,8 +29,12 @@ Route::get('/error', function($mensaje = null){
 Route::get('/tecnicos_academicos/ver_curriculo/{id}', 'TecnicoAcademicoController@ver_curriculo');
 
 
-// Aulas
+// Rutas para ver imagenes de infraestructura
 Route::get('/aulas/{tipo}/viewImg', 'AulaController@viewImg');
+Route::get('/cubiculos/{tipo}/viewImg', 'CubiculoController@viewImg');
+Route::get('/asesorias/{tipo}/viewImg', 'AsesoriaController@viewImg');
+Route::get('/auditorios/{tipo}/viewImg', 'AuditorioController@viewImg');
+Route::get('/sanitarios/{tipo}/viewImg', 'SanitarioController@viewImg');
 #Route::get('/aulas/{tipo}deleteImg', 'AulaController@deleteImg');
 
 //

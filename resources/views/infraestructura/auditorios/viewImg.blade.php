@@ -1,21 +1,21 @@
 @extends('layouts.verImagenes')
 
 @section('title')
-	 editar aula <?php $tipo; ?>
+	 editar auditorio <?php $tipo; ?>
 @endsection
 
 @section('descripcion')
-    <a href="/aulas" class="btn btn-primary">
+    <a href="/auditorios" class="btn btn-primary">
         Regresar
     </a>
 
-    <h1 class="text-center">Evidencias de aula <?php echo $tipo; ?></h1>
+    <h1 class="text-center">Evidencias de auditorio <?php echo $tipo; ?></h1>
 @endsection
 
 @section('Fotografias')
-	<!--<img src="<?php #echo asset("storage/infraestructura/aulas/101/8jazekipfvg01.jpg")?>"></img>-->
+	<!--<img src="<?php #echo asset("storage/infraestructura/auditorios/101/8jazekipfvg01.jpg")?>"></img>-->
   <?php
-    $dirname = 'storage/infraestructura/aulas/' . $tipo . '/';
+    $dirname = 'storage/infraestructura/auditorios/' . $tipo . '/';
     $images= glob($dirname . "*.{[jJ][pP][gG],[pP][nN][gG],[gG][iI][fF],[jJ][pP][eE][gG]}", GLOB_BRACE);
 	?>
 

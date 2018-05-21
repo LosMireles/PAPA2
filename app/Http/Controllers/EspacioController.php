@@ -10,108 +10,108 @@ use App\Espacio;
 use App\Curso;
 
 class EspacioController extends Controller {
-        public function index(){
-        $espacios = Espacio::all();
+  public function index(){
+    $espacios = Espacio::all();
 
-        return view('infraestructura.espacios.index')
-            ->with(['espacios' => $espacios]);
-    }
+    return view('infraestructura.espacios.index')
+        ->with(['espacios' => $espacios]);
+  }
+  //----------------------------------------------------------------
+
+  public function create(){
+    $espacios   = Espacio::all();
+    $cursos     = Curso::all();
+
+    return view('infraestructura.espacios.create')
+        ->with(['espacios' => $espacios,
+                'cursos'   => $cursos]);
+  }
+
     //----------------------------------------------------------------
+  public function store(Request $request)
+  {
+    $espacio             = new Espacio;
 
-    public function create(){
-        $espacios   = Espacio::all();
-        $cursos     = Curso::all();
-
-        return view('infraestructura.espacios.create')
-            ->with(['espacios' => $espacios,
-                    'cursos'   => $cursos]);
-	}
-
-    //----------------------------------------------------------------
-    public function store(Request $request)
-    {
-        $espacio             = new Espacio;
-
-        $espacio->tipo       = $request->tipo;
+    $espacio->tipo       = $request->tipo;
 		$espacio->superficie = $request->superficie;
 		$espacio->cantidad   = $request->cantidad;
 		$espacio->clase      = $request->clase;
-        $cursos              = $request->cursos;
+    $cursos              = $request->cursos;
 
-        $espacio->save();
+    $espacio->save();
 
-        if(!empty($cursos)){
-            foreach($cursos as $nombreCurso){
-                $cursoId = DB::table('cursos')->where('nombre', $nombreCurso)->value('id');
-                $espacio->cursos()->attach($cursoId);
-            }
+    if(!empty($cursos)){
+        foreach($cursos as $nombreCurso){
+            $cursoId = DB::table('cursos')->where('nombre', $nombreCurso)->value('id');
+            $espacio->cursos()->attach($cursoId);
         }
+    }
 
-		$clase               = $request->clase;
+    $clase               = $request->clase;
 /********************************************************************************************
 ***********************************************************************************************/
 		if($clase == 'Aula')
 		{
-            return view('infraestructura.aulas.create')
-                ->with(['espacio_id'   => $espacio->id,
-                        'espacio_tipo' => $espacio->tipo]);
+      return view('infraestructura.aulas.create')
+          ->with(['espacio_id'   => $espacio->id,
+                  'espacio_tipo' => $espacio->tipo]);
 		}
 		if($clase == 'Cubiculo')
 		{
-            return view('infraestructura.cubiculos.create')
-                ->with(['espacio_id'   => $espacio->id,
-                        'espacio_tipo' => $espacio->tipo]);
+      return view('infraestructura.cubiculos.create')
+          ->with(['espacio_id'   => $espacio->id,
+                  'espacio_tipo' => $espacio->tipo]);
 		}
 		if($clase == 'Sanitario')
 		{
-            return view('infraestructura.sanitarios.create')
-                ->with(['espacio_id'   => $espacio->id,
-                        'espacio_tipo' => $espacio->tipo]);
+      return view('infraestructura.sanitarios.create')
+          ->with(['espacio_id'   => $espacio->id,
+                  'espacio_tipo' => $espacio->tipo]);
 		}
 		if($clase == 'Asesoria')
 		{
-            return view('infraestructura.asesorias.create')
-                ->with(['espacio_id'   => $espacio->id,
-                        'espacio_tipo' => $espacio->tipo]);
+      return view('infraestructura.asesorias.create')
+          ->with(['espacio_id'   => $espacio->id,
+                  'espacio_tipo' => $espacio->tipo]);
 		}
 		if($clase == 'Auditorio')
 		{
-            return view('infraestructura.auditorios.create')
-                ->with(['espacio_id'   => $espacio->id,
-                        'espacio_tipo' => $espacio->tipo]);
+      return view('infraestructura.auditorios.create')
+          ->with(['espacio_id'   => $espacio->id,
+                  'espacio_tipo' => $espacio->tipo]);
 		}
 
-		echo "Elemento insertado exitosamente!";
-        return redirect()->action('EspacioController@index');
-    }
+	  echo "Elemento insertado exitosamente!";
+    return redirect()->action('EspacioController@index');
+  }
 
     //----------------------------------------------------------------
 	public function edit($tipo) {
 		$espacio       = Espacio::where('tipo', $tipo)->first();
-        $cursos        = Curso::all();
-        $curso_espacio = DB::table('curso_espacio')->get();
+    $cursos        = Curso::all();
+    $curso_espacio = DB::table('curso_espacio')->get();
 
-        return view('infraestructura.espacios.edit')
-            ->with(['espacio'       => $espacio,
-                    'cursos'        => $cursos,
-                    'curso_espacio' => $curso_espacio]);
+    return view('infraestructura.espacios.edit')
+        ->with(['espacio'       => $espacio,
+                'cursos'        => $cursos,
+                'curso_espacio' => $curso_espacio]);
 	}
 
     //----------------------------------------------------------------
 	public function update(Request $request, $tipo) {
-        $tipo_nuevo   = $request->tipo;
+    $tipo_nuevo   = $request->tipo;
 		$superficie   = $request->superficie;
 		$cantidad     = $request->cantidad;
 		$clase        = $request->clase;
-        $nombreCursos = $request->cursos;
+    $nombreCursos = $request->cursos;
 
-        $idCursos = [];
-        foreach($nombreCursos as $nombreCurso){
-            $idCursos[] = DB::table('cursos')
-                ->where('nombre', $nombreCurso)->value('id');
-        }
+    $idCursos = [];
+    foreach($nombreCursos as $nombreCurso){
+        $idCursos[] = DB::table('cursos')
+            ->where('nombre', $nombreCurso)->value('id');
+    }
 
-        $espacio =Espacio::where('tipo', $tipo)->first();
+    $espacio =Espacio::where('tipo', $tipo)->first();
 		$espacio->update([
             'tipo'       => $tipo_nuevo,
             'superficie' => $superficie,
@@ -119,27 +119,25 @@ class EspacioController extends Controller {
             'clase'      => $clase
         ]);
 
-        $espacio->cursos()->sync($idCursos);
+    $espacio->cursos()->sync($idCursos);
 
 		echo "Elemento editado exitosamente!";
-        return redirect()->action('EspacioController@index');
+    return redirect()->action('EspacioController@index');
 	}
 
     //----------------------------------------------------------------
 	public function destroy($tipo){
-        $espacio = Espacio::where('tipo', $tipo)->first();
-        if(!$espacio){
-            $mensaje = "No existe espacio con Tipo: ".$tipo;
-            return view('general.error')
-                ->with(['mensaje' => $mensaje]);
-        }
-        $espacio->delete();
+    $espacio = Espacio::where('tipo', $tipo)->first();
+    if(!$espacio){
+        $mensaje = "No existe espacio con Tipo: ".$tipo;
+        return view('general.error')
+            ->with(['mensaje' => $mensaje]);
+    }
+    $espacio->delete();
 
 		echo "Elemento borrado exitosamente!";
-        return redirect()->action('EspacioController@index');
+    return redirect()->action('EspacioController@index');
 	}
 
-	//*-----------------------------------------------------------------
-
+  //----------------------------------------------------------------
 }
-

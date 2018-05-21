@@ -28,63 +28,82 @@ class AsesoriaController extends Controller
     //----------------------------------------------------------------
     public function store(Request $request)
     {
+      if ($request->hasFile('Fotografias')) {
+        if ($request->file('Fotografias')->isValid()) {
+          $request->Fotografias->storeAs('infraestructura/asesorias/' . $request->Tipo,
+                                          $request->Fotografias->getClientOriginalName());
+        }
+      }
         $asesoria = new Asesoria;
 
         $asesoria->Tipo       = $request->Tipo;
-		$asesoria->InicioHora = $request->InicioHora;
-		$asesoria->FinHora    = $request->FinHora;
-        $asesoria->InicioDia  = $request->InicioDia;
-		$asesoria->FinDia     = $request->FinDia;
-        $asesoria->Materia    = $request->Materia;
+  		$asesoria->InicioHora = $request->InicioHora;
+  		$asesoria->FinHora    = $request->FinHora;
+      $asesoria->InicioDia  = $request->InicioDia;
+	    $asesoria->FinDia     = $request->FinDia;
+      $asesoria->Materia    = $request->Materia;
 
-        $asesoria->save();
+      $asesoria->save();
 
-		echo "Elemento insertado exitosamente!";
-        return redirect()->action('AsesoriaController@index');
+	    echo "Elemento insertado exitosamente!";
+      return redirect()->action('AsesoriaController@index');
     }
 
     //----------------------------------------------------------------
     public function edit($tipo) {
-          $asesoria  = Asesoria::where('Tipo', $tipo)->first();
-          return view('infraestructura.asesorias.edit')
-              ->with(['asesoria'=>$asesoria]);
+      $asesoria  = Asesoria::where('Tipo', $tipo)->first();
+      return view('infraestructura.asesorias.edit')
+          ->with(['asesoria'=>$asesoria]);
     }
 
     //----------------------------------------------------------------
     public function update(Request $request, $tipo) {
-        $tipo_nuevo = $request->Tipo;
-		$InicioHora = $request->InicioHora;
-		$FinHora    = $request->FinHora;
-        $InicioDia  = $request->InicioDia;
-		$FinDia     = $request->FinDia;
-        $Materia    = $request->Materia;
 
-        Asesoria::where('Tipo', $tipo)->update([
-            'Tipo'       => $tipo_nuevo,
-            'InicioHora' => $InicioHora,
-            'FinHora'    => $FinHora,
-            'InicioDia'  => $InicioDia,
-            'FinDia'     => $FinDia,
-            'Materia'    => $Materia
-        ]);
+      if ($request->hasFile('Fotografias')) {
+        if ($request->file('Fotografias')->isValid()) {
+          $request->Fotografias->storeAs('infraestructura/asesorias/' . $request->Tipo,
+                                          $request->Fotografias->getClientOriginalName());
+        }
+      }
+      $tipo_nuevo = $request->Tipo;
+  		$InicioHora = $request->InicioHora;
+  		$FinHora    = $request->FinHora;
+      $InicioDia  = $request->InicioDia;
+      $FinDia     = $request->FinDia;
+      $Materia    = $request->Materia;
 
-		echo "Elemento editado exitosamente!";
-        return redirect()->action('AsesoriaController@index');
+      Asesoria::where('Tipo', $tipo)->update([
+          'Tipo'       => $tipo_nuevo,
+          'InicioHora' => $InicioHora,
+          'FinHora'    => $FinHora,
+          'InicioDia'  => $InicioDia,
+          'FinDia'     => $FinDia,
+          'Materia'    => $Materia
+      ]);
+
+  		echo "Elemento editado exitosamente!";
+      return redirect()->action('AsesoriaController@index');
     }
 
     //----------------------------------------------------------------
     public function destroy($tipo){
-        $asesoria = Asesoria::where('Tipo', $tipo)->first();
-        if(!$asesoria){
-            $mensaje = "No existe asesoria con tipo: ".$tipo;
-            return view('general/error')
-                ->with(['mensaje' => $mensaje]);
-        }
-        $asesoria->delete();
 
-		echo "Elemento borrado exitosamente!";
-        return redirect()->action('AsesoriaController@index');
+      Storage::deleteDirectory('infraestructura/asesorias/'. $tipo . '/');
+      $asesoria = Asesoria::where('Tipo', $tipo)->first();
+      if(!$asesoria){
+          $mensaje = "No existe asesoria con tipo: ".$tipo;
+          return view('general/error')
+              ->with(['mensaje' => $mensaje]);
+      }
+      $asesoria->delete();
+
+      echo "Elemento borrado exitosamente!";
+      return redirect()->action('AsesoriaController@index');
     }
 
-}
+    //----------------------------------------------------------------
 
+    public function viewImg($tipo){
+      return view('infraestructura.asesorias.viewImg')->with(['tipo' => $tipo]);
+    }
+}

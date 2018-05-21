@@ -11,10 +11,10 @@ use App\Auditorio;
 class AuditorioController extends Controller
 {
     public function index(){
-        $auditorios = Auditorio::all();
+      $auditorios = Auditorio::all();
 
-        return view('infraestructura.auditorios.index')
-            ->with(['auditorios' => $auditorios]);
+      return view('infraestructura.auditorios.index')
+          ->with(['auditorios' => $auditorios]);
      }
 
     //----------------------------------------------------------------
@@ -24,50 +24,65 @@ class AuditorioController extends Controller
 
     //----------------------------------------------------------------
     public function store(Request $request){
-        $auditorio = new Auditorio;
 
-        $auditorio->Tipo               = $request->Tipo;
-		$auditorio->CantidadEquipo     = $request->CantidadEquipo;
-		$auditorio->CantidadAV         = $request->CantidadAV;
-        $auditorio->Capacidad          = $request->Capacidad;
-		$auditorio->CantidadSanitarios = $request->CantidadSanitarios;
+      if ($request->hasFile('Fotografias')) {
+        if ($request->file('Fotografias')->isValid()) {
+          $request->Fotografias->storeAs('infraestructura/auditorios/' . $request->Tipo,
+                                          $request->Fotografias->getClientOriginalName());
+        }
+      }
+      $auditorio = new Auditorio;
 
-        $auditorio->save();
+      $auditorio->Tipo               = $request->Tipo;
+	    $auditorio->CantidadEquipo     = $request->CantidadEquipo;
+	    $auditorio->CantidadAV         = $request->CantidadAV;
+      $auditorio->Capacidad          = $request->Capacidad;
+	    $auditorio->CantidadSanitarios = $request->CantidadSanitarios;
 
-		echo "Elemento insertado exitosamente!";
-        return redirect()->action('AuditorioController@index');
+      $auditorio->save();
+
+	    echo "Elemento insertado exitosamente!";
+      return redirect()->action('AuditorioController@index');
     }
 
     //----------------------------------------------------------------
     public function edit($tipo) {
-        $auditorio  = Auditorio::where('Tipo', $tipo)->first();
+      $auditorio  = Auditorio::where('Tipo', $tipo)->first();
 
-        return view('infraestructura.auditorios.edit')
-            ->with(['auditorio'=>$auditorio]);
+      return view('infraestructura.auditorios.edit')
+          ->with(['auditorio'=>$auditorio]);
     }
 
     //----------------------------------------------------------------
     public function update(Request $request, $tipo) {
-        $tipo_nuevo         = $request->Tipo;
-        $CantidadEquipo     = $request->CantidadEquipo;
-        $CantidadAV         = $request->CantidadAV;
-        $Capacidad          = $request->Capacidad;
-        $CantidadSanitarios = $request->CantidadSanitarios;
 
-        Auditorio::where('Tipo', $tipo)->update([
-            'Tipo'               => $tipo_nuevo,
-            'CantidadEquipo'     => $CantidadEquipo,
-            'CantidadAV'         => $CantidadAV,
-            'Capacidad'          => $Capacidad,
-            'CantidadSanitarios' => $CantidadSanitarios
-        ]);
+      if ($request->hasFile('Fotografias')) {
+        if ($request->file('Fotografias')->isValid()) {
+          $request->Fotografias->storeAs('infraestructura/auditorios/' . $request->Tipo,
+                                          $request->Fotografias->getClientOriginalName());
+        }
+      }
+      $tipo_nuevo         = $request->Tipo;
+      $CantidadEquipo     = $request->CantidadEquipo;
+      $CantidadAV         = $request->CantidadAV;
+      $Capacidad          = $request->Capacidad;
+      $CantidadSanitarios = $request->CantidadSanitarios;
 
-		echo "Elemento editado exitosamente!";
-        return redirect()->action('AuditorioController@index');
+      Auditorio::where('Tipo', $tipo)->update([
+          'Tipo'               => $tipo_nuevo,
+          'CantidadEquipo'     => $CantidadEquipo,
+          'CantidadAV'         => $CantidadAV,
+          'Capacidad'          => $Capacidad,
+          'CantidadSanitarios' => $CantidadSanitarios
+      ]);
+
+      echo "Elemento editado exitosamente!";
+      return redirect()->action('AuditorioController@index');
     }
 
     //----------------------------------------------------------------
     public function destroy($tipo){
+      Storage::deleteDirectory('infraestructura/auditorios/'. $tipo . '/');
         $auditorio = auditorio::where('Tipo', $tipo)->first();
         if(!$auditorio){
             $mensaje = "No existe auditorio con tipo: ".$tipo;
@@ -76,8 +91,13 @@ class AuditorioController extends Controller
         }
         $auditorio->delete();
 
-		echo "Elemento borrado exitosamente!";
+	      echo "Elemento borrado exitosamente!";
         return redirect()->action('AuditorioController@index');
+    }
+
+    //----------------------------------------------------------------
+    public function viewImg($tipo){
+      return view('infraestructura.auditorios.viewImg')->with(['tipo' => $tipo]);
     }
 
 }

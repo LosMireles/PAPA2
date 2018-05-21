@@ -24,6 +24,7 @@
         <td>Cantidad de equipo</td>
         <td></td>
         <td></td>
+        <td></td>
    </tr>
 @endsection
 
@@ -49,8 +50,13 @@
             {{ Form::close() }}
         </td>
 
+        <!--Boton ver fotos-->
+        <td class="text-center">
+            <a href="{{action('CubiculoController@viewImg', [ 'tipo' => $cubiculo->Tipo])}}" class="btn btn-warning">
+                Fotografías
+            </a>
+        </td>
 
 	</tr>
 	@endforeach
 @endsection
-
