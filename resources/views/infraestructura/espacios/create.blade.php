@@ -43,11 +43,9 @@
 
 		<div class="col-sm-8">
             <select name="clase" class="form-control">
-               <option value="Aula">Aula</option>
-               <option value="Cubiculo">Cubiculo</option>
-               <option value="Sanitario">Sanitario</option>
-               <option value="Asesoria">Asesoria</option>
-               <option value="Auditorio">Auditorio</option>
+                @foreach($clases as $clase)
+                    <option value="{{$clase}}">{{$clase}}</option>
+                @endforeach
            </select>
    		</div>
    </div>

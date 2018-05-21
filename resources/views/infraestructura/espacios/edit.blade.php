@@ -43,22 +43,19 @@
          </div>
     </div>
     <div class="form-group">
-         <label for="clase" class="col-sm-4 control-label" data-toggle="tooltip" title="Uno de los 5 posibles espacios fisicos (Aula, Cubiculo, Sanitarios, Asesorias, Auditorio)">Clase[?]:  </label>
+        <label for="clase" class="col-sm-4 control-label" data-toggle="tooltip" title="Uno de los 5 posibles espacios fisicos (Aula, Cubiculo, Sanitarios, Asesorias, Auditorio)">Clase[?]:  </label>
 
-      <div class="col-sm-8">
+		<div class="col-sm-8">
             <select name="clase" class="form-control">
-                    <option value="{{$curso->pertenencia}}"  selected>$curso->pertenencia </option>
-                    @if($curso->pertenencia != "LCC")
-                        <option value="LCC"  > LCC  </option>
+                @foreach($clases as $clase)
+                    @if($espacio->clase == $clase)
+                        <option value="{{$clase}}" selected>{{$clase}}</option>
+                    @else
+                        <option value="{{$clase}}">{{$clase}}</option>
                     @endif
-                    @if($curso->pertenencia != "LM")
-                        <option value="LM"   > LM  </option>
-                    @endif
-                    @if($curso->pertenencia != "Otro")
-                        <option value="Otro" > Otro</option>
-                    @endif
+                @endforeach
            </select>
-         </div>
+   		</div>
     </div>
 
     <div class="form-group">

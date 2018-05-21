@@ -114,9 +114,9 @@ class AsesoriaController extends Controller
             'Materia'   => 'required|alpha'
         ];
     }
-}
 
     public function viewImg($tipo){
       return view('infraestructura.asesorias.viewImg')->with(['tipo' => $tipo]);
     }
 }
+

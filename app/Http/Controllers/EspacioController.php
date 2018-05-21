@@ -10,8 +10,11 @@ use App\Espacio;
 use App\Curso;
 
 class EspacioController extends Controller {
-  public function index(){
-    $espacios = Espacio::all();
+
+    private $clases = ["Aula", "Cubiculo", "Sanitario", "Asesoria", "Auditorio"];
+
+    public function index(){
+        $espacios = Espacio::all();
 
         return view('infraestructura.espacios.index')
             ->with(['espacios' => $espacios]);
@@ -23,7 +26,8 @@ class EspacioController extends Controller {
 
     return view('infraestructura.espacios.create')
         ->with(['espacios' => $espacios,
-                'cursos'   => $cursos]);
+                'cursos'   => $cursos,
+                'clases'   => $this->clases]);
   }
 
     //----------------------------------------------------------------
@@ -33,11 +37,11 @@ class EspacioController extends Controller {
 
         $espacio             = new Espacio;
 
-    $espacio->tipo       = $request->tipo;
+        $espacio->tipo       = $request->tipo;
 		$espacio->superficie = $request->superficie;
 		$espacio->cantidad   = $request->cantidad;
 		$espacio->clase      = $request->clase;
-    $cursos              = $request->cursos;
+        $cursos              = $request->cursos;
 
     $espacio->save();
 
@@ -48,7 +52,7 @@ class EspacioController extends Controller {
         }
     }
 
-    $clase               = $request->clase;
+    $clase = $request->clase;
 /********************************************************************************************
 ***********************************************************************************************/
 		if($clase == 'Aula')
@@ -95,7 +99,8 @@ class EspacioController extends Controller {
     return view('infraestructura.espacios.edit')
         ->with(['espacio'       => $espacio,
                 'cursos'        => $cursos,
-                'curso_espacio' => $curso_espacio]);
+                'curso_espacio' => $curso_espacio,
+                'cursos'        => $this->clases]);
 	}
 
     //----------------------------------------------------------------
@@ -106,7 +111,7 @@ class EspacioController extends Controller {
 		$superficie   = $request->superficie;
 		$cantidad     = $request->cantidad;
 		$clase        = $request->clase;
-    $nombreCursos = $request->cursos;
+        $nombreCursos = $request->cursos;
 
         if(!empty($nombreCursos)){
             $idCursos = [];

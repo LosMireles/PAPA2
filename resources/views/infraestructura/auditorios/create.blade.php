@@ -56,8 +56,6 @@
 			<input type='text' class="form-control" name='CantidadSanitarios' id="CantidadSanitarios" placeholder="1" required>
 		</div>
 	</div>
-<<<<<<< HEAD
-=======
 
 	<div class="form-group">
 		<label for="espacio_id" class="col-sm-4 control-label" data-toggle="tooltip" title="Espacio donde se ecuentra la asesoría">Espacio</label>
@@ -67,7 +65,6 @@
 		</div>
 	</div>
 @endsection
->>>>>>> bf7a29d8aa774d77ff624ef0804b59fa393f170d
 
   <div class="form-group">
 		<h3 class="text-center">Evidencias: </h3>
