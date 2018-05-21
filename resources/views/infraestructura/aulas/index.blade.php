@@ -25,12 +25,13 @@
 		<td>Capacidad</td>
         <td></td>
         <td></td>
+        <td></td>
    	</tr>
 @endsection
 
 @section('cuerpo_tabla')
    	@foreach ($aulas as $aula)
-	<tr>
+    <tr>
 		<td>{{ $aula->Tipo }}</td>
 		<td>{{ $aula->CantidadAV }}</td>
 		<td>{{ $aula->CantidadEquipo }}</td>
@@ -51,7 +52,13 @@
             {{ Form::close() }}
         </td>
 
+        <!--Boton ver fotos-->
+        <td class="text-center">
+            <a href="{{action('AulaController@viewImg', [ 'tipo' => $aula->Tipo])}}" class="btn btn-warning">
+                Fotografías
+            </a>
+        </td>
+
 	</tr>
 	@endforeach
 @endsection
-

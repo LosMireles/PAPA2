@@ -28,6 +28,12 @@ Route::get('/error', function($mensaje = null){
 
 Route::get('/tecnicos_academicos/ver_curriculo/{id}', 'TecnicoAcademicoController@ver_curriculo');
 
+
+// Aulas
+Route::get('/aulas/{tipo}/viewImg', 'AulaController@viewImg');
+#Route::get('/aulas/{tipo}deleteImg', 'AulaController@deleteImg');
+
+//
 Route::resources(
     ['espacios'    => 'EspacioController',
      'aulas'       => 'AulaController',
@@ -42,5 +48,3 @@ Route::resources(
      'tecnicos_academicos' => 'TecnicoAcademicoController'],
 
     ['except' => 'show']);
-
-
