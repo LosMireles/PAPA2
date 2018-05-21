@@ -36,7 +36,7 @@ class SanitarioController extends Controller
         $sanitario->FinDia           = $request->FinDia;
         $sanitario->Limpieza         = $request->Limpieza;
         $sanitario->CantidadPersonal = $request->CantidadPersonal;
-        $asesoria->espacio_id        = $request->espacio_id;
+        $sanitario->espacio_id       = $request->espacio_id;
 
         $sanitario->save();
 
