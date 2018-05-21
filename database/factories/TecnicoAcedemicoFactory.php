@@ -7,8 +7,8 @@ $factory->define(App\TecnicoAcademico::class, function (Faker $faker) {
 		'nombre' 		=> $faker->name(),
 		'hora_inicio'	=> $faker->time($format = 'H:i:s', $max = 'now'),
 		'hora_termino'	=> $faker->time($format = 'H:i:s', $max = 'now'),
-		'dia_inicio'	=> $faker->word(),
-		'dia_termino'	=> $faker->word(),
+		'dia_inicio'	=> $faker->date($format = 'Y-m-d', $max = 'now'),
+		'dia_termino'	=> $faker->date($format = 'Y-m-d', $max = 'now'),
 		'curriculum' 	=> $faker->name(),
 		'localizacion' 	=> factory(App\Espacio::class)->create()-> tipo,
 	];

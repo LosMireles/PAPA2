@@ -20,6 +20,6 @@ $factory->define(App\Curso::class, function (Faker $faker) {
         'grupo'         => $faker                      -> randomNumber(8),
         'noEstudiantes' => $faker                      -> randomNumber(9),
         'tipoAula'      => $faker                      -> word(9),
-        'tipo'          => factory(App\Espacio::class) -> create()         -> tipo,
+        'pertenencia'   => "LCC",
     ];
 });
