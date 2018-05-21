@@ -32,6 +32,7 @@ class CursoController extends Controller {
     public function store(Request $request)
     {
         $request->validate($this->rules());
+
         $curso                = new Curso;
 
         $curso->nombre        = $request->nombre;
@@ -122,12 +123,12 @@ class CursoController extends Controller {
 
     public function rules(){
         return [
-            'nombre'        => 'request|alpha_num',
-            'periodo'       => 'request|apha_dash',
-            'grupo'         => 'request|integer',
-            'noEstudiantes' => 'request|integer',
-            'tipoAula'      => 'request|alpha',
-            'pertenencia'   => 'request|alpha'
+            'nombre'        => 'required|alpha_num',
+            'periodo'       => 'required|alpha_dash',
+            'grupo'         => 'required|integer',
+            'noEstudiantes' => 'required|integer',
+            'tipoAula'      => 'required|alpha',
+            'pertenencia'   => 'required|alpha'
         ];
     }
 	//*-----------------------------------------------------------------
