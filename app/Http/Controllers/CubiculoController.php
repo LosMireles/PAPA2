@@ -85,9 +85,9 @@ class CubiculoController extends Controller {
     //----------------------------------------------------------------
     public function rules(){
         return [
-            'Tipo'           => 'unique|alpha_dash',
-            'Profesor'       => 'unique|alpha',
-            'CantidadEquipo' => 'unique|integer'
+            'Tipo'           => 'required|alpha_dash',
+            'Profesor'       => 'required|alpha',
+            'CantidadEquipo' => 'required|integer'
         ];
     }
 
