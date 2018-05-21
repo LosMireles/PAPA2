@@ -119,7 +119,7 @@ class SoftwareController extends Controller {
     //Valida los datos de los formularios create y edit
     public function rules(){
         return [
-                'nombre'         => 'required|alpha_num',
+                'nombre'         => 'required|unique:softwares|alpha_num',
                 'manualUsuario'  => 'required|boolean',
                 'licencia'       => 'required|alpha_num',
                 'disponibilidad' => 'required|alpha_num',
