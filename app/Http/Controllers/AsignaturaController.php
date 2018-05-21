@@ -87,7 +87,7 @@ class AsignaturaController extends Controller
     //Valida los datos de los formularios create y edit
     public function rules(){
         return [
-                'nombre'      => 'required|alpha_num',
+                'nombre'      => 'required|unique:asignaturas|alpha_num',
                 'descripcion' => 'required',
                ];
     }
