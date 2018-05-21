@@ -24,7 +24,16 @@ class AuditorioController extends Controller
 
     //----------------------------------------------------------------
     public function store(Request $request){
-        $request->validate($this->rules());
+
+      $request->validate($this->rules());
+      if ($request->hasFile('Fotografias')) {
+        if ($request->file('Fotografias')->isValid()) {
+          $request->Fotografias->storeAs('infraestructura/auditorios/' . $request->Tipo,
+                                          $request->Fotografias->getClientOriginalName());
+        }
+      }
+
+
 
         $auditorio = new Auditorio;
 
@@ -34,12 +43,6 @@ class AuditorioController extends Controller
         $auditorio->Capacidad          = $request->Capacidad;
 		$auditorio->CantidadSanitarios = $request->CantidadSanitarios;
         $auditorio->espacio_id         = $request->espacio_id;
-
-      $auditorio->Tipo               = $request->Tipo;
-	    $auditorio->CantidadEquipo     = $request->CantidadEquipo;
-	    $auditorio->CantidadAV         = $request->CantidadAV;
-      $auditorio->Capacidad          = $request->Capacidad;
-	    $auditorio->CantidadSanitarios = $request->CantidadSanitarios;
 
       $auditorio->save();
 
@@ -57,6 +60,13 @@ class AuditorioController extends Controller
 
     //----------------------------------------------------------------
     public function update(Request $request, $tipo) {
+
+      if ($request->hasFile('Fotografias')) {
+        if ($request->file('Fotografias')->isValid()) {
+          $request->Fotografias->storeAs('infraestructura/auditorios/' . $request->Tipo,
+                                          $request->Fotografias->getClientOriginalName());
+        }
+      }
         $request->validate($this->rules());
 
         $tipo_nuevo         = $request->Tipo;
@@ -103,5 +113,9 @@ class AuditorioController extends Controller
             'Capacidad'          => 'required|integer',
             'CantidadSanitarios' => 'required|integer'
         ];
+    }
+
+    public function viewImg($tipo){
+      return view('infraestructura.auditorios.viewImg')->with(['tipo' => $tipo]);
     }
 }

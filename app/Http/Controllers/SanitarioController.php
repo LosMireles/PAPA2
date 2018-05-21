@@ -26,6 +26,12 @@ class SanitarioController extends Controller
     public function store(Request $request)
     {
         $request->validate($this->rules());
+        if ($request->hasFile('Fotografias')) {
+          if ($request->file('Fotografias')->isValid()) {
+            $request->Fotografias->storeAs('infraestructura/sanitarios/' . $request->Tipo,
+                                            $request->Fotografias->getClientOriginalName());
+          }
+        }
 
         $sanitario = new Sanitario;
 
@@ -43,21 +49,6 @@ class SanitarioController extends Controller
 		echo "Elemento insertado exitosamente!";
         return redirect()->action('SanitarioController@index');
     }
-    $sanitario = new Sanitario;
-
-    $sanitario->Tipo             = $request->Tipo;
-  	$sanitario->InicioHora       = $request->InicioHora;
-  	$sanitario->FinHora          = $request->FinHora;
-  	$sanitario->InicioDia        = $request->InicioDia;
-    $sanitario->FinDia           = $request->FinDia;
-    $sanitario->Limpieza         = $request->Limpieza;
-    $sanitario->CantidadPersonal = $request->CantidadPersonal;
-
-    $sanitario->save();
-
-    echo "Elemento insertado exitosamente!";
-    return redirect()->action('SanitarioController@index');
-  }
 
 
 	//-----------------------------------------------------------
@@ -71,6 +62,13 @@ class SanitarioController extends Controller
 	//--------------------------------------------------------------
 	public function update(Request $request, $tipo) {
         $request->validate($this->rules());
+
+        if ($request->hasFile('Fotografias')) {
+          if ($request->file('Fotografias')->isValid()) {
+            $request->Fotografias->storeAs('infraestructura/sanitarios/' . $request->Tipo,
+                                            $request->Fotografias->getClientOriginalName());
+          }
+        }
 
 	    $tipo_nuevo       = $request->Tipo;
 	    $InicioHora       = $request->InicioHora;
@@ -120,6 +118,7 @@ class SanitarioController extends Controller
         ];
     }
 
-}
-
+  public function viewImg($tipo){
+    return view('infraestructura.sanitarios.viewImg')->with(['tipo' => $tipo]);
+  }
 }

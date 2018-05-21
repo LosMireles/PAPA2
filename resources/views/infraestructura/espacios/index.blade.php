@@ -65,4 +65,3 @@
 		</tr>
 	@endforeach
 @endsection
-

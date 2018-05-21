@@ -28,13 +28,14 @@ class AsesoriaController extends Controller
     //----------------------------------------------------------------
     public function store(Request $request)
     {
+      $asesoria = new Asesoria;
       if ($request->hasFile('Fotografias')) {
         if ($request->file('Fotografias')->isValid()) {
           $request->Fotografias->storeAs('infraestructura/asesorias/' . $request->Tipo,
                                           $request->Fotografias->getClientOriginalName());
         }
       }
-        $asesoria = new Asesoria;
+
 
         $asesoria->Tipo       = $request->Tipo;
 		$asesoria->InicioHora = $request->InicioHora;
@@ -59,6 +60,12 @@ class AsesoriaController extends Controller
 
     //----------------------------------------------------------------
     public function update(Request $request, $tipo) {
+      if ($request->hasFile('Fotografias')) {
+        if ($request->file('Fotografias')->isValid()) {
+          $request->Fotografias->storeAs('infraestructura/asesorias/' . $request->Tipo,
+                                          $request->Fotografias->getClientOriginalName());
+        }
+      }
         $tipo_nuevo = $request->Tipo;
 		$InicioHora = $request->InicioHora;
 		$FinHora    = $request->FinHora;

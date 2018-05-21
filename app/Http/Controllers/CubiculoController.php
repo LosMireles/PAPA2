@@ -28,6 +28,13 @@ class CubiculoController extends Controller {
     {
         $request->validate($this->rules());
 
+        if ($request->hasFile('Fotografias')) {
+          if ($request->file('Fotografias')->isValid()) {
+            $request->Fotografias->storeAs('infraestructura/cubiculos/' . $request->Tipo,
+                                            $request->Fotografias->getClientOriginalName());
+          }
+        }
+
         $cubiculo = new Cubiculo;
 
     $cubiculo->Tipo           = $request->Tipo;
@@ -52,6 +59,12 @@ class CubiculoController extends Controller {
     //----------------------------------------------------------------
 	public function update(Request $request, $tipo) {
         $request->validate($this->rules());
+        if ($request->hasFile('Fotografias')) {
+          if ($request->file('Fotografias')->isValid()) {
+            $request->Fotografias->storeAs('infraestructura/cubiculos/' . $request->Tipo,
+                                            $request->Fotografias->getClientOriginalName());
+          }
+        }
 
 	  	$tipo_nuevo     = $request->Tipo;
 		$Profesor       = $request->Profesor;
