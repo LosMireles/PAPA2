@@ -17,7 +17,7 @@ class Incisos extends Migration
         Schema::create('preguntas', function (Blueprint $table) {
             $table->increments('id');
             $table->string('inciso');
-            $table->tinyInt('numero');
+            $table->tinyInteger('numero');
             $table->string('titulo');
             $table->longText('respuesta');
 
