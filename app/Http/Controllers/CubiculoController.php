@@ -33,6 +33,7 @@ class CubiculoController extends Controller {
         $cubiculo->Tipo           = $request->Tipo;
 		$cubiculo->Profesor       = $request->Profesor;
 		$cubiculo->CantidadEquipo = $request->CantidadEquipo;
+        $cubiculo->espacio_id       = $request->espacio_id;
 
         $cubiculo->save();
 
@@ -55,11 +56,13 @@ class CubiculoController extends Controller {
 	  	$tipo_nuevo     = $request->Tipo;
 		$Profesor       = $request->Profesor;
 		$CantidadEquipo = $request->CantidadEquipo;
+        $espacio_id     = $request->espacio_id;
 
         Cubiculo::where('Tipo', $tipo)->update(
             ['Tipo'           => $tipo_nuevo,
              'Profesor'       => $Profesor,
-             'CantidadEquipo' => $CantidadEquipo]);
+             'CantidadEquipo' => $CantidadEquipo,
+             'espacio_id'     => $espacio_id]);
 
 		echo "Elemento insertado exitosamente!";
         return redirect()->action('CubiculoController@index');

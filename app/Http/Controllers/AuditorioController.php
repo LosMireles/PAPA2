@@ -33,6 +33,7 @@ class AuditorioController extends Controller
 		$auditorio->CantidadAV         = $request->CantidadAV;
         $auditorio->Capacidad          = $request->Capacidad;
 		$auditorio->CantidadSanitarios = $request->CantidadSanitarios;
+        $asesoria->espacio_id          = $request->espacio_id;
 
         $auditorio->save();
 
@@ -57,13 +58,15 @@ class AuditorioController extends Controller
         $CantidadAV         = $request->CantidadAV;
         $Capacidad          = $request->Capacidad;
         $CantidadSanitarios = $request->CantidadSanitarios;
+        $espacio_id         = $request->espacio_id;
 
         Auditorio::where('Tipo', $tipo)->update([
             'Tipo'               => $tipo_nuevo,
             'CantidadEquipo'     => $CantidadEquipo,
             'CantidadAV'         => $CantidadAV,
             'Capacidad'          => $Capacidad,
-            'CantidadSanitarios' => $CantidadSanitarios
+            'CantidadSanitarios' => $CantidadSanitarios,
+            'espacio_id'         => $espacio_id
         ]);
 
 		echo "Elemento editado exitosamente!";

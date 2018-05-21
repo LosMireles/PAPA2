@@ -36,6 +36,7 @@ class SanitarioController extends Controller
         $sanitario->FinDia           = $request->FinDia;
         $sanitario->Limpieza         = $request->Limpieza;
         $sanitario->CantidadPersonal = $request->CantidadPersonal;
+        $asesoria->espacio_id        = $request->espacio_id;
 
         $sanitario->save();
 
@@ -63,6 +64,7 @@ class SanitarioController extends Controller
 		$FinDia           = $request->FinDia;
         $Limpieza         = $request->Limpieza;
         $CantidadPersonal = $request->CantidadPersonal;
+        $espacio_id       = $request->espacio_id;
 
 	    Sanitario::where('Tipo', $tipo)->update(['Tipo'        => $tipo_nuevo,
 											'InicioHora'       => $InicioHora,
@@ -70,7 +72,8 @@ class SanitarioController extends Controller
 											'InicioDia'        => $InicioDia,
 											'FinDia'           => $FinDia,
 											'Limpieza'         => $Limpieza,
-											'CantidadPersonal' => $CantidadPersonal]);
+                                            'CantidadPersonal' => $CantidadPersonal,
+                                            'espacio_id'       => $espacio_id]);
 
 		echo "Elemento editado exitosamente!";
         return redirect()->action('SanitarioController@index');

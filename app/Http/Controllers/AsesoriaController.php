@@ -36,6 +36,7 @@ class AsesoriaController extends Controller
         $asesoria->InicioDia  = $request->InicioDia;
 		$asesoria->FinDia     = $request->FinDia;
         $asesoria->Materia    = $request->Materia;
+        $asesoria->espacio_id = $request->espacio_id;
 
         $asesoria->save();
 
@@ -58,6 +59,7 @@ class AsesoriaController extends Controller
         $InicioDia  = $request->InicioDia;
 		$FinDia     = $request->FinDia;
         $Materia    = $request->Materia;
+        $espacio_id = $request->espacio_id;
 
         Asesoria::where('Tipo', $tipo)->update([
             'Tipo'       => $tipo_nuevo,
@@ -65,7 +67,8 @@ class AsesoriaController extends Controller
             'FinHora'    => $FinHora,
             'InicioDia'  => $InicioDia,
             'FinDia'     => $FinDia,
-            'Materia'    => $Materia
+            'Materia'    => $Materia,
+            'espacio_id' => $espacio_id
         ]);
 
 		echo "Elemento editado exitosamente!";
