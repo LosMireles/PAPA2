@@ -61,7 +61,7 @@ class EquipoController extends Controller
         $softwares        = Software::all();
         $equipo_softwares = DB::table('equipo_software')->get();
 
-        $tipo_equipos = ['computo', 'redes', 'audiovisual'];
+        $tipo_equipos = ['computo', 'redes', 'audiovisual', 'servidor'];
 
     	return view('equipamiento.equipos.edit')
             ->with(['equipo'           => $equipo,

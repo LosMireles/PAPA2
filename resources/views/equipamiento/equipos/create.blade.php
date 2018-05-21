@@ -87,6 +87,7 @@
 				<option value="computo">Cómputo</option>
 				<option value="redes">Redes</option>
 				<option value="audiovisual">Audiovisual</option>
+				<option value="servidor">Servidor</option>
 			</select>
 		</div>
 	</div>
