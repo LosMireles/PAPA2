@@ -26,6 +26,8 @@ class CubiculoController extends Controller {
     //----------------------------------------------------------------
     public function store(Request $request)
     {
+        $request->validate($this->rules());
+
         $cubiculo = new Cubiculo;
 
         $cubiculo->Tipo           = $request->Tipo;
@@ -48,6 +50,8 @@ class CubiculoController extends Controller {
 
     //----------------------------------------------------------------
 	public function update(Request $request, $tipo) {
+        $request->validate($this->rules());
+
 	  	$tipo_nuevo     = $request->Tipo;
 		$Profesor       = $request->Profesor;
 		$CantidadEquipo = $request->CantidadEquipo;
@@ -74,6 +78,15 @@ class CubiculoController extends Controller {
 		echo "Elemento borrado exitosamente!";
         return redirect()->action('CubiculoController@index');
 	}
+
+    //----------------------------------------------------------------
+    public function rules(){
+        return [
+            'Tipo'           => 'request|alpha_dash',
+            'Profesor'       => 'request|alpha',
+            'CantidadEquipo' => 'request|integer'
+        ];
+    }
 
 	//*********************************************************************
 	public function imprimir() {

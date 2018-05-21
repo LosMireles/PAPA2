@@ -25,6 +25,8 @@ class SanitarioController extends Controller
     //--------------------------------------------------------
     public function store(Request $request)
     {
+        $request->validate($this->rules());
+
         $sanitario = new Sanitario;
 
         $sanitario->Tipo             = $request->Tipo;
@@ -52,6 +54,8 @@ class SanitarioController extends Controller
 
 	//--------------------------------------------------------------
 	public function update(Request $request, $tipo) {
+        $request->validate($this->rules());
+
 	    $tipo_nuevo       = $request->Tipo;
 	    $InicioHora       = $request->InicioHora;
 	    $FinHora          = $request->FinHora;
@@ -85,6 +89,17 @@ class SanitarioController extends Controller
 		echo "Elemento borrado exitosamente!";
         return redirect()->action('SanitarioController@index');
 	}
+
+	//--------------------------------------------------------------
+	public function rules(){
+        return [
+            'Tipo'             => 'required|alpha_dash',
+            'InicioDia'        => 'required|date',
+            'FinDia'           => 'required|date',
+            'Limpieza'         => 'required|integer|min:1|max:5',
+            'CantidadPersonal' => 'required|integer'
+        ];
+    }
 
 }
 

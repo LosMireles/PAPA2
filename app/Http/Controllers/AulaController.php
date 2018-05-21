@@ -25,6 +25,8 @@ class AulaController extends Controller
     //----------------------------------------------------------------
     public function store(Request $request)
     {
+        $request->validate($this->rules());
+
         $aula = new Aula;
 
         $aula->Tipo           = $request->Tipo;
@@ -94,6 +96,8 @@ class AulaController extends Controller
 
 	//-----------------------------------------------------------
 	public function update(Request $request, $tipo) {
+        $request->validate($this->rules());
+
 	  	$tipo_nuevo     = $request->Tipo;
 		$CantidadEquipo = $request->CantidadEquipo;
 		$CantidadAV     = $request->CantidadAV;
@@ -180,6 +184,30 @@ class AulaController extends Controller
         return redirect()->action('AulaController@index');
 	}
 
+	//--------------------------------------------------------------
+    public function rules(){
+        return [
+            'Tipo'           => 'required|alpha_dash',
+            'CantidadEquipo' => 'required|integer',
+            'CantidadAV'     => 'required|integer',
+            'Capacidad'      => 'required|integer',
+
+            'SillasPaleta'   => 'required|boolean',
+            'MesasTrabajo'   => 'required|boolean',
+            'Isotipica'      => 'required|boolean',
+            'Estrado'        => 'required|boolean',
+
+            'Pizarron'       => 'required|integer|min:1|max:4',
+            'Illuminacion'   => 'required|integer|min:1|max:4',
+            'AislamientoR'   => 'required|integer|min:1|max:4',
+            'Ventilacion'    => 'required|integer|min:1|max:4',
+            'Temperatura'    => 'required|integer|min:1|max:4',
+            'Pizarron'       => 'required|integer|min:1|max:4',
+            'Espacio'        => 'required|integer|min:1|max:4',
+            'Mobiliario'     => 'required|integer|min:1|max:4',
+            'Conexiones'     => 'required|integer|min:1|max:4'
+        ];
+    }
 	//--------------------------------------------------------------
 
 }
