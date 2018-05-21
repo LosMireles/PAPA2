@@ -50,6 +50,7 @@
 				<li><a href="#">9.2.2</a></li>
 				<li><a href="#">9.2.3</a></li>
 				<li><a href="#">9.2.4</a></li>
+				<li><a href="{{ action('Inciso9_2_7Controller@index') }}">9.2.7</a></li>
 			</ul>
 		</td>
 	</tr>

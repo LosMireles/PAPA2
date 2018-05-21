@@ -4,9 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Pregunta;
-
-class Inciso9_2_7Controller extends Controller
+class IncisoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +13,7 @@ class Inciso9_2_7Controller extends Controller
      */
     public function index()
     {
-        $preguntas = Pregunta::where('inciso', '9.2.7')->get();
-        return view('incisos/seccion9_2/9_2_7', ['preguntas' => $preguntas]);
+        //
     }
 
     /**

@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
         $this->call(EquipoTableSeeder::class);
         $this->call(SoftwareTableSeeder::class);
         $this->call(TecnicoAcademicoSeeder::class);
+        $this->call(PreguntasTableSeeder::class);
 
         $equipos   = App\Equipo::all();
         foreach($equipos as $equipo){

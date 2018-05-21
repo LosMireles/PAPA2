@@ -1,10 +1,11 @@
 <?php
 
+
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateInciso9111Table extends Migration
+class Incisos extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +14,13 @@ class CreateInciso9111Table extends Migration
      */
     public function up()
     {
-        Schema::create('inciso9_1_11', function (Blueprint $table) {
+        Schema::create('preguntas', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('inciso');
+            $table->tinyInteger('numero');
+            $table->string('titulo');
+            $table->longText('respuesta');
+
             $table->timestamps();
         });
     }
@@ -26,6 +32,6 @@ class CreateInciso9111Table extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('inciso9_1_11');
+        Schema::dropIfExists('preguntas');
     }
 }
