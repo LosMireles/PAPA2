@@ -93,6 +93,7 @@ class AulaController extends Controller
 
 	//-----------------------------------------------------------
 	public function edit($tipo) {
+
 		$aula  = Aula::where('Tipo', $tipo)->first();
 
         return view('infraestructura.aulas.edit')
@@ -101,7 +102,13 @@ class AulaController extends Controller
 
 	//-----------------------------------------------------------
 	public function update(Request $request, $tipo) {
-	  	$tipo_nuevo     = $request->Tipo;
+    if ($request->hasFile('Fotografias')) {
+      if ($request->file('Fotografias')->isValid()) {
+        $request->Fotografias->storeAs('infraestructura/aulas/' . $request->Tipo,
+                                        $request->Fotografias->getClientOriginalName());
+      }
+    }
+	  $tipo_nuevo     = $request->Tipo;
 		$CantidadEquipo = $request->CantidadEquipo;
 		$CantidadAV     = $request->CantidadAV;
 		$Capacidad      = $request->Capacidad;
@@ -169,7 +176,7 @@ class AulaController extends Controller
 											'Mobilario'      => $Mobilario,
                                             'Conexiones'     => $Conexiones]);
 
-		echo "Elemento insertado exitosamente!";
+		#echo "Elemento insertado exitosamenteeee!";
         return redirect()->action('AulaController@index');
 	}
 
@@ -193,4 +200,12 @@ class AulaController extends Controller
 
 	//--------------------------------------------------------------
 
+  public function viewImg($tipo){
+    return view('infraestructura.aulas.viewImg')->with(['tipo' => $tipo]);
+  }
+
+  #public function deleteImg($image){
+  #  Storage::delete($image);
+  #  return redirect()->action('AulaController@viewImg');
+  #}
 }
