@@ -56,5 +56,13 @@
 			<input type='text' class="form-control" name='CantidadSanitarios' id="CantidadSanitarios" placeholder="1" required>
 		</div>
 	</div>
+
+	<div class="form-group">
+		<label for="espacio_id" class="col-sm-4 control-label" data-toggle="tooltip" title="Espacio donde se ecuentra la asesoría">Espacio</label>
+
+		<div class="col-sm-8">
+			<input type="radio"  name="espacio_id" value="{{$espacio_id}}" checked> {{$espacio_tipo}}
+		</div>
+	</div>
 @endsection
 
