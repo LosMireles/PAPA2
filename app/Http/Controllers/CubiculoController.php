@@ -24,20 +24,16 @@ class CubiculoController extends Controller {
 	}
 
     //----------------------------------------------------------------
-  public function store(Request $request)
-  {
-    if ($request->hasFile('Fotografias')) {
-      if ($request->file('Fotografias')->isValid()) {
-        $request->Fotografias->storeAs('infraestructura/cubiculos/' . $request->Tipo,
-                                        $request->Fotografias->getClientOriginalName());
-      }
-    }
-    $cubiculo = new Cubiculo;
+    public function store(Request $request)
+    {
+        $request->validate($this->rules());
+
+        $cubiculo = new Cubiculo;
 
     $cubiculo->Tipo           = $request->Tipo;
 		$cubiculo->Profesor       = $request->Profesor;
 		$cubiculo->CantidadEquipo = $request->CantidadEquipo;
-    $cubiculo->espacio_id = $request->espacio_id;
+        $cubiculo->espacio_id       = $request->espacio_id;
 
     $cubiculo->save();
 
@@ -55,20 +51,18 @@ class CubiculoController extends Controller {
 
     //----------------------------------------------------------------
 	public function update(Request $request, $tipo) {
-    if ($request->hasFile('Fotografias')) {
-      if ($request->file('Fotografias')->isValid()) {
-        $request->Fotografias->storeAs('infraestructura/cubiculos/' . $request->Tipo,
-                                        $request->Fotografias->getClientOriginalName());
-      }
-    }
-  	$tipo_nuevo     = $request->Tipo;
+        $request->validate($this->rules());
+
+	  	$tipo_nuevo     = $request->Tipo;
 		$Profesor       = $request->Profesor;
 		$CantidadEquipo = $request->CantidadEquipo;
+        $espacio_id     = $request->espacio_id;
 
-    Cubiculo::where('Tipo', $tipo)->update(
-        ['Tipo'           => $tipo_nuevo,
-         'Profesor'       => $Profesor,
-         'CantidadEquipo' => $CantidadEquipo]);
+        Cubiculo::where('Tipo', $tipo)->update(
+            ['Tipo'           => $tipo_nuevo,
+             'Profesor'       => $Profesor,
+             'CantidadEquipo' => $CantidadEquipo,
+             'espacio_id'     => $espacio_id]);
 
 		echo "Elemento insertado exitosamente!";
     return redirect()->action('CubiculoController@index');
@@ -88,6 +82,15 @@ class CubiculoController extends Controller {
 		echo "Elemento borrado exitosamente!";
     return redirect()->action('CubiculoController@index');
 	}
+
+    //----------------------------------------------------------------
+    public function rules(){
+        return [
+            'Tipo'           => 'required|alpha_dash',
+            'Profesor'       => 'required|alpha',
+            'CantidadEquipo' => 'required|integer'
+        ];
+    }
 
 	//*********************************************************************
 	public function imprimir() {

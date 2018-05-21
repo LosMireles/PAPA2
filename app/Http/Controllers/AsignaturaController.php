@@ -27,7 +27,9 @@ class AsignaturaController extends Controller
     }
 
     //----------------------------------------------------------------
-     public function store(Request $request){
+    public function store(Request $request){
+        $request->validate($this->rules());
+
         $asignatura = new Asignatura;
 
         $asignatura->nombre      = $request->nombre;
@@ -51,6 +53,8 @@ class AsignaturaController extends Controller
 
     //----------------------------------------------------------------
     public function update(Request $request, $nombre){
+        $request->validate($this->rules());
+
         $nombre_nuevo = $request->nombre;
         $descripcion  = $request->descripcion;
         $curso_id     = $request->curso_id;
@@ -78,6 +82,14 @@ class AsignaturaController extends Controller
 
 		echo "Elemento borrado exitosamente!";
         return redirect()->action('AsignaturaController@index');
+    }
+
+    //Valida los datos de los formularios create y edit
+    public function rules(){
+        return [
+                'nombre'      => 'required|alpha_num',
+                'descripcion' => 'required',
+               ];
     }
 }
 

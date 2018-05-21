@@ -31,6 +31,8 @@ class CursoController extends Controller {
     //----------------------------------------------------------------
     public function store(Request $request)
     {
+        $request->validate($this->rules());
+
         $curso                = new Curso;
 
         $curso->nombre        = $request->nombre;
@@ -70,6 +72,8 @@ class CursoController extends Controller {
 
 	//-----------------------------------------------------------
     public function update(Request $request, $nombre) {
+        $request->validate($this->rules());
+
 	  	$nombre_nuevo  = $request->nombre;
 	  	$periodo       = $request->periodo;
 	  	$grupo         = $request->grupo;
@@ -117,6 +121,16 @@ class CursoController extends Controller {
         return redirect()->action('CursoController@index');
 	}
 
+    public function rules(){
+        return [
+            'nombre'        => 'required|alpha_num',
+            'periodo'       => 'required|alpha_dash',
+            'grupo'         => 'required|integer',
+            'noEstudiantes' => 'required|integer',
+            'tipoAula'      => 'required|alpha',
+            'pertenencia'   => 'required|alpha'
+        ];
+    }
 	//*-----------------------------------------------------------------
 }
 

@@ -37,11 +37,12 @@ class AsesoriaController extends Controller
         $asesoria = new Asesoria;
 
         $asesoria->Tipo       = $request->Tipo;
-  		$asesoria->InicioHora = $request->InicioHora;
-  		$asesoria->FinHora    = $request->FinHora;
-      $asesoria->InicioDia  = $request->InicioDia;
-	    $asesoria->FinDia     = $request->FinDia;
-      $asesoria->Materia    = $request->Materia;
+		$asesoria->InicioHora = $request->InicioHora;
+		$asesoria->FinHora    = $request->FinHora;
+        $asesoria->InicioDia  = $request->InicioDia;
+		$asesoria->FinDia     = $request->FinDia;
+        $asesoria->Materia    = $request->Materia;
+        $asesoria->espacio_id = $request->espacio_id;
 
       $asesoria->save();
 
@@ -58,31 +59,26 @@ class AsesoriaController extends Controller
 
     //----------------------------------------------------------------
     public function update(Request $request, $tipo) {
+        $tipo_nuevo = $request->Tipo;
+		$InicioHora = $request->InicioHora;
+		$FinHora    = $request->FinHora;
+        $InicioDia  = $request->InicioDia;
+		$FinDia     = $request->FinDia;
+        $Materia    = $request->Materia;
+        $espacio_id = $request->espacio_id;
 
-      if ($request->hasFile('Fotografias')) {
-        if ($request->file('Fotografias')->isValid()) {
-          $request->Fotografias->storeAs('infraestructura/asesorias/' . $request->Tipo,
-                                          $request->Fotografias->getClientOriginalName());
-        }
-      }
-      $tipo_nuevo = $request->Tipo;
-  		$InicioHora = $request->InicioHora;
-  		$FinHora    = $request->FinHora;
-      $InicioDia  = $request->InicioDia;
-      $FinDia     = $request->FinDia;
-      $Materia    = $request->Materia;
+        Asesoria::where('Tipo', $tipo)->update([
+            'Tipo'       => $tipo_nuevo,
+            'InicioHora' => $InicioHora,
+            'FinHora'    => $FinHora,
+            'InicioDia'  => $InicioDia,
+            'FinDia'     => $FinDia,
+            'Materia'    => $Materia,
+            'espacio_id' => $espacio_id
+        ]);
 
-      Asesoria::where('Tipo', $tipo)->update([
-          'Tipo'       => $tipo_nuevo,
-          'InicioHora' => $InicioHora,
-          'FinHora'    => $FinHora,
-          'InicioDia'  => $InicioDia,
-          'FinDia'     => $FinDia,
-          'Materia'    => $Materia
-      ]);
-
-  		echo "Elemento editado exitosamente!";
-      return redirect()->action('AsesoriaController@index');
+		echo "Elemento editado exitosamente!";
+        return redirect()->action('AsesoriaController@index');
     }
 
     //----------------------------------------------------------------
@@ -102,6 +98,16 @@ class AsesoriaController extends Controller
     }
 
     //----------------------------------------------------------------
+	public function rules(){
+        return [
+            'Tipo' => 'required|alpha_dash',
+            'InicioDia' => 'required|date',
+            'FinDia' => 'required|date',
+            'Limpieza' => 'required|integer|min:1|max:5',
+            'Materia' => 'required|alpha'
+        ];
+    }
+}
 
     public function viewImg($tipo){
       return view('infraestructura.asesorias.viewImg')->with(['tipo' => $tipo]);

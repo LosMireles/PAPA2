@@ -24,11 +24,13 @@ class EquipoController extends Controller
     	$softwares = Software::all();
         return view('equipamiento.equipos.create')
             ->with(['espacios'  => $espacios,
-             'softwares' => $softwares]);
+                    'softwares' => $softwares]);
     }
 
     //----------------------------------------------------------------
     public function store(Request $request){
+        $request->validate($this->rules());
+
     	$equipo = new Equipo;
 
     	$equipo->serial        = $request->serial;
@@ -73,14 +75,15 @@ class EquipoController extends Controller
 
     //----------------------------------------------------------------
     public function update(Request $request, $serial){
-        $serial_nuevo     = $request->serial;
-    	$manualUsuario    = $request->manual;
-    	$operable         = $request->operable;
-    	$localizacion     = $request->localizacion;
-        $tipo_equipo          = $request->tipo;
-        $equipo_descripcion   = $request->especificaciones;
-    	$nombre_softwares = $request->nombre_software;
+        $request->validate($this->rules());
 
+        $serial_nuevo       = $request->serial;
+    	$manualUsuario      = $request->manual;
+    	$operable           = $request->operable;
+    	$localizacion       = $request->localizacion;
+        $tipo_equipo        = $request->tipo;
+        $equipo_descripcion = $request->especificaciones;
+    	$nombre_softwares   = $request->nombre_software;
 
         $equipo = Equipo::where('serial', $serial)->first();
         $tipo_anterior = $equipo->tipo;
@@ -100,11 +103,12 @@ class EquipoController extends Controller
         ]);
 
         /// Condicionar a si no hay software ingresado pues no es de computo
-        if($nombre_softwares){
+        if(!empty($nombre_softwares)){
             $idSoftwares = [];
             foreach($nombre_softwares as $nombre){
                 $idSoftwares[] = Software::where('nombre', $nombre)->value('id');
             }
+
             $equipo->softwares()->sync($idSoftwares);
         }
 
@@ -124,6 +128,17 @@ class EquipoController extends Controller
 
 		echo "Elemento borrado exitosamente!";
         return redirect()->action('EquipoController@index');
+    }
+
+    //----------------------------------------------------------------
+    public function rules(){
+        return [
+            'serial'        => 'required|alpha_num',
+            'manualUsuario' => 'required|boolean',
+            'localizacion'  => 'required|alpha_num',
+            'tipo'          => 'required|alpha_num',
+            'descripcion'   => 'required'
+        ];
     }
 }
 

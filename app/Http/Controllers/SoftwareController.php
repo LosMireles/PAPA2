@@ -28,15 +28,10 @@ class SoftwareController extends Controller {
 	}
 
     //----------------------------------------------------------------
-	/**
-     * Create a new software instance.
-     *
-     * @param  Request  $request
-     * @return Response
-     */
     public function store(Request $request)
     {
-        /// Tomar todos los equipos de la base de datos
+        $request->validate($this->rules());
+
         $software                 = new Software;
 
         $software->nombre         = $request->nombre;
@@ -74,6 +69,8 @@ class SoftwareController extends Controller {
 
 	//*-----------------------------------------------------------------
     public function update(Request $request, $nombre){
+        $request->validate($this->rules());
+
 	  	$nombre_nuevo   = $request->nombre;
 	  	$manualUsuario  = $request->manualUsuario;
 	  	$licencia       = $request->licencia;
@@ -81,12 +78,8 @@ class SoftwareController extends Controller {
 	  	$clase          = $request->clase;
 	  	$serialEquipos  = $request->equipos;
 
-        $idEquipos = [];
-        foreach($serialEquipos as $serial){
-            $idEquipos[] = Equipo::where('serial', $serial)->value('id');
-        }
-
         $software = Software::where('nombre', $nombre)->first();
+
 		$software->update([
             'nombre'         => $nombre_nuevo,
             'manualUsuario'  => $manualUsuario,
@@ -95,7 +88,15 @@ class SoftwareController extends Controller {
             'clase'          => $clase
         ]);
 
-        $software->equipos()->sync($idEquipos);
+        if(!empty($serialEquipos)){
+            $idEquipos = [];
+            foreach($serialEquipos as $serial){
+                $idEquipos[] = Equipo::where('serial', $serial)->value('id');
+            }
+
+            $software->equipos()->sync($idEquipos);
+        }
+
 
 		echo "Elemento editado exitosamente!";
         return redirect()->action('SoftwareController@index');
@@ -114,5 +115,16 @@ class SoftwareController extends Controller {
 		echo "Elemento borrado exitosamente!";
         return redirect()->action('SoftwareController@index');
 	}
+
+    //Valida los datos de los formularios create y edit
+    public function rules(){
+        return [
+                'nombre'         => 'required|unique:softwares|alpha_num',
+                'manualUsuario'  => 'required|boolean',
+                'licencia'       => 'required|alpha_num',
+                'disponibilidad' => 'required|alpha_num',
+                'clase'          => 'required|alpha_num',
+               ];
+    }
 }
 

@@ -20,13 +20,7 @@
       <label for="Tipo" class="col-sm-4 control-label" data-toggle="tooltip" title="Número del cubículo">Código del cubículo</label>
 
       <div class="col-sm-8">
-      		<?php
-      			if(!empty($_GET['tipo']))
-      				$tipo = $_GET['tipo'];
-      			else
-      				$tipo = '';
-      		?>
-      		<input type="text-center" class="form-control" name="Tipo" value={{$tipo}}>
+      		<input type="text-center" class="form-control" name="Tipo" placeholder="Nombre cubiculo">
 
       		</div>
    </div>

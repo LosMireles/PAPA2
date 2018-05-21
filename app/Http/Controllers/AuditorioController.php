@@ -24,14 +24,16 @@ class AuditorioController extends Controller
 
     //----------------------------------------------------------------
     public function store(Request $request){
+        $request->validate($this->rules());
 
-      if ($request->hasFile('Fotografias')) {
-        if ($request->file('Fotografias')->isValid()) {
-          $request->Fotografias->storeAs('infraestructura/auditorios/' . $request->Tipo,
-                                          $request->Fotografias->getClientOriginalName());
-        }
-      }
-      $auditorio = new Auditorio;
+        $auditorio = new Auditorio;
+
+        $auditorio->Tipo               = $request->Tipo;
+		$auditorio->CantidadEquipo     = $request->CantidadEquipo;
+		$auditorio->CantidadAV         = $request->CantidadAV;
+        $auditorio->Capacidad          = $request->Capacidad;
+		$auditorio->CantidadSanitarios = $request->CantidadSanitarios;
+        $auditorio->espacio_id         = $request->espacio_id;
 
       $auditorio->Tipo               = $request->Tipo;
 	    $auditorio->CantidadEquipo     = $request->CantidadEquipo;
@@ -55,29 +57,26 @@ class AuditorioController extends Controller
 
     //----------------------------------------------------------------
     public function update(Request $request, $tipo) {
+        $request->validate($this->rules());
 
-      if ($request->hasFile('Fotografias')) {
-        if ($request->file('Fotografias')->isValid()) {
-          $request->Fotografias->storeAs('infraestructura/auditorios/' . $request->Tipo,
-                                          $request->Fotografias->getClientOriginalName());
-        }
-      }
-      $tipo_nuevo         = $request->Tipo;
-      $CantidadEquipo     = $request->CantidadEquipo;
-      $CantidadAV         = $request->CantidadAV;
-      $Capacidad          = $request->Capacidad;
-      $CantidadSanitarios = $request->CantidadSanitarios;
+        $tipo_nuevo         = $request->Tipo;
+        $CantidadEquipo     = $request->CantidadEquipo;
+        $CantidadAV         = $request->CantidadAV;
+        $Capacidad          = $request->Capacidad;
+        $CantidadSanitarios = $request->CantidadSanitarios;
+        $espacio_id         = $request->espacio_id;
 
-      Auditorio::where('Tipo', $tipo)->update([
-          'Tipo'               => $tipo_nuevo,
-          'CantidadEquipo'     => $CantidadEquipo,
-          'CantidadAV'         => $CantidadAV,
-          'Capacidad'          => $Capacidad,
-          'CantidadSanitarios' => $CantidadSanitarios
-      ]);
+        Auditorio::where('Tipo', $tipo)->update([
+            'Tipo'               => $tipo_nuevo,
+            'CantidadEquipo'     => $CantidadEquipo,
+            'CantidadAV'         => $CantidadAV,
+            'Capacidad'          => $Capacidad,
+            'CantidadSanitarios' => $CantidadSanitarios,
+            'espacio_id'         => $espacio_id
+        ]);
 
-      echo "Elemento editado exitosamente!";
-      return redirect()->action('AuditorioController@index');
+		echo "Elemento editado exitosamente!";
+        return redirect()->action('AuditorioController@index');
     }
 
     //----------------------------------------------------------------
@@ -96,8 +95,13 @@ class AuditorioController extends Controller
     }
 
     //----------------------------------------------------------------
-    public function viewImg($tipo){
-      return view('infraestructura.auditorios.viewImg')->with(['tipo' => $tipo]);
+    public function rules(){
+        return [
+            'Tipo'               => 'required|alpha_num',
+            'CantidadEquipo'     => 'required|integer',
+            'CantidadAV'         => 'required|integer',
+            'Capacidad'          => 'required|integer',
+            'CantidadSanitarios' => 'required|integer'
+        ];
     }
-
 }
