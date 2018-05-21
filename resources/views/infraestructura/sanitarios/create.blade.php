@@ -20,12 +20,6 @@
       	<label for="Tipo" class="col-sm-4 control-label" data-toggle="tooltip" title="Nombre clave para el sanitario donde se indica el tipo de sanitario (hombres o mujeres), piso en el que se encuentra, para que personas esta disponible (persona, alumnado).">Tipo[?]: </label>
 
       	<div class="col-sm-8">
-      		<?php
-      			if(!empty($_GET['tipo']))
-      				$tipo = $_GET['tipo'];
-      			else
-      				$tipo = '';
-      		?>
       		<input type="text-center" class="form-control" name="Tipo" value={{$tipo}}>
 
       </div>

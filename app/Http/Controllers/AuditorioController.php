@@ -33,7 +33,7 @@ class AuditorioController extends Controller
 		$auditorio->CantidadAV         = $request->CantidadAV;
         $auditorio->Capacidad          = $request->Capacidad;
 		$auditorio->CantidadSanitarios = $request->CantidadSanitarios;
-        $asesoria->espacio_id          = $request->espacio_id;
+        $auditorio->espacio_id         = $request->espacio_id;
 
         $auditorio->save();
 

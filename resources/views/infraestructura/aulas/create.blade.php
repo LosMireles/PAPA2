@@ -20,15 +20,9 @@
 		<label for="Tipo" class="col-sm-4 control-label" data-toggle="tooltip" title="Nombre escrito en las puertas">Código del aula</label>
 
 		<div class="col-sm-8">
-      		<?php
-      			if(!empty($_GET['tipo']))
-      				$tipo = $_GET['tipo'];
-      			else
-      				$tipo = '';
-      		?>
       		<input type="text-center" class="form-control" name="Tipo" value={{$tipo}}>
 
-      		</div>
+      	</div>
 
 	</div>
 
