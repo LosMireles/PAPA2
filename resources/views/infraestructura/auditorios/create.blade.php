@@ -64,11 +64,10 @@
 			<input type="radio"  name="espacio_id" value="{{$espacio_id}}" checked> {{$espacio_tipo}}
 		</div>
 	</div>
-@endsection
 
-  <div class="form-group">
+    <div class="form-group">
 		<h3 class="text-center">Evidencias: </h3>
-	</div>
+    </div>
 
 	<div class="form-group">
 		<label for="Fotografias" class="col-sm-4 control-label" data-toggle="tooltip" title="Suba evidencias fotograficas">Fotografias</label>
@@ -76,5 +75,5 @@
 		<div class="col-sm-8">
 			<input type='file' class="form-control" name='Fotografias' id="Fotografias" accept=".jpg, .png, .jpeg">
 		</div>
-	</div>
+    </div>
 @endsection
