@@ -133,7 +133,7 @@ class EquipoController extends Controller
     //----------------------------------------------------------------
     public function rules(){
         return [
-            'serial'        => 'required|alpha_num',
+            'serial'        => 'required|unique:equipos|alpha_num',
             'manualUsuario' => 'required|boolean',
             'localizacion'  => 'required|alpha_num',
             'tipo'          => 'required|alpha_num',

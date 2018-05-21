@@ -96,7 +96,7 @@ class SanitarioController extends Controller
 	//--------------------------------------------------------------
 	public function rules(){
         return [
-            'Tipo'             => 'required|alpha_dash',
+            'Tipo'             => 'required|unique:sanitarios|alpha_dash',
             'InicioDia'        => 'required|date',
             'FinDia'           => 'required|date',
             'Limpieza'         => 'required|integer|min:1|max:5',

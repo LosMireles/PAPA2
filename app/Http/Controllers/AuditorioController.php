@@ -90,7 +90,7 @@ class AuditorioController extends Controller
     //----------------------------------------------------------------
     public function rules(){
         return [
-            'Tipo'               => 'required|alpha_num',
+            'Tipo'               => 'required|unique:auditorios|alpha_num',
             'CantidadEquipo'     => 'required|integer',
             'CantidadAV'         => 'required|integer',
             'Capacidad'          => 'required|integer',

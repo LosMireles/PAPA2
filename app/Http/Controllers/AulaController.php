@@ -208,7 +208,7 @@ class AulaController extends Controller
 	//--------------------------------------------------------------
     public function rules(){
         return [
-            'Tipo'           => 'required|alpha_dash',
+            'Tipo'           => 'required|unique:aulas|alpha_dash',
             'CantidadEquipo' => 'required|integer',
             'CantidadAV'     => 'required|integer',
             'Capacidad'      => 'required|integer',

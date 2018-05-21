@@ -147,7 +147,7 @@ class EspacioController extends Controller {
 	//*-----------------------------------------------------------------
     public function rules(){
         return [
-            'tipo'       => 'required|alpha_num',
+            'tipo'       => 'required|unique:espacios|alpha_num',
             'superficie' => 'required|integer', //no bueno pero no se como hacerlo mejor
             'cantidad'   => 'required|integer',
             'clase'      => 'required|alpha'

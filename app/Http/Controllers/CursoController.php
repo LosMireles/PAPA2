@@ -123,7 +123,7 @@ class CursoController extends Controller {
 
     public function rules(){
         return [
-            'nombre'        => 'required|alpha_num',
+            'nombre'        => 'required|unique:cursos|alpha_num',
             'periodo'       => 'required|alpha_dash',
             'grupo'         => 'required|integer',
             'noEstudiantes' => 'required|integer',
