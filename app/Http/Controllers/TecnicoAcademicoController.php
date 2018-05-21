@@ -112,8 +112,8 @@ class TecnicoAcademicoController extends Controller
         
         if($document){
             $document->move(public_path('/curriculos'), $document->getClientOriginalName());
-            File::delete(public_path('curriculos/' . $c_anterior));
-            //unlink(public_path('curriculos/' . $c_anterior));
+            //File::delete(public_path('curriculos/' . $c_anterior));
+            unlink(public_path('curriculos/' . $c_anterior));
 
             $tecnico->update([
                 'nombre' => $nombre,
