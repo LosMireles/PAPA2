@@ -31,17 +31,17 @@ class EspacioController extends Controller {
   }
 
     //----------------------------------------------------------------
-    public function store(Request $request)
-    {
-        $request->validate($this->rules());
+  public function store(Request $request)
+  {
+    $request->validate($this->rules());
 
-        $espacio             = new Espacio;
+    $espacio             = new Espacio;
 
-        $espacio->tipo       = $request->tipo;
+    $espacio->tipo       = $request->tipo;
 		$espacio->superficie = $request->superficie;
 		$espacio->cantidad   = $request->cantidad;
 		$espacio->clase      = $request->clase;
-        $cursos              = $request->cursos;
+    $cursos              = $request->cursos;
 
     $espacio->save();
 
@@ -53,8 +53,8 @@ class EspacioController extends Controller {
     }
 
     $clase = $request->clase;
-/********************************************************************************************
-***********************************************************************************************/
+    /********************************************************************************************
+    ***********************************************************************************************/
 		if($clase == 'Aula')
 		{
       return view('infraestructura.aulas.create')
@@ -105,21 +105,21 @@ class EspacioController extends Controller {
 
     //----------------------------------------------------------------
 	public function update(Request $request, $tipo) {
-        $request->validate($this->rules());
+    $request->validate($this->rules());
 
-        $tipo_nuevo   = $request->tipo;
+    $tipo_nuevo   = $request->tipo;
 		$superficie   = $request->superficie;
 		$cantidad     = $request->cantidad;
 		$clase        = $request->clase;
-        $nombreCursos = $request->cursos;
+    $nombreCursos = $request->cursos;
 
-        if(!empty($nombreCursos)){
-            $idCursos = [];
-            foreach($nombreCursos as $nombreCurso){
-                $idCursos[] = DB::table('cursos')
-                    ->where('nombre', $nombreCurso)->value('id');
-            }
+    if(!empty($nombreCursos)){
+        $idCursos = [];
+        foreach($nombreCursos as $nombreCurso){
+            $idCursos[] = DB::table('cursos')
+                ->where('nombre', $nombreCurso)->value('id');
         }
+    }
 
     $espacio =Espacio::where('tipo', $tipo)->first();
 		$espacio->update([
