@@ -77,17 +77,16 @@ class Inciso9_2_7Controller extends Controller
         // Volver a obtener los elementos del inciso 9.2.7
         $preguntas = Pregunta::where('inciso', '9.2.7')->get();
 
-        $temp = $preguntas[0]->id;
-        $preguntas[0]->respuesta = $request->$temp;
-        $preguntas[0]->save();
-        dd($request->$temp);
+        $arr[] = array_slice($request->all(), 2);
 
-        /*foreach ($preguntas as $pregunta) {
-            $pregunta->respuesta = $request->pregunta->id;
-            $pregunta;
-        }*/
+        $respuestas = array_slice($request->all(), 2);
+        for($i = 0; $i < sizeof($preguntas); $i++){
+            $preguntas[$i]->update([
+                'respuesta' => $respuestas[$i]
+            ]);
+        }
 
-        dd($preguntas);
+        return redirect()->action('Inciso9_2_7Controller@index');
     }
 
     /**
