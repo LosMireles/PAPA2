@@ -16,9 +16,10 @@ class Inciso9_2_7Controller extends Controller
     public function index()
     {
         $preguntas = Pregunta::where('inciso', '9.2.7')->get();
-        $arr = [1,2,3,4];
-        return view('incisos/seccion9_2/9_2_7')
-            ->with(['preguntas' => $arr ]);
+        // Se le manda al index el id del primer elemento del arreglo de preguntas
+        // esto pues update requiere de un id.
+        return view('incisos/seccion9_2/9_2_7',['preguntas' => $preguntas,
+                                                'id' => $preguntas[0]->id]);
     }
 
     /**
@@ -61,7 +62,7 @@ class Inciso9_2_7Controller extends Controller
      */
     public function edit($id)
     {
-        //
+
     }
 
     /**
@@ -71,8 +72,11 @@ class Inciso9_2_7Controller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $preguntas)
+    public function update(Request $Request, $id)
     {
+        // Volver a obtener los elementos del inciso 9.2.7
+        $preguntas = Pregunta::where('inciso', '9.2.7')->get();
+
         dd($preguntas);
     }
 
