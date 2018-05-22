@@ -72,10 +72,20 @@ class Inciso9_2_7Controller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $Request, $id)
+    public function update(Request $request, $id)
     {
         // Volver a obtener los elementos del inciso 9.2.7
         $preguntas = Pregunta::where('inciso', '9.2.7')->get();
+
+        $temp = $preguntas[0]->id;
+        $preguntas[0]->respuesta = $request->$temp;
+        $preguntas[0]->save();
+        dd($request->$temp);
+
+        /*foreach ($preguntas as $pregunta) {
+            $pregunta->respuesta = $request->pregunta->id;
+            $pregunta;
+        }*/
 
         dd($preguntas);
     }
