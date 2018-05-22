@@ -32,17 +32,17 @@ class EspacioController extends Controller {
   }
 
     //----------------------------------------------------------------
-    public function store(Request $request)
-    {
-        $request->validate($this->rules());
+  public function store(Request $request)
+  {
+    $request->validate($this->rules());
 
-        $espacio             = new Espacio;
+    $espacio             = new Espacio;
 
-        $espacio->tipo       = $request->tipo;
+    $espacio->tipo       = $request->tipo;
 		$espacio->superficie = $request->superficie;
 		$espacio->cantidad   = $request->cantidad;
 		$espacio->clase      = $request->clase;
-        $cursos              = $request->cursos;
+    $cursos              = $request->cursos;
 
     $espacio->save();
 
@@ -54,8 +54,8 @@ class EspacioController extends Controller {
     }
 
     $clase = $request->clase;
-/********************************************************************************************
-***********************************************************************************************/
+    /********************************************************************************************
+    ***********************************************************************************************/
 		if($clase == 'Aula')
 		{
       return view('infraestructura.aulas.create')
@@ -122,7 +122,7 @@ class EspacioController extends Controller {
             }
         }
 
-    $espacio =Espacio::where('tipo', $tipo)->first();
+        $espacio =Espacio::where('tipo', $tipo)->first();
 		$espacio->update([
             'tipo'       => $tipo_nuevo,
             'superficie' => $superficie,
