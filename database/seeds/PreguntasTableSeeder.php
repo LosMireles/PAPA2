@@ -66,9 +66,9 @@ class PreguntasTableSeeder extends Seeder
         ));
 
         App\Pregunta::create(array(
-        	'inciso' => '9.1.5',
+        	'inciso' => '9.1.6',
         	'numero' => '3',
-        	'titulo' => 'Se toma en cuenta la opinion de los profesores que participan en el programa para el diseño, equipamiento y operación de los servicios de cómputo',
+        	'titulo' => '¿Cuál es la descripción de las aulas en cuanto, higiene, seguridad, iluminación, ventilación, temperatura, aislamiento de ruido y mobiliario?',
                         # De que manera
         	'respuesta' => '',
         ));
@@ -84,58 +84,44 @@ class PreguntasTableSeeder extends Seeder
         App\Pregunta::create(array(
         	'inciso' => '9.1.8',
         	'numero' => '5',
-        	'titulo' => 'Número de aulas con equipo de cómputo permanentemente instalado.',
+        	'titulo' => 'Número de aulas con equipo de cómputo y audiovisual permanentemente instalado.',
         	'respuesta' => '',
         ));
 
         App\Pregunta::create(array(
-        	'inciso' => '9.1.8',
+        	'inciso' => '9.1.9',
         	'numero' => '6',
-        	'titulo' => 'Número de aulas con equipo de audiovisual permanentemente instalado.',
-        	'respuesta' => '',
-        ));
-
-        App\Pregunta::create(array(
-        	'inciso' => '9.1.9',
-        	'numero' => '7',
-        	'titulo' => 'Que tipo de profesores cuentan con cubículos',
-            'respuesta' => '',
-        ));
-
-        App\Pregunta::create(array(
-        	'inciso' => '9.1.9',
-        	'numero' => '8',
-        	'titulo' => 'Que otro tipo de lugar existe para el trabajo del resto de los profesores',
+        	'titulo' => '¿Que espacios de trabajo cuentan los profesores?',
             'respuesta' => '',
         ));
 
         App\Pregunta::create(array(
         	'inciso' => '9.1.10',
-        	'numero' => '9',
-        	'titulo' => 'Existen espacios para asesorías a estudiantes',
+        	'numero' => '7',
+        	'titulo' => '¿Existen espacios para asesorías a estudiantes?',
                     # Describalos
             'respuesta' => '',
         ));
 
         App\Pregunta::create(array(
         	'inciso' => '9.1.11',
-        	'numero' => '10',
-        	'titulo' => 'Cual es la relación de los auditorios y/o salas para actividades académicas, investigación, y de preservación y difusión de la cultura.',
+        	'numero' => '8',
+        	'titulo' => '¿Cual es la relación de los auditorios y/o salas para actividades académicas, investigación, y de preservación y difusión de la cultura?',
                     # Describiendo sus principales caracteristicas y uso que se les da con relacion a estas actividades
             'respuesta' => '',
         ));
 
         App\Pregunta::create(array(
             'inciso' => '9.1.13',
-            'numero' => '11',
-            'titulo' => 'Considera las facilidades sanitarias adecuadas.',
+            'numero' => '9',
+            'titulo' => '¿Considera las facilidades sanitarias adecuadas?',
                     # Describalos
             'respuesta' => '',
         ));
 
         App\Pregunta::create(array(
             'inciso' => '9.2.1',
-            'numero' => '12',
+            'numero' => '10',
             'titulo' => 'Mencione los software que se utilizan y su disponibilidad.',
                     # Describalos
             'respuesta' => '',
@@ -143,34 +129,49 @@ class PreguntasTableSeeder extends Seeder
 
         App\Pregunta::create(array(
             'inciso' => '9.2.2',
-            'numero' => '13',
+            'numero' => '11',
             'titulo' => 'Describa los lenguajes de programacion, herramientas CASE, manejadores de base de datos y paqueteria en general utilizados',
-                    # Describalos
-            'respuesta' => '',
-        ));
-
-
-        App\Pregunta::create(array(
-            'inciso' => '9.2.3',
-            'numero' => '14',
-            'titulo' => 'Explique de qué manera se garantiza que el equipo de cómputo reqeuerido esté disponible para la realización de las prácticas en las materias del programa que así lo requieran',
                     # Describalos
             'respuesta' => '',
         ));
 
         App\Pregunta::create(array(
             'inciso' => '9.2.7',
-            'numero' => '15',
+            'numero' => '12',
             'titulo' => 'El equipo de cómputo de la institución, ¿esta conectado a la red?',
                     # Describalos
             'respuesta' => '',
         ));
 
         App\Pregunta::create(array(
+            'inciso' => '9.2.11',
+            'numero' => '13',
+            'titulo' => '¿Los profesores cuentan con equipo de cómputo que les permita desempeñar adecuadamente su función?',
+                    # Describa las herramientas con que cuentan los maestros para trabajar. Computadoras, acceso a internet, email, etc
+            'respuesta' => '',
+        ));
+
+        App\Pregunta::create(array(
+            'inciso' => '9.2.12',
+            'numero' => '14',
+            'titulo' => '¿Existen técnicos de administración de sistemas de tiempo completo?',
+                    # Describir al tecnico, alumnos se ven involucrados?, quien lo asigna
+            'respuesta' => '',
+        ));
+
+        App\Pregunta::create(array(
             'inciso' => '9.2.13',
+            'numero' => '15',
+            'titulo' => '¿Existen registros de los usuarios de los servicio de cómputo?',
+                    # Los datos deben estar organzados por periodos, tambien debe llevar un registro de los programas utilizados
+            'respuesta' => '',
+        ));
+
+        App\Pregunta::create(array(
+            'inciso' => '9.2.14',
             'numero' => '16',
-            'titulo' => '¿Existen registros de los usuarios de los serviciso de cómputo?',
-                    # Describalos
+            'titulo' => '¿El técnico asignado cuenta con un perfil adecuado para dar soporte a infraestructura, telecomunicaciones, redes, aplicaciones, desarrollo, entre otras?',
+                    # Entre otrasÑ tecnologias emergentes, administracion, mineria de datos, soluciones intelignestes, reingeneria de procesos, TIC.
             'respuesta' => '',
         ));
 
