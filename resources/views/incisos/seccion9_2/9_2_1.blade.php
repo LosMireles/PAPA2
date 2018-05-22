@@ -1,5 +1,14 @@
 @extends('layouts.inciso')
 
+@section('title')
+  Inciso 9.2.1
+@endsection
+
+@section('descripcion')
+  <h3 class="text-center">Inciso 9.2.1: Para cada asignatura mencionar el software
+   que se utiliza y si está disponible dentro de la institución</h3>
+@endsection
+
 @section('formopen')
     {{Form::open(['class'  => 'form-horizontal'])}}
 @endsection

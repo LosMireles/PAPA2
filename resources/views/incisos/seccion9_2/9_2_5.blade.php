@@ -1,5 +1,15 @@
 @extends('layouts.inciso')
 
+@section('title')
+  Inciso 9.2.5
+@endsection
+
+@section('descripcion')
+  <h3 class="text-center">Inciso 9.2.5: Se debe contar con al menos tres plataformas
+   de cómputo diferentes que estén disponibles y accesibles para los estudiantes y
+  el personal docente del programa</h3>
+@endsection
+
 @section('formopen')
     {{Form::open(['class'  => 'form-horizontal'])}}
 @endsection

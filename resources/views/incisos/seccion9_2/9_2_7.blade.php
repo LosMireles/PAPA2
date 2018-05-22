@@ -1,5 +1,15 @@
 @extends('layouts.inciso')
 
+@section('title')
+  Inciso 9.2.7
+@endsection
+
+@section('descripcion')
+  <h3 class="text-center">Inciso 9.2.7: Debe contarse con al menos una red de área
+   local y una amplia, con software adecuado para las aplicaciones más comunes del
+  programa</h3>
+@endsection
+
 @section('formopen')
 	<!--Esta madre envia un id solo para que update jale-->
     {{Form::open(['action' => ['Inciso9_2_7Controller@update', $id],
