@@ -16,7 +16,9 @@ class Inciso9_2_7Controller extends Controller
     public function index()
     {
         $preguntas = Pregunta::where('inciso', '9.2.7')->get();
-        return view('incisos/seccion9_2/9_2_7', ['preguntas' => $preguntas]);
+        $arr = [1,2,3,4];
+        return view('incisos/seccion9_2/9_2_7')
+            ->with(['preguntas' => $arr ]);
     }
 
     /**
@@ -69,9 +71,9 @@ class Inciso9_2_7Controller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $preguntas)
     {
-        //
+        dd($preguntas);
     }
 
     /**
