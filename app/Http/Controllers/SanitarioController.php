@@ -6,6 +6,7 @@ use DB;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\Rule;
 
 use App\Sanitario;
 
@@ -62,7 +63,7 @@ class SanitarioController extends Controller
 
 	//--------------------------------------------------------------
 	public function update(Request $request, $tipo) {
-        $request->validate($this->rules());
+        $request->validate($this->rules($tipo));
 
         if ($request->hasFile('Fotografias')) {
           if ($request->file('Fotografias')->isValid()) {
@@ -109,9 +110,10 @@ class SanitarioController extends Controller
 	}
 
 	//--------------------------------------------------------------
-	public function rules(){
+	public function rules($tipo = null){
         return [
-            'Tipo'             => 'required|unique:sanitarios|alpha_dash',
+            'Tipo'             => ['required',
+                                   Rule::unique('sanitarios')->ignore($tipo, 'Tipo')],
             'InicioDia'        => 'required|date',
             'FinDia'           => 'required|date',
             'Limpieza'         => 'required|integer|min:1|max:5',

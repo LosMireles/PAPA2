@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use DB;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Validation\Rule;
 
 use App\Asignatura;
 use App\Curso;
@@ -53,7 +54,7 @@ class AsignaturaController extends Controller
 
     //----------------------------------------------------------------
     public function update(Request $request, $nombre){
-        $request->validate($this->rules());
+        $request->validate($this->rules($nombre));
 
         $nombre_nuevo = $request->nombre;
         $descripcion  = $request->descripcion;
@@ -85,9 +86,10 @@ class AsignaturaController extends Controller
     }
 
     //Valida los datos de los formularios create y edit
-    public function rules(){
+    public function rules($nombre){
         return [
-                'nombre'      => 'required|unique:asignaturas|alpha_num',
+            'nombre'      => ['required',
+                            Rule::unique('asignaturas')->ignore($nombre, 'nombre')],
                 'descripcion' => 'required',
                ];
     }

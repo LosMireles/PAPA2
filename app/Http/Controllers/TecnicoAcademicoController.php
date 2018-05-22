@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use DB;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Validation\Rule;
 use File;
 
 use App\TecnicoAcademico;
@@ -47,6 +48,8 @@ class TecnicoAcademicoController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate($this->rules());
+
         $tecnico = new TecnicoAcademico;
 
         $tecnico->nombre = $request->nombre;
@@ -101,6 +104,9 @@ class TecnicoAcademicoController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $tecnico = TecnicoAcademico::where('id',$id)->first();
+        $request->validate($this->rules($tecnico->nombre));
+
         $nombre         = $request->nombre;
         $localizacion   = $request->localizacion;
         $hora_inicio    = $request->hora_inicio;
@@ -110,9 +116,8 @@ class TecnicoAcademicoController extends Controller
 
         $document = $request->file('curriculo');
 
-        $tecnico = TecnicoAcademico::where('id',$id)->first();
         $c_anterior = $tecnico->curriculum;
-        
+
         if($document){
             $document->move(public_path('/curriculos'), $document->getClientOriginalName());
             //File::delete(public_path('curriculos/' . $c_anterior));
@@ -157,8 +162,21 @@ class TecnicoAcademicoController extends Controller
         return redirect()->action('TecnicoAcademicoController@index');
     }
 
+    public function rules($nombre = null){
+        return [
+            'nombre'        => ['required',
+                                Rule::unique('cursos')->ignore($nombre, 'nombre')],
+            'periodo'       => 'required|alpha_dash',
+            'grupo'         => 'required|integer',
+            'noEstudiantes' => 'required|integer',
+            'tipoAula'      => 'required|alpha',
+            'pertenencia'   => 'required|alpha'
+        ];
+    }
+
     public function ver_curriculo($id){
         $tecnico = TecnicoAcademico::where('id', $id)->first();
         return response()->file(public_path('curriculos/' . $tecnico->curriculum));
     }
 }
+

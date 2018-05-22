@@ -7,6 +7,7 @@ use PDF;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\Rule;
 
 use App\Cubiculo;
 
@@ -38,7 +39,7 @@ class CubiculoController extends Controller {
 
         $cubiculo = new Cubiculo;
 
-    $cubiculo->Tipo           = $request->Tipo;
+        $cubiculo->Tipo           = $request->Tipo;
 		$cubiculo->Profesor       = $request->Profesor;
 		$cubiculo->CantidadEquipo = $request->CantidadEquipo;
         $cubiculo->espacio_id       = $request->espacio_id;
@@ -59,7 +60,7 @@ class CubiculoController extends Controller {
 
     //----------------------------------------------------------------
 	public function update(Request $request, $tipo) {
-        $request->validate($this->rules());
+        $request->validate($this->rules($tipo));
         if ($request->hasFile('Fotografias')) {
           if ($request->file('Fotografias')->isValid()) {
             $request->Fotografias->storeAs('infraestructura/cubiculos/' . $request->Tipo,
@@ -98,9 +99,10 @@ class CubiculoController extends Controller {
 	}
 
     //----------------------------------------------------------------
-    public function rules(){
+    public function rules($tipo = null){
         return [
-            'Tipo'           => 'required|unique:cubiculos|alpha_dash',
+            'Tipo'           => ['required',
+                                Rule::unique('cubiculos')->ignore($tipo, 'Tipo')],
             'Profesor'       => 'required|alpha',
             'CantidadEquipo' => 'required|integer'
         ];

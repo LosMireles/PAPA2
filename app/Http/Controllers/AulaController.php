@@ -6,6 +6,7 @@ use DB;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\Rule;
 
 use App\Aula;
 
@@ -105,7 +106,7 @@ class AulaController extends Controller
 
 	//-----------------------------------------------------------
 	public function update(Request $request, $tipo) {
-        $request->validate($this->rules());
+        $request->validate($this->rules($tipo));
 
         if ($request->hasFile('Fotografias')) {
           if ($request->file('Fotografias')->isValid()) {
@@ -206,9 +207,10 @@ class AulaController extends Controller
 	}
 
 	//--------------------------------------------------------------
-    public function rules(){
+    public function rules($tipo = null){
         return [
-            'Tipo'           => 'required|unique:aulas|alpha_dash',
+            'Tipo'           => ['required',
+                                 Rule::unique('aulas')->ignore($tipo, 'Tipo')],
             'CantidadEquipo' => 'required|integer',
             'CantidadAV'     => 'required|integer',
             'Capacidad'      => 'required|integer',

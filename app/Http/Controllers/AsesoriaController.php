@@ -7,6 +7,7 @@ use DB;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\Rule;
 
 use App\Asesoria;
 
@@ -29,14 +30,15 @@ class AsesoriaController extends Controller
     //----------------------------------------------------------------
     public function store(Request $request)
     {
-      $asesoria = new Asesoria;
-      if ($request->hasFile('Fotografias')) {
-        if ($request->file('Fotografias')->isValid()) {
-          $request->Fotografias->storeAs('infraestructura/asesorias/' . $request->Tipo,
-                                          $request->Fotografias->getClientOriginalName());
-        }
-      }
+        $request->validate($this->rules());
 
+        $asesoria = new Asesoria;
+        if ($request->hasFile('Fotografias')) {
+            if ($request->file('Fotografias')->isValid()) {
+                $request->Fotografias->storeAs('infraestructura/asesorias/' . $request->Tipo,
+                                              $request->Fotografias->getClientOriginalName());
+            }
+        }
 
         $asesoria->Tipo       = $request->Tipo;
 		$asesoria->InicioHora = $request->InicioHora;
@@ -61,6 +63,8 @@ class AsesoriaController extends Controller
 
     //----------------------------------------------------------------
     public function update(Request $request, $tipo) {
+        $request->validate($this->rules($tipo));
+
       if ($request->hasFile('Fotografias')) {
         if ($request->file('Fotografias')->isValid()) {
           $request->Fotografias->storeAs('infraestructura/asesorias/' . $request->Tipo,
@@ -106,9 +110,10 @@ class AsesoriaController extends Controller
     }
 
     //----------------------------------------------------------------
-	public function rules(){
+	public function rules($tipo = null){
         return [
-            'Tipo'      => 'required|unique:asesorias|alpha_dash',
+            'Tipo'      => ['required',
+                            Rule::unique('asesorias')->ignore($tipo, 'Tipo')],
             'InicioDia' => 'required|date',
             'FinDia'    => 'required|date',
             'Limpieza'  => 'required|integer|min:1|max:5',
@@ -120,3 +125,4 @@ class AsesoriaController extends Controller
       return view('infraestructura.asesorias.viewImg')->with(['tipo' => $tipo]);
     }
 }
+
