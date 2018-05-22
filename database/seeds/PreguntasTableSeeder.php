@@ -151,13 +151,28 @@ class PreguntasTableSeeder extends Seeder
 
 
         App\Pregunta::create(array(
-            'inciso' => '9',
+            'inciso' => '9.2.3',
             'numero' => '14',
-            'titulo' => '',
+            'titulo' => 'Explique de qué manera se garantiza que el equipo de cómputo reqeuerido esté disponible para la realización de las prácticas en las materias del programa que así lo requieran',
                     # Describalos
             'respuesta' => '',
         ));
 
+        App\Pregunta::create(array(
+            'inciso' => '9.2.7',
+            'numero' => '15',
+            'titulo' => 'El equipo de cómputo de la institución, ¿esta conectado a la red?',
+                    # Describalos
+            'respuesta' => '',
+        ));
+
+        App\Pregunta::create(array(
+            'inciso' => '9.2.13',
+            'numero' => '16',
+            'titulo' => '¿Existen registros de los usuarios de los serviciso de cómputo?',
+                    # Describalos
+            'respuesta' => '',
+        ));
 
         # -------------------------------------------------------------------------
     }
