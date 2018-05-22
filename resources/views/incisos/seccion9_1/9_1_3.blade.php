@@ -48,9 +48,6 @@
         <figcaption><?php echo pathinfo($image)['filename']?></figcaption>
       </td>
 
-			<!--Boton ver fotos-->
-
 		@endforeach
   @endforeach
-
 @endsection

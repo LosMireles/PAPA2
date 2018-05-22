@@ -27,3 +27,27 @@
 	@endforeach
 
 @endsection
+
+@section('Fotografias')
+  <h3 class="text-center">Evidencias de 9.1.3</h3>
+
+  <?php
+    $dirs = array_filter(glob('storage/infraestructura/cubiculos/*'), 'is_dir');
+  ?>
+  @foreach($dirs as $path)
+    <?php
+      $dirname = $path.'/';
+      $images= glob($dirname . "*.{[jJ][pP][gG],[pP][nN][gG],[gG][iI][fF],[jJ][pP][eE][gG]}", GLOB_BRACE);
+    ?>
+
+    @foreach ($images as $image)
+			<tr>
+      <td>
+        <img src="<?php echo asset($image)?>" width="320" height="200"
+							alt="<?php echo $image?>"></img>
+        <figcaption><?php echo pathinfo($image)['filename']?></figcaption>
+      </td>
+
+		@endforeach
+  @endforeach
+@endsection
