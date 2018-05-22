@@ -86,12 +86,12 @@ class AsignaturaController extends Controller
     }
 
     //Valida los datos de los formularios create y edit
-    public function rules($nombre){
+    public function rules($nombre = null){
         return [
             'nombre'      => ['required',
-                            Rule::unique('asignaturas')->ignore($nombre, 'nombre')],
-                'descripcion' => 'required',
-               ];
+                              Rule::unique('asignaturas')->ignore($nombre, 'nombre')],
+            'descripcion' => 'required',
+            ];
     }
 }
 
