@@ -53,6 +53,7 @@
 			<ul class="list-unstyled">
 				<li><a href="{{ action('Inciso9_2_1Controller@index') }}">9.2.1</a></li>
 				<li><a href="{{ action('Inciso9_2_2Controller@index') }}">9.2.2</a></li>
+				<li><a href="{{ action('Inciso9_2_5Controller@index') }}">9.2.5</a></li>
 				<li><a href="{{ action('Inciso9_2_7Controller@index') }}">9.2.7</a></li>
 				<li><a href="{{ action('Inciso9_2_11Controller@index') }}">9.2.11</a></li>
 				<li><a href="{{ action('Inciso9_2_12Controller@index') }}">9.2.12</a></li>

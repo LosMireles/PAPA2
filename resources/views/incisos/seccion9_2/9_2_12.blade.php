@@ -1,5 +1,14 @@
 @extends('layouts.inciso')
 
+@section('title')
+  Inciso 9.2.12
+@endsection
+
+@section('descripcion')
+  <h3 class="text-center">Inciso 9.2.12: Los Servicios de Cómputo deben contar
+   con el soporte técnico adecuado</h3>
+@endsection
+
 @section('formopen')
     {{Form::open(['class'  => 'form-horizontal'])}}
 @endsection

@@ -1,5 +1,16 @@
 @extends('layouts.inciso')
 
+@section('title')
+  Inciso 9.2.11
+@endsection
+
+@section('descripcion')
+  <h3 class="text-center">Inciso 9.2.11: Los profesores del programa deben contar
+   con equipo de cómputo que les permita desempeñar adecuadamente su función. En
+  el caso de los profesores de tiempo completo, estos deberán de contar con una
+ computadora para su uso exclusivo</h3>
+@endsection
+
 @section('formopen')
     {{Form::open(['class'  => 'form-horizontal'])}}
 @endsection
