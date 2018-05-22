@@ -90,7 +90,7 @@
 	</div>
 
 	<div class="form-group">
-		<label for="localizacion" class="col-sm-4 control-label" data-toggle="tooltip" title="Seleccione la ubicación del equipo">Lozalización:  </label>
+		<label for="localizacion" class="col-sm-4 control-label" data-toggle="tooltip" title="Seleccione la ubicación del equipo">Localización:  </label>
 
 		<div class="col-sm-8">
 			<select name="localizacion" class="form-control">
