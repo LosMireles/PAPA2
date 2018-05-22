@@ -19,13 +19,15 @@
 
 @section('cabeza_tabla')
    <tr>
-   		<td>Nombre</td>
-		<td>Período</td>
-		<td>Grupo</td>
-		<td>Numero de Estudiantes</td>
-		<td>Tipo de Aula</td>
-		<td>Pertenencia</td>
-        <td>Espacios</td>
+   		<th>Nombre</th>
+		<th>Período</th>
+		<th>Grupo</th>
+		<th>Numero de Estudiantes</th>
+		<th>Tipo de Aula</th>
+		<th>Pertenencia</th>
+        <th>Espacios</th>
+        <th></th>
+        <th></th>
    </tr>
 @endsection
 

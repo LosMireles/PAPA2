@@ -19,7 +19,6 @@
 
 @section('cabeza_tabla')
    	<tr>
-		<td>IdAuditorio</td>
 		<td>Tipo</td>
 		<td>CantidadEquipo</td>
 		<td>CantidadAV</td>
@@ -27,14 +26,13 @@
 		<td>CantidadSanitarios</td>
         <td></td>
         <td></td>
-				<td></td>
+		<td></td>
    	</tr>
 @endsection
 
 @section('cuerpo_tabla')
    	@foreach ($auditorios as $auditorio)
 	<tr>
-		<td>{{ $auditorio->IdAuditorio }}</td>
 		<td>{{ $auditorio->Tipo }}</td>
 		<td>{{ $auditorio->CantidadEquipo }}</td>
 		<td>{{ $auditorio->CantidadAV }}</td>

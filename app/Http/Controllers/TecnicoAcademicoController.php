@@ -61,8 +61,10 @@ class TecnicoAcademicoController extends Controller
 
         $document = $request->file('curriculo');
 
-        $tecnico->curriculum = $document->getClientOriginalName();
-        $document->move(public_path('/curriculos'), $document->getClientOriginalName());
+        if($document){
+            $tecnico->curriculum = $document->getClientOriginalName();
+            $document->move(public_path('/curriculos'), $document->getClientOriginalName());
+        }
 
         $tecnico->save();
 
@@ -164,13 +166,12 @@ class TecnicoAcademicoController extends Controller
 
     public function rules($nombre = null){
         return [
-            'nombre'        => ['required',
-                                Rule::unique('cursos')->ignore($nombre, 'nombre')],
-            'periodo'       => 'required|alpha_dash',
-            'grupo'         => 'required|integer',
-            'noEstudiantes' => 'required|integer',
-            'tipoAula'      => 'required|alpha',
-            'pertenencia'   => 'required|alpha'
+            'nombre'       => ['required',
+                                Rule::unique('tecnicoacademico')->ignore($nombre, 'nombre')],
+            'hora_inicio'  => 'required',
+            'hora_termino' => 'required',
+            'dia_inicio'   => 'required',
+            'dia_termino'  => 'required'
         ];
     }
 

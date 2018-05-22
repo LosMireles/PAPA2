@@ -45,11 +45,7 @@
 		<label for="hora_inicio" class="col-sm-4 control-label" data-toggle="tooltip" title="Hora de inicio de los servicios del técnico">Hora de inicio: </label>
 
 		<div class="col-sm-8">
-			<?php
-				$hora = strtotime($tecnico->hora_inicio);
-				$hora_format = date("H:i",$hora);
-			?>
-			<input type="time" class="form-control" name="hora_inicio" required value="{{$hora_format}}">
+			<input type="time" class="form-control" name="hora_inicio" value="{{$tecnico->hora_inicio}}" required >
 		</div>
 	</div>
 
@@ -57,11 +53,7 @@
 		<label for="hora_termino" class="col-sm-4 control-label" data-toggle="tooltip" title="Hora de término de los servicios del técnico">Hora de término: </label>
 
 		<div class="col-sm-8">
-			<?php
-				$hora = strtotime($tecnico->hora_termino);
-				$hora_format = date("H:i",$hora);
-			?>
-			<input type="time" class="form-control" name="hora_termino" required value="{{$hora_format}}">
+			<input type="time" class="form-control" name="hora_termino" value="{{$tecnico->hora_termino}}" required >
 		</div>
 	</div>
 
@@ -69,15 +61,7 @@
 		<label for="dia_inicio" class="col-sm-4 control-label" data-toggle="tooltip" title="Día de inicio de los servicios del técnico">Día de inicio: </label>
 
 		<div class="col-sm-8">
-			<select class="form-control" name="dia_inicio">
-				@foreach($dias_semana as $dia)
-					@if($tecnico->dia_inicio == $dia)
-						<option value="{{$dia}}" selected>{{$dia}}</option>
-					@else
-						<option value="{{$dia}}">{{$dia}}</option>
-					@endif
-				@endforeach
-			</select>
+            <input type='date' class="form-control" name='dia_inicio' placeholder="" value = "{{$tecnico->dia_inicio}}" required>
 		</div>
 	</div>
 
@@ -85,15 +69,7 @@
 		<label for="dia_termino" class="col-sm-4 control-label" data-toggle="tooltip" title="Día de térmico de los servicios del técnico">Día de termino: </label>
 
 		<div class="col-sm-8">
-			<select class="form-control" name="dia_termino">
-				@foreach($dias_semana as $dia)
-					@if($tecnico->dia_termino == $dia)
-						<option value="{{$dia}}" selected>{{$dia}}</option>
-					@else
-						<option value="{{$dia}}">{{$dia}}</option>
-					@endif
-				@endforeach
-			</select>
+            <input type='date' class="form-control" name='dia_termino' placeholder="" value = "{{$tecnico->dia_termino}}" required>
 		</div>
 	</div>
 
@@ -106,3 +82,4 @@
 		</div>
 	</div>
 @endsection
+

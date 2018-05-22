@@ -19,7 +19,6 @@
 
 @section('cabeza_tabla')
 	<tr>
-		<td>IdAsesoria</td>
 		<td>Tipo</td>
 		<td>Hora de inicio</td>
 		<td>Hora de finalizacion</td>
@@ -28,14 +27,13 @@
 		<td>Materia</td>
         <td></td>
         <td></td>
-				<td></td>
+		<td></td>
 	</tr>
 @endsection
 
 @section('cuerpo_tabla')
 	@foreach ($asesorias as $asesoria)
 	<tr>
-		<td>{{ $asesoria->IdAsesoria }}</td>
 		<td>{{ $asesoria->Tipo }}</td>
 		<td>{{ $asesoria->InicioHora }}</td>
 		<td>{{ $asesoria->FinHora }}</td>

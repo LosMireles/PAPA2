@@ -38,7 +38,7 @@
 		<label for="hora_inicio" class="col-sm-4 control-label" data-toggle="tooltip" title="Hora de inicio de los servicios del técnico">Hora de inicio: </label>
 
 		<div class="col-sm-8">
-			<input type="time" class="form-control" name="hora_inicio" value="07:00" required>
+			<input type="time" class="form-control" name="hora_inicio" value="" required>
 		</div>
 	</div>
 
@@ -46,7 +46,7 @@
 		<label for="hora_termino" class="col-sm-4 control-label" data-toggle="tooltip" title="Hora de término de los servicios del técnico">Hora de término: </label>
 
 		<div class="col-sm-8">
-			<input type="time" class="form-control" name="hora_termino" value="17:00" required>
+			<input type="time" class="form-control" name="hora_termino" value="" required>
 		</div>
 	</div>
 
@@ -54,11 +54,7 @@
 		<label for="dia_inicio" class="col-sm-4 control-label" data-toggle="tooltip" title="Día de inicio de los servicios del técnico">Día de inicio: </label>
 
 		<div class="col-sm-8">
-			<select class="form-control" name="dia_inicio">
-				@foreach($dias_semana as $dia)
-					<option value="{{$dia}}">{{$dia}}</option>
-				@endforeach
-			</select>
+			<input type='date' class="form-control" name="dia_inicio" required>
 		</div>
 	</div>
 
@@ -66,11 +62,7 @@
 		<label for="dia_termino" class="col-sm-4 control-label" data-toggle="tooltip" title="Día de térmico de los servicios del técnico">Día de termino: </label>
 
 		<div class="col-sm-8">
-			<select class="form-control" name="dia_termino">
-				@foreach($dias_semana as $dia)
-					<option value="{{$dia}}">{{$dia}}</option>
-				@endforeach
-			</select>
+			<input type='date' class="form-control" name="dia_termino" required>
 		</div>
 	</div>
 
