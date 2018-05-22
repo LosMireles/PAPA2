@@ -31,10 +31,15 @@
 
 		<td>
 			<ul class="list-unstyled">
-				<li><a href="#">9.1.1</a></li>
-				<li><a href="#">9.1.2</a></li>
-				<li><a href="#">9.1.3</a></li>
-				<li><a href="#">9.1.4</a></li>
+				<li><a href="{{ action('Inciso9_1_3Controller@index') }}">9.1.3</a></li>
+				<li><a href="{{ action('Inciso9_1_4Controller@index') }}">9.1.4</a></li>
+				<li><a href="{{ action('Inciso9_1_6Controller@index') }}">9.1.6</a></li>
+				<li><a href="{{ action('Inciso9_1_7Controller@index') }}">9.1.7</a></li>
+				<li><a href="{{ action('Inciso9_1_8Controller@index') }}">9.1.8</a></li>
+				<li><a href="{{ action('Inciso9_1_9Controller@index') }}">9.1.9</a></li>
+				<li><a href="{{ action('Inciso9_1_10Controller@index') }}">9.1.10</a></li>
+				<li><a href="{{ action('Inciso9_1_11Controller@index') }}">9.1.11</a></li>
+				<li><a href="{{ action('Inciso9_1_13Controller@index') }}">9.1.13</a></li>
 			</ul>
 		</td>
 	</tr>
@@ -46,11 +51,12 @@
 
 		<td>
 			<ul class="list-unstyled">
-				<li><a href="#">9.2.1</a></li>
-				<li><a href="#">9.2.2</a></li>
-				<li><a href="#">9.2.3</a></li>
-				<li><a href="#">9.2.4</a></li>
+				<li><a href="{{ action('Inciso9_2_1Controller@index') }}">9.2.1</a></li>
+				<li><a href="{{ action('Inciso9_2_2Controller@index') }}">9.2.2</a></li>
 				<li><a href="{{ action('Inciso9_2_7Controller@index') }}">9.2.7</a></li>
+				<li><a href="{{ action('Inciso9_2_11Controller@index') }}">9.2.11</a></li>
+				<li><a href="{{ action('Inciso9_2_12Controller@index') }}">9.2.12</a></li>
+				<li><a href="{{ action('Inciso9_2_14Controller@index') }}">9.2.14</a></li>
 			</ul>
 		</td>
 	</tr>
@@ -92,4 +98,3 @@
 		</td>
 	</tr>
 @endsection
-

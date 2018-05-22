@@ -13,7 +13,8 @@ class Inciso9_1_7Controller extends Controller
      */
     public function index()
     {
-        //
+      $preguntas = Pregunta::where('inciso', '9.1.7')->get();
+      return view('incisos/seccion9_1/9_1_7', ['preguntas' => $preguntas]);
     }
 
     /**
