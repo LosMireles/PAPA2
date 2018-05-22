@@ -1,5 +1,16 @@
 @extends('layouts.inciso')
 
+@section('title')
+  Inciso 9.1.6
+@endsection
+
+@section('descripcion')
+  <h3 class="text-center">Inciso 9.1.6: Las aulas deben ser funcionales, disponer
+   de espacio suficiente para cada estudiante y tener las condiciones adecuadas de
+  higiene, seguridad, iluminación, ventilación, temperatura, aislamiento del ruido
+ y mobiliario</h3>
+@endsection
+
 @section('formopen')
     {{Form::open(['class'  => 'form-horizontal'])}}
 @endsection
