@@ -11,42 +11,7 @@ class PreguntasTableSeeder extends Seeder
      */
     public function run()
     {
-/*
-        App\Pregunta::create(array(
-        	'inciso' => '9.2.7',
-        	'numero' => '1',
-        	'titulo' => 'Pregunta de la prueba',
-        	'respuesta' => '',
-        ));
 
-        App\Pregunta::create(array(
-        	'inciso' => '9.2.7',
-        	'numero' => '2',
-        	'titulo' => 'Pregunta esta es otra',
-        	'respuesta' => '',
-        ));
-*/
-        # Mis preguntas -----------------------------------------------------------
-/*
-        App\Pregunta::create(array(
-        	'inciso' => '9.1.1',
-        	'numero' => '1',
-        	'titulo' => 'Mencionar las condiciones de trabajo, seguridad e higiene
-                        de los servicios de computo.',
-            # Explicacion extra:
-            # Dimension de ares de trabajos, ventilacion, iluminacion, aire acondicionado,
-            # extinguidores, salidas de emergencia, depositos, etc
-        	'respuesta' => '',
-        ));
-
-        App\Pregunta::create(array(
-        	'inciso' => '9.1.2',
-        	'numero' => '2',
-        	'titulo' => 'Proporcionar la cantidad de laboratorios de electronica con los
-                        que dispone la carrera',
-        	'respuesta' => '',
-        ));
-*/
         App\Pregunta::create(array(
         	'inciso' => '9.1.3',
         	'numero' => '1',
@@ -54,7 +19,7 @@ class PreguntasTableSeeder extends Seeder
                         # Explicacion
                         # Cantidad de computadores en cada espacio que cuente con ellas
         	'respuesta' => '',
-        2));
+        ));
 
         App\Pregunta::create(array(
         	'inciso' => '9.1.4',
