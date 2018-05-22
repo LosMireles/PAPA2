@@ -102,8 +102,40 @@ class PreguntasTableSeeder extends Seeder
 
         App\Pregunta::create(array(
             'inciso' => '9.2.7',
-            'numero' => '12',
+            'numero' => '1',
             'titulo' => 'El equipo de cómputo de la institución, ¿esta conectado a la red?',
+                    # Describalos
+            'respuesta' => '',
+        ));
+
+        App\Pregunta::create(array(
+            'inciso' => '9.2.7',
+            'numero' => '2',
+            'titulo' => '¿Qué equipo de cómputo (servidores y clientes) soporta la red y cuáles son sus características?',
+                    # Describalos
+            'respuesta' => '',
+        ));
+
+        App\Pregunta::create(array(
+            'inciso' => '9.2.7',
+            'numero' => '3',
+            'titulo' => '¿Hay acceso a Internet a través de la red?',
+                    # Describalos
+            'respuesta' => '',
+        ));
+
+        App\Pregunta::create(array(
+            'inciso' => '9.2.7',
+            'numero' => '4',
+            'titulo' => '¿Cuál es el tiempo promedio disponible para cada estudiante a Internet por semana?',
+                    # Describalos
+            'respuesta' => '',
+        ));
+
+        App\Pregunta::create(array(
+            'inciso' => '9.2.7',
+            'numero' => '5',
+            'titulo' => '¿Con qué paquetes de software se cuenta en la red académica de la institución para apoyo del programa que se evalúa?',
                     # Describalos
             'respuesta' => '',
         ));
