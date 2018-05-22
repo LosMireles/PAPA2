@@ -1,5 +1,15 @@
 @extends('layouts.inciso')
 
+@section('title')
+  Inciso 9.1.3
+@endsection
+
+@section('descripcion')
+  <h3 class="text-center">Inciso 9.1.3: El programa debe disponer de los
+  servicios de cómputo necesarios para cursos y actividades especializadas,
+  relacionadas con el mismo</h3>
+@endsection
+
 @section('formopen')
     {{Form::open(['class'  => 'form-horizontal'])}}
 @endsection

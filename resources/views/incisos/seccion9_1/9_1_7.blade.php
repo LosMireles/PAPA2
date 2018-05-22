@@ -1,5 +1,14 @@
 @extends('layouts.inciso')
 
+@section('title')
+  Inciso 9.1.7
+@endsection
+
+@section('descripcion')
+  <h3 class="text-center">Inciso 9.1.7: El número de aulas habrá de ser suficiente
+   para antender la impartición de cursos que se programen en cada periodo escolar</h3>
+@endsection
+
 @section('formopen')
     {{Form::open(['class'  => 'form-horizontal'])}}
 @endsection

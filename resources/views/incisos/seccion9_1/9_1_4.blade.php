@@ -1,5 +1,14 @@
 @extends('layouts.inciso')
 
+@section('title')
+  Inciso 9.1.4
+@endsection
+
+@section('descripcion')
+  <h3 class="text-center">Inciso 9.1.4: Los responsables del centro de cómputo
+  deben ser personal con experiencia y perfil relacionado con el área</h3>
+@endsection
+
 @section('formopen')
     {{Form::open(['class'  => 'form-horizontal'])}}
 @endsection

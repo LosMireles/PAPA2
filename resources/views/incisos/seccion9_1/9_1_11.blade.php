@@ -1,5 +1,15 @@
 @extends('layouts.inciso')
 
+@section('title')
+  Inciso 9.1.11
+@endsection
+
+@section('descripcion')
+  <h3 class="text-center">Inciso 9.1.11: El programa debe disponer de auditorios
+   y/o salas debidamente acondicionadas para actividades académicas, investigación,
+  y de preservación y difusión de la cultura</h3>
+@endsection
+
 @section('formopen')
     {{Form::open(['class'  => 'form-horizontal'])}}
 @endsection

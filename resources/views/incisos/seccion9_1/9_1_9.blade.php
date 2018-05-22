@@ -1,5 +1,15 @@
 @extends('layouts.inciso')
 
+@section('title')
+  Inciso 9.1.9
+@endsection
+
+@section('descripcion')
+  <h3 class="text-center">Inciso 9.1.9: Los profesores de tiempo completo, tres cuartos
+   y medio tiempo deben contar con cubículos. El resto de los profesores deben contar
+  con lugares adecuados para su trabajo</h3>
+@endsection
+
 @section('formopen')
     {{Form::open(['class'  => 'form-horizontal'])}}
 @endsection

@@ -1,5 +1,14 @@
 @extends('layouts.inciso')
 
+@section('title')
+  Inciso 9.1.13
+@endsection
+
+@section('descripcion')
+  <h3 class="text-center">Inciso 9.1.13: Las facilidades sanitarias para los estudiantes
+   y profesores del programa deben ser adecuadas</h3>
+@endsection
+
 @section('formopen')
     {{Form::open(['class'  => 'form-horizontal'])}}
 @endsection
