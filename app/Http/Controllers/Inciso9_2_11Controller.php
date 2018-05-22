@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Pregunta;
+
 class Inciso9_2_11Controller extends Controller
 {
     /**
