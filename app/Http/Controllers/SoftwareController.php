@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use DB;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Validation\Rule;
 
 use App\Software;
 use App\Equipo;
@@ -69,7 +70,7 @@ class SoftwareController extends Controller {
 
 	//*-----------------------------------------------------------------
     public function update(Request $request, $nombre){
-        $request->validate($this->rules());
+        $request->validate($this->rules($nombre));
 
 	  	$nombre_nuevo   = $request->nombre;
 	  	$manualUsuario  = $request->manualUsuario;
@@ -117,9 +118,10 @@ class SoftwareController extends Controller {
 	}
 
     //Valida los datos de los formularios create y edit
-    public function rules(){
+    public function rules($nombre = null){
         return [
-                'nombre'         => 'required|unique:softwares|alpha_num',
+                'nombre'         => ['required',
+                                     Rule::unique('softwares')->ignore($nombre, 'nombre')],
                 'manualUsuario'  => 'required|boolean',
                 'licencia'       => 'required|alpha_num',
                 'disponibilidad' => 'required|alpha_num',

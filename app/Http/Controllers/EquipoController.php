@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use DB;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Validation\Rule;
 
 use App\Software;
 use App\Equipo;
@@ -75,7 +76,7 @@ class EquipoController extends Controller
 
     //----------------------------------------------------------------
     public function update(Request $request, $serial){
-        $request->validate($this->rules());
+        $request->validate($this->rules($serial));
 
         $serial_nuevo       = $request->serial;
     	$manualUsuario      = $request->manual;
@@ -131,10 +132,11 @@ class EquipoController extends Controller
     }
 
     //----------------------------------------------------------------
-    public function rules(){
+    public function rules($serial = null){
         return [
-            'serial'        => 'required|unique:equipos|alpha_num',
-        ];
+                'serial'        => ['required',
+                                Rule::unique('equipos')->ignore($serial, 'serial')]
+               ];
     }
 }
 

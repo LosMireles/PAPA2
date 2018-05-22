@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use DB;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Validation\Rule;
 
 use App\Espacio;
 use App\Curso;
@@ -105,7 +106,7 @@ class EspacioController extends Controller {
 
     //----------------------------------------------------------------
 	public function update(Request $request, $tipo) {
-        $request->validate($this->rules());
+        $request->validate($this->rules($tipo));
 
         $tipo_nuevo   = $request->tipo;
 		$superficie   = $request->superficie;
@@ -150,9 +151,10 @@ class EspacioController extends Controller {
 	}
 
 	//*-----------------------------------------------------------------
-    public function rules(){
+    public function rules($tipo = null){
         return [
-            'tipo'       => 'required|unique:espacios|alpha_num',
+            'tipo'       => ['required',
+                             Rule::unique('espacios')->ignore($tipo, 'tipo')],
             'superficie' => 'required|integer', //no bueno pero no se como hacerlo mejor
             'cantidad'   => 'required|integer',
             'clase'      => 'required|alpha'
@@ -161,3 +163,4 @@ class EspacioController extends Controller {
 	//*-----------------------------------------------------------------
 
 }
+

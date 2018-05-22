@@ -19,7 +19,7 @@ class Incisos extends Migration
             $table->string('inciso');
             $table->tinyInteger('numero');
             $table->string('titulo');
-            $table->longText('respuesta');
+            $table->longText('respuesta')->nullable();
 
             $table->timestamps();
         });

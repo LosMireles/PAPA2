@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use DB;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Validation\Rule;
 
 use App\Curso;
 use App\Espacio;
@@ -72,7 +73,7 @@ class CursoController extends Controller {
 
 	//-----------------------------------------------------------
     public function update(Request $request, $nombre) {
-        $request->validate($this->rules());
+        $request->validate($this->rules($nombre));
 
 	  	$nombre_nuevo  = $request->nombre;
 	  	$periodo       = $request->periodo;
@@ -121,9 +122,10 @@ class CursoController extends Controller {
         return redirect()->action('CursoController@index');
 	}
 
-    public function rules(){
+    public function rules($nombre = null){
         return [
-            'nombre'        => 'required|unique:cursos|alpha_num',
+            'nombre'        => ['required',
+                                Rule::unique('cursos')->ignore($nombre, 'nombre')],
             'periodo'       => 'required|alpha_dash',
             'grupo'         => 'required|integer',
             'noEstudiantes' => 'required|integer',

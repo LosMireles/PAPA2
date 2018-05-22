@@ -6,6 +6,7 @@ use DB;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\Rule;
 
 use App\Auditorio;
 
@@ -68,7 +69,7 @@ class AuditorioController extends Controller
                                           $request->Fotografias->getClientOriginalName());
         }
       }
-        $request->validate($this->rules());
+        $request->validate($this->rules($tipo));
 
         $tipo_nuevo         = $request->Tipo;
         $CantidadEquipo     = $request->CantidadEquipo;
@@ -106,9 +107,10 @@ class AuditorioController extends Controller
     }
 
     //----------------------------------------------------------------
-    public function rules(){
+    public function rules($tipo = null){
         return [
-            'Tipo'               => 'required|unique:auditorios|alpha_num',
+            'Tipo'               => ['required',
+                                     Rule::unique('auditorios')->ignore($tipo, 'Tipo')],
             'CantidadEquipo'     => 'required|integer',
             'CantidadAV'         => 'required|integer',
             'Capacidad'          => 'required|integer',
@@ -120,3 +122,4 @@ class AuditorioController extends Controller
       return view('infraestructura.auditorios.viewImg')->with(['tipo' => $tipo]);
     }
 }
+
