@@ -35,7 +35,7 @@
 @endsection
 
 @section('Fotografias')
-  <h3 class="text-center">Evidencias de 9.1.3</h3>
+  <h3 class="text-center">Evidencias de 9.1.11</h3>
 
   <?php
     $dirs = array_filter(glob('storage/infraestructura/cubiculos/*'), 'is_dir');
