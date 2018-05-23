@@ -19,13 +19,13 @@
 
 @section('cabeza_tabla')
 	<tr>
-		<th>Serial del equipo</th>
-		<th>Tipo de equipo</th>
-		<th>Dispone de manual de usuario</th>
-		<th>Se encuentra operable</th>
-		<th>Localización</th>
-		<th>Software</th>
-		<th>Descripción</th>
+		<th data-toggle="tooltip" title="Ingrese el serial del equipo">Serial del equipo</th>
+		<th data-toggle="tooltip" title="Tipo de equipo">Tipo de equipo</th>
+		<th data-toggle="tooltip" title="Indique si el equipo cuenta con manual de usuario">Dispone de manual de usuario</th>
+		<th data-toggle="tooltip" title="Indique si el equipo se encuentra operable actualmente">Se encuentra operable</th>
+		<th data-toggle="tooltip" title="Seleccione la ubicación del equipo">Localización</th>
+		<th data-toggle="tooltip" title="Seleccione el software que se encuentra instalado en el equipo">Software</th>
+		<th data-toggle="tooltip" title="Ingrese las especificaciones técnicas del equipo en cuestión">Descripción</th>
 		<th></th>
 		<th></th>
 	</tr>

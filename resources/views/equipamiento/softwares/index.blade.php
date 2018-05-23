@@ -21,13 +21,13 @@
 
 @section('cabeza_tabla')
     <tr>
-        <th>Nombre</th>
-        <th>Se cuenta con manual</th>
-        <th>Licencia</th>
-        <th>Lugar de obtención</th>
-        <th>Clase</th>
-        <th>Equipos</th>
-        <th>Asignaturas</th>
+        <th data-toggle="tooltip" title="Nombre del software">Nombre</th>
+        <th data-toggle="tooltip" title="Se cuenta con manual de uso para el software">Se cuenta con manual</th>
+        <th data-toggle="tooltip" title="Tipo de licencia que se tiene del software (por ejemplo, libre)">Licencia</th>
+        <th data-toggle="tooltip" title="Se refiere a donde se consiguio el software">Lugar de obtención</th>
+        <th data-toggle="tooltip" title="Si es un lenguaje, una librería o una herramienta CASE">Clase</th>
+        <th data-toggle="tooltip" title="Equipos que tienen instalado el software">Equipos</th>
+        <th data-toggle="tooltip" title="Asignaturas que usan el software">Asignaturas</th>
         <th></th>
         <th></th>
     </tr>

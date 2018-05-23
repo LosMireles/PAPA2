@@ -19,11 +19,11 @@
 
 @section('cabeza_tabla')
 	<tr>
-		<th>Nombre del espacio</th>
-		<th>Superficie</th>
-		<th>Cantidad</th>
-		<th>Clase</th>
-        <th>Cursos</th>
+		<th data-toggle="tooltip" title="Un identificador único (por ejemplo A202)">Nombre del espacio</th>
+		<th data-toggle="tooltip" title="Metros cuadrados de superficie que abarca el espacio">Superficie</th>
+		<th data-toggle="tooltip" title="Cantidad de espacios con el mismo nombre y características">Cantidad</th>
+		<th data-toggle="tooltip" title="Uno de los 5 posibles espacios fisicos (Aula, Cubiculo, Sanitarios, Asesorias, Auditorio)">Clase</th>
+        <th data-toggle="tooltip" title="Cursos que se imparten en el espacio">Cursos</th>
         <th></th>
         <th></th>
 	</tr>

@@ -19,9 +19,9 @@
 
 @section('cabeza_tabla')
    	<tr>
-		<td>Codigo del aula</td>
-		<td>Cantidad de equipo</td>
-		<td>Cantidad de computadoras</td>
+		<td data-toggle="tooltip" title="Nombre escrito en las puertas">Codigo del aula</td>
+		<td data-toggle="tooltip" title="Cantidad de equipo audiovisual hay en el aula">Cantidad de equipo</td>
+		<td data-toggle="tooltip" title="Cantidad de computadoras hay en el aula">Cantidad de computadoras</td>
 		<td>Capacidad</td>
         <td></td>
         <td></td>

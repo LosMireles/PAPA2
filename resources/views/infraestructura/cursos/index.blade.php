@@ -19,13 +19,13 @@
 
 @section('cabeza_tabla')
    <tr>
-   		<th>Nombre</th>
-		<th>Período</th>
-		<th>Grupo</th>
-		<th>Numero de Estudiantes</th>
-		<th>Tipo de Aula</th>
-		<th>Pertenencia</th>
-        <th>Espacios</th>
+   		<th data-toggle="tooltip" title="Nombre del Curso">Nombre</th>
+		<th data-toggle="tooltip" title="Período en el que fue impartido">Período</th>
+		<th data-toggle="tooltip" title="Número del grupo">Grupo</th>
+		<th data-toggle="tooltip" title="Número de estudiantes de la licenciatura presentes en el curso">Numero de Estudiantes</th>
+		<th data-toggle="tooltip" title="Esto es: laboratorio, aula, etc">Tipo de Aula</th>
+		<th data-toggle="tooltip" title="A que licenciatura pertenece la materia (LCC, LM, otro)">Pertenencia</th>
+        <th data-toggle="tooltip" title="Espacios donde se imparte el curso">Espacios</th>
         <th></th>
         <th></th>
    </tr>

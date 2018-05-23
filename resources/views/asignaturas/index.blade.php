@@ -19,10 +19,26 @@
 
 @section('cabeza_tabla')
 	<tr>
-		<th>Nombre de la asignatura</th>
-		<th>Descripción de la asignatura</th>
-        <th>Curso de la asignatura</th>
-        <th>Softwares</th>
+		<th data-toggle="tooltip"
+            title="Nombre de la asigatura">
+           Nombre de la asignatura
+       </th>
+		
+        <th data-toggle="tooltip"
+            title="Descripción de la asignatura">
+            Descripción de la asignatura
+        </th>
+        
+        <th data-toggle="tooltip"
+            title="Curso que le corresponde a la asignatura">
+            Curso de la asignatura
+        </th>
+
+        <th data-toggle="tooltip" 
+            title="softwares que usa la asignatura">
+            Softwares
+        </th>
+        
         <th></th>
         <th></th>
 	</tr>

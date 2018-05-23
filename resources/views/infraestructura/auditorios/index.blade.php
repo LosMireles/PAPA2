@@ -19,11 +19,11 @@
 
 @section('cabeza_tabla')
    	<tr>
-		<td>Tipo</td>
-		<td>CantidadEquipo</td>
-		<td>CantidadAV</td>
-		<td>Capacidad</td>
-		<td>CantidadSanitarios</td>
+		<td data-toggle="tooltip" title="Nombre del auditorio">Tipo</td>
+		<td data-toggle="tooltip" title="Cantidad de equipo de computo disponible en el auditorio">CantidadEquipo</td>
+		<td data-toggle="tooltip" title="Cantidad de equipo audiovisual disponible en el auditorio (proyectores, televisores, etc.)">CantidadAV</td>
+		<td data-toggle="tooltip" title="Capacidad máxima de personas que soporta el auditorio.">Capacidad</td>
+		<td data-toggle="tooltip" title="Cantidad de sanitarios disponibles en el auditorio">CantidadSanitarios</td>
         <td></td>
         <td></td>
 		<td></td>
