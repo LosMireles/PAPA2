@@ -25,14 +25,13 @@
                     <input type = "hidden" name = "_token" value = "{{csrf_token()}}">
                     @yield('contenido_formulario')
                 </div>
-				@yield('Fotografias')
             <div class="col-sm-offset-4 col-sm-8">
                 {{ Form::submit('Guardar', ['class' => 'btn btn-success']) }}
                 {{ Form::close() }}
             </div>
 		</div>
 	</div>
-
+	@yield('Fotografias')
     <table class="table table-hover">
         <thead style="background-color: #ed2a2a; color: white;">
             @yield('cabeza_tabla')
@@ -43,4 +42,3 @@
     </table>
 
 @endsection
-
