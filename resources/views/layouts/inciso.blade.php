@@ -40,5 +40,29 @@
             @yield('cuerpo_tabla')
         </tbody>
     </table>
+		<table class="table table-hover">
+        <thead style="background-color: #ed2a2a; color: white;">
+            @yield('cabeza_tabla2')
+        </thead>
+        <tbody>
+            @yield('cuerpo_tabla2')
+        </tbody>
+    </table>
+		<table class="table table-hover">
+        <thead style="background-color: #ed2a2a; color: white;">
+            @yield('cabeza_tabla3')
+        </thead>
+        <tbody>
+            @yield('cuerpo_tabla3')
+        </tbody>
+    </table>
+		<table class="table table-hover">
+        <thead style="background-color: #ed2a2a; color: white;">
+            @yield('cabeza_tabla4')
+        </thead>
+        <tbody>
+            @yield('cuerpo_tabla4')
+        </tbody>
+    </table>
 
 @endsection
