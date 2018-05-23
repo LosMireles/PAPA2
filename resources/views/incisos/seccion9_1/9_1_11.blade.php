@@ -51,3 +51,25 @@
 		@endforeach
   @endforeach
 @endsection
+
+@section('cabeza_tabla')
+  <tr>
+    <td>Tipo</td>
+    <td>CantidadEquipo</td>
+    <td>CantidadAV</td>
+    <td>Capacidad</td>
+    <td>CantidadSanitarios</td>
+</tr>
+@endsection
+
+@section('cuerpo_tabla')
+    @foreach($auditorios as $auditorio)
+      <tr>
+        <td>{{ $auditorio->Tipo }}</td>
+        <td>{{ $auditorio->CantidadEquipo }}</td>
+        <td>{{ $auditorio->CantidadAV }}</td>
+        <td>{{ $auditorio->Capacidad }}</td>
+        <td>{{ $auditorio->CantidadSanitarios }}</td>
+      </tr>
+    @endforeach
+@endsection
