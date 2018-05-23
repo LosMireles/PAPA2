@@ -12,12 +12,18 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call(EspacioTableSeeder::class);
-        //$this->call(CursoTableSeeder::class);  //seeder asignatura hace esto
+        $this->call(CursoTableSeeder::class);  //seeder asignatura hace esto
         $this->call(AsignaturaTableSeeder::class);
         $this->call(EquipoTableSeeder::class);
         $this->call(SoftwareTableSeeder::class);
         $this->call(TecnicoAcademicoSeeder::class);
         $this->call(PreguntasTableSeeder::class);
+        $this->call(AuditorioTableSeeder::class);
+        $this->call(SanitarioTableSeeder::class);
+        $this->call(AsesoriaTableSeeder::class);
+        $this->call(CubiculoTableSeeder::class);
+        $this->call(AulaTableSeeder::class);
+
 
         $equipos   = App\Equipo::all();
         foreach($equipos as $equipo){
@@ -30,4 +36,3 @@ class DatabaseSeeder extends Seeder
         }
     }
 }
-

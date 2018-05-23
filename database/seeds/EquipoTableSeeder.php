@@ -16,5 +16,16 @@ class EquipoTableSeeder extends Seeder
         //});
 
         factory(App\Equipo::class, 10)->create();
+/*
+        App\Equipo::create(array(
+            'serial'        =>
+            'manualUsuario' =>
+            'operable'      =>
+            'localizacion'  =>
+            'tipo'          =>
+            'descripcion'   =>
+
+        ));
+*/
     }
 }
