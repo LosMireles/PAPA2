@@ -11,6 +11,7 @@ class CursoTableSeeder extends Seeder
      */
     public function run()
     {
+        # curso_id 1
         App\Curso::create(array(
             'nombre'        => 'Calculo Diferencial e Integral 2',
             'periodo'       => '2018-1',
@@ -19,7 +20,7 @@ class CursoTableSeeder extends Seeder
             'tipoAula'      => 'Aula',   # Laboratorio # Otro
             'pertenencia'   => 'LCC',   # LM # Otro
         ));
-
+        # curso_id 2
         App\Curso::create(array(
             'nombre'        => 'Mecanica con Laboratorio',
             'periodo'       => '2018-1',
@@ -28,25 +29,25 @@ class CursoTableSeeder extends Seeder
             'tipoAula'      => 'Laboratorio',   # Laboratorio # Otro
             'pertenencia'   => 'LCC',   # LM # Otro
         ));
-
+        # curso_id 3
         App\Curso::create(array(
-            'nombre'        => 'Algebra Lineal',
+            'nombre'        => 'Álgebra Lineal',
             'periodo'       => '2018-1',
             'grupo'         => '4',
             'noEstudiantes' => '20',
             'tipoAula'      => 'Aula',   # Laboratorio # Otro
             'pertenencia'   => 'LCC',   # LM # Otro
         ));
-
+        # curso_id 4
         App\Curso::create(array(
-            'nombre'        => 'Introduccion a Ciencias de la Computación',
+            'nombre'        => 'Introducción a Ciencias de la Computación',
             'periodo'       => '2018-1',
             'grupo'         => '1',
             'noEstudiantes' => '40',
             'tipoAula'      => 'Aula',   # Laboratorio # Otro
             'pertenencia'   => 'LCC',   # LM # Otro
         ));
-
+        # curso_id 5
         App\Curso::create(array(
             'nombre'        => 'Diseño de Algoritmos',
             'periodo'       => '2018-1',
@@ -55,7 +56,7 @@ class CursoTableSeeder extends Seeder
             'tipoAula'      => 'Aula',   # Laboratorio # Otro
             'pertenencia'   => 'LCC',   # LM # Otro
         ));
-
+        # curso_id 6
         App\Curso::create(array(
             'nombre'        => 'Matematicas Discretas',
             'periodo'       => '2018-1',
