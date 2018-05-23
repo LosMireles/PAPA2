@@ -26,8 +26,9 @@
                     @yield('contenido_formulario')
                 </div>
             <div class="col-sm-offset-4 col-sm-8">
-                {{ Form::submit('Guardar', ['class' => 'btn btn-success']) }}
-                {{ Form::close() }}
+								@yield('botonGuardar')
+                <!--{{ Form::submit('Guardar', ['class' => 'btn btn-success']) }}
+                {{ Form::close() }}-->
             </div>
 		</div>
 	</div>

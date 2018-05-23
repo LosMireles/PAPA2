@@ -27,3 +27,8 @@
 	@endforeach
 
 @endsection
+
+@section('botonGuardar')
+  {{ Form::submit('Guardar', ['class' => 'btn btn-success']) }}
+  {{ Form::close() }}
+@endsection
