@@ -22,7 +22,7 @@
             <label for="{{$pregunta->id}}" class="col-sm-4 control-label">{{$pregunta->titulo}}</label>
 
             <div class="col-sm-8">
-                <input type="text" class="form-control" id="{{$pregunta->id}}" name="{{$pregunta->id}}" value="{{$pregunta->respuesta}}"required>
+                <input type="hidden" class="form-control" id="{{$pregunta->id}}" name="{{$pregunta->id}}" value="{{$pregunta->respuesta}}"required>
             </div>
         </div>
     @endforeach
@@ -30,6 +30,7 @@
 @endsection
 
 @section('cabeza_tabla')
+  <h4>Tabla de softwares y asignaturas que lo utilizan</h4>
     <tr>
         <th>Asignatura</th>
         <th>Nombre software</th>

@@ -29,6 +29,11 @@
 
 @endsection
 
+@section('botonGuardar')
+  {{ Form::submit('Guardar', ['class' => 'btn btn-success']) }}
+  {{ Form::close() }}
+@endsection
+
 @section('Fotografias')
   <h3 class="text-center">Evidencias de 9.1.3</h3>
 
@@ -70,4 +75,3 @@
         </tr>
     @endforeach
 @endsection
-

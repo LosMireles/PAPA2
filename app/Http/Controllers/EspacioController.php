@@ -101,7 +101,7 @@ class EspacioController extends Controller {
         ->with(['espacio'       => $espacio,
                 'cursos'        => $cursos,
                 'curso_espacio' => $curso_espacio,
-                'cursos'        => $this->clases]);
+                'clases'        => $this->clases]);
 	}
 
     //----------------------------------------------------------------
@@ -114,23 +114,23 @@ class EspacioController extends Controller {
 		$clase        = $request->clase;
         $nombreCursos = $request->cursos;
 
-        if(!empty($nombreCursos)){
-            $idCursos = [];
-            foreach($nombreCursos as $nombreCurso){
-                $idCursos[] = DB::table('cursos')
-                    ->where('nombre', $nombreCurso)->value('id');
-            }
-        }
-
         $espacio =Espacio::where('tipo', $tipo)->first();
-		$espacio->update([
+		      $espacio->update([
             'tipo'       => $tipo_nuevo,
             'superficie' => $superficie,
             'cantidad'   => $cantidad,
             'clase'      => $clase
         ]);
 
-    $espacio->cursos()->sync($idCursos);
+        if(!empty($nombreCursos)){
+            $idCursos = [];
+            foreach($nombreCursos as $nombreCurso){
+                $idCursos[] = DB::table('cursos')
+                    ->where('nombre', $nombreCurso)->value('id');
+            }
+            $espacio->cursos()->sync($idCursos);
+        }
+
 
 		echo "Elemento editado exitosamente!";
     return redirect()->action('EspacioController@index');
@@ -163,4 +163,3 @@ class EspacioController extends Controller {
 	//*-----------------------------------------------------------------
 
 }
-
