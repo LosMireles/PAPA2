@@ -22,6 +22,7 @@
 		<th>Nombre de la asignatura</th>
 		<th>Descripción de la asignatura</th>
         <th>Curso de la asignatura</th>
+        <th>Softwares</th>
         <th></th>
         <th></th>
 	</tr>
@@ -33,6 +34,15 @@
 			<td>{{$asignatura->nombre}}</td>
 			<td>{{$asignatura->descripcion}}</td>
             <td>{{$asignatura->curso->nombre}}</td>
+
+            <td>
+                @if(!empty($asignatura->softwares))
+                    @foreach($asignatura->softwares as $software)
+                        {{$software->nombre}} <br>
+                    @endforeach
+                @endif
+            </td>
+
 
             <td class="text-center">
                 <a href="{{action('AsignaturaController@edit', [ 'nombre' => $asignatura->nombre])}}" class="btn btn-warning">

@@ -9,6 +9,7 @@ use Illuminate\Validation\Rule;
 
 use App\Asignatura;
 use App\Curso;
+use App\Software;
 
 class AsignaturaController extends Controller
 {
@@ -22,9 +23,12 @@ class AsignaturaController extends Controller
 
     //----------------------------------------------------------------
     public function create(){
-        $cursos = Curso::all();
+        $cursos    = Curso::all();
+        $softwares = software::all();
+
         return view('asignaturas.create')
-            ->with(['cursos' => $cursos]);
+            ->with(['cursos'    => $cursos,
+                    'softwares' => $softwares]);
     }
 
     //----------------------------------------------------------------
@@ -36,8 +40,16 @@ class AsignaturaController extends Controller
         $asignatura->nombre      = $request->nombre;
         $asignatura->descripcion = $request->descripcion;
         $asignatura->curso_id    = $request->curso_id;
+        $softwares               = $request->software;
 
         $asignatura->save();
+
+        if(!empty($softwares)){
+            foreach($softwares as $nombre){
+                $softwareId = DB::table('softwares')->where('nombre', $nombre)->value('id');
+                $asignatura->softwares()->attach($softwareId);
+            }
+        }
 
 		echo "Elemento insertado exitosamente!";
         return redirect()->action('AsignaturaController@index');
@@ -45,20 +57,25 @@ class AsignaturaController extends Controller
 
     //----------------------------------------------------------------
     public function edit($nombre){
-        $asignatura = Asignatura::where('nombre', $nombre)->first();
-        $cursos     = Curso::all();
+        $asignatura            = Asignatura::where('nombre', $nombre)->first();
+        $asignaturas_softwares = DB::table('asignatura_software')->get();
+        $cursos                = Curso::all();
+        $softwares             = Software::all();
         return view('asignaturas.edit')
-            ->with(['asignatura' => $asignatura,
-                    'cursos'     => $cursos]);
+            ->with(['asignatura'            => $asignatura,
+                    'cursos'                => $cursos,
+                    'softwares'             => $softwares,
+                    'asignaturas_softwares' => $asignaturas_softwares]);
     }
 
     //----------------------------------------------------------------
     public function update(Request $request, $nombre){
         $request->validate($this->rules($nombre));
 
-        $nombre_nuevo = $request->nombre;
-        $descripcion  = $request->descripcion;
-        $curso_id     = $request->curso_id;
+        $nombre_nuevo    = $request->nombre;
+        $descripcion     = $request->descripcion;
+        $curso_id        = $request->curso_id;
+        $nombreSoftwares = $request->softwares;
 
         $asignatura = Asignatura::where('nombre', $nombre)->first();
         $asignatura->update([
@@ -66,6 +83,15 @@ class AsignaturaController extends Controller
             'descripcion' => $descripcion,
             'curso_id'    => $curso_id
         ]);
+
+        if(!empty($nombreSoftwares)){
+            $idSoftwares = [];
+            foreach($nombreSoftwares as $nombreSoftware){
+                $idSoftwares[] = Software::where('nombre', $nombreSoftware)->value('id');
+            }
+
+            $asignatura->softwares()->sync($idSoftwares);
+        }
 
 		echo "Elemento editado exitosamente!";
         return redirect()->action('AsignaturaController@index');

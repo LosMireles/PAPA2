@@ -14,4 +14,10 @@ class Software extends Model
     public function equipos(){
         return $this->BelongsToMany(Equipo::class);
     }
+
+    //un software es usado en muchas asignaturas (muchos a muchos)
+    public function asignaturas(){
+        return $this->BelongsToMany(Asignatura::class);
+    }
 }
+

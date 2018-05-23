@@ -9,6 +9,7 @@ use Illuminate\Validation\Rule;
 
 use App\Software;
 use App\Equipo;
+use App\Asignatura;
 
 class SoftwareController extends Controller {
 
@@ -23,9 +24,11 @@ class SoftwareController extends Controller {
     //----------------------------------------------------------------
     public function create(){
         $equipos = Equipo::all();
+        $asignaturas = Asignatura::all();
         return view('equipamiento.softwares.create')
-            ->with(['equipos'=>$equipos,
-                    'clases' => $this->clases]);
+            ->with(['equipos'     => $equipos,
+                    'asignaturas' => $asignaturas,
+                    'clases'      => $this->clases]);
 	}
 
     //----------------------------------------------------------------
@@ -41,6 +44,7 @@ class SoftwareController extends Controller {
 		$software->disponibilidad = $request->disponibilidad;
 		$software->clase          = $request->clase;
         $equipos                  = $request->equipo;
+        $asignaturas              = $request->asignatura;
 
         $software->save();
 
@@ -51,33 +55,45 @@ class SoftwareController extends Controller {
             }
         }
 
+        if(!empty($asignaturas)){
+            foreach($asignaturas as $nombre){
+                $asignaturaId = DB::table('asignaturas')->where('nombre', $nombre)->value('id');
+                $software->asignaturas()->attach($asignaturaId);
+            }
+        }
+
 		echo "Elemento insertado exitosamente!";
         return redirect()->action('SoftwareController@index');
     }
 
 	//*-----------------------------------------------------------------
 	public function edit($nombre) {
-        $equipo_softwares = DB::table('equipo_software')->get();
-		$software         = Software::where('nombre', $nombre)->first();
-	  	$equipos          = Equipo::all();
+        $equipo_softwares      = DB::table('equipo_software')->get();
+        $asignaturas_softwares = DB::table('asignatura_software')->get();
+		$software              = Software::where('nombre', $nombre)->first();
+	  	$equipos               = Equipo::all();
+	  	$asignaturas           = asignatura::all();
 
 	  	return view('equipamiento.softwares.edit')
-	  	    ->with(['software'         => $software,
-                    'equipos'          => $equipos,
-                    'clases'           => $this->clases,
-                    'equipo_softwares' => $equipo_softwares]);
+	  	    ->with(['software'             => $software,
+                    'equipos'              => $equipos,
+                    'asignaturas'          => $asignaturas,
+                    'clases'               => $this->clases,
+                    'equipo_softwares'     => $equipo_softwares,
+                    'asignaturas_softwares' => $asignaturas_softwares]);
 	}
 
 	//*-----------------------------------------------------------------
     public function update(Request $request, $nombre){
         $request->validate($this->rules($nombre));
 
-	  	$nombre_nuevo   = $request->nombre;
-	  	$manualUsuario  = $request->manualUsuario;
-	  	$licencia       = $request->licencia;
-	  	$disponibilidad = $request->disponibilidad;
-	  	$clase          = $request->clase;
-	  	$serialEquipos  = $request->equipos;
+	  	$nombre_nuevo      = $request->nombre;
+	  	$manualUsuario     = $request->manualUsuario;
+	  	$licencia          = $request->licencia;
+	  	$disponibilidad    = $request->disponibilidad;
+	  	$clase             = $request->clase;
+	  	$serialEquipos     = $request->equipos;
+	  	$nombreAsignaturas = $request->asignaturas;
 
         $software = Software::where('nombre', $nombre)->first();
 
@@ -98,6 +114,14 @@ class SoftwareController extends Controller {
             $software->equipos()->sync($idEquipos);
         }
 
+        if(!empty($nombreAsignaturas)){
+            $idAsignaturas = [];
+            foreach($nombreAsignaturas as $nombreAsignatura){
+                $idAsignaturas[] = asignatura::where('nombre', $nombreAsignatura)->value('id');
+            }
+
+            $software->asignaturas()->sync($idAsignaturas);
+        }
 
 		echo "Elemento editado exitosamente!";
         return redirect()->action('SoftwareController@index');
