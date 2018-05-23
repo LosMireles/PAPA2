@@ -11,20 +11,37 @@
 @endsection
 
 @section('formopen')
-    {{Form::open(['class'  => 'form-horizontal'])}}
+    {{Form::open([])}}
 @endsection
 
 @section('contenido_formulario')
 
 	@foreach($preguntas as $pregunta)
 		<div class="form-group">
-			<label for="{{$pregunta->id}}" class="col-sm-4 control-label">{{$pregunta->titulo}}</label>
+			<label for="{{$pregunta->id}}" class="control-label">{{$pregunta->titulo}}</label>
 
-			<div class="col-sm-8">
-				<input type="text" class="form-control" id="{{$pregunta->id}}" name="{{$pregunta->id}}">
+			<div>
+				<input type="hidden" class="form-control" id="{{$pregunta->id}}" name="{{$pregunta->id}}">
 			</div>
 		</div>
 	@endforeach
+
+  <table class="table table-hover">
+    <thead>
+      <th class="text-center">Espacio</th>
+      <th class="text-center">Cantidad de equipos disponibles</th>
+    </thead>
+    @foreach($equipos as $equipo)
+        <tr>
+          <td>
+            {{$equipo->localizacion}}
+          </td>
+          <td class="text-center">
+            {{$equipo->cantidad}}
+          </td>
+        </tr>
+    @endforeach
+  </table>
 
 @endsection
 
