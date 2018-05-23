@@ -10,7 +10,8 @@
 @endsection
 
 @section('formopen')
-    {{Form::open(['class'  => 'form-horizontal'])}}
+    {{Form::open(['action' => ['Inciso9_1_7Controller@update', $id],
+                  'class'  => 'form-horizontal'])}}
 @endsection
 
 @section('contenido_formulario')
@@ -20,9 +21,29 @@
 			<label for="{{$pregunta->id}}" class="col-sm-4 control-label">{{$pregunta->titulo}}</label>
 
 			<div class="col-sm-8">
-				<input type="text" class="form-control" id="{{$pregunta->id}}" name="{{$pregunta->id}}">
+				<input type="text" class="form-control" id="{{$pregunta->id}}" name="{{$pregunta->id}}"value="{{$pregunta->respuesta}}"required>
 			</div>
 		</div>
 	@endforeach
 
+@endsection
+
+@section('cabeza_tabla')
+    <tr>
+        <th>Nombre</th>
+        <th>periodo</th>
+	<th>No. de estudiantes</th>	
+	<th>Aula</th>
+    </tr>
+@endsection
+
+@section('cuerpo_tabla')
+    @foreach($cursos as $curso)
+        <tr>
+            <td>{{$curso->nombre}}</td>
+            <td>{{$curso->periodo}}</td>
+	    <td>{{$curso->noEstudiantes}}</td>
+	    <td>{{$curso->tipoAula}}</td>
+        </tr>
+    @endforeach
 @endsection
