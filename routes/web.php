@@ -18,7 +18,7 @@ Route::get('/infraestructura', 'RoutesController@infraestructura');
 
 Route::get('/equipamiento', 'RoutesController@equipamiento');
 
-Route::get('pruebaPdf','CubiculoController@imprimir');
+Route::get('pruebaPdf','Inciso9_1_6Controller@imprimir');
 
 // Técnicos académicos -------------------------------------------------------------------
 
