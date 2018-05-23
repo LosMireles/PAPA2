@@ -21,7 +21,8 @@ class Inciso9_1_6Controller extends Controller
     public function index()
     {
     $preguntas = Pregunta::where('inciso', '9.1.6')->get();
-	$espacios = Espacio::with('aula')->where('clase','like', 'Aula')->get();
+	//$espacios = Espacio::with('aula')->where('clase','like', 'Aula')->get();
+	$espacios = Espacio::has('aula')->get();
 /*
 	$aulas= Espacio::with(['posts' => function ($query) {
     		$query->where('title', 'like', '%first%');

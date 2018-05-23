@@ -64,13 +64,13 @@
 @endsection
 
 @section('cuerpo_tabla')
- 
+
     @foreach($espacios as $espacio)
         <tr>
             <td>{{$espacio->tipo}}</td>
-	    <td>{{$espacio->superficie}}</td>
-	    <td>{{$espacio->aula->Capacidad}}</td>
-	    <td>{{$espacio->aula->Pizarron}}</td>
+        <td>{{$espacio->superficie}}</td>
+        <td>{{$espacio->aula->Capacidad}}</td>
+        <td>{{$espacio->aula->Pizarron}}</td>
         </tr>
     @endforeach
 @endsection
