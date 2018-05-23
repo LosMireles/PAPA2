@@ -111,9 +111,9 @@ class CubiculoController extends Controller {
 	//*********************************************************************
 	public function imprimir() {
 	  	$cubiculos  = Cubiculo::all();
+	//dd($cubiculos);
 
-        $pdf = PDF::loadView('infraestructura.cubiculos.index')
-           ->with(['cubiculos'=>$cubiculos]);
+        $pdf = PDF::loadView('infraestructura.cubiculos.index2',array('cubiculos'=>$cubiculos));
 	  	return $pdf->download('Cubiculos.pdf');
 	}
 
