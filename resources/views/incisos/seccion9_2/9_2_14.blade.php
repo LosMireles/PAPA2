@@ -33,6 +33,11 @@
 	@endforeach
 @endsection
 
+@section('botonGuardar')
+  {{ Form::submit('Guardar', ['class' => 'btn btn-success']) }}
+  {{ Form::close() }}
+@endsection
+
 @section('cabeza_tabla')
     <tr>
     <th>Nombre</th>
@@ -41,11 +46,6 @@
     <th>Ubicación</th>
     <th>Currículo</th>
   </tr>
-@endsection
-
-@section('botonGuardar')
-  {{ Form::submit('Guardar', ['class' => 'btn btn-success']) }}
-  {{ Form::close() }}
 @endsection
 
 @section('cuerpo_tabla')
