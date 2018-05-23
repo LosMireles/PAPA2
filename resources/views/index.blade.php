@@ -6,13 +6,12 @@
 
 @section('descipcion')
 	<h1 class="text-center">PROTOTIPO PAPA</h1>
-	<h3>¿Descripción?</h3>
 @endsection
 
 <!-- ************************************************************************************** -->
 
 @section('descripcion_doc')
-	<h3>Sección de evidencias (cambiar por un nombre más apropiado)</h3>
+	<h3>Sección de evidencias</h3>
 	<h5>En esta sección se hace una visualización de la información recabada y se organiza de una forma similar a como que maneja el documento de CONAIC.</h5>
 @endsection
 
