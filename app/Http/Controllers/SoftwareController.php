@@ -13,7 +13,7 @@ use App\Asignatura;
 
 class SoftwareController extends Controller {
 
-    private $clases = ["Lenguaje", "Libreria", "Case", "Otro"];
+    private $clases = ["Lenguaje", "Libreria", "Case", "Manejador BD", "Otro"];
 
     public function index(){
         $softwares  = Software::all();
