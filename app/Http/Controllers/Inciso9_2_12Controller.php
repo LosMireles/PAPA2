@@ -16,7 +16,9 @@ class Inciso9_2_12Controller extends Controller
     public function index()
     {
         $preguntas = Pregunta::where('inciso', '9.2.12')->get();
-        return view('incisos/seccion9_2/9_2_12', ['preguntas' => $preguntas]);
+        return view('incisos/seccion9_2/9_2_12')
+            ->with(['preguntas' => $preguntas,
+                    'id'        => $preguntas[0]->id]);
     }
 
     /**
@@ -71,7 +73,18 @@ class Inciso9_2_12Controller extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $preguntas = Pregunta::where('inciso', '9.2.12')->get();
+
+        $arr[] = array_slice($request->all(), 2);
+
+        $respuestas = array_slice($request->all(), 2);
+        for($i = 0; $i < sizeof($preguntas); $i++){
+            $preguntas[$i]->update([
+                'respuesta' => $respuestas[$i]
+            ]);
+        }
+
+        return redirect()->action('Inciso9_2_12Controller@index');
     }
 
     /**
