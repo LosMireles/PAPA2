@@ -36,11 +36,11 @@
 
 @section('cabeza_tabla')
 	<tr>
-		<th data-toggle="tooltip" title="Nombre completo del técnico">Nombre</th>
-		<th data-toggle="tooltip" title="Horario de trabajo">Horario</th>
-		<th data-toggle="tooltip" title="Días laborales">Días laborales</th>
-		<th data-toggle="tooltip" title="Dónde se encuentra ubicado el técnico">Ubicación</th>
-		<th data-toggle="tooltip" title="Currículum del técnico académico">Currículo</th>
+		<th>Nombre</th>
+		<th>Horario</th>
+		<th>Días laborales</th>
+		<th>Ubicación</th>
+		<th>Currículo</th>
 	</tr>
 @endsection
 
@@ -65,3 +65,4 @@
 		</tr>
 	@endforeach
 
+@endsection
