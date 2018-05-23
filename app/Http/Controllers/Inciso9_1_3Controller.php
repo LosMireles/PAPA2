@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Pregunta;
+use App\Equipo;
+use DB;
 
 class Inciso9_1_3Controller extends Controller
 {
@@ -16,7 +18,8 @@ class Inciso9_1_3Controller extends Controller
     public function index()
     {
         $preguntas = Pregunta::where('inciso', '9.1.3')->get();
-        return view('incisos/seccion9_1/9_1_3', ['preguntas' => $preguntas]);
+        $equipos = DB::table('equipos')->select('localizacion', DB::raw('count(*) as cantidad'))->groupBy('localizacion')->get();
+        return view('incisos/seccion9_1/9_1_3', ['preguntas' => $preguntas, 'equipos'=>$equipos]);
     }
 
     /**

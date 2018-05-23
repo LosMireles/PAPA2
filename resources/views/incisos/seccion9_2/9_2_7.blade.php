@@ -18,15 +18,65 @@
 
 @section('contenido_formulario')
 
-	@foreach($preguntas as $pregunta)
-		<div class="form-group">
-			<label for="{{$pregunta->id}}" class="col-sm-4 control-label">{{$pregunta->titulo}}</label>
+	<div class="form-group">
+		<label for="{{$preguntas[0]->id}}" class="control-label">{{$preguntas[0]->titulo}}</label>
 
-			<div class="col-sm-8">
-				<input type="text" class="form-control" id="{{$pregunta->id}}" name="{{$pregunta->id}}" value="{{$pregunta->respuesta}}"required>
-			</div>
+		<div>
+			<input type="text" class="form-control" name="{{$preguntas[0]->id}}" value="{{$preguntas[0]->respuesta}}">
 		</div>
-	@endforeach
+	</div>
+
+	<div class="form-group">
+		<label for="{{$preguntas[1]->id}}" class="control-label">{{$preguntas[1]->titulo}}</label>
+
+		<div>
+			<input type="hidden" class="form-control" id="{{$preguntas[1]->id}}" name="{{$preguntas[1]->id}}" value="{{$preguntas[1]->respuesta}}" hidden>
+
+			<table class="table table-hover">
+			<thead>
+				<th class="text-center">Serial</th>
+				<th class="text-center">Descripción</th>
+			</thead>
+			@foreach($equipos as $equipo)
+				@if($equipo->tipo == "servidor")
+					<tr>
+						<td>
+							{{$equipo->serial}}
+						</td>
+						<td>
+							{{$equipo->descripcion}}
+						</td>
+					</tr>
+				@endif
+			@endforeach
+		</table>
+
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="{{$preguntas[2]->id}}" class="control-label">{{$preguntas[2]->titulo}}</label>
+
+		<div>
+			<input type="text" class="form-control" id="{{$preguntas[2]->id}}" name="{{$preguntas[2]->id}}" value="{{$preguntas[2]->respuesta}}">
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="{{$preguntas[3]->id}}" class="control-label">{{$preguntas[3]->titulo}}</label>
+
+		<div>
+			<input type="text" class="form-control" id="{{$preguntas[3]->id}}" name="{{$preguntas[3]->id}}" value="{{$preguntas[3]->respuesta}}">
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="{{$preguntas[4]->id}}" class="control-label">{{$preguntas[4]->titulo}}</label>
+
+		<div>
+			<input type="text" class="form-control" id="{{$preguntas[4]->id}}" name="{{$preguntas[4]->id}}" value="{{$preguntas[4]->respuesta}}">
+		</div>
+	</div>
 
 @endsection
 

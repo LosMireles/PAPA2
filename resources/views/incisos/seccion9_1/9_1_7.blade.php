@@ -26,3 +26,143 @@
 	@endforeach
 
 @endsection
+
+<!-- Tabla de todos los grupos -->
+@section('cabeza_tabla')
+  <h4>Tabla de todos los grupos</h4>
+  <tr>
+    <th>Nombre</th>
+    <th>Período</th>
+    <th>Grupo</th>
+    <th>Numero de Estudiantes</th>
+    <th>Tipo de Aula</th>
+    <th>Pertenencia</th>
+    <th>Espacios</th>
+  </tr>
+@endsection
+
+@section('cuerpo_tabla')
+  @foreach ($cursos as $curso)
+    <tr>
+      <td>{{ $curso->nombre }}</td>
+      <td>{{ $curso->periodo }}</td>
+      <td>{{ $curso->grupo }}</td>
+      <td>{{ $curso->noEstudiantes }}</td>
+      <td>{{ $curso->tipoAula }}</td>
+      <td>{{ $curso->pertenencia }}</td>
+
+      <td>
+          @if(!empty($curso->espacios))
+              @foreach($curso->espacios as $espacio)
+                  {{$espacio->tipo}} <br>
+              @endforeach
+          @endif
+      </td>
+    </tr>
+  @endforeach
+@endsection
+
+<!-- Tabla de grupos de LCC -->
+@section('cabeza_tabla2')
+  <h4>Tabla de todos los grupos de LCC</h4>
+  <tr>
+    <th>Nombre</th>
+    <th>Período</th>
+    <th>Grupo</th>
+    <th>Numero de Estudiantes</th>
+    <th>Tipo de Aula</th>
+    <th>Pertenencia</th>
+    <th>Espacios</th>
+  </tr>
+@endsection
+
+@section('cuerpo_tabla2')
+  @foreach ($cursosLCC as $curso)
+    <tr>
+      <td>{{ $curso->nombre }}</td>
+      <td>{{ $curso->periodo }}</td>
+      <td>{{ $curso->grupo }}</td>
+      <td>{{ $curso->noEstudiantes }}</td>
+      <td>{{ $curso->tipoAula }}</td>
+      <td>{{ $curso->pertenencia }}</td>
+
+      <td>
+          @if(!empty($curso->espacios))
+              @foreach($curso->espacios as $espacio)
+                  {{$espacio->tipo}} <br>
+              @endforeach
+          @endif
+      </td>
+    </tr>
+  @endforeach
+@endsection
+
+<!-- Tabla de grupos de LM -->
+@section('cabeza_tabla3')
+  <h4>Tabla de todos los grupos de LM</h4>
+  <tr>
+    <th>Nombre</th>
+    <th>Período</th>
+    <th>Grupo</th>
+    <th>Numero de Estudiantes</th>
+    <th>Tipo de Aula</th>
+    <th>Pertenencia</th>
+    <th>Espacios</th>
+  </tr>
+@endsection
+
+@section('cuerpo_tabla3')
+  @foreach ($cursosLM as $curso)
+    <tr>
+      <td>{{ $curso->nombre }}</td>
+      <td>{{ $curso->periodo }}</td>
+      <td>{{ $curso->grupo }}</td>
+      <td>{{ $curso->noEstudiantes }}</td>
+      <td>{{ $curso->tipoAula }}</td>
+      <td>{{ $curso->pertenencia }}</td>
+
+      <td>
+          @if(!empty($curso->espacios))
+              @foreach($curso->espacios as $espacio)
+                  {{$espacio->tipo}} <br>
+              @endforeach
+          @endif
+      </td>
+    </tr>
+  @endforeach
+@endsection
+
+<!-- Tabla de grupos de Otros -->
+@section('cabeza_tabla4')
+  <h4>Tabla de todos los grupos de otros</h4>
+  <tr>
+    <th>Nombre</th>
+    <th>Período</th>
+    <th>Grupo</th>
+    <th>Numero de Estudiantes</th>
+    <th>Tipo de Aula</th>
+    <th>Pertenencia</th>
+    <th>Espacios</th>
+  </tr>
+@endsection
+
+@section('cuerpo_tabla4')
+  @foreach ($cursosOtros as $curso)
+    <tr>
+      <td>{{ $curso->nombre }}</td>
+      <td>{{ $curso->periodo }}</td>
+      <td>{{ $curso->grupo }}</td>
+      <td>{{ $curso->noEstudiantes }}</td>
+      <td>{{ $curso->tipoAula }}</td>
+      <td>{{ $curso->pertenencia }}</td>
+
+      <td>
+          @if(!empty($curso->espacios))
+              @foreach($curso->espacios as $espacio)
+                  {{$espacio->tipo}} <br>
+              @endforeach
+          @endif
+      </td>
+    </tr>
+  @endforeach
+@endsection

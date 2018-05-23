@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Pregunta;
+use App\Equipo;
 
 class Inciso9_2_7Controller extends Controller
 {
@@ -16,10 +17,12 @@ class Inciso9_2_7Controller extends Controller
     public function index()
     {
         $preguntas = Pregunta::where('inciso', '9.2.7')->get();
+        $equipos = Equipo::get();
         // Se le manda al index el id del primer elemento del arreglo de preguntas
         // esto pues update requiere de un id.
         return view('incisos/seccion9_2/9_2_7',['preguntas' => $preguntas,
-                                                'id' => $preguntas[0]->id]);
+                                                'id' => $preguntas[0]->id,
+                                                'equipos' => $equipos]);
     }
 
     /**
