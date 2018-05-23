@@ -12,7 +12,9 @@
 @endsection
 
 @section('formopen')
-    {{Form::open(['class'  => 'form-horizontal'])}}
+	<!--Esta madre envia un id solo para que update jale-->
+    {{Form::open(['action' => ['Inciso9_2_11Controller@update', $id],
+                  'class'  => 'form-horizontal'])}}
 @endsection
 
 @section('contenido_formulario')
@@ -22,7 +24,7 @@
 			<label for="{{$pregunta->id}}" class="col-sm-4 control-label">{{$pregunta->titulo}}</label>
 
 			<div class="col-sm-8">
-				<input type="text" class="form-control" id="{{$pregunta->id}}" name="{{$pregunta->id}}">
+				<input type="text" class="form-control" id="{{$pregunta->id}}" name="{{$pregunta->id}}" value="{{$pregunta->respuesta}}">
 			</div>
 		</div>
 	@endforeach
@@ -35,7 +37,7 @@
 @endsection
 
 @section('Fotografias')
-  <h3 class="text-center">Evidencias de 9.1.11</h3>
+  <h3 class="text-center">Evidencias de 9.2.11</h3>
 
   <?php
     $dirs = array_filter(glob('storage/infraestructura/cubiculos/*'), 'is_dir');
@@ -57,3 +59,4 @@
 		@endforeach
   @endforeach
 @endsection
+
