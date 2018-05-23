@@ -14,12 +14,12 @@ class CreateAsignaturasTable extends Migration
     public function up()
     {
         Schema::create('asignaturas', function (Blueprint $table) {
-            $table -> increments('id')         -> unique()         -> unsigned();
-            $table -> char('nombre', 50)       -> unique();
-            $table -> longText('descripcion');
+            $table -> increments('id')        -> unique()         -> unsigned();
+            $table -> char('nombre', 50)      -> unique();
+            $table -> longText('descripcion') -> nullable();
 
-            $table -> integer('curso_id')      -> unsigned();
-            $table -> foreign('curso_id')      -> references('id') -> on('cursos') -> onDelete('cascade');
+            $table -> integer('curso_id')     -> unsigned();
+            $table -> foreign('curso_id')     -> references('id') -> on('cursos') -> onDelete('cascade');
 
             $table -> timestamps();
         });
