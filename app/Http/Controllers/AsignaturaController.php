@@ -115,8 +115,7 @@ class AsignaturaController extends Controller
     public function rules($nombre = null){
         return [
             'nombre'      => ['required',
-                              Rule::unique('asignaturas')->ignore($nombre, 'nombre')],
-            'descripcion' => 'required',
+                              Rule::unique('asignaturas')->ignore($nombre, 'nombre')]
             ];
     }
 }
