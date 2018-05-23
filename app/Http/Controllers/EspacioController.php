@@ -114,6 +114,14 @@ class EspacioController extends Controller {
 		$clase        = $request->clase;
         $nombreCursos = $request->cursos;
 
+        $espacio =Espacio::where('tipo', $tipo)->first();
+		      $espacio->update([
+            'tipo'       => $tipo_nuevo,
+            'superficie' => $superficie,
+            'cantidad'   => $cantidad,
+            'clase'      => $clase
+        ]);
+
         if(!empty($nombreCursos)){
             $idCursos = [];
             foreach($nombreCursos as $nombreCurso){
@@ -123,13 +131,6 @@ class EspacioController extends Controller {
             $espacio->cursos()->sync($idCursos);
         }
 
-        $espacio =Espacio::where('tipo', $tipo)->first();
-		      $espacio->update([
-            'tipo'       => $tipo_nuevo,
-            'superficie' => $superficie,
-            'cantidad'   => $cantidad,
-            'clase'      => $clase
-        ]);
 
 		echo "Elemento editado exitosamente!";
     return redirect()->action('EspacioController@index');
