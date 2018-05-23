@@ -57,17 +57,19 @@
 @section('cabeza_tabla')
     <tr>
         <th>Nombre</th>
-        <th>Superficie</th>
+        <th>Cantidad</th>
+        <th>Superfice</th>
+        <th>Cap. máxima</th>
+        <th></th>
 	<th>Pizarron</th>
     </tr>
 @endsection
 
 @section('cuerpo_tabla')
-    @foreach($espacios as $espacio)
+    @foreach($aulas as $aula)
         <tr>
-            <td>{{$espacio->tipo}}</td>
+            <td>{{$aula->tipo}}</td>
             <td>{{$espacio->superficie}}</td>
-	    <td>{{$espacio->aula->Pizarron}}</td>
         </tr>
     @endforeach
 @endsection
