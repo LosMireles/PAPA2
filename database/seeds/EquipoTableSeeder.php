@@ -108,3 +108,4 @@ class EquipoTableSeeder extends Seeder
         ));
     }
 }
+

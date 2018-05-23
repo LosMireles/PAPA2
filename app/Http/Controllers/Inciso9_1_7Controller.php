@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Pregunta;
+
+use App\Espacio;
 use App\Curso;
 
 class Inciso9_1_7Controller extends Controller
@@ -17,6 +19,7 @@ class Inciso9_1_7Controller extends Controller
     public function index()
     {
         $preguntas = Pregunta::where('inciso', '9.1.7')->get();
+
         $cursos = Curso::all();
         $cursosLCC = Curso::where('pertenencia', 'LCC');
         $cursosLM = Curso::where('pertenencia', 'LM');
@@ -24,9 +27,11 @@ class Inciso9_1_7Controller extends Controller
         return view('incisos/seccion9_1/9_1_7')->with(
                     ['preguntas' => $preguntas,
                      'cursos' => $cursos,
+		     'id' => $preguntas[0]->id,
                      'cursosLCC' => $cursosLCC,
                      'cursosLM' => $cursosLM,
                      'cursosOtros' => $cursosOtros]);
+
     }
 
     /**
@@ -81,7 +86,19 @@ class Inciso9_1_7Controller extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // Volver a obtener los elementos del inciso 9.1.6
+        $preguntas = Pregunta::where('inciso', '9.1.7')->get();
+
+        $arr[] = array_slice($request->all(), 2);
+
+        $respuestas = array_slice($request->all(), 2);
+        for($i = 0; $i < sizeof($preguntas); $i++){
+            $preguntas[$i]->update([
+                'respuesta' => $respuestas[$i]
+            ]);
+        }
+
+        return redirect()->action('Inciso9_1_7Controller@index');
     }
 
     /**
