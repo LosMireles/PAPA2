@@ -31,10 +31,41 @@
 			</div>
 		</div>
 	@endforeach
+@endsection
 
+@section('cabeza_tabla')
+    <tr>
+    <th>Nombre</th>
+    <th>Horario</th>
+    <th>Días laborales</th>
+    <th>Ubicación</th>
+    <th>Currículo</th>
+  </tr>
 @endsection
 
 @section('botonGuardar')
   {{ Form::submit('Guardar', ['class' => 'btn btn-success']) }}
   {{ Form::close() }}
+@endsection
+
+@section('cuerpo_tabla')
+  @foreach($tecnicos as $tecnico)
+    <tr>
+      <td>{{$tecnico->nombre}}</td>
+      <td>
+        <?php 
+          $inicio = strtotime($tecnico->hora_inicio);
+          $inicio_format = date('H:i', $inicio);
+          $termino = strtotime($tecnico->hora_termino);
+          $termino_format = date('H:i', $termino);
+        ?>
+        {{$inicio_format}} - {{$termino_format}}
+      </td>
+      <td>{{$tecnico->dia_inicio}} - {{$tecnico->dia_termino}}</td>
+      <td>{{$tecnico->localizacion}}</td>
+      <td>
+        <a href="{{ url('/tecnicos_academicos/ver_curriculo/'. $tecnico->id ) }}">{{$tecnico->curriculum}}</a>
+      </td>
+    </tr>
+  @endforeach
 @endsection

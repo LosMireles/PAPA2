@@ -60,16 +60,16 @@
         <th>Cantidad</th>
         <th>Superfice</th>
         <th>Cap. máxima</th>
-        <th></th>
-	<th>Pizarron</th>
+        <th>Características</th>
     </tr>
 @endsection
 
 @section('cuerpo_tabla')
+  
+  <h1>{{$espacios}}</h1>
     @foreach($aulas as $aula)
         <tr>
             <td>{{$aula->tipo}}</td>
-            <td>{{$espacio->superficie}}</td>
         </tr>
     @endforeach
 @endsection

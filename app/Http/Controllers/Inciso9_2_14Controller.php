@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Pregunta;
+use App\TecnicoAcademico;
 
 class Inciso9_2_14Controller extends Controller
 {
@@ -17,7 +18,8 @@ class Inciso9_2_14Controller extends Controller
     {
         $preguntas = Pregunta::where('inciso', '9.2.14')->get();
         $id = $preguntas[0]->id;
-        return view('incisos/seccion9_2/9_2_14', ['preguntas' => $preguntas, 'id' => $id]);
+        $tecnicos = TecnicoAcademico::get();
+        return view('incisos/seccion9_2/9_2_14', ['preguntas' => $preguntas, 'id' => $id, 'tecnicos' => $tecnicos]);
     }
 
     /**
