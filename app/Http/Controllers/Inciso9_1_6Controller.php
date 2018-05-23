@@ -8,6 +8,7 @@ use App\Pregunta;
 use App\Aula;
 use App\Espacio;
 
+
 use PDF;
 
 class Inciso9_1_6Controller extends Controller
@@ -32,8 +33,8 @@ class Inciso9_1_6Controller extends Controller
 
 	return view('incisos/seccion9_1/9_1_6',['preguntas' => $preguntas,
                                             'id' => $preguntas[0]->id,
-                                            'aulas' => $aulas],
-                                            'espacios' => $espacios);
+                                            'aulas' => $aulas,
+                                            'espacios' => $espacios]);
     }
 
     public function imprimir() {
