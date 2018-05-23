@@ -9,7 +9,8 @@
 @endsection
 
 @section('formopen')
-    {{Form::open(['class'  => 'form-horizontal'])}}
+    {{Form::open(['action' => ['Inciso9_1_10Controller@update', $id],
+                  'class'  => 'form-horizontal'])}}
 @endsection
 
 @section('contenido_formulario')
@@ -19,7 +20,7 @@
 			<label for="{{$pregunta->id}}" class="col-sm-4 control-label">{{$pregunta->titulo}}</label>
 
 			<div class="col-sm-8">
-				<input type="text" class="form-control" id="{{$pregunta->id}}" name="{{$pregunta->id}}">
+				<input type="text" class="form-control" id="{{$pregunta->id}}" name="{{$pregunta->id}}" value="{{$pregunta->respusta}}">
 			</div>
 		</div>
 	@endforeach
@@ -29,6 +30,30 @@
 @section('botonGuardar')
   {{ Form::submit('Guardar', ['class' => 'btn btn-success']) }}
   {{ Form::close() }}
+@endsection
+
+@section('cabeza_tabla')
+  <tr>
+    <td data-toggle="tooltip" title="Identificador de la asesoria">Tipo</td>
+    <td data-toggle="tooltip" title="Hora de inicio">Hora de inicio</td>
+    <td data-toggle="tooltip" title="Hora de finalización">Hora de finalizacion</td>
+    <td data-toggle="tooltip" title="Día de inicio">Dia de inicio</td>
+    <td data-toggle="tooltip" title="Día de finalización">Dia de finalizacion</td>
+    <td data-toggle="tooltip" title="Asignatura que se imparte">Materia</td>
+  </tr>
+@endsection
+
+@section('cuerpo_tabla')
+  @foreach ($asesorias as $asesoria)
+  <tr>
+    <td>{{ $asesoria->Tipo }}</td>
+    <td>{{ $asesoria->InicioHora }}</td>
+    <td>{{ $asesoria->FinHora }}</td>
+    <td>{{ $asesoria->InicioDia }}</td>
+    <td>{{ $asesoria->FinDia }}</td>
+    <td>{{ $asesoria->Materia }}</td>
+   </tr>
+   @endforeach
 @endsection
 
 @section('Fotografias')
