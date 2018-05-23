@@ -39,6 +39,9 @@ class DatabaseSeeder extends Seeder
         $espacios = App\Espacio::with('cursos')->get();
         $cursosId = App\Curso::pluck('id');
         foreach($espacios as $espacio){
+            if($espacio->clase != "Aula"){
+                continue;
+            }
             if(sizeof($cursosId) > 3){
                 $espacio->cursos()->attach($cursosId->random(3));
             }
