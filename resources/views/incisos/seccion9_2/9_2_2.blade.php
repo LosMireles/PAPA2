@@ -29,6 +29,7 @@
 @endsection
 
 @section('cabeza_tabla')
+    <h4>Tabla de lenguajes, herramientas case, manejadores de bases de datos y paqueteria</h4>
     <tr>
         <th>Lenguajes de programación</th>
         <th>Herramientas CASE</th>

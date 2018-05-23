@@ -30,6 +30,7 @@
 @endsection
 
 @section('cabeza_tabla')
+  <h4>Tabla de softwares y asignaturas que lo utilizan</h4>
     <tr>
         <th>Asignatura</th>
         <th>Nombre software</th>
