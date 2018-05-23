@@ -162,6 +162,14 @@ class PreguntasTableSeeder extends Seeder
         ));
 
         App\Pregunta::create(array(
+            'inciso' => '9.2.5',
+            'numero' => '1',
+            'titulo' => 'Describir los tipos de plataforma de cómputo disponibles para los estudiantes y el personal docente.',
+                    # Describalos
+            'respuesta' => '',
+        ));
+
+        App\Pregunta::create(array(
             'inciso' => '9.2.7',
             'numero' => '1',
             'titulo' => 'El equipo de cómputo de la institución, ¿esta conectado a la red?',
