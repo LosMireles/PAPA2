@@ -28,7 +28,7 @@
 		<tr>
 			<td>{{$tecnico->nombre}}</td>
 			<td>
-				<?php 
+				<?php
 					$inicio = strtotime($tecnico->hora_inicio);
 					$inicio_format = date('H:i', $inicio);
 					$termino = strtotime($tecnico->hora_termino);
@@ -41,7 +41,7 @@
 			<td>
 				<a href="{{ url('/tecnicos_academicos/ver_curriculo/'. $tecnico->id ) }}">{{$tecnico->curriculum}}</a>
 			</td>
-			
+
 			<td class="text-center">
 				{{ Form::open( array('action'=>['TecnicoAcademicoController@edit', $tecnico->id], 'method' => 'get') ) }}
 					{{ Form::submit('Editar', ['class' => 'btn btn-warning']) }}

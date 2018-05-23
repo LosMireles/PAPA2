@@ -31,6 +31,31 @@
 
 @endsection
 
+@section('cabeza_tabla')
+  <h4>Tabla de softwares y asignaturas que lo utilizan</h4>
+    <tr>
+    </tr>
+@endsection
+
+@section('cabeza_tabla')
+  <h4>Tabla de softwares y asignaturas que lo utilizan</h4>
+    <tr>
+        <th>Código cubículo</th>
+        <th>Profesor</th>
+        <th>Cantidad de equipo</th>
+    </tr>
+@endsection
+
+@section('cuerpo_tabla')
+    @foreach($cubiculos as $cubiculo)
+        <tr>
+            <td>{{ $cubiculo->Tipo }}</td>
+            <td>{{ $cubiculo->Profesor }}</td>
+            <td>{{ $cubiculo->CantidadEquipo }}</td>
+        </tr>
+    @endforeach
+@endsection
+
 @section('botonGuardar')
   {{ Form::submit('Guardar', ['class' => 'btn btn-success']) }}
   {{ Form::close() }}
