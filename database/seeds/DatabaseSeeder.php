@@ -32,7 +32,7 @@ class DatabaseSeeder extends Seeder
 
         $espacios = App\Espacio::all();
         foreach($espacios as $espacio){
-            $espacio->cursos()->attach(random_int(1, 10));
+            $espacio->cursos()->attach(random_int(15,20));
         }
     }
 }

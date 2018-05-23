@@ -23,10 +23,10 @@ class SanitarioTableSeeder extends Seeder
     */
         App\Sanitario::create(array(
             'Tipo'              => 'Sanitario 3K4',
-            'InicioHora'        => '08:00 AM',
-            'FinHora'           => '07:00 PM',
-            'InicioDia'         => '01/01/2017',
-            'FinDia'            => '01/01/2018',
+            'InicioHora'        => '08:00:00',
+            'FinHora'           => '07:00:00',
+            'InicioDia'         => '2017-01-01',
+            'FinDia'            => '2018-01-01',
             'Limpieza'          => '4',
             'CantidadPersonal'  => '2',
             'espacio_id'        => '6',
@@ -34,10 +34,10 @@ class SanitarioTableSeeder extends Seeder
 
         App\Sanitario::create(array(
             'Tipo'              => 'Sanitario 3K2',
-            'InicioHora'        => '06:00 AM',
-            'FinHora'           => '07:00 PM',
-            'InicioDia'         => '01/01/2017',
-            'FinDia'            => '01/01/2018',
+            'InicioHora'        => '08:00:00',
+            'FinHora'           => '07:00:00',
+            'InicioDia'         => '2017-01-01',
+            'FinDia'            => '2018-01-01',
             'Limpieza'          => '3',
             'CantidadPersonal'  => '2',
             'espacio_id'        => '7',
@@ -45,10 +45,10 @@ class SanitarioTableSeeder extends Seeder
 
         App\Sanitario::create(array(
             'Tipo'              => 'Sanitario Biblioteca',
-            'InicioHora'        => '06:00 AM',
-            'FinHora'           => '08:00 PM',
-            'InicioDia'         => '01/01/2017',
-            'FinDia'            => '01/01/2018',
+            'InicioHora'        => '08:00:00',
+            'FinHora'           => '07:00:00',
+            'InicioDia'         => '2017-01-01',
+            'FinDia'            => '2018-01-01',
             'Limpieza'          => '2',
             'CantidadPersonal'  => '2',
             'espacio_id'        => '8',
