@@ -75,5 +75,18 @@
 		</div>
 	</div>
 
+	<div class="form-group">
+		<label for="" class="col-sm-4 control-label" data-toggle="tooltip" title="Asignaturas que usan el software">Asignaturas</label>
+
+		<div class="col-sm-8">
+            @if(!empty($asignaturas))
+                @foreach($asignaturas as $asignatura)
+                    <input type="checkbox" name="asignatura[]" value="{{$asignatura->nombre}}">
+                    {{$asignatura->nombre}}<br>
+                @endforeach
+            @endif
+		</div>
+	</div>
+
 @endsection
 

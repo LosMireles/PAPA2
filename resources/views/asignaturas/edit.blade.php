@@ -69,5 +69,28 @@
 		</div>
 	</div>
 
+	<div class="form-group">
+        <label for="" class="col-sm-4 control-label" data-toggle="tooltip" title="softwares que usa la asignatura">
+            Softwares
+        </label>
+
+		<div class="col-sm-8">
+			@foreach($softwares as $software)
+				<?php $temp = 0; ?>
+				@foreach($asignaturas_softwares as $unidad)
+					@if($asignatura->id == $unidad->asignatura_id && $software->id == $unidad->software_id)
+						<?php $temp = 1; ?>
+					@endif
+				@endforeach
+
+				@if($temp == 1)
+					<input type="checkbox" name="softwares[]" checked value="{{$software->nombre}}"> {{$software->nombre}} <br>
+				@else
+					<input type="checkbox" name="softwares[]" value="{{$software->nombre}}"> {{$software->nombre}} <br>
+				@endif
+			@endforeach
+		</div>
+	</div>
+
 @endsection
 

@@ -13,5 +13,10 @@ class Asignatura extends Model
     public function curso(){
         return $this->belongsTo(Curso::class);
     }
+
+    //una asignatura usa muchos software(muchos a muchos)
+    public function softwares(){
+        return $this->BelongsToMany(Software::class);
+    }
 }
 

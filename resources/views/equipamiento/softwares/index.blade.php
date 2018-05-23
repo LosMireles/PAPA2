@@ -27,6 +27,7 @@
         <th>Lugar de obtención</th>
         <th>Clase</th>
         <th>Equipos</th>
+        <th>Asignaturas</th>
         <th></th>
         <th></th>
     </tr>
@@ -49,6 +50,14 @@
                 @if(!empty($software->equipos))
                     @foreach($software->equipos as $equipo)
                         {{$equipo->serial}} <br>
+                    @endforeach
+                @endif
+            </td>
+
+            <td>
+                @if(!empty($software->asignaturas))
+                    @foreach($software->asignaturas as $asignatura)
+                        {{$asignatura->nombre}} <br>
                     @endforeach
                 @endif
             </td>

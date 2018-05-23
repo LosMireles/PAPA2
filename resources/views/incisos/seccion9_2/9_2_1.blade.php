@@ -31,18 +31,24 @@
 
 @section('cabeza_tabla')
     <tr>
-        <th>Nombre de la asignatura</th>
-        <th>Descripción de la asignatura</th>
-        <th>Curso de la asignatura</th>
+        <th>Asignatura</th>
+        <th>Nombre software</th>
+        <th>Disponibilidad software</th>
     </tr>
 @endsection
 
 @section('cuerpo_tabla')
-    @foreach($asignaturas as $asignatura)
+    @foreach($softwares as $software)
         <tr>
-            <td>{{$asignatura->nombre}}</td>
-            <td>{{$asignatura->descripcion}}</td>
-            <td>{{$asignatura->curso->nombre}}</td>
+            <td>
+                @if(!empty($software->asignaturas))
+                    @foreach($software->asignaturas as $asignatura)
+                        {{$asignatura->nombre}} <br>
+                    @endforeach
+                @endif
+            </td>
+            <td>{{$software->nombre}}</td>
+            <td>{{$software->licencia}}</td>
         </tr>
     @endforeach
 @endsection

@@ -31,6 +31,7 @@ class CreateCursoEspacioPivotTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('curso_espacio_pivot');
+        Schema::dropIfExists('curso_espacio');
     }
 }
+
