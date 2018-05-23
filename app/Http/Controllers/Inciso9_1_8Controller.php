@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Pregunta;
+use App\Equipo;
+use DB;
+use App\Aula;
 
 class Inciso9_1_8Controller extends Controller
 {

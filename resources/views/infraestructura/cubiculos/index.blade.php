@@ -19,9 +19,9 @@
 
 @section('cabeza_tabla')
    <tr>
-   		<td>Código del cubículo</td>
-        <td>Profesor</td>
-        <td>Cantidad de equipo</td>
+   		<td data-toggle="tooltip" title="Número del cubículo">Código del cubículo</td>
+        <td data-toggle="tooltip" title="El encargado del cubículo">Profesor</td>
+        <td data-toggle="tooltip" title="Cantidad de computadoras hay en el cubículo">Cantidad de equipo</td>
         <td></td>
         <td></td>
         <td></td>

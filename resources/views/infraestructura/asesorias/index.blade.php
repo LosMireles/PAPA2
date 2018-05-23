@@ -19,12 +19,12 @@
 
 @section('cabeza_tabla')
 	<tr>
-		<td>Tipo</td>
-		<td>Hora de inicio</td>
-		<td>Hora de finalizacion</td>
-		<td>Dia de inicio</td>
-		<td>Dia de finalizacion</td>
-		<td>Materia</td>
+		<td data-toggle="tooltip" title="Identificador de la asesoria">Tipo</td>
+		<td data-toggle="tooltip" title="Hora de inicio">Hora de inicio</td>
+		<td data-toggle="tooltip" title="Hora de finalización">Hora de finalizacion</td>
+		<td data-toggle="tooltip" title="Día de inicio">Dia de inicio</td>
+		<td data-toggle="tooltip" title="Día de finalización">Dia de finalizacion</td>
+		<td data-toggle="tooltip" title="Asignatura que se imparte">Materia</td>
         <td></td>
         <td></td>
 		<td></td>

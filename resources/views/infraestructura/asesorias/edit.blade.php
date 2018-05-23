@@ -30,7 +30,7 @@
 	</div>
 
 	<div class="form-group">
-		<label for="InicioHora" class="col-sm-4 control-label" data-toggle="tooltip" title="">Hora de inicio</label>
+		<label for="InicioHora" class="col-sm-4 control-label" data-toggle="tooltip" title="Hora de inicio">Hora de inicio</label>
 
 		<div class="col-sm-8">
 			<input type='time' class="form-control" name='InicioHora' placeholder="00:00" value="{{$asesoria->InicioHora}}"  required>
@@ -38,7 +38,7 @@
 	</div>
 
 	<div class="form-group">
-		<label for="FinHora" class="col-sm-4 control-label" data-toggle="tooltip" title="">Hora de finalizacion</label>
+		<label for="FinHora" class="col-sm-4 control-label" data-toggle="tooltip" title="Hora de finalización">Hora de finalizacion</label>
 
 		<div class="col-sm-8">
 			<input type='time' class="form-control" name='FinHora' placeholder="12:00" value="{{$asesoria->FinHora}}"   required>
@@ -46,7 +46,7 @@
 	</div>
 
 	<div class="form-group">
-		<label for="InicioDia" class="col-sm-4 control-label" data-toggle="tooltip" title="">Día de inicio</label>
+		<label for="InicioDia" class="col-sm-4 control-label" data-toggle="tooltip" title="Día de inicio">Día de inicio</label>
 
 		<div class="col-sm-8">
 			<input type='date' class="form-control" name='InicioDia' placeholder="Lunes" value="{{$asesoria->InicioDia}}" required>
@@ -54,7 +54,7 @@
 	</div>
 
 	<div class="form-group">
-		<label for="FinDia" class="col-sm-4 control-label" data-toggle="tooltip" title="">Día de finalización</label>
+		<label for="FinDia" class="col-sm-4 control-label" data-toggle="tooltip" title="Día de finalización">Día de finalización</label>
 
 		<div class="col-sm-8">
 			<input type='date' class="form-control" name='FinDia' placeholder="Sábado" value="{{$asesoria->FinDia}}"  required>
@@ -62,7 +62,7 @@
 	</div>
 
 	<div class="form-group">
-		<label for="Materia" class="col-sm-4 control-label" data-toggle="tooltip" title="">Asignatura: </label>
+		<label for="Materia" class="col-sm-4 control-label" data-toggle="tooltip" title="Asignatura que se imparte">Asignatura: </label>
 
 		<div class="col-sm-8">
 			<input type='text' class="form-control" name='Materia' placeholder="Asignatura" value="{{$asesoria->Materia}}" required>

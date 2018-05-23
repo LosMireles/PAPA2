@@ -20,14 +20,14 @@
 	<tr>
 		<td>
             <a href="{{action('SoftwareController@index')}}" data-toggle="tooltip" title="Software con el que cuenta la licenciatura.">
-                Software [?]
+                Software
             </a> </li>
 		</td>
 	</tr>
 	<tr>
 		<td>
             <a href="{{action('EquipoController@index')}}" data-toggle="tooltip" title="Equipos de cómputo con los que cuenta la licenciatura">
-                Equipos [?]
+                Equipos
             </a> </li>
 		</td>
 	</tr>
