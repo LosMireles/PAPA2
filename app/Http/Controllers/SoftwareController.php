@@ -148,8 +148,7 @@ class SoftwareController extends Controller {
                                      Rule::unique('softwares')->ignore($nombre, 'nombre')],
                 'manualUsuario'  => 'required|boolean',
                 'licencia'       => 'required|alpha_num',
-                'disponibilidad' => 'required|alpha_num',
-                'clase'          => 'required|alpha_num',
+                'disponibilidad' => 'required|alpha_num'
                ];
     }
 }
