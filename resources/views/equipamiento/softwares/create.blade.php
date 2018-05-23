@@ -45,7 +45,7 @@
 		<label for="disponibilidad" class="col-sm-4 control-label" data-toggle="tooltip" title="Se refiere a donde se consiguio el software">Lugar de obtención: </label>
 
 		<div class="col-sm-8">
-			<input type="text" class="form-control" name="disponibilidad" placeholder="" required>
+			<input type="text" class="form-control" name="disponibilidad" placeholder="Lugar de obtención" required>
 		</div>
 	</div>
 
