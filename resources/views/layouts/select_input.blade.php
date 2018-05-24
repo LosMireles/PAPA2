@@ -6,7 +6,7 @@
 
     <div class="col-sm-8">
         <select name="{{$nombre_input}}" class="form-control" @yield('extra')>
-            @yield('opciones')
+            {{$opciones}}
         </select>
     </div>
 

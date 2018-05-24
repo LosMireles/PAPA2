@@ -13,7 +13,7 @@
 @endsection
 
 @section('objeto_informacion')
-    @yield('objeto_informacion')
+    agregar @yield('objeto_informacion')
 @endsection
 
 @section('metodo_envio_formulario')

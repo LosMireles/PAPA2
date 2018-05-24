@@ -1,6 +1,6 @@
 @extends('layouts.formulario_edit_general')
 
-@section('title' , "Agregar aula")
+@section('title' , "Editar aula")
 @section("objeto_informacion", "un aula")
 
 @section('ruta_regresar')
@@ -58,7 +58,7 @@
         @slot("tooltip_input", "Calidad en la que se encuentra el pizarrón")
         @slot("label_input", "Pizarrón")
         @section('extra', "required")
-        @section('opciones')
+        @slot('opciones')
             @foreach($calificaciones as $numero)
                 @if($aula->Pizarron == $numero)
                     <option value="{{$numero}}" selected>
@@ -70,7 +70,7 @@
                     </option>
                 @endif
             @endforeach
-        @endsection
+        @endslot
     @endcomponent
 
 
@@ -79,7 +79,7 @@
         @slot("tooltip_input", "Calidad de la Illuminación en el aula")
         @slot("label_input", "Illuminación")
         @section('extra', "required")
-        @section('opciones')
+        @slot('opciones')
             @foreach($calificaciones as $numero)
                 @if($aula->Illuminacion == $numero)
                     <option value="{{$numero}}" selected>
@@ -91,7 +91,7 @@
                     </option>
                 @endif
             @endforeach
-        @endsection
+        @endslot
     @endcomponent
 
     @component("layouts.select_input")
@@ -99,13 +99,13 @@
         @slot("tooltip_input", "Que tan aislado está del ruido anterior")
         @slot("label_input", "Aislamiento al ruido")
         @section('extra', "required")
-        @section('opciones')
+        @slot('opciones')
             @foreach($calificaciones as $numero)
                 <option value="{{$numero}}">
                     {{$numero}}
                 </option>
             @endforeach
-        @endsection
+        @endslot
     @endcomponent
 
 
@@ -115,13 +115,13 @@
         @slot("tooltip_input", "Califique la ventilación en el aula")
         @slot("label_input", "Ventilación")
         @section('extra', "required")
-        @section('opciones')
+        @slot('opciones')
             @foreach($calificaciones as $numero)
                 <option value="{{$numero}}">
                     {{$numero}}
                 </option>
             @endforeach
-        @endsection
+        @endslot
     @endcomponent
 
 
@@ -130,13 +130,13 @@
         @slot("tooltip_input", "Califique la calidad de la temperatura en el aula")
         @slot("label_input", "Temperatura")
         @section('extra', "required")
-        @section('opciones')
+        @slot('opciones')
             @foreach($calificaciones as $numero)
                 <option value="{{$numero}}">
                     {{$numero}}
                 </option>
             @endforeach
-        @endsection
+        @endslot
     @endcomponent
 
 
@@ -146,13 +146,13 @@
         @slot("tooltip_input", "Califique el espacio en el aula")
         @slot("label_input", "Espacio")
         @section('extra', "required")
-        @section('opciones')
+        @slot('opciones')
             @foreach($calificaciones as $numero)
                 <option value="{{$numero}}">
                     {{$numero}}
                 </option>
             @endforeach
-        @endsection
+        @endslot
     @endcomponent
 
 
@@ -162,13 +162,13 @@
         @slot("tooltip_input", "Califique la calidad del mobiliari en el aula")
         @slot("label_input", "Mobiliario")
         @section('extra', "required")
-        @section('opciones')
+        @slot('opciones')
             @foreach($calificaciones as $numero)
                 <option value="{{$numero}}">
                     {{$numero}}
                 </option>
             @endforeach
-        @endsection
+        @endslot
     @endcomponent
 
 
@@ -178,13 +178,13 @@
         @slot("tooltip_input", "Califique la calidad de las conexiones de todo tipo en el aula")
         @slot("label_input", "Conexiones")
         @section('extra', "required")
-        @section('opciones')
+        @slot('opciones')
             @foreach($calificaciones as $numero)
                 <option value="{{$numero}}">
                     {{$numero}}
                 </option>
             @endforeach
-        @endsection
+        @endslot
     @endcomponent
 
 	<div class="form-group">

@@ -19,7 +19,7 @@
     </a>
 
 	<h1 class="text-center">
-	    Formulario para agregar @yield("objeto_informacion")
+	    Formulario para @yield("objeto_informacion")
 	</h1>
 
 	<div class="row">
