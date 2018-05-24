@@ -1,4 +1,4 @@
-@extends('layouts.formulario_general')
+@extends('layouts.formulario_create_general')
 
 @section('title' , "Agregar aula")
 @section("objeto_informacion", "un aula")

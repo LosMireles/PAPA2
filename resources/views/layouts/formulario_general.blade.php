@@ -24,14 +24,12 @@
 
 	<div class="row">
 		<div class="col-md-6 col-md-offset-3">
-			<form class="form-horizontal" action = "@yield('accion')" method="POST" enctype="multipart/form-data">
+			@yield('metodo_envio_formulario')
 				<input type = "hidden" name = "_token" value = "{{csrf_token()}}">
 				@yield('contenido_formulario')
 
 				<div class="form-group">
-					<div class="col-sm-offset-4 col-sm-8">
-						<button type='submit' class="btn btn-primary">Agregar</button>
-					</div>
+				    @yield('boton_submit_formulario')
 				</div>
 			</form>
 		</div>
