@@ -174,32 +174,28 @@
 		<h3 class="text-center">Mencione si el aula tiene: </h3>
 	</div>
 
-    @component("layouts.text_input")
+    @component("layouts.checkbox_input")
         @slot("nombre_input", "SillasPaleta")
         @slot("tooltip_input", "Sillas con paleta")
         @slot("label_input", "Sillas con paleta")
-        @section('extra', "required")
     @endcomponent
 
-    @component("layouts.text_input")
+    @component("layouts.checkbox_input")
         @slot("nombre_input", "MesasTrabajo")
         @slot("tooltip_input", "Mesas dondes se puede trabajar")
         @slot("label_input", "Mesas de trabajo")
-        @section('extra', "required")
     @endcomponent
 
-    @component("layouts.text_input")
+    @component("layouts.checkbox_input")
         @slot("nombre_input", "Isotopica")
         @slot("tooltip_input", "Vista")
         @slot("label_input", "Isotopica")
-        @section('extra', "required")
     @endcomponent
 
-    @component("layouts.text_input")
+    @component("layouts.checkbox_input")
         @slot("nombre_input", "Estrado")
         @slot("tooltip_input", "Elevación para el profesor")
         @slot("label_input", "Estrado")
-        @section('extra', "required")
     @endcomponent
 
 
