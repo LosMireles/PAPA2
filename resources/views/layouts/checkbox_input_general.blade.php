@@ -5,9 +5,7 @@
     </label>
 
     <div class="col-sm-8">
-        <input type="checkbox" name="{{$nombre_input}}" value="1" @yield('extra_checkbox')>
-            {{$descripcion or $label_input}}
-        </input>
+        {{$checkboxes}}
     </div>
 
 </div>
