@@ -12,8 +12,8 @@ class Curso extends Model
 
     //DEFINICION DE RELACIONES
     //un curso pertenece a muchos espacios (muchos a muchos)
-    public function espacios(){
-        return $this->belongsToMany(Espacio::class);
+    public function aulas(){
+        return $this->belongsToMany(Aula::class);
     }
 
     //un curso tiene una asignatura (1 a 1)

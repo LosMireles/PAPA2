@@ -9,9 +9,11 @@ class Aula extends Model
     protected $table = 'aulas';
     protected $guarded = ['id'];
 
-    //un espacio tiene un aula (1 a 1)
-    public function espacio(){
-        return $this->belongsTo(Espacio::class);
+    //DEFINICION DE RELACIONES
+    //un aula pertenece a muchos cursos (muchos a muchos)
+    public function cursos(){
+        return $this->belongsToMany(Curso::class);
     }
 
 }
+

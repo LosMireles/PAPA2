@@ -44,7 +44,6 @@ class AulaController extends Controller
 	$aula->CantidadEquipo = $request->CantidadEquipo;
 	$aula->CantidadAV     = $request->CantidadAV;
 	$aula->Capacidad      = $request->Capacidad;
-    $aula->espacio_id     = $request->espacio_id;
 
 		if(isset($request->SillasPaleta) &&
 		$request->SillasPaleta == '1')
@@ -100,10 +99,12 @@ class AulaController extends Controller
 	//-----------------------------------------------------------
 	public function edit($tipo) {
 
+        $calificaciones = [1, 2, 3, 4];
 		$aula  = Aula::where('Tipo', $tipo)->first();
 
         return view('infraestructura.aulas.edit')
-            ->with(['aula'=>$aula]);
+            ->with(['aula'           => $aula,
+                    'calificaciones' => $calificaciones]);
 	}
 
 	//-----------------------------------------------------------
