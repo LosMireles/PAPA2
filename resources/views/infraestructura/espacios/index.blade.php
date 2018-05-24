@@ -1,32 +1,47 @@
-@extends('layouts.ver')
+@extends('layouts.index_general')
+
 @section('title')
 	Espacios
 @endsection
 
-@section('descripcion')
-    <a href="/infraestructura" class="btn btn-primary">
-        Regresar
-    </a>
+@section('ruta_regresar', '/infraestructura')
 
-    <td class="text-center">
-        <a href="{{action('EspacioController@create')}}"class="btn btn-warning">
-            Agregar nuevo espacio
-        </a>
-    </td>
-
-    <h1 class="text-center">Listado de espacio</h1>
+@section('controlador_crear')
+    {{action('EspacioController@create')}}
 @endsection
 
+@section('titulo_boton_agregar', 'Agregar nuevo espacio')
+
+@section('objeto_informacion', 'espacios')
+
 @section('cabeza_tabla')
-	<tr>
-		<th data-toggle="tooltip" title="Un identificador único (por ejemplo A202)">Nombre del espacio</th>
-		<th data-toggle="tooltip" title="Metros cuadrados de superficie que abarca el espacio">Superficie</th>
-		<th data-toggle="tooltip" title="Cantidad de espacios con el mismo nombre y características">Cantidad</th>
-		<th data-toggle="tooltip" title="Uno de los 5 posibles espacios fisicos (Aula, Cubiculo, Sanitarios, Asesorias, Auditorio)">Clase</th>
-        <th data-toggle="tooltip" title="Cursos que se imparten en el espacio">Cursos</th>
+        @component('layouts.header_tabla')
+            @slot("tooltip_header_tabla", "Un identificador único por ejemplo A202")
+            @slot("titulo_header_tabla", "Nombre del espacio")
+        @endcomponent
+
+        @component('layouts.header_tabla')
+            @slot('tooltip_header_tabla', "Metros cuadrados de superficie que abarca el espacio")
+            @slot('titulo_header_tabla', 'Superficie')
+        @endcomponent
+
+        @component('layouts.header_tabla')
+            @slot('tooltip_header_tabla', "Cantidad de espacios con el mismo nombre y características")
+            @slot('titulo_header_tabla', "Cantidad")
+        @endcomponent
+
+        @component('layouts.header_tabla')
+            @slot('tooltip_header_tabla', "Uno de los 5 posibles espacios fisicos (Aula, Cubiculo, Sanitarios, Asesorias, Auditorio)")
+            @slot('titulo_header_tabla', "Clase")
+        @endcomponent
+
+        @component('layouts.header_tabla')
+            @slot('tooltip_header_tabla', "Cursos que se imparten en el espacio")
+            @slot('titulo_header_tabla', "Cursos")
+        @endcomponent
+
         <th></th>
         <th></th>
-	</tr>
 @endsection
 
 
@@ -38,7 +53,6 @@
 			<td>{{ $espacio->cantidad }}</td>
 			<td>{{ $espacio->clase }}</td>
 
-
             <td>
                 @if(!empty($espacio->cursos))
                     @foreach($espacio->cursos as $curso)
@@ -47,21 +61,20 @@
                 @endif
             </td>
 
-            <!--Boton editar-->
-            <td class="text-center">
-                <a href="{{action('EspacioController@edit', [ 'tipo' => $espacio->tipo])}}" class="btn btn-warning">
-                    Editar
-                </a>
-            </td>
 
-            <!--Boton borrar-->
-            <td>
-                {{ Form::open(['action' => ['EspacioController@destroy', $espacio->tipo]]) }}
-                    {{ Form::hidden('_method', 'DELETE') }}
-                    {{ Form::submit('Borrar', ['class' => 'btn btn-warning']) }}
-                {{ Form::close() }}
-            </td>
+            @component('layouts.boton_editar')
+                @slot("controlador_editar")
+                    {{action('EspacioController@edit', [ 'tipo' => $espacio->tipo])}}
+                @endslot
+            @endcomponent
+
+            @component('layouts.boton_borrar')
+                @slot("controlador_borrar")
+                    {{ Form::open(['action' => ['EspacioController@destroy', $espacio->tipo]]) }}
+                @endslot
+            @endcomponent
 
 		</tr>
 	@endforeach
 @endsection
+

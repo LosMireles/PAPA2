@@ -1,171 +1,207 @@
-@extends('layouts.insertar')
+@extends('layouts.formulario_general')
 
-@section('title')
-	 Agregar aula
-@endsection
+@section('title' , "Agregar aula")
+@section("objeto_informacion", "un aula")
 
-@section('descripcion')
-    <a href="{{action('AulaController@index')}}" class="btn btn-primary">
-        Regresar
-    </a>
-	<h1 class="text-center">Formulario para agregar un aula</h1>
+@section('ruta_regresar')
+    {{action('AulaController@index')}}
 @endsection
 
 @section('accion')
-   action = "{{action('AulaController@store')}}"
+    {{action('AulaController@store')}}
 @endsection
 
 @section('contenido_formulario')
-	<div class="form-group">
-		<label for="Tipo" class="col-sm-4 control-label" data-toggle="tooltip" title="Nombre escrito en las puertas">Código del aula</label>
+    @component("layouts.text_input")
+        @slot("nombre_input", "Tipo")
+        @slot("tooltip_input", "Nombre escrito en las puertas")
+        @slot("label_input", "Código del aula")
+        @slot("placeholder_input", "Código de aula")
+        @section("extra", "required")
+    @endcomponent
 
-		<div class="col-sm-8">
-      		<input type="text-center" class="form-control" name="Tipo" placeholder="Nombre aula">
+    @component("layouts.text_input")
+        @slot("nombre_input", "Capacidad")
+        @slot("tooltip_input", "Capacidad máxima del aula")
+        @slot("label_input", "Capacidad máxima de personas")
+        @slot("placeholder_input", "10")
+        @section('extra', "required")
+    @endcomponent
 
-      	</div>
+    @component("layouts.text_input")
+        @slot("nombre_input", "CantidadAV")
+        @slot("tooltip_input", "Cantidad de equipo audiovisual hay en el aula")
+        @slot("label_input", "Cantidad de equipo audiovisual")
+        @slot("placeholder_input", "1")
+        @section('extra', "required")
+    @endcomponent
 
-	</div>
-
-
-	<div class="form-group">
-		<label for="Capacidad" class="col-sm-4 control-label" data-toggle="tooltip" title="Capacidad máxima del aula">Capacidad máxima de personas</label>
-
-		<div class="col-sm-8">
-			<input type='text' class="form-control" name='Capacidad' id="Capacidad" placeholder="10" required>
-		</div>
-	</div>
-
-	<div class="form-group">
-		<label for="CantidadAV" class="col-sm-4 control-label" data-toggle="tooltip" title="Cantidad de equipo audiovisual hay en el aula">Cantidad de equipo audiovisual</label>
-
-		<div class="col-sm-8">
-			<input type='text' class="form-control" name='CantidadAV' id="CantidadAV" placeholder="1" required>
-		</div>
-	</div>
-
-	<div class="form-group">
-		<label for="CantidadEquipo" class="col-sm-4 control-label" data-toggle="tooltip" title="Cantidad de computadoras hay en el aula">Cantidad de computadoras</label>
-
-		<div class="col-sm-8">
-			<input type='text' class="form-control" name='CantidadEquipo' id="CantidadEquipo" placeholder="1" required>
-		</div>
-	</div>
+    @component("layouts.text_input")
+        @slot("nombre_input", "CantidadEquipo")
+        @slot("tooltip_input", "Cantidad de computadoras hay en el aula")
+        @slot("label_input", "Cantidad de computadoras")
+        @slot("placeholder_input", "1")
+        @section('extra', "required")
+    @endcomponent
 
 	<div class="form-group">
-		<label for="" class="col-sm-4 control-label" data-toggle="tooltip" title=""></label>
-
-		<div class="col-sm-8">
-
-		</div>
+		<h3 class="text-center">En una escala del 1 al 4 (1 es peor, 4 es mejor), califique la calidad de:</h3>
 	</div>
 
-	<div class="form-group">
-		<h3 class="text-center">En una escala del 1 al 4, califique la calidad de:</h3>
-	</div>
+    @component("layouts.select_input")
+        @slot("nombre_input", "Pizarron")
+        @slot("tooltip_input", "Calidad en la que se encuentra el pizarrón")
+        @slot("label_input", "Pizarrón")
+        @section('extra', "required")
+        @section('opciones')
+            @foreach($calificaciones as $numero)
+                <option value="{{$numero}}">
+                    {{$numero}}
+                </option>
+            @endforeach
+        @endsection
+    @endcomponent
 
-	<div class="form-group">
-		<label for="Pizarron" class="col-sm-4 control-label" data-toggle="tooltip" title="Calidad en la que se encuentra el pizarrón">Pizarrón</label>
 
-		<div class="col-sm-8">
-			<input type='text' class="form-control" name='Pizarron' id="Pizarron" placeholder="4" required>
-		</div>
-	</div>
+    @component("layouts.select_input")
+        @slot("nombre_input", "Illuminacion")
+        @slot("tooltip_input", "Calidad de la Illuminación en el aula")
+        @slot("label_input", "Illuminación")
+        @section('extra', "required")
+        @section('opciones')
+            @foreach($calificaciones as $numero)
+                <option value="{{$numero}}">
+                    {{$numero}}
+                </option>
+            @endforeach
+        @endsection
+    @endcomponent
 
-	<div class="form-group">
-		<label for="Illuminacion" class="col-sm-4 control-label" data-toggle="tooltip" title="Calidad de la Illuminación en el aula">Illuminación</label>
+    @component("layouts.select_input")
+        @slot("nombre_input", "AislamientoR")
+        @slot("tooltip_input", "Que tan aislado está del ruido anterior")
+        @slot("label_input", "Aislamiento al ruido")
+        @section('extra', "required")
+        @section('opciones')
+            @foreach($calificaciones as $numero)
+                <option value="{{$numero}}">
+                    {{$numero}}
+                </option>
+            @endforeach
+        @endsection
+    @endcomponent
 
-		<div class="col-sm-8">
-			<input type='text' class="form-control" name='Illuminacion' id="Illuminacion" placeholder="4" required>
-		</div>
-	</div>
 
-	<div class="form-group">
-		<label for="AislamientoR" class="col-sm-4 control-label" data-toggle="tooltip" title="Que tan aislado está del ruido anterior">Aislamiento al ruido</label>
 
-		<div class="col-sm-8">
-			<input type='text' class="form-control" name='AislamientoR' id="AislamientoR" placeholder="4" required>
-		</div>
-	</div>
+    @component("layouts.select_input")
+        @slot("nombre_input", "Ventilacion")
+        @slot("tooltip_input", "Califique la ventilación en el aula")
+        @slot("label_input", "Ventilación")
+        @section('extra', "required")
+        @section('opciones')
+            @foreach($calificaciones as $numero)
+                <option value="{{$numero}}">
+                    {{$numero}}
+                </option>
+            @endforeach
+        @endsection
+    @endcomponent
 
-	<div class="form-group">
-		<label for="Ventilacion" class="col-sm-4 control-label" data-toggle="tooltip" title="Califique la ventilación en el aula">Ventilación</label>
 
-		<div class="col-sm-8">
-			<input type='text' class="form-control" name='Ventilacion' id="Ventilacion" placeholder="4" required>
-		</div>
-	</div>
+    @component("layouts.select_input")
+        @slot("nombre_input", "Temperatura")
+        @slot("tooltip_input", "Califique la calidad de la temperatura en el aula")
+        @slot("label_input", "Temperatura")
+        @section('extra', "required")
+        @section('opciones')
+            @foreach($calificaciones as $numero)
+                <option value="{{$numero}}">
+                    {{$numero}}
+                </option>
+            @endforeach
+        @endsection
+    @endcomponent
 
-	<div class="form-group">
-		<label for="Temperatura" class="col-sm-4 control-label" data-toggle="tooltip" title="Califique la calidad de la temperatura en el aula">Temperatura</label>
 
-		<div class="col-sm-8">
-			<input type='text' class="form-control" name='Temperatura' id="Temperatura" placeholder="4" required>
-		</div>
-	</div>
 
-	<div class="form-group">
-		<label for="Espacio" class="col-sm-4 control-label" data-toggle="tooltip" title="Califique el espacio en el aula">Espacio</label>
+    @component("layouts.select_input")
+        @slot("nombre_input", "Espacio")
+        @slot("tooltip_input", "Califique el espacio en el aula")
+        @slot("label_input", "Espacio")
+        @section('extra', "required")
+        @section('opciones')
+            @foreach($calificaciones as $numero)
+                <option value="{{$numero}}">
+                    {{$numero}}
+                </option>
+            @endforeach
+        @endsection
+    @endcomponent
 
-		<div class="col-sm-8">
-			<input type='text' class="form-control" name='Espacio' id="Espacio" placeholder="4" required>
-		</div>
-	</div>
 
-	<div class="form-group">
-		<label for="Mobilario" class="col-sm-4 control-label" data-toggle="tooltip" title="Califique la calidad del mobiliari en el aula">Mobiliario</label>
 
-		<div class="col-sm-8">
-			<input type='text' class="form-control" name='Mobilario' id="Mobilario" placeholder="4" required>
-		</div>
-	</div>
+    @component("layouts.select_input")
+        @slot("nombre_input", "Mobilario")
+        @slot("tooltip_input", "Califique la calidad del mobiliari en el aula")
+        @slot("label_input", "Mobiliario")
+        @section('extra', "required")
+        @section('opciones')
+            @foreach($calificaciones as $numero)
+                <option value="{{$numero}}">
+                    {{$numero}}
+                </option>
+            @endforeach
+        @endsection
+    @endcomponent
 
-	<div class="form-group">
-		<label for="Conexiones" class="col-sm-4 control-label" data-toggle="tooltip" title="Califique la calidad de las conexiones de todo tipo en el aula">Conexiones</label>
 
-		<div class="col-sm-8">
-			<input type='text' class="form-control" name='Conexiones' id="Conexiones" placeholder="4" required>
-		</div>
-	</div>
+
+    @component("layouts.select_input")
+        @slot("nombre_input", "Conexiones")
+        @slot("tooltip_input", "Califique la calidad de las conexiones de todo tipo en el aula")
+        @slot("label_input", "Conexiones")
+        @section('extra', "required")
+        @section('opciones')
+            @foreach($calificaciones as $numero)
+                <option value="{{$numero}}">
+                    {{$numero}}
+                </option>
+            @endforeach
+        @endsection
+    @endcomponent
 
 	<div class="form-group">
 		<h3 class="text-center">Mencione si el aula tiene: </h3>
 	</div>
 
-	<div class="form-group">
-		<label for="SillasPaleta" class="col-sm-4 control-label">Sillas de paleta</label>
-		<div class="col-sm-8">
-			<input type="checkbox" name="SillasPaleta" value="1"/>
-		</div>
-	</div>
+    @component("layouts.text_input")
+        @slot("nombre_input", "SillasPaleta")
+        @slot("tooltip_input", "Sillas con paleta")
+        @slot("label_input", "Sillas con paleta")
+        @section('extra', "required")
+    @endcomponent
 
-	<div class="form-group">
-		<label for="MesasTrabajo" class="col-sm-4 control-label">Mesas de trabajo</label>
-		<div class="col-sm-8">
-			<input type="checkbox" name="MesasTrabajo" value="1" />
-		</div>
-	</div>
+    @component("layouts.text_input")
+        @slot("nombre_input", "MesasTrabajo")
+        @slot("tooltip_input", "Mesas dondes se puede trabajar")
+        @slot("label_input", "Mesas de trabajo")
+        @section('extra', "required")
+    @endcomponent
 
-	<div class="form-group">
-		<label for="Isotopica" class="col-sm-4 control-label" data-toggle="tooltip" title="Visión escalonada">Isotópica</label>
-		<div class="col-sm-8">
-			<input type="checkbox" name="Isotopica" value="1">
-		</div>
-	</div>
+    @component("layouts.text_input")
+        @slot("nombre_input", "Isotopica")
+        @slot("tooltip_input", "Vista")
+        @slot("label_input", "Isotopica")
+        @section('extra', "required")
+    @endcomponent
 
-    <div class="form-group">
-		<label for="Estrado" class="col-sm-4 control-label" data-toggle="tooltip" title="Elevación para el profesor">Estrado</label>
-		<div class="col-sm-8">
-			<input type="checkbox" name="Estrado" value="1" >
-		</div>
-    </div>
+    @component("layouts.text_input")
+        @slot("nombre_input", "Estrado")
+        @slot("tooltip_input", "Elevación para el profesor")
+        @slot("label_input", "Estrado")
+        @section('extra', "required")
+    @endcomponent
 
-	<div class="form-group">
-		<label for="espacio_id" class="col-sm-4 control-label" data-toggle="tooltip" title="Espacio donde se ecuentra el aula">Espacio</label>
-
-		<div class="col-sm-8">
-			<input type="radio"  name="espacio_id" value="{{$espacio_id}}" checked> {{$espacio_tipo}}
-		</div>
-	</div>
 
 	<div class="form-group">
 		<h3 class="text-center">Evidencias: </h3>
@@ -179,3 +215,4 @@
 		</div>
 	</div>
 @endsection
+

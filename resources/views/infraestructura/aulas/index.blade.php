@@ -1,29 +1,39 @@
-@extends('layouts.ver')
+@extends('layouts.index_general')
 @section('title')
    	Aulas
 @endsection
 
-@section('descripcion')
-    <a href="/infraestructura" class="btn btn-primary">
-        Regresar
-    </a>
+@section('ruta_regresar', '/infraestructura')
 
-    <td class="text-center">
-        <a href="{{action('EspacioController@create')}}"class="btn btn-warning">
-            Agregar nuevo aula
-        </a>
-    </td>
-
-    <h1 class="text-center">Listado de aula</h1>
+@section('controlador_crear')
+    {{action('AulaController@create')}}
 @endsection
+
+@section('titulo_boton_agregar', 'Agregar nueva aula')
+
+@section('objeto_informacion', 'aulas')
 
 @section('cabeza_tabla')
    	<tr>
-		<td data-toggle="tooltip" title="Nombre escrito en las puertas">Codigo del aula</td>
-		<td data-toggle="tooltip" title="Cantidad de equipo audiovisual hay en el aula">Cantidad de equipo</td>
-		<td data-toggle="tooltip" title="Cantidad de computadoras hay en el aula">Cantidad de computadoras</td>
-		<td>Capacidad</td>
-        <td></td>
+        @component('layouts.header_tabla')
+            @slot("tooltip_header_tabla", "Nombre escrito en las puertas")
+            @slot("titulo_header_tabla", "Código del aula")
+        @endcomponent
+
+        @component('layouts.header_tabla')
+            @slot('tooltip_header_tabla', "Cantidad de equipo audiovisual hay en el aula")
+            @slot('titulo_header_tabla', "Cantidad de equipo")
+        @endcomponent
+
+        @component('layouts.header_tabla')
+            @slot('tooltip_header_tabla', "Cantidad de computadoras hay en el aula")
+            @slot('titulo_header_tabla', "Cantidad de computadoras")
+        @endcomponent
+
+        @component('layouts.header_tabla')
+            @slot('tooltip_header_tabla', "Número máximo de personas que pueden estar dentro del aula")
+            @slot('titulo_header_tabla', "Capacidad")
+        @endcomponent
         <td></td>
         <td></td>
    	</tr>
@@ -37,20 +47,18 @@
 		<td>{{ $aula->CantidadEquipo }}</td>
 		<td>{{ $aula->Capacidad }}</td>
 
-        <!--Boton editar-->
-        <td class="text-center">
-            <a href="{{action('AulaController@edit', [ 'tipo' => $aula->Tipo])}}" class="btn btn-warning">
-                Editar
-            </a>
-        </td>
+        @component('layouts.boton_editar')
+            @slot("controlador_editar")
+                {{action('AulaController@edit', [ 'tipo' => $aula->Tipo])}}
+            @endslot
+        @endcomponent
 
-        <!--Boton borrar-->
-        <td>
-            {{ Form::open(['action' => ['AulaController@destroy', $aula->Tipo]]) }}
-                {{ Form::hidden('_method', 'DELETE') }}
-                {{ Form::submit('Borrar', ['class' => 'btn btn-warning']) }}
-            {{ Form::close() }}
-        </td>
+        @component('layouts.boton_borrar')
+            @slot("controlador_borrar")
+                {{ Form::open(['action' => ['AulaController@destroy', $aula->Tipo]]) }}
+            @endslot
+        @endcomponent
+
 
         <!--Boton ver fotos-->
         <td class="text-center">
@@ -62,3 +70,4 @@
 	</tr>
 	@endforeach
 @endsection
+

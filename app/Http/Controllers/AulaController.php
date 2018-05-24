@@ -21,7 +21,9 @@ class AulaController extends Controller
 
     //----------------------------------------------------------------
 	public function create(){
-	    return view('infraestructura.aulas.create');
+    $calificaciones = [1, 2, 3, 4];
+        return view('infraestructura.aulas.create')
+            ->with(['calificaciones' => $calificaciones]);
 	}
 
   //----------------------------------------------------------------
