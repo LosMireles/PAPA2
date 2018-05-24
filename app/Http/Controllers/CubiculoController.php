@@ -40,14 +40,14 @@ class CubiculoController extends Controller {
         $cubiculo = new Cubiculo;
 
         $cubiculo->Tipo           = $request->Tipo;
+        $cubiculo->superficie     = $request->superficie;
 		$cubiculo->Profesor       = $request->Profesor;
 		$cubiculo->CantidadEquipo = $request->CantidadEquipo;
-        $cubiculo->espacio_id       = $request->espacio_id;
 
-    $cubiculo->save();
+        $cubiculo->save();
 
-    echo "Elemento insertado exitosamente!";
-    return redirect()->action('CubiculoController@index');
+        echo "Elemento insertado exitosamente!";
+        return redirect()->action('CubiculoController@index');
   }
 
     //----------------------------------------------------------------
@@ -69,15 +69,15 @@ class CubiculoController extends Controller {
         }
 
 	  	$tipo_nuevo     = $request->Tipo;
+        $superficie     = $request->superficie;
 		$Profesor       = $request->Profesor;
 		$CantidadEquipo = $request->CantidadEquipo;
-        $espacio_id     = $request->espacio_id;
 
         Cubiculo::where('Tipo', $tipo)->update(
             ['Tipo'           => $tipo_nuevo,
+             'superficie'     => $superficie,
              'Profesor'       => $Profesor,
-             'CantidadEquipo' => $CantidadEquipo,
-             'espacio_id'     => $espacio_id]);
+             'CantidadEquipo' => $CantidadEquipo]);
 
 		echo "Elemento insertado exitosamente!";
     return redirect()->action('CubiculoController@index');

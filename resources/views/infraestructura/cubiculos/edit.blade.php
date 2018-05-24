@@ -1,4 +1,4 @@
-@extends('layouts.actualizar')
+@extends('layouts.formulario_edit_general')
 
 @section('title')
    editar cubículo <?php echo$cubiculo->Tipo; ?>

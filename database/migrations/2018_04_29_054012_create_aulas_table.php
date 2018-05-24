@@ -14,25 +14,26 @@ class CreateAulasTable extends Migration
     public function up()
     {
         Schema::create('aulas', function (Blueprint $table) {
-            $table -> increments('id')             -> unique()  -> unsigned();
-			$table -> string('Tipo')               -> unique();
-			$table -> integer('CantidadEquipo');
-			$table -> integer('CantidadAV');
-			$table -> integer('Capacidad');
+            $table -> increments('id')            -> unique()    -> unsigned();
+			$table -> string('Tipo')              -> unique();
+            $table -> float('superficie')         -> nullable();
+			$table -> integer('CantidadEquipo')   -> nullable();
+			$table -> integer('CantidadAV')       -> nullable();
+			$table -> integer('Capacidad')        -> nullable();
 
-			$table -> boolean('SillasPaleta');
-			$table -> boolean('MesasTrabajo');
-			$table -> boolean('Isotopica');
-			$table -> boolean('Estrado');
+			$table -> boolean('SillasPaleta')     -> nullable();
+			$table -> boolean('MesasTrabajo')     -> nullable();
+			$table -> boolean('Isotopica')        -> nullable();
+			$table -> boolean('Estrado')          -> nullable();
 
-			$table -> tinyInteger('Pizarron');
-			$table -> tinyInteger('Illuminacion');
-			$table -> tinyInteger('AislamientoR');
-			$table -> tinyInteger('Ventilacion');
-			$table -> tinyInteger('Temperatura');
-			$table -> tinyInteger('Espacio');
-			$table -> tinyInteger('Mobilario');
-			$table -> tinyInteger('Conexiones');
+			$table -> tinyInteger('Pizarron')     -> nullable();
+			$table -> tinyInteger('Illuminacion') -> nullable();
+			$table -> tinyInteger('AislamientoR') -> nullable();
+			$table -> tinyInteger('Ventilacion')  -> nullable();
+			$table -> tinyInteger('Temperatura')  -> nullable();
+			$table -> tinyInteger('Espacio')      -> nullable();
+			$table -> tinyInteger('Mobilario')    -> nullable();
+			$table -> tinyInteger('Conexiones')   -> nullable();
 
             $table -> timestamps();
         });

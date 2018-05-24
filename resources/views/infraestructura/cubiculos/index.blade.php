@@ -1,30 +1,39 @@
-@extends('layouts.ver')
+@extends('layouts.index_general')
 @section('title')
    Cubículos
 @endsection
 
-@section('descripcion')
-    <a href="/infraestructura" class="btn btn-primary">
-        Regresar
-    </a>
+@section('ruta_regresar', '/infraestructura')
 
-    <td class="text-center">
-        <a href="{{action('EspacioController@create')}}"class="btn btn-warning">
-            Agregar nuevo cubiculos
-        </a>
-    </td>
-
-    <h1 class="text-center">Listado de cubículos</h1>
+@section('controlador_crear')
+    {{action('CubiculoController@create')}}
 @endsection
+
+@section('titulo_boton_agregar', 'Agregar nueva cubiculo')
+
+@section('objeto_informacion', 'cubiculos')
+
 
 @section('cabeza_tabla')
    <tr>
-   		<td data-toggle="tooltip" title="Número del cubículo">Código del cubículo</td>
-        <td data-toggle="tooltip" title="El encargado del cubículo">Profesor</td>
-        <td data-toggle="tooltip" title="Cantidad de computadoras hay en el cubículo">Cantidad de equipo</td>
+        @component('layouts.header_tabla')
+            @slot("tooltip_header_tabla", "Número del cubículo")
+            @slot("titulo_header_tabla", "Código del cubículo")
+        @endcomponent
+
+        @component('layouts.header_tabla')
+            @slot("tooltip_header_tabla", "El encargado del cubículo")
+            @slot("titulo_header_tabla", "Profesor")
+        @endcomponent
+
+        @component('layouts.header_tabla')
+            @slot("tooltip_header_tabla", "Cantidad de computadoras hay en el cubículo")
+            @slot("titulo_header_tabla", "Cantidad de equipo")
+        @endcomponent
+
         <td></td>
         <td></td>
-        <td></td>
+
    </tr>
 @endsection
 
@@ -35,20 +44,17 @@
 		<td>{{ $cubiculo->Profesor }}</td>
 		<td>{{ $cubiculo->CantidadEquipo }}</td>
 
-        <!--Boton editar-->
-        <td class="text-center">
-            <a href="{{action('CubiculoController@edit', [ 'tipo' => $cubiculo->Tipo])}}" class="btn btn-warning">
-                Editar
-            </a>
-        </td>
+        @component('layouts.boton_editar')
+            @slot("controlador_editar")
+                {{action('CubiculoController@edit', [ 'tipo' => $cubiculo->Tipo])}}
+            @endslot
+        @endcomponent
 
-        <!--Boton borrar-->
-        <td>
-            {{ Form::open(['action' => ['CubiculoController@destroy', $cubiculo->Tipo]]) }}
-                {{ Form::hidden('_method', 'DELETE') }}
-                {{ Form::submit('Borrar', ['class' => 'btn btn-warning']) }}
-            {{ Form::close() }}
-        </td>
+        @component('layouts.boton_borrar')
+            @slot("controlador_borrar")
+                {{ Form::open(['action' => ['CubiculoController@destroy', $cubiculo->Tipo]]) }}
+            @endslot
+        @endcomponent
 
         <!--Boton ver fotos-->
         <td class="text-center">

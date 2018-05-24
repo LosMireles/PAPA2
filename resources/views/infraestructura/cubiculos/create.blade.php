@@ -1,53 +1,48 @@
-@extends('layouts.insertar')
+@extends('layouts.formulario_create_general')
 
-@section('title')
-   Agregar cubículo
-@endsection
+@section('title' , "Agregar cubiculo")
+@section("objeto_informacion", "un cubiculo")
 
-@section('descripcion')
-    <a href="{{action('CubiculoController@index')}}" class="btn btn-primary">
-        Regresar
-    </a>
-	<h1 class="text-center">Formulario para agregar un cubiculo</h1>
+@section('ruta_regresar')
+    {{action('CubiculoController@index')}}
 @endsection
 
 @section('accion')
-   action = "{{action('CubiculoController@store')}}"
+    {{action('CubiculoController@store')}}
 @endsection
 
 @section('contenido_formulario')
-   <div class="form-group">
-      <label for="Tipo" class="col-sm-4 control-label" data-toggle="tooltip" title="Número del cubículo">Código del cubículo</label>
+    @component("layouts.text_input")
+        @slot("nombre_input", "Tipo")
+        @slot("tooltip_input", "Nombre escrito en las puertas")
+        @slot("label_input", "Código del cubiculo")
+        @slot("placeholder_input", "Código de cubiculo")
+        @slot("extra", "required")
+    @endcomponent
 
-      <div class="col-sm-8">
-      		<input type="text-center" class="form-control" name="Tipo" placeholder="Nombre cubiculo">
+    @component("layouts.text_input")
+        @slot("nombre_input", "superficie")
+        @slot("tooltip_input", "Superficie en metros cuadrados que abarca el aula")
+        @slot("label_input", "Superficie")
+        @slot("placeholder_input", "100")
+        @slot("extra", "required")
+    @endcomponent
 
-      		</div>
-   </div>
+    @component("layouts.text_input")
+        @slot("nombre_input", "Profesor")
+        @slot("tooltip_input", "El encargado del cubículo")
+        @slot("label_input", "Profesor")
+        @slot("placeholder_input", "Nombre del profesor")
+        @slot("extra", "required")
+    @endcomponent
 
-   <div class="form-group">
-      <label for="Profesor" class="col-sm-4 control-label" data-toggle="tooltip" title="El encargado del cubículo">Profesor</label>
-
-      <div class="col-sm-8">
-         <input type='text' class="form-control" name='Profesor' id="Profesor" placeholder="Nombre" required>
-      </div>
-   </div>
-
-   <div class="form-group">
-      <label for="CantidadEquipo" class="col-sm-4 control-label" data-toggle="tooltip" title="Cantidad de computadoras hay en el cubículo">Cantidad de equipo</label>
-
-      <div class="col-sm-8">
-         <input type='text' class="form-control" name='CantidadEquipo' id="CantidadEquipo" placeholder="1" required>
-      </div>
-   </div>
-
-	<div class="form-group">
-		<label for="espacio_id" class="col-sm-4 control-label" data-toggle="tooltip" title="Espacio donde se ecuentra el cubiculo">Espacio</label>
-
-		<div class="col-sm-8">
-			<input type="radio"  name="espacio_id" value="{{$espacio_id}}" checked> {{$espacio_tipo}}
-		</div>
-	</div>
+    @component("layouts.text_input")
+        @slot("nombre_input", "CantidadEquipo")
+        @slot("tooltip_input", "Cantidad de computadoras hay en el cubículo")
+        @slot("label_input", "Cantidad de equipo")
+        @slot("placeholder_input", "CantidadEquipo")
+        @slot("extra", "required")
+    @endcomponent
 
   <div class="form-group">
 		<h3 class="text-center">Evidencias: </h3>
@@ -61,3 +56,4 @@
 		</div>
 	</div>
 @endsection
+

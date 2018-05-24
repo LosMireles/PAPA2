@@ -41,6 +41,7 @@ class AulaController extends Controller
     $aula = new Aula;
 
     $aula->Tipo           = $request->Tipo;
+    $aula->superficie     = $request->superficie;
 	$aula->CantidadEquipo = $request->CantidadEquipo;
 	$aula->CantidadAV     = $request->CantidadAV;
 	$aula->Capacidad      = $request->Capacidad;
@@ -118,6 +119,7 @@ class AulaController extends Controller
           }
         }
 	  	$tipo_nuevo     = $request->Tipo;
+        $superficie     = $request->superficie;
 		$CantidadEquipo = $request->CantidadEquipo;
 		$CantidadAV     = $request->CantidadAV;
 		$Capacidad      = $request->Capacidad;
@@ -170,6 +172,7 @@ class AulaController extends Controller
 		$Conexiones   = $request->Conexiones;
 
 		Aula::where('Tipo', $tipo)->update(['Tipo'           => $tipo_nuevo,
+                                            'superficie'     => $superficie,
 											'CantidadEquipo' => $CantidadEquipo,
 											'CantidadAV'     => $CantidadAV,
 											'Capacidad'      => $Capacidad,
