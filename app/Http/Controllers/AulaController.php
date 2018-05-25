@@ -13,15 +13,15 @@ use App\Aula;
 class AulaController extends Controller
 {
     public function index(){
-      $aulas  = Aula::all();
+      	$aulas  = Aula::all();
 
-      return view('infraestructura.aulas.index')
+      	return view('infraestructura.aulas.index')
           ->with(['aulas'=>$aulas]);
     }
 
     //----------------------------------------------------------------
 	public function create(){
-    $calificaciones = [1, 2, 3, 4];
+    	$calificaciones = [1, 2, 3, 4];
         return view('infraestructura.aulas.create')
             ->with(['calificaciones' => $calificaciones]);
 	}
@@ -32,9 +32,8 @@ class AulaController extends Controller
     $request->validate($this->rules());
 
     if ($request->hasFile('Fotografias')) {
-      if ($request->file('Fotografias')->isValid()) {
-        $request->Fotografias->storeAs('infraestructura/aulas/' . $request->Tipo,
-                                        $request->Fotografias->getClientOriginalName());
+      foreach($request->Fotografias as $foto){
+        $foto->storeAs('infraestructura/aulas/' . $request->Tipo, $foto->getClientOriginalName());
       }
     }
 
@@ -113,9 +112,8 @@ class AulaController extends Controller
         $request->validate($this->rules($tipo));
 
         if ($request->hasFile('Fotografias')) {
-          if ($request->file('Fotografias')->isValid()) {
-            $request->Fotografias->storeAs('infraestructura/aulas/' . $request->Tipo,
-                                            $request->Fotografias->getClientOriginalName());
+          foreach($request->Fotografias as $foto){
+            $foto->storeAs('infraestructura/aulas/' . $request->Tipo, $foto->getClientOriginalName());
           }
         }
 	  	$tipo_nuevo     = $request->Tipo;
@@ -237,9 +235,14 @@ class AulaController extends Controller
     return view('infraestructura.aulas.viewImg')->with(['tipo' => $tipo]);
   }
 
+  public function borrarImg($imagen, $tipo)
+  {
+    Storage::delete($imagen);
+    return redirect('infraestructura.aulas.viewImg')->with(['tipo' => $tipo]);
+  }
+
   #public function deleteImg($image){
   #  Storage::delete($image);
   #  return redirect()->action('AulaController@viewImg');
   #}
 }
-
