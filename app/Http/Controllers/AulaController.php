@@ -13,15 +13,15 @@ use App\Aula;
 class AulaController extends Controller
 {
     public function index(){
-      $aulas  = Aula::all();
+      	$aulas  = Aula::all();
 
-      return view('infraestructura.aulas.index')
+      	return view('infraestructura.aulas.index')
           ->with(['aulas'=>$aulas]);
     }
 
     //----------------------------------------------------------------
 	public function create(){
-    $calificaciones = [1, 2, 3, 4];
+    	$calificaciones = [1, 2, 3, 4];
         return view('infraestructura.aulas.create')
             ->with(['calificaciones' => $calificaciones]);
 	}

@@ -53,10 +53,10 @@
 <div name="tabla_principal">
 	<ul class="nav nav-tabs" role="tablist">
 	  	<li class="active">
-	  		<a href="#1" role="tab" data-toggle="tab">Formulario: entrada</a>
+	  		<a href="#1" role="tab" data-toggle="tab">Criterios de evaluación: captura y modificación de información</a>
 	  	</li>
 	  	<li>
-	  		<a href="#2" role="tab" data-toggle="tab">Formulario: salida</a>
+	  		<a href="#2" role="tab" data-toggle="tab">Generación de informe</a>
 	  	</li>
 	  	<li>
 	  		<a href="#3" role="tab" data-toggle="tab">Ayuda</a>
@@ -66,12 +66,13 @@
 	<!-- Tab panes -->
 	<div class="tab-content">
 	  	<div class="tab-pane active" id="1">
-	  		<br>
 	  		@component('layouts.componentes_inicio.formulario_entrada')
 	  		@endcomponent
 	  	</div>
 	  	<div class="tab-pane" id="2">
-	  		<br>
+	  		
+	  			<a href="#" class="btn btn-danger" style="margin: 10px;">Generar informe</a>
+	  		
 	  		@component('layouts.componentes_inicio.formulario_salida')
 	  		@endcomponent
 	  	</div>
