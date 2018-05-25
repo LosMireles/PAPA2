@@ -31,6 +31,7 @@ class CreateEquipoSoftwarePivotTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('equipo_software_pivot');
+        Schema::dropIfExists('equipo_software');
     }
 }
+

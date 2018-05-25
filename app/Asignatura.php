@@ -18,5 +18,6 @@ class Asignatura extends Model
     public function softwares(){
         return $this->BelongsToMany(Software::class);
     }
+
 }
 

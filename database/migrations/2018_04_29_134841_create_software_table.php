@@ -16,6 +16,7 @@ class CreateSoftwareTable extends Migration
         Schema::create('softwares', function (Blueprint $table) {
             $table -> increments('id')          -> unique()  -> unsigned();
             $table -> string('nombre')          -> unique();
+            $table -> string('version');
             $table -> boolean('manualUsuario');
             $table -> string('licencia');
             $table -> string('disponibilidad');
@@ -35,3 +36,4 @@ class CreateSoftwareTable extends Migration
         Schema::dropIfExists('softwares');
     }
 }
+

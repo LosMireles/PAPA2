@@ -14,13 +14,14 @@ class CreateEquiposTable extends Migration
     public function up()
     {
         Schema::create('equipos', function (Blueprint $table) {
-            $table -> increments('id')          -> unique()  -> unsigned();
-            $table -> string('serial')          -> unique();
-            $table -> boolean('manualUsuario');
-            $table -> boolean('operable');
-            $table -> string('localizacion');
-            $table -> string('tipo');
-            $table -> longText('descripcion')->nullable();
+            $table -> increments('id')         -> unique()    -> unsigned();
+            $table -> string('serial')         -> unique();
+            $table -> string('marca')          -> nullable();
+            $table -> boolean('manualUsuario') -> nullable();
+            $table -> boolean('operable')      -> nullable();
+            $table -> string('localizacion')   -> nullable();
+            $table -> string('tipo')           -> nullable();
+            $table -> longText('descripcion')  -> nullable();
 
             $table->timestamps();
         });
@@ -36,3 +37,4 @@ class CreateEquiposTable extends Migration
         Schema::dropIfExists('equipos');
     }
 }
+
