@@ -1,4 +1,4 @@
-@extends('layouts.inciso')
+@extends('layouts.inciso_general')
 
 @section('title')
   Inciso 9.1.6
@@ -13,45 +13,22 @@
 
 @section('formopen')
     {{Form::open(['action' => ['Inciso9_1_6Controller@update', $id],
-                  'class'  => 'form-horizontal'])}}
+                  'class'  => 'form'])}}
 @endsection
 
 @section('contenido_formulario')
-
 	@foreach($preguntas as $pregunta)
 		<div class="form-group">
-			<label for="{{$pregunta->id}}" class="col-sm-4 control-label">{{$pregunta->titulo}}</label>
+			<label for="{{$pregunta->id}}" class="control-label">
+			    {{$pregunta->titulo}}
+			</label>
 
-			<div class="col-sm-8">
-				<input type="hidden" class="form-control" id="{{$pregunta->id}}" name="{{$pregunta->id}}"value="{{$pregunta->respuesta}}">
+			<div>
+                <textarea class="form-control" id="{{$pregunta->id}}" name="{{$pregunta->id}}"value="{{$pregunta->respuesta}}">
+				</textarea>
 			</div>
 		</div>
 	@endforeach
-
-@endsection
-
-@section('Fotografias')
-  <h3 class="text-center">Evidencias de 9.1.6</h3>
-
-  <?php
-    $dirs = array_filter(glob('storage/infraestructura/aulas/*'), 'is_dir');
-  ?>
-  @foreach($dirs as $path)
-    <?php
-      $dirname = $path.'/';
-      $images= glob($dirname . "*.{[jJ][pP][gG],[pP][nN][gG],[gG][iI][fF],[jJ][pP][eE][gG]}", GLOB_BRACE);
-    ?>
-
-    @foreach ($images as $image)
-			<tr>
-      <td>
-        <img src="<?php echo asset($image)?>" width="320" height="200"
-							alt="<?php echo $image?>"></img>
-        <figcaption><?php echo pathinfo($image)['filename']?></figcaption>
-      </td>
-
-		@endforeach
-  @endforeach
 @endsection
 
 @section('cabeza_tabla')
@@ -65,13 +42,28 @@
 
 @section('cuerpo_tabla')
 
-    @foreach($espacios as $espacio)
-        <tr>
-            <td>{{$espacio->tipo}}</td>
-        <td>{{$espacio->superficie}}</td>
-        <td>{{$espacio->aula->Capacidad}}</td>
-        <td>{{$espacio->aula->Pizarron}}</td>
-        </tr>
-    @endforeach
+@endsection
+
+@section('Fotografias')
+    @slot('num_inciso', '9.1.6')
+
+  <?php
+    $dirs = array_filter(glob('storage/infraestructura/aulas/*'), 'is_dir');
+  ?>
+  @foreach($dirs as $path)
+    <?php
+      $dirname = $path.'/';
+      $images= glob($dirname . "*.{[jJ][pP][gG],[pP][nN][gG],[gG][iI][fF],[jJ][pP][eE][gG]}", GLOB_BRACE);
+    ?>
+
+    @foreach ($images as $image)
+      <td>
+        <img src="<?php echo asset($image)?>" width="320" height="200"
+							alt="<?php echo $image?>"></img>
+        <figcaption><?php echo pathinfo($image)['filename']?></figcaption>
+      </td>
+
+		@endforeach
+  @endforeach
 @endsection
 
