@@ -17,7 +17,7 @@
 			</td>
 			<td>
 				<ul class="list-unstyled">
-					<li><a href="">9.1.6 (Descripción)</a></li>
+					<li><a href="{{ url('/inciso_9_1_6') }}">9.1.6 (Descripción)</a></li>
 				</ul>
 			</td>
 		</tr>
@@ -33,8 +33,8 @@
 			</td>
 			<td>
 				<ul class="list-unstyled">
-					<li><a href="">9.1.9 (Descripción)</a></li>
-					<li><a href="">9.2.11 (Descripción)</a></li>
+					<li><a href="{{ url('/inciso_9_1_9') }}">9.1.9 (Descripción)</a></li>
+					<li><a href="{{ url('/inciso_9_2_11') }}">9.2.11 (Descripción)</a></li>
 				</ul>
 			</td>
 		</tr>
@@ -50,7 +50,7 @@
 			</td>
 			<td>
 				<ul class="list-unstyled">
-					<li><a href="">9.1.10 (Descripción)</a></li>
+					<li><a href="{{ url('/inciso_9_1_10') }}">9.1.10 (Descripción)</a></li>
 				</ul>
 			</td>
 		</tr>
@@ -66,7 +66,7 @@
 			</td>
 			<td>
 				<ul class="list-unstyled">
-					<li><a href="">9.1.13 (Descripción)</a></li>
+					<li><a href="{{ url('/inciso_9_1_13') }}">9.1.13 (Descripción)</a></li>
 				</ul>
 			</td>
 		</tr>
@@ -82,8 +82,8 @@
 			</td>
 			<td>
 				<ul class="list-unstyled">
-					<li><a href="">9.1.11 (Descripción)</a></li>
-					<li><a href="">9.1.12 (Descripción)</a></li>
+					<li><a href="{{ url('/inciso_9_1_11') }}">9.1.11 (Descripción)</a></li>
+					<li><a href="{{ url('/inciso_9_1_12') }}">9.1.12 (Descripción)</a></li>
 				</ul>
 			</td>
 		</tr>
@@ -99,9 +99,9 @@
 			</td>
 			<td>
 				<ul class="list-unstyled">
-					<li><a href="">9.2.5 (Descripción)</a></li>
-					<li><a href="">9.2.2 (Descripción)</a></li>
-					<li><a href="">9.2.1 (Descripción)</a></li>
+					<li><a href="{{ url('/inciso_9_2_5') }}">9.2.5 (Descripción)</a></li>
+					<li><a href="{{ url('/inciso_9_2_2') }}">9.2.2 (Descripción)</a></li>
+					<li><a href="{{ url('/inciso_9_2_1') }}">9.2.1 (Descripción)</a></li>
 				</ul>
 			</td>
 		</tr>
@@ -117,8 +117,8 @@
 			</td>
 			<td>
 				<ul class="list-unstyled">
-					<li><a href="">9.2.7 (Descripción)</a></li>
-					<li><a href="">9.1.8 (Descripción)</a></li>
+					<li><a href="{{ url('/inciso_9_2_7') }}">9.2.7 (Descripción)</a></li>
+					<li><a href="{{ url('/inciso_9_1_8') }}">9.1.8 (Descripción)</a></li>
 				</ul>
 			</td>
 		</tr>
@@ -134,9 +134,9 @@
 			</td>
 			<td>
 				<ul class="list-unstyled">
-					<li><a href="">9.1.4 (Descripción)</a></li>
-					<li><a href="">9.2.12 (Descripción)</a></li>
-					<li><a href="">9.2.14 (Descripción)</a></li>
+					<li><a href="{{ url('/inciso_9_1_4') }}">9.1.4 (Descripción)</a></li>
+					<li><a href="{{ url('/inciso_9_2_12') }}">9.2.12 (Descripción)</a></li>
+					<li><a href="{{ url('/inciso_9_2_14') }}">9.2.14 (Descripción)</a></li>
 				</ul>
 			</td>
 		</tr>
@@ -152,7 +152,7 @@
 			</td>
 			<td>
 				<ul class="list-unstyled">
-					<li><a href="">9.1.7 (Descripción)</a></li>
+					<li><a href="{{ url('/inciso_9_1_7') }}">9.1.7 (Descripción)</a></li>
 				</ul>
 			</td>
 		</tr>
