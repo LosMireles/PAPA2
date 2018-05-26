@@ -71,28 +71,36 @@ div.img span span{
 	</head>
 
     @foreach ($images as $image)
+
 			<body>
 				<figure>
 					<div class='buttonimg'>
 						<div class="img_div">
 							<img src="<?php echo asset($image)?>" width="320" height="200"
 								alt="<?php echo $image?>"/>
-							<figcaption class="text-center"><?php echo pathinfo($image)['filename']?></figcaption>
+							<figcaption class="text-center"><?php echo pathinfo($image)['basename']?></figcaption>
 
-							<form action="{{ route('borrarImg', ['imagen' => $image, 'tipo'=> $tipo]) }}" method="POST" enctype="multipart/form-data">
-
+							<!--<a href="{{ url('borrarImg', ['imagen' => $image, 'tipo'=> $tipo]) }}">-->
 								<div class="row text-center">
-									<button class="trailer_button" type="button">Borrar</button>
+									<!--<td>
+										<button class="trailer_button"
+											onclick="location.href='{!! route('borrarImg', ['imagen' => $image, 'tipo'=> $tipo]) !!}'">
+												Borrar
+										</button>
+									</td>-->
+
+
+									<form action="{{ route('borrarImg', ['tipo'=> $tipo, 'imagen' => pathinfo($image)['basename']]) }}" method="post">
+                    {{ csrf_field() }}
+                    <button class="trailer_button" type="submit" name="button">Borrar</button>
+									</form>
 								</div>
 
-							</form>
 
 						</div>
 					</div>
 				</figure>
 			</body>
-
-
 		@endforeach
 
 @endsection

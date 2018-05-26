@@ -49,6 +49,7 @@
         @endcomponent
         <td></td>
         <td></td>
+        <td></td>
    	</tr>
 @endsection
 
@@ -83,4 +84,3 @@
 	</tr>
 	@endforeach
 @endsection
-

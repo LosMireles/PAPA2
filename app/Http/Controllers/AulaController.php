@@ -235,10 +235,11 @@ class AulaController extends Controller
     return view('infraestructura.aulas.viewImg')->with(['tipo' => $tipo]);
   }
 
-  public function borrarImg($imagen, $tipo)
+  public function borrarImg($tipo, $imagen)
   {
-    Storage::delete($imagen);
-    return redirect('infraestructura.aulas.viewImg')->with(['tipo' => $tipo]);
+    $dirImagen = 'infraestructura/aulas/' . $tipo . '/' . $imagen;
+    Storage::delete($dirImagen);
+    return redirect('/aulas/'. $tipo .'/viewImg')->with(['tipo' => $tipo]);
   }
 
   #public function deleteImg($image){
