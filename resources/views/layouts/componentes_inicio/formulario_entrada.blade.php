@@ -23,7 +23,7 @@
 								{{ url('/inciso_9_1_6') }}
 							@endslot
 							@slot('titulo', 'Haga clic para ir al inciso')
-							@slot('mensaje', '9.1.6 (Descripción)')
+							@slot('mensaje', '9.1.6 (Características de las aulas)')
 						@endcomponent
 					</li>
 				</ul>
@@ -47,7 +47,7 @@
 								{{ url('/inciso_9_1_9') }}
 							@endslot
 							@slot('titulo', 'Haga clic para ir al inciso')
-							@slot('mensaje', '9.1.9 (Descripción)')
+							@slot('mensaje', '9.1.9 (Cubículos y áreas de profesores)')
 						@endcomponent
 					</li>
 					<li>
@@ -56,7 +56,7 @@
 								{{ url('/inciso_9_2_11') }}
 							@endslot
 							@slot('titulo', 'Haga clic para ir al inciso')
-							@slot('mensaje', '9.2.11 (Descripción)')
+							@slot('mensaje', '9.2.11 (Equipo de cómputo de maestros)')
 						@endcomponent
 					</li>
 				</ul>
@@ -80,7 +80,7 @@
 								{{ url('/inciso_9_1_10') }}
 							@endslot
 							@slot('titulo', 'Haga clic para ir al inciso')
-							@slot('mensaje', '9.1.10 (Descripción)')
+							@slot('mensaje', '9.1.10 (Espacios para asesoría y características)')
 						@endcomponent
 					</li>
 				</ul>
@@ -104,7 +104,7 @@
 								{{ url('/inciso_9_1_13') }}
 							@endslot
 							@slot('titulo', 'Haga clic para ir al inciso')
-							@slot('mensaje', '9.1.13 (Descripción)')
+							@slot('mensaje', '9.1.13 (Características de los Sanitarios)')
 						@endcomponent
 					</li>
 				</ul>
@@ -128,7 +128,7 @@
 								{{ url('/inciso_9_1_11') }}
 							@endslot
 							@slot('titulo', 'Haga clic para ir al inciso')
-							@slot('mensaje', '9.1.11 (Descripción)')
+							@slot('mensaje', '9.1.11 (Auditorios y actividades que ocurren en ellos)')
 						@endcomponent
 					</li>
 					<li>
@@ -137,7 +137,7 @@
 								{{ url('/inciso_9_1_12') }}
 							@endslot
 							@slot('titulo', 'Haga clic para ir al inciso')
-							@slot('mensaje', '9.1.12 (Descripción)')
+							@slot('mensaje', '9.1.12 (Auditorios y su higiene)')
 						@endcomponent
 					</li>
 				</ul>
@@ -161,7 +161,7 @@
 								{{ url('/inciso_9_2_5') }}
 							@endslot
 							@slot('titulo', 'Haga clic para ir al inciso')
-							@slot('mensaje', '9.2.5 (Descripción)')
+							@slot('mensaje', '9.2.5 (Plataformas de cómputo (Sistemas operativos))')
 						@endcomponent
 					</li>
 					<li>
@@ -170,7 +170,7 @@
 								{{ url('/inciso_9_2_2') }}
 							@endslot
 							@slot('titulo', 'Haga clic para ir al inciso')
-							@slot('mensaje', '9.2.2 (Descripción)')
+							@slot('mensaje', '9.2.2 (Tipos de Software del programa (case, lenguajes, manejadores de BD, paquetería en general))')
 						@endcomponent
 					</li>
 					<li>
@@ -179,7 +179,7 @@
 								{{ url('/inciso_9_2_1') }}
 							@endslot
 							@slot('titulo', 'Haga clic para ir al inciso')
-							@slot('mensaje', '9.2.1 (Descripción)')
+							@slot('mensaje', '9.2.1 (Software usados por asignatura)')
 						@endcomponent
 					</li>
 				</ul>
@@ -203,7 +203,7 @@
 								{{ url('/inciso_9_2_7') }}
 							@endslot
 							@slot('titulo', 'Haga clic para ir al inciso')
-							@slot('mensaje', '9.2.7 (Descripción)')
+							@slot('mensaje', '9.2.7 (Redes disponibles para el programa)')
 						@endcomponent
 					</li>
 					<li>
@@ -212,7 +212,7 @@
 								{{ url('/inciso_9_1_8') }}
 							@endslot
 							@slot('titulo', 'Haga clic para ir al inciso')
-							@slot('mensaje', '9.1.8 (Descripción)')
+							@slot('mensaje', '9.1.8 (Equipo de cómputo y audiovisual en las aulas)')
 						@endcomponent
 					</li>
 				</ul>
@@ -233,7 +233,7 @@
 								{{ url('/inciso_9_1_4') }}
 							@endslot
 							@slot('titulo', 'Haga clic para ir al inciso')
-							@slot('mensaje', '9.1.4 (Descripción general del perfil del técnico académico)')
+							@slot('mensaje', '9.1.4 (Perfil y experiencia de los responsables de los servicios de cómputo)')
 						@endcomponent
 					</li>
 					<li>
@@ -242,7 +242,7 @@
 								{{ url('/inciso_9_2_12') }}
 							@endslot
 							@slot('titulo', 'Haga clic para ir al inciso')
-							@slot('mensaje', '9.2.12 (Descripción)')
+							@slot('mensaje', '9.2.12 (Soporte técnico)')
 						@endcomponent
 					</li>
 					<li>
@@ -251,7 +251,7 @@
 								{{ url('/inciso_9_2_14') }}
 							@endslot
 							@slot('titulo', 'Haga clic para ir al inciso')
-							@slot('mensaje', '9.2.14 (Descripción)')
+							@slot('mensaje', '9.2.14 (Currículum del personal técnico)')
 						@endcomponent
 					</li>
 				</ul>

@@ -16,7 +16,7 @@ class CreateEquiposTable extends Migration
         Schema::create('equipos', function (Blueprint $table) {
             $table -> increments('id')            -> unique()    -> unsigned();
             $table -> string('serial')            -> unique();
-            $table -> string('sistema_operativo') -> unique();
+            $table -> string('sistema_operativo') -> nullable();
             $table -> string('marca')             -> nullable();
             $table -> longText('descripcion')     -> nullable();
 
@@ -34,4 +34,3 @@ class CreateEquiposTable extends Migration
         Schema::dropIfExists('equipos');
     }
 }
-
