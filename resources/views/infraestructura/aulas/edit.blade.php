@@ -22,6 +22,15 @@
         @section("extra", "required")
     @endcomponent
 
+	@component("layouts.text_input")
+        @slot("nombre_input", "superficie")
+        @slot("tooltip_input", "Superficie en metros cuadrados que abarca el aula")
+        @slot("label_input", "Superficie")
+        @slot("placeholder_input", "100")
+		@slot("valor_default", $aula->superficie)
+        @slot("extra", "required")
+    @endcomponent
+
     @component("layouts.text_input")
         @slot("nombre_input", "capacidad")
         @slot("tooltip_input", "Capacidad máxima del aula")
