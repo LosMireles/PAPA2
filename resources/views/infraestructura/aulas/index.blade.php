@@ -13,6 +13,19 @@
 
 @section('objeto_informacion', 'aulas')
 
+@if (session('status'))
+    <script>
+        window.setTimeout(function() {
+            $(".alert").fadeTo(500, 0).slideUp(500, function(){
+                $(this).remove();
+            });
+        }, 4000);
+    </script>
+    <div class="alert alert-success">
+        {{ session('status') }}
+    </div>
+@endif
+
 @section('cabeza_tabla')
    	<tr>
         @component('layouts.header_tabla')
