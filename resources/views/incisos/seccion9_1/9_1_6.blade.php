@@ -76,6 +76,19 @@
 <!-- ------------ SECCION DE FOTOGRAFIAS, EVIDENCIAS, ETC ------------- -->
 
 @section('Fotografias')
+
+<style type='text/css'>
+  .img_div {
+    float: left;
+    margin-right: 10px;
+    margin-bottom: 15px;
+
+  }
+  img{
+    width: auto;
+    max-height: 100%
+  }
+</style>
     <h3 align="center">
         Fotografias del inciso 9.1.6
     </h3>
@@ -88,16 +101,18 @@
       $dirname = $path.'/';
       $images= glob($dirname . "*.{[jJ][pP][gG],[pP][nN][gG],[gG][iI][fF],[jJ][pP][eE][gG]}", GLOB_BRACE);
     ?>
-
     @foreach ($images as $image)
-      <td>
-        <img src="<?php echo asset($image)?>" width="320" height="200"
-							alt="<?php echo $image?>"></img>
-        <figcaption><?php echo pathinfo($image)['filename']?></figcaption>
-      </td>
 
+  		<figure>
+  				<div class="img_div">
+  					<img src="<?php echo asset($image)?>" height="220"
+  						alt="<?php echo $image?>"/>
+  					<figcaption class="text-center"><?php echo pathinfo($image)['basename']?></figcaption>
+  				</div>
+  		</figure>
 		@endforeach
   @endforeach
+
 @endsection
 
 @section('boton_guardar')
@@ -106,4 +121,3 @@
         {{ Form::close() }}
     </div>
 @endsection
-
