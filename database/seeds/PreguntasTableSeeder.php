@@ -13,6 +13,24 @@ class PreguntasTableSeeder extends Seeder
     {
 
         App\Pregunta::create(array(
+        	'inciso' => '9.1.1',
+        	'numero' => '1',
+        	'titulo' => 'Mencionar las condiciones de trabajo, seguridad e higiene de los servicios de cómputo.',
+                        # Explicacion
+                        # dimension de ares de trabajo, ventilación, iluminación, aire acondicionado, extinguidores, salidas de emergencia, depositos
+            'respuesta' => '',
+        ));
+
+        App\Pregunta::create(array(
+        	'inciso' => '9.1.2',
+        	'numero' => '1',
+        	'titulo' => 'Exeptuando a los programas que correspondan al perfil de Licenciado en Informática, todos los programas deberán disponer de al menos un labaratorio de electrónica acondicionado que los soporte',
+                # TABLE
+                        # Explicacion
+            'respuesta' => '',
+        ));
+
+        App\Pregunta::create(array(
         	'inciso' => '9.1.3',
         	'numero' => '1',
         	'titulo' => 'Mencionar los servicios de cómputo existentes para cursos y actividades especializadas',
@@ -29,9 +47,26 @@ class PreguntasTableSeeder extends Seeder
         ));
 
         App\Pregunta::create(array(
+            'inciso' => '9.1.5',
+            'numero' => '1',
+            'titulo' => '¿Se toma en cuenta la opinión de los profesores que participan en el programa para el diseño, equipamiento y operación de los servicios de cómputo?',
+                        # Explicacion
+            'respuesta' => '',
+        ));
+
+        App\Pregunta::create(array(
+            'inciso' => '9.1.5',
+            'numero' => '2',
+            'titulo' => '¿De que manera?',
+                        # Explicacion
+            'respuesta' => '',
+        ));
+
+        App\Pregunta::create(array(
         	'inciso' => '9.1.6',
         	'numero' => '1',
         	'titulo' => '¿Cuál es la descripción de las aulas en cuanto, higiene, seguridad, iluminación, ventilación, temperatura, aislamiento de ruido y mobiliario?',
+                # TABLE
                         # De que manera
         ));
 
@@ -120,6 +155,30 @@ class PreguntasTableSeeder extends Seeder
         ));
 
         App\Pregunta::create(array(
+            'inciso' => '9.1.12',
+            'numero' => '1',
+            'titulo' => 'De los espacios mencionados en el punto 9.1.11, se debe tener un lugar cómodo por cada diez estudiantes inscritos en el programa, ofreciendo las condiciones adecuadas de higiene y seguridad. ¿Cuántos lugares disponibles existen?',
+                        # Explicacion
+            'respuesta' => '',
+        ));
+
+        App\Pregunta::create(array(
+            'inciso' => '9.1.12',
+            'numero' => '',
+            'titulo' => '¿Ofrecen las condiciones adecuadas de higiene?',
+                        # Explicacion
+            'respuesta' => '',
+        ));
+
+        App\Pregunta::create(array(
+            'inciso' => '9.1.12',
+            'numero' => '3',
+            'titulo' => '¿Ofrecen condiciones adecuadas de seguridad?',
+                        # Explicacion
+            'respuesta' => '',
+        ));
+
+        App\Pregunta::create(array(
             'inciso' => '9.1.13',
             'numero' => '1',
             'titulo' => '¿Considera las facilidades sanitarias adecuadas?',
@@ -169,10 +228,34 @@ class PreguntasTableSeeder extends Seeder
         ));
 
         App\Pregunta::create(array(
+            'inciso' => '9.2.3',
+            'numero' => '1',
+            'titulo' => 'Explique de qué manera se garantiza que el equipo de cómputo requerido esté disponible para la realización de las prácticas en las materias del programa que así lo requieran.',
+                        # Explicacion
+            'respuesta' => '',
+        ));
+
+        App\Pregunta::create(array(
+            'inciso' => '9.2.4',
+            'numero' => '1',
+            'titulo' => '¿Se cuenta con el número suficiente  de computadoras que estén disponibles y accesibles para los estudiantes del programa en función de el número de horas de infraestructura de cómputo requeridas por el Plan de Estudios.',
+                        # Explicacion
+            'respuesta' => '',
+        ));
+
+        App\Pregunta::create(array(
             'inciso' => '9.2.5',
             'numero' => '1',
             'titulo' => 'Describir los tipos de plataforma de cómputo disponibles para los estudiantes y el personal docente.',
                     # Describalos
+        ));
+
+        App\Pregunta::create(array(
+            'inciso' => '9.2.6',
+            'numero' => '1',
+            'titulo' => 'Describir las capacidades de impresión disponibles para los estudiantes y el personal docente del programa.',
+                        # Explicacion
+            'respuesta' => '',
         ));
 
         App\Pregunta::create(array(
@@ -212,9 +295,57 @@ class PreguntasTableSeeder extends Seeder
 
         App\Pregunta::create(array(
             'inciso' => '9.2.7',
-            'numero' => '5',
+            'numero' => '6',
             'titulo' => '¿Con qué paquetes de software se cuenta en la red académica de la institución para apoyo del programa que se evalúa?',
                     # Describalos
+        ));
+
+        App\Pregunta::create(array(
+            'inciso' => '9.2.8',
+            'numero' => '1',
+            'titulo' => 'Describir la documentación para los sistema de hardware y software disponibles para los estudiantes y profesores. Explicar cómo los estudiantes y profesores tienen acceso adecuado a ala documentación, asi como el horario en que está disponible.',
+                        # Explicacion
+            'respuesta' => '',
+        ));
+
+        App\Pregunta::create(array(
+            'inciso' => '9.2.9',
+            'numero' => '1',
+            'titulo' => '¿Cuáles son los horarios de los Servicios de Cómputo con los que cuenta el programa?',
+                        # Explicacion
+            'respuesta' => '',
+        ));
+
+        App\Pregunta::create(array(
+            'inciso' => '9.2.9',
+            'numero' => '2',
+            'titulo' => 'Si hay personal de apoyo. ¿Cuál es su horario, funciones y cantidad?',
+                        # Explicacion
+            'respuesta' => '',
+        ));
+
+        App\Pregunta::create(array(
+            'inciso' => '9.2.9',
+            'numero' => '3',
+            'titulo' => '¿Qué tipo de personal está disponible para instalar, mantener y administrar el hardware, software y redes de la institución?',
+                        # Explicacion
+            'respuesta' => '',
+        ));
+
+        App\Pregunta::create(array(
+            'inciso' => '9.2.10',
+            'numero' => '1',
+            'titulo' => '¿Existe un reglamento de los servicios de cómputo?',
+                        # Explicacion
+            'respuesta' => '',
+        ));
+
+        App\Pregunta::create(array(
+            'inciso' => '9.2.10',
+            'numero' => '1',
+            'titulo' => 'En caso afirmativo, ¿se encuentra disponible para los usuarios?',
+                        # Explicacion
+            'respuesta' => '',
         ));
 
         App\Pregunta::create(array(
@@ -261,16 +392,30 @@ class PreguntasTableSeeder extends Seeder
 
         App\Pregunta::create(array(
             'inciso' => '9.2.13',
-            'numero' => '15',
+            'numero' => '1',
             'titulo' => '¿Existen registros de los usuarios de los servicio de cómputo?',
                     # Los datos deben estar organzados por periodos, tambien debe llevar un registro de los programas utilizados
         ));
 
         App\Pregunta::create(array(
             'inciso' => '9.2.14',
-            'numero' => '16',
-            'titulo' => '¿El técnico asignado cuenta con un perfil adecuado para dar soporte a infraestructura, telecomunicaciones, redes, aplicaciones, desarrollo, entre otras? En cualquier caso explique brevemente.',
-                    # Entre otrasÑ tecnologias emergentes, administracion, mineria de datos, soluciones intelignestes, reingeneria de procesos, TIC.
+            'numero' => '1',
+            'titulo' => '¿El técnico asignado cuenta con un perfil adecuado para dar soporte a infraestructura, telecomunicaciones, redes, aplicaciones, desarrollo, entre otras?',
+                    # Responeder sí o no.
+        ));
+
+        App\Pregunta::create(array(
+            'inciso' => '9.2.14',
+            'numero' => '2',
+            'titulo' => 'En cualquier caso explique brevemente.',
+                    # Dar descripción.
+        ));
+
+        App\Pregunta::create(array(
+            'inciso' => '9.2.14',
+            'numero' => '3',
+            'titulo' => 'Proporcione el Curriculum de cada uno, así como una lista de sus nombres, grados académicos, certificados pertinenetes, años de experiencia en el área de competencia relacionados con lo aquí señalado',
+                    # Dar descripción.
         ));
 
         # -------------------------------------------------------------------------

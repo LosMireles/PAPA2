@@ -5,7 +5,7 @@
     -->
         {{$controlador_borrar}}
         {{ Form::hidden('_method', 'DELETE') }}
-        {{ Form::submit('Borrar', ['class' => 'btn btn-warning']) }}
+        {{ Form::submit('Borrar', ['class' => 'btn btn-danger']) }}
     {{ Form::close() }}
 </td>
 

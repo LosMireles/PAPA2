@@ -12,7 +12,6 @@ use File;
 use App\TecnicoAcademico;
 use App\Software;
 use App\Equipo;
-use App\Espacio;
 
 use Storage;
 use Response;
@@ -35,9 +34,7 @@ class TecnicoAcademicoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create(){
-        $espacios = Espacio::all();
-        $dias_semana = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado', 'Domingo'];
-        return view('tecnico_academico/create', ['espacios' => $espacios, 'dias_semana' => $dias_semana]);
+        return view('tecnico_academico/create');
     }
 
     /**
@@ -53,18 +50,16 @@ class TecnicoAcademicoController extends Controller
         $tecnico = new TecnicoAcademico;
 
         $tecnico->nombre = $request->nombre;
-        $tecnico->localizacion = $request->localizacion;
-        $tecnico->hora_inicio = $request->hora_inicio;
-        $tecnico->hora_termino = $request->hora_termino;
-        $tecnico->dia_inicio = $request->dia_inicio;
-        $tecnico->dia_termino = $request->dia_termino;
+        $tecnico->grado_academico = $request->grado_academico;
+        $tecnico->certificados = $request->certificados;
+        $tecnico->anios_exp = $request->anios_exp;
 
-        $document = $request->file('curriculo');
+        //$document = $request->file('curriculo');
 
-        if($document){
+        /*if($document){
             $tecnico->curriculum = $document->getClientOriginalName();
             $document->move(public_path('/curriculos'), $document->getClientOriginalName());
-        }
+        }*/
 
         $tecnico->save();
 
@@ -92,9 +87,7 @@ class TecnicoAcademicoController extends Controller
     public function edit($id)
     {
         $tecnico = TecnicoAcademico::where('id', $id)->first();
-        $espacios = Espacio::all();
-        $dias_semana = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado', 'Domingo'];
-        return view('tecnico_academico/edit',['tecnico'=>$tecnico, 'espacios'=>$espacios, 'dias_semana'=>$dias_semana]);
+        return view('tecnico_academico/edit',['tecnico'=>$tecnico]);
     }
 
     /**
@@ -161,7 +154,7 @@ class TecnicoAcademicoController extends Controller
         }
         $tecnico->delete();
         echo "Elemento borrado exitosamente!";
-        return redirect()->action('TecnicoAcademicoController@index');
+        return redirect()->action('Inciso9_2_14Controller@index');
     }
 
     public function rules($nombre = null){

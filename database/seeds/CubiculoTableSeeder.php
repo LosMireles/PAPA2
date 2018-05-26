@@ -12,26 +12,26 @@ class CubiculoTableSeeder extends Seeder
     public function run()
     {
         /*
-        $cubiculo->Tipo           = $request->Tipo;
-        $cubiculo->Profesor       = $request->Profesor;
-        $cubiculo->CantidadEquipo = $request->CantidadEquipo;
+        $cubiculo->nombre           = $request->nombre;
+        $cubiculo->profesor       = $request->profesor;
+        $cubiculo->cantidad_equipo = $request->cantidad_equipo;
         */
         App\Cubiculo::create(array(
-            'Tipo'          => 'Cubiculo 1 3K4',
-            'Profesor'      => 'Olivia Gutu',
-            'CantidadEquipo'=> '1',
+            'nombre'          => 'Cubiculo 1 3K4',
+            'profesor'      => 'Olivia Gutu',
+            'cantidad_equipo'=> '1',
         ));
 
         App\Cubiculo::create(array(
-            'Tipo'          => 'Cubiculo 2 3K4',
-            'Profesor'      => 'Julio Waissman',
-            'CantidadEquipo'=> '1',
+            'nombre'          => 'Cubiculo 2 3K4',
+            'profesor'      => 'Julio Waissman',
+            'cantidad_equipo'=> '1',
         ));
 
         App\Cubiculo::create(array(
-            'Tipo'          => 'Cubiculo 3 3K4',
-            'Profesor'      => 'Adrian Vazquez',
-            'CantidadEquipo'=> '1',
+            'nombre'          => 'Cubiculo 3 3K4',
+            'profesor'      => 'Adrian Vazquez',
+            'cantidad_equipo'=> '1',
         ));
     }
 }

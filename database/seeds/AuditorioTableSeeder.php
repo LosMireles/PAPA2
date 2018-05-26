@@ -12,43 +12,28 @@ class AuditorioTableSeeder extends Seeder
     public function run()
     {
         App\Auditorio::create(array(
-            'Tipo'                  => 'Enrique Valle Flores',
-            'CantidadEquipo'        => '2',
-            'CantidadAV'            => '1',
-            'Capacidad'             => '130',
-            'CantidadSanitarios'    => '2',
+            'nombre'                => 'Enrique Valle Flores',
+            'capacidad'             => '130',
         ));
 
         App\Auditorio::create(array(
-            'Tipo'                  => 'Sala de uso multiples de la División de Ciencias Exactas y Naturales',
-            'CantidadEquipo'        => '1',
-            'CantidadAV'            => '1',
-            'Capacidad'             => '30',
-            'CantidadSanitarios'    => '2',
+            'nombre'                => 'Sala de uso multiples de la División de Ciencias Exactas y Naturales',
+            'capacidad'             => '30',
         ));
 
         App\Auditorio::create(array(
-            'Tipo'                  => 'Sala de juntas 3K4',
-            'CantidadEquipo'        => '1',
-            'CantidadAV'            => '1',
-            'Capacidad'             => '12',
-            'CantidadSanitarios'    => '4',
+            'nombre'                => 'Sala de juntas 3K4',
+            'capacidad'             => '12',
         ));
 
         App\Auditorio::create(array(
-            'Tipo'                  => 'Auditorio de Dirección de Servicios Estundiantiles',
-            'CantidadEquipo'        => '2',
-            'CantidadAV'            => '2',
-            'Capacidad'             => '100',
-            'CantidadSanitarios'    => '2',
+            'nombre'                => 'Auditorio de Dirección de Servicios Estundiantiles',
+            'capacidad'             => '100',
         ));
 
         App\Auditorio::create(array(
-            'Tipo'                  => 'Teatro Emiliana de Zubeldía',
-            'CantidadEquipo'        => '1',
-            'CantidadAV'            => '1',
-            'Capacidad'             => '460',
-            'CantidadSanitarios'    => '4',
+            'nombre'                => 'Teatro Emiliana de Zubeldía',
+            'capacidad'             => '460',
         ));
 
 

@@ -11,151 +11,136 @@ class AulaTableSeeder extends Seeder
      */
     public function run()
     {
-        /*
-        $aula->Tipo           = $request->Tipo;
-    	$aula->CantidadEquipo = $request->CantidadEquipo;
-    	$aula->CantidadAV     = $request->CantidadAV;
-    	$aula->Capacidad      = $request->Capacidad;
-
-        $aula->SillasPaleta = '1'; '0'
-        $aula->MesasTrabajo = '1'; '0'
-        $aula->Isotopica = '1'; '0'
-        $aula->Estrado = '1'; '0'
-
-         los siguientes van de 1-4
-        $aula->Pizarron     = $request->Pizarron;
-        $aula->Illuminacion = $request->Illuminacion;
-        $aula->AislamientoR = $request->AislamientoR;
-        $aula->Ventilacion  = $request->Ventilacion;
-        $aula->Temperatura  = $request->Temperatura;
-        $aula->Espacio      = $request->Espacio;
-        $aula->Mobilario    = $request->Mobilario;
-        $aula->Conexiones   = $request->Conexiones;
-        */
         App\Aula::create(array(
-            'Tipo'          => '3K4-A101',
-            'CantidadEquipo'=> '1',
-            'CantidadAV'    => '2',
-            'Capacidad'     => '40',
+            'nombre'            => '3K4-A101',
+            'superficie'        => '1',
+            'capacidad'         => '30',
 
-            'SillasPaleta'  => '1',
-            'MesasTrabajo'  => '0',
-            'Isotopica'     => '1',
-            'Estrado'       => '0',
+            'sillas_paleta'     => '1',
+            'mesas_trabajo'     => '0',
+            'isotopica'         => '1',
+            'estrado'           => '0',
 
-            'Pizarron'      => '2',
-            'Illuminacion'  => '3',
-            'AislamientoR'  => '4',
-            'Ventilacion'   => '1',
-            'Temperatura'   => '2',
-            'Espacio'       => '4',
-            'Mobilario'     => '3',
-            'Conexiones'    => '2',
+            'pizarron'          => '2',
+            'iluminacion'       => '3',
+            'aislamiento_ruido' => '4',
+            'ventilacion'       => '2',
+            'temperatura'       => '1',
+            'espacio'           => '4',
+            'mobilario'         => '3',
+            'conexiones'        => '2',
+
+            'asesoria'          => '0',
         ));
 
         App\Aula::create(array(
-            'Tipo'          => '3K4-A102',
-            'CantidadEquipo'=> '1',
-            'CantidadAV'    => '1',
-            'Capacidad'     => '30',
+            'nombre'            => '3K4-A102',
+            'superficie'        => '1',
+            'capacidad'         => '30',
 
-            'SillasPaleta'  => '1',
-            'MesasTrabajo'  => '0',
-            'Isotopica'     => '1',
-            'Estrado'       => '0',
+            'sillas_paleta'     => '1',
+            'mesas_trabajo'     => '0',
+            'isotopica'         => '1',
+            'estrado'           => '0',
 
-            'Pizarron'      => '2',
-            'Illuminacion'  => '3',
-            'AislamientoR'  => '4',
-            'Ventilacion'   => '1',
-            'Temperatura'   => '2',
-            'Espacio'       => '4',
-            'Mobilario'     => '3',
-            'Conexiones'    => '2',
+            'pizarron'          => '2',
+            'iluminacion'       => '3',
+            'aislamiento_ruido' => '4',
+            'ventilacion'       => '2',
+            'temperatura'       => '1',
+            'espacio'           => '4',
+            'mobilario'         => '3',
+            'conexiones'        => '2',
+
+            'asesoria'          => '0',
         ));
 
         App\Aula::create(array(
-            'Tipo'          => '3K2-A201',
-            'CantidadEquipo'=> '0',
-            'CantidadAV'    => '2',
-            'Capacidad'     => '20',
+            'nombre'            => '3K2-A201',
+            'superficie'        => '1',
+            'capacidad'         => '30',
 
-            'SillasPaleta'  => '1',
-            'MesasTrabajo'  => '0',
-            'Isotopica'     => '1',
-            'Estrado'       => '0',
+            'sillas_paleta'     => '1',
+            'mesas_trabajo'     => '0',
+            'isotopica'         => '1',
+            'estrado'           => '0',
 
-            'Pizarron'      => '2',
-            'Illuminacion'  => '3',
-            'AislamientoR'  => '4',
-            'Ventilacion'   => '1',
-            'Temperatura'   => '2',
-            'Espacio'       => '4',
-            'Mobilario'     => '3',
-            'Conexiones'    => '2',
+            'pizarron'          => '2',
+            'iluminacion'       => '3',
+            'aislamiento_ruido' => '4',
+            'ventilacion'       => '2',
+            'temperatura'       => '1',
+            'espacio'           => '4',
+            'mobilario'         => '3',
+            'conexiones'        => '2',
+
+            'asesoria'          => '0',
         ));
 
         App\Aula::create(array(
-            'Tipo'          => '3K2-A301',
-            'CantidadEquipo'=> '0',
-            'CantidadAV'    => '2',
-            'Capacidad'     => '20',
+            'nombre'            => '3K2-A301',
+            'superficie'        => '1',
+            'capacidad'         => '30',
 
-            'SillasPaleta'  => '1',
-            'MesasTrabajo'  => '0',
-            'Isotopica'     => '1',
-            'Estrado'       => '0',
+            'sillas_paleta'     => '1',
+            'mesas_trabajo'     => '0',
+            'isotopica'         => '1',
+            'estrado'           => '0',
 
-            'Pizarron'      => '2',
-            'Illuminacion'  => '3',
-            'AislamientoR'  => '4',
-            'Ventilacion'   => '1',
-            'Temperatura'   => '2',
-            'Espacio'       => '4',
-            'Mobilario'     => '3',
-            'Conexiones'    => '2',
+            'pizarron'          => '2',
+            'iluminacion'       => '3',
+            'aislamiento_ruido' => '4',
+            'ventilacion'       => '2',
+            'temperatura'       => '1',
+            'espacio'           => '4',
+            'mobilario'         => '3',
+            'conexiones'        => '2',
+
+            'asesoria'          => '0',
         ));
 
         App\Aula::create(array(
-            'Tipo'          => '3K2-A303',
-            'CantidadEquipo'=> '0',
-            'CantidadAV'    => '2',
-            'Capacidad'     => '20',
+            'nombre'            => '3K2-A303',
+            'superficie'        => '1',
+            'capacidad'         => '30',
 
-            'SillasPaleta'  => '1',
-            'MesasTrabajo'  => '0',
-            'Isotopica'     => '1',
-            'Estrado'       => '0',
+            'sillas_paleta'     => '1',
+            'mesas_trabajo'     => '0',
+            'isotopica'         => '1',
+            'estrado'           => '0',
 
-            'Pizarron'      => '2',
-            'Illuminacion'  => '3',
-            'AislamientoR'  => '4',
-            'Ventilacion'   => '1',
-            'Temperatura'   => '2',
-            'Espacio'       => '4',
-            'Mobilario'     => '3',
-            'Conexiones'    => '2',
+            'pizarron'          => '2',
+            'iluminacion'       => '3',
+            'aislamiento_ruido' => '4',
+            'ventilacion'       => '2',
+            'temperatura'       => '1',
+            'espacio'           => '4',
+            'mobilario'         => '3',
+            'conexiones'        => '2',
+
+            'asesoria'          => '0',
         ));
 
         App\Aula::create(array(
-            'Tipo'          => '3K1-L101',
-            'CantidadEquipo'=> '0',
-            'CantidadAV'    => '2',
-            'Capacidad'     => '20',
-            
-            'SillasPaleta'  => '1',
-            'MesasTrabajo'  => '0',
-            'Isotopica'     => '1',
-            'Estrado'       => '0',
+            'nombre'            => '3K1-A204',
+            'superficie'        => '1',
+            'capacidad'         => '30',
 
-            'Pizarron'      => '2',
-            'Illuminacion'  => '3',
-            'AislamientoR'  => '4',
-            'Ventilacion'   => '1',
-            'Temperatura'   => '2',
-            'Espacio'       => '4',
-            'Mobilario'     => '3',
-            'Conexiones'    => '2',
+            'sillas_paleta'     => '1',
+            'mesas_trabajo'     => '0',
+            'isotopica'         => '1',
+            'estrado'           => '0',
+
+            'pizarron'          => '2',
+            'iluminacion'       => '3',
+            'aislamiento_ruido' => '4',
+            'ventilacion'       => '2',
+            'temperatura'       => '1',
+            'espacio'           => '4',
+            'mobilario'         => '3',
+            'conexiones'        => '2',
+
+            'asesoria'          => '0',
         ));
 
     }
