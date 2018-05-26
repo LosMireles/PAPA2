@@ -9,10 +9,24 @@
         Regresar
     </a>
 
-    <h1 class="text-center">Evidencias de asesoria <?php echo $tipo; ?></h1>
+		<div class="row text-center">
+			<div class="col-md-6 col-md-offset-3">
+				<form class="form-horizontal" action = "{{action('AsesoriaController@guardarImg',['tipo'=>$tipo])}}" method="POST" enctype="multipart/form-data">
+					<input type = "hidden" name = "_token" value = "{{csrf_token()}}">
+
+					<div class="col-sm-8">
+            <input type='file' class="form-control" name='Fotografias[]' id="Fotografias" multiple accept=".gif,.bmp,.jpg,.png, .jpeg"/>
+					</div>
+					<button type='submit' class="btn btn-primary">Agregar fotografía</button>
+				</form>
+			</div>
+		</div>
+
 @endsection
 
 @section('Fotografias')
+	<h1 class="text-center">Evidencias de asesoria <?php echo $tipo; ?></h1>
+
   <?php
     $dirname = 'storage/infraestructura/asesorias/' . $tipo . '/';
     $images= glob($dirname . "*.{[jJ][pP][gG],[pP][nN][gG],[gG][iI][fF],[jJ][pP][eE][gG]}", GLOB_BRACE);

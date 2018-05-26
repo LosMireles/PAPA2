@@ -1,36 +1,7 @@
 @extends('layouts.verImagenes')
 
-<style>
-div.img{
-  display:table;
-}
-div.img img{
- margin:0;
- padding:0;
-}
-div.img span{
- line-height:normal;
- font-size:11px;
- display:table-caption;
- margin:0;
- padding:0;
- background:#646464;
- color:white;
- font-style:italic;
- text-align:center;
- position:relative;
- height:0;
-}
-div.img span span{
- background:rgba(0, 0, 0, 0.4);
- display:block;
- padding:3px;
- text-shadow:0 0 15px white;
-}
-</style>
-
 @section('title')
-	 editar aula <?php $tipo; ?>
+	 Fotografias aula <?php $tipo; ?>
 @endsection
 
 @section('descripcion')

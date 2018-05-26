@@ -120,6 +120,15 @@ class AuditorioController extends Controller
       return view('infraestructura.auditorios.viewImg')->with(['tipo' => $tipo]);
     }
 
+    public function guardarImg(Request $request, $tipo){
+      if ($request->hasFile('Fotografias')) {
+        foreach($request->Fotografias as $foto){
+          $foto->storeAs('infraestructura/auditorios/' . $tipo, $foto->getClientOriginalName());
+        }
+      }
+      return redirect('/auditorios/'. $tipo .'/viewImg')->with(['tipo' => $tipo]);
+    }
+
     public function borrarImg($tipo, $imagen)
     {
       $dirImagen = 'infraestructura/auditorios/' . $tipo . '/' . $imagen;

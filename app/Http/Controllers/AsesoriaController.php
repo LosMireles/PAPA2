@@ -123,6 +123,15 @@ class AsesoriaController extends Controller
       return view('infraestructura.asesorias.viewImg')->with(['tipo' => $tipo]);
     }
 
+    public function guardarImg(Request $request, $tipo){
+      if ($request->hasFile('Fotografias')) {
+        foreach($request->Fotografias as $foto){
+          $foto->storeAs('infraestructura/asesorias/' . $tipo, $foto->getClientOriginalName());
+        }
+      }
+      return redirect('/asesorias/'. $tipo .'/viewImg')->with(['tipo' => $tipo]);
+    }
+
     public function borrarImg($tipo, $imagen)
     {
       $dirImagen = 'infraestructura/asesorias/' . $tipo . '/' . $imagen;

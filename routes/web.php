@@ -39,6 +39,10 @@ Route::get('/sanitarios/{tipo}/viewImg', 'SanitarioController@viewImg');
 
 // Rutas para agregar imagenes a infraestructura
 Route::post('/aulas/{tipo}/guardarImg', 'AulaController@guardarImg');
+Route::post('/asesorias/{tipo}/guardarImg', 'AsesoriaController@guardarImg');
+Route::post('/auditorios/{tipo}/guardarImg', 'AuditorioController@guardarImg');
+Route::post('/cubiculos/{tipo}/guardarImg', 'CubiculoController@guardarImg');
+Route::post('/sanitarios/{tipo}/guardarImg', 'SanitarioController@guardarImg');
 
 // Rutas para borrar imagenes de infraestructura
 // Aulas

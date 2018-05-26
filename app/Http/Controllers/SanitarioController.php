@@ -123,6 +123,15 @@ class SanitarioController extends Controller
     return view('infraestructura.sanitarios.viewImg')->with(['tipo' => $tipo]);
   }
 
+  public function guardarImg(Request $request, $tipo){
+    if ($request->hasFile('Fotografias')) {
+      foreach($request->Fotografias as $foto){
+        $foto->storeAs('infraestructura/sanitarios/' . $tipo, $foto->getClientOriginalName());
+      }
+    }
+    return redirect('/sanitarios/'. $tipo .'/viewImg')->with(['tipo' => $tipo]);
+  }
+
   public function borrarImg($tipo, $imagen)
   {
     $dirImagen = 'infraestructura/sanitarios/' . $tipo . '/' . $imagen;

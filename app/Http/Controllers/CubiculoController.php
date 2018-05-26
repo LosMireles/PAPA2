@@ -120,6 +120,15 @@ class CubiculoController extends Controller {
     return view('infraestructura.cubiculos.viewImg')->with(['tipo' => $tipo]);
   }
 
+  public function guardarImg(Request $request, $tipo){
+    if ($request->hasFile('Fotografias')) {
+      foreach($request->Fotografias as $foto){
+        $foto->storeAs('infraestructura/cubiculos/' . $tipo, $foto->getClientOriginalName());
+      }
+    }
+    return redirect('/cubiculos/'. $tipo .'/viewImg')->with(['tipo' => $tipo]);
+  }
+
   public function borrarImg($tipo, $imagen)
   {
     $dirImagen = 'infraestructura/cubiculos/' . $tipo . '/' . $imagen;
