@@ -16,6 +16,8 @@
                   'class'  => 'form'])}}
 @endsection
 
+<!-------------- LAS PREGUNTAS Y SUS RESPUESTAS--------------->
+
 @section('contenido_formulario')
 	@foreach($preguntas as $pregunta)
 		<div class="form-group">
@@ -31,6 +33,8 @@
 	@endforeach
 @endsection
 
+<!-------------- LAS TABLAS QUE CORRESPONDAN--------------->
+
 @section('cabeza_tabla')
     <tr>
         <th>Nombre</th>
@@ -44,8 +48,12 @@
 
 @endsection
 
+<!-------------- SECCION DE FOTOGRAFIAS, EVIDENCIAS, ETC--------------->
+
 @section('Fotografias')
-    @slot('num_inciso', '9.1.6')
+    @component('layouts.inciso_general')
+        @slot('num_inciso', '9.1.6')
+    @endcomponent
 
   <?php
     $dirs = array_filter(glob('storage/infraestructura/aulas/*'), 'is_dir');

@@ -48,16 +48,10 @@
 
     <hr>
 
+    <h3 align="center">
+        Fotografias del inciso {{$num_inciso or ""}}
+    </h3>
     @yield('Fotografias')
-    <table class="table table-hover">
-        <thead style="background-color: #ed2a2a; color: white;">
-            <tr>
-                <th>
-                    Fotografias de {{$num_inciso or ""}}
-                </th>
-            </tr>
-        </thead>
-    </table>
 
 @endsection
 
