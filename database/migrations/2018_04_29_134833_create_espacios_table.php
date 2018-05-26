@@ -16,9 +16,9 @@ class CreateEspaciosTable extends Migration
         Schema::create('espacios', function (Blueprint $table) {
             $table -> increments('id')       -> unique()  -> unsigned();
             $table -> string('tipo')         -> unique();
-            $table -> integer('superficie');
-            $table -> integer('cantidad');
-            $table -> string('clase');
+            $table -> integer('superficie')->nullable();
+            $table -> integer('cantidad')->nullable();
+            $table -> string('clase')->nullable();
 
             $table->timestamps();
         });

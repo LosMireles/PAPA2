@@ -14,14 +14,14 @@ class CreateTecnicoacademicoTable extends Migration
     public function up()
     {
         Schema::create('tecnicoacademico', function (Blueprint $table) {
-            $table -> increments('id')        -> unique()    -> unsigned();
-            $table -> string('nombre')        -> unique();
-            $table -> time('hora_inicio');
-            $table -> time('hora_termino');
-            $table -> date('dia_inicio');
-            $table -> date('dia_termino');
-            $table -> string('localizacion');
-            $table -> string('curriculum')    -> nullable();
+            $table -> increments('id')       -> unique()    -> unsigned();
+            $table -> string('nombre')       -> unique();
+            $table -> time('hora_inicio')    -> nullable();
+            $table -> time('hora_termino')   -> nullable();
+            $table -> date('dia_inicio')     -> nullable();
+            $table -> date('dia_termino')    -> nullable();
+            $table -> string('localizacion') -> nullable();
+            $table -> string('curriculum')   -> nullable();
 
             $table -> timestamps();
         });

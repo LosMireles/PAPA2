@@ -14,13 +14,13 @@ class CreateCursosTable extends Migration
     public function up()
     {
         Schema::create('cursos', function (Blueprint $table) {
-            $table -> increments('id')          -> unique()  -> unsigned();
-            $table -> string('nombre')          -> unique();
-            $table -> string('periodo');
-            $table -> integer('grupo');
-            $table -> integer('noEstudiantes');
-            $table -> string('tipoAula');
-            $table -> string('pertenencia');
+            $table -> increments('id')         -> unique()    -> unsigned();
+            $table -> string('nombre')         -> unique();
+            $table -> string('periodo')        -> nullable();
+            $table -> integer('grupo')         -> nullable();
+            $table -> integer('noEstudiantes') -> nullable();
+            $table -> string('tipoAula')       -> nullable();
+            $table -> string('pertenencia')    -> nullable();
 
             $table -> timestamps();
         });
