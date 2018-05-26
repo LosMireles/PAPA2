@@ -84,6 +84,11 @@
     margin-bottom: 15px;
 
   }
+  .containerdivNewLine {
+    clear: both;
+    display: block;
+    position: relative;
+  }
   img{
     width: auto;
     max-height: 100%
@@ -116,8 +121,10 @@
 @endsection
 
 @section('boton_guardar')
+  <div class="containerdivNewLine">
     <div class="text-center">
         {{ Form::submit('Guardar', ['class' => 'btn btn-success']) }}
         {{ Form::close() }}
     </div>
+  </div>
 @endsection
