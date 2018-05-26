@@ -39,7 +39,7 @@ Route::get('/sanitarios/{tipo}/viewImg', 'SanitarioController@viewImg');
 
 
 // Rutas para borrar imagenes de infraestructura
-Route::post('/aulas/{tipo}/borrarImg', [
+Route::post('/aulas/{tipo}/borrarImg/{imagen}', [
   'uses' => 'AulaController@borrarImg',
   'as' => 'borrarImg'
 ]);
