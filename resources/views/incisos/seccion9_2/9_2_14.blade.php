@@ -23,52 +23,72 @@
 <!-- ------------ LAS PREGUNTAS Y SUS RESPUESTAS------------- -->
 
 @section('contenido_formulario')
-	@foreach($preguntas as $pregunta)
-		<div class="form-group">
-			<label for="{{$pregunta->id}}" class="control-label">
-			    {{$pregunta->titulo}}
-			</label>
+	
 
-			<div>
-                <textarea class="form-control" id="{{$pregunta->id}}" name="{{$pregunta->id}}"value="{{$pregunta->respuesta}}"></textarea>
-			</div>
-		</div>
-	@endforeach
+  <div class="form-group">
+    <label for="{{$preguntas[0]->id}}" class="control-label"> {{$preguntas[0]->titulo}} </label>
+
+      <div>
+        <!--<textarea class="form-control" id="{{$preguntas[0]->id}}" name="{{$preguntas[0]->id}}"value="{{$preguntas[0]->respuesta}}"></textarea>-->
+        @if($preguntas[0]->respuesta == 'Si')
+          <input type="radio" name="{{$preguntas[0]->id}}" value="Si" checked> Sí <br>
+          <input type="radio" name="{{$preguntas[0]->id}}" value="No"> No
+        @elseif($preguntas[0]->respuesta == 'No')
+          <input type="radio" name="{{$preguntas[0]->id}}" value="Si"> Sí <br>
+          <input type="radio" name="{{$preguntas[0]->id}}" value="No" checked> No
+        @else
+          <input type="radio" name="{{$preguntas[0]->id}}" value="Si"> Sí <br>
+          <input type="radio" name="{{$preguntas[0]->id}}" value="No"> No
+        @endif
+      </div>
+    </div>
+
+  <div class="form-group">
+    <label for="{{$preguntas[1]->id}}" class="control-label"> {{$preguntas[1]->titulo}} </label>
+
+    <div>
+      <textarea class="form-control" id="{{$preguntas[1]->id}}" name="{{$preguntas[1]->id}}">{{$preguntas[1]->respuesta}}</textarea>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="{{$preguntas[2]->id}}" class="control-label"> {{$preguntas[2]->titulo}} </label>
+
+    <div>
+      <input type="hidden" class="form-control" id="{{$preguntas[2]->id}}" name="{{$preguntas[2]->id}}">
+    </div>
+
+    @component('layouts.componentes.tabla_incisos_agregar')
+      @slot('cabeza_tabla')
+        <th>Nombre</th>
+        <th>Grado académico</th>
+        <th>Certificados</th>
+        <th>Años de experiencia</th>
+      @endslot
+
+      @slot('cuerpo_tabla')
+        @foreach($tecnicos as $tecnico)
+          <tr>
+            <td>{{$tecnico->nombre}}</td>
+            <td>{{$tecnico->grado_academico}}</td>
+            <td>{{$tecnico->certificados}}</td>
+            <td>{{$tecnico->anios_exp}}</td>
+
+            <td>a</td>
+            @component('layouts.boton_borrar')
+              @slot('controlador_borrar')
+                {{ Form::open(['action' => ['TecnicoAcademicoController@destroy', $tecnico->id]]) }}
+              @endslot
+            @endcomponent
+          </tr>
+        @endforeach
+      @endslot
+    @endcomponent
+
+  </div>
 @endsection
 
 <!-- ------------ LAS TABLAS QUE CORRESPONDAN------------- -->
-
-@section('cabeza_tabla')
-    <tr>
-    <th>Nombre</th>
-    <th>Horario</th>
-    <th>Días laborales</th>
-    <th>Ubicación</th>
-    <th>Currículo</th>
-  </tr>
-@endsection
-
-@section('cuerpo_tabla')
-  @foreach($tecnicos as $tecnico)
-    <tr>
-      <td>{{$tecnico->nombre}}</td>
-      <td>
-        <?php
-          $inicio = strtotime($tecnico->hora_inicio);
-          $inicio_format = date('H:i', $inicio);
-          $termino = strtotime($tecnico->hora_termino);
-          $termino_format = date('H:i', $termino);
-        ?>
-        {{$inicio_format}} - {{$termino_format}}
-      </td>
-      <td>{{$tecnico->dia_inicio}} - {{$tecnico->dia_termino}}</td>
-      <td>{{$tecnico->localizacion}}</td>
-      <td>
-        <a href="{{ url('/tecnicos_academicos/ver_curriculo/'. $tecnico->id ) }}">{{$tecnico->curriculum}}</a>
-      </td>
-    </tr>
-  @endforeach
-@endsection
 
 <!-- ------------ SECCION DE FOTOGRAFIAS, EVIDENCIAS, ETC------------- -->
 

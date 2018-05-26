@@ -18,51 +18,55 @@
 <!-- ------------ LAS PREGUNTAS Y SUS RESPUESTAS------------- -->
 
 @section('contenido_formulario')
-	@foreach($preguntas as $pregunta)
-		<div class="form-group">
-			<label for="{{$pregunta->id}}" class="control-label">
-			    {{$pregunta->titulo}}
-			</label>
+	<div class="form-group">
+		<label for="{{$preguntas[0]->id}}" class="control-label"> {{$preguntas[0]->titulo}} </label>
 
-			<div>
-                <textarea class="form-control" id="{{$pregunta->id}}" name="{{$pregunta->id}}"value="{{$pregunta->respuesta}}"></textarea>
-			</div>
+		<div>
+            <textarea class="form-control" id="{{$preguntas[0]->id}}" name="{{$preguntas[0]->id}}">{{$preguntas[0]->respuesta}}</textarea>
 		</div>
-	@endforeach
-@endsection
+	</div>
 
-<!-- ------------ LAS TABLAS QUE CORRESPONDAN------------- -->
+	<div class="form-group">
+		<label for="{{$preguntas[1]->id}}" class="control-label"> {{$preguntas[1]->titulo}} </label>
 
-@section('cabeza_tabla')
-	<tr>
-		<th>Nombre</th>
-		<th>Horario</th>
-		<th>Días laborales</th>
-		<th>Ubicación</th>
-		<th>Currículo</th>
-	</tr>
-@endsection
+		<div>
+            <textarea class="form-control" id="{{$preguntas[1]->id}}" name="{{$preguntas[1]->id}}">{{$preguntas[1]->respuesta}}</textarea>
+		</div>
+	</div>
 
-@section('cuerpo_tabla')
-	@foreach($tecnicos as $tecnico)
-		<tr>
-			<td>{{$tecnico->nombre}}</td>
-			<td>
-				<?php
-					$inicio = strtotime($tecnico->hora_inicio);
-					$inicio_format = date('H:i', $inicio);
-					$termino = strtotime($tecnico->hora_termino);
-					$termino_format = date('H:i', $termino);
-				?>
-				{{$inicio_format}} - {{$termino_format}}
-			</td>
-			<td>{{$tecnico->dia_inicio}} - {{$tecnico->dia_termino}}</td>
-			<td>{{$tecnico->localizacion}}</td>
-			<td>
-				<a href="{{ url('/tecnicos_academicos/ver_curriculo/'. $tecnico->id ) }}">{{$tecnico->curriculum}}</a>
-			</td>
-		</tr>
-	@endforeach
+	<div class="form-group">
+		<label for="{{$preguntas[2]->id}}" class="control-label"> {{$preguntas[2]->titulo}} </label>
+
+		<div>
+            @if($preguntas[2]->respuesta == 'Si')
+	          <input type="radio" name="{{$preguntas[2]->id}}" value="Si" checked> Sí <br>
+	          <input type="radio" name="{{$preguntas[2]->id}}" value="No"> No
+	        @elseif($preguntas[2]->respuesta == 'No')
+	          <input type="radio" name="{{$preguntas[2]->id}}" value="Si"> Sí <br>
+	          <input type="radio" name="{{$preguntas[2]->id}}" value="No" checked> No
+	        @else
+	          <input type="radio" name="{{$preguntas[2]->id}}" value="Si"> Sí <br>
+	          <input type="radio" name="{{$preguntas[2]->id}}" value="No"> No
+	        @endif
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="{{$preguntas[3]->id}}" class="control-label"> {{$preguntas[3]->titulo}} </label>
+
+		<div>
+            <textarea class="form-control" id="{{$preguntas[3]->id}}" name="{{$preguntas[3]->id}}">{{$preguntas[3]->respuesta}}</textarea>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="{{$preguntas[4]->id}}" class="control-label"> {{$preguntas[4]->titulo}} </label>
+
+		<div>
+            <textarea class="form-control" id="{{$preguntas[4]->id}}" name="{{$preguntas[4]->id}}">{{$preguntas[4]->respuesta}}</textarea>
+		</div>
+	</div>
+
 @endsection
 
 <!-- ------------ SECCION DE FOTOGRAFIAS, EVIDENCIAS, ETC------------- -->

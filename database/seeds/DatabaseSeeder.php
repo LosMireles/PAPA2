@@ -11,7 +11,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(EspacioTableSeeder::class);
+        // $this->call(EspacioTableSeeder::class);
         $this->call(CursoTableSeeder::class);  //seeder asignatura hace esto
         $this->call(AsignaturaTableSeeder::class);
         $this->call(EquipoTableSeeder::class);
@@ -33,20 +33,6 @@ class DatabaseSeeder extends Seeder
             }
             else{
                 $equipo->softwares()->attach($softwaresId);
-            }
-        }
-
-        $espacios = App\Espacio::with('cursos')->get();
-        $cursosId = App\Curso::pluck('id');
-        foreach($espacios as $espacio){
-            if($espacio->clase != "Aula"){
-                continue;
-            }
-            if(sizeof($cursosId) > 3){
-                $espacio->cursos()->attach($cursosId->random(3));
-            }
-            else{
-                $espacio->cursos()->attach($cursosId);
             }
         }
 

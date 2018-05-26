@@ -33,8 +33,7 @@
 		<div>
 			<input type="hidden" class="form-control" id="{{$preguntas[1]->id}}" name="{{$preguntas[1]->id}}" value="{{$preguntas[1]->respuesta}}" hidden>
 
-
-			@component("layouts.componentes.tabla_general")
+			@component("layouts.componentes.tabla_incisos_agregar_igual")
 		    @slot("cabeza_tabla")
 		      	<th class="text-center">Serial</th>
 				<th class="text-center">Descripción</th>
@@ -50,6 +49,9 @@
 								<td>
 									{{$equipo->descripcion}}
 								</td>
+								<td><a href="#" class="btn btn-success">Editar</a></td>
+								<td><a href="#" class="btn btn-success">Eliminar</a></td>
+								<td><a href="#" class="btn btn-success">Agregar igual</a></td>
 							</tr>
 						@endif
 					@endforeach

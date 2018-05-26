@@ -14,14 +14,18 @@ class CreateTecnicoacademicoTable extends Migration
     public function up()
     {
         Schema::create('tecnicoacademico', function (Blueprint $table) {
-            $table -> increments('id')       -> unique()    -> unsigned();
-            $table -> string('nombre')       -> unique();
+            $table -> increments('id')              -> unique()    -> unsigned();
+            $table -> char('nombre', 100)           ->nullable();
+            $table -> char('grado_academico', 100)  ->nullable();
+            $table -> char('certificados', 100)     ->nullable();
+            $table -> integer('anios_exp')          ->nullable();
+            /*$table -> string('nombre')       -> unique();
             $table -> time('hora_inicio')    -> nullable();
             $table -> time('hora_termino')   -> nullable();
             $table -> date('dia_inicio')     -> nullable();
             $table -> date('dia_termino')    -> nullable();
             $table -> string('localizacion') -> nullable();
-            $table -> string('curriculum')   -> nullable();
+            $table -> string('curriculum')   -> nullable();*/
 
             $table -> timestamps();
         });

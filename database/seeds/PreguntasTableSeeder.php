@@ -212,7 +212,7 @@ class PreguntasTableSeeder extends Seeder
 
         App\Pregunta::create(array(
             'inciso' => '9.2.7',
-            'numero' => '5',
+            'numero' => '6',
             'titulo' => '¿Con qué paquetes de software se cuenta en la red académica de la institución para apoyo del programa que se evalúa?',
                     # Describalos
         ));
@@ -261,16 +261,30 @@ class PreguntasTableSeeder extends Seeder
 
         App\Pregunta::create(array(
             'inciso' => '9.2.13',
-            'numero' => '15',
+            'numero' => '1',
             'titulo' => '¿Existen registros de los usuarios de los servicio de cómputo?',
                     # Los datos deben estar organzados por periodos, tambien debe llevar un registro de los programas utilizados
         ));
 
         App\Pregunta::create(array(
             'inciso' => '9.2.14',
-            'numero' => '16',
-            'titulo' => '¿El técnico asignado cuenta con un perfil adecuado para dar soporte a infraestructura, telecomunicaciones, redes, aplicaciones, desarrollo, entre otras? En cualquier caso explique brevemente.',
-                    # Entre otrasÑ tecnologias emergentes, administracion, mineria de datos, soluciones intelignestes, reingeneria de procesos, TIC.
+            'numero' => '1',
+            'titulo' => '¿El técnico asignado cuenta con un perfil adecuado para dar soporte a infraestructura, telecomunicaciones, redes, aplicaciones, desarrollo, entre otras?',
+                    # Responeder sí o no.
+        ));
+
+        App\Pregunta::create(array(
+            'inciso' => '9.2.14',
+            'numero' => '2',
+            'titulo' => 'En cualquier caso explique brevemente.',
+                    # Dar descripción.
+        ));
+
+        App\Pregunta::create(array(
+            'inciso' => '9.2.14',
+            'numero' => '3',
+            'titulo' => 'Proporcione el Curriculum de cada uno, así como una lista de sus nombres, grados académicos, certificados pertinenetes, años de experiencia en el área de competencia relacionados con lo aquí señalado',
+                    # Dar descripción.
         ));
 
         # -------------------------------------------------------------------------
