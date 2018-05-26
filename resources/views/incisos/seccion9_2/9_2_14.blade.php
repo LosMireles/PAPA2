@@ -74,12 +74,18 @@
             <td>{{$tecnico->certificados}}</td>
             <td>{{$tecnico->anios_exp}}</td>
 
-            <td>a</td>
+            @component('layouts.boton_editar')
+              @slot('controlador_editar')
+                {{ Form::open(['action' => ['TecnicoAcademicoController@edit', $tecnico->id]]) }}
+              @endslot
+            @endcomponent
+            
             @component('layouts.boton_borrar')
               @slot('controlador_borrar')
                 {{ Form::open(['action' => ['TecnicoAcademicoController@destroy', $tecnico->id]]) }}
               @endslot
             @endcomponent
+
           </tr>
         @endforeach
       @endslot

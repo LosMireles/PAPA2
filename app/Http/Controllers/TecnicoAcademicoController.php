@@ -12,7 +12,6 @@ use File;
 use App\TecnicoAcademico;
 use App\Software;
 use App\Equipo;
-use App\Espacio;
 
 use Storage;
 use Response;
@@ -88,9 +87,7 @@ class TecnicoAcademicoController extends Controller
     public function edit($id)
     {
         $tecnico = TecnicoAcademico::where('id', $id)->first();
-        $espacios = Espacio::all();
-        $dias_semana = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado', 'Domingo'];
-        return view('tecnico_academico/edit',['tecnico'=>$tecnico, 'espacios'=>$espacios, 'dias_semana'=>$dias_semana]);
+        return view('tecnico_academico/edit',['tecnico'=>$tecnico]);
     }
 
     /**

@@ -1,7 +1,8 @@
 <!--Boton editar-->
-<td class="text-center">
-    <a href="{{$controlador_editar}}" class="btn btn-warning">
-        Editar
-    </a>
+<td>
+    {{$controlador_editar}}
+        {{ Form::hidden('_method', 'GET') }}
+        {{ Form::submit('Editar', ['class' => 'btn btn-warning']) }}
+    {{ Form::close() }}
 </td>
 
