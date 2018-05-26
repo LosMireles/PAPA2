@@ -18,94 +18,73 @@ class EquipoTableSeeder extends Seeder
         //factory(App\Equipo::class, 10)->create();
 
         App\Equipo::create(array(
-            'serial'        => '12AN3900021',
-            'manualUsuario' => 1,
-            'operable'      => 1,
-            'localizacion'  => '3K4-202',
-            'tipo'          => 'computo',
-            'descripcion'   => 'Equipo de cómputo de la licenciatura'
+            'serial'            => '12AN3900021',
+            'sistema_operativo' => '',
+            'marca'             => '',
+            'descripcion'       => 'Equipo de cómputo de la licenciatura'
         ));
 
         App\Equipo::create(array(
-            'serial'        => '12AN3900022',
-            'manualUsuario' => 1,
-            'operable'      => 1,
-            'localizacion'  => '3K4-104',
-            'tipo'          => 'servidor',
-            'descripcion'   => 'Servidor http://cc.uson.mx. Servidor marca Dell Modelo Poweredge 2000'
+            'serial'            => '12AN3900022',
+            'sistema_operativo' => '',
+            'marca'             => '',
+            'descripcion'       => 'Servidor http://cc.uson.mx. Servidor marca Dell Modelo Poweredge 2000'
         ));
 
         App\Equipo::create(array(
-            'serial'        => '12AN3900023',
-            'manualUsuario' => 1,
-            'operable'      => 1,
-            'localizacion'  => '3K4-104',
-            'tipo'          => 'servidor',
-            'descripcion'   => 'Servidor marca Dell Modelo Poweredge 1950. Procesador Intel Xeon 5150'
+            'serial'            => '12AN3900023',
+            'sistema_operativo' => '',
+            'marca'             => '',
+            'descripcion'       => 'Servidor marca Dell Modelo Poweredge 1950. Procesador Intel Xeon 5150'
         ));
 
         App\Equipo::create(array(
             'serial'        => '12AN3900024',
-            'manualUsuario' => 1,
-            'operable'      => 1,
-            'localizacion'  => '3K4-104',
-            'tipo'          => 'servidor',
+            'sistema_operativo' => '',
+            'marca'             => '',
             'descripcion'   => 'Servidor marca Dell Modelo Poweredge 1950. Procesador Intel Xeon 5150'
         ));
 
         App\Equipo::create(array(
-            'serial'        => '12AN3900030',
-            'manualUsuario' => 1,
-            'operable'      => 1,
-            'localizacion'  => '3K4-202',
-            'tipo'          => 'computo',
-            'descripcion'   => 'Equipo de cómputo de la licenciatura'
+            'serial'            => '12AN3900030',
+            'sistema_operativo' => '',
+            'marca'             => '',
+            'descripcion'       => 'Equipo de cómputo de la licenciatura'
         ));
 
         App\Equipo::create(array(
-            'serial'        => '12AN3900025',
-            'manualUsuario' => 1,
-            'operable'      => 1,
-            'localizacion'  => '3K4-202',
-            'tipo'          => 'computo',
-            'descripcion'   => 'Equipo de cómputo de la licenciatura'
+            'serial'            => '12AN3900025',
+            'sistema_operativo' => '',
+            'marca'             => '',
+            'descripcion'       => 'Equipo de cómputo de la licenciatura'
         ));
 
         App\Equipo::create(array(
-            'serial'        => '12AN3900026',
-            'manualUsuario' => 1,
-            'operable'      => 1,
-            'localizacion'  => '3K4-201',
-            'tipo'          => 'computo',
-            'descripcion'   => 'Equipo de cómputo de la licenciatura'
+            'serial'            => '12AN3900026',
+            'sistema_operativo' => '',
+            'marca'             => '',
+            'descripcion'       => 'Equipo de cómputo de la licenciatura'
         ));
 
         App\Equipo::create(array(
-            'serial'        => '12AN3900027',
-            'manualUsuario' => 1,
-            'operable'      => 1,
-            'localizacion'  => '3K4-201',
-            'tipo'          => 'computo',
-            'descripcion'   => 'Equipo de cómputo de la licenciatura'
+            'serial'            => '12AN3900027',
+            'sistema_operativo' => '',
+            'marca'             => '',
+            'descripcion'       => 'Equipo de cómputo de la licenciatura'
         ));
 
         App\Equipo::create(array(
-            'serial'        => '12AN3900028',
-            'manualUsuario' => 1,
-            'operable'      => 1,
-            'localizacion'  => '3K4-203',
-            'tipo'          => 'computo',
-            'descripcion'   => 'Equipo de cómputo de la licenciatura'
+            'serial'            => '12AN3900028',
+            'sistema_operativo' => '',
+            'marca'             => '',
+            'descripcion'       => 'Equipo de cómputo de la licenciatura'
         ));
 
         App\Equipo::create(array(
-            'serial'        => '12AN3900029',
-            'manualUsuario' => 1,
-            'operable'      => 1,
-            'localizacion'  => '3K4-203',
-            'tipo'          => 'computo',
-            'descripcion'   => 'Equipo de cómputo de la licenciatura'
+            'serial'            => '12AN3900029',
+            'sistema_operativo' => '',
+            'marca'             => '',
+            'descripcion'       => 'Equipo de cómputo de la licenciatura'
         ));
     }
 }
-

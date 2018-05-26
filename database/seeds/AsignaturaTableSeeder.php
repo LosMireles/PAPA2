@@ -13,7 +13,7 @@ class AsignaturaTableSeeder extends Seeder
     {
 
         #factory(App\Asignatura::class, 10)->create();
-
+        # Se mantienen los mismos atributos
         App\Asignatura::create(array(
             'nombre'        => 'Calculo Diferencial e Integral 2',
             'descripcion'   => 'Parte del análisis matemático que consiste en el estudio de cómo cambian las funciones cuando sus variables cambian. El principal objeto de estudio en el cálculo diferencial es la derivada.',

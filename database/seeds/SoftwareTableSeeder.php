@@ -28,40 +28,35 @@ class SoftwareTableSeeder extends Seeder
 
         App\Software::create(array(
             'nombre'        => 'PHP',
-            'manualUsuario' => '1',
-            'licencia'      => 'Publica ',
+            'version'       =>  '7.2',
             'disponibilidad'=> 'Internet',
             'clase'         => 'Lenguaje',
         ));
 
         App\Software::create(array(
             'nombre'        => 'C',
-            'manualUsuario' => '1',
-            'licencia'      => 'Publica ',
+            'version'       =>  'C17',
             'disponibilidad'=> 'Internet',
             'clase'         => 'Lenguaje',
         ));
 
         App\Software::create(array(
             'nombre'        => 'Laravel',
-            'manualUsuario' => '1',
-            'licencia'      => 'Publica ',
+            'version'       =>  '5.5',
             'disponibilidad'=> 'Internet',
             'clase'         => 'Libreria',
         ));
 
         App\Software::create(array(
             'nombre'        => 'Go',
-            'manualUsuario' => '0',
-            'licencia'      => 'Publica ',
+            'version'       =>  '1.2',
             'disponibilidad'=> 'Internet',
             'clase'         => 'Lenguaje',
         ));
 
         App\Software::create(array(
             'nombre'        => 'Matlab',
-            'manualUsuario' => '1',
-            'licencia'      => 'Privada ',
+            'version'       =>  '3.2',
             'disponibilidad'=> 'Universidad de Sonora',
             'clase'         => 'Lenguaje',
         ));
