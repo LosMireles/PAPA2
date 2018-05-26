@@ -235,6 +235,15 @@ class AulaController extends Controller
     return view('infraestructura.aulas.viewImg')->with(['tipo' => $tipo]);
   }
 
+  public function guardarImg(Request $request, $tipo){
+    if ($request->hasFile('Fotografias')) {
+      foreach($request->Fotografias as $foto){
+        $foto->storeAs('infraestructura/aulas/' . $tipo, $foto->getClientOriginalName());
+      }
+    }
+    return redirect('/aulas/'. $tipo .'/viewImg')->with(['tipo' => $tipo]);
+  }
+
   public function borrarImg($tipo, $imagen)
   {
     $dirImagen = 'infraestructura/aulas/' . $tipo . '/' . $imagen;
@@ -242,8 +251,4 @@ class AulaController extends Controller
     return redirect('/aulas/'. $tipo .'/viewImg')->with(['tipo' => $tipo]);
   }
 
-  #public function deleteImg($image){
-  #  Storage::delete($image);
-  #  return redirect()->action('AulaController@viewImg');
-  #}
 }
