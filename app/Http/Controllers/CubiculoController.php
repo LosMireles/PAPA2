@@ -31,9 +31,8 @@ class CubiculoController extends Controller {
         $request->validate($this->rules());
 
         if ($request->hasFile('Fotografias')) {
-          if ($request->file('Fotografias')->isValid()) {
-            $request->Fotografias->storeAs('infraestructura/cubiculos/' . $request->Tipo,
-                                            $request->Fotografias->getClientOriginalName());
+          foreach($request->Fotografias as $foto){
+            $foto->storeAs('infraestructura/cubiculos/' . $request->Tipo, $foto->getClientOriginalName());
           }
         }
 
@@ -62,9 +61,8 @@ class CubiculoController extends Controller {
 	public function update(Request $request, $tipo) {
         $request->validate($this->rules($tipo));
         if ($request->hasFile('Fotografias')) {
-          if ($request->file('Fotografias')->isValid()) {
-            $request->Fotografias->storeAs('infraestructura/cubiculos/' . $request->Tipo,
-                                            $request->Fotografias->getClientOriginalName());
+          foreach($request->Fotografias as $foto){
+            $foto->storeAs('infraestructura/cubiculos/' . $request->Tipo, $foto->getClientOriginalName());
           }
         }
 
@@ -122,4 +120,10 @@ class CubiculoController extends Controller {
     return view('infraestructura.cubiculos.viewImg')->with(['tipo' => $tipo]);
   }
 
+  public function borrarImg($tipo, $imagen)
+  {
+    $dirImagen = 'infraestructura/cubiculos/' . $tipo . '/' . $imagen;
+    Storage::delete($dirImagen);
+    return redirect('/cubiculos/'. $tipo .'/viewImg')->with(['tipo' => $tipo]);
+  }
 }

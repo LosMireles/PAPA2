@@ -39,9 +39,34 @@ Route::get('/sanitarios/{tipo}/viewImg', 'SanitarioController@viewImg');
 
 
 // Rutas para borrar imagenes de infraestructura
+// Aulas
 Route::post('/aulas/{tipo}/borrarImg/{imagen}', [
   'uses' => 'AulaController@borrarImg',
-  'as' => 'borrarImg'
+  'as' => 'borrarImgAula'
+]);
+
+// Asesorias
+Route::post('/asesorias/{tipo}/borrarImg/{imagen}', [
+  'uses' => 'AsesoriaController@borrarImg',
+  'as' => 'borrarImgAsesoria'
+]);
+
+// Auditorios
+Route::post('/auditorios/{tipo}/borrarImg/{imagen}', [
+  'uses' => 'AuditorioController@borrarImg',
+  'as' => 'borrarImgAuditorio'
+]);
+
+// Cubiculos
+Route::post('/cubiculos/{tipo}/borrarImg/{imagen}', [
+  'uses' => 'CubiculoController@borrarImg',
+  'as' => 'borrarImgCubiculo'
+]);
+
+// Sanitarios
+Route::post('/sanitarios/{tipo}/borrarImg/{imagen}', [
+  'uses' => 'SanitarioController@borrarImg',
+  'as' => 'borrarImgSanitario'
 ]);
 
 //

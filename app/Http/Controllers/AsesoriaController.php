@@ -34,10 +34,9 @@ class AsesoriaController extends Controller
 
         $asesoria = new Asesoria;
         if ($request->hasFile('Fotografias')) {
-            if ($request->file('Fotografias')->isValid()) {
-                $request->Fotografias->storeAs('infraestructura/asesorias/' . $request->Tipo,
-                                              $request->Fotografias->getClientOriginalName());
-            }
+          foreach($request->Fotografias as $foto){
+            $foto->storeAs('infraestructura/asesorias/' . $request->Tipo, $foto->getClientOriginalName());
+          }
         }
 
         $asesoria->Tipo       = $request->Tipo;
@@ -65,12 +64,11 @@ class AsesoriaController extends Controller
     public function update(Request $request, $tipo) {
         $request->validate($this->rules($tipo));
 
-      if ($request->hasFile('Fotografias')) {
-        if ($request->file('Fotografias')->isValid()) {
-          $request->Fotografias->storeAs('infraestructura/asesorias/' . $request->Tipo,
-                                          $request->Fotografias->getClientOriginalName());
+        if ($request->hasFile('Fotografias')) {
+          foreach($request->Fotografias as $foto){
+            $foto->storeAs('infraestructura/asesorias/' . $request->Tipo, $foto->getClientOriginalName());
+          }
         }
-      }
         $tipo_nuevo = $request->Tipo;
 		$InicioHora = $request->InicioHora;
 		$FinHora    = $request->FinHora;
@@ -124,5 +122,11 @@ class AsesoriaController extends Controller
     public function viewImg($tipo){
       return view('infraestructura.asesorias.viewImg')->with(['tipo' => $tipo]);
     }
-}
 
+    public function borrarImg($tipo, $imagen)
+    {
+      $dirImagen = 'infraestructura/asesorias/' . $tipo . '/' . $imagen;
+      Storage::delete($dirImagen);
+      return redirect('/asesorias/'. $tipo .'/viewImg')->with(['tipo' => $tipo]);
+    }
+}
