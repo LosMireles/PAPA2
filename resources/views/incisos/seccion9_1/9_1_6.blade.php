@@ -44,7 +44,33 @@
 @endsection
 
 @section('cuerpo_tabla')
+	@foreach ($aulas as $aula)
+    <tr>
+		<td>{{ $aula->nombre}}</td>
+		<td>{{ $aula->capacidad }}</td>
 
+        @component('layouts.boton_editar')
+            @slot("controlador_editar")
+                {{action('AulaController@edit', [ 'nombre' => $aula->nombre])}}
+            @endslot
+        @endcomponent
+
+        @component('layouts.boton_borrar')
+            @slot("controlador_borrar")
+                {{ Form::open(['action' => ['AulaController@destroy', $aula->nombre]]) }}
+            @endslot
+        @endcomponent
+
+
+        <!--Boton ver fotos-->
+        <td class="text-center">
+            <a href="{{action('AulaController@viewImg', [ 'nombre' => $aula->nombre])}}" class="btn btn-warning">
+                Fotografías
+            </a>
+        </td>
+
+	</tr>
+	@endforeach
 @endsection
 
 <!-- ------------ SECCION DE FOTOGRAFIAS, EVIDENCIAS, ETC ------------- -->

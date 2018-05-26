@@ -19,20 +19,12 @@ class Inciso9_1_6Controller extends Controller
     public function index()
     {
     $preguntas = Pregunta::where('inciso', '9.1.6')->get();
+	$aulas  = Aula::all();
 
 	return view('incisos/seccion9_1/9_1_6',['preguntas' => $preguntas,
-                                            'id'        => $preguntas[0]->id]);
+                                            'id'        => $preguntas[0]->id,
+											'aulas'		=> $aulas]);
     }
-
-    public function imprimir() {
-        $preguntas = Pregunta::where('inciso', '9.1.6')->get();
-        $espacios = Espacio::with('aula')->where('clase','like', 'Aula')->get();
-
-        $pdf = PDF::loadView('incisos/seccion9_1/9_1_6',['preguntas' => $preguntas,
-                                                'id' => $preguntas[0]->id,
-						'espacios' => $espacios]);
-	  	return $pdf->download('9_1_6.pdf');
-	}
 
     /**
      * Show the form for creating a new resource.
