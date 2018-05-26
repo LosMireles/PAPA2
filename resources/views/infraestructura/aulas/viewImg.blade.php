@@ -79,24 +79,12 @@ div.img span span{
 							<img src="<?php echo asset($image)?>" width="320" height="200"
 								alt="<?php echo $image?>"/>
 							<figcaption class="text-center"><?php echo pathinfo($image)['basename']?></figcaption>
-
-							<!--<a href="{{ url('borrarImg', ['imagen' => $image, 'tipo'=> $tipo]) }}">-->
-								<div class="row text-center">
-									<!--<td>
-										<button class="trailer_button"
-											onclick="location.href='{!! route('borrarImg', ['imagen' => $image, 'tipo'=> $tipo]) !!}'">
-												Borrar
-										</button>
-									</td>-->
-
-
-									<form action="{{ route('borrarImg', ['tipo'=> $tipo, 'imagen' => pathinfo($image)['basename']]) }}" method="post">
-                    {{ csrf_field() }}
-                    <button class="trailer_button" type="submit" name="button">Borrar</button>
-									</form>
-								</div>
-
-
+							<div class="row text-center">
+								<form action="{{ route('borrarImgAula', ['tipo'=> $tipo, 'imagen' => pathinfo($image)['basename']]) }}" method="post">
+                  {{ csrf_field() }}
+                  <button class="trailer_button" type="submit" name="button">Borrar</button>
+								</form>
+							</div>
 						</div>
 					</div>
 				</figure>

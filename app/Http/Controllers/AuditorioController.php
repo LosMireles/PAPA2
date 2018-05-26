@@ -29,9 +29,8 @@ class AuditorioController extends Controller
 
       $request->validate($this->rules());
       if ($request->hasFile('Fotografias')) {
-        if ($request->file('Fotografias')->isValid()) {
-          $request->Fotografias->storeAs('infraestructura/auditorios/' . $request->Tipo,
-                                          $request->Fotografias->getClientOriginalName());
+        foreach($request->Fotografias as $foto){
+          $foto->storeAs('infraestructura/auditorios/' . $request->Tipo, $foto->getClientOriginalName());
         }
       }
 
@@ -64,9 +63,8 @@ class AuditorioController extends Controller
     public function update(Request $request, $tipo) {
 
       if ($request->hasFile('Fotografias')) {
-        if ($request->file('Fotografias')->isValid()) {
-          $request->Fotografias->storeAs('infraestructura/auditorios/' . $request->Tipo,
-                                          $request->Fotografias->getClientOriginalName());
+        foreach($request->Fotografias as $foto){
+          $foto->storeAs('infraestructura/auditorios/' . $request->Tipo, $foto->getClientOriginalName());
         }
       }
         $request->validate($this->rules($tipo));
@@ -121,5 +119,11 @@ class AuditorioController extends Controller
     public function viewImg($tipo){
       return view('infraestructura.auditorios.viewImg')->with(['tipo' => $tipo]);
     }
-}
 
+    public function borrarImg($tipo, $imagen)
+    {
+      $dirImagen = 'infraestructura/auditorios/' . $tipo . '/' . $imagen;
+      Storage::delete($dirImagen);
+      return redirect('/auditorios/'. $tipo .'/viewImg')->with(['tipo' => $tipo]);
+    }
+}

@@ -29,9 +29,8 @@ class SanitarioController extends Controller
     {
         $request->validate($this->rules());
         if ($request->hasFile('Fotografias')) {
-          if ($request->file('Fotografias')->isValid()) {
-            $request->Fotografias->storeAs('infraestructura/sanitarios/' . $request->Tipo,
-                                            $request->Fotografias->getClientOriginalName());
+          foreach($request->Fotografias as $foto){
+            $foto->storeAs('infraestructura/sanitarios/' . $request->Tipo, $foto->getClientOriginalName());
           }
         }
 
@@ -66,9 +65,8 @@ class SanitarioController extends Controller
         $request->validate($this->rules($tipo));
 
         if ($request->hasFile('Fotografias')) {
-          if ($request->file('Fotografias')->isValid()) {
-            $request->Fotografias->storeAs('infraestructura/sanitarios/' . $request->Tipo,
-                                            $request->Fotografias->getClientOriginalName());
+          foreach($request->Fotografias as $foto){
+            $foto->storeAs('infraestructura/sanitarios/' . $request->Tipo, $foto->getClientOriginalName());
           }
         }
 
@@ -123,5 +121,12 @@ class SanitarioController extends Controller
 
   public function viewImg($tipo){
     return view('infraestructura.sanitarios.viewImg')->with(['tipo' => $tipo]);
+  }
+
+  public function borrarImg($tipo, $imagen)
+  {
+    $dirImagen = 'infraestructura/sanitarios/' . $tipo . '/' . $imagen;
+    Storage::delete($dirImagen);
+    return redirect('/sanitarios/'. $tipo .'/viewImg')->with(['tipo' => $tipo]);
   }
 }
