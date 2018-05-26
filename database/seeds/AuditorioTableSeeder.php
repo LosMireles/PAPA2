@@ -17,7 +17,6 @@ class AuditorioTableSeeder extends Seeder
             'CantidadAV'            => '1',
             'Capacidad'             => '130',
             'CantidadSanitarios'    => '2',
-            'espacio_id'            => '1',
         ));
 
         App\Auditorio::create(array(
@@ -26,7 +25,6 @@ class AuditorioTableSeeder extends Seeder
             'CantidadAV'            => '1',
             'Capacidad'             => '30',
             'CantidadSanitarios'    => '2',
-            'espacio_id'            => '2',
         ));
 
         App\Auditorio::create(array(
@@ -35,7 +33,6 @@ class AuditorioTableSeeder extends Seeder
             'CantidadAV'            => '1',
             'Capacidad'             => '12',
             'CantidadSanitarios'    => '4',
-            'espacio_id'            => '3',
         ));
 
         App\Auditorio::create(array(
@@ -44,7 +41,6 @@ class AuditorioTableSeeder extends Seeder
             'CantidadAV'            => '2',
             'Capacidad'             => '100',
             'CantidadSanitarios'    => '2',
-            'espacio_id'            => '4',
         ));
 
         App\Auditorio::create(array(
@@ -53,7 +49,6 @@ class AuditorioTableSeeder extends Seeder
             'CantidadAV'            => '1',
             'Capacidad'             => '460',
             'CantidadSanitarios'    => '4',
-            'espacio_id'            => '5',
         ));
 
 

@@ -19,7 +19,6 @@ class SanitarioTableSeeder extends Seeder
     $sanitario->FinDia           = $request->FinDia;
     $sanitario->Limpieza         = $request->Limpieza;
     $sanitario->CantidadPersonal = $request->CantidadPersonal;
-    $sanitario->espacio_id       = $request->espacio_id;
     */
         App\Sanitario::create(array(
             'Tipo'              => 'Sanitario 3K4',
@@ -29,7 +28,6 @@ class SanitarioTableSeeder extends Seeder
             'FinDia'            => '2018-01-01',
             'Limpieza'          => '4',
             'CantidadPersonal'  => '2',
-            'espacio_id'        => '6',
         ));
 
         App\Sanitario::create(array(
@@ -40,7 +38,6 @@ class SanitarioTableSeeder extends Seeder
             'FinDia'            => '2018-01-01',
             'Limpieza'          => '3',
             'CantidadPersonal'  => '2',
-            'espacio_id'        => '7',
         ));
 
         App\Sanitario::create(array(
@@ -51,7 +48,6 @@ class SanitarioTableSeeder extends Seeder
             'FinDia'            => '2018-01-01',
             'Limpieza'          => '2',
             'CantidadPersonal'  => '2',
-            'espacio_id'        => '8',
         ));
     }
 }

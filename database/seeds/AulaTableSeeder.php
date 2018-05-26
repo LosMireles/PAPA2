@@ -16,11 +16,12 @@ class AulaTableSeeder extends Seeder
     	$aula->CantidadEquipo = $request->CantidadEquipo;
     	$aula->CantidadAV     = $request->CantidadAV;
     	$aula->Capacidad      = $request->Capacidad;
-        $aula->espacio_id     = $request->espacio_id;
+
         $aula->SillasPaleta = '1'; '0'
         $aula->MesasTrabajo = '1'; '0'
         $aula->Isotopica = '1'; '0'
         $aula->Estrado = '1'; '0'
+
          los siguientes van de 1-4
         $aula->Pizarron     = $request->Pizarron;
         $aula->Illuminacion = $request->Illuminacion;
@@ -36,7 +37,6 @@ class AulaTableSeeder extends Seeder
             'CantidadEquipo'=> '1',
             'CantidadAV'    => '2',
             'Capacidad'     => '40',
-            'espacio_id'    => '15', # espacio
 
             'SillasPaleta'  => '1',
             'MesasTrabajo'  => '0',
@@ -58,7 +58,6 @@ class AulaTableSeeder extends Seeder
             'CantidadEquipo'=> '1',
             'CantidadAV'    => '1',
             'Capacidad'     => '30',
-            'espacio_id'    => '16', # espacio
 
             'SillasPaleta'  => '1',
             'MesasTrabajo'  => '0',
@@ -80,7 +79,6 @@ class AulaTableSeeder extends Seeder
             'CantidadEquipo'=> '0',
             'CantidadAV'    => '2',
             'Capacidad'     => '20',
-            'espacio_id'    => '17', # espacio
 
             'SillasPaleta'  => '1',
             'MesasTrabajo'  => '0',
@@ -102,7 +100,6 @@ class AulaTableSeeder extends Seeder
             'CantidadEquipo'=> '0',
             'CantidadAV'    => '2',
             'Capacidad'     => '20',
-            'espacio_id'    => '18', # espacio
 
             'SillasPaleta'  => '1',
             'MesasTrabajo'  => '0',
@@ -124,7 +121,6 @@ class AulaTableSeeder extends Seeder
             'CantidadEquipo'=> '0',
             'CantidadAV'    => '2',
             'Capacidad'     => '20',
-            'espacio_id'    => '19', # espacio
 
             'SillasPaleta'  => '1',
             'MesasTrabajo'  => '0',
@@ -146,8 +142,7 @@ class AulaTableSeeder extends Seeder
             'CantidadEquipo'=> '0',
             'CantidadAV'    => '2',
             'Capacidad'     => '20',
-            'espacio_id'    => '20', # espacio
-
+            
             'SillasPaleta'  => '1',
             'MesasTrabajo'  => '0',
             'Isotopica'     => '1',
