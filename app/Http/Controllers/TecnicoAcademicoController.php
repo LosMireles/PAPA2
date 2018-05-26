@@ -102,42 +102,18 @@ class TecnicoAcademicoController extends Controller
         $tecnico = TecnicoAcademico::where('id',$id)->first();
         $request->validate($this->rules($tecnico->nombre));
 
-        $nombre         = $request->nombre;
-        $localizacion   = $request->localizacion;
-        $hora_inicio    = $request->hora_inicio;
-        $hora_termino   = $request->hora_termino;
-        $dia_inicio     = $request->dia_inicio;
-        $dia_termino    = $request->dia_termino;
+        $nombre             = $request->nombre;
+        $grado_academico    = $request->grado;
+        $certificados       = $request->certificados;
+        $exp                = $request->exp;
 
-        $document = $request->file('curriculo');
-
-        $c_anterior = $tecnico->curriculum;
-
-        if($document){
-            $document->move(public_path('/curriculos'), $document->getClientOriginalName());
-            //File::delete(public_path('curriculos/' . $c_anterior));
-            unlink(public_path('curriculos/' . $c_anterior));
-
-            $tecnico->update([
-                'nombre' => $nombre,
-                'localizacion' => $localizacion,
-                'hora_inicio' => $hora_inicio,
-                'hora_termino' => $hora_termino,
-                'dia_inicio' => $dia_inicio,
-                'dia_termino' => $dia_termino,
-                'curriculum' => $document->getClientOriginalName(),
-            ]);
-        }else{
-            $tecnico->update([
-                'nombre' => $nombre,
-                'localizacion' => $localizacion,
-                'hora_inicio' => $hora_inicio,
-                'hora_termino' => $hora_termino,
-                'dia_inicio' => $dia_inicio,
-                'dia_termino' => $dia_termino,
-            ]);
-        }
-        return redirect()->action('TecnicoAcademicoController@index');
+        $tecnico->update([
+            'nombre'            => $nombre,
+            'grado_academico'   => $grado_academico,
+            'certificados'      => $certificados,
+            'anios_exp'         => $exp,
+        ]);
+        return redirect()->action('Inciso9_2_14Controller@index');
     }
 
     /**
@@ -161,10 +137,6 @@ class TecnicoAcademicoController extends Controller
         return [
             'nombre'       => ['required',
                                 Rule::unique('tecnicoacademico')->ignore($nombre, 'nombre')],
-            'hora_inicio'  => 'required',
-            'hora_termino' => 'required',
-            'dia_inicio'   => 'required',
-            'dia_termino'  => 'required'
         ];
     }
 
