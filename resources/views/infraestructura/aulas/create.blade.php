@@ -1,6 +1,6 @@
 @extends('layouts.formulario_create_general')
 
-@section('title' , "Agregar aula")
+@section('title' , "Formulario 9.1.6")
 @section("objeto_informacion", "un aula")
 
 @section('ruta_regresar')
@@ -13,7 +13,7 @@
 
 @section('contenido_formulario')
     @component("layouts.text_input")
-        @slot("nombre_input", "Tipo")
+        @slot("nombre_input", "nombre")
         @slot("tooltip_input", "Nombre escrito en las puertas")
         @slot("label_input", "Código del aula")
         @slot("placeholder_input", "Código de aula")
@@ -29,35 +29,20 @@
     @endcomponent
 
     @component("layouts.text_input")
-        @slot("nombre_input", "Capacidad")
+        @slot("nombre_input", "capacidad")
         @slot("tooltip_input", "Capacidad máxima del aula")
         @slot("label_input", "Capacidad máxima de personas")
         @slot("placeholder_input", "10")
         @slot("extra", "required")
     @endcomponent
 
-    @component("layouts.text_input")
-        @slot("nombre_input", "CantidadAV")
-        @slot("tooltip_input", "Cantidad de equipo audiovisual hay en el aula")
-        @slot("label_input", "Cantidad de equipo audiovisual")
-        @slot("placeholder_input", "1")
-        @slot("extra", "required")
-    @endcomponent
-
-    @component("layouts.text_input")
-        @slot("nombre_input", "CantidadEquipo")
-        @slot("tooltip_input", "Cantidad de computadoras hay en el aula")
-        @slot("label_input", "Cantidad de computadoras")
-        @slot("placeholder_input", "1")
-        @slot("extra", "required")
-    @endcomponent
 
 	<div class="form-group">
 		<h3 class="text-center">En una escala del 1 al 4 (1 es peor, 4 es mejor), califique la calidad de:</h3>
 	</div>
 
     @component("layouts.select_input")
-        @slot("nombre_input", "Pizarron")
+        @slot("nombre_input", "pizarron")
         @slot("tooltip_input", "Calidad en la que se encuentra el pizarrón")
         @slot("label_input", "Pizarrón")
         @slot("extra", "required")
@@ -72,7 +57,7 @@
 
 
     @component("layouts.select_input")
-        @slot("nombre_input", "Illuminacion")
+        @slot("nombre_input", "iluminacion")
         @slot("tooltip_input", "Calidad de la Illuminación en el aula")
         @slot("label_input", "Illuminación")
         @slot("extra", "required")
@@ -86,7 +71,7 @@
     @endcomponent
 
     @component("layouts.select_input")
-        @slot("nombre_input", "AislamientoR")
+        @slot("nombre_input", "aislamiento_ruido")
         @slot("tooltip_input", "Que tan aislado está del ruido anterior")
         @slot("label_input", "Aislamiento al ruido")
         @slot("extra", "required")
@@ -102,7 +87,7 @@
 
 
     @component("layouts.select_input")
-        @slot("nombre_input", "Ventilacion")
+        @slot("nombre_input", "ventilacion")
         @slot("tooltip_input", "Califique la ventilación en el aula")
         @slot("label_input", "Ventilación")
         @slot("extra", "required")
@@ -117,7 +102,7 @@
 
 
     @component("layouts.select_input")
-        @slot("nombre_input", "Temperatura")
+        @slot("nombre_input", "temperatura")
         @slot("tooltip_input", "Califique la calidad de la temperatura en el aula")
         @slot("label_input", "Temperatura")
         @slot("extra", "required")
@@ -133,7 +118,7 @@
 
 
     @component("layouts.select_input")
-        @slot("nombre_input", "Espacio")
+        @slot("nombre_input", "espacio")
         @slot("tooltip_input", "Califique el espacio en el aula")
         @slot("label_input", "Espacio")
         @slot("extra", "required")
@@ -149,8 +134,8 @@
 
 
     @component("layouts.select_input")
-        @slot("nombre_input", "Mobilario")
-        @slot("tooltip_input", "Califique la calidad del mobiliari en el aula")
+        @slot("nombre_input", "mobilario")
+        @slot("tooltip_input", "Califique la calidad del mobiliario en el aula")
         @slot("label_input", "Mobiliario")
         @slot("extra", "required")
         @slot('opciones')
@@ -165,7 +150,7 @@
 
 
     @component("layouts.select_input")
-        @slot("nombre_input", "Conexiones")
+        @slot("nombre_input", "conexiones")
         @slot("tooltip_input", "Califique la calidad de las conexiones de todo tipo en el aula")
         @slot("label_input", "Conexiones")
         @slot("extra", "required")
@@ -183,28 +168,34 @@
 	</div>
 
     @component("layouts.checkbox_input")
-        @slot("nombre_input", "SillasPaleta")
+        @slot("nombre_input", "sillas_paleta")
         @slot("tooltip_input", "Sillas con paleta")
         @slot("label_input", "Sillas con paleta")
     @endcomponent
 
     @component("layouts.checkbox_input")
-        @slot("nombre_input", "MesasTrabajo")
+        @slot("nombre_input", "mesas_trabajo")
         @slot("tooltip_input", "Mesas dondes se puede trabajar")
         @slot("label_input", "Mesas de trabajo")
     @endcomponent
 
     @component("layouts.checkbox_input")
-        @slot("nombre_input", "Isotopica")
+        @slot("nombre_input", "isotopica")
         @slot("tooltip_input", "Vista")
         @slot("label_input", "Isotopica")
     @endcomponent
 
     @component("layouts.checkbox_input")
-        @slot("nombre_input", "Estrado")
+        @slot("nombre_input", "estrado")
         @slot("tooltip_input", "Elevación para el profesor")
         @slot("label_input", "Estrado")
     @endcomponent
+
+	@component("layouts.checkbox_input")
+        @slot("nombre_input", "asesoria")
+        @slot("tooltip_input", "Elevación para el profesor")
+        @slot("label_input", "Asesoria")
+    @endcomponent	
 
 
 	<div class="form-group">
