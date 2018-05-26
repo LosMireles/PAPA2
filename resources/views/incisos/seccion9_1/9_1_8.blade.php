@@ -1,4 +1,4 @@
-@extends('layouts.inciso')
+@extends('layouts.inciso_general')
 
 @section('title')
   Inciso 9.1.8
@@ -12,14 +12,18 @@
 
 @section('formopen')
     {{Form::open(['action' => ['Inciso9_1_8Controller@update', $id],
-                  'class'  => 'form-horizontal'])}}
+                  'class'  => 'form'])}}
 @endsection
+
+<!-------------- LAS PREGUNTAS Y SUS RESPUESTAS--------------->
 
 @section('contenido_formulario')
 
 	@foreach($preguntas as $pregunta)
 		<div class="form-group">
-			<label for="{{$pregunta->id}}" class="col-sm-4 control-label">{{$pregunta->titulo}}</label>
+			<label for="{{$pregunta->id}}" class="control-label">
+			    {{$pregunta->titulo}}
+			</label>
 
 			<div class="col-sm-8">
 				<input type="text" class="form-control" id="{{$pregunta->id}}" name="{{$pregunta->id}}"value="{{$pregunta->respuesta}}"required>
@@ -29,13 +33,33 @@
 
 @endsection
 
-@section('botonGuardar')
-  {{ Form::submit('Guardar', ['class' => 'btn btn-success']) }}
-  {{ Form::close() }}
+<!-------------- LAS TABLAS QUE CORRESPONDAN--------------->
+
+@section('cabeza_tabla')
+    <tr>
+        <th>Aula</th>
+        <th>Equipo</th>
+	<th>Audiovisual</th>
+    </tr>
 @endsection
 
+@section('cuerpo_tabla')
+    @foreach($aulas as $aula)
+        <tr>
+            <td>{{$aula->Tipo}}</td>
+            <td>{{$aula->CantidadEquipo}}</td>
+	    <td>{{$aula->CantidadAV}}</td>
+        </tr>
+    @endforeach
+@endsection
+
+<!-------------- SECCION DE FOTOGRAFIAS, EVIDENCIAS, ETC--------------->
+
 @section('Fotografias')
-  <h3 class="text-center">Evidencias de 9.1.3</h3>
+    <h3 align="center">
+        Fotografias del inciso 9.1.8
+    </h3>
+
 
   <?php
     $dirs = array_filter(glob('storage/infraestructura/aulas/*'), 'is_dir');
@@ -58,20 +82,10 @@
   @endforeach
 @endsection
 
-@section('cabeza_tabla')
-    <tr>
-        <th>Aula</th>
-        <th>Equipo</th>
-	<th>Audiovisual</th>
-    </tr>
+@section('boton_guardar')
+    <div class="col-md-4 text-center">
+        {{ Form::submit('Guardar', ['class' => 'btn btn-success']) }}
+        {{ Form::close() }}
+    </div>
 @endsection
 
-@section('cuerpo_tabla')
-    @foreach($aulas as $aula)
-        <tr>
-            <td>{{$aula->Tipo}}</td>
-            <td>{{$aula->CantidadEquipo}}</td>
-	    <td>{{$aula->CantidadAV}}</td>
-        </tr>
-    @endforeach
-@endsection

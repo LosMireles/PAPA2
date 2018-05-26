@@ -11,12 +11,13 @@
 @endsection
 
 @section('formopen')
-	<!--Esta madre envia un id solo para que update jale-->
     {{Form::open(['action' => ['Inciso9_2_7Controller@update', $id]])}}
 @endsection
 
+<!-------------- LAS PREGUNTAS Y SUS RESPUESTAS--------------->
+
 @section('contenido_formulario')
-	
+
 	<!-- ******************************************************************************************************** -->
 	<div class="form-group">
 		<label for="{{$preguntas[0]->id}}" class="control-label">{{$preguntas[0]->titulo}}</label>
@@ -83,8 +84,14 @@
 
 @endsection
 
-@section('botonGuardar')
-  {{ Form::submit('Guardar', ['class' => 'btn btn-success']) }}
-  {{ Form::close() }}
+<!-------------- LAS TABLAS QUE CORRESPONDAN--------------->
+
+<!-------------- SECCION DE FOTOGRAFIAS, EVIDENCIAS, ETC--------------->
+
+@section('boton_guardar')
+    <div class="col-md-4 text-center">
+        {{ Form::submit('Guardar', ['class' => 'btn btn-success']) }}
+        {{ Form::close() }}
+    </div>
 @endsection
 

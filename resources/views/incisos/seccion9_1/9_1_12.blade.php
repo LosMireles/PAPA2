@@ -1,24 +1,30 @@
-@extends('layouts.inciso_general')
+@extends('layouts.inciso')
 
 @section('title')
-  Inciso 9.1.6
+  Inciso 9.1.12
 @endsection
 
 @section('descripcion')
-  <h3 class="text-center">Inciso 9.1.6: Las aulas deben ser funcionales, disponer
-   de espacio suficiente para cada estudiante y tener las condiciones adecuadas de
-  higiene, seguridad, iluminación, ventilación, temperatura, aislamiento del ruido
- y mobiliario</h3>
+    <h3 class="text-center">
+      Inciso 9.1.12: En los espacios mencionados en el inciso 9.1.11, se debe
+      tener un lugar comodo por cada diez estudiantes inscritos en el programa,
+      ofreciendo las condiciones adecuadas de higiene y seguridad.
+    </h3>
+
+    <h3 class="text-center">
+        De los espacios mencionados anteriormente mencionar:
+    </h3>
 @endsection
 
 @section('formopen')
-    {{Form::open(['action' => ['Inciso9_1_6Controller@update', $id],
+    {{Form::open(['action' => ['Inciso9_1_11Controller@update', $id],
                   'class'  => 'form'])}}
 @endsection
 
 <!-------------- LAS PREGUNTAS Y SUS RESPUESTAS--------------->
 
 @section('contenido_formulario')
+
 	@foreach($preguntas as $pregunta)
 		<div class="form-group">
 			<label for="{{$pregunta->id}}" class="control-label">
@@ -30,32 +36,20 @@
 			</div>
 		</div>
 	@endforeach
+
 @endsection
 
 <!-------------- LAS TABLAS QUE CORRESPONDAN--------------->
 
-@section('cabeza_tabla')
-    <tr>
-        <th>Nombre</th>
-        <th>Superfice</th>
-        <th>Cap. máxima</th>
-        <th>Pizarron</th>
-    </tr>
-@endsection
-
-@section('cuerpo_tabla')
-
-@endsection
-
 <!-------------- SECCION DE FOTOGRAFIAS, EVIDENCIAS, ETC--------------->
 
 @section('Fotografias')
-    <h3 align="center">
-        Fotografias del inciso 9.1.6
-    </h3>
+    @component('layouts.inciso_general')
+        @slot('num_inciso', '9.1.12')
+    @endcomponent
 
   <?php
-    $dirs = array_filter(glob('storage/infraestructura/aulas/*'), 'is_dir');
+    $dirs = array_filter(glob('storage/infraestructura/auditorios/*'), 'is_dir');
   ?>
   @foreach($dirs as $path)
     <?php
@@ -64,6 +58,7 @@
     ?>
 
     @foreach ($images as $image)
+			<tr>
       <td>
         <img src="<?php echo asset($image)?>" width="320" height="200"
 							alt="<?php echo $image?>"></img>
@@ -72,12 +67,5 @@
 
 		@endforeach
   @endforeach
-@endsection
-
-@section('boton_guardar')
-    <div class="col-md-4 text-center">
-        {{ Form::submit('Guardar', ['class' => 'btn btn-success']) }}
-        {{ Form::close() }}
-    </div>
 @endsection
 

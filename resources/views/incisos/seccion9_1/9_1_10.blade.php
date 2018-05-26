@@ -1,4 +1,4 @@
-@extends('layouts.inciso')
+@extends('layouts.inciso_general')
 
 @section('title')
   Inciso 9.1.10
@@ -10,27 +10,39 @@
 
 @section('formopen')
     {{Form::open(['action' => ['Inciso9_1_10Controller@update', $id],
-                  'class'  => 'form-horizontal'])}}
+                  'class'  => 'form'])}}
 @endsection
+
+<!-------------- LAS PREGUNTAS Y SUS RESPUESTAS--------------->
 
 @section('contenido_formulario')
 
-	@foreach($preguntas as $pregunta)
-		<div class="form-group">
-			<label for="{{$pregunta->id}}" class="col-sm-4 control-label">{{$pregunta->titulo}}</label>
+    <!--Pregunta 1-->
+    <div class="form-group">
+        <label for="{{$preguntas[0]->id}}" class="control-label">
+            {{$preguntas[0]->titulo}}
+        </label>
 
-			<div class="col-sm-8">
-				<input type="text" class="form-control" id="{{$pregunta->id}}" name="{{$pregunta->id}}" value="{{$pregunta->respuesta}}">
-			</div>
-		</div>
-	@endforeach
+        <div class="col-sm-8">
+            <input type="text" class="form-control" id="{{$preguntas[0]->id}}" name="{{$preguntas[0]->id}}" value="{{$preguntas[0]->respuesta}}">
+        </div>
+    </div>
+
+    <!--Pregunta 2-->
+    <div class="form-group">
+        <label for="{{$preguntas[1]->id}}" class="control-label">
+            {{$preguntas[1]->titulo}}
+        </label>
+
+        <div>
+            <textarea class="form-control" id="{{$preguntas[1]->id}}" name="{{$preguntas[1]->id}}"value="{{$preguntas[1]->respuesta}}"></textarea>
+        </div>
+    </div>
 
 @endsection
 
-@section('botonGuardar')
-  {{ Form::submit('Guardar', ['class' => 'btn btn-success']) }}
-  {{ Form::close() }}
-@endsection
+
+<!-------------- LAS TABLAS QUE CORRESPONDAN--------------->
 
 @section('cabeza_tabla')
   <tr>
@@ -56,8 +68,13 @@
    @endforeach
 @endsection
 
+<!-------------- SECCION DE FOTOGRAFIAS, EVIDENCIAS, ETC--------------->
+
 @section('Fotografias')
-  <h3 class="text-center">Evidencias de 9.1.10</h3>
+    <h3 align="center">
+        Fotografias del inciso 9.1.10
+    </h3>
+
 
   <?php
     $dirs = array_filter(glob('storage/infraestructura/aulas/*'), 'is_dir');
@@ -78,5 +95,12 @@
 
 		@endforeach
   @endforeach
+@endsection
+
+@section('boton_guardar')
+    <div class="col-md-4 text-center">
+        {{ Form::submit('Guardar', ['class' => 'btn btn-success']) }}
+        {{ Form::close() }}
+    </div>
 @endsection
 

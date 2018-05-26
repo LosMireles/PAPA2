@@ -1,4 +1,4 @@
-@extends('layouts.inciso')
+@extends('layouts.inciso_general')
 
 @section('title')
   Inciso 9.2.1
@@ -12,22 +12,26 @@
 @section('formopen')
 	<!--Esta madre envia un id solo para que update jale-->
     {{Form::open(['action' => ['Inciso9_2_1Controller@update', $id],
-                  'class'  => 'form-horizontal'])}}
+                  'class'  => 'form'])}}
 @endsection
+
+<!-------------- LAS PREGUNTAS Y SUS RESPUESTAS--------------->
 
 @section('contenido_formulario')
+	@foreach($preguntas as $pregunta)
+		<div class="form-group">
+			<label for="{{$pregunta->id}}" class="control-label">
+			    {{$pregunta->titulo}}
+			</label>
 
-    @foreach($preguntas as $pregunta)
-        <div class="form-group">
-            <label for="{{$pregunta->id}}" class="col-sm-4 control-label">{{$pregunta->titulo}}</label>
-
-            <div class="col-sm-8">
-                <input type="hidden" class="form-control" id="{{$pregunta->id}}" name="{{$pregunta->id}}" value="{{$pregunta->respuesta}}"required>
-            </div>
-        </div>
-    @endforeach
-
+			<div>
+                <textarea class="form-control" id="{{$pregunta->id}}" name="{{$pregunta->id}}"value="{{$pregunta->respuesta}}"></textarea>
+			</div>
+		</div>
+	@endforeach
 @endsection
+
+<!-------------- LAS TABLAS QUE CORRESPONDAN--------------->
 
 @section('cabeza_tabla')
   <h4>Tabla de softwares y asignaturas que lo utilizan</h4>
@@ -53,4 +57,6 @@
         </tr>
     @endforeach
 @endsection
+
+<!-------------- SECCION DE FOTOGRAFIAS, EVIDENCIAS, ETC--------------->
 

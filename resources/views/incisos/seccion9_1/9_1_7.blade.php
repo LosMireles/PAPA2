@@ -1,4 +1,4 @@
-@extends('layouts.inciso')
+@extends('layouts.inciso_general')
 
 @section('title')
   Inciso 9.1.7
@@ -11,26 +11,26 @@
 
 @section('formopen')
     {{Form::open(['action' => ['Inciso9_1_7Controller@update', $id],
-                  'class'  => 'form-horizontal'])}}
+                  'class'  => 'form'])}}
 @endsection
 
-@section('contenido_formulario')
+<!-------------- LAS PREGUNTAS Y SUS RESPUESTAS--------------->
 
+@section('contenido_formulario')
 	@foreach($preguntas as $pregunta)
 		<div class="form-group">
-			<label for="{{$pregunta->id}}" class="col-sm-4 control-label">{{$pregunta->titulo}}</label>
+			<label for="{{$pregunta->id}}" class="control-label">
+			    {{$pregunta->titulo}}
+			</label>
 
-			<div class="col-sm-8">
-				<input type="text" class="form-control" id="{{$pregunta->id}}" name="{{$pregunta->id}}"value="{{$pregunta->respuesta}}"required>
+			<div>
+                <textarea class="form-control" id="{{$pregunta->id}}" name="{{$pregunta->id}}"value="{{$pregunta->respuesta}}"></textarea>
 			</div>
 		</div>
 	@endforeach
 @endsection
 
-@section('botonGuardar')
-  {{ Form::submit('Guardar', ['class' => 'btn btn-success']) }}
-  {{ Form::close() }}
-@endsection
+<!-------------- LAS TABLAS QUE CORRESPONDAN--------------->
 
 <!-- Tabla de todos los grupos -->
 @section('cabeza_tabla')
@@ -171,3 +171,13 @@
     </tr>
   @endforeach
 @endsection
+
+<!-------------- SECCION DE FOTOGRAFIAS, EVIDENCIAS, ETC--------------->
+
+@section('boton_guardar')
+    <div class="col-md-4 text-center">
+        {{ Form::submit('Guardar', ['class' => 'btn btn-success']) }}
+        {{ Form::close() }}
+    </div>
+@endsection
+

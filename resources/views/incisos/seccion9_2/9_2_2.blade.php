@@ -1,4 +1,4 @@
-@extends('layouts.inciso')
+@extends('layouts.inciso_general')
 
 @section('title')
   Inciso 9.2.2
@@ -14,11 +14,14 @@
     {{Form::open(['class'  => 'form-horizontal'])}}
 @endsection
 
-@section('contenido_formulario')
+<!-------------- LAS TABLAS QUE CORRESPONDAN--------------->
 
+@section('contenido_formulario')
 	@foreach($preguntas as $pregunta)
 		<div class="form-group">
-			<label for="{{$pregunta->id}}" class="col-sm-4 control-label">{{$pregunta->titulo}}</label>
+			<label for="{{$pregunta->id}}" class="control-label">
+			    {{$pregunta->titulo}}
+			</label>
 
 			<div class="col-sm-8">
 				<input type="hidden" class="form-control" id="{{$pregunta->id}}" name="{{$pregunta->id}}">
@@ -73,4 +76,6 @@
         @endif
         </tr>
 @endsection
+
+<!-------------- SECCION DE FOTOGRAFIAS, EVIDENCIAS, ETC--------------->
 

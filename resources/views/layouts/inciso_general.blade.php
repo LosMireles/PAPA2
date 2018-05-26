@@ -14,10 +14,10 @@
 @endsection
 
 @section('content')
-	Inciso @yield('descripcion')
+	@yield('descripcion')
 
 	<div class="row">
-		<div class="col-md-6 col-md-offset-3">
+		<div class="col-md-10 col-md-offset-1">
             @yield('formopen')
             {{ Form::hidden('_method', 'PATCH') }}
 
@@ -27,11 +27,6 @@
 
             @yield('contenido_formulario')
 
-            <div class="col-sm-offset-4 col-sm-8">
-                @yield('botonGuardar')
-                {{ Form::submit('Guardar', ['class' => 'btn btn-success']) }}
-                {{ Form::close() }}
-            </div>
 		</div>
 	</div>
 
@@ -48,10 +43,9 @@
 
     <hr>
 
-    <h3 align="center">
-        Fotografias del inciso {{$num_inciso or ""}}
-    </h3>
     @yield('Fotografias')
+
+    @yield('boton_guardar')
 
 @endsection
 

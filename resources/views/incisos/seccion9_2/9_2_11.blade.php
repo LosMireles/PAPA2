@@ -1,4 +1,4 @@
-@extends('layouts.inciso')
+@extends('layouts.inciso_general')
 
 @section('title')
   Inciso 9.2.11
@@ -14,31 +14,29 @@
 @section('formopen')
 	<!--Esta madre envia un id solo para que update jale-->
     {{Form::open(['action' => ['Inciso9_2_11Controller@update', $id],
-                  'class'  => 'form-horizontal'])}}
+                  'class'  => 'form'])}}
 @endsection
+
+<!-------------- LAS PREGUNTAS Y SUS RESPUESTAS--------------->
 
 @section('contenido_formulario')
 
 	@foreach($preguntas as $pregunta)
 		<div class="form-group">
-			<label for="{{$pregunta->id}}" class="col-sm-4 control-label">{{$pregunta->titulo}}</label>
+			<label for="{{$pregunta->id}}" class="control-label">
+			    {{$pregunta->titulo}}
+			</label>
 
-			<div class="col-sm-8">
-				<input type="text" class="form-control" id="{{$pregunta->id}}" name="{{$pregunta->id}}" value="{{$pregunta->respuesta}}">
+			<div>
+                <textarea class="form-control" id="{{$pregunta->id}}" name="{{$pregunta->id}}"value="{{$pregunta->respuesta}}"></textarea>
 			</div>
 		</div>
 	@endforeach
-
 @endsection
 
-@section('cabeza_tabla')
-  <h4>Tabla de softwares y asignaturas que lo utilizan</h4>
-    <tr>
-    </tr>
-@endsection
+<!-------------- LAS TABLAS QUE CORRESPONDAN--------------->
 
 @section('cabeza_tabla')
-  <h4>Tabla de softwares y asignaturas que lo utilizan</h4>
     <tr>
         <th>Código cubículo</th>
         <th>Profesor</th>
@@ -56,13 +54,12 @@
     @endforeach
 @endsection
 
-@section('botonGuardar')
-  {{ Form::submit('Guardar', ['class' => 'btn btn-success']) }}
-  {{ Form::close() }}
-@endsection
+<!-------------- SECCION DE FOTOGRAFIAS, EVIDENCIAS, ETC--------------->
 
 @section('Fotografias')
-  <h3 class="text-center">Evidencias de 9.2.11</h3>
+    <h3 align="center">
+        Fotografias del inciso 9.2.11
+    </h3>
 
   <?php
     $dirs = array_filter(glob('storage/infraestructura/cubiculos/*'), 'is_dir');
@@ -83,5 +80,13 @@
 
 		@endforeach
   @endforeach
+
+@endsection
+
+@section('boton_guardar')
+    <div class="col-md-4 text-center">
+        {{ Form::submit('Guardar', ['class' => 'btn btn-success']) }}
+        {{ Form::close() }}
+    </div>
 @endsection
 
