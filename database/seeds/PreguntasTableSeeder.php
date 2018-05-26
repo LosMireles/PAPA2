@@ -164,7 +164,7 @@ class PreguntasTableSeeder extends Seeder
 
         App\Pregunta::create(array(
             'inciso' => '9.1.12',
-            'numero' => '',
+            'numero' => '2',
             'titulo' => '¿Ofrecen las condiciones adecuadas de higiene?',
                         # Explicacion
             'respuesta' => '',
@@ -182,14 +182,14 @@ class PreguntasTableSeeder extends Seeder
             'inciso' => '9.1.13',
             'numero' => '1',
             'titulo' => '¿Considera las facilidades sanitarias adecuadas?',
-
+            'respuesta' => '',
         ));
 
         App\Pregunta::create(array(
             'inciso' => '9.1.13',
             'numero' => '2',
             'titulo' => 'En caso afirmativo sustente su respuesta',
-
+            'respuesta' => '',
         ));
 
         App\Pregunta::create(array(
@@ -197,6 +197,7 @@ class PreguntasTableSeeder extends Seeder
             'numero' => '1',
             'titulo' => 'Mencione los software que se utilizan en cada asignatura y su disponibilidad.',
                     # Describalos
+            'respuesta' => '',
         ));
 
         App\Pregunta::create(array(
@@ -204,6 +205,7 @@ class PreguntasTableSeeder extends Seeder
             'numero' => '1',
             'titulo' => 'Describa los lenguajes de programación utilizados en el programa',
                     # Describalos
+            'respuesta' => '',
         ));
 
         App\Pregunta::create(array(
@@ -211,6 +213,7 @@ class PreguntasTableSeeder extends Seeder
             'numero' => '2',
             'titulo' => 'Describa las herramientas CASE utilizados en el programa',
                     # Describalos
+            'respuesta' => '',
         ));
 
         App\Pregunta::create(array(
@@ -218,6 +221,7 @@ class PreguntasTableSeeder extends Seeder
             'numero' => '3',
             'titulo' => 'Describa los manejadores de base de datos utilizados en el programa',
                     # Describalos
+            'respuesta' => '',
         ));
 
         App\Pregunta::create(array(
@@ -225,6 +229,7 @@ class PreguntasTableSeeder extends Seeder
             'numero' => '4',
             'titulo' => 'Describa la paqueteria en general utilizados en el programa',
                     # Describalos
+            'respuesta' => '',
         ));
 
         App\Pregunta::create(array(
@@ -248,6 +253,7 @@ class PreguntasTableSeeder extends Seeder
             'numero' => '1',
             'titulo' => 'Describir los tipos de plataforma de cómputo disponibles para los estudiantes y el personal docente.',
                     # Describalos
+            'respuesta' => '',
         ));
 
         App\Pregunta::create(array(
@@ -263,6 +269,7 @@ class PreguntasTableSeeder extends Seeder
             'numero' => '1',
             'titulo' => 'El equipo de cómputo de la institución, ¿esta conectado a la red?',
                     # Describalos
+            'respuesta' => '',
         ));
 
         App\Pregunta::create(array(
@@ -270,6 +277,7 @@ class PreguntasTableSeeder extends Seeder
             'numero' => '2',
             'titulo' => '¿Qué equipo de cómputo (servidores y clientes) soporta la red y cuáles son sus características?',
                     # Describalos
+            'respuesta' => '',
         ));
 
         App\Pregunta::create(array(
@@ -277,6 +285,7 @@ class PreguntasTableSeeder extends Seeder
             'numero' => '3',
             'titulo' => '¿Hay acceso a Internet a través de la red para profesores?',
                     # Describalos
+            'respuesta' => '',
         ));
 
         App\Pregunta::create(array(
@@ -284,6 +293,7 @@ class PreguntasTableSeeder extends Seeder
             'numero' => '4',
             'titulo' => '¿Hay acceso a Internet a través de la red para estudiantes?',
                     # Describalos
+            'respuesta' => '',
         ));
 
         App\Pregunta::create(array(
@@ -291,6 +301,7 @@ class PreguntasTableSeeder extends Seeder
             'numero' => '5',
             'titulo' => '¿Cuál es el tiempo promedio disponible para cada estudiante a Internet por semana?',
                     # Describalos
+            'respuesta' => '',
         ));
 
         App\Pregunta::create(array(
@@ -298,6 +309,7 @@ class PreguntasTableSeeder extends Seeder
             'numero' => '6',
             'titulo' => '¿Con qué paquetes de software se cuenta en la red académica de la institución para apoyo del programa que se evalúa?',
                     # Describalos
+            'respuesta' => '',
         ));
 
         App\Pregunta::create(array(
@@ -353,6 +365,7 @@ class PreguntasTableSeeder extends Seeder
             'numero' => '1',
             'titulo' => '¿Los profesores cuentan con equipo de cómputo que les permita desempeñar adecuadamente su función?',
                     # Describa las herramientas con que cuentan los maestros para trabajar. Computadoras, acceso a internet, email, etc
+            'respuesta' => '',
         ));
 
         App\Pregunta::create(array(
@@ -360,6 +373,7 @@ class PreguntasTableSeeder extends Seeder
             'numero' => '1',
             'titulo' => '¿Existen técnicos de administración de sistemas de tiempo completo?',
                     # Describir al tecnico, alumnos se ven involucrados?, quien lo asigna
+            'respuesta' => '',
         ));
 
         App\Pregunta::create(array(
@@ -367,6 +381,7 @@ class PreguntasTableSeeder extends Seeder
             'numero' => '2',
             'titulo' => '¿Participan estudiantes en el apoyo a las actividades de soporte técnico?',
                     # Describir al tecnico, alumnos se ven involucrados?, quien lo asigna
+            'respuesta' => '',
         ));
 
         App\Pregunta::create(array(
@@ -374,6 +389,7 @@ class PreguntasTableSeeder extends Seeder
             'numero' => '3',
             'titulo' => '¿Es este nivel de soporte técnico adecuado?',
                     # Describir al tecnico, alumnos se ven involucrados?, quien lo asigna
+            'respuesta' => '',
         ));
 
         App\Pregunta::create(array(
@@ -381,6 +397,7 @@ class PreguntasTableSeeder extends Seeder
             'numero' => '4',
             'titulo' => 'Si la respuesta anterior es afirmativa. Justifique.',
                     # Describir al tecnico, alumnos se ven involucrados?, quien lo asigna
+            'respuesta' => '',
         ));
 
         App\Pregunta::create(array(
@@ -388,6 +405,7 @@ class PreguntasTableSeeder extends Seeder
             'numero' => '5',
             'titulo' => 'Si la respuesta es no. Describa las limitantes existentes.',
                     # Describir al tecnico, alumnos se ven involucrados?, quien lo asigna
+            'respuesta' => '',
         ));
 
         App\Pregunta::create(array(
@@ -395,6 +413,7 @@ class PreguntasTableSeeder extends Seeder
             'numero' => '1',
             'titulo' => '¿Existen registros de los usuarios de los servicio de cómputo?',
                     # Los datos deben estar organzados por periodos, tambien debe llevar un registro de los programas utilizados
+            'respuesta' => '',
         ));
 
         App\Pregunta::create(array(
@@ -402,6 +421,7 @@ class PreguntasTableSeeder extends Seeder
             'numero' => '1',
             'titulo' => '¿El técnico asignado cuenta con un perfil adecuado para dar soporte a infraestructura, telecomunicaciones, redes, aplicaciones, desarrollo, entre otras?',
                     # Responeder sí o no.
+            'respuesta' => '',
         ));
 
         App\Pregunta::create(array(
@@ -409,6 +429,7 @@ class PreguntasTableSeeder extends Seeder
             'numero' => '2',
             'titulo' => 'En cualquier caso explique brevemente.',
                     # Dar descripción.
+            'respuesta' => '',
         ));
 
         App\Pregunta::create(array(
@@ -416,6 +437,7 @@ class PreguntasTableSeeder extends Seeder
             'numero' => '3',
             'titulo' => 'Proporcione el Curriculum de cada uno, así como una lista de sus nombres, grados académicos, certificados pertinenetes, años de experiencia en el área de competencia relacionados con lo aquí señalado',
                     # Dar descripción.
+            'respuesta' => '',
         ));
 
         # -------------------------------------------------------------------------

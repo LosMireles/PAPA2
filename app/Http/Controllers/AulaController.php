@@ -29,66 +29,73 @@ class AulaController extends Controller
   //----------------------------------------------------------------
   public function store(Request $request)
   {
-    $request->validate($this->rules());
+    //$request->validate($this->rules());
 
     if ($request->hasFile('Fotografias')) {
       foreach($request->Fotografias as $foto){
-        $foto->storeAs('infraestructura/aulas/' . $request->Tipo, $foto->getClientOriginalName());
+        $foto->storeAs('infraestructura/aulas/' . $request->nombre, $foto->getClientOriginalName());
       }
     }
 
     $aula = new Aula;
 
-    $aula->Tipo           = $request->Tipo;
+    $aula->nombre           = $request->nombre;
     $aula->superficie     = $request->superficie;
-	$aula->CantidadEquipo = $request->CantidadEquipo;
-	$aula->CantidadAV     = $request->CantidadAV;
-	$aula->Capacidad      = $request->Capacidad;
+	$aula->capacidad      = $request->capacidad;
 
-		if(isset($request->SillasPaleta) &&
-		$request->SillasPaleta == '1')
+		if(isset($request->sillas_paleta) &&
+		$request->sillas_paleta == '1')
 		{
-			$aula->SillasPaleta = '1';
+			$aula->sillas_paleta = '1';
 		}
 		else
 		{
-			$aula->SillasPaleta = '0';
+			$aula->sillas_paleta = '0';
 		}
-		if(isset($request->MesasTrabajo) &&
-		$request->MesasTrabajo == '1')
+		if(isset($request->mesas_trabajo) &&
+		$request->mesas_trabajo == '1')
 		{
-			$aula->MesasTrabajo = '1';
+			$aula->mesas_trabajo = '1';
 		}
 		else
 		{
-			$aula->MesasTrabajo = '0';
+			$aula->mesas_trabajo = '0';
 		}
-		if(isset($request->Isotopica) &&
-		$request->Isotopica == '1')
+		if(isset($request->isotopica) &&
+		$request->isotopica == '1')
 		{
-			$aula->Isotopica = '1';
+			$aula->isotopica = '1';
 		}
 		else
 		{
-			$aula->Isotopica = '0';
+			$aula->isotopica = '0';
 		}
-		if(isset($request->Estrado) &&
-		$request->Estrado == '1')
+		if(isset($request->estrado) &&
+		$request->estrado == '1')
 		{
-			$aula->Estrado = '1';
+			$aula->estrado = '1';
 		}
 		else
 		{
-			$aula->Estrado = '0';
+			$aula->estrado = '0';
 		}
-		$aula->Pizarron     = $request->Pizarron;
-		$aula->Illuminacion = $request->Illuminacion;
-		$aula->AislamientoR = $request->AislamientoR;
-		$aula->Ventilacion  = $request->Ventilacion;
-		$aula->Temperatura  = $request->Temperatura;
-		$aula->Espacio      = $request->Espacio;
-		$aula->Mobilario    = $request->Mobilario;
-		$aula->Conexiones   = $request->Conexiones;
+		if(isset($request->asesoria) &&
+		$request->asesoria == '1')
+		{
+			$aula->asesoria = '1';
+		}
+		else
+		{
+			$aula->asesoria = '0';
+		}
+		$aula->pizarron     = $request->pizarron;
+		$aula->iluminacion = $request->iluminacion;
+		$aula->aislamiento_ruido = $request->aislamiento_ruido;
+		$aula->ventilacion  = $request->ventilacion;
+		$aula->temperatura  = $request->temperatura;
+		$aula->espacio      = $request->espacio;
+		$aula->mobilario    = $request->mobilario;
+		$aula->conexiones   = $request->conexiones;
 
         $aula->save();
 
@@ -97,10 +104,12 @@ class AulaController extends Controller
     }
 
 	//-----------------------------------------------------------
-	public function edit($tipo) {
+	public function edit($nombre) {
 
         $calificaciones = [1, 2, 3, 4];
-		$aula  = Aula::where('Tipo', $tipo)->first();
+	$aula  = Aula::where('nombre', $nombre)->first();
+
+	
 
         return view('infraestructura.aulas.edit')
             ->with(['aula'           => $aula,
@@ -108,99 +117,62 @@ class AulaController extends Controller
 	}
 
 	//-----------------------------------------------------------
-	public function update(Request $request, $tipo) {
-        $request->validate($this->rules($tipo));
+	public function update(Request $request, $nombre) {
+        //$request->validate($this->rules($nombre));
 
         if ($request->hasFile('Fotografias')) {
           foreach($request->Fotografias as $foto){
-            $foto->storeAs('infraestructura/aulas/' . $request->Tipo, $foto->getClientOriginalName());
+            $foto->storeAs('infraestructura/aulas/' . $request->nombre, $foto->getClientOriginalName());
           }
         }
-	  	$tipo_nuevo     = $request->Tipo;
-        $superficie     = $request->superficie;
-		$CantidadEquipo = $request->CantidadEquipo;
-		$CantidadAV     = $request->CantidadAV;
-		$Capacidad      = $request->Capacidad;
-        $espacio_id     = $request->espacio_id;
+		//dd($request);
+	  	$nombre_nuevo   = $request->nombre;
+        	$superficie     = $request->superficie;
+		$capacidad      = $request->capacidad;
+		$sillas_paleta  = $request->sillas_paleta;
+		$mesas_trabajo  = $request->mesas_trabajo;
+		$isotopica	= $request->isotopica;
+		$estrado	= $request->estrado;
+		$asesoria	= $request->asesoria;
+		$pizarron     = $request->pizarron;
+		$iluminacion = $request->iluminacion;
+		$aislamiento_ruido = $request->aislamiento_ruido;
+		$ventilacion  = $request->ventilacion;
+		$temperatura  = $request->temperatura;
+		$espacio      = $request->espacio;
+		$mobilario    = $request->mobilario;
+		$conexiones   = $request->conexiones;
 
-		if(isset($request->SillasPaleta) &&
-		$request->SillasPaleta == '1')
-		{
-			$SillasPaleta = '1';
-		}
-		else
-		{
-			$SillasPaleta = '0';
-		}
-		if(isset($request->MesasTrabajo) &&
-		$request->MesasTrabajo == '1')
-		{
-			$MesasTrabajo = '1';
-		}
-		else
-		{
-			$MesasTrabajo = '0';
-		}
-		if(isset($request->Isotopica) &&
-		$request->Isotopica == '1')
-		{
-			$Isotopica = '1';
-		}
-		else
-		{
-			$Isotopica = '0';
-		}
-		if(isset($request->Estrado) &&
-		$request->Estrado == '1')
-		{
-			$Estrado = '1';
-		}
-		else
-		{
-			$Estrado = '0';
-		}
-
-		$Pizarron     = $request->Pizarron;
-		$Illuminacion = $request->Illuminacion;
-		$AislamientoR = $request->AislamientoR;
-		$Ventilacion  = $request->Ventilacion;
-		$Temperatura  = $request->Temperatura;
-		$Espacio      = $request->Espacio;
-		$Mobilario    = $request->Mobilario;
-		$Conexiones   = $request->Conexiones;
-
-		Aula::where('Tipo', $tipo)->update(['Tipo'           => $tipo_nuevo,
-                                            'superficie'     => $superficie,
-											'CantidadEquipo' => $CantidadEquipo,
-											'CantidadAV'     => $CantidadAV,
-											'Capacidad'      => $Capacidad,
-											'SillasPaleta'   => $SillasPaleta,
-											'MesasTrabajo'   => $MesasTrabajo,
-											'Isotopica'      => $Isotopica,
-											'Estrado'        => $Estrado,
-											'Pizarron'       => $Pizarron,
-											'Illuminacion'   => $Illuminacion,
-											'AislamientoR'   => $AislamientoR,
-											'Ventilacion'    => $Ventilacion,
-											'Temperatura'    => $Temperatura,
-											'Espacio'        => $Espacio,
-											'Mobilario'      => $Mobilario,
-                                            'Conexiones'     => $Conexiones,
-                                            'espacio_id'     => $espacio_id]);
+		Aula::where('nombre', $nombre)->update(['nombre'         => $nombre_nuevo,
+                                            		'superficie'     => $superficie,					
+							'capacidad'      => $capacidad,
+							'sillas_paleta'   => $sillas_paleta,
+							'mesas_trabajo'   => $mesas_trabajo,
+							'isotopica'      => $isotopica,
+							'estrado'        => $estrado,
+							'pizarron'       => $pizarron,
+							'iluminacion'    => $iluminacion,
+							'aislamiento_ruido'   => $aislamiento_ruido,
+							'ventilacion'    => $ventilacion,
+							'temperatura'    => $temperatura,
+							'espacio'        => $espacio,
+							'mobilario'      => $mobilario,
+							'conexiones'     => $conexiones,
+							'asesoria'       => $asesoria]);
 
 		#echo "Elemento insertado exitosamenteeee!";
         return redirect()->action('AulaController@index');
 	}
 
 	//--------------------------------------------------------------
-	public function destroy($tipo){
+	public function destroy($nombre){
 
     # Borra los archivos subidos a la carpeta del objeto
-    Storage::deleteDirectory('infraestructura/aulas/'. $tipo . '/');
+    Storage::deleteDirectory('infraestructura/aulas/'. $nombre . '/');
 
-    $aula = Aula::where('Tipo', $tipo)->first();
+    $aula = Aula::where('nombre', $nombre)->first();
     if(!$aula){
-        $mensaje = "No existe aula con Tipo: ".$tipo;
+        $mensaje = "No existe aula con nombre: ".$nombre;
         return view('general/error')
             ->with(['mensaje' => $mensaje]);
     }
@@ -211,44 +183,43 @@ class AulaController extends Controller
 	}
 
 	//--------------------------------------------------------------
-    public function rules($tipo = null){
+    public function rules($nombre = null){
         return [
-            'Tipo'           => ['required',
-                                 Rule::unique('aulas')->ignore($tipo, 'Tipo')],
-            'CantidadEquipo' => 'required|integer',
-            'CantidadAV'     => 'required|integer',
-            'Capacidad'      => 'required|integer',
+            'nombre'           => ['required',
+                                 Rule::unique('aulas')->ignore($nombre, 'nombre')],
 
-            'Pizarron'     => 'required|integer|min:1|max:4',
-            'Illuminacion' => 'required|integer|min:1|max:4',
-            'AislamientoR' => 'required|integer|min:1|max:4',
-            'Ventilacion'  => 'required|integer|min:1|max:4',
-            'Temperatura'  => 'required|integer|min:1|max:4',
-            'Espacio'      => 'required|integer|min:1|max:4',
-            'Mobilario'    => 'required|integer|min:1|max:4',
-            'Conexiones'   => 'required|integer|min:1|max:4'
+            'capacidad'      => 'required|integer',
+
+            'pizarron'     => 'required|integer|min:1|max:4',
+            'iluminacion' => 'required|integer|min:1|max:4',
+            'aislamiento_ruido' => 'required|integer|min:1|max:4',
+            'ventilacion'  => 'required|integer|min:1|max:4',
+            'temperatura'  => 'required|integer|min:1|max:4',
+            'espacio'      => 'required|integer|min:1|max:4',
+            'mobilario'    => 'required|integer|min:1|max:4',
+            'conexiones'   => 'required|integer|min:1|max:4'
         ];
     }
 	//--------------------------------------------------------------
 
-  public function viewImg($tipo){
-    return view('infraestructura.aulas.viewImg')->with(['tipo' => $tipo]);
+  public function viewImg($nombre){
+    return view('infraestructura.aulas.viewImg')->with(['nombre' => $nombre]);
   }
 
-  public function guardarImg(Request $request, $tipo){
+  public function guardarImg(Request $request, $nombre){
     if ($request->hasFile('Fotografias')) {
       foreach($request->Fotografias as $foto){
-        $foto->storeAs('infraestructura/aulas/' . $tipo, $foto->getClientOriginalName());
+        $foto->storeAs('infraestructura/aulas/' . $nombre, $foto->getClientOriginalName());
       }
     }
-    return redirect('/aulas/'. $tipo .'/viewImg')->with(['tipo' => $tipo]);
+    return redirect('/aulas/'. $nombre .'/viewImg')->with(['nombre' => $nombre]);
   }
 
-  public function borrarImg($tipo, $imagen)
+  public function borrarImg($nombre, $imagen)
   {
-    $dirImagen = 'infraestructura/aulas/' . $tipo . '/' . $imagen;
+    $dirImagen = 'infraestructura/aulas/' . $nombre . '/' . $imagen;
     Storage::delete($dirImagen);
-    return redirect('/aulas/'. $tipo .'/viewImg')->with(['tipo' => $tipo]);
+    return redirect('/aulas/'. $nombre .'/viewImg')->with(['nombre' => $nombre]);
   }
 
 }
