@@ -14,26 +14,26 @@ class CreateAulasTable extends Migration
     public function up()
     {
         Schema::create('aulas', function (Blueprint $table) {
-            $table -> increments('id')            -> unique()    -> unsigned();
-			$table -> string('Tipo')              -> unique();
-            $table -> float('superficie')         -> nullable();
-			$table -> integer('CantidadEquipo')   -> nullable();
-			$table -> integer('CantidadAV')       -> nullable();
-			$table -> integer('Capacidad')        -> nullable();
+            $table -> increments('id')                 -> unique()    -> unsigned();
+			$table -> string('nombre')                 -> unique();
+            $table -> float('superficie')              -> nullable();
+			$table -> integer('capacidad')             -> nullable();
 
-			$table -> boolean('SillasPaleta')     -> nullable();
-			$table -> boolean('MesasTrabajo')     -> nullable();
-			$table -> boolean('Isotopica')        -> nullable();
-			$table -> boolean('Estrado')          -> nullable();
+			$table -> boolean('sillas_paleta')         -> nullable();
+			$table -> boolean('mesas_trabajo')         -> nullable();
+			$table -> boolean('isotopica')             -> nullable();
+			$table -> boolean('estrado')               -> nullable();
 
-			$table -> tinyInteger('Pizarron')     -> nullable();
-			$table -> tinyInteger('Illuminacion') -> nullable();
-			$table -> tinyInteger('AislamientoR') -> nullable();
-			$table -> tinyInteger('Ventilacion')  -> nullable();
-			$table -> tinyInteger('Temperatura')  -> nullable();
-			$table -> tinyInteger('Espacio')      -> nullable();
-			$table -> tinyInteger('Mobilario')    -> nullable();
-			$table -> tinyInteger('Conexiones')   -> nullable();
+			$table -> tinyInteger('pizarron')          -> nullable();
+			$table -> tinyInteger('iluminacion')       -> nullable();
+			$table -> tinyInteger('aislamiento_ruido') -> nullable();
+			$table -> tinyInteger('ventilacion')       -> nullable();
+			$table -> tinyInteger('temperatura')       -> nullable();
+			$table -> tinyInteger('espacio')           -> nullable();
+			$table -> tinyInteger('mobilario')         -> nullable();
+			$table -> tinyInteger('conexiones')        -> nullable();
+
+			$table -> boolean('asesoria')              -> nullable();
 
             $table -> timestamps();
         });
