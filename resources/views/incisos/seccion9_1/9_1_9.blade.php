@@ -5,7 +5,7 @@
 @endsection
 
 @section('descripcion')
-  <h3 class="text-center">Inciso 9.1.9: Los profesores de tiempo completo, tres cuartos
+  <h3 class="text-justify">Inciso 9.1.9: Los profesores de tiempo completo, tres cuartos
    y medio tiempo deben contar con cubículos. El resto de los profesores deben contar
   con lugares adecuados para su trabajo</h3>
 @endsection
@@ -15,7 +15,7 @@
                   'class'  => 'form'])}}
 @endsection
 
-<!-------------- LAS PREGUNTAS Y SUS RESPUESTAS--------------->
+<!-- ------------ LAS PREGUNTAS Y SUS RESPUESTAS------------- -->
 
 @section('contenido_formulario')
 	@foreach($preguntas as $pregunta)
@@ -32,10 +32,10 @@
 
 @endsection
 
-<!-------------- LAS TABLAS QUE CORRESPONDAN--------------->
+<!-- ------------ LAS TABLAS QUE CORRESPONDAN------------- -->
     <!--Vacio en este caso-->
 
-<!-------------- SECCION DE FOTOGRAFIAS, EVIDENCIAS, ETC--------------->
+<!-- ------------ SECCION DE FOTOGRAFIAS, EVIDENCIAS, ETC------------- -->
 
 @section('Fotografias')
     <h3 align="center">
@@ -64,7 +64,7 @@
 
 
     @section('boton_guardar')
-        <div class="col-md-4 text-center">
+        <div class="text-center">
             {{ Form::submit('Guardar', ['class' => 'btn btn-success']) }}
             {{ Form::close() }}
         </div>

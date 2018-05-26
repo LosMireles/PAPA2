@@ -5,7 +5,7 @@
 @endsection
 
 @section('descripcion')
-  <h3 class="text-center">Inciso 9.2.2: Todo programa debe contar como mínimo con
+  <h3 class="text-justify">Inciso 9.2.2: Todo programa debe contar como mínimo con
    el siguiente software: Lenguajes de programación, herramientas CASE, manejadores
   de base de datos y paquetería en general</h3>
 @endsection
@@ -14,7 +14,7 @@
     {{Form::open(['class'  => 'form-horizontal'])}}
 @endsection
 
-<!-------------- LAS TABLAS QUE CORRESPONDAN--------------->
+<!-- ------------ LAS TABLAS QUE CORRESPONDAN------------- -->
 
 @section('contenido_formulario')
 	@foreach($preguntas as $pregunta)
@@ -77,5 +77,5 @@
         </tr>
 @endsection
 
-<!-------------- SECCION DE FOTOGRAFIAS, EVIDENCIAS, ETC--------------->
+<!-- ------------ SECCION DE FOTOGRAFIAS, EVIDENCIAS, ETC------------- -->
 

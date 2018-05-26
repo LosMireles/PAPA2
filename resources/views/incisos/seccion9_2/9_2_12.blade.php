@@ -5,7 +5,7 @@
 @endsection
 
 @section('descripcion')
-  <h3 class="text-center">Inciso 9.2.12: Los Servicios de Cómputo deben contar
+  <h3 class="text-justify">Inciso 9.2.12: Los Servicios de Cómputo deben contar
    con el soporte técnico adecuado</h3>
 @endsection
 
@@ -15,7 +15,7 @@
                   'class'  => 'form'])}}
 @endsection
 
-<!-------------- LAS PREGUNTAS Y SUS RESPUESTAS--------------->
+<!-- ------------ LAS PREGUNTAS Y SUS RESPUESTAS------------- -->
 
 @section('contenido_formulario')
 	@foreach($preguntas as $pregunta)
@@ -31,7 +31,7 @@
 	@endforeach
 @endsection
 
-<!-------------- LAS TABLAS QUE CORRESPONDAN--------------->
+<!-- ------------ LAS TABLAS QUE CORRESPONDAN------------- -->
 
 @section('cabeza_tabla')
 	<tr>
@@ -65,10 +65,10 @@
 	@endforeach
 @endsection
 
-<!-------------- SECCION DE FOTOGRAFIAS, EVIDENCIAS, ETC--------------->
+<!-- ------------ SECCION DE FOTOGRAFIAS, EVIDENCIAS, ETC------------- -->
 
 @section('boton_guardar')
-    <div class="col-md-4 text-center">
+    <div class="text-center">
         {{ Form::submit('Guardar', ['class' => 'btn btn-success']) }}
         {{ Form::close() }}
     </div>

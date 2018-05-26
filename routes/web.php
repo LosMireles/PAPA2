@@ -98,6 +98,7 @@ Route::resources(
      'inciso_9_2_12'       => 'Inciso9_2_12Controller',
      'inciso_9_2_14'       => 'Inciso9_2_14Controller',
      'inciso_9_2_5'        => 'Inciso9_2_5Controller',
+     'inciso_9_1_12'       => 'Inciso9_1_12Controller',
      'incisos'             => 'IncisoController'],
 
     ['except' => 'show']);

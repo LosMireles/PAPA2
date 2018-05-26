@@ -5,7 +5,7 @@
 @endsection
 
 @section('descripcion')
-  <h3 class="text-center">Inciso 9.1.13: Las facilidades sanitarias para los estudiantes
+  <h3 class="text-justify">Inciso 9.1.13: Las facilidades sanitarias para los estudiantes
    y profesores del programa deben ser adecuadas</h3>
 @endsection
 
@@ -15,7 +15,7 @@
 @endsection
 
 
-<!-------------- LAS PREGUNTAS Y SUS RESPUESTAS--------------->
+<!-- ------------ LAS PREGUNTAS Y SUS RESPUESTAS------------- -->
 
 @section('contenido_formulario')
 
@@ -25,7 +25,7 @@
             {{$preguntas[0]->titulo}}
         </label>
 
-        <div class="col-sm-8">
+        <div>
             <input type="text" class="form-control" id="{{$preguntas[0]->id}}" name="{{$preguntas[0]->id}}" value="{{$preguntas[0]->respuesta}}">
         </div>
     </div>
@@ -43,7 +43,7 @@
 
 @endsection
 
-<!-------------- LAS TABLAS QUE CORRESPONDAN--------------->
+<!-- ------------ LAS TABLAS QUE CORRESPONDAN------------- -->
 
 @section('cabeza_tabla')
   <tr>
@@ -70,7 +70,7 @@
   </tr>
   @endforeach
 @endsection
-<!-------------- SECCION DE FOTOGRAFIAS, EVIDENCIAS, ETC--------------->
+<!-- ------------ SECCION DE FOTOGRAFIAS, EVIDENCIAS, ETC------------- -->
 
 @section('Fotografias')
     <h3 align="center">
@@ -99,7 +99,7 @@
 @endsection
 
 @section('boton_guardar')
-    <div class="col-md-4 text-center">
+    <div class="text-center">
         {{ Form::submit('Guardar', ['class' => 'btn btn-success']) }}
         {{ Form::close() }}
     </div>

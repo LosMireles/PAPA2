@@ -5,7 +5,7 @@
 @endsection
 
 @section('descripcion')
-  <h3 class="text-center">Inciso 9.2.14: Especificamente, el personal técnico,
+  <h3 class="text-justify">Inciso 9.2.14: Especificamente, el personal técnico,
     es suficiente y cuenta con el perfil adecuado para dar soporte, no solo a la
      infraestructura de telecomunicaciones y redes, sino también para el desarrollo
      de aplicaciones, incorporación de tecnologías emergentes, administración y
@@ -20,7 +20,7 @@
                   'class'  => 'form'])}}
 @endsection
 
-<!-------------- LAS PREGUNTAS Y SUS RESPUESTAS--------------->
+<!-- ------------ LAS PREGUNTAS Y SUS RESPUESTAS------------- -->
 
 @section('contenido_formulario')
 	@foreach($preguntas as $pregunta)
@@ -36,7 +36,7 @@
 	@endforeach
 @endsection
 
-<!-------------- LAS TABLAS QUE CORRESPONDAN--------------->
+<!-- ------------ LAS TABLAS QUE CORRESPONDAN------------- -->
 
 @section('cabeza_tabla')
     <tr>
@@ -70,10 +70,10 @@
   @endforeach
 @endsection
 
-<!-------------- SECCION DE FOTOGRAFIAS, EVIDENCIAS, ETC--------------->
+<!-- ------------ SECCION DE FOTOGRAFIAS, EVIDENCIAS, ETC------------- -->
 
 @section('boton_guardar')
-    <div class="col-md-4 text-center">
+    <div class="text-center">
         {{ Form::submit('Guardar', ['class' => 'btn btn-success']) }}
         {{ Form::close() }}
     </div>

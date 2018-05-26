@@ -5,7 +5,7 @@
 @endsection
 
 @section('descripcion')
-  <h3 class="text-center">Inciso 9.2.5: Se debe contar con al menos tres plataformas
+  <h3 class="text-justify">Inciso 9.2.5: Se debe contar con al menos tres plataformas
    de cómputo diferentes que estén disponibles y accesibles para los estudiantes y
   el personal docente del programa</h3>
 @endsection
@@ -15,7 +15,7 @@
                   'class'  => 'form'])}}
 @endsection
 
-<!-------------- LAS PREGUNTAS Y SUS RESPUESTAS--------------->
+<!-- ------------ LAS PREGUNTAS Y SUS RESPUESTAS------------- -->
 
 @section('contenido_formulario')
 
@@ -33,12 +33,12 @@
 
 @endsection
 
-<!-------------- LAS TABLAS QUE CORRESPONDAN--------------->
+<!-- ------------ LAS TABLAS QUE CORRESPONDAN------------- -->
 
-<!-------------- SECCION DE FOTOGRAFIAS, EVIDENCIAS, ETC--------------->
+<!-- ------------ SECCION DE FOTOGRAFIAS, EVIDENCIAS, ETC------------- -->
 
 @section('boton_guardar')
-    <div class="col-md-4 text-center">
+    <div class="text-center">
         {{ Form::submit('Guardar', ['class' => 'btn btn-success']) }}
         {{ Form::close() }}
     </div>

@@ -5,7 +5,7 @@
 @endsection
 
 @section('descripcion')
-  <h3 class="text-center">Inciso 9.2.1: Para cada asignatura mencionar el software
+  <h3 class="text-justify">Inciso 9.2.1: Para cada asignatura mencionar el software
    que se utiliza y si está disponible dentro de la institución</h3>
 @endsection
 
@@ -15,7 +15,7 @@
                   'class'  => 'form'])}}
 @endsection
 
-<!-------------- LAS PREGUNTAS Y SUS RESPUESTAS--------------->
+<!-- ------------ LAS PREGUNTAS Y SUS RESPUESTAS------------- -->
 
 @section('contenido_formulario')
 	@foreach($preguntas as $pregunta)
@@ -31,7 +31,7 @@
 	@endforeach
 @endsection
 
-<!-------------- LAS TABLAS QUE CORRESPONDAN--------------->
+<!-- ------------ LAS TABLAS QUE CORRESPONDAN------------- -->
 
 @section('cabeza_tabla')
   <h4>Tabla de softwares y asignaturas que lo utilizan</h4>
@@ -58,5 +58,5 @@
     @endforeach
 @endsection
 
-<!-------------- SECCION DE FOTOGRAFIAS, EVIDENCIAS, ETC--------------->
+<!-- ------------ SECCION DE FOTOGRAFIAS, EVIDENCIAS, ETC------------- -->
 

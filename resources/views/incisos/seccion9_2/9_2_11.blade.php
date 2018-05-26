@@ -5,7 +5,7 @@
 @endsection
 
 @section('descripcion')
-  <h3 class="text-center">Inciso 9.2.11: Los profesores del programa deben contar
+  <h3 class="text-justify">Inciso 9.2.11: Los profesores del programa deben contar
    con equipo de cómputo que les permita desempeñar adecuadamente su función. En
   el caso de los profesores de tiempo completo, estos deberán de contar con una
  computadora para su uso exclusivo</h3>
@@ -17,7 +17,7 @@
                   'class'  => 'form'])}}
 @endsection
 
-<!-------------- LAS PREGUNTAS Y SUS RESPUESTAS--------------->
+<!-- ------------ LAS PREGUNTAS Y SUS RESPUESTAS------------- -->
 
 @section('contenido_formulario')
 
@@ -34,7 +34,7 @@
 	@endforeach
 @endsection
 
-<!-------------- LAS TABLAS QUE CORRESPONDAN--------------->
+<!-- ------------ LAS TABLAS QUE CORRESPONDAN------------- -->
 
 @section('cabeza_tabla')
     <tr>
@@ -54,7 +54,7 @@
     @endforeach
 @endsection
 
-<!-------------- SECCION DE FOTOGRAFIAS, EVIDENCIAS, ETC--------------->
+<!-- ------------ SECCION DE FOTOGRAFIAS, EVIDENCIAS, ETC------------- -->
 
 @section('Fotografias')
     <h3 align="center">
@@ -84,7 +84,7 @@
 @endsection
 
 @section('boton_guardar')
-    <div class="col-md-4 text-center">
+    <div class="text-center">
         {{ Form::submit('Guardar', ['class' => 'btn btn-success']) }}
         {{ Form::close() }}
     </div>

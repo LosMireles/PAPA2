@@ -5,7 +5,7 @@
 @endsection
 
 @section('descripcion')
-  <h3 class="text-center">Inciso 9.1.7: El número de aulas habrá de ser suficiente
+  <h3 class="text-justify">Inciso 9.1.7: El número de aulas habrá de ser suficiente
    para antender la impartición de cursos que se programen en cada periodo escolar</h3>
 @endsection
 
@@ -14,7 +14,7 @@
                   'class'  => 'form'])}}
 @endsection
 
-<!-------------- LAS PREGUNTAS Y SUS RESPUESTAS--------------->
+<!-- ------------ LAS PREGUNTAS Y SUS RESPUESTAS------------- -->
 
 @section('contenido_formulario')
 	@foreach($preguntas as $pregunta)
@@ -30,7 +30,7 @@
 	@endforeach
 @endsection
 
-<!-------------- LAS TABLAS QUE CORRESPONDAN--------------->
+<!-- ------------ LAS TABLAS QUE CORRESPONDAN------------- -->
 
 <!-- Tabla de todos los grupos -->
 @section('cabeza_tabla')
@@ -172,10 +172,10 @@
   @endforeach
 @endsection
 
-<!-------------- SECCION DE FOTOGRAFIAS, EVIDENCIAS, ETC--------------->
+<!-- ------------ SECCION DE FOTOGRAFIAS, EVIDENCIAS, ETC------------- -->
 
 @section('boton_guardar')
-    <div class="col-md-4 text-center">
+    <div class="text-center">
         {{ Form::submit('Guardar', ['class' => 'btn btn-success']) }}
         {{ Form::close() }}
     </div>

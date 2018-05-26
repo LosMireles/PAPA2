@@ -5,7 +5,7 @@
 @endsection
 
 @section('descripcion')
-  <h3 class="text-center">Inciso 9.1.6: Las aulas deben ser funcionales, disponer
+  <h3 class="text-justify">Inciso 9.1.6: Las aulas deben ser funcionales, disponer
    de espacio suficiente para cada estudiante y tener las condiciones adecuadas de
   higiene, seguridad, iluminación, ventilación, temperatura, aislamiento del ruido
  y mobiliario</h3>
@@ -47,7 +47,7 @@
 
 @endsection
 
-<!-------------- SECCION DE FOTOGRAFIAS, EVIDENCIAS, ETC--------------->
+<!-- ------------ SECCION DE FOTOGRAFIAS, EVIDENCIAS, ETC ------------- -->
 
 @section('Fotografias')
     <h3 align="center">
@@ -75,7 +75,7 @@
 @endsection
 
 @section('boton_guardar')
-    <div class="col-md-4 text-center">
+    <div class="text-center">
         {{ Form::submit('Guardar', ['class' => 'btn btn-success']) }}
         {{ Form::close() }}
     </div>

@@ -1,4 +1,4 @@
-@extends('layouts.inciso')
+@extends('layouts.inciso_general')
 
 @section('title')
   Inciso 9.2.7
@@ -86,10 +86,10 @@
 
 <!-------------- LAS TABLAS QUE CORRESPONDAN--------------->
 
-<!-------------- SECCION DE FOTOGRAFIAS, EVIDENCIAS, ETC--------------->
+<!-- ------------ SECCION DE FOTOGRAFIAS, EVIDENCIAS, ETC------------- -->
 
 @section('boton_guardar')
-    <div class="col-md-4 text-center">
+    <div class="text-center">
         {{ Form::submit('Guardar', ['class' => 'btn btn-success']) }}
         {{ Form::close() }}
     </div>

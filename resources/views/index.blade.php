@@ -71,7 +71,9 @@
 	  	</div>
 	  	<div class="tab-pane" id="2">
 	  		
-	  			<a href="#" class="btn btn-danger" style="margin: 10px;">Generar informe</a>
+	  		<div class="row text-right">
+	  			<a href="#" class="btn btn-danger" style="margin: 15px;">Generar informe</a>
+	  		</div>
 	  		
 	  		@component('layouts.componentes_inicio.formulario_salida')
 	  		@endcomponent
