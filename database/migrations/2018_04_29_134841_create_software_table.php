@@ -17,10 +17,8 @@ class CreateSoftwareTable extends Migration
             $table -> increments('id')         -> unique()    -> unsigned();
             $table -> string('nombre')         -> unique();
             $table -> string('version')        -> nullable();
-            $table -> boolean('manualUsuario') -> nullable();
-            $table -> string('licencia')       -> nullable();
-            $table -> string('disponibilidad') -> nullable();
             $table -> string('clase')          -> nullable();
+            $table -> string('disponibilidad') -> nullable();
 
             $table->timestamps();
         });

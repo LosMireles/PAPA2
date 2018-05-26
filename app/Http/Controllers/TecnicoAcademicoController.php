@@ -157,7 +157,7 @@ class TecnicoAcademicoController extends Controller
         }
         $tecnico->delete();
         echo "Elemento borrado exitosamente!";
-        return redirect()->action('TecnicoAcademicoController@index');
+        return redirect()->action('Inciso9_2_14Controller@index');
     }
 
     public function rules($nombre = null){

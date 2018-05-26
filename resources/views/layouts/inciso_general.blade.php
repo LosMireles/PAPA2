@@ -20,6 +20,7 @@
 		<div class="col-md-10 col-md-offset-1">
             @yield('formopen')
             {{ Form::hidden('_method', 'PATCH') }}
+            {{ Form::close() }}
 
             <div class="form-group">
                 <input type = "hidden" name = "_token" value = "{{csrf_token()}}">

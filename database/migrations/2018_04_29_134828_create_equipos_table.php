@@ -14,14 +14,11 @@ class CreateEquiposTable extends Migration
     public function up()
     {
         Schema::create('equipos', function (Blueprint $table) {
-            $table -> increments('id')         -> unique()    -> unsigned();
-            $table -> string('serial')         -> unique();
-            $table -> string('marca')          -> nullable();
-            $table -> boolean('manualUsuario') -> nullable();
-            $table -> boolean('operable')      -> nullable();
-            $table -> string('localizacion')   -> nullable();
-            $table -> string('tipo')           -> nullable();
-            $table -> longText('descripcion')  -> nullable();
+            $table -> increments('id')            -> unique()    -> unsigned();
+            $table -> string('serial')            -> unique();
+            $table -> string('sistema_operativo') -> unique();
+            $table -> string('marca')             -> nullable();
+            $table -> longText('descripcion')     -> nullable();
 
             $table->timestamps();
         });
