@@ -84,9 +84,12 @@ class Inciso9_1_6Controller extends Controller
         $arr[] = array_slice($request->all(), 2);
 
         $respuestas = array_slice($request->all(), 2);
+        $estado = $request->terminado == "si" ? 1 : 0;
+
         for($i = 0; $i < sizeof($preguntas); $i++){
             $preguntas[$i]->update([
-                'respuesta' => $respuestas[$i]
+                'respuesta' => $respuestas[$i],
+                'estado' => $estado
             ]);
         }
 
@@ -104,4 +107,3 @@ class Inciso9_1_6Controller extends Controller
         //
     }
 }
-
