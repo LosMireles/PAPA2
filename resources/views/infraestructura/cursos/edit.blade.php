@@ -33,11 +33,20 @@
 
 	@component("layouts.text_input")
         @slot("nombre_input", "no_estudiantes")
-        @slot("tooltip_input", "Numero de estudiantes")
-        @slot("label_input", "Pertenecientes a LCC")
+        @slot("tooltip_input", "Pertenecientes a LCC")
+        @slot("label_input", "Numero de estudiantes")
         @slot("placeholder_input", "1")
         @slot("extra", "required")
 		@slot("valor_default", $curso->no_estudiantes)
+    @endcomponent
+	
+	@component("layouts.text_input")
+        @slot("nombre_input", "no_grupo")
+        @slot("tooltip_input", "Identificador")
+        @slot("label_input", "Numero de grupo ")
+        @slot("placeholder_input", "1")
+        @slot("extra", "required")
+		@slot("valor_default", $curso->no_grupo)
     @endcomponent
 
 	@component("layouts.select_input")
