@@ -37,7 +37,7 @@
           <input type="radio" name="{{$preguntas[0]->id}}" value="Si"> Sí <br>
           <input type="radio" name="{{$preguntas[0]->id}}" value="No" checked> No
         @else
-          <input type="radio" name="{{$preguntas[0]->id}}" value="Si"> Sí <br>
+          <input type="radio" name="{{$preguntas[0]->id}}" value="Si" checked> Sí <br>
           <input type="radio" name="{{$preguntas[0]->id}}" value="No"> No
         @endif
       </div>
