@@ -74,7 +74,6 @@ class Inciso9_2_14Controller extends Controller
      */
     public function update(Request $request, $id)
     {
-        // Volver a obtener los elementos del inciso 9.1.6
         $preguntas = Pregunta::where('inciso', '9.2.14')->get();
 
         $arr[] = array_slice($request->all(), 2);

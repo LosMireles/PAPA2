@@ -43,7 +43,7 @@ class AuditorioController extends Controller
       	$auditorio->save();
 
 	    echo "Elemento insertado exitosamente!";
-      return redirect()->action('AuditorioController@index');
+      return redirect()->action('Inciso9_1_11Controller@index');
     }
 
     //----------------------------------------------------------------
@@ -75,7 +75,7 @@ class AuditorioController extends Controller
         ]);
 
 		echo "Elemento editado exitosamente!";
-        return redirect()->action('AuditorioController@index');
+        return redirect()->action('Inciso9_1_11Controller@index');
     }
 
     //----------------------------------------------------------------
@@ -90,7 +90,7 @@ class AuditorioController extends Controller
         $auditorio->delete();
 
 	      echo "Elemento borrado exitosamente!";
-        return redirect()->action('AuditorioController@index');
+        return redirect()->action('Inciso9_1_11Controller@index');
     }
 
     //----------------------------------------------------------------
