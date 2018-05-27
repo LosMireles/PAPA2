@@ -33,6 +33,8 @@
 
     <hr>
 
+    @yield('tablas_inciso_general')
+
     <table class="table table-hover">
         <thead style="background-color: #ed2a2a; color: white;">
             @yield('cabeza_tabla')
@@ -47,6 +49,8 @@
     @yield('Fotografias')
 
     @yield('boton_guardar')
+
+    @yield('extra_inciso_general')
 
 @endsection
 

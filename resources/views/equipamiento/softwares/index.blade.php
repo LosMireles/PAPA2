@@ -46,6 +46,7 @@
             <td>{{ $software->disponibilidad }}</td>
             <td>{{ $software->clase }}</td>
 
+            {{--
             <td>
                 @if(!empty($software->equipos))
                     @foreach($software->equipos as $equipo)
@@ -61,6 +62,7 @@
                     @endforeach
                 @endif
             </td>
+            --}}
 
             <td class="text-center">
                 <a href="{{action('SoftwareController@edit', [ 'nombre' => $software->nombre])}}" class="btn btn-warning">
