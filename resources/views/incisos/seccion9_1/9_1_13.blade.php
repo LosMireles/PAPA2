@@ -37,7 +37,7 @@
         </label>
 
         <div>
-            <textarea class="form-control" id="{{$preguntas[1]->id}}" name="{{$preguntas[1]->id}}"value="{{$preguntas[1]->respuesta}}"></textarea>
+            <textarea class="form-control" id="{{$preguntas[1]->id}}" name="{{$preguntas[1]->id}}">{{$preguntas[1]->respuesta}}</textarea>
         </div>
     </div>
 
@@ -100,8 +100,18 @@
 
 @section('boton_guardar')
     <div class="text-center">
+      <div>
+        <label for="terminado" class="control-label">
+          Marque esta casilla si termino de responder:
+        </label>
+        @if ( $preguntas[0]->estado == 1)
+          <input type="checkbox" name="terminado" value="si" checked>
+        @else
+          <input type="checkbox" name="terminado" value="si">
+        @endif
+      </div>
+
         {{ Form::submit('Guardar', ['class' => 'btn btn-success']) }}
         {{ Form::close() }}
     </div>
 @endsection
-
