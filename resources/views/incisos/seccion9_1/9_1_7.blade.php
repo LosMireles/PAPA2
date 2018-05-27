@@ -28,13 +28,11 @@
 			</div>
 		</div>
 	@endforeach
+
+	<div class="row text-right" style="margin: 2px;">
+    	<a href="{{ action('CursoController@create') }}" class="btn btn-success">Agregar</a>
+  	</div>
 	@component('layouts.componentes.tabla_incisos_agregar')
-      @slot('controlador_agregar')
-        {{Form::open(['action' => ['CursoController@create']])}}
-      @endslot
-
-
-	<!-- ------------ LAS TABLAS QUE CORRESPONDAN------------- -->
 
 	<!-- Tabla de todos los grupos -->
 	@slot('cabeza_tabla')
@@ -56,11 +54,9 @@
 		  	<td>{{ $curso->departamento }}</td>
 			<td>{{ $curso->aulas[0]->nombre}}</td> <!--Solo para uno, cambiar foreach en caso de mas-->
 
-		    <td>@component('layouts.boton_editar')
-		        @slot("controlador_editar")
-		            {{ Form::open(['action' => ['CursoController@edit', $curso->nombre]])}}
-		        @endslot
-		    @endcomponent</td>
+		    <td>  
+              <a href="{{ action('CursoController@edit', $curso->nombre) }}" class="btn btn-warning">Editar</a>
+            </td>
 			
 			@component('layouts.boton_borrar')
               @slot('controlador_borrar')

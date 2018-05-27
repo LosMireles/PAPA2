@@ -1,4 +1,4 @@
-@extends('layouts.inciso_general')
+@extends('layouts.inciso_general_igual')
 
 @section('title')
   Inciso 9.1.6
@@ -32,96 +32,6 @@
 	@endforeach
 @endsection
 
-<!-- ------------ LAS TABLAS QUE CORRESPONDAN------------- -->
-@section('cabeza_tabla')
-    <tr>
-        <th>Nombre</th>
-        <th>Superfice</th>
-        <th>Cap. máxima</th>
-    </tr>
-@endsection
-
-@section('cuerpo_tabla')
-	@foreach ($aulas as $aula)
-    <tr>
-		<td>{{ $aula->nombre}}</td>
-		<td>{{ $aula->superficie }}</td>
-		<td>{{ $aula->capacidad }}</td>
-	<td>
-        @component('layouts.boton_editar')
-            @slot("controlador_editar")
-                {{ Form::open(['action' => ['AulaController@edit', $aula->nombre]])}}
-            @endslot
-        @endcomponent
-	</td>
-	<td>
-        @component('layouts.boton_borrar')
-            @slot("controlador_borrar")
-                {{ Form::open(['action' => ['AulaController@destroy', $aula->nombre]]) }}
-            @endslot
-        @endcomponent
-	</td>
-
-
-        <!--Boton ver fotos-->
-        <td class="text-center">
-            <a href="{{action('AulaController@viewImg', [ 'nombre' => $aula->nombre])}}" class="btn btn-warning">
-                Fotografías
-            </a>
-        </td>
-
-	</tr>
-	@endforeach
-@endsection
-
-
-<!-- ------------ SECCION DE FOTOGRAFIAS, EVIDENCIAS, ETC ------------- -->
-
-@section('Fotografias')
-
-<style type='text/css'>
-  .img_div {
-    float: left;
-    margin-right: 10px;
-    margin-bottom: 15px;
-
-  }
-  .containerdivNewLine {
-    clear: both;
-    display: block;
-    position: relative;
-  }
-  img{
-    width: auto;
-    max-height: 100%
-  }
-</style>
-    <h3 align="center">
-        Fotografias del inciso 9.1.6
-    </h3>
-
-  <?php
-    $dirs = array_filter(glob('storage/infraestructura/aulas/*'), 'is_dir');
-  ?>
-  @foreach($dirs as $path)
-    <?php
-      $dirname = $path.'/';
-      $images= glob($dirname . "*.{[jJ][pP][gG],[pP][nN][gG],[gG][iI][fF],[jJ][pP][eE][gG]}", GLOB_BRACE);
-    ?>
-    @foreach ($images as $image)
-
-  		<figure>
-  				<div class="img_div">
-  					<img src="<?php echo asset($image)?>" height="220"
-  						alt="<?php echo $image?>"/>
-  					<figcaption class="text-center"><?php echo pathinfo($image)['basename']?></figcaption>
-  				</div>
-  		</figure>
-		@endforeach
-  @endforeach
-
-@endsection
-
 @section('boton_guardar')
   <div class="containerdivNewLine">
     <div class="text-center">
@@ -130,3 +40,52 @@
     </div>
   </div>
 @endsection
+
+@section('evidencias_tabla')
+	<div class="row text-right" style="margin: 2px;">
+    	<a href="{{ action('AulaController@create') }}" class="btn btn-success">Agregar</a>
+  	</div>
+<!-- ------------ LAS TABLAS QUE CORRESPONDAN------------- -->
+	@component('layouts.componentes.tabla_incisos_agregar')
+		slot('cabeza_tabla')
+		<tr>
+		    <th>Nombre</th>
+		    <th>Superfice</th>
+		    <th>Cap. máxima</th>
+		</tr>
+		@endslot
+
+		@slot('cuerpo_tabla')
+			@foreach ($aulas as $aula)
+			<tr>
+				<td>{{ $aula->nombre}}</td>
+				<td>{{ $aula->superficie }}</td>
+				<td>{{ $aula->capacidad }}</td>
+			<td>
+				<td>  
+				      <a href="{{ action('AulaController@edit', $aula->nombre) }}" class="btn btn-warning">Editar</a>
+				    </td>
+			</td>
+			<td>
+				@component('layouts.boton_borrar')
+				    @slot("controlador_borrar")
+				        {{ Form::open(['action' => ['AulaController@destroy', $aula->nombre]]) }}
+				    @endslot
+				@endcomponent
+			</td>
+
+
+				<!--Boton ver fotos-->
+				<td class="text-center">
+				    <a href="{{action('AulaController@viewImg', [ 'nombre' => $aula->nombre])}}" class="btn btn-warning">
+				        Fotografías
+				    </a>
+				</td>
+
+			</tr>
+			@endforeach
+		@endslot
+	@endcomponent
+@endsection
+
+
