@@ -27,13 +27,24 @@
 			<td>
 				<ul class="list-unstyled">
 					<li>
+						<?php
+							$respuesta = DB::table('preguntas')->where('inciso','9.1.4')->first();
+							if ($respuesta->estado == 1) {
+								$estado = 'Completo';
+							}else{
+								if ($respuesta->respuesta != '') {
+									$estado = 'Incompleto';
+								}else{
+									$estado = 'Vacío';
+								}
+							}
+						?>
 						@component('layouts.componentes.tooltip_general_link')
 							@slot('url', '#')
 							@slot('titulo','El inciso no se ha iniciado')
-							@slot('mensaje','Vacío')
+							@slot('mensaje', $estado )
 						@endcomponent
 					</li>
-
 					<li>
 						@component('layouts.componentes.tooltip_general_link')
 							@slot('url', '#')
