@@ -80,8 +80,6 @@ class Inciso9_2_7Controller extends Controller
         // Volver a obtener los elementos del inciso 9.2.7
         $preguntas = Pregunta::where('inciso', '9.2.7')->get();
 
-        $arr[] = array_slice($request->all(), 2);
-
         $respuestas = array_slice($request->all(), 2);
         $estado = $request->terminado == "si" ? 1 : 0;
 

@@ -48,12 +48,10 @@
 							<img src="storage/recursos/semaforos/Red_rect.png" alt="Red_rect.png">
 							<?php $estado = 'Vacío'; ?>
 						@endif
-
-
 						@component('layouts.componentes.tooltip_general_link')
 							@slot('url', '#')
-							@slot('titulo','El inciso no se ha iniciado')
-							@slot('mensaje', $estado )
+							@slot('titulo','Hay preguntas sin contestar')
+							@slot('mensaje', $estado)
 						@endcomponent
 					</li>
 					<!-- Inciso 9.1.6 -->
@@ -315,9 +313,9 @@
 						@endcomponent
 					</li>
 
-					<!-- Inciso 9.2.7 -->
+					<!-- Inciso 9.2.11 -->
 					<li>
-						<?php $respuesta = DB::table('preguntas')->where('inciso','9.2.7')->first();?>
+						<?php $respuesta = DB::table('preguntas')->where('inciso','9.2.11')->first();?>
 						@if ($respuesta->estado == 1)
 							<img src="storage/recursos/semaforos/Green_rect.png" alt="Green_rect.png">
 							<?php  $estado = 'Completo';?>
@@ -335,9 +333,9 @@
 						@endcomponent
 					</li>
 
-					<!-- Inciso 9.2.11 -->
+					<!-- Inciso 9.2.12 -->
 					<li>
-						<?php $respuesta = DB::table('preguntas')->where('inciso','9.2.11')->first();?>
+						<?php $respuesta = DB::table('preguntas')->where('inciso','9.2.12')->first();?>
 						@if ($respuesta->estado == 1)
 							<img src="storage/recursos/semaforos/Green_rect.png" alt="Green_rect.png">
 							<?php  $estado = 'Completo';?>
