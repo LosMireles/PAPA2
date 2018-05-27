@@ -30,31 +30,48 @@
 			</div>
 		</div>
 	@endforeach
-
-  @component('layouts.componentes.tabla_incisos_agregar_igual')
-
-    @slot('cabeza_tabla')
-      <th>Hola</th>
-      <th>Hola</th>
-      <th>Hola</th>
-    @endslot
-
-    @slot('cuerpo_tabla')
-      <tr>
-        <td>HOLA</td>
-        <td>HOLA</td>
-        <td>HOLA</td>
-        <td>HOLA</td>
-        <td>HOLA</td>
-        <td>HOLA</td>
-      </tr>
-    @endslot
-
-  @endcomponent
-  
 @endsection
 
 <!-- ------------ LAS TABLAS QUE CORRESPONDAN------------- -->
+@section('cabeza_tabla')
+    <tr>
+        <th>Nombre</th>
+        <th>Superfice</th>
+        <th>Cap. máxima</th>
+        <th>Pizarron</th>
+        <th></th>
+    </tr>
+@endsection
+
+@section('cuerpo_tabla')
+	@foreach ($aulas as $aula)
+    <tr>
+		<td>{{ $aula->nombre}}</td>
+		<td>{{ $aula->capacidad }}</td>
+
+        @component('layouts.boton_editar')
+            @slot("controlador_editar")
+                {{ Form::open(['action' => ['AulaController@edit', $aula->nombre]])}}
+            @endslot
+        @endcomponent
+
+        @component('layouts.boton_borrar')
+            @slot("controlador_borrar")
+                {{ Form::open(['action' => ['AulaController@destroy', $aula->nombre]]) }}
+            @endslot
+        @endcomponent
+
+
+        <!--Boton ver fotos-->
+        <td class="text-center">
+            <a href="{{action('AulaController@viewImg', [ 'nombre' => $aula->nombre])}}" class="btn btn-warning">
+                Fotografías
+            </a>
+        </td>
+
+	</tr>
+	@endforeach
+@endsection
 
 
 <!-- ------------ SECCION DE FOTOGRAFIAS, EVIDENCIAS, ETC ------------- -->
@@ -67,6 +84,11 @@
     margin-right: 10px;
     margin-bottom: 15px;
 
+  }
+  .containerdivNewLine {
+    clear: both;
+    display: block;
+    position: relative;
   }
   img{
     width: auto;
@@ -100,8 +122,10 @@
 @endsection
 
 @section('boton_guardar')
+  <div class="containerdivNewLine">
     <div class="text-center">
         {{ Form::submit('Guardar', ['class' => 'btn btn-success']) }}
         {{ Form::close() }}
     </div>
+  </div>
 @endsection

@@ -21,17 +21,16 @@
     @endcomponent
 
     @component("layouts.text_input")
-        @slot("nombre_input", "version")
-        @slot("tooltip_input", "Version del software")
-        @slot("label_input", "Version")
-        @slot("placeholder_input", "1.0")
-    @endcomponent
-
-    @component("layouts.text_input")
-        @slot("nombre_input", "disponibilidad")
-        @slot("tooltip_input", "Como fue que se consiguio el software. Si se tiene licencia o si es libre")
-        @slot("label_input", "Disponibilidad")
-        @slot("placeholder_input", "Libre")
+        @slot("nombre_input", "clase")
+        @slot("tooltip_input", "Si el software es un lenguaje, una herramienta case, un manejador de bases de datos, paqueteria o algun otro")
+        @slot("label_input", "clase")
+        @slot('opciones')
+            @foreach($clases as $clase)
+                @component('layouts.option_general')
+                    @slot('var', $clase)
+                @endcomponent
+            @endforeach
+        @endslot
     @endcomponent
 
 @endsection

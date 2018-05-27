@@ -29,33 +29,48 @@
 			</div>
 		</div>
 	@endforeach
+
 @endsection
 
 <!-- ------------ LAS TABLAS QUE CORRESPONDAN------------- -->
+@section('tablas_inciso_general')
+    @component('layouts.componentes.tabla_incisos_agregar')
+        <h4>Tabla de softwares y asignaturas que lo utilizan</h4>
+        @slot('cabeza_tabla')
+            <th>Asignatura</th>
+            <th>Nombre software</th>
+            <th>Disponibilidad software</th>
+        @endslot
 
-@section('cabeza_tabla')
-  <h4>Tabla de softwares y asignaturas que lo utilizan</h4>
-    <tr>
-        <th>Asignatura</th>
-        <th>Nombre software</th>
-        <th>Disponibilidad software</th>
-    </tr>
-@endsection
+        @slot('cuerpo_tabla')
+            @foreach($softwares as $software)
+            <tr>
+                <td>
+                    @if(!empty($software->asignaturas))
+                        @foreach($software->asignaturas as $asignatura)
+                            {{$asignatura->nombre}} <br>
+                        @endforeach
+                    @endif
+                </td>
+                <td>{{$software->nombre}}</td>
+                <td>{{$software->disponibilidad}}</td>
 
-@section('cuerpo_tabla')
-    @foreach($softwares as $software)
-        <tr>
-            <td>
-                @if(!empty($software->asignaturas))
-                    @foreach($software->asignaturas as $asignatura)
-                        {{$asignatura->nombre}} <br>
-                    @endforeach
-                @endif
-            </td>
-            <td>{{$software->nombre}}</td>
-            <td>{{$software->licencia}}</td>
-        </tr>
-    @endforeach
+                @component('layouts.boton_editar')
+                    @slot('controlador_editar')
+                        {{ Form::open(['action' => ['SoftwareController@edit', $software->nombre]]) }}
+                    @endslot
+                @endcomponent
+
+                @component('layouts.boton_borrar')
+                    @slot('controlador_borrar')
+                        {{ Form::open(['action' => ['SoftwareController@destroy', $software->nombre]]) }}
+                    @endslot
+                @endcomponent
+
+            </tr>
+            @endforeach
+        @endslot
+    @endcomponent
 @endsection
 
 <!-- ------------ SECCION DE FOTOGRAFIAS, EVIDENCIAS, ETC------------- -->
