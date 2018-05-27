@@ -19,15 +19,11 @@
 
 @section('contenido_formulario')
 	@foreach($preguntas as $pregunta)
-		<div class="form-group">
-			<label for="{{$pregunta->id}}" class="control-label">
-			    {{$pregunta->titulo}}
-			</label>
-
-			<div>
-                <textarea class="form-control" id="{{$pregunta->id}}" name="{{$pregunta->id}}"value="{{$pregunta->respuesta}}"></textarea>
-			</div>
-		</div>
+	    @component('layouts.textarea_input')
+            @slot("nombre_input", $pregunta->id)
+            @slot("label_input", $pregunta->titulo)
+            @slot("valor_default", $pregunta->respuesta)
+        @endcomponent
 	@endforeach
 
 @endsection
@@ -109,7 +105,7 @@
               <input type="checkbox" name="terminado" value="si">
             @endif
           </div>
-          
+
             {{ Form::submit('Guardar', ['class' => 'btn btn-success']) }}
             {{ Form::close() }}
         </div>
