@@ -19,7 +19,7 @@ class Inciso9_1_8Controller extends Controller
     public function index()
     {
         $preguntas = Pregunta::where('inciso', '9.1.8')->get();
-	$aulas = Aula::all();
+        $aulas = Aula::all();
 
         return view('incisos/seccion9_1/9_1_8', ['preguntas' => $preguntas,'id' => $preguntas[0]->id,'id', 'aulas'=>$aulas]);
     }
