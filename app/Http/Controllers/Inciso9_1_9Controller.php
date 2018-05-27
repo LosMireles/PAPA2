@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Pregunta;
+use App\Cubiculo;
 
 class Inciso9_1_9Controller extends Controller
 {
@@ -16,9 +17,14 @@ class Inciso9_1_9Controller extends Controller
     public function index()
     {
         $preguntas = Pregunta::where('inciso', '9.1.9')->get();
+        $cubiculos = Cubiculo::all();
+
         return view('incisos/seccion9_1/9_1_9')
-            ->with(['preguntas' => $preguntas,
-                    'id'        => $preguntas[0]->id]);
+            ->with([
+                'preguntas' => $preguntas,
+                'id'        => $preguntas[0]->id,
+                'cubiculos' => $cubiculos
+            ]);
     }
 
     /**
