@@ -51,7 +51,7 @@
 
         @component('layouts.boton_editar')
             @slot("controlador_editar")
-                {{action('AulaController@edit', [ 'nombre' => $aula->nombre])}}
+                {{ Form::open(['action' => ['AulaController@edit', $aula->nombre]])}}
             @endslot
         @endcomponent
 
