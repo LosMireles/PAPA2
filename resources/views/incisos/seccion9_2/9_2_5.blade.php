@@ -26,7 +26,7 @@
 			</label>
 
 			<div>
-                <textarea class="form-control" id="{{$pregunta->id}}" name="{{$pregunta->id}}"value="{{$pregunta->respuesta}}"></textarea>
+                <textarea class="form-control" id="{{$pregunta->id}}" name="{{$pregunta->id}}">{{$pregunta->respuesta}}</textarea>
 			</div>
 		</div>
 	@endforeach
@@ -49,7 +49,7 @@
           <input type="checkbox" name="terminado" value="si">
         @endif
       </div>
-      
+
         {{ Form::submit('Guardar', ['class' => 'btn btn-success']) }}
         {{ Form::close() }}
     </div>

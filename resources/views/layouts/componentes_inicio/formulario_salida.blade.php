@@ -48,12 +48,10 @@
 							<img src="storage/recursos/semaforos/Red_rect.png" alt="Red_rect.png">
 							<?php $estado = 'Vacío'; ?>
 						@endif
-
-
 						@component('layouts.componentes.tooltip_general_link')
 							@slot('url', '#')
-							@slot('titulo','El inciso no se ha iniciado')
-							@slot('mensaje', $estado )
+							@slot('titulo','Hay preguntas sin contestar')
+							@slot('mensaje', $estado)
 						@endcomponent
 					</li>
 					<!-- Inciso 9.1.6 -->
