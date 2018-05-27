@@ -35,10 +35,10 @@
 <!-- ------------ LAS TABLAS QUE CORRESPONDAN------------- -->
 @section('cabeza_tabla')
     <tr>
-        <th>Nombre</th>
-        <th>Superfice</th>
-        <th>Cap. máxima</th>
-        <th>Pizarron</th>
+        <th>Titulos</th>
+        <th>Respuestas</th>
+        <th></th>
+        <th></th>
         <th></th>
     </tr>
 @endsection
@@ -46,9 +46,43 @@
 @section('cuerpo_tabla')
 	@foreach ($aulas as $aula)
     <tr>
-		<td>{{ $aula->nombre}}</td>
-		<td>{{ $aula->capacidad }}</td>
+		<td>
+            Nombre aula:<br>
+            Superficie:<br>
+            Capacidad maxima de personas:<br>
+            Pizarron:<br>
+            Iluminacion:<br>
+            Aislamiento del ruido:<br>
+            Ventilacion:<br>
+            Temperatura:<br>
+            Espacio:<br>
+            Mobiliario:<br>
+            Conexiones:<br>
+            Sillas con paleta:<br>
+            Mesas de trabajo:<br>
+            Isotopica:<br>
+            Estrado:<br>
+            Asesoria:
+		</td>
 
+		<td>
+            {{$aula->nombre}}<br>
+            {{$aula->superficie}}<br>
+            {{$aula->capacidad}}<br>
+            {{$aula->pizarron}}<br>
+            {{$aula->iluminacion}}<br>
+            {{$aula->aislamiento_ruido}}<br>
+            {{$aula->ventilacion}}<br>
+            {{$aula->temperatura}}<br>
+            {{$aula->espacio}}<br>
+            {{$aula->mobilario}}<br>
+            {{$aula->conexiones}}<br>
+            {{$aula->sillas_paleta}}<br>
+            {{$aula->mesas_trabajo}}<br>
+            {{$aula->isotopica}}<br>
+            {{$aula->estrado}}<br>
+            {{$aula->asesoria}}
+		</td>
         @component('layouts.boton_editar')
             @slot("controlador_editar")
                 {{ Form::open(['action' => ['AulaController@edit', $aula->nombre]])}}
