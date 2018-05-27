@@ -14,6 +14,8 @@
 @endsection
 
 @section('content')
+    <br>
+    <a href="{{url('/')}}" class="btn btn-primary">Regresar</a>
 	@yield('descripcion')
 
 	<div class="row">
@@ -51,6 +53,9 @@
     @yield('boton_guardar')
 
     @yield('extra_inciso_general')
+
+    <br>
+    <br>
 
 @endsection
 

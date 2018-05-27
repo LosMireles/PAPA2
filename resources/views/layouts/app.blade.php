@@ -22,10 +22,11 @@
     
     @yield('estilo_personalizado')
 </head>
-<body>
-    <div style="background-color: #1b70f9">    
+<body style="margin-top: 50px;">
+    @component('layouts.navbar.navbar')
+    @endcomponent
+    <div style="background-color: #1b70f9; height: auto;"> 
         <div class="container" style="background-color: white;">
-            <a href="{{url('/')}}" class="btn btn-primary">Inicio</a>
             @yield('content')
 
             <script>

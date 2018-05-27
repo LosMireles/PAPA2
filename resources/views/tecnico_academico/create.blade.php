@@ -5,7 +5,7 @@
 @endsection
 
 @section('descripcion')
-	<a href="{{ url('/tecnicos_academicos') }}" class="btn btn-primary">Regresar</a>
+	<a href="{{ action('Inciso9_2_14Controller@index') }}" class="btn btn-primary">Regresar</a>
 	<h1 class="text-center">Formulario para agregar a un técnico académico</h1>
 @endsection
 
@@ -26,7 +26,7 @@
 		<label for="grado" class="col-sm-4 control-label" data-toggle="tooltip" title="">Grado académico: </label>
 
 		<div class="col-sm-8">
-			<input type="text" class="form-control" name="grado" value="" required>
+			<input type="text" class="form-control" name="grado" value="" placeholder="Licenciatura" required>
 		</div>
 	</div>
 
@@ -38,11 +38,13 @@
 		</div>
 	</div>
 
-	@component('layouts.text_input')
+	@component('layouts.componentes.input_text_script')
 		@slot('nombre_input', 'exp')
 		@slot('tooltip_input', 'Años de experiencia del técnico en el área')
 		@slot('label_input', 'Años de experiencia')
-		@slot('nombre', 'number')
-		@slot('nombre_input', 'exp')
+		@slot('placeholder_input', '1')
+		@slot('nombre', 'text')
+		@slot('patron', '.{1,2}')
+		@slot('titulo_error', 'El número debe contener entre 1 y 2 dígitos')
 	@endcomponent
 @endsection

@@ -5,7 +5,7 @@
 @endsection
 
 @section('descripcion')
-	<a href="{{ url('/tecnicos_academicos') }}" class="btn btn-primary">Regresar</a>
+	<a href="{{ action('Inciso9_2_14Controller@index') }}" class="btn btn-primary">Regresar</a>
 	<h1 class="text-center">Formulario de edición del técnico académico {{$tecnico->nombre}}</h1>
 @endsection
 
@@ -41,12 +41,17 @@
 		</div>
 	</div>
 
-	<div class="form-group">
-		<label for="exp" class="col-sm-4 control-label" data-toggle="tooltip" title="Años de experiencia del técnico en el área">Años de experiencia: </label>
-
-		<div class="col-sm-8">
-            <input type='text' class="form-control" name='exp' placeholder="" value="{{$tecnico->anios_exp}}" required>
-		</div>
-	</div>
+	@component('layouts.componentes.input_text_script')
+		@slot('nombre_input', 'exp')
+		@slot('tooltip_input', 'Años de experiencia del técnico en el área')
+		@slot('label_input', 'Años de experiencia')
+		@slot('placeholder_input', '1')
+		@slot('nombre', 'text')
+		@slot('patron', '.{1,2}')
+		@slot('valor')
+			{{$tecnico->anios_exp}}
+		@endslot
+		@slot('titulo_error', 'El número debe contener entre 1 y 2 dígitos')
+	@endcomponent
 @endsection
 

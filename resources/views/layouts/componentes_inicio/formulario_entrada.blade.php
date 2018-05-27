@@ -7,12 +7,9 @@
 	@slot("cuerpo_tabla")
 		<tr>
 			<td>
-				@component("layouts.componentes.tooltip_general_link")
-					@slot('url')
-						{{ url('/aulas') }}
-					@endslot
-					@slot('titulo', "Haga clic para ir a la gestión de aulas")
-					@slot('mensaje', "Aulas y laboratorios")
+				@component("layouts.componentes.tooltip_general")
+					@slot('titulo', 'Incisos relacionados con las aulas y los laboratorios en el programa educativo')
+					@slot('mensaje', 'Aulas y laboratorios')
 				@endcomponent
 			</td>
 			<td>
@@ -31,12 +28,9 @@
 		</tr>
 		<tr>
 			<td>
-				@component("layouts.componentes.tooltip_general_link")
-						@slot('url')
-							{{ url('/cubiculos') }}
-						@endslot
-						@slot('titulo', "Haga clic para ir a la gestión de cubículos")
-						@slot('mensaje', "Cubículos")
+				@component("layouts.componentes.tooltip_general")
+					@slot('titulo', 'Incisos relacionados con los cubículos en el programa educativo')
+					@slot('mensaje', 'Cubículos')
 				@endcomponent
 			</td>
 			<td>
@@ -64,12 +58,9 @@
 		</tr>
 		<tr>
 			<td>
-				@component("layouts.componentes.tooltip_general_link")
-						@slot('url')
-							{{ url('/asesorias') }}
-						@endslot
-						@slot('titulo', "Haga clic para ir a la gestión de espacios de asesorías")
-						@slot('mensaje', "Espacios de asesorías")
+				@component("layouts.componentes.tooltip_general")
+					@slot('titulo', 'Incisos relacionados con los espacios para asesorías en el programa educativo')
+					@slot('mensaje', 'Espacios de asesorías')
 				@endcomponent
 			</td>
 			<td>
@@ -88,12 +79,9 @@
 		</tr>
 		<tr>
 			<td>
-				@component("layouts.componentes.tooltip_general_link")
-						@slot('url')
-							{{ url('/sanitarios') }}
-						@endslot
-						@slot('titulo', "Haga clic para ir a la gestión de sanitarios")
-						@slot('mensaje', "Sanitarios")
+				@component("layouts.componentes.tooltip_general")
+					@slot('titulo', 'Incisos relacionados con los sanitarios en el programa educativo')
+					@slot('mensaje', 'Sanitarios')
 				@endcomponent
 			</td>
 			<td>
@@ -112,12 +100,9 @@
 		</tr>
 		<tr>
 			<td>
-				@component("layouts.componentes.tooltip_general_link")
-						@slot('url')
-							{{ url('/auditorios') }}
-						@endslot
-						@slot('titulo', "Haga clic para ir a la gestión de auditorios")
-						@slot('mensaje', "Auditorios")
+				@component("layouts.componentes.tooltip_general")
+					@slot('titulo', 'Incisos relacionados con los auditorios en el programa educativo')
+					@slot('mensaje', 'Auditorios')
 				@endcomponent
 			</td>
 			<td>
@@ -145,12 +130,9 @@
 		</tr>
 		<tr>
 			<td>
-				@component("layouts.componentes.tooltip_general_link")
-						@slot('url')
-							{{ url('/softwares') }}
-						@endslot
-						@slot('titulo', "Haga clic para ir a la gestión de software")
-						@slot('mensaje', "Software")
+				@component("layouts.componentes.tooltip_general")
+					@slot('titulo', 'Incisos relacionados con el software en el programa educativo')
+					@slot('mensaje', 'Software')
 				@endcomponent
 			</td>
 			<td>
@@ -187,12 +169,9 @@
 		</tr>
 		<tr>
 			<td>
-				@component("layouts.componentes.tooltip_general_link")
-						@slot('url')
-							{{ url('/equipos') }}
-						@endslot
-						@slot('titulo', "Haga clic para ir a la gestión de equipos")
-						@slot('mensaje', "Equipo")
+				@component("layouts.componentes.tooltip_general")
+					@slot('titulo', 'Incisos relacionados con el equipo en el programa educativo')
+					@slot('mensaje', 'Equipo')
 				@endcomponent
 			</td>
 			<td>
@@ -259,12 +238,9 @@
 		</tr>
 		<tr>
 			<td>
-				@component("layouts.componentes.tooltip_general_link")
-						@slot('url')
-							{{ url('/cursos') }}
-						@endslot
-						@slot('titulo', "Haga clic para ir a la gestión de cursos")
-						@slot('mensaje', "Cursos")
+				@component("layouts.componentes.tooltip_general")
+					@slot('titulo', 'Incisos relacionados con los cursos del programa educativo')
+					@slot('mensaje', 'Cursos')
 				@endcomponent
 			</td>
 			<td>
