@@ -59,7 +59,7 @@
     @component("layouts.select_input")
         @slot("nombre_input", "iluminacion")
         @slot("tooltip_input", "Calidad de la Illuminación en el aula")
-        @slot("label_input", "Illuminación")
+        @slot("label_input", "Iluminación")
         @slot("extra", "required")
         @slot('opciones')
             @foreach($calificaciones as $numero)

@@ -45,7 +45,7 @@
           <input type="checkbox" name="terminado" value="si">
         @endif
       </div>
-      
+
         {{ Form::submit('Guardar', ['class' => 'btn btn-success']) }}
         {{ Form::close() }}
     </div>
@@ -61,17 +61,81 @@
 
 	@component('layouts.componentes.tabla_incisos_agregar')
 		@slot('cabeza_tabla')
-		    <th>Nombre</th>
-		    <th>Superfice</th>
-		    <th>Cap. máxima</th>
+		    <th>Titulo</th>
+		    <th>Respuesta</th>
 		@endslot
 
 		@slot('cuerpo_tabla')
 			@foreach ($aulas as $aula)
 			<tr>
-				<td>{{ $aula->nombre}}</td>
-				<td>{{ $aula->superficie }}</td>
-				<td>{{ $aula->capacidad }}</td>
+
+                <td>
+                    Nombre: <br>
+                    Superficie: <br>
+                    Capacidad: <br>
+                    Pizarron: <br>
+                    Iluminacion: <br>
+                    Aislamiento_ruido: <br>
+                    Ventilacion: <br>
+                    Temperatura: <br>
+                    Espacio: <br>
+                    Mobilario: <br>
+                    Conexiones: <br>
+                    Sillas_paleta: <br>
+                    Mesas_trabajo: <br>
+                    Isotopica: <br>
+                    Estrado: <br>
+                    Asesoria:
+                </td>
+
+                <td>
+                    {{ $aula->nombre}} <br>
+                    {{ $aula->superficie }} <br>
+                    {{ $aula->capacidad }} <br>
+                    {{ $aula->pizarron}} <br>
+                    {{ $aula->iluminacion}} <br>
+                    {{ $aula->aislamiento_ruido}} <br>
+                    {{ $aula->ventilacion}} <br>
+                    {{ $aula->temperatura}} <br>
+                    {{ $aula->espacio}} <br>
+                    {{ $aula->mobilario}} <br>
+                    {{ $aula->conexiones}} <br>
+
+                    @if($aula->sillas_paleta)
+                        Si
+                    @else
+                        No
+                    @endif
+                        hay <br>
+
+                    @if($aula->mesas_trabajo)
+                        Si
+                    @else
+                        No
+                    @endif
+                        hay <br>
+
+                    @if($aula->isotopica)
+                        Si
+                    @else
+                        No
+                    @endif
+                        hay <br>
+
+                    @if($aula->estrado)
+                        Si
+                    @else
+                        No
+                    @endif
+                        hay <br>
+
+                    @if($aula->asesoria)
+                        Si
+                    @else
+                        No
+                    @endif
+                        hay <br>
+                </td>
 
                 <td>
                     <a href="{{ action('AulaController@edit', $aula->nombre) }}" class="btn btn-warning">Editar</a>
