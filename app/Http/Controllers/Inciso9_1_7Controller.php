@@ -21,9 +21,9 @@ class Inciso9_1_7Controller extends Controller
         $preguntas = Pregunta::where('inciso', '9.1.7')->get();
 
         $cursos = Curso::all();
-        $cursosLCC = Curso::where('pertenencia', 'LCC')->get();
-        $cursosLM = Curso::where('pertenencia', 'LM')->get();
-        $cursosOtros = Curso::where('pertenencia', 'Otros')->get();
+        $cursosLCC = Curso::where('departamento', 'LCC')->get();
+        $cursosLM = Curso::where('departamento', 'LM')->get();
+        $cursosOtros = Curso::where('departamento', 'Otros')->get();
         return view('incisos/seccion9_1/9_1_7')->with(
                     ['preguntas' => $preguntas,
                      'cursos' => $cursos,

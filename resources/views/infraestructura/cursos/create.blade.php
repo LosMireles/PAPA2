@@ -1,87 +1,62 @@
-@extends('layouts.insertar')
+@extends('layouts.formulario_create_general')
 
-@section('title')
-   insertar un curso
-@endsection
+@section('title' , "Formulario 9.1.7")
+@section("objeto_informacion", "un curso")
 
-@section('descripcion')
-    <a href="{{action('CursoController@index')}}" class="btn btn-primary">
-        Regresar
-    </a>
-	<h1 class="text-center">Formulario para agregar un curso</h1>
+@section('ruta_regresar')
+    {{action('CursoController@index')}}
 @endsection
 
 @section('accion')
-   action = "{{action('CursoController@store')}}"
+    {{action('CursoController@store')}}
 @endsection
 
+
 @section('contenido_formulario')
-	<div class="form-group">
-		<label for="nombre" class="col-sm-4 control-label" data-toggle="tooltip" title="Nombre del Curso">Nombre</label>
+    @component("layouts.text_input")
+        @slot("nombre_input", "nombre")
+        @slot("tooltip_input", "Nombre del Curso")
+        @slot("label_input", "Nombre")
+        @slot("placeholder_input", "Nombre")
+        @slot("extra", "required")
+    @endcomponent
 
-		<div class="col-sm-8">
-			<input type='text' class="form-control" name='nombre' id='nombre' placeholder="Nombre" required>
-		</div>
-	</div>
+    @component("layouts.text_input")
+        @slot("nombre_input", "periodo")
+        @slot("tooltip_input", "Ciclo en el que se imparte")
+        @slot("label_input", "Periodo")
+        @slot("placeholder_input", "2018-2")
+        @slot("extra", "required")
+    @endcomponent
 
-	<div class="form-group">
-		<label for="periodo" class="col-sm-4 control-label" data-toggle="tooltip" title="Período en el que fue impartido">Período</label>
+	@component("layouts.text_input")
+        @slot("nombre_input", "no_grupo")
+        @slot("tooltip_input", "Identificador del grupo")
+        @slot("label_input", "Grupo")
+        @slot("placeholder_input", "1")
+        @slot("extra", "required")
+    @endcomponent
 
-		<div class="col-sm-8">
-			<input type='text' class="form-control" name='periodo' id="periodo" placeholder="2015-1" required>
-		</div>
-	</div>
-
-	<div class="form-group">
-		<label for="grupo" class="col-sm-4 control-label" data-toggle="tooltip" title="Número del grupo">Grupo</label>
-
-		<div class="col-sm-8">
-			<input type='text' class="form-control" name='grupo' id="grupo" placeholder="1" required>
-		</div>
-	</div>
-
-	<div class="form-group">
-		<label for="noEstudiantes" class="col-sm-4 control-label" data-toggle="tooltip" title="Número de estudiantes de la licenciatura presentes en el curso">Número de estudiantes</label>
-
-		<div class="col-sm-8">
-			<input type='text' class="form-control" name='noEstudiantes' id="noEstudiantes" placeholder="1" required>
-		</div>
-	</div>
-
-	<div class="form-group">
-		<label for="tipoAula" class="col-sm-4 control-label" data-toggle="tooltip" title="Esto es: laboratorio, aula, etc">Tipo de aula</label>
-
-		<div class="col-sm-8">
-            <select name="tipoAula" class="form-control">
-            @foreach($tiposAulas as $tipo)
-               <option value="{{$tipo}}"> {{$tipo}} </option>
+	@component("layouts.text_input")
+        @slot("nombre_input", "no_estudiantes")
+        @slot("tooltip_input", "Numero de estudiantes")
+        @slot("label_input", "Pertenecientes a LCC")
+        @slot("placeholder_input", "1")
+        @slot("extra", "required")
+    @endcomponent	
+	
+	@component("layouts.select_input")
+        @slot("nombre_input", "departamento")
+        @slot("tooltip_input", "Que lo imparte")
+        @slot("label_input", "Departamento")
+        @slot("extra", "required")
+        @slot('opciones')
+             @foreach($licenciaturas as $licenciatura)
+                <option value="{{$licenciatura}}">
+                    {{$licenciatura}}
+                </option>
             @endforeach
-            </select>
-		</div>
-	</div>
-
-	<div class="form-group">
-		<label for="pertenencia" class="col-sm-4 control-label" data-toggle="tooltip" title="A que licenciatura pertenece la materia (LCC, LM, otro)">Pertenencia</label>
-
-		<div class="col-sm-8">
-            <select name="pertenencia" class="form-control">
-            @foreach($licenciaturas as $licenciatura)
-               <option value="{{$licenciatura}}" > {{$licenciatura}} </option>
-            @endforeach
-            </select>
-		</div>
-	</div>
-
-	<div class="form-group">
-		<label for="espacios" class="col-sm-4 control-label" data-toggle="tooltip" title="Espacios donde se imparte el curso">Espacios</label>
-
-		<div class="col-sm-8">
-			@foreach($espacios as $espacio)
-				<input type="checkbox" name="espacios[]" value="{{$espacio->tipo}}">
-				{{$espacio->tipo}}<br>
-			@endforeach
-		</div>
-	</div>
-
+        @endslot
+    @endcomponent
 @endsection
 
