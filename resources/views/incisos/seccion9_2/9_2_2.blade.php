@@ -14,8 +14,6 @@
     {{Form::open(['class'  => 'form-horizontal'])}}
 @endsection
 
-<!-- ------------ LAS TABLAS QUE CORRESPONDAN------------- -->
-
 @section('contenido_formulario')
 	@foreach($preguntas as $pregunta)
 		<div class="form-group">
@@ -31,50 +29,51 @@
 
 @endsection
 
-@section('cabeza_tabla')
-    <h4>Tabla de lenguajes, herramientas case, manejadores de bases de datos y paqueteria</h4>
-    <tr>
-        <th>Lenguajes de programación</th>
-        <th>Herramientas CASE</th>
-        <th>Manejadores de base de datos</th>
-        <th>Paquetería general</th>
-    </tr>
-@endsection
+<!-- ------------ LAS TABLAS QUE CORRESPONDAN------------- -->
 
-@section('cuerpo_tabla')
-        <tr>
-        @if(!empty($lenguajes))
-            <td>
-            @foreach($lenguajes as $lenguaje)
-                {{$lenguaje}} <br>
-            @endforeach
-            </td>
-        @endif
+@section('tablas_inciso_general')
+    @component('layouts.componentes.tabla_incisos_agregar')
+        <h4>Tabla de lenguajes, herramientas case, manejadores de bases de datos y paqueteria</h4>
+        @slot('cabeza_tabla')
+            <th>Lenguajes de programación</th>
+            <th>Herramientas CASE</th>
+            <th>Manejadores de base de datos</th>
+            <th>Paquetería general</th>
+        @endslot
 
-        @if(!empty($cases))
-            <td>
-            @foreach($cases as $case)
-                {{$case}} <br>
-            @endforeach
-            </td>
-        @endif
+        @slot('cuerpo_tabla')
+            @for($i = 0; $i < max(array(sizeof($lenguajes),
+                                        sizeof($cases),
+                                        sizeof($bds),
+                                        sizeof($paqueterias))); $i++)
+            <tr>
+            @if($i < sizeof($lenguajes))
+                <td>
+                    {{$lenguajes[$i]}} <br>
+                </td>
+            @endif
 
-        @if(!empty($bds))
-            <td>
-            @foreach($bds as $bd)
-                {{$bd}} <br>
-            </td>
-            @endforeach
-        @endif
+            @if($i < sizeof($cases))
+                <td>
+                    {{$cases[$i]}} <br>
+                </td>
+            @endif
 
-        @if(!empty($paqueterias))
-            <td>
-            @foreach($paqueterias as $paqueteria)
-                {{$paqueteria}} <br>
-            @endforeach
-            </td>
-        @endif
-        </tr>
+            @if($i < sizeof($bds))
+                <td>
+                    {{$bds[$i]}} <br>
+                </td>
+            @endif
+
+            @if($i < sizeof($paqueterias))
+                <td>
+                    {{$paqueterias[$i]}} <br>
+                </td>
+            @endif
+            </tr>
+            @endfor
+        @endslot
+    @endcomponent
 @endsection
 
 <!-- ------------ SECCION DE FOTOGRAFIAS, EVIDENCIAS, ETC------------- -->
