@@ -33,30 +33,20 @@
 		</div>
 	</div>
 
-    <hr>
-
-    @yield('tablas_inciso_general')
-
-    <table class="table table-hover">
-        <thead style="background-color: #ed2a2a; color: white;">
-            @yield('cabeza_tabla')
-        </thead>
-        <tbody>
-            @yield('cuerpo_tabla')
-        </tbody>
-    </table>
-
-    <hr>
-
-
     @yield('boton_guardar')
+
+    <hr>
 
     @yield('extra_inciso_general')
 
     <!-- Cierra el formulario -->
     {{ Form::close() }}
 
+    @yield('tablas_inciso_general')
     @yield('evidencias_tabla')
+
+    <hr>
+
     @yield('Fotografias')
     <br>
     <br>
