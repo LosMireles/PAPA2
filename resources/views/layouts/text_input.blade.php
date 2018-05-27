@@ -5,7 +5,7 @@
     </label>
 
     <div class="col-sm-8">
-        <input type="{{$nombre or 'text'}}" class="form-control" name="{{$nombre_input}}" placeholder="{{$placeholder_input or ""}}" value="{{$valor_default or ""}}" {{$extra or ""}})>
+        <input type="{{$tipo or 'text'}}" class="form-control" name="{{$nombre_input}}" placeholder="{{$placeholder_input or ""}}" value="{{$valor_default or ""}}" {{$extra or ""}}>
     </div>
 
 </div>
