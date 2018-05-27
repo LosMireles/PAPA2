@@ -58,10 +58,10 @@
 				@endforeach
 			@endif
 
-		    <td>  
+		    <td>
               <a href="{{ action('CursoController@edit', $curso->nombre) }}" class="btn btn-warning">Editar</a>
             </td>
-			
+
 			@component('layouts.boton_borrar')
               @slot('controlador_borrar')
                 {{ Form::open(['action' => ['CursoController@destroy', $curso->nombre]]) }}
@@ -76,8 +76,18 @@
 @endsection
 @section('boton_guardar')
     <div class="text-center">
+      <div>
+        <label for="terminado" class="control-label">
+          Marque esta casilla si termino de responder:
+        </label>
+        @if ( $preguntas[0]->estado == 1)
+          <input type="checkbox" name="terminado" value="si" checked>
+        @else
+          <input type="checkbox" name="terminado" value="si">
+        @endif
+      </div>
+
         {{ Form::submit('Guardar', ['class' => 'btn btn-success']) }}
         {{ Form::close() }}
     </div>
 @endsection
-
