@@ -26,63 +26,52 @@ class AuditorioController extends Controller
 
     //----------------------------------------------------------------
     public function store(Request $request){
-
+/*
       $request->validate($this->rules());
       if ($request->hasFile('Fotografias')) {
         foreach($request->Fotografias as $foto){
           $foto->storeAs('infraestructura/auditorios/' . $request->Tipo, $foto->getClientOriginalName());
         }
       }
-
+*/
 
 
         $auditorio = new Auditorio;
-
-        $auditorio->Tipo               = $request->Tipo;
-		$auditorio->CantidadEquipo     = $request->CantidadEquipo;
-		$auditorio->CantidadAV         = $request->CantidadAV;
+        $auditorio->nombre               = $request->nombre;
         $auditorio->Capacidad          = $request->Capacidad;
-		$auditorio->CantidadSanitarios = $request->CantidadSanitarios;
-        $auditorio->espacio_id         = $request->espacio_id;
 
-      $auditorio->save();
+      	$auditorio->save();
 
 	    echo "Elemento insertado exitosamente!";
       return redirect()->action('AuditorioController@index');
     }
 
     //----------------------------------------------------------------
-    public function edit($tipo) {
-      $auditorio  = Auditorio::where('Tipo', $tipo)->first();
+    public function edit($nombre) {
+      $auditorio  = Auditorio::where('nombre', $nombre)->first();
 
       return view('infraestructura.auditorios.edit')
           ->with(['auditorio'=>$auditorio]);
     }
 
     //----------------------------------------------------------------
-    public function update(Request $request, $tipo) {
-
+    public function update(Request $request, $nombre) {
+/*
       if ($request->hasFile('Fotografias')) {
         foreach($request->Fotografias as $foto){
           $foto->storeAs('infraestructura/auditorios/' . $request->Tipo, $foto->getClientOriginalName());
         }
       }
-        $request->validate($this->rules($tipo));
+*/
+        $request->validate($this->rules($nombre));
 
-        $tipo_nuevo         = $request->Tipo;
-        $CantidadEquipo     = $request->CantidadEquipo;
-        $CantidadAV         = $request->CantidadAV;
-        $Capacidad          = $request->Capacidad;
-        $CantidadSanitarios = $request->CantidadSanitarios;
-        $espacio_id         = $request->espacio_id;
+        $nombre_nuevo	= $request->nombre;
+        $Capacidad		= $request->Capacidad;
 
-        Auditorio::where('Tipo', $tipo)->update([
-            'Tipo'               => $tipo_nuevo,
-            'CantidadEquipo'     => $CantidadEquipo,
-            'CantidadAV'         => $CantidadAV,
-            'Capacidad'          => $Capacidad,
-            'CantidadSanitarios' => $CantidadSanitarios,
-            'espacio_id'         => $espacio_id
+
+        Auditorio::where('nombre', $nombre)->update([
+            'nombre'               => $nombre_nuevo,
+            'Capacidad'          => $Capacidad
         ]);
 
 		echo "Elemento editado exitosamente!";
@@ -90,11 +79,11 @@ class AuditorioController extends Controller
     }
 
     //----------------------------------------------------------------
-    public function destroy($tipo){
-      Storage::deleteDirectory('infraestructura/auditorios/'. $tipo . '/');
-        $auditorio = auditorio::where('Tipo', $tipo)->first();
+    public function destroy($nombre){
+      Storage::deleteDirectory('infraestructura/auditorios/'. $nombre . '/');
+        $auditorio = auditorio::where('nombre', $nombre)->first();
         if(!$auditorio){
-            $mensaje = "No existe auditorio con tipo: ".$tipo;
+            $mensaje = "No existe auditorio con nombre: ".$nombre;
             return view('general/error')
                 ->with(['mensaje' => $mensaje]);
         }
@@ -105,34 +94,32 @@ class AuditorioController extends Controller
     }
 
     //----------------------------------------------------------------
-    public function rules($tipo = null){
+    public function rules($nombre = null){
         return [
-            'Tipo'               => ['required',
-                                     Rule::unique('auditorios')->ignore($tipo, 'Tipo')],
-            'CantidadEquipo'     => 'required|integer',
-            'CantidadAV'         => 'required|integer',
-            'Capacidad'          => 'required|integer',
-            'CantidadSanitarios' => 'required|integer'
+            'nombre'               => ['required',
+                                     Rule::unique('auditorios')->ignore($nombre, 'nombre')],
+            'Capacidad'          => 'required|integer'
+
         ];
     }
 
-    public function viewImg($tipo){
-      return view('infraestructura.auditorios.viewImg')->with(['tipo' => $tipo]);
+    public function viewImg($nombre){
+      return view('infraestructura.auditorios.viewImg')->with(['nombre' => $nombre]);
     }
 
-    public function guardarImg(Request $request, $tipo){
+    public function guardarImg(Request $request, $nombre){
       if ($request->hasFile('Fotografias')) {
         foreach($request->Fotografias as $foto){
-          $foto->storeAs('infraestructura/auditorios/' . $tipo, $foto->getClientOriginalName());
+          $foto->storeAs('infraestructura/auditorios/' . $nombre, $foto->getClientOriginalName());
         }
       }
-      return redirect('/auditorios/'. $tipo .'/viewImg')->with(['tipo' => $tipo]);
+      return redirect('/auditorios/'. $nombre .'/viewImg')->with(['nombre' => $nombre]);
     }
 
-    public function borrarImg($tipo, $imagen)
+    public function borrarImg($nombre, $imagen)
     {
-      $dirImagen = 'infraestructura/auditorios/' . $tipo . '/' . $imagen;
+      $dirImagen = 'infraestructura/auditorios/' . $nombre . '/' . $imagen;
       Storage::delete($dirImagen);
-      return redirect('/auditorios/'. $tipo .'/viewImg')->with(['tipo' => $tipo]);
+      return redirect('/auditorios/'. $nombre .'/viewImg')->with(['nombre' => $nombre]);
     }
 }
