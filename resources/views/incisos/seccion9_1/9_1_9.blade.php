@@ -33,7 +33,40 @@
 @endsection
 
 <!-- ------------ LAS TABLAS QUE CORRESPONDAN------------- -->
-    <!--Vacio en este caso-->
+@section('tablas_inciso_general')
+    @component('layouts.componentes.tabla_incisos_agregar')
+        @slot('cabeza_tabla')
+            <th>Identificador cubiculo</th>
+            <th>Profesor</th>
+            <th>Cantidad equipo</th>
+        @endslot
+
+        @slot('cuerpo_tabla')
+            @foreach($cubiculos as $cubiculo)
+            <tr>
+                <td>{{$cubiculo->nombre}}</td>
+                <td>{{$cubiculo->profesor}}</td>
+                <td>{{$cubiculo->cantidad_equipo}}</td>
+
+                @component('layouts.boton_editar')
+                    @slot('controlador_editar')
+                        {{ Form::open(['action' => ['CubiculoController@edit', $cubiculo->nombre]]) }}
+                    @endslot
+                @endcomponent
+
+                @component('layouts.boton_borrar')
+                    @slot('controlador_borrar')
+                        {{ Form::open(['action' => ['CubiculoController@edit', $cubiculo->nombre]]) }}
+                    @endslot
+                @endcomponent
+
+            </tr>
+            @endforeach
+        @endslot
+    @endcomponent
+@endsection
+
+
 
 <!-- ------------ SECCION DE FOTOGRAFIAS, EVIDENCIAS, ETC------------- -->
 
