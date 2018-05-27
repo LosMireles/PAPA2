@@ -1,4 +1,4 @@
-@extends('layouts.inciso_general_igual')
+@extends('layouts.inciso_general')
 
 @section('title')
   Inciso 9.1.6
@@ -31,6 +31,7 @@
 		</div>
 	@endforeach
 @endsection
+
 
 @section('boton_guardar')
   <div class="containerdivNewLine">

@@ -52,7 +52,11 @@
 		  	<td>{{ $curso->grupo }}</td>
 		  	<td>{{ $curso->no_estudiantes }}</td>
 		  	<td>{{ $curso->departamento }}</td>
-			<td>{{ $curso->aulas[0]->nombre}}</td> <!--Solo para uno, cambiar foreach en caso de mas-->
+			@if(!empty($curso->aulas))
+				@foreach($curso->aulas as $aula)
+					<td>{{$aula->nombre}}</td> <!--Solo para uno, cambiar foreach en caso de mas-->
+				@endforeach
+			@endif
 
 		    <td>  
               <a href="{{ action('CursoController@edit', $curso->nombre) }}" class="btn btn-warning">Editar</a>
