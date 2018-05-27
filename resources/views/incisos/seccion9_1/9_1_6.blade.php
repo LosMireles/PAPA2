@@ -56,44 +56,7 @@
 
 <!-- ------------ LAS TABLAS QUE CORRESPONDAN------------- -->
 
-@component('layouts.componentes.tabla_incisos_agregar_igual')
-  @slot('cabeza_tabla')
-    <th>Nombre</th>
-    <th>Superfice</th>
-    <th>Cap. máxima</th>
-    <th>Pizarron</th>
-  @endslot
 
-  @slot('cuerpo_tabla')
-    @foreach ($aulas as $aula)
-      <tr>
-      <td>{{ $aula->nombre}}</td>
-      <td>{{ $aula->capacidad }}</td>
-
-          @component('layouts.boton_editar')
-              @slot("controlador_editar")
-                  {{action('AulaController@edit', [ 'nombre' => $aula->nombre])}}
-              @endslot
-          @endcomponent
-
-          @component('layouts.boton_borrar')
-              @slot("controlador_borrar")
-                  {{ Form::open(['action' => ['AulaController@destroy', $aula->nombre]]) }}
-              @endslot
-          @endcomponent
-
-
-          <!--Boton ver fotos-->
-          <td class="text-center">
-              <a href="{{action('AulaController@viewImg', [ 'nombre' => $aula->nombre])}}" class="btn btn-warning">
-                  Fotografías
-              </a>
-          </td>
-
-    </tr>
-    @endforeach
-  @endslot
-@endcomponent
 <!-- ------------ SECCION DE FOTOGRAFIAS, EVIDENCIAS, ETC ------------- -->
 
 @section('Fotografias')
