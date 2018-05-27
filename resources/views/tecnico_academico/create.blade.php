@@ -41,16 +41,8 @@
 	@component('layouts.text_input')
 		@slot('nombre_input', 'exp')
 		@slot('tooltip_input', 'Años de experiencia del técnico en el área')
-		@slot('', '')
+		@slot('label_input', 'Años de experiencia')
+		@slot('nombre', 'number')
+		@slot('nombre_input', 'exp')
 	@endcomponent
-
-	<div class="form-group">
-		<label for="exp" class="col-sm-4 control-label" data-toggle="tooltip" title="">Años de experiencia: </label>
-
-		<div class="col-sm-8">
-			@component("layouts.text_input")
-			@endcomponent
-			<input type='date' class="form-control" name="exp" required>
-		</div>
-	</div>
 @endsection

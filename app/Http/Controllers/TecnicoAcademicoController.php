@@ -50,9 +50,9 @@ class TecnicoAcademicoController extends Controller
         $tecnico = new TecnicoAcademico;
 
         $tecnico->nombre = $request->nombre;
-        $tecnico->grado_academico = $request->grado_academico;
+        $tecnico->grado_academico = $request->grado;
         $tecnico->certificados = $request->certificados;
-        $tecnico->anios_exp = $request->anios_exp;
+        $tecnico->anios_exp = $request->exp;
 
         //$document = $request->file('curriculo');
 
@@ -64,7 +64,7 @@ class TecnicoAcademicoController extends Controller
         $tecnico->save();
 
         echo "Elemento insertado exitosamente!";
-        return redirect()->action('TecnicoAcademicoController@index');
+        return redirect()->action('Inciso9_2_14Controller@index');
     }
 
     /**
