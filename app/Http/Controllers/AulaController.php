@@ -100,7 +100,7 @@ class AulaController extends Controller
         $aula->save();
 
         #echo "Elemento insertado exitosamente!";
-        return redirect()->action('AulaController@index');
+        return redirect()->action('Inciso9_1_6Controller@index');
     }
 
 	//-----------------------------------------------------------
@@ -161,7 +161,7 @@ class AulaController extends Controller
 							'asesoria'       => $asesoria]);
 
 		#echo "Elemento insertado exitosamenteeee!";
-        return redirect()->action('AulaController@index');
+        return redirect()->action('Inciso9_1_6Controller@index');
 	}
 
 	//--------------------------------------------------------------
@@ -179,7 +179,7 @@ class AulaController extends Controller
     $aula->delete();
 
 		echo "Elemento borrado exitosamente!";
-        return redirect()->action('AulaController@index');
+        return redirect()->action('Inciso9_1_6Controller@index');
 	}
 
 	//--------------------------------------------------------------

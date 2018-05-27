@@ -8,10 +8,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Validation\Rule;
 
 use App\Curso;
-use App\Espacio;
 
 class CursoController extends Controller {
-    private $tiposAulas = ["Aula", "Laboratorio", "Otro"];
     private $licenciaturas = ["LCC", "LM", "Otro"];
 
     public function index(){
@@ -22,11 +20,8 @@ class CursoController extends Controller {
 
     //----------------------------------------------------------------
 	public function create(){
-        $espacios = Espacio::all();
         return view('infraestructura.cursos.create')
-            ->with(['espacios'      => $espacios,
-                    'tiposAulas'    => $this->tiposAulas,
-                    'licenciaturas' => $this->licenciaturas]);
+            ->with(['licenciaturas' => $this->licenciaturas]);
 	}
 
     //----------------------------------------------------------------
@@ -38,52 +33,45 @@ class CursoController extends Controller {
 
         $curso->nombre        = $request->nombre;
         $curso->periodo       = $request->periodo;
-		$curso->grupo         = $request->grupo;
-        $curso->noEstudiantes = $request->noEstudiantes;
-        $curso->tipoAula      = $request->tipoAula;
-        $curso->pertenencia   = $request->pertenencia;
-        $espacios             = $request->espacios;
+		$curso->no_grupo         = $request->no_grupo;
+        $curso->no_estudiantes = $request->no_estudiantes;
+        $curso->departamento   = $request->departamento;
 
         $curso->save();
-
-        if(!empty($espacios)){
-            foreach($espacios as $tipoEspacio){
-                $espacioId = DB::table('espacios')->where('tipo', $tipoEspacio)->value('id');
-                $curso->espacios()->attach($espacioId);
+/*
+        if(!empty($aulas)){
+            foreach($aulas as $nombreAula){
+                $espacioId = DB::table('aulas')->where('aula', $nombreAula)->value('id');
+                $curso->aulas()->attach($aulaId);
             }
         }
-
+*/
 		echo "Elemento insertado exitosamente!";
-        return redirect()->action('CursoController@index');
+        return redirect()->action('Inciso9_1_7Controller@index');
     }
 
 	//-----------------------------------------------------------
 	public function edit($nombre) {
 		$curso         = Curso::where('nombre', $nombre)->first();
-	  	$espacios      = Espacio::all();
-        $curso_espacio = DB::table('curso_espacio')->get();
+	  	//$espacios      = Espacio::all();
+        //$curso_espacio = DB::table('curso_espacio')->get();
 
 	  	return view('infraestructura.cursos.edit')
 	  	    ->with(['curso'         => $curso,
-                    'espacios'      => $espacios,
-                    'curso_espacio' => $curso_espacio,
-                    'tiposAulas'    => $this->tiposAulas,
                     'licenciaturas' => $this->licenciaturas]);
 	}
 
 	//-----------------------------------------------------------
     public function update(Request $request, $nombre) {
-        $request->validate($this->rules($nombre));
+        //$request->validate($this->rules($nombre));
 
 	  	$nombre_nuevo  = $request->nombre;
 	  	$periodo       = $request->periodo;
-	  	$grupo         = $request->grupo;
-	  	$noEstudiantes = $request->noEstudiantes;
-	  	$tipoAula      = $request->tipoAula;
-	  	$pertenencia   = $request->pertenencia;
-        $tipoEspacios  = $request->espacios;
+	  	$no_grupo         = $request->no_grupo;
+	  	$no_estudiantes = $request->no_estudiantes;
+	  	$departamento  = $request->departamento;
 
-
+/*
         $idEspacios = [];
         if(!empty($tipoEspacios)){
             foreach($tipoEspacios as $tipoEspacio){
@@ -91,21 +79,20 @@ class CursoController extends Controller {
                     ->where('tipo', $tipoEspacio)->value('id');
             }
         }
-
+*/
         $curso = Curso::where('nombre', $nombre)->first();
 		$curso->update([
             'nombre'        => $nombre_nuevo,
             'periodo'       => $periodo,
-            'grupo'         => $grupo,
-            'noEstudiantes' => $noEstudiantes,
-            'tipoAula'      => $tipoAula,
-            'pertenencia'   => $pertenencia
+            'no_grupo'         => $no_grupo,
+            'no_estudiantes' => $no_estudiantes,
+            'departamento'   => $departamento
         ]);
 
-        $curso->espacios()->sync($idEspacios);
+        //$curso->espacios()->sync($idEspacios);
 
 		echo "Elemento editado exitosamente!";
-        return redirect()->action('CursoController@index');
+        return redirect()->action('Inciso9_1_7Controller@index');
 	}
 
 	//-----------------------------------------------------------
@@ -119,7 +106,7 @@ class CursoController extends Controller {
         $curso->delete();
 
 		echo "Elemento borrado exitosamente!";
-        return redirect()->action('CursoController@index');
+        return redirect()->action('Inciso9_1_7Controller@index');
 	}
 
     public function rules($nombre = null){
@@ -127,12 +114,36 @@ class CursoController extends Controller {
             'nombre'        => ['required',
                                 Rule::unique('cursos')->ignore($nombre, 'nombre')],
             'periodo'       => 'required|alpha_dash',
-            'grupo'         => 'required|integer',
-            'noEstudiantes' => 'required|integer',
-            'tipoAula'      => 'required|alpha',
-            'pertenencia'   => 'required|alpha'
+            'no_grupo'         => 'required|integer',
+            'no_estudiantes' => 'required|integer',
+            'departamento'   => 'required|alpha'
         ];
     }
 	//*-----------------------------------------------------------------
 }
 
+//No se guardar en blade. edit de cursos
+/*
+	{{-- 
+	<div class="form-group">
+		<label for="espacios" class="col-sm-4 control-label" data-toggle="tooltip" title="Espacios donde se imparte el curso">Espacios</label>
+
+		<div class="col-sm-8">
+			@foreach($espacios as $espacio)
+				<?php $temp = 0; ?>
+				@foreach($curso_espacio as $unidad)
+					@if($curso->id == $unidad->curso_id && $espacio->id == $unidad->espacio_id)
+						<?php $temp = 1; ?>
+					@endif
+				@endforeach
+
+				@if($temp == 1)
+					<input type="checkbox" name="espacios[]" checked value="{{$espacio->tipo}}"> {{$espacio->tipo}} <br>
+				@else
+					<input type="checkbox" name="espacios[]" value="{{$espacio->tipo}}"> {{$espacio->tipo}} <br>
+				@endif
+			@endforeach
+		</div>
+	</div>
+	--}
+*/
