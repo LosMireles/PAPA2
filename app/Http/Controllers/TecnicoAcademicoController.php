@@ -123,11 +123,10 @@ class TecnicoAcademicoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id){
-        dd($id);
         $tecnico = TecnicoAcademico::where('id', $id)->first();
         if(!$tecnico){
-            $mensaje = "No existe software con nombre: ".$nombre;
-            return view('general/error',['mensaje'=>$mensaje]);
+            //$mensaje = "No existe software con nombre: ".$nombre;
+            //return view('general/error',['mensaje'=>$mensaje]);
         }
         $tecnico->delete();
         echo "Elemento borrado exitosamente!";

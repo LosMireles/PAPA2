@@ -57,11 +57,25 @@
     <div>
       <input type="hidden" class="form-control" id="{{$preguntas[2]->id}}" name="{{$preguntas[2]->id}}">
     </div>
+  </div>
+@endsection
 
-    <div class="row text-right" style="margin: 2px;">
-      <a href="{{ action('TecnicoAcademicoController@create') }}" class="btn btn-success">Agregar</a>
+<!-- ------------ LAS TABLAS QUE CORRESPONDAN------------- -->
+
+<!-- ------------ SECCION DE FOTOGRAFIAS, EVIDENCIAS, ETC------------- -->
+
+@section('boton_guardar')
+    <div class="text-center">
+        {{ Form::submit('Guardar', ['class' => 'btn btn-success']) }}
+        {{ Form::close() }}
     </div>
-    @component('layouts.componentes.tabla_incisos_agregar')
+@endsection
+
+@section('evidencias_tabla')
+  <div class="row text-right" style="margin: 2px;">
+    <a href="{{ action('TecnicoAcademicoController@create') }}" class="btn btn-success">Agregar</a>
+  </div>
+  @component('layouts.componentes.tabla_incisos_agregar')
       @slot('cabeza_tabla')
         <th>Nombre</th>
         <th>Grado académico</th>
@@ -83,7 +97,7 @@
             
               @component('layouts.boton_borrar')
                 @slot('controlador_borrar')
-                  {{Form::open(['action' => ['TecnicoAcademicoController@destroy', $id]])}}
+                  {{Form::open(['action' => ['TecnicoAcademicoController@destroy', $tecnico->id]])}}
                 @endslot
               @endcomponent
 
@@ -91,18 +105,4 @@
         @endforeach
       @endslot
     @endcomponent
-
-  </div>
 @endsection
-
-<!-- ------------ LAS TABLAS QUE CORRESPONDAN------------- -->
-
-<!-- ------------ SECCION DE FOTOGRAFIAS, EVIDENCIAS, ETC------------- -->
-
-@section('boton_guardar')
-    <div class="text-center">
-        {{ Form::submit('Guardar', ['class' => 'btn btn-success']) }}
-        {{ Form::close() }}
-    </div>
-@endsection
-

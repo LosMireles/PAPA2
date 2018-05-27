@@ -48,7 +48,6 @@
 
     <hr>
 
-    @yield('Fotografias')
 
     @yield('boton_guardar')
 
@@ -57,6 +56,8 @@
     <!-- Cierra el formulario -->
     {{ Form::close() }}
 
+    @yield('evidencias_tabla')
+    @yield('Fotografias')
     <br>
     <br>
 
