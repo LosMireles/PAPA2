@@ -81,9 +81,11 @@
               <a href="{{ action('TecnicoAcademicoController@edit', $tecnico->id) }}" class="btn btn-warning">Editar</a>
             </td>
             
-            <td>
-              <a href="{{ action('TecnicoAcademicoController@destroy', $tecnico->id) }}" class="btn btn-danger">Borrar</a>
-            </td>
+              @component('layouts.boton_borrar')
+                @slot('controlador_borrar')
+                  {{Form::open(['action' => ['TecnicoAcademicoController@destroy', $id]])}}
+                @endslot
+              @endcomponent
 
           </tr>
         @endforeach
