@@ -16,7 +16,7 @@
                   'class'  => 'form'])}}
 @endsection
 
-<!-------------- LAS PREGUNTAS Y SUS RESPUESTAS--------------->
+<!-- ------------ LAS PREGUNTAS Y SUS RESPUESTAS------------- -->
 
 @section('contenido_formulario')
 	@foreach($preguntas as $pregunta)
@@ -30,49 +30,70 @@
 			</div>
 		</div>
 	@endforeach
+
+  @component('layouts.componentes.tabla_incisos_agregar_igual')
+
+    @slot('cabeza_tabla')
+      <th>Hola</th>
+      <th>Hola</th>
+      <th>Hola</th>
+    @endslot
+
+    @slot('cuerpo_tabla')
+      <tr>
+        <td>HOLA</td>
+        <td>HOLA</td>
+        <td>HOLA</td>
+        <td>HOLA</td>
+        <td>HOLA</td>
+        <td>HOLA</td>
+      </tr>
+    @endslot
+
+  @endcomponent
+  
 @endsection
 
-<!-------------- LAS TABLAS QUE CORRESPONDAN--------------->
+<!-- ------------ LAS TABLAS QUE CORRESPONDAN------------- -->
 
-@section('cabeza_tabla')
-    <tr>
-        <th>Nombre</th>
-        <th>Superfice</th>
-        <th>Cap. máxima</th>
-        <th>Pizarron</th>
+@component('layouts.componentes.tabla_incisos_agregar_igual')
+  @slot('cabeza_tabla')
+    <th>Nombre</th>
+    <th>Superfice</th>
+    <th>Cap. máxima</th>
+    <th>Pizarron</th>
+  @endslot
+
+  @slot('cuerpo_tabla')
+    @foreach ($aulas as $aula)
+      <tr>
+      <td>{{ $aula->nombre}}</td>
+      <td>{{ $aula->capacidad }}</td>
+
+          @component('layouts.boton_editar')
+              @slot("controlador_editar")
+                  {{action('AulaController@edit', [ 'nombre' => $aula->nombre])}}
+              @endslot
+          @endcomponent
+
+          @component('layouts.boton_borrar')
+              @slot("controlador_borrar")
+                  {{ Form::open(['action' => ['AulaController@destroy', $aula->nombre]]) }}
+              @endslot
+          @endcomponent
+
+
+          <!--Boton ver fotos-->
+          <td class="text-center">
+              <a href="{{action('AulaController@viewImg', [ 'nombre' => $aula->nombre])}}" class="btn btn-warning">
+                  Fotografías
+              </a>
+          </td>
+
     </tr>
-@endsection
-
-@section('cuerpo_tabla')
-	@foreach ($aulas as $aula)
-    <tr>
-		<td>{{ $aula->nombre}}</td>
-		<td>{{ $aula->capacidad }}</td>
-
-        @component('layouts.boton_editar')
-            @slot("controlador_editar")
-                {{action('AulaController@edit', [ 'nombre' => $aula->nombre])}}
-            @endslot
-        @endcomponent
-
-        @component('layouts.boton_borrar')
-            @slot("controlador_borrar")
-                {{ Form::open(['action' => ['AulaController@destroy', $aula->nombre]]) }}
-            @endslot
-        @endcomponent
-
-
-        <!--Boton ver fotos-->
-        <td class="text-center">
-            <a href="{{action('AulaController@viewImg', [ 'nombre' => $aula->nombre])}}" class="btn btn-warning">
-                Fotografías
-            </a>
-        </td>
-
-	</tr>
-	@endforeach
-@endsection
-
+    @endforeach
+  @endslot
+@endcomponent
 <!-- ------------ SECCION DE FOTOGRAFIAS, EVIDENCIAS, ETC ------------- -->
 
 @section('Fotografias')

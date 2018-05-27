@@ -59,6 +59,10 @@
     </div>
 
     @component('layouts.componentes.tabla_incisos_agregar')
+      @slot('controlador_agregar')
+        {{Form::open(['action' => ['TecnicoAcademicoController@create']])}}
+      @endslot
+      
       @slot('cabeza_tabla')
         <th>Nombre</th>
         <th>Grado académico</th>

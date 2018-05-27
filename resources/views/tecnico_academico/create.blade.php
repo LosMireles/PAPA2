@@ -15,7 +15,7 @@
 
 @section('contenido_formulario')
 	<div class="form-group">
-		<label for="nombre" class="col-sm-4 control-label" data-toggle="tooltip" title="Nombre completo del técnico">Nombre: </label>
+		<label for="nombre" class="col-sm-4 control-label" data-toggle="tooltip" title="">Nombre: </label>
 
 		<div class="col-sm-8">
 			<input type="text" class="form-control" name="nombre" placeholder="Nombre" required>
@@ -23,54 +23,34 @@
 	</div>
 
 	<div class="form-group">
-		<label for="localizacion" class="col-sm-4 control-label" data-toggle="tooltip" title="Dónde se encuentra ubicado el técnico">Localización</label>
+		<label for="grado" class="col-sm-4 control-label" data-toggle="tooltip" title="">Grado académico: </label>
 
 		<div class="col-sm-8">
-			<select class="form-control" name="localizacion">
-				@foreach($espacios as $espacio)
-					<option value="{{$espacio->tipo}}">{{$espacio->tipo}}</option>
-				@endforeach
-			</select>
+			<input type="text" class="form-control" name="grado" value="" required>
 		</div>
 	</div>
 
 	<div class="form-group">
-		<label for="hora_inicio" class="col-sm-4 control-label" data-toggle="tooltip" title="Hora de inicio de los servicios del técnico">Hora de inicio: </label>
+		<label for="certificados" class="col-sm-4 control-label" data-toggle="tooltip" title="">Certificados: </label>
 
 		<div class="col-sm-8">
-			<input type="time" class="form-control" name="hora_inicio" value="" required>
+			<textarea name="certificados" class="form-control" required></textarea>
 		</div>
 	</div>
 
-	<div class="form-group">
-		<label for="hora_termino" class="col-sm-4 control-label" data-toggle="tooltip" title="Hora de término de los servicios del técnico">Hora de término: </label>
-
-		<div class="col-sm-8">
-			<input type="time" class="form-control" name="hora_termino" value="" required>
-		</div>
-	</div>
+	@component('layouts.text_input')
+		@slot('nombre_input', 'exp')
+		@slot('tooltip_input', 'Años de experiencia del técnico en el área')
+		@slot('', '')
+	@endcomponent
 
 	<div class="form-group">
-		<label for="dia_inicio" class="col-sm-4 control-label" data-toggle="tooltip" title="Día de inicio de los servicios del técnico">Día de inicio: </label>
+		<label for="exp" class="col-sm-4 control-label" data-toggle="tooltip" title="">Años de experiencia: </label>
 
 		<div class="col-sm-8">
-			<input type='date' class="form-control" name="dia_inicio" required>
-		</div>
-	</div>
-
-	<div class="form-group">
-		<label for="dia_termino" class="col-sm-4 control-label" data-toggle="tooltip" title="Día de térmico de los servicios del técnico">Día de termino: </label>
-
-		<div class="col-sm-8">
-			<input type='date' class="form-control" name="dia_termino" required>
-		</div>
-	</div>
-
-	<div class="form-group">
-		<label for="curriculo" class="col-sm-4 control-label" data-toggle="tooltip" title="Currículum del técnico académico">Currículum: </label>
-
-		<div class="col-sm-8">
-			<input type="file" class="form-control" name="curriculo" accept=".pdf">
+			@component("layouts.text_input")
+			@endcomponent
+			<input type='date' class="form-control" name="exp" required>
 		</div>
 	</div>
 @endsection
