@@ -13,35 +13,27 @@
 
 @section('contenido_formulario')
     @component("layouts.text_input")
-        @slot("nombre_input", "Tipo")
-        @slot("tooltip_input", "Nombre escrito en las puertas")
-        @slot("label_input", "Código del cubiculo")
-        @slot("placeholder_input", "Código de cubiculo")
+        @slot("nombre_input", "nombre")
+        @slot("tooltip_input", "Nombre escrito en las puertas de los cubiculos")
+        @slot("label_input", "Identificador del cubiculo")
+        @slot("placeholder_input", "Cubiculo 1 3K-4")
         @slot("extra", "required")
     @endcomponent
 
     @component("layouts.text_input")
-        @slot("nombre_input", "superficie")
-        @slot("tooltip_input", "Superficie en metros cuadrados que abarca el aula")
-        @slot("label_input", "Superficie")
-        @slot("placeholder_input", "100")
-        @slot("extra", "required")
-    @endcomponent
-
-    @component("layouts.text_input")
-        @slot("nombre_input", "Profesor")
-        @slot("tooltip_input", "El encargado del cubículo")
+        @slot("nombre_input", "profesor")
+        @slot("tooltip_input", "Profesor asignado al cubiculo")
         @slot("label_input", "Profesor")
-        @slot("placeholder_input", "Nombre del profesor")
-        @slot("extra", "required")
+        @slot("placeholder_input", "Julio Waissman Villanova")
     @endcomponent
 
     @component("layouts.text_input")
-        @slot("nombre_input", "CantidadEquipo")
-        @slot("tooltip_input", "Cantidad de computadoras hay en el cubículo")
+        @slot("tipo", "number")
+        @slot("nombre_input", "cantidad_equipo")
+        @slot("tooltip_input", "Cantidad de computadoras que hay en el cubículo")
         @slot("label_input", "Cantidad de equipo")
-        @slot("placeholder_input", "CantidadEquipo")
-        @slot("extra", "required")
+        @slot("placeholder_input", "1")
+        @slot("extra", "min=0")
     @endcomponent
 
   <div class="form-group">
@@ -56,3 +48,4 @@
 		</div>
 	</div>
 @endsection
+

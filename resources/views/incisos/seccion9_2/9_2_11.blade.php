@@ -28,30 +28,49 @@
 			</label>
 
 			<div>
-                <textarea class="form-control" id="{{$pregunta->id}}" name="{{$pregunta->id}}"value="{{$pregunta->respuesta}}"></textarea>
+                <textarea class="form-control" id="{{$pregunta->id}}" name="{{$pregunta->id}}">{{$pregunta->respuesta}}</textarea>
 			</div>
 		</div>
 	@endforeach
 @endsection
 
 <!-- ------------ LAS TABLAS QUE CORRESPONDAN------------- -->
+@section('tablas_inciso_general')
+    @component('layouts.componentes.tabla_incisos_agregar')
+        @slot('controlador_agregar')
+            {{Form::open(['action' => ['CubiculoController@create']])}}
+        @endslot
 
-@section('cabeza_tabla')
-    <tr>
-        <th>Código cubículo</th>
-        <th>Profesor</th>
-        <th>Cantidad de equipo</th>
-    </tr>
-@endsection
+        <h4>Tabla de equipos de redes</h4>
+        @slot('cabeza_tabla')
+            <th>Cubiculo</th>
+            <th>Profesor</th>
+            <th>Cantidad equipo</th>
+        @endslot
 
-@section('cuerpo_tabla')
-    @foreach($cubiculos as $cubiculo)
-        <tr>
-            <td>{{ $cubiculo->Tipo }}</td>
-            <td>{{ $cubiculo->Profesor }}</td>
-            <td>{{ $cubiculo->CantidadEquipo }}</td>
-        </tr>
-    @endforeach
+        @slot('cuerpo_tabla')
+            @foreach($cubiculos as $cubiculo)
+            <tr>
+                <td>{{$cubiculo->nombre}}</td>
+                <td>{{$cubiculo->profesor}}</td>
+                <td>{{$cubiculo->cantidad_equipo}}</td>
+
+                @component('layouts.boton_editar')
+                    @slot('controlador_editar')
+                        {{ Form::open(['action' => ['CubiculoController@edit', $cubiculo->nombre]]) }}
+                    @endslot
+                @endcomponent
+
+                @component('layouts.boton_borrar')
+                    @slot('controlador_borrar')
+                        {{ Form::open(['action' => ['CubiculoController@edit', $cubiculo->nombre]]) }}
+                    @endslot
+                @endcomponent
+
+            </tr>
+            @endforeach
+        @endslot
+    @endcomponent
 @endsection
 
 <!-- ------------ SECCION DE FOTOGRAFIAS, EVIDENCIAS, ETC------------- -->

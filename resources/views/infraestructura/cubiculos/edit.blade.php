@@ -1,49 +1,44 @@
 @extends('layouts.formulario_edit_general')
 
-@section('title')
-   editar cubículo <?php echo$cubiculo->Tipo; ?>
-@endsection
+@section('title' , "Agregar cubiculo")
+@section("objeto_informacion", "un cubiculo")
 
-@section('descripcion')
-    <a href="{{action('CubiculoController@index')}}" class="btn btn-primary">
-        Regresar
-    </a>
-	<h1 class="text-center">Edición del cubículo {{$cubiculo->Tipo}}</h1>
-@endsection
-
-@section('accion')
-    action = "{{action('CubiculoController@update', $cubiculo->Tipo)}}"
+@section('ruta_regresar')
+    {{action('CubiculoController@index')}}
 @endsection
 
 @section('formopen')
-    {{Form::open(['action' => ['CubiculoController@update', $cubiculo->Tipo],
+    {{Form::open(['action' => ['CubiculoController@update', $cubiculo->nombre],
                 'class' => 'form-horizontal'])}}
 @endsection
 
 @section('contenido_formulario')
-<div class="form-group">
-      <label for="Tipo" class="col-sm-4 control-label" data-toggle="tooltip" title="Número del cubículo">Código del cubículo</label>
+    @component("layouts.text_input")
+        @slot("nombre_input", "nombre")
+        @slot("tooltip_input", "Nombre escrito en las puertas de los cubiculos")
+        @slot("label_input", "Identificador del cubiculo")
+        @slot("placeholder_input", "Cubiculo 1 3K-4")
+        @slot("valor_default", $cubiculo->nombre)
+        @slot("extra", "required")
+    @endcomponent
 
-      <div class="col-sm-8">
-         <input type='text' class="form-control" name='Tipo' value = '<?php echo$cubiculo->Tipo; ?>' required>
-      </div>
-   </div>
+    @component("layouts.text_input")
+        @slot("nombre_input", "profesor")
+        @slot("tooltip_input", "Profesor asignado al cubiculo")
+        @slot("label_input", "Profesor")
+        @slot("placeholder_input", "Julio Waissman Villanova")
+        @slot("valor_default", $cubiculo->profesor)
+    @endcomponent
 
-   <div class="form-group">
-      <label for="Profesor" class="col-sm-4 control-label" data-toggle="tooltip" title="El encargado del cubículo">Profesor</label>
-
-      <div class="col-sm-8">
-         <input type='text' class="form-control" name='Profesor' id="Profesor" placeholder="Nombre" required value = '<?php echo$cubiculo->Profesor; ?>'>
-      </div>
-   </div>
-
-   <div class="form-group">
-      <label for="CantidadEquipo" class="col-sm-4 control-label" data-toggle="tooltip" title="Cantidad de computadoras hay en el cubículo">Cantidad de equipo</label>
-
-      <div class="col-sm-8">
-         <input type='text' class="form-control" name='CantidadEquipo' id="CantidadEquipo" placeholder="1" required value = '<?php echo$cubiculo->CantidadEquipo; ?>'>
-      </div>
-   </div>
+    @component("layouts.text_input")
+        @slot("tipo", "number")
+        @slot("nombre_input", "cantidad_equipo")
+        @slot("tooltip_input", "Cantidad de computadoras que hay en el cubículo")
+        @slot("label_input", "Cantidad de equipo")
+        @slot("placeholder_input", "1")
+        @slot("valor_default", $cubiculo->cantidad_equipo)
+        @slot("extra", "min=0")
+    @endcomponent
 
    <div class="form-group">
  		<h3 class="text-center">Evidencias: </h3>
@@ -57,3 +52,4 @@
  		</div>
  	</div>
 @endsection
+

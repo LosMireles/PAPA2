@@ -20,9 +20,9 @@
 
 	<div class="row">
 		<div class="col-md-10 col-md-offset-1">
+            <!-- Se abre el formulario -->
             @yield('formopen')
             {{ Form::hidden('_method', 'PATCH') }}
-            {{ Form::close() }}
 
             <div class="form-group">
                 <input type = "hidden" name = "_token" value = "{{csrf_token()}}">
@@ -48,12 +48,16 @@
 
     <hr>
 
-    @yield('Fotografias')
 
     @yield('boton_guardar')
 
     @yield('extra_inciso_general')
 
+    <!-- Cierra el formulario -->
+    {{ Form::close() }}
+
+    @yield('evidencias_tabla')
+    @yield('Fotografias')
     <br>
     <br>
 

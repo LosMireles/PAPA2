@@ -57,12 +57,25 @@
     <div>
       <input type="hidden" class="form-control" id="{{$preguntas[2]->id}}" name="{{$preguntas[2]->id}}">
     </div>
+  </div>
+@endsection
 
-    @component('layouts.componentes.tabla_incisos_agregar')
-      @slot('controlador_agregar')
-        {{Form::open(['action' => ['TecnicoAcademicoController@create']])}}
-      @endslot
-      
+<!-- ------------ LAS TABLAS QUE CORRESPONDAN------------- -->
+
+<!-- ------------ SECCION DE FOTOGRAFIAS, EVIDENCIAS, ETC------------- -->
+
+@section('boton_guardar')
+    <div class="text-center">
+        {{ Form::submit('Guardar', ['class' => 'btn btn-success']) }}
+        {{ Form::close() }}
+    </div>
+@endsection
+
+@section('evidencias_tabla')
+  <div class="row text-right" style="margin: 2px;">
+    <a href="{{ action('TecnicoAcademicoController@create') }}" class="btn btn-success">Agregar</a>
+  </div>
+  @component('layouts.componentes.tabla_incisos_agregar')
       @slot('cabeza_tabla')
         <th>Nombre</th>
         <th>Grado académico</th>
@@ -78,34 +91,18 @@
             <td>{{$tecnico->certificados}}</td>
             <td>{{$tecnico->anios_exp}}</td>
 
-            @component('layouts.boton_editar')
-              @slot('controlador_editar')
-                {{ Form::open(['action' => ['TecnicoAcademicoController@edit', $tecnico->id]]) }}
-              @endslot
-            @endcomponent
+            <td>  
+              <a href="{{ action('TecnicoAcademicoController@edit', $tecnico->id) }}" class="btn btn-warning">Editar</a>
+            </td>
             
-            @component('layouts.boton_borrar')
-              @slot('controlador_borrar')
-                {{ Form::open(['action' => ['TecnicoAcademicoController@destroy', $tecnico->id]]) }}
-              @endslot
-            @endcomponent
+              @component('layouts.boton_borrar')
+                @slot('controlador_borrar')
+                  {{Form::open(['action' => ['TecnicoAcademicoController@destroy', $tecnico->id]])}}
+                @endslot
+              @endcomponent
 
           </tr>
         @endforeach
       @endslot
     @endcomponent
-
-  </div>
 @endsection
-
-<!-- ------------ LAS TABLAS QUE CORRESPONDAN------------- -->
-
-<!-- ------------ SECCION DE FOTOGRAFIAS, EVIDENCIAS, ETC------------- -->
-
-@section('boton_guardar')
-    <div class="text-center">
-        {{ Form::submit('Guardar', ['class' => 'btn btn-success']) }}
-        {{ Form::close() }}
-    </div>
-@endsection
-

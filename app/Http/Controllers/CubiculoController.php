@@ -32,16 +32,15 @@ class CubiculoController extends Controller {
 
         if ($request->hasFile('Fotografias')) {
           foreach($request->Fotografias as $foto){
-            $foto->storeAs('infraestructura/cubiculos/' . $request->Tipo, $foto->getClientOriginalName());
+            $foto->storeAs('infraestructura/cubiculos/' . $request->nombre, $foto->getClientOriginalName());
           }
         }
 
         $cubiculo = new Cubiculo;
 
-        $cubiculo->Tipo           = $request->Tipo;
-        $cubiculo->superficie     = $request->superficie;
-		$cubiculo->Profesor       = $request->Profesor;
-		$cubiculo->CantidadEquipo = $request->CantidadEquipo;
+        $cubiculo->nombre          = $request->nombre;
+		$cubiculo->profesor        = $request->profesor;
+		$cubiculo->cantidad_equipo = $request->cantidad_equipo;
 
         $cubiculo->save();
 
@@ -50,89 +49,85 @@ class CubiculoController extends Controller {
   }
 
     //----------------------------------------------------------------
-	public function edit($tipo) {
-		$cubiculo  = Cubiculo::where('Tipo', $tipo)->first();
+	public function edit($nombre) {
+        $cubiculo  = Cubiculo::where('nombre', $nombre)->first();
 
     return view('infraestructura.cubiculos.edit')
         ->with(['cubiculo'=>$cubiculo]);
 	}
 
     //----------------------------------------------------------------
-	public function update(Request $request, $tipo) {
-        $request->validate($this->rules($tipo));
+	public function update(Request $request, $nombre) {
+        $request->validate($this->rules($nombre));
+
         if ($request->hasFile('Fotografias')) {
           foreach($request->Fotografias as $foto){
-            $foto->storeAs('infraestructura/cubiculos/' . $request->Tipo, $foto->getClientOriginalName());
+            $foto->storeAs('infraestructura/cubiculos/' . $request->nombre, $foto->getClientOriginalName());
           }
         }
 
-	  	$tipo_nuevo     = $request->Tipo;
-        $superficie     = $request->superficie;
-		$Profesor       = $request->Profesor;
-		$CantidadEquipo = $request->CantidadEquipo;
+        $cubiculo = Cubiculo::where('nombre', $nombre)->first();
+        $data = [
+            'nombre'          => $request->nombre,
+            'profesor'        => $request->profesor,
+            'cantidad_equipo' => $request->cantidad_equipo
+        ];
 
-        Cubiculo::where('Tipo', $tipo)->update(
-            ['Tipo'           => $tipo_nuevo,
-             'superficie'     => $superficie,
-             'Profesor'       => $Profesor,
-             'CantidadEquipo' => $CantidadEquipo]);
+        $cubiculo->update($data);
 
 		echo "Elemento insertado exitosamente!";
-    return redirect()->action('CubiculoController@index');
+        return redirect()->action('CubiculoController@index');
 	}
 
     //----------------------------------------------------------------
-	public function destroy(Request $request, $tipo){
-    Storage::deleteDirectory('infraestructura/cubiculos/'. $tipo . '/');
-    $cubiculo = Cubiculo::where('Tipo', $tipo)->first();
-    if(!$cubiculo){
-        $mensaje = "No existe cubiculo con tipo: ".$tipo;
-        return view('general.error')
-            ->with(['mensaje' => $mensaje]);
-    }
-    $cubiculo->delete();
+	public function destroy(Request $request, $nombre){
+        Storage::deleteDirectory('infraestructura/cubiculos/'. $nombre . '/');
+        $cubiculo = Cubiculo::where('nombre', $nombre)->first();
+        if(!$cubiculo){
+            $mensaje = "No existe cubiculo con nombre: ".$nombre;
+            return view('general.error')
+                ->with(['mensaje' => $mensaje]);
+        }
+        $cubiculo->delete();
 
 		echo "Elemento borrado exitosamente!";
-    return redirect()->action('CubiculoController@index');
+        return redirect()->action('CubiculoController@index');
 	}
 
     //----------------------------------------------------------------
-    public function rules($tipo = null){
+    public function rules($nombre = null){
         return [
-            'Tipo'           => ['required',
-                                Rule::unique('cubiculos')->ignore($tipo, 'Tipo')],
-            'Profesor'       => 'required|alpha',
-            'CantidadEquipo' => 'required|integer'
+            'nombre' => ['required',
+                        Rule::unique('cubiculos')->ignore($nombre, 'nombre')],
         ];
     }
 
 	//*********************************************************************
 	public function imprimir() {
 	  	$cubiculos  = Cubiculo::all();
-	//dd($cubiculos);
 
         $pdf = PDF::loadView('infraestructura.cubiculos.index2',array('cubiculos'=>$cubiculos));
 	  	return $pdf->download('Cubiculos.pdf');
 	}
 
   //----------------------------------------------------------------
-  public function viewImg($tipo){
-    return view('infraestructura.cubiculos.viewImg')->with(['tipo' => $tipo]);
+  public function viewImg($nombre){
+    return view('infraestructura.cubiculos.viewImg')->with(['nombre' => $nombre]);
   }
 
-  public function guardarImg(Request $request, $tipo){
+  public function guardarImg(Request $request, $nombre){
     if ($request->hasFile('Fotografias')) {
       foreach($request->Fotografias as $foto){
-        $foto->storeAs('infraestructura/cubiculos/' . $tipo, $foto->getClientOriginalName());
+        $foto->storeAs('infraestructura/cubiculos/' . $nombre, $foto->getClientOriginalName());
       }
     }
-    return redirect('/cubiculos/'. $tipo .'/viewImg')->with(['tipo' => $tipo]);
+    return redirect('/cubiculos/'. $nombre .'/viewImg')->with(['nombre' => $nombre]);
   }
 
-  public function borrarImg($tipo, $imagen)
+  public function borrarImg($nombre, $imagen)
   {
-    $dirImagen = 'infraestructura/cubiculos/' . $tipo . '/' . $imagen;
+    $dirImagen = 'infraestructura/cubiculos/' . $nombre . '/' . $imagen;
     Storage::delete($dirImagen);
-    return redirect('/cubiculos/'. $tipo .'/viewImg')->with(['tipo' => $tipo]);
+    return redirect('/cubiculos/'. $nombre .'/viewImg')->with(['nombre' => $nombre]);
   }
 }
