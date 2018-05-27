@@ -33,6 +33,10 @@
 
 @section('tablas_inciso_general')
     @component('layouts.componentes.tabla_incisos_agregar')
+        @slot('controlador_agregar')
+            {{Form::open(['action' => ['SoftwareController@create']])}}
+        @endslot
+
         <h4>Tabla de lenguajes, herramientas case, manejadores de bases de datos y paqueteria</h4>
         @slot('cabeza_tabla')
             <th>Lenguajes de programación</th>

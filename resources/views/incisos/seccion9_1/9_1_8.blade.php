@@ -35,23 +35,61 @@
 
 <!-- ------------ LAS TABLAS QUE CORRESPONDAN------------- -->
 
-@section('cabeza_tabla')
-    <tr>
-        <th>Aula</th>
-        <th>Equipo</th>
-	<th>Audiovisual</th>
-    </tr>
+@section('tablas_inciso_general')
+    @component('layouts.componentes.tabla_incisos_agregar')
+        @slot('controlador_agregar')
+            {{Form::open(['action' => ['AulaController@create']])}}
+        @endslot
+
+        <h4>Tabla de equipos de redes</h4>
+        @slot('cabeza_tabla')
+            <th>Aula</th>
+            <th>Serial Equipo computo</th>
+            <th>Serial equipo audiovisual</th>
+        @endslot
+
+        @slot('cuerpo_tabla')
+            @foreach($aulas as $aula)
+            <tr>
+                <td>{{$aula->nombre}}</td>
+
+                @if(!empty($aula->equipos))
+                    <td>
+                    @foreach($aula->equipos as $equipo)
+                        @if($equipo->tipo == "Computo")
+                            {{$equipo->serial}}
+                        @endif
+                    @endforeach
+                    </td>
+
+                    <td>
+                    @foreach($aula->equipos as $equipo)
+                        @if($equipo->tipo == "Audiovisual")
+                            {{$equipo->serial}}
+                        @endif
+                    </td>
+                    @endforeach
+                @endif
+
+                @component('layouts.boton_editar')
+                    @slot('controlador_editar')
+                        {{ Form::open(['action' => ['AulaController@edit', $aula->nombre]]) }}
+                    @endslot
+                @endcomponent
+
+                @component('layouts.boton_borrar')
+                    @slot('controlador_borrar')
+                        {{ Form::open(['action' => ['AulaController@destroy', $aula->nombre]]) }}
+                    @endslot
+                @endcomponent
+
+            </tr>
+            @endforeach
+        @endslot
+    @endcomponent
 @endsection
 
-@section('cuerpo_tabla')
-    @foreach($aulas as $aula)
-        <tr>
-            <td>{{$aula->Tipo}}</td>
-            <td>{{$aula->CantidadEquipo}}</td>
-	    <td>{{$aula->CantidadAV}}</td>
-        </tr>
-    @endforeach
-@endsection
+
 
 <!-- ------------ SECCION DE FOTOGRAFIAS, EVIDENCIAS, ETC------------- -->
 

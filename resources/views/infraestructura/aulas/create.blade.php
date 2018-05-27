@@ -195,7 +195,7 @@
         @slot("nombre_input", "asesoria")
         @slot("tooltip_input", "Elevación para el profesor")
         @slot("label_input", "Asesoria")
-    @endcomponent	
+    @endcomponent
 
 
 	<div class="form-group">

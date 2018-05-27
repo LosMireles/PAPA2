@@ -31,32 +31,7 @@
 		<label for="{{$preguntas[1]->id}}" class="control-label text-center">{{$preguntas[1]->titulo}}</label>
 
 		<div>
-			<input type="hidden" class="form-control" id="{{$preguntas[1]->id}}" name="{{$preguntas[1]->id}}" value="{{$preguntas[1]->respuesta}}" hidden>
-
-			@component("layouts.componentes.tabla_incisos_agregar_igual")
-		    @slot("cabeza_tabla")
-		      	<th class="text-center">Serial</th>
-				<th class="text-center">Descripción</th>
-		    @endslot
-
-		    @slot("cuerpo_tabla")
-		      @foreach($equipos as $equipo)
-						@if($equipo->tipo == "servidor")
-							<tr>
-								<td>
-									{{$equipo->serial}}
-								</td>
-								<td>
-									{{$equipo->descripcion}}
-								</td>
-								<td><a href="#" class="btn btn-success">Editar</a></td>
-								<td><a href="#" class="btn btn-success">Eliminar</a></td>
-								<td><a href="#" class="btn btn-success">Agregar igual</a></td>
-							</tr>
-						@endif
-					@endforeach
-		    @endslot
-		  @endcomponent
+			<input type="text" class="form-control" id="{{$preguntas[1]->id}}" name="{{$preguntas[1]->id}}" value="{{$preguntas[1]->respuesta}}">
 		</div>
 	</div>
 	<!-- ******************************************************************************************************** -->
@@ -87,6 +62,49 @@
 @endsection
 
 <!-------------- LAS TABLAS QUE CORRESPONDAN--------------->
+
+@section('tablas_inciso_general')
+    @component('layouts.componentes.tabla_incisos_agregar')
+        @slot('controlador_agregar')
+            {{Form::open(['action' => ['EquipoController@create']])}}
+        @endslot
+
+        <h4>Tabla de equipos de redes</h4>
+        @slot('cabeza_tabla')
+            <th>Serial equipo</th>
+            <th>CPU</th>
+            <th>Almacenamiento</th>
+            <th>RAM</th>
+            <th>Otras caracteristicas</th>
+        @endslot
+
+        @slot('cuerpo_tabla')
+            @foreach($equipos as $equipo)
+            <tr>
+                <td>{{$equipo->serial}}</td>
+                <td>{{$equipo->cpu}}</td>
+                <td>{{$equipo->almacenamiento}}</td>
+                <td>{{$equipo->ram}}</td>
+                <td>{{$equipo->otras_caracteristicas}}</td>
+
+                @component('layouts.boton_editar')
+                    @slot('controlador_editar')
+                        {{ Form::open(['action' => ['EquipoController@edit', $equipo->serial]]) }}
+                    @endslot
+                @endcomponent
+
+                @component('layouts.boton_borrar')
+                    @slot('controlador_borrar')
+                        {{ Form::open(['action' => ['EquipoController@edit', $equipo->serial]]) }}
+                    @endslot
+                @endcomponent
+
+            </tr>
+            @endforeach
+        @endslot
+    @endcomponent
+@endsection
+
 
 <!-- ------------ SECCION DE FOTOGRAFIAS, EVIDENCIAS, ETC------------- -->
 
