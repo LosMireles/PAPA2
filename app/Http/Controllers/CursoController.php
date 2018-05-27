@@ -8,20 +8,22 @@ use App\Http\Controllers\Controller;
 use Illuminate\Validation\Rule;
 
 use App\Curso;
-
+use App\Aula;
 class CursoController extends Controller {
     private $licenciaturas = ["LCC", "LM", "Otro"];
 
     public function index(){
-        $cursos  = Curso::all();
+        $cursos = Curso::all();
+		
         return view('infraestructura.cursos.index')
             ->with(['cursos' => $cursos]);
     }
 
     //----------------------------------------------------------------
 	public function create(){
+		$aulas	= Aula::all();
         return view('infraestructura.cursos.create')
-            ->with(['licenciaturas' => $this->licenciaturas]);
+            ->with(['licenciaturas' => $this->licenciaturas,'aulas' =>$aulas]);
 	}
 
     //----------------------------------------------------------------
@@ -38,27 +40,31 @@ class CursoController extends Controller {
         $curso->departamento   = $request->departamento;
 
         $curso->save();
-/*
-        if(!empty($aulas)){
+
+        /*if(!empty($aulas)){
             foreach($aulas as $nombreAula){
                 $espacioId = DB::table('aulas')->where('aula', $nombreAula)->value('id');
                 $curso->aulas()->attach($aulaId);
             }
-        }
-*/
+        }*/
+		
+		$aulaId = DB::table('aulas')->where('nombre', $request->donde)->value('id');
+        $curso->aulas()->attach($aulaId);
+
 		echo "Elemento insertado exitosamente!";
         return redirect()->action('Inciso9_1_7Controller@index');
     }
 
 	//-----------------------------------------------------------
 	public function edit($nombre) {
-		$curso         = Curso::where('nombre', $nombre)->first();
+		$curso  = Curso::where('nombre', $nombre)->first();
+		$aulas	= Aula::all();
 	  	//$espacios      = Espacio::all();
         //$curso_espacio = DB::table('curso_espacio')->get();
 
 	  	return view('infraestructura.cursos.edit')
 	  	    ->with(['curso'         => $curso,
-                    'licenciaturas' => $this->licenciaturas]);
+                    'licenciaturas' => $this->licenciaturas,'aulas' =>$aulas]);
 	}
 
 	//-----------------------------------------------------------
@@ -71,15 +77,10 @@ class CursoController extends Controller {
 	  	$no_estudiantes = $request->no_estudiantes;
 	  	$departamento  = $request->departamento;
 
-/*
-        $idEspacios = [];
-        if(!empty($tipoEspacios)){
-            foreach($tipoEspacios as $tipoEspacio){
-                $idEspacios[] = DB::table('espacios')
-                    ->where('tipo', $tipoEspacio)->value('id');
-            }
-        }
-*/
+
+        $idAula = DB::table('aulas')->where('nombre', $request->donde)->value('id');
+
+
         $curso = Curso::where('nombre', $nombre)->first();
 		$curso->update([
             'nombre'        => $nombre_nuevo,
@@ -89,7 +90,7 @@ class CursoController extends Controller {
             'departamento'   => $departamento
         ]);
 
-        //$curso->espacios()->sync($idEspacios);
+        $curso->aulas()->sync($idAula);
 
 		echo "Elemento editado exitosamente!";
         return redirect()->action('Inciso9_1_7Controller@index');
