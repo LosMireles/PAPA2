@@ -40,6 +40,7 @@
         <th>Superfice</th>
         <th>Cap. máxima</th>
         <th>Pizarron</th>
+        <th></th>
     </tr>
 @endsection
 
