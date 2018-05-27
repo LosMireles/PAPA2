@@ -30,7 +30,7 @@
         @slot("valor_default", $software->version)
     @endcomponent
 
-    @component("layouts.select_input")
+    @component("layouts.text_input")
         @slot("nombre_input", "disponibilidad")
         @slot("tooltip_input", "Como fue que se consiguio el software. Si se tiene licencia o si es libre")
         @slot("label_input", "Disponibilidad")
