@@ -58,11 +58,10 @@
       <input type="hidden" class="form-control" id="{{$preguntas[2]->id}}" name="{{$preguntas[2]->id}}">
     </div>
 
+    <div class="row text-right" style="margin: 2px;">
+      <a href="{{ action('TecnicoAcademicoController@create') }}" class="btn btn-success">Agregar</a>
+    </div>
     @component('layouts.componentes.tabla_incisos_agregar')
-      @slot('controlador_agregar')
-        {{Form::open(['action' => ['TecnicoAcademicoController@create']])}}
-      @endslot
-      
       @slot('cabeza_tabla')
         <th>Nombre</th>
         <th>Grado académico</th>
@@ -78,17 +77,13 @@
             <td>{{$tecnico->certificados}}</td>
             <td>{{$tecnico->anios_exp}}</td>
 
-            @component('layouts.boton_editar')
-              @slot('controlador_editar')
-                {{ Form::open(['action' => ['TecnicoAcademicoController@edit', $tecnico->id]]) }}
-              @endslot
-            @endcomponent
+            <td>  
+              <a href="{{ action('TecnicoAcademicoController@edit', $tecnico->id) }}" class="btn btn-warning">Editar</a>
+            </td>
             
-            @component('layouts.boton_borrar')
-              @slot('controlador_borrar')
-                {{ Form::open(['action' => ['TecnicoAcademicoController@destroy', $tecnico->id]]) }}
-              @endslot
-            @endcomponent
+            <td>
+              <a href="{{ action('TecnicoAcademicoController@destroy', $tecnico->id) }}" class="btn btn-danger">Borrar</a>
+            </td>
 
           </tr>
         @endforeach
