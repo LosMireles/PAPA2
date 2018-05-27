@@ -22,40 +22,75 @@
 	<div class="form-group">
 		<label for="{{$preguntas[0]->id}}" class="control-label">{{$preguntas[0]->titulo}}</label>
 
-		<div>
-			<input type="text" class="form-control" name="{{$preguntas[0]->id}}" value="{{$preguntas[0]->respuesta}}">
-		</div>
-	</div>
+        <div>
+            @if($preguntas[0]->respuesta == 'Si')
+              <input type="radio" name="{{$preguntas[0]->id}}" value="Si" checked> Sí <br>
+              <input type="radio" name="{{$preguntas[0]->id}}" value="No"> No
+            @elseif($preguntas[0]->respuesta == 'No')
+              <input type="radio" name="{{$preguntas[0]->id}}" value="Si"> Sí <br>
+              <input type="radio" name="{{$preguntas[0]->id}}" value="No" checked> No
+            @else
+              <input type="radio" name="{{$preguntas[0]->id}}" value="Si" checked> Sí <br>
+              <input type="radio" name="{{$preguntas[0]->id}}" value="No"> No
+            @endif
+        </div>
+    </div>
 	<!-- ******************************************************************************************************** -->
 	<div class="form-group">
 		<label for="{{$preguntas[1]->id}}" class="control-label text-center">{{$preguntas[1]->titulo}}</label>
 
 		<div>
-			<input type="text" class="form-control" id="{{$preguntas[1]->id}}" name="{{$preguntas[1]->id}}" value="{{$preguntas[1]->respuesta}}">
+            <textarea class="form-control" id="{{$preguntas[1]->id}}" name="{{$preguntas[1]->id}}" >{{$preguntas[1]->respuesta}}</textarea>
 		</div>
 	</div>
 	<!-- ******************************************************************************************************** -->
 	<div class="form-group">
 		<label for="{{$preguntas[2]->id}}" class="control-label">{{$preguntas[2]->titulo}}</label>
 
-		<div>
-			<input type="text" class="form-control" id="{{$preguntas[2]->id}}" name="{{$preguntas[2]->id}}" value="{{$preguntas[2]->respuesta}}">
-		</div>
+        <div>
+            @if($preguntas[2]->respuesta == 'Si')
+              <input type="radio" name="{{$preguntas[2]->id}}" value="Si" checked> Sí <br>
+              <input type="radio" name="{{$preguntas[2]->id}}" value="No"> No
+            @elseif($preguntas[2]->respuesta == 'No')
+              <input type="radio" name="{{$preguntas[2]->id}}" value="Si"> Sí <br>
+              <input type="radio" name="{{$preguntas[2]->id}}" value="No" checked> No
+            @else
+              <input type="radio" name="{{$preguntas[2]->id}}" value="Si" checked> Sí <br>
+              <input type="radio" name="{{$preguntas[2]->id}}" value="No"> No
+            @endif
+        </div>
 	</div>
 	<!-- ******************************************************************************************************** -->
 	<div class="form-group">
 		<label for="{{$preguntas[3]->id}}" class="control-label">{{$preguntas[3]->titulo}}</label>
 
-		<div>
-			<input type="text" class="form-control" id="{{$preguntas[3]->id}}" name="{{$preguntas[3]->id}}" value="{{$preguntas[3]->respuesta}}">
-		</div>
+        <div>
+            @if($preguntas[3]->respuesta == 'Si')
+              <input type="radio" name="{{$preguntas[3]->id}}" value="Si" checked> Sí <br>
+              <input type="radio" name="{{$preguntas[3]->id}}" value="No"> No
+            @elseif($preguntas[3]->respuesta == 'No')
+              <input type="radio" name="{{$preguntas[3]->id}}" value="Si"> Sí <br>
+              <input type="radio" name="{{$preguntas[3]->id}}" value="No" checked> No
+            @else
+              <input type="radio" name="{{$preguntas[3]->id}}" value="Si" checked> Sí <br>
+              <input type="radio" name="{{$preguntas[3]->id}}" value="No"> No
+            @endif
+        </div>
 	</div>
 	<!-- ******************************************************************************************************** -->
 	<div class="form-group">
 		<label for="{{$preguntas[4]->id}}" class="control-label">{{$preguntas[4]->titulo}}</label>
 
 		<div>
-			<input type="text" class="form-control" id="{{$preguntas[4]->id}}" name="{{$preguntas[4]->id}}" value="{{$preguntas[4]->respuesta}}">
+            <textarea class="form-control" id="{{$preguntas[4]->id}}" name="{{$preguntas[4]->id}}">{{$preguntas[4]->respuesta}}</textarea>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="{{$preguntas[5]->id}}" class="control-label">{{$preguntas[5]->titulo}}</label>
+
+		<div>
+            <textarea class="form-control" id="{{$preguntas[5]->id}}" name="{{$preguntas[5]->id}}">{{$preguntas[5]->respuesta}}</textarea>
 		</div>
 	</div>
 

@@ -275,7 +275,7 @@ class PreguntasTableSeeder extends Seeder
         App\Pregunta::create(array(
             'inciso' => '9.2.7',
             'numero' => '2',
-            'titulo' => '¿Qué equipo de cómputo (servidores y clientes) soporta la red y cuáles son sus características?',
+            'titulo' => 'En caso afirmativo, ¿Qué equipo de cómputo (servidores y clientes) soporta la red y cuáles son sus características?',
                     # Describalos
             'respuesta' => '',
         ));
@@ -299,7 +299,7 @@ class PreguntasTableSeeder extends Seeder
         App\Pregunta::create(array(
             'inciso' => '9.2.7',
             'numero' => '5',
-            'titulo' => '¿Cuál es el tiempo promedio disponible para cada estudiante a Internet por semana?',
+            'titulo' => 'En caso afirmativo a la pregunta anterior, ¿Cuál es el tiempo promedio disponible para cada estudiante a Internet por semana?',
                     # Describalos
             'respuesta' => '',
         ));
