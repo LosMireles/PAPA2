@@ -4,7 +4,7 @@
 @section("objeto_informacion", "un curso")
 
 @section('ruta_regresar')
-    {{action('CursoController@index')}}
+    {{action('Inciso9_1_7Controller@index')}}
 @endsection
 
 @section('formopen')
@@ -45,10 +45,25 @@
         @slot("tooltip_input", "Que lo imparte")
         @slot("label_input", "Departamento")
         @slot("extra", "required")
+		@slot("valor_default", $curso->departamento)
         @slot('opciones')
              @foreach($licenciaturas as $licenciatura)
                 <option value="{{$licenciatura}}">
                     {{$licenciatura}}
+                </option>
+            @endforeach
+        @endslot
+    @endcomponent
+	
+	@component("layouts.select_input")
+        @slot("nombre_input", "donde")
+        @slot("tooltip_input", "Donde se da")
+        @slot("label_input", "Aula")
+        @slot("extra", "required")
+        @slot('opciones')
+             @foreach($aulas as $aula)
+                <option value="{{$aula->nombre}}">
+                    {{$aula->nombre}}
                 </option>
             @endforeach
         @endslot

@@ -38,8 +38,6 @@
         <th>Nombre</th>
         <th>Superfice</th>
         <th>Cap. máxima</th>
-        <th>Pizarron</th>
-        <th></th>
     </tr>
 @endsection
 
@@ -47,19 +45,22 @@
 	@foreach ($aulas as $aula)
     <tr>
 		<td>{{ $aula->nombre}}</td>
+		<td>{{ $aula->superficie }}</td>
 		<td>{{ $aula->capacidad }}</td>
-
+	<td>
         @component('layouts.boton_editar')
             @slot("controlador_editar")
                 {{ Form::open(['action' => ['AulaController@edit', $aula->nombre]])}}
             @endslot
         @endcomponent
-
+	</td>
+	<td>
         @component('layouts.boton_borrar')
             @slot("controlador_borrar")
                 {{ Form::open(['action' => ['AulaController@destroy', $aula->nombre]]) }}
             @endslot
         @endcomponent
+	</td>
 
 
         <!--Boton ver fotos-->
