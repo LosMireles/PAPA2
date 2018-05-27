@@ -55,7 +55,7 @@
     <label for="{{$preguntas[2]->id}}" class="control-label"> {{$preguntas[2]->titulo}} </label>
 
     <div>
-      <input type="text" class="form-control" id="{{$preguntas[2]->id}}" name="{{$preguntas[2]->id}}" placeholder="Véase la tabla de abajo">
+      <input type="text" class="form-control" id="{{$preguntas[2]->id}}" name="{{$preguntas[2]->id}}" placeholder="Véase la tabla de abajo" value="{{$preguntas[2]->respuesta}}">
     </div>
   </div>
 @endsection
@@ -76,7 +76,7 @@
           <input type="checkbox" name="terminado" value="si">
         @endif
       </div>
-      
+
         {{ Form::submit('Guardar', ['class' => 'btn btn-success']) }}
         {{ Form::close() }}
     </div>
