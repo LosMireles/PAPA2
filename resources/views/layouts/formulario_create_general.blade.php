@@ -8,10 +8,6 @@
 	@yield('javascripts')
 @endsection
 
-@section('ruta_regresar')
-    @yield('ruta_regresar')
-@endsection
-
 @section('objeto_informacion')
     agregar @yield('objeto_informacion')
 @endsection

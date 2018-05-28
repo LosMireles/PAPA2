@@ -11,22 +11,18 @@
 @endsection
 
 @section('formopen')
-    {{Form::open(['class'  => 'form-horizontal'])}}
+    {{Form::open(['action' => ['Inciso9_2_2Controller@update', $id],
+                  'class'  => 'form'])}}
 @endsection
 
 @section('contenido_formulario')
 	@foreach($preguntas as $pregunta)
-		<div class="form-group">
-			<label for="{{$pregunta->id}}" class="control-label">
-			    {{$pregunta->titulo}}
-			</label>
-
-			<div class="col-sm-8">
-				<input type="hidden" class="form-control" id="{{$pregunta->id}}" name="{{$pregunta->id}}">
-			</div>
-		</div>
+	    @component('layouts.textarea_input')
+            @slot("nombre_input", $pregunta->id)
+            @slot("label_input", $pregunta->titulo)
+            @slot("valor_default", $pregunta->respuesta)
+        @endcomponent
 	@endforeach
-
 @endsection
 
 <!-- ------------ LAS TABLAS QUE CORRESPONDAN------------- -->
@@ -81,4 +77,44 @@
 @endsection
 
 <!-- ------------ SECCION DE FOTOGRAFIAS, EVIDENCIAS, ETC------------- -->
+
+<!-- ------------ FIN SECCION DE FOTOGRAFIAS, EVIDENCIAS, ETC------------- -->
+    @section('boton_guardar')
+        <div class="text-center">
+
+          <div>
+            <label for="terminado" class="control-label">
+              Marque esta casilla si termino de responder:
+            </label>
+            @if ( $preguntas[0]->estado == 1)
+              <input type="checkbox" name="terminado" value="si" checked>
+            @else
+              <input type="checkbox" name="terminado" value="si">
+            @endif
+          </div>
+
+            {{ Form::submit('Guardar', ['class' => 'btn btn-success']) }}
+            {{ Form::close() }}
+        </div>
+    @endsection
+
+<!-- ------------ FIN SECCION DE FOTOGRAFIAS, EVIDENCIAS, ETC------------- -->
+@section('boton_guardar')
+    <div class="text-center">
+
+      <div>
+        <label for="terminado" class="control-label">
+          Marque esta casilla si termino de responder:
+        </label>
+        @if ( $preguntas[0]->estado == 1)
+          <input type="checkbox" name="terminado" value="si" checked>
+        @else
+          <input type="checkbox" name="terminado" value="si">
+        @endif
+      </div>
+
+        {{ Form::submit('Guardar', ['class' => 'btn btn-success']) }}
+        {{ Form::close() }}
+    </div>
+@endsection
 

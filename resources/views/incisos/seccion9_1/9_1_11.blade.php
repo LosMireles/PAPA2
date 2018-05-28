@@ -26,7 +26,7 @@
 			</label>
 
 			<div>
-                <textarea class="form-control" id="{{$pregunta->id}}" name="{{$pregunta->id}}"value="{{$pregunta->respuesta}}"></textarea>
+                <textarea class="form-control" id="{{$pregunta->id}}" name="{{$pregunta->id}}"value="{{$pregunta->respuesta}}">{{$pregunta->respuesta}}</textarea>
 			</div>
 		</div>
 	@endforeach
@@ -35,28 +35,43 @@
 
 <!-- ------------ LAS TABLAS QUE CORRESPONDAN------------- -->
 
-@section('cabeza_tabla')
-  <tr>
-    <td>Tipo</td>
-    <td>CantidadEquipo</td>
-    <td>CantidadAV</td>
-    <td>Capacidad</td>
-    <td>CantidadSanitarios</td>
-</tr>
-@endsection
+@section('evidencias_tabla')
+  <div class="row text-right" style="margin: 2px;">
+    <a href="{{ action('AuditorioController@create') }}" class="btn btn-success">Agregar</a>
+  </div>
+  @component('layouts.componentes.tabla_incisos_agregar')
+	@section('cabeza_tabla')
+	  <tr>
+	    <td>Nombre</td>
+	    <td>Capacidad</td>
+	</tr>
+	@endsection
+	
+	@slot('cabeza_tabla')
+        <th>Nombre</th>
+        <th>Capacidad</th>
+    @endslot
 
-@section('cuerpo_tabla')
-    @foreach($auditorios as $auditorio)
+	@slot('cuerpo_tabla')
+        @foreach($auditorios as $auditorio)
       <tr>
-        <td>{{ $auditorio->Tipo }}</td>
-        <td>{{ $auditorio->CantidadEquipo }}</td>
-        <td>{{ $auditorio->CantidadAV }}</td>
+        <td>{{ $auditorio->nombre }}</td>
         <td>{{ $auditorio->Capacidad }}</td>
-        <td>{{ $auditorio->CantidadSanitarios }}</td>
+		
+		<td>  
+              <a href="{{ action('AuditorioController@edit', $auditorio->nombre) }}" class="btn btn-warning">Editar</a>
+        </td>
+            
+              @component('layouts.boton_borrar')
+                @slot('controlador_borrar')
+                  {{Form::open(['action' => ['AuditorioController@destroy', $auditorio->nombre]])}}
+                @endslot
+              @endcomponent
       </tr>
     @endforeach
+      @endslot
+	@endcomponent
 @endsection
-
 <!-- ------------ SECCION DE FOTOGRAFIAS, EVIDENCIAS, ETC------------- -->
 
 @section('Fotografias')

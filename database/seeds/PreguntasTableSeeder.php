@@ -136,25 +136,6 @@ class PreguntasTableSeeder extends Seeder
         ));
 
         App\Pregunta::create(array(
-        	'inciso' => '9.1.12',
-        	'numero' => '1',
-        	'titulo' => '¿Numero de lugares disponibles?',
-        ));
-
-        App\Pregunta::create(array(
-            'inciso' => '9.1.12',
-            'numero' => '2',
-            'titulo' => '¿Ofrece condiciones adecuadas de higiene?',
-        ));
-
-        App\Pregunta::create(array(
-            'inciso' => '9.1.12',
-            'numero' => '3',
-            'titulo' => '¿Ofrece condiciones adecuadas de seguridad?',
-
-        ));
-
-        App\Pregunta::create(array(
             'inciso' => '9.1.12',
             'numero' => '1',
             'titulo' => 'De los espacios mencionados en el punto 9.1.11, se debe tener un lugar cómodo por cada diez estudiantes inscritos en el programa, ofreciendo las condiciones adecuadas de higiene y seguridad. ¿Cuántos lugares disponibles existen?',
@@ -275,7 +256,7 @@ class PreguntasTableSeeder extends Seeder
         App\Pregunta::create(array(
             'inciso' => '9.2.7',
             'numero' => '2',
-            'titulo' => '¿Qué equipo de cómputo (servidores y clientes) soporta la red y cuáles son sus características?',
+            'titulo' => 'En caso afirmativo, ¿Qué equipo de cómputo (servidores y clientes) soporta la red y cuáles son sus características?',
                     # Describalos
             'respuesta' => '',
         ));
@@ -299,7 +280,7 @@ class PreguntasTableSeeder extends Seeder
         App\Pregunta::create(array(
             'inciso' => '9.2.7',
             'numero' => '5',
-            'titulo' => '¿Cuál es el tiempo promedio disponible para cada estudiante a Internet por semana?',
+            'titulo' => 'En caso afirmativo a la pregunta anterior, ¿Cuál es el tiempo promedio disponible para cada estudiante a Internet por semana?',
                     # Describalos
             'respuesta' => '',
         ));

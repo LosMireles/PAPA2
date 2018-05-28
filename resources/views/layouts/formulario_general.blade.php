@@ -14,7 +14,7 @@
 @endsection
 
 @section('content')
-    <a href="@yield('ruta_regresar')" class="btn btn-primary">
+    <a href="{{url()->previous()}}" class="btn btn-primary">
         Regresar
     </a>
 
@@ -27,6 +27,10 @@
 			@yield('metodo_envio_formulario')
 				<input type = "hidden" name = "_token" value = "{{csrf_token()}}">
 				@yield('contenido_formulario')
+
+                <input type="hidden" name='url_previous' value="{{$url_previous or "/"}}">
+                </input>
+
 
 				<div class="form-group">
 				    @yield('boton_submit_formulario')

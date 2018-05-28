@@ -23,7 +23,7 @@
 <!-- ------------ LAS PREGUNTAS Y SUS RESPUESTAS------------- -->
 
 @section('contenido_formulario')
-	
+
 
   <div class="form-group">
     <label for="{{$preguntas[0]->id}}" class="control-label"> {{$preguntas[0]->titulo}} </label>
@@ -55,7 +55,7 @@
     <label for="{{$preguntas[2]->id}}" class="control-label"> {{$preguntas[2]->titulo}} </label>
 
     <div>
-      <input type="text" class="form-control" id="{{$preguntas[2]->id}}" name="{{$preguntas[2]->id}}" placeholder="Véase la tabla de abajo">
+      <input type="text" class="form-control" id="{{$preguntas[2]->id}}" name="{{$preguntas[2]->id}}" placeholder="Véase la tabla de abajo" value="{{$preguntas[2]->respuesta}}">
     </div>
   </div>
 @endsection
@@ -66,6 +66,17 @@
 
 @section('boton_guardar')
     <div class="text-center">
+      <div>
+        <label for="terminado" class="control-label">
+          Marque esta casilla si termino de responder:
+        </label>
+        @if ( $preguntas[0]->estado == 1)
+          <input type="checkbox" name="terminado" value="si" checked>
+        @else
+          <input type="checkbox" name="terminado" value="si">
+        @endif
+      </div>
+
         {{ Form::submit('Guardar', ['class' => 'btn btn-success']) }}
         {{ Form::close() }}
     </div>
@@ -91,10 +102,10 @@
             <td>{{$tecnico->certificados}}</td>
             <td>{{$tecnico->anios_exp}}</td>
 
-            <td>  
+            <td>
               <a href="{{ action('TecnicoAcademicoController@edit', $tecnico->id) }}" class="btn btn-warning">Editar</a>
             </td>
-            
+
               @component('layouts.boton_borrar')
                 @slot('controlador_borrar')
                   {{Form::open(['action' => ['TecnicoAcademicoController@destroy', $tecnico->id]])}}
