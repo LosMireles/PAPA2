@@ -1,4 +1,4 @@
-@extends('layouts.actualizar')
+@extends('layouts.formulario_edit_general')
 
 @section('title')
    Editar sanitario
@@ -35,7 +35,7 @@
         @slot("nombre_input", "sexo")
         @slot("tooltip_input", "Superficie en metros cuadrados que abarca el aula")
         @slot("label_input", "Sexo")
-        @slot("placeholder_input", "100")
+        @slot("placeholder_input", "Mujer")
 		@slot("valor_default", $sanitario->sexo)
         @slot("extra", "required")
     @endcomponent

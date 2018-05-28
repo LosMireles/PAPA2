@@ -76,7 +76,7 @@ class Inciso9_1_11Controller extends Controller
      */
     public function update(Request $request, $id)
     {
-        $preguntas = Pregunta::where('inciso', '9.2.11')->get();
+        $preguntas = Pregunta::where('inciso', '9.1.11')->get();
 
         $arr[] = array_slice($request->all(), 2);
 

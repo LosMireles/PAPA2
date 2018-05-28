@@ -1,7 +1,7 @@
 @extends('layouts.formulario_create_general')
 
 @section('title' , "Formulario 9.1.11")
-@section("objeto_informacion", "un curso")
+@section("objeto_informacion", "un auditorio")
 
 @section('ruta_regresar')
     {{action('AuditorioController@index')}}
