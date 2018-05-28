@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
 
 use App\Aula;
+use App\Equipo;
 
 class AulaController extends Controller
 {
@@ -194,4 +195,41 @@ class AulaController extends Controller
     return redirect('/aulas/'. $nombre .'/viewImg')->with(['nombre' => $nombre]);
   }
 
+    public function relacionar_equipos($id){
+        $aula                  = Aula::where('id', $id)->first();
+        $equipos_computo       = Equipo::where('tipo', 'Computo')
+                                       ->get();
+        $equipos_audiovisuales = Equipo::where('tipo', 'Audiovisual')
+                                       ->get();
+
+        return view('infraestructura.aulas.relacionar_aula_equipo')
+            ->with([
+                'aula'                  => $aula,
+                'equipos_computo'       => $equipos_computo,
+                'equipos_audiovisuales' => $equipos_audiovisuales,
+                'url_previous'          => url()->previous()
+            ]);
+    }
+
+    public function relacionar_equipos_post(Request $request, $id){
+        if($request->computos){
+            foreach($request->computos as $serial){
+                $equipo = Equipo::where('serial', $serial)->update([
+                    'aula_id' => $id
+                ]);
+            }
+        }
+
+        if($request->audiovisuales){
+            foreach($request->audiovisuales as $serial){
+                $equipo = Equipo::where('serial', $serial)->update([
+                    'aula_id' => $id
+                ]);
+            }
+        }
+
+        return redirect($request->url_previous)
+            ->with('status', 'Elemento agregado exitosamente');
+    }
 }
+

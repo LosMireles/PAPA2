@@ -56,6 +56,9 @@ Route::post('/aulas/{tipo}/borrarImg/{imagen}', [
   'as' => 'borrarImgAula'
 ]);
 
+Route::get('/aulas/relacionar_equipos/{id}', 'AulaController@relacionar_equipos');
+Route::patch('/aulas/relacionar_equipos/{id}', 'AulaController@relacionar_equipos_post');
+
 // Asesorias
 Route::post('/asesorias/{tipo}/borrarImg/{imagen}', [
   'uses' => 'AsesoriaController@borrarImg',

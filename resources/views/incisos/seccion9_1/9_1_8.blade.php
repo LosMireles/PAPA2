@@ -37,17 +37,14 @@
 
 @section('tablas_inciso_general')
 	<div class="row text-right" style="margin: 2px;">
-    	<a href="{{ action('EquipoController@create') }}" class="btn btn-success">
-    	    Agregar nuevo equipo
-    	</a>
-
     	<a href="{{ action('AulaController@create') }}" class="btn btn-success">
     	    Agregar nueva aula
     	</a>
 
-    	<a href="{{ action('AulaController@create') }}" class="btn btn-primary">
-    	    Relacionar aulas y equipos
+    	<a href="{{ action('EquipoController@create') }}" class="btn btn-success">
+    	    Agregar nuevo equipo
     	</a>
+
   	</div>
     @component('layouts.componentes.tabla_incisos_agregar')
 
@@ -56,6 +53,7 @@
             <th>Aula</th>
             <th>Serial Equipo computo</th>
             <th>Serial equipo audiovisual</th>
+            <th></th>
             <th></th>
         @endslot
 
@@ -78,8 +76,8 @@
                         @if($equipo->tipo == "Audiovisual")
                             {{$equipo->serial}}
                         @endif
-                    </td>
                     @endforeach
+                    </td>
                 @endif
 
                 @component('layouts.boton_editar')
@@ -93,6 +91,13 @@
                         {{ Form::open(['action' => ['AulaController@destroy', $aula->nombre]]) }}
                     @endslot
                 @endcomponent
+
+
+                <td>
+                <a href="{{ action('AulaController@relacionar_equipos', $aula->id) }}" class="btn btn-primary">
+                    Relacionar aulas y equipos
+                </a>
+                </td>
 
                 <td class="text-center">
                     <a href="{{action('AulaController@viewImg', [ 'nombre' => $aula->nombre])}}" class="btn btn-warning">

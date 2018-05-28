@@ -9,6 +9,20 @@ class Aula extends Model
     protected $table = 'aulas';
     protected $guarded = ['id'];
 
+    //obtiene los equipos de computo relacionados con el aula
+    public function equiposComputo(){
+        return Equipo::where('tipo', "Computo")
+                     ->where('aula_id', $this->id)
+                     ->get();
+    }
+
+    //obtiene los equipos audiovisuales relacionados con el aula
+    public function equiposAudiovisuales(){
+        return Equipo::where('tipo', "Audiovisual")
+                     ->where('aula_id', $this->id)
+                     ->get();
+    }
+
     //DEFINICION DE RELACIONES
     //un aula pertenece a muchos cursos (muchos a muchos)
     public function cursos(){
