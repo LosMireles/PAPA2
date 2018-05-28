@@ -130,7 +130,7 @@
 
                 @component('layouts.boton_borrar')
                     @slot('controlador_borrar')
-                        {{ Form::open(['action' => ['EquipoController@edit', $equipo->serial]]) }}
+                        {{ Form::open(['action' => ['EquipoController@destroy', $equipo->serial]]) }}
                     @endslot
                 @endcomponent
 
@@ -160,3 +160,4 @@
       {{ Form::close() }}
     </div>
 @endsection
+

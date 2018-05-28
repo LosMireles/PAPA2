@@ -19,14 +19,20 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-    
+
     @yield('estilo_personalizado')
 </head>
 <body style="margin-top: 50px;">
     @component('layouts.navbar.navbar')
     @endcomponent
-    <div style="background-color: #1b70f9; height: auto;"> 
+    <div style="background-color: #1b70f9; height: auto;">
         <div class="container" style="background-color: white;">
+
+            @if (session('status'))
+                <div class="alert alert-success">
+                    {{ session('status') }}
+                </div>
+            @endif
             @yield('content')
 
             <script>
