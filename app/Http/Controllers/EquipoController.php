@@ -29,6 +29,17 @@ class EquipoController extends Controller
                 'tipos'     => $this->tipos
             ]);
     }
+    //----------------------------------------------------------------
+    public function crear_igual($serial){
+        $equipo = Equipo::where('serial', $serial)->first();
+        $softwares = Software::all();
+        return view('equipamiento.equipos.create_igual')
+            ->with([
+                'softwares' => $softwares,
+                'tipos'     => $this->tipos,
+                'equipo'    => $equipo
+            ]);
+    }
 
     //----------------------------------------------------------------
     public function store(Request $request){

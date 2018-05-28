@@ -96,7 +96,7 @@
 
 @endsection
 
-<!-------------- LAS TABLAS QUE CORRESPONDAN--------------->
+<!-- ------------ LAS TABLAS QUE CORRESPONDAN ------------- -->
 
 @section('tablas_inciso_general')
     @component('layouts.componentes.tabla_incisos_agregar')
@@ -134,6 +134,14 @@
                     @endslot
                 @endcomponent
 
+
+                @component('layouts.boton_editar')
+                  @slot('controlador_editar')
+                    {{Form::open( ['action' => ['EquipoController@crear_igual', $equipo->serial]] )}}
+                  @endslot
+                @endcomponent
+                <td>{{$equipo->serial}}</td>
+                  
             </tr>
             @endforeach
         @endslot
