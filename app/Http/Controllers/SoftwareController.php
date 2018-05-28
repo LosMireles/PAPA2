@@ -29,7 +29,9 @@ class SoftwareController extends Controller {
             ->with([
                     //'equipos'     => $equipos,
                     //'asignaturas' => $asignaturas,
-                    'clases'      => $this->clases]);
+                'clases'      => $this->clases,
+                'url_previous'=> url()->previous()
+            ]);
 	}
 
     //----------------------------------------------------------------
@@ -63,7 +65,7 @@ class SoftwareController extends Controller {
         //}
 
 		echo "Elemento insertado exitosamente!";
-        return redirect()->action('SoftwareController@index');
+        return redirect($request->url_previous)->with('status', 'Elemento agregado exitosamente');
     }
 
 	//*-----------------------------------------------------------------
@@ -81,6 +83,7 @@ class SoftwareController extends Controller {
                     'clases'               => $this->clases,
                     //'equipo_softwares'     => $equipo_softwares,
                     //'asignaturas_softwares' => $asignaturas_softwares
+                    'url_previous'         => url()->previous()
                 ]);
 	}
 
@@ -93,7 +96,8 @@ class SoftwareController extends Controller {
         $software->update($request->all());
 
 		echo "Elemento editado exitosamente!";
-        return redirect()->action('SoftwareController@index');
+        return redirect($request->url_previous)
+            ->with('status', 'Elemento actualizado con exito');
     }
 
     //*-----------------------------------------------------------------
@@ -107,8 +111,9 @@ class SoftwareController extends Controller {
         $software->delete();
 
 		echo "Elemento borrado exitosamente!";
-        return redirect()->action('SoftwareController@index');
-	}
+        return redirect()->back()
+            ->with('status', 'Elemento borrado exitosamente');
+    }
 
     //Valida los datos de los formularios create y edit
     public function rules($nombre = null){
@@ -118,4 +123,3 @@ class SoftwareController extends Controller {
                ];
     }
 }
-

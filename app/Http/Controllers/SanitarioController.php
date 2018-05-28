@@ -21,7 +21,10 @@ class SanitarioController extends Controller
 
     //--------------------------------------------------------
 	public function create(){
-	  return view('infraestructura.sanitarios.create');
+	  return view('infraestructura.sanitarios.create')
+        ->with([
+            'url_previous' => url()->previous()
+        ]);
 	}
 
     //--------------------------------------------------------
@@ -30,93 +33,117 @@ class SanitarioController extends Controller
         $request->validate($this->rules());
         if ($request->hasFile('Fotografias')) {
           foreach($request->Fotografias as $foto){
-            $foto->storeAs('infraestructura/sanitarios/' . $request->nombre, $foto->getClientOriginalName());
+            $foto->storeAs('infraestructura/sanitarios/' . $request->Tipo, $foto->getClientOriginalName());
           }
         }
 
         $sanitario = new Sanitario;
 
-        $sanitario->nombre	= $request->nombre;
-    	$sanitario->sexo       	= $request->sexo;
-
+        $sanitario->Tipo             = $request->Tipo;
+    	$sanitario->InicioHora       = $request->InicioHora;
+    	$sanitario->FinHora          = $request->FinHora;
+    	$sanitario->InicioDia        = $request->InicioDia;
+        $sanitario->FinDia           = $request->FinDia;
+        $sanitario->Limpieza         = $request->Limpieza;
+        $sanitario->CantidadPersonal = $request->CantidadPersonal;
+        $sanitario->espacio_id       = $request->espacio_id;
 
         $sanitario->save();
 
 		echo "Elemento insertado exitosamente!";
-        return redirect()->action('SanitarioController@index');
+        return redirect($request->url_previous)->with('status', 'Elemento agregado exitosamente');
     }
 
 
 	//-----------------------------------------------------------
-	public function edit($nombre) {
-		$sanitario  = Sanitario::where('nombre', $nombre)->first();
+	public function edit($tipo) {
+		$sanitario  = Sanitario::where('Tipo', $tipo)->first();
 
     return view('infraestructura.sanitarios.edit')
-        ->with(['sanitario'=>$sanitario]);
+        ->with([
+            'sanitario'     => $sanitario,
+            'url_previous'  => url()->previous()
+        ]);
 	}
 
 	//--------------------------------------------------------------
-	public function update(Request $request, $nombre) {
-        $request->validate($this->rules($nombre));
+	public function update(Request $request, $tipo) {
+        $request->validate($this->rules($tipo));
 
         if ($request->hasFile('Fotografias')) {
           foreach($request->Fotografias as $foto){
-            $foto->storeAs('infraestructura/sanitarios/' . $request->nombre, $foto->getClientOriginalName());
+            $foto->storeAs('infraestructura/sanitarios/' . $request->Tipo, $foto->getClientOriginalName());
           }
         }
 
-	    $nombre_nuevo	= $request->nombre;
-	    $sexo       	= $request->sexo;
+	    $tipo_nuevo       = $request->Tipo;
+	    $InicioHora       = $request->InicioHora;
+	    $FinHora          = $request->FinHora;
+		$InicioDia        = $request->InicioDia;
+		$FinDia           = $request->FinDia;
+        $Limpieza         = $request->Limpieza;
+        $CantidadPersonal = $request->CantidadPersonal;
+        $espacio_id       = $request->espacio_id;
 
-	    Sanitario::where('nombre', $nombre)->update(['nombre'   => $nombre_nuevo,
-													'sexo'       => $sexo]);
+	    Sanitario::where('Tipo', $tipo)->update(['Tipo'        => $tipo_nuevo,
+											'InicioHora'       => $InicioHora,
+											'FinHora'          => $FinHora,
+											'InicioDia'        => $InicioDia,
+											'FinDia'           => $FinDia,
+											'Limpieza'         => $Limpieza,
+                                            'CantidadPersonal' => $CantidadPersonal,
+                                            'espacio_id'       => $espacio_id]);
 
 		echo "Elemento editado exitosamente!";
-    return redirect()->action('SanitarioController@index');
-	}
+        return redirect($request->url_previous)
+            ->with('status', 'Elemento actualizado con exito');
+    }
 
 	//--------------------------------------------------------------
-	public function destroy($nombre){
-    Storage::deleteDirectory('infraestructura/sanitarios/'. $nombre . '/');
-    $sanitario = Sanitario::where('nombre', $nombre)->first();
+	public function destroy($tipo){
+    Storage::deleteDirectory('infraestructura/sanitarios/'. $tipo . '/');
+    $sanitario = Sanitario::where('Tipo', $tipo)->first();
     if(!$sanitario){
-        $mensaje = "No existe sanitario con nombre: ".$nombre;
+        $mensaje = "No existe sanitario con tipo: ".$tipo;
         return view('general.error')
             ->with(['mensaje' => $mensaje]);
     }
     $sanitario->delete();
 
 		echo "Elemento borrado exitosamente!";
-    return redirect()->action('SanitarioController@index');
-	}
+        return redirect()->back()
+            ->with('status', 'Elemento borrado exitosamente');
+    }
 
 	//--------------------------------------------------------------
-	public function rules($nombre = null){
+	public function rules($tipo = null){
         return [
-            'nombre'             => ['required',
-                                   Rule::unique('sanitarios')->ignore($nombre, 'nombre')],
-            'sexo'        => 'required|alpha',
-
+            'Tipo'             => ['required',
+                                   Rule::unique('sanitarios')->ignore($tipo, 'Tipo')],
+            'InicioDia'        => 'required|date',
+            'FinDia'           => 'required|date',
+            'Limpieza'         => 'required|integer|min:1|max:5',
+            'CantidadPersonal' => 'required|integer'
         ];
     }
 
-  public function viewImg($nombre){
-    return view('infraestructura.sanitarios.viewImg')->with(['nombre' => $nombre]);
+  public function viewImg($tipo){
+    return view('infraestructura.sanitarios.viewImg')->with(['tipo' => $tipo]);
   }
 
-  public function guardarImg(Request $request, $nombre){
+  public function guardarImg(Request $request, $tipo){
     if ($request->hasFile('Fotografias')) {
       foreach($request->Fotografias as $foto){
-        $foto->storeAs('infraestructura/sanitarios/' . $nombre, $foto->getClientOriginalName());
+        $foto->storeAs('infraestructura/sanitarios/' . $tipo, $foto->getClientOriginalName());
       }
     }
-    return redirect('/sanitarios/'. $nombre .'/viewImg')->with(['nombre' => $nombre]);
+    return redirect('/sanitarios/'. $tipo .'/viewImg')->with(['tipo' => $tipo]);
   }
 
-  public function borrarImg($nombre, $imagen)
+  public function borrarImg($tipo, $imagen)
   {
-    $dirImagen = 'infraestructura/sanitarios/' . $nombre . '/' . $imagen;
+    $dirImagen = 'infraestructura/sanitarios/' . $tipo . '/' . $imagen;
     Storage::delete($dirImagen);
-    return redirect('/sanitarios/'. $nombre .'/viewImg')->with(['nombre' => $nombre]);
+    return redirect('/sanitarios/'. $tipo .'/viewImg')->with(['tipo' => $tipo]);
   }
 }

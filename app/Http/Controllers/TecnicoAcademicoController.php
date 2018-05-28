@@ -34,7 +34,10 @@ class TecnicoAcademicoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create(){
-        return view('tecnico_academico/create');
+        return view('tecnico_academico/create')
+        ->with([
+            'url_previous' => url()->previous()
+        ]);
     }
 
     /**
@@ -64,7 +67,7 @@ class TecnicoAcademicoController extends Controller
         $tecnico->save();
 
         echo "Elemento insertado exitosamente!";
-        return redirect()->action('Inciso9_2_14Controller@index');
+        return redirect($request->url_previous)->with('status', 'Elemento agregado exitosamente');
     }
 
     /**
@@ -87,7 +90,11 @@ class TecnicoAcademicoController extends Controller
     public function edit($id)
     {
         $tecnico = TecnicoAcademico::where('id', $id)->first();
-        return view('tecnico_academico/edit',['tecnico'=>$tecnico]);
+        return view('tecnico_academico/edit')
+            ->with([
+                'tecnico'       => $tecnico,
+                'url_previous'  => url()->previous()
+            ]);
     }
 
     /**
@@ -113,7 +120,8 @@ class TecnicoAcademicoController extends Controller
             'certificados'      => $certificados,
             'anios_exp'         => $exp,
         ]);
-        return redirect()->action('Inciso9_2_14Controller@index');
+        return redirect($request->url_previous)
+            ->with('status', 'Elemento actualizado con exito');
     }
 
     /**
@@ -130,7 +138,8 @@ class TecnicoAcademicoController extends Controller
         }
         $tecnico->delete();
         echo "Elemento borrado exitosamente!";
-        return redirect()->action('Inciso9_2_14Controller@index');
+        return redirect()->back()
+            ->with('status', 'Elemento borrado exitosamente');
     }
 
     public function rules($nombre = null){
@@ -145,4 +154,3 @@ class TecnicoAcademicoController extends Controller
         return response()->file(public_path('curriculos/' . $tecnico->curriculum));
     }
 }
-

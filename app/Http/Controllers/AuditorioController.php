@@ -21,7 +21,10 @@ class AuditorioController extends Controller
 
     //----------------------------------------------------------------
     public function create(){
-        return view('infraestructura.auditorios.create');
+        return view('infraestructura.auditorios.create')
+            ->with([
+                'url_previous' => url()->previous()
+            ]);
     }
 
     //----------------------------------------------------------------
@@ -43,7 +46,8 @@ class AuditorioController extends Controller
       	$auditorio->save();
 
 	    echo "Elemento insertado exitosamente!";
-      return redirect()->action('Inciso9_1_11Controller@index');
+        return redirect($request->url_previous)
+            ->with('status', 'Elemento agregado exitosamente');
     }
 
     //----------------------------------------------------------------
@@ -51,7 +55,10 @@ class AuditorioController extends Controller
       $auditorio  = Auditorio::where('nombre', $nombre)->first();
 
       return view('infraestructura.auditorios.edit')
-          ->with(['auditorio'=>$auditorio]);
+          ->with([
+              'auditorio'   => $auditorio,
+              'url_previous'=> url()->previous()
+          ]);
     }
 
     //----------------------------------------------------------------
@@ -75,7 +82,8 @@ class AuditorioController extends Controller
         ]);
 
 		echo "Elemento editado exitosamente!";
-        return redirect()->action('Inciso9_1_11Controller@index');
+        return redirect($request->url_previous)
+            ->with('status', 'Elemento actualizado con exito');
     }
 
     //----------------------------------------------------------------
@@ -90,7 +98,8 @@ class AuditorioController extends Controller
         $auditorio->delete();
 
 	      echo "Elemento borrado exitosamente!";
-        return redirect()->action('Inciso9_1_11Controller@index');
+          return redirect()->back()
+              ->with('status', 'Elemento borrado exitosamente');
     }
 
     //----------------------------------------------------------------
