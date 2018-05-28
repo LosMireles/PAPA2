@@ -23,6 +23,7 @@
 @section('boton_submit_formulario')
     <div class="col-sm-offset-4 col-sm-8">
         {{ Form::submit('Agregar', ['class' => 'btn btn-primary']) }}
+        {{ Form::close() }}
     </div>
 @endsection
 

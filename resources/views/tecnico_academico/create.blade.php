@@ -1,20 +1,14 @@
-@extends('layouts.insertar')
+@extends('layouts.formulario_create_general')
 
-@section('title')
-	Agregar a un técnico académico
-@endsection
-
-@section('descripcion')
-	<a href="{{ action('Inciso9_2_14Controller@index') }}" class="btn btn-primary">Regresar</a>
-	<h1 class="text-center">Formulario para agregar a un técnico académico</h1>
-@endsection
+@section('title' , "Registrar técnico académico")
+@section("objeto_informacion", "un técnico académico")
 
 @section('accion')
-   action = "{{action('TecnicoAcademicoController@store')}}"
+    {{action('TecnicoAcademicoController@store')}}
 @endsection
 
 @section('contenido_formulario')
-	<div class="form-group">
+    <div class="form-group">
 		<label for="nombre" class="col-sm-4 control-label" data-toggle="tooltip" title="">Nombre: </label>
 
 		<div class="col-sm-8">
@@ -34,7 +28,7 @@
 		<label for="certificados" class="col-sm-4 control-label" data-toggle="tooltip" title="">Certificados: </label>
 
 		<div class="col-sm-8">
-			<textarea name="certificados" class="form-control" required></textarea>
+			<textarea name="certificados" class="form-control"></textarea>
 		</div>
 	</div>
 
@@ -47,4 +41,6 @@
 		@slot('patron', '.{1,2}')
 		@slot('titulo_error', 'El número debe contener entre 1 y 2 dígitos')
 	@endcomponent
+
 @endsection
+
