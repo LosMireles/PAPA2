@@ -1,15 +1,7 @@
-@extends('layouts.actualizar')
+@extends('layouts.formulario_edit_general')
 
-@section('title')
-	Técnico académico editar
-@endsection
-
-@section('descripcion')
-	<a href="{{ action('Inciso9_2_14Controller@index') }}" class="btn btn-primary">Regresar</a>
-	<h1 class="text-center">Formulario de edición del técnico académico {{$tecnico->nombre}}</h1>
-@endsection
-
-
+@section('title' , "Editar técnico académico")
+@section("objeto_informacion", "un técnico académico")
 
 @section('formopen')
     {{Form::open( array( 'action' => ['TecnicoAcademicoController@update', $tecnico->id], 'class' => 'form-horizontal',
@@ -17,7 +9,7 @@
 @endsection
 
 @section('contenido_formulario')
-	<div class="form-group">
+    <div class="form-group">
 		<label for="nombre" class="col-sm-4 control-label" data-toggle="tooltip" title="Nombre completo del técnico">Nombre: </label>
 
 		<div class="col-sm-8">
@@ -53,5 +45,5 @@
 		@endslot
 		@slot('titulo_error', 'El número debe contener entre 1 y 2 dígitos')
 	@endcomponent
-@endsection
 
+@endsection
