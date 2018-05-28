@@ -8,74 +8,38 @@
     <a href="{{action('SanitarioController@index')}}" class="btn btn-primary">
         Regresar
     </a>
-	<h1 class="text-center">Edición del sanitario {{$sanitario->Tipo}}</h1>
+	<h1 class="text-center">Edición del sanitario {{$sanitario->nombre}}</h1>
 @endsection
 
 @section('accion')
-    action = "{{action('SanitarioController@update', $sanitario->Tipo)}}"
+    action = "{{action('SanitarioController@update', $sanitario->nombre)}}"
 @endsection
 
 @section('formopen')
-    {{Form::open(['action' => ['SanitarioController@update', $sanitario->Tipo],
+    {{Form::open(['action' => ['SanitarioController@update', $sanitario->nombre],
                 'class' => 'form-horizontal'])}}
 @endsection
 
 @section('contenido_formulario')
-    <div class="form-group">
-      <label for="Tipo" class="col-sm-4 control-label" data-toggle="tooltip" title="Un identificador único (por ejemplo A202)">Nombre: </label>
+    @component("layouts.text_input")
+        @slot("nombre_input", "nombre")
+        @slot("tooltip_input", "Identificador")
+        @slot("label_input", "Nombre")
+        @slot("placeholder_input", "Nombre")
+        @slot("valor_default", $sanitario->nombre)
+        @section("extra", "required")
+    @endcomponent
 
-      <div class="col-sm-8">
-         <input type="text" class="form-control" name='Tipo' placeholder="Nombre" value ="{{$sanitario->Tipo}}"required>
-      </div>
-    </div>
 
-    <div class="form-group">
-         <label for="InicioHora" class="col-sm-4 control-label" data-toggle="tooltip" title="Hora desde la que los sanitarios estan disponibles">Hora inicio: </label>
+	@component("layouts.text_input")
+        @slot("nombre_input", "sexo")
+        @slot("tooltip_input", "Superficie en metros cuadrados que abarca el aula")
+        @slot("label_input", "Sexo")
+        @slot("placeholder_input", "100")
+		@slot("valor_default", $sanitario->sexo)
+        @slot("extra", "required")
+    @endcomponent
 
-         <div class="col-sm-8">
-            <input type='time' class="form-control" name='InicioHora' placeholder="" value = "{{$sanitario->InicioHora}}" required>
-         </div>
-    </div>
-
-    <div class="form-group">
-         <label for="FinHora" class="col-sm-4 control-label" data-toggle="tooltip" title="Hora hasta la que los sanitarios estan disponibles">Hora fin: </label>
-
-         <div class="col-sm-8">
-            <input type='time' class="form-control" name='FinHora' placeholder="" value = "{{$sanitario->FinHora}}" required>
-         </div>
-    </div>
-
-    <div class="form-group">
-         <label for="InicioDia" class="col-sm-4 control-label" data-toggle="tooltip" title="Día desde el cual los sanitarios estan disponibles">Día inicio: </label>
-
-         <div class="col-sm-8">
-            <input type='date' class="form-control" name='InicioDia' placeholder="" value = "{{$sanitario->InicioDia}}" required>
-         </div>
-    </div>
-
-    <div class="form-group">
-         <label for="FinDia" class="col-sm-4 control-label" data-toggle="tooltip" title="Día hasta el cual los sanitarios estan disponibles">Día fin: </label>
-
-         <div class="col-sm-8">
-            <input type='date' class="form-control" name='FinDia' placeholder="" value = "{{$sanitario->FinDia}}" required>
-         </div>
-    </div>
-
-    <div class="form-group">
-         <label for="Limpieza" class="col-sm-4 control-label" data-toggle="tooltip" title="Si hay limpieza en los baños">Limpieza: </label>
-
-         <div class="col-sm-8">
-            <input type='text' class="form-control" name='Limpieza' placeholder="" value = "{{$sanitario->Limpieza}}" required>
-         </div>
-    </div>
-
-    <div class="form-group">
-         <label for="CantidadPersonal" class="col-sm-4 control-label" data-toggle="tooltip" title="Cantidad de personal que atiende el sanitario">Cantidad de personal: </label>
-
-         <div class="col-sm-8">
-            <input type='text' class="form-control" name='CantidadPersonal' placeholder="" value = "{{$sanitario->CantidadPersonal}}" required>
-         </div>
-    </div>
 
     <div class="form-group">
   		<h3 class="text-center">Evidencias: </h3>

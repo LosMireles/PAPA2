@@ -25,8 +25,12 @@ class AsesoriaController extends Controller
     //----------------------------------------------------------------
     public function create()
     {
-      $aulas = Aula::all();
-      return view('infraestructura.asesorias.create', ['aulas' => $aulas]);
+        $aulas = Aula::all();
+        return view('infraestructura.asesorias.create')
+            ->with([
+                'aulas'         => $aulas,
+                'url_previous'  => url()->previous()
+            ]);
     }
 
     //----------------------------------------------------------------
@@ -52,14 +56,18 @@ class AsesoriaController extends Controller
       $asesoria->save();
 
 	    echo "Elemento insertado exitosamente!";
-      return redirect()->action('AsesoriaController@index');
+        return redirect($request->url_previous)->with('status', 'Elemento agregado exitosamente');
     }
 
     //----------------------------------------------------------------
     public function edit($tipo) {
       $asesoria  = Asesoria::where('Tipo', $tipo)->first();
+
       return view('infraestructura.asesorias.edit')
-          ->with(['asesoria'=>$asesoria]);
+          ->with([
+              'asesoria'    => $asesoria,
+              'url_previous'=> url()->previous()
+          ]);
     }
 
     //----------------------------------------------------------------
@@ -90,7 +98,8 @@ class AsesoriaController extends Controller
         ]);
 
 		echo "Elemento editado exitosamente!";
-        return redirect()->action('AsesoriaController@index');
+        return redirect($request->url_previous)
+            ->with('status', 'Elemento actualizado con exito');
     }
 
     //----------------------------------------------------------------
@@ -106,7 +115,8 @@ class AsesoriaController extends Controller
       $asesoria->delete();
 
       echo "Elemento borrado exitosamente!";
-      return redirect()->action('AsesoriaController@index');
+      return redirect()->back()
+          ->with('status', 'Elemento borrado exitosamente');
     }
 
     //----------------------------------------------------------------

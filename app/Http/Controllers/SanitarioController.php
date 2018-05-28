@@ -21,7 +21,10 @@ class SanitarioController extends Controller
 
     //--------------------------------------------------------
 	public function create(){
-	  return view('infraestructura.sanitarios.create');
+	  return view('infraestructura.sanitarios.create')
+        ->with([
+            'url_previous' => url()->previous()
+        ]);
 	}
 
     //--------------------------------------------------------
@@ -48,7 +51,7 @@ class SanitarioController extends Controller
         $sanitario->save();
 
 		echo "Elemento insertado exitosamente!";
-        return redirect()->action('SanitarioController@index');
+        return redirect($request->url_previous)->with('status', 'Elemento agregado exitosamente');
     }
 
 
@@ -57,7 +60,10 @@ class SanitarioController extends Controller
 		$sanitario  = Sanitario::where('Tipo', $tipo)->first();
 
     return view('infraestructura.sanitarios.edit')
-        ->with(['sanitario'=>$sanitario]);
+        ->with([
+            'sanitario'     => $sanitario,
+            'url_previous'  => url()->previous()
+        ]);
 	}
 
 	//--------------------------------------------------------------
@@ -89,8 +95,9 @@ class SanitarioController extends Controller
                                             'espacio_id'       => $espacio_id]);
 
 		echo "Elemento editado exitosamente!";
-    return redirect()->action('SanitarioController@index');
-	}
+        return redirect($request->url_previous)
+            ->with('status', 'Elemento actualizado con exito');
+    }
 
 	//--------------------------------------------------------------
 	public function destroy($tipo){
@@ -104,8 +111,9 @@ class SanitarioController extends Controller
     $sanitario->delete();
 
 		echo "Elemento borrado exitosamente!";
-    return redirect()->action('SanitarioController@index');
-	}
+        return redirect()->back()
+            ->with('status', 'Elemento borrado exitosamente');
+    }
 
 	//--------------------------------------------------------------
 	public function rules($tipo = null){

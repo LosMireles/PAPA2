@@ -96,7 +96,7 @@
 
 @endsection
 
-<!-------------- LAS TABLAS QUE CORRESPONDAN--------------->
+<!-- ------------ LAS TABLAS QUE CORRESPONDAN ------------- -->
 
 @section('tablas_inciso_general')
 	<div class="row text-right" style="margin: 2px;">
@@ -111,6 +111,7 @@
             <th>Almacenamiento</th>
             <th>RAM</th>
             <th>Otras caracteristicas</th>
+            <th></th>
         @endslot
 
         @slot('cuerpo_tabla')
@@ -134,6 +135,10 @@
                     @endslot
                 @endcomponent
 
+                <td>
+                  <a href="{{action('EquipoController@crear_igual', $equipo->serial)}}" class="btn btn-success">Agregar igual</a>
+                </td>
+                  
             </tr>
             @endforeach
         @endslot

@@ -1,15 +1,14 @@
-@extends('layouts.formulario_edit_general')
+@extends('layouts.formulario_create_general')
 
-@section('title' , "Editar equipo")
+@section('title' , "Agregar equipo")
 @section("objeto_informacion", "un equipo")
 
 @section('ruta_regresar')
     {{action('EquipoController@index')}}
 @endsection
 
-@section('formopen')
-    {{Form::open(['action' => ['EquipoController@update', $equipo->serial],
-                'class' => 'form-horizontal'])}}
+@section('accion')
+    {{action('EquipoController@store')}}
 @endsection
 
 @section('contenido_formulario')
@@ -19,7 +18,6 @@
         @slot("tooltip_input", "Serial del equipo. Identificador del equipo")
         @slot("label_input", "Serial")
         @slot("placeholder_input", "NA00013")
-        @slot("valor_default", $equipo->serial)
         @slot("extra", "required")
     @endcomponent
 

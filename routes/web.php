@@ -46,6 +46,9 @@ Route::post('/auditorios/{tipo}/guardarImg', 'AuditorioController@guardarImg');
 Route::post('/cubiculos/{tipo}/guardarImg', 'CubiculoController@guardarImg');
 Route::post('/sanitarios/{tipo}/guardarImg', 'SanitarioController@guardarImg');
 
+// Rutas para agregar igual
+Route::get('/equipos/crear_igual/{id}', 'EquipoController@crear_igual');
+
 // Rutas para borrar imagenes de infraestructura
 // Aulas
 Route::post('/aulas/{tipo}/borrarImg/{imagen}', [

@@ -30,6 +30,18 @@ class EquipoController extends Controller
                 'url_previous' => url()->previous()
             ]);
     }
+    //----------------------------------------------------------------
+    public function crear_igual($serial){
+        $equipo = Equipo::where('serial', $serial)->first();
+        $softwares = Software::all();
+        return view('equipamiento.equipos.create_igual')
+            ->with([
+                'softwares' => $softwares,
+                'tipos'     => $this->tipos,
+                'equipo'    => $equipo,
+                'url_previous' => url()->previous()
+            ]);
+    }
 
     //----------------------------------------------------------------
     public function store(Request $request){
