@@ -25,7 +25,7 @@
 			    {{$pregunta->titulo}}
 			</label>
 
-			<div class="col-sm-8">
+			<div>
 				<input type="text" class="form-control" id="{{$pregunta->id}}" name="{{$pregunta->id}}"value="{{$pregunta->respuesta}}"required>
 			</div>
 		</div>
@@ -36,10 +36,20 @@
 <!-- ------------ LAS TABLAS QUE CORRESPONDAN------------- -->
 
 @section('tablas_inciso_general')
+	<div class="row text-right" style="margin: 2px;">
+    	<a href="{{ action('EquipoController@create') }}" class="btn btn-success">
+    	    Agregar nuevo equipo
+    	</a>
+
+    	<a href="{{ action('AulaController@create') }}" class="btn btn-success">
+    	    Agregar nueva aula
+    	</a>
+
+    	<a href="{{ action('AulaController@create') }}" class="btn btn-primary">
+    	    Relacionar aulas y equipos
+    	</a>
+  	</div>
     @component('layouts.componentes.tabla_incisos_agregar')
-        @slot('controlador_agregar')
-            {{Form::open(['action' => ['AulaController@create']])}}
-        @endslot
 
         <h4>Tabla de equipos de redes</h4>
         @slot('cabeza_tabla')
