@@ -4,7 +4,7 @@
 @endsection
 
 @section('descripcion')
-    <a href="/infraestructura" class="btn btn-primary">
+    <a href="/inciso_9_1_11" class="btn btn-primary">
         Regresar
     </a>
 
@@ -46,8 +46,8 @@
                 {{ Form::submit('Borrar', ['class' => 'btn btn-warning']) }}
             {{ Form::close() }}
         </td>
-<!-- 
-				
+<!--
+
         <td class="text-center">
             <a href="{{action('AuditorioController@viewImg', [ 'nombre' => $auditorio->nombre])}}" class="btn btn-warning">
                 Fotografías

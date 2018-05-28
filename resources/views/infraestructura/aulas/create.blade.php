@@ -4,7 +4,7 @@
 @section("objeto_informacion", "un aula")
 
 @section('ruta_regresar')
-    {{action('AulaController@index')}}
+    {{action('Inciso9_1_6Controller@index')}}
 @endsection
 
 @section('accion')
