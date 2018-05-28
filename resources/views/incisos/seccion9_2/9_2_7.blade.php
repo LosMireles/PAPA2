@@ -99,6 +99,9 @@
 <!-- ------------ LAS TABLAS QUE CORRESPONDAN ------------- -->
 
 @section('tablas_inciso_general')
+    <div class="row text-right" style="margin: 2px;">
+    	 <a href="{{ action('EquipoController@create') }}" class="btn btn-success">Agregar</a>
+    </div>
     @component('layouts.componentes.tabla_incisos_agregar')
         <h4>Tabla de equipos de redes</h4>
         @slot('cabeza_tabla')

@@ -22,7 +22,10 @@ class CubiculoController extends Controller {
 
     //----------------------------------------------------------------
 	public function create(){
-	  return view('infraestructura.cubiculos.create');
+	  return view('infraestructura.cubiculos.create')
+        ->with([
+            'url_previous'  => url()->previous()
+        ]);
 	}
 
     //----------------------------------------------------------------
@@ -45,7 +48,8 @@ class CubiculoController extends Controller {
         $cubiculo->save();
 
         echo "Elemento insertado exitosamente!";
-        return redirect()->action('Inciso9_1_9Controller@index');
+        return redirect($request->url_previous)
+            ->with('status', 'Elemento agregado exitosamente');
   }
 
     //----------------------------------------------------------------
@@ -53,7 +57,10 @@ class CubiculoController extends Controller {
         $cubiculo  = Cubiculo::where('nombre', $nombre)->first();
 
     return view('infraestructura.cubiculos.edit')
-        ->with(['cubiculo'=>$cubiculo]);
+        ->with([
+            'cubiculo'      => $cubiculo,
+            'url_previous'  => url()->previous()
+        ]);
 	}
 
     //----------------------------------------------------------------
@@ -76,7 +83,8 @@ class CubiculoController extends Controller {
         $cubiculo->update($data);
 
 		echo "Elemento insertado exitosamente!";
-        return redirect()->action('Inciso9_1_9Controller@index');
+        return redirect($request->url_previous)
+            ->with('status', 'Elemento actualizado con exito');
 	}
 
     //----------------------------------------------------------------
@@ -91,7 +99,8 @@ class CubiculoController extends Controller {
         $cubiculo->delete();
 
 		echo "Elemento borrado exitosamente!";
-        return redirect()->action('Inciso9_1_9Controller@index');
+        return redirect()->back()
+            ->with('status', 'Elemento borrado exitosamente');
 	}
 
     //----------------------------------------------------------------

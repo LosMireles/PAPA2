@@ -61,7 +61,8 @@ class EquipoController extends Controller
         $equipo->save();
 
 		echo "Elemento insertado exitosamente!";
-        return redirect($request->url_previous)->with('status', 'Elemento agregado exitosamente');
+        return redirect($request->url_previous)
+            ->with('status', 'Elemento agregado exitosamente');
     }
 
     //----------------------------------------------------------------

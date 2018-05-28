@@ -14,7 +14,7 @@ class CursoController extends Controller {
 
     public function index(){
         $cursos = Curso::all();
-		
+
         return view('infraestructura.cursos.index')
             ->with(['cursos' => $cursos]);
     }
@@ -23,7 +23,11 @@ class CursoController extends Controller {
 	public function create(){
 		$aulas	= Aula::all();
         return view('infraestructura.cursos.create')
-            ->with(['licenciaturas' => $this->licenciaturas,'aulas' =>$aulas]);
+            ->with([
+                'licenciaturas' => $this->licenciaturas,
+                'aulas'         => $aulas,
+                'url_previous'  => url()->previous()
+            ]);
 	}
 
     //----------------------------------------------------------------
@@ -47,12 +51,12 @@ class CursoController extends Controller {
                 $curso->aulas()->attach($aulaId);
             }
         }*/
-		
+
 		$aulaId = DB::table('aulas')->where('nombre', $request->donde)->value('id');
         $curso->aulas()->attach($aulaId);
 
 		echo "Elemento insertado exitosamente!";
-        return redirect()->action('Inciso9_1_7Controller@index');
+        return redirect($request->url_previous)->with('status', 'Elemento agregado exitosamente');
     }
 
 	//-----------------------------------------------------------
@@ -64,7 +68,10 @@ class CursoController extends Controller {
 
 	  	return view('infraestructura.cursos.edit')
 	  	    ->with(['curso'         => $curso,
-                    'licenciaturas' => $this->licenciaturas,'aulas' =>$aulas]);
+                    'licenciaturas' => $this->licenciaturas,
+                    'aulas'         => $aulas,
+                    'url_previous'  => url()->previous()
+                ]);
 	}
 
 	//-----------------------------------------------------------
@@ -93,8 +100,9 @@ class CursoController extends Controller {
         $curso->aulas()->sync($idAula);
 
 		echo "Elemento editado exitosamente!";
-        return redirect()->action('Inciso9_1_7Controller@index');
-	}
+        return redirect($request->url_previous)
+            ->with('status', 'Elemento actualizado con exito');
+    }
 
 	//-----------------------------------------------------------
     public function destroy($nombre){
@@ -107,8 +115,9 @@ class CursoController extends Controller {
         $curso->delete();
 
 		echo "Elemento borrado exitosamente!";
-        return redirect()->action('Inciso9_1_7Controller@index');
-	}
+        return redirect()->back()
+            ->with('status', 'Elemento borrado exitosamente');
+    }
 
     public function rules($nombre = null){
         return [
@@ -125,7 +134,7 @@ class CursoController extends Controller {
 
 //No se guardar en blade. edit de cursos
 /*
-	{{-- 
+	{{--
 	<div class="form-group">
 		<label for="espacios" class="col-sm-4 control-label" data-toggle="tooltip" title="Espacios donde se imparte el curso">Espacios</label>
 

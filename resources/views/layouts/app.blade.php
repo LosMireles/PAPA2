@@ -19,6 +19,13 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script>
+        window.setTimeout(function() {
+            $(".alert").fadeTo(250, 0).slideUp(250, function(){
+                $(this).remove();
+            });
+        }, 2500);
+    </script>
 
     @yield('estilo_personalizado')
 </head>
@@ -33,6 +40,17 @@
                     {{ session('status') }}
                 </div>
             @endif
+
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                    </ul>
+                </div>
+            @endif
+
             @yield('content')
 
             <script>
