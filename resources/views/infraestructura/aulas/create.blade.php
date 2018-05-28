@@ -21,15 +21,16 @@
         @slot("tooltip_input", "Superficie en metros cuadrados que abarca el aula")
         @slot("label_input", "Superficie")
         @slot("placeholder_input", "100")
-        @slot("extra", "required")
+        @slot("extra", "min=0")
     @endcomponent
 
     @component("layouts.text_input")
+        @slot("tipo", "number")
         @slot("nombre_input", "capacidad")
         @slot("tooltip_input", "Capacidad máxima del aula")
         @slot("label_input", "Capacidad máxima de personas")
         @slot("placeholder_input", "10")
-        @slot("extra", "required")
+        @slot("extra", "min=0")
     @endcomponent
 
 

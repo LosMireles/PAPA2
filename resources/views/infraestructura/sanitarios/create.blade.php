@@ -24,7 +24,7 @@
         @slot("nombre_input", "sexo")
         @slot("tooltip_input", "Sexo de los usuarios")
         @slot("label_input", "Sexo")
-        @slot("placeholder_input", "100")
+        @slot("placeholder_input", "Hombres")
         @slot("extra", "required")
     @endcomponent
 
