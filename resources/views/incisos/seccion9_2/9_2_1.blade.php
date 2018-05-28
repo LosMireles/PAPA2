@@ -38,10 +38,6 @@
     	<a href="{{ action('SoftwareController@create') }}" class="btn btn-success">
     	    Agregar nuevo software
     	</a>
-
-    	<a href="{{ action('SoftwareController@create') }}" class="btn btn-primary">
-    	    Relacionar curso y softwares
-    	</a>
   	</div>
 
     @component('layouts.componentes.tabla_incisos_agregar')
@@ -51,15 +47,16 @@
             <th>Curso</th>
             <th>Nombre software</th>
             <th>Disponibilidad software</th>
+            <th></th>
         @endslot
 
         @slot('cuerpo_tabla')
             @foreach($softwares as $software)
             <tr>
                 <td>
-                    @if(!empty($software->asignaturas))
-                        @foreach($software->asignaturas as $asignatura)
-                            {{$asignatura->nombre}} <br>
+                    @if(!empty($cursos))
+                        @foreach($software->cursos as $curso)
+                            {{$curso->nombre}} <br>
                         @endforeach
                     @endif
                 </td>
@@ -77,6 +74,11 @@
                         {{ Form::open(['action' => ['SoftwareController@destroy', $software->nombre]]) }}
                     @endslot
                 @endcomponent
+
+                <td>
+                    <!--Por que esta en curso controller??????-->
+                    <a href="{{action('CursoController@relacionar_cursos_software', $software->id)}}" class="btn btn-primary">Vicular cursos</a>
+                </td>
 
             </tr>
             @endforeach

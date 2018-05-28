@@ -251,7 +251,7 @@
 								{{ url('/inciso_9_1_7') }}
 							@endslot
 							@slot('titulo', 'Haga clic para ir al inciso')
-							@slot('mensaje', '9.1.7 (Descripción)')
+							@slot('mensaje', '9.1.7 (Mostrar la relación aulas - cursos)')
 						@endcomponent
 					</li>
 				</ul>

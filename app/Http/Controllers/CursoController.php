@@ -9,6 +9,7 @@ use Illuminate\Validation\Rule;
 
 use App\Curso;
 use App\Aula;
+use App\Software;
 class CursoController extends Controller {
     private $licenciaturas = ["LCC", "LM", "Otro"];
 
@@ -130,6 +131,23 @@ class CursoController extends Controller {
         ];
     }
 	//*-----------------------------------------------------------------
+
+    public function relacionar_cursos_software($id_software){
+        $software = Software::where('id', $id_software)->first();
+        $cursos = Curso::all();
+        return view('infraestructura/cursos/relacion_cursos_software', ['cursos' => $cursos, 'software' => $software]);
+    }
+
+    //*-----------------------------------------------------------------
+
+    public function crear_relacion(Request $request, $id){
+        $software = Software::where('id', $id)->first();
+
+        $vars = $request->cursos;
+        $software->cursos()->sync($vars);
+
+        return redirect()->action('Inciso9_2_1Controller@index');
+    }
 }
 
 //No se guardar en blade. edit de cursos

@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Pregunta;
 use App\Software;
 
+use DB;
+
 class Inciso9_2_1Controller extends Controller
 {
     /**
@@ -18,11 +20,13 @@ class Inciso9_2_1Controller extends Controller
     {
         $preguntas = Pregunta::where('inciso', '9.2.1')->get();
         $softwares = Software::all();
+        $cursos = DB::table('curso_software')->get();
 
         return view('incisos/seccion9_2/9_2_1')
             ->with(['preguntas'  => $preguntas,
                      'id'        => $preguntas[0]->id,
-                     'softwares' => $softwares]);
+                     'softwares' => $softwares,
+                     'cursos'    => $cursos]);
     }
 
     /**

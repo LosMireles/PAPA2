@@ -20,5 +20,9 @@ class Curso extends Model
     public function asignatura(){
         return $this->hasOne(Asignatura::class);
     }
+
+    public function softwares(){
+        return $this->belongsToMany(Software::class);
+    }
 }
 
