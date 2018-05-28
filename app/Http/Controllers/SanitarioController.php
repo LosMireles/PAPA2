@@ -30,20 +30,15 @@ class SanitarioController extends Controller
         $request->validate($this->rules());
         if ($request->hasFile('Fotografias')) {
           foreach($request->Fotografias as $foto){
-            $foto->storeAs('infraestructura/sanitarios/' . $request->Tipo, $foto->getClientOriginalName());
+            $foto->storeAs('infraestructura/sanitarios/' . $request->nombre, $foto->getClientOriginalName());
           }
         }
 
         $sanitario = new Sanitario;
 
-        $sanitario->Tipo             = $request->Tipo;
-    	$sanitario->InicioHora       = $request->InicioHora;
-    	$sanitario->FinHora          = $request->FinHora;
-    	$sanitario->InicioDia        = $request->InicioDia;
-        $sanitario->FinDia           = $request->FinDia;
-        $sanitario->Limpieza         = $request->Limpieza;
-        $sanitario->CantidadPersonal = $request->CantidadPersonal;
-        $sanitario->espacio_id       = $request->espacio_id;
+        $sanitario->nombre	= $request->nombre;
+    	$sanitario->sexo       	= $request->sexo;
+
 
         $sanitario->save();
 
@@ -53,51 +48,39 @@ class SanitarioController extends Controller
 
 
 	//-----------------------------------------------------------
-	public function edit($tipo) {
-		$sanitario  = Sanitario::where('Tipo', $tipo)->first();
+	public function edit($nombre) {
+		$sanitario  = Sanitario::where('nombre', $nombre)->first();
 
     return view('infraestructura.sanitarios.edit')
         ->with(['sanitario'=>$sanitario]);
 	}
 
 	//--------------------------------------------------------------
-	public function update(Request $request, $tipo) {
-        $request->validate($this->rules($tipo));
+	public function update(Request $request, $nombre) {
+        $request->validate($this->rules($nombre));
 
         if ($request->hasFile('Fotografias')) {
           foreach($request->Fotografias as $foto){
-            $foto->storeAs('infraestructura/sanitarios/' . $request->Tipo, $foto->getClientOriginalName());
+            $foto->storeAs('infraestructura/sanitarios/' . $request->nombre, $foto->getClientOriginalName());
           }
         }
 
-	    $tipo_nuevo       = $request->Tipo;
-	    $InicioHora       = $request->InicioHora;
-	    $FinHora          = $request->FinHora;
-		$InicioDia        = $request->InicioDia;
-		$FinDia           = $request->FinDia;
-        $Limpieza         = $request->Limpieza;
-        $CantidadPersonal = $request->CantidadPersonal;
-        $espacio_id       = $request->espacio_id;
+	    $nombre_nuevo	= $request->nombre;
+	    $sexo       	= $request->sexo;
 
-	    Sanitario::where('Tipo', $tipo)->update(['Tipo'        => $tipo_nuevo,
-											'InicioHora'       => $InicioHora,
-											'FinHora'          => $FinHora,
-											'InicioDia'        => $InicioDia,
-											'FinDia'           => $FinDia,
-											'Limpieza'         => $Limpieza,
-                                            'CantidadPersonal' => $CantidadPersonal,
-                                            'espacio_id'       => $espacio_id]);
+	    Sanitario::where('nombre', $nombre)->update(['nombre'   => $nombre_nuevo,
+													'sexo'       => $sexo]);
 
 		echo "Elemento editado exitosamente!";
     return redirect()->action('SanitarioController@index');
 	}
 
 	//--------------------------------------------------------------
-	public function destroy($tipo){
-    Storage::deleteDirectory('infraestructura/sanitarios/'. $tipo . '/');
-    $sanitario = Sanitario::where('Tipo', $tipo)->first();
+	public function destroy($nombre){
+    Storage::deleteDirectory('infraestructura/sanitarios/'. $nombre . '/');
+    $sanitario = Sanitario::where('nombre', $nombre)->first();
     if(!$sanitario){
-        $mensaje = "No existe sanitario con tipo: ".$tipo;
+        $mensaje = "No existe sanitario con nombre: ".$nombre;
         return view('general.error')
             ->with(['mensaje' => $mensaje]);
     }
@@ -108,34 +91,32 @@ class SanitarioController extends Controller
 	}
 
 	//--------------------------------------------------------------
-	public function rules($tipo = null){
+	public function rules($nombre = null){
         return [
-            'Tipo'             => ['required',
-                                   Rule::unique('sanitarios')->ignore($tipo, 'Tipo')],
-            'InicioDia'        => 'required|date',
-            'FinDia'           => 'required|date',
-            'Limpieza'         => 'required|integer|min:1|max:5',
-            'CantidadPersonal' => 'required|integer'
+            'nombre'             => ['required',
+                                   Rule::unique('sanitarios')->ignore($nombre, 'nombre')],
+            'sexo'        => 'required|alpha',
+
         ];
     }
 
-  public function viewImg($tipo){
-    return view('infraestructura.sanitarios.viewImg')->with(['tipo' => $tipo]);
+  public function viewImg($nombre){
+    return view('infraestructura.sanitarios.viewImg')->with(['nombre' => $nombre]);
   }
 
-  public function guardarImg(Request $request, $tipo){
+  public function guardarImg(Request $request, $nombre){
     if ($request->hasFile('Fotografias')) {
       foreach($request->Fotografias as $foto){
-        $foto->storeAs('infraestructura/sanitarios/' . $tipo, $foto->getClientOriginalName());
+        $foto->storeAs('infraestructura/sanitarios/' . $nombre, $foto->getClientOriginalName());
       }
     }
-    return redirect('/sanitarios/'. $tipo .'/viewImg')->with(['tipo' => $tipo]);
+    return redirect('/sanitarios/'. $nombre .'/viewImg')->with(['nombre' => $nombre]);
   }
 
-  public function borrarImg($tipo, $imagen)
+  public function borrarImg($nombre, $imagen)
   {
-    $dirImagen = 'infraestructura/sanitarios/' . $tipo . '/' . $imagen;
+    $dirImagen = 'infraestructura/sanitarios/' . $nombre . '/' . $imagen;
     Storage::delete($dirImagen);
-    return redirect('/sanitarios/'. $tipo .'/viewImg')->with(['tipo' => $tipo]);
+    return redirect('/sanitarios/'. $nombre .'/viewImg')->with(['nombre' => $nombre]);
   }
 }
