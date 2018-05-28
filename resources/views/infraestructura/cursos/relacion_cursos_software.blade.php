@@ -17,10 +17,6 @@
 			<tr>
 				<td>{{$software->nombre}}</td>
 
-				@foreach($software->cursos as $curso)
-					<h3> {{ $curso }} </h3>
-				@endforeach
-
 				<td>
 					@foreach($cursos as $curso)
 						@if(in_array($curso, (array) $software->cursos))
