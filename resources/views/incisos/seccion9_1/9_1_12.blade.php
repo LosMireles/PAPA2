@@ -1,23 +1,17 @@
-@extends('layouts.inciso')
+@extends('layouts.inciso_general')
 
 @section('title')
   Inciso 9.1.12
 @endsection
 
 @section('descripcion')
-    <h3 class="text-center">
-      Inciso 9.1.12: En los espacios mencionados en el inciso 9.1.11, se debe
+  <h3 class="text-justify">Inciso 9.1.12: En los espacios mencionados en el inciso 9.1.11, se debe
       tener un lugar comodo por cada diez estudiantes inscritos en el programa,
-      ofreciendo las condiciones adecuadas de higiene y seguridad.
-    </h3>
-
-    <h3 class="text-center">
-        De los espacios mencionados anteriormente mencionar:
-    </h3>
+      ofreciendo las condiciones adecuadas de higiene y seguridad. </h3>
 @endsection
 
 @section('formopen')
-    {{Form::open(['action' => ['Inciso9_1_11Controller@update', $id],
+    {{Form::open(['action' => ['Inciso9_1_12Controller@update', $id],
                   'class'  => 'form'])}}
 @endsection
 
@@ -25,47 +19,70 @@
 
 @section('contenido_formulario')
 
-	@foreach($preguntas as $pregunta)
-		<div class="form-group">
-			<label for="{{$pregunta->id}}" class="control-label">
-			    {{$pregunta->titulo}}
-			</label>
+	<div class="form-group">
+		<label for="{{$preguntas[0]->id}}" class="control-label"> {{$preguntas[0]->titulo}} </label>
 
-			<div>
-                <textarea class="form-control" id="{{$pregunta->id}}" name="{{$pregunta->id}}"value="{{$pregunta->respuesta}}"></textarea>
-			</div>
+		<div>
+		  <textarea class="form-control" id="{{$preguntas[0]->id}}" name="{{$preguntas[0]->id}}">{{$preguntas[0]->respuesta}}</textarea>
 		</div>
-	@endforeach
+	</div>
+
+	<div class="form-group">
+    <label for="{{$preguntas[1]->id}}" class="control-label"> {{$preguntas[1]->titulo}} </label>
+
+      <div>
+        <!--<textarea class="form-control" id="{{$preguntas[1]->id}}" name="{{$preguntas[1]->id}}"value="{{$preguntas[1]->respuesta}}"></textarea>-->
+        @if($preguntas[1]->respuesta == 'Si')
+          <input type="radio" name="{{$preguntas[1]->id}}" value="Si" checked> Sí <br>
+          <input type="radio" name="{{$preguntas[1]->id}}" value="No"> No
+        @elseif($preguntas[1]->respuesta == 'No')
+          <input type="radio" name="{{$preguntas[1]->id}}" value="Si"> Sí <br>
+          <input type="radio" name="{{$preguntas[1]->id}}" value="No" checked> No
+        @else
+          <input type="radio" name="{{$preguntas[1]->id}}" value="Si" checked> Sí <br>
+          <input type="radio" name="{{$preguntas[1]->id}}" value="No"> No
+        @endif
+      </div>
+    </div>
+	
+	<div class="form-group">
+    <label for="{{$preguntas[2]->id}}" class="control-label"> {{$preguntas[2]->titulo}} </label>
+
+	<div>
+        <!--<textarea class="form-control" id="{{$preguntas[1]->id}}" name="{{$preguntas[1]->id}}"value="{{$preguntas[1]->respuesta}}"></textarea>-->
+        @if($preguntas[2]->respuesta == 'Si')
+          <input type="radio" name="{{$preguntas[2]->id}}" value="Si" checked> Sí <br>
+          <input type="radio" name="{{$preguntas[2]->id}}" value="No"> No
+        @elseif($preguntas[2]->respuesta == 'No')
+          <input type="radio" name="{{$preguntas[2]->id}}" value="Si"> Sí <br>
+          <input type="radio" name="{{$preguntas[2]->id}}" value="No" checked> No
+        @else
+          <input type="radio" name="{{$preguntas[2]->id}}" value="Si" checked> Sí <br>
+          <input type="radio" name="{{$preguntas[2]->id}}" value="No"> No
+        @endif
+      </div>
+    </div>
 
 @endsection
 
 <!-- ------------ LAS TABLAS QUE CORRESPONDAN------------- -->
 
 <!-- ------------ SECCION DE FOTOGRAFIAS, EVIDENCIAS, ETC------------- -->
+@section('boton_guardar')
+    <div class="text-center">
+      <div>
+        <label for="terminado" class="control-label">
+          Marque esta casilla si termino de responder:
+        </label>
+        @if ( $preguntas[0]->estado == 1)
+          <input type="checkbox" name="terminado" value="si" checked>
+        @else
+          <input type="checkbox" name="terminado" value="si">
+        @endif
+      </div>
 
-@section('Fotografias')
-    @component('layouts.inciso_general')
-        @slot('num_inciso', '9.1.12')
-    @endcomponent
-
-  <?php
-    $dirs = array_filter(glob('storage/infraestructura/auditorios/*'), 'is_dir');
-  ?>
-  @foreach($dirs as $path)
-    <?php
-      $dirname = $path.'/';
-      $images= glob($dirname . "*.{[jJ][pP][gG],[pP][nN][gG],[gG][iI][fF],[jJ][pP][eE][gG]}", GLOB_BRACE);
-    ?>
-
-    @foreach ($images as $image)
-			<tr>
-      <td>
-        <img src="<?php echo asset($image)?>" width="320" height="200"
-							alt="<?php echo $image?>"></img>
-        <figcaption><?php echo pathinfo($image)['filename']?></figcaption>
-      </td>
-
-		@endforeach
-  @endforeach
+        {{ Form::submit('Guardar', ['class' => 'btn btn-success']) }}
+        {{ Form::close() }}
+    </div>
 @endsection
 
