@@ -4,7 +4,7 @@
 @section("objeto_informacion", "un sanitario")
 
 @section('ruta_regresar')
-    {{action('SanitarioController@index')}}
+    {{action('Inciso9_1_13Controller@index')}}
 @endsection
 
 @section('accion')

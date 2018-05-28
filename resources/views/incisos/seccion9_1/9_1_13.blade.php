@@ -45,36 +45,39 @@
 
 <!-- ------------ LAS TABLAS QUE CORRESPONDAN------------- -->
 
-@section('cabeza_tabla')
-  <tr>
-    <th>Tipo</th>
-    <th>Hora de inicio del servicio</th>
-    <th>Hora de fin del servicio</th>
-    <th>Laborable desde</th>
-    <th>Laborable hasta</th>
-    <th>Limpieza</th>
-    <th>Cantidad de personal de limpieza</th>
-    <th></th>
-  </tr>
-@endsection
+@section('evidencias_tabla')
+	<div class="row text-right" style="margin: 2px;">
+    	<a href="{{ action('SanitarioController@create') }}" class="btn btn-success">Agregar</a>
+  	</div>
+	@component('layouts.componentes.tabla_incisos_agregar')
 
-@section('cuerpo_tabla')
-  @foreach($sanitarios as $sanitario)
-  <tr>
-      <td>{{ $sanitario->Tipo }}</td>
-      <td>{{ $sanitario->InicioHora }}</td>
-      <td>{{ $sanitario->FinHora }}</td>
-      <td>{{ $sanitario->InicioDia }}</td>
-      <td>{{ $sanitario->FinDia }}</td>
-      <td>{{ $sanitario->Limpieza }}</td>
-      <td>{{ $sanitario->CantidadPersonal }}</td>
-      <td class="text-center">
-          <a href="{{action('SanitarioController@viewImg', [ 'nombre' => $sanitario->nombre])}}" class="btn btn-warning">
-              Fotografías
-          </a>
-      </td>
-  </tr>
-  @endforeach
+		<!-- Tabla de todos los grupos -->
+		@slot('cabeza_tabla')
+			<th>Nombre</th>
+			<th>Sexo</th>
+		@endslot
+
+		@slot('cuerpo_tabla')
+		  @foreach ($sanitarios as $sanitario)
+			<tr>
+			  	<td>{{ $sanitario->nombre }}</td>
+			  	<td>{{ $sanitario->sexo }}</td>
+
+			    <td>
+	              <a href="{{ action('SanitarioController@edit', $sanitario->nombre) }}" class="btn btn-warning">Editar</a>
+	            </td>
+
+				@component('layouts.boton_borrar')
+	              @slot('controlador_borrar')
+	                {{ Form::open(['action' => ['SanitarioController@destroy', $sanitario->nombre]]) }}
+	              @endslot
+	            @endcomponent
+
+
+			</tr>
+		  @endforeach
+		@endslot
+	  @endcomponent
 @endsection
 <!-- ------------ SECCION DE FOTOGRAFIAS, EVIDENCIAS, ETC------------- -->
 

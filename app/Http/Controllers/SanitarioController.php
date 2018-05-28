@@ -43,7 +43,7 @@ class SanitarioController extends Controller
         $sanitario->save();
 
 		echo "Elemento insertado exitosamente!";
-        return redirect()->action('SanitarioController@index');
+        return redirect()->action('Inciso9_1_13Controller@index');
     }
 
 
@@ -72,7 +72,7 @@ class SanitarioController extends Controller
 													'sexo'       => $sexo]);
 
 		echo "Elemento editado exitosamente!";
-    return redirect()->action('SanitarioController@index');
+    return redirect()->action('Inciso9_1_13Controller@index');
 	}
 
 	//--------------------------------------------------------------
@@ -87,7 +87,7 @@ class SanitarioController extends Controller
     $sanitario->delete();
 
 		echo "Elemento borrado exitosamente!";
-    return redirect()->action('SanitarioController@index');
+    return redirect()->action('Inciso9_1_13Controller@index');
 	}
 
 	//--------------------------------------------------------------

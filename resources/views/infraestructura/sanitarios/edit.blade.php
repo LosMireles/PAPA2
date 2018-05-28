@@ -5,7 +5,7 @@
 @endsection
 
 @section('descripcion')
-    <a href="{{action('SanitarioController@index')}}" class="btn btn-primary">
+    <a href="{{action('Inciso9_1_13Controller@index')}}" class="btn btn-primary">
         Regresar
     </a>
 	<h1 class="text-center">Edición del sanitario {{$sanitario->nombre}}</h1>
