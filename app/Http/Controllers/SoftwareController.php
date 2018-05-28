@@ -93,7 +93,13 @@ class SoftwareController extends Controller {
 
         $software = Software::where('nombre', $nombre)->first();
 
-        $software->update($request->all());
+        $data = [
+            'nombre'         => $request->nombre,
+            'version'        => $request->version,
+            'clase'          => $request->clase,
+            'disponibilidad' => $request->disponibilidad
+        ];
+        $software->update($data);
 
 		echo "Elemento editado exitosamente!";
         return redirect($request->url_previous)
