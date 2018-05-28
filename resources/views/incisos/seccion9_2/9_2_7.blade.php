@@ -96,7 +96,7 @@
 
 @endsection
 
-<!-------------- LAS TABLAS QUE CORRESPONDAN--------------->
+<!-- ------------ LAS TABLAS QUE CORRESPONDAN ------------- -->
 
 @section('tablas_inciso_general')
     @component('layouts.componentes.tabla_incisos_agregar')
@@ -111,6 +111,7 @@
             <th>Almacenamiento</th>
             <th>RAM</th>
             <th>Otras caracteristicas</th>
+            <th></th>
         @endslot
 
         @slot('cuerpo_tabla')
@@ -130,10 +131,14 @@
 
                 @component('layouts.boton_borrar')
                     @slot('controlador_borrar')
-                        {{ Form::open(['action' => ['EquipoController@edit', $equipo->serial]]) }}
+                        {{ Form::open(['action' => ['EquipoController@destroy', $equipo->serial]]) }}
                     @endslot
                 @endcomponent
 
+                <td>
+                  <a href="{{action('EquipoController@crear_igual', $equipo->serial)}}" class="btn btn-success">Agregar igual</a>
+                </td>
+                  
             </tr>
             @endforeach
         @endslot
@@ -160,3 +165,4 @@
       {{ Form::close() }}
     </div>
 @endsection
+

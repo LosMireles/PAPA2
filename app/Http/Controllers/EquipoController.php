@@ -25,8 +25,21 @@ class EquipoController extends Controller
     	$softwares = Software::all();
         return view('equipamiento.equipos.create')
             ->with([
+                'softwares'    => $softwares,
+                'tipos'        => $this->tipos,
+                'url_previous' => url()->previous()
+            ]);
+    }
+    //----------------------------------------------------------------
+    public function crear_igual($serial){
+        $equipo = Equipo::where('serial', $serial)->first();
+        $softwares = Software::all();
+        return view('equipamiento.equipos.create_igual')
+            ->with([
                 'softwares' => $softwares,
-                'tipos'     => $this->tipos
+                'tipos'     => $this->tipos,
+                'equipo'    => $equipo,
+                'url_previous' => url()->previous()
             ]);
     }
 
@@ -48,17 +61,18 @@ class EquipoController extends Controller
         $equipo->save();
 
 		echo "Elemento insertado exitosamente!";
-        return redirect()->action('EquipoController@index');
+        return redirect($request->url_previous)->with('status', 'Elemento agregado exitosamente');
     }
 
     //----------------------------------------------------------------
     public function edit($serial){
-    	$equipo           = Equipo::where('serial', $serial)->first();
+    	$equipo = Equipo::where('serial', $serial)->first();
 
     	return view('equipamiento.equipos.edit')
             ->with([
-                'equipo' => $equipo,
-                'tipos'  => $this->tipos
+                'equipo'       => $equipo,
+                'tipos'        => $this->tipos,
+                'url_previous' => url()->previous()
             ]);
     }
 
@@ -67,12 +81,23 @@ class EquipoController extends Controller
         $request->validate($this->rules($serial));
 
         $equipo = Equipo::where('serial', $serial)->first();
-        $tipo_anterior = $equipo->tipo;
 
-        $equipo->update($request->all());
+        $data = [
+    	'serial'                => $request->serial,
+        'tipo'                  => $request->tipo,
+        'sistema_operativo'     => $request->sistema_operativo,
+        'marca'                 => $request->marca,
+        'cpu'                   => $request->cpu,
+        'almacenamiento'        => $request->almacenamiento,
+        'ram'                   => $request->ram,
+        'otras_caracteristicas' => $request->otras_caracteristicas
+        ];
+
+        $equipo->update($data);
 
 		echo "Elemento editado exitosamente!";
-        return redirect()->action('EquipoController@index');
+        return redirect($request->url_previous)
+            ->with('status', 'Elemento actualizado con exito');
     }
 
     //----------------------------------------------------------------
@@ -86,7 +111,8 @@ class EquipoController extends Controller
         $equipo->delete();
 
 		echo "Elemento borrado exitosamente!";
-        return redirect()->action('EquipoController@index');
+        return redirect()->back()
+            ->with('status', 'Elemento borrado exitosamente');
     }
 
     //----------------------------------------------------------------
