@@ -48,6 +48,7 @@
 							<img src="storage/recursos/semaforos/Red_rect.png" alt="Red_rect.png">
 							<?php $estado = 'Vacío'; ?>
 						@endif
+
 						@component('layouts.componentes.tooltip_general_link')
 							@slot('url', '#')
 							@slot('titulo','Hay preguntas sin contestar')
@@ -96,16 +97,33 @@
 
 					<!-- Inciso 9.1.8 -->
 					<li>
-						<?php $respuesta = DB::table('preguntas')->where('inciso','9.1.8')->first();?>
+						<?php
+							$respuesta = DB::table('preguntas')->where('inciso','9.1.8')->first();
+							$noRespContest = 0;
+						?>
 						@if ($respuesta->estado == 1)
 							<img src="storage/recursos/semaforos/Green_rect.png" alt="Green_rect.png">
-							<?php  $estado = 'Completo';?>
-						@elseif ($respuesta->respuesta != '')
-							<img src="storage/recursos/semaforos/Yellow_rect.png" alt="Yellow_rect.png">
-							<?php $estado = 'Incompleto'; ?>
+							@php $estado = 'Completo'; @endphp
 						@else
-							<img src="storage/recursos/semaforos/Red_rect.png" alt="Red_rect.png">
-							<?php $estado = 'Vacío'; ?>
+							<?php
+								$respuestas = DB::table('preguntas')->where('inciso','9.1.8')->get();
+								$noRespContest = 0;
+							?>
+							@foreach($respuestas as $respuesta)
+								@if($respuesta->respuesta == '')
+									@php
+										$noRespContest = $noRespContest + 1;
+									@endphp
+								@endif
+							@endforeach
+
+							@if ($noRespContest == sizeof($respuestas))
+								<img src="storage/recursos/semaforos/Red_rect.png" alt="Red_rect.png">
+								<?php $estado = 'Vacío'; ?>
+							@else
+								<img src="storage/recursos/semaforos/Yellow_rect.png" alt="Yellow_rect.png">
+								<?php $estado = 'Incompleto'; ?>
+							@endif
 						@endif
 						@component('layouts.componentes.tooltip_general_link')
 							@slot('url', '#')
@@ -116,16 +134,33 @@
 
 					<!-- Inciso 9.1.9 -->
 					<li>
-						<?php $respuesta = DB::table('preguntas')->where('inciso','9.1.9')->first();?>
+						<?php
+							$respuesta = DB::table('preguntas')->where('inciso','9.1.9')->first();
+							$noRespContest = 0;
+						?>
 						@if ($respuesta->estado == 1)
 							<img src="storage/recursos/semaforos/Green_rect.png" alt="Green_rect.png">
-							<?php  $estado = 'Completo';?>
-						@elseif ($respuesta->respuesta != '')
-							<img src="storage/recursos/semaforos/Yellow_rect.png" alt="Yellow_rect.png">
-							<?php $estado = 'Incompleto'; ?>
+							@php $estado = 'Completo'; @endphp
 						@else
-							<img src="storage/recursos/semaforos/Red_rect.png" alt="Red_rect.png">
-							<?php $estado = 'Vacío'; ?>
+							<?php
+								$respuestas = DB::table('preguntas')->where('inciso','9.1.9')->get();
+								$noRespContest = 0;
+							?>
+							@foreach($respuestas as $respuesta)
+								@if($respuesta->respuesta == '')
+									@php
+										$noRespContest = $noRespContest + 1;
+									@endphp
+								@endif
+							@endforeach
+
+							@if ($noRespContest == sizeof($respuestas))
+								<img src="storage/recursos/semaforos/Red_rect.png" alt="Red_rect.png">
+								<?php $estado = 'Vacío'; ?>
+							@else
+								<img src="storage/recursos/semaforos/Yellow_rect.png" alt="Yellow_rect.png">
+								<?php $estado = 'Incompleto'; ?>
+							@endif
 						@endif
 						@component('layouts.componentes.tooltip_general_link')
 							@slot('url', '#')
@@ -196,16 +231,33 @@
 
 					<!-- Inciso 9.1.13 -->
 					<li>
-						<?php $respuesta = DB::table('preguntas')->where('inciso','9.1.13')->first();?>
+						<?php
+							$respuesta = DB::table('preguntas')->where('inciso','9.1.13')->first();
+							$noRespContest = 0;
+						?>
 						@if ($respuesta->estado == 1)
 							<img src="storage/recursos/semaforos/Green_rect.png" alt="Green_rect.png">
-							<?php  $estado = 'Completo';?>
-						@elseif ($respuesta->respuesta != '')
-							<img src="storage/recursos/semaforos/Yellow_rect.png" alt="Yellow_rect.png">
-							<?php $estado = 'Incompleto'; ?>
+							@php $estado = 'Completo'; @endphp
 						@else
-							<img src="storage/recursos/semaforos/Red_rect.png" alt="Red_rect.png">
-							<?php $estado = 'Vacío'; ?>
+							<?php
+								$respuestas = DB::table('preguntas')->where('inciso','9.1.13')->get();
+								$noRespContest = 0;
+							?>
+							@foreach($respuestas as $respuesta)
+								@if($respuesta->respuesta == '')
+									@php
+										$noRespContest = $noRespContest + 1;
+									@endphp
+								@endif
+							@endforeach
+
+							@if ($noRespContest == sizeof($respuestas))
+								<img src="storage/recursos/semaforos/Red_rect.png" alt="Red_rect.png">
+								<?php $estado = 'Vacío'; ?>
+							@else
+								<img src="storage/recursos/semaforos/Yellow_rect.png" alt="Yellow_rect.png">
+								<?php $estado = 'Incompleto'; ?>
+							@endif
 						@endif
 						@component('layouts.componentes.tooltip_general_link')
 							@slot('url', '#')
@@ -255,16 +307,33 @@
 
 					<!-- Inciso 9.2.2 -->
 					<li>
-						<?php $respuesta = DB::table('preguntas')->where('inciso','9.2.2')->first();?>
+						<?php
+							$respuesta = DB::table('preguntas')->where('inciso','9.2.2')->first();
+							$noRespContest = 0;
+						?>
 						@if ($respuesta->estado == 1)
 							<img src="storage/recursos/semaforos/Green_rect.png" alt="Green_rect.png">
-							<?php  $estado = 'Completo';?>
-						@elseif ($respuesta->respuesta != '')
-							<img src="storage/recursos/semaforos/Yellow_rect.png" alt="Yellow_rect.png">
-							<?php $estado = 'Incompleto'; ?>
+							@php $estado = 'Completo'; @endphp
 						@else
-							<img src="storage/recursos/semaforos/Red_rect.png" alt="Red_rect.png">
-							<?php $estado = 'Vacío'; ?>
+							<?php
+								$respuestas = DB::table('preguntas')->where('inciso','9.2.2')->get();
+								$noRespContest = 0;
+							?>
+							@foreach($respuestas as $respuesta)
+								@if($respuesta->respuesta == '')
+									@php
+										$noRespContest = $noRespContest + 1;
+									@endphp
+								@endif
+							@endforeach
+
+							@if ($noRespContest == sizeof($respuestas))
+								<img src="storage/recursos/semaforos/Red_rect.png" alt="Red_rect.png">
+								<?php $estado = 'Vacío'; ?>
+							@else
+								<img src="storage/recursos/semaforos/Yellow_rect.png" alt="Yellow_rect.png">
+								<?php $estado = 'Incompleto'; ?>
+							@endif
 						@endif
 						@component('layouts.componentes.tooltip_general_link')
 							@slot('url', '#')
@@ -295,16 +364,33 @@
 
 					<!-- Inciso 9.2.7 -->
 					<li>
-						<?php $respuesta = DB::table('preguntas')->where('inciso','9.2.7')->first();?>
+						<?php
+							$respuesta = DB::table('preguntas')->where('inciso','9.2.7')->first();
+							$noRespContest = 0;
+						?>
 						@if ($respuesta->estado == 1)
 							<img src="storage/recursos/semaforos/Green_rect.png" alt="Green_rect.png">
-							<?php  $estado = 'Completo';?>
-						@elseif ($respuesta->respuesta != '')
-							<img src="storage/recursos/semaforos/Yellow_rect.png" alt="Yellow_rect.png">
-							<?php $estado = 'Incompleto'; ?>
+							@php $estado = 'Completo'; @endphp
 						@else
-							<img src="storage/recursos/semaforos/Red_rect.png" alt="Red_rect.png">
-							<?php $estado = 'Vacío'; ?>
+							<?php
+								$respuestas = DB::table('preguntas')->where('inciso','9.2.7')->get();
+								$noRespContest = 0;
+							?>
+							@foreach($respuestas as $respuesta)
+								@if($respuesta->respuesta == '')
+									@php
+										$noRespContest = $noRespContest + 1;
+									@endphp
+								@endif
+							@endforeach
+
+							@if ($noRespContest == sizeof($respuestas))
+								<img src="storage/recursos/semaforos/Red_rect.png" alt="Red_rect.png">
+								<?php $estado = 'Vacío'; ?>
+							@else
+								<img src="storage/recursos/semaforos/Yellow_rect.png" alt="Yellow_rect.png">
+								<?php $estado = 'Incompleto'; ?>
+							@endif
 						@endif
 						@component('layouts.componentes.tooltip_general_link')
 							@slot('url', '#')
@@ -335,16 +421,33 @@
 
 					<!-- Inciso 9.2.12 -->
 					<li>
-						<?php $respuesta = DB::table('preguntas')->where('inciso','9.2.12')->first();?>
+						<?php
+							$respuesta = DB::table('preguntas')->where('inciso','9.2.12')->first();
+							$noRespContest = 0;
+						?>
 						@if ($respuesta->estado == 1)
 							<img src="storage/recursos/semaforos/Green_rect.png" alt="Green_rect.png">
-							<?php  $estado = 'Completo';?>
-						@elseif ($respuesta->respuesta != '')
-							<img src="storage/recursos/semaforos/Yellow_rect.png" alt="Yellow_rect.png">
-							<?php $estado = 'Incompleto'; ?>
+							@php $estado = 'Completo'; @endphp
 						@else
-							<img src="storage/recursos/semaforos/Red_rect.png" alt="Red_rect.png">
-							<?php $estado = 'Vacío'; ?>
+							<?php
+								$respuestas = DB::table('preguntas')->where('inciso','9.2.12')->get();
+								$noRespContest = 0;
+							?>
+							@foreach($respuestas as $respuesta)
+								@if($respuesta->respuesta == '')
+									@php
+										$noRespContest = $noRespContest + 1;
+									@endphp
+								@endif
+							@endforeach
+
+							@if ($noRespContest == sizeof($respuestas))
+								<img src="storage/recursos/semaforos/Red_rect.png" alt="Red_rect.png">
+								<?php $estado = 'Vacío'; ?>
+							@else
+								<img src="storage/recursos/semaforos/Yellow_rect.png" alt="Yellow_rect.png">
+								<?php $estado = 'Incompleto'; ?>
+							@endif
 						@endif
 						@component('layouts.componentes.tooltip_general_link')
 							@slot('url', '#')
