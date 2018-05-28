@@ -25,8 +25,9 @@ class EquipoController extends Controller
     	$softwares = Software::all();
         return view('equipamiento.equipos.create')
             ->with([
-                'softwares' => $softwares,
-                'tipos'     => $this->tipos
+                'softwares'    => $softwares,
+                'tipos'        => $this->tipos,
+                'url_previous' => url()->previous()
             ]);
     }
 
@@ -48,7 +49,7 @@ class EquipoController extends Controller
         $equipo->save();
 
 		echo "Elemento insertado exitosamente!";
-        return redirect()->action('EquipoController@index');
+        return redirect(url()->previous());
     }
 
     //----------------------------------------------------------------
@@ -57,8 +58,9 @@ class EquipoController extends Controller
 
     	return view('equipamiento.equipos.edit')
             ->with([
-                'equipo' => $equipo,
-                'tipos'  => $this->tipos
+                'equipo'       => $equipo,
+                'tipos'        => $this->tipos,
+                'url_previous' => url()->previous()
             ]);
     }
 
@@ -67,12 +69,22 @@ class EquipoController extends Controller
         $request->validate($this->rules($serial));
 
         $equipo = Equipo::where('serial', $serial)->first();
-        $tipo_anterior = $equipo->tipo;
 
-        $equipo->update($request->all());
+        $data = [
+    	'serial'                => $request->serial,
+        'tipo'                  => $request->tipo,
+        'sistema_operativo'     => $request->sistema_operativo,
+        'marca'                 => $request->marca,
+        'cpu'                   => $request->cpu,
+        'almacenamiento'        => $request->almacenamiento,
+        'ram'                   => $request->ram,
+        'otras_caracteristicas' => $request->otras_caracteristicas
+        ];
+
+        $equipo->update($data);
 
 		echo "Elemento editado exitosamente!";
-        return redirect()->action('EquipoController@index');
+        return redirect(url()->previous());
     }
 
     //----------------------------------------------------------------
@@ -86,7 +98,7 @@ class EquipoController extends Controller
         $equipo->delete();
 
 		echo "Elemento borrado exitosamente!";
-        return redirect()->action('EquipoController@index');
+        return back();
     }
 
     //----------------------------------------------------------------
