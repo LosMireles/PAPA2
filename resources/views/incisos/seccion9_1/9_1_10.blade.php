@@ -37,7 +37,7 @@
 
     <!--Pregunta 2-->
     <div class="form-group">
-        <label for="{{$preguntas[1]->id}}" class="control-label">{{$preguntas[1]->titulo}}</label>
+        <label for="{{$preguntas[1]->id}}" class="control-label">{{$preguntas[1]->titulo}} Se recomienda anexar fotos como evidencia.</label>
 
         <div>
             <textarea class="form-control" id="{{$preguntas[1]->id}}" name="{{$preguntas[1]->id}}">{{$preguntas[1]->respuesta}}</textarea>
