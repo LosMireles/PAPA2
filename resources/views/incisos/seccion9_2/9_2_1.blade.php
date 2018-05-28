@@ -30,10 +30,11 @@
 
 <!-- ------------ LAS TABLAS QUE CORRESPONDAN------------- -->
 @section('tablas_inciso_general')
+	<div class="row text-right" style="margin: 2px;">
+    	<a href="{{ action('SoftwareController@create') }}" class="btn btn-success">Agregar</a>
+  	</div>
+
     @component('layouts.componentes.tabla_incisos_agregar')
-        @slot('controlador_agregar')
-            {{Form::open(['action' => ['SoftwareController@create']])}}
-        @endslot
 
         <h4>Tabla de softwares y asignaturas que lo utilizan</h4>
         @slot('cabeza_tabla')
