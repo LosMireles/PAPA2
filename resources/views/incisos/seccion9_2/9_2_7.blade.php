@@ -100,10 +100,6 @@
 
 @section('tablas_inciso_general')
     @component('layouts.componentes.tabla_incisos_agregar')
-        @slot('controlador_agregar')
-            {{Form::open(['action' => ['EquipoController@create']])}}
-        @endslot
-
         <h4>Tabla de equipos de redes</h4>
         @slot('cabeza_tabla')
             <th>Serial equipo</th>
