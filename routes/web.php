@@ -49,6 +49,10 @@ Route::post('/sanitarios/{tipo}/guardarImg', 'SanitarioController@guardarImg');
 // Rutas para agregar igual
 Route::get('/equipos/crear_igual/{id}', 'EquipoController@crear_igual');
 
+// Ruta para la relacion de cursos software
+Route::get('/cursos/relacionar_cursos_software/{id}', 'CursoController@relacionar_cursos_software');
+Route::post('/cursos/crear_relacion/{id}', 'CursoController@crear_relacion');
+
 // Rutas para borrar imagenes de infraestructura
 // Aulas
 Route::post('/aulas/{tipo}/borrarImg/{imagen}', [

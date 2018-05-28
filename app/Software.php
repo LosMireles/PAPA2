@@ -19,5 +19,9 @@ class Software extends Model
     public function asignaturas(){
         return $this->BelongsToMany(Asignatura::class);
     }
+
+    public function cursos(){
+        return $this->BelongsToMany(Curso::class);
+    }
 }
 
