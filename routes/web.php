@@ -34,6 +34,7 @@ Route::get('/tecnicos_academicos/ver_curriculo/{id}', 'TecnicoAcademicoControlle
 // Rutas para ver imagenes de infraestructura
 Route::get('/aulas/{tipo}/viewImg', 'AulaController@viewImg');
 Route::get('/cubiculos/{tipo}/viewImg', 'CubiculoController@viewImg');
+Route::get('/cubiculosMini/{tipo}/viewImg', 'CubiculoMiniController@viewImg');
 Route::get('/asesorias/{tipo}/viewImg', 'AsesoriaController@viewImg');
 Route::get('/auditorios/{tipo}/viewImg', 'AuditorioController@viewImg');
 Route::get('/sanitarios/{tipo}/viewImg', 'SanitarioController@viewImg');
@@ -44,6 +45,7 @@ Route::post('/aulas/{tipo}/guardarImg', 'AulaController@guardarImg');
 Route::post('/asesorias/{tipo}/guardarImg', 'AsesoriaController@guardarImg');
 Route::post('/auditorios/{tipo}/guardarImg', 'AuditorioController@guardarImg');
 Route::post('/cubiculos/{tipo}/guardarImg', 'CubiculoController@guardarImg');
+Route::post('/cubiculosMini/{tipo}/guardarImg', 'CubiculoMiniController@guardarImg');
 Route::post('/sanitarios/{tipo}/guardarImg', 'SanitarioController@guardarImg');
 
 // Rutas para agregar igual
@@ -77,7 +79,10 @@ Route::post('/cubiculos/{tipo}/borrarImg/{imagen}', [
   'uses' => 'CubiculoController@borrarImg',
   'as' => 'borrarImgCubiculo'
 ]);
-
+Route::post('/cubiculosMini/{tipo}/borrarImg/{imagen}', [
+  'uses' => 'CubiculoMiniController@borrarImg',
+  'as' => 'borrarImgCubiculoMini'
+]);
 // Sanitarios
 Route::post('/sanitarios/{tipo}/borrarImg/{imagen}', [
   'uses' => 'SanitarioController@borrarImg',
@@ -89,6 +94,7 @@ Route::resources(
     ['espacios'            => 'EspacioController',
      'aulas'               => 'AulaController',
      'cubiculos'           => 'CubiculoController',
+	 'cubiculosMini'       => 'CubiculoMiniController',
      'asesorias'           => 'AsesoriaController',
      'sanitarios'          => 'SanitarioController',
      'auditorios'          => 'AuditorioController',

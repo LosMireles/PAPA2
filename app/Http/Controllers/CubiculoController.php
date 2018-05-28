@@ -52,6 +52,7 @@ class CubiculoController extends Controller {
             ->with('status', 'Elemento agregado exitosamente');
   }
 
+
     //----------------------------------------------------------------
 	public function edit($nombre) {
         $cubiculo  = Cubiculo::where('nombre', $nombre)->first();
