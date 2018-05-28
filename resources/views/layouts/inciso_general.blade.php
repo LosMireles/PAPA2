@@ -15,7 +15,7 @@
 
 @section('content')
     <br>
-    <a href="{{url('/')}}" class="btn btn-primary">Regresar</a>
+    <a href="/" class="btn btn-primary">Regresar</a>
 	@yield('descripcion')
 
 	<div class="row">

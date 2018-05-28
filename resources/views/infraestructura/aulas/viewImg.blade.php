@@ -5,7 +5,7 @@
 @endsection
 
 @section('descripcion')
-    <a href="/aulas" class="btn btn-primary">
+    <a href="/inciso_9_1_6" class="btn btn-primary">
         Regresar
     </a>
 

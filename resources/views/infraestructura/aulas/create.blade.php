@@ -3,10 +3,6 @@
 @section('title' , "Formulario 9.1.6")
 @section("objeto_informacion", "un aula")
 
-@section('ruta_regresar')
-    {{action('AulaController@index')}}
-@endsection
-
 @section('accion')
     {{action('AulaController@store')}}
 @endsection
@@ -175,7 +171,7 @@
 
     @component("layouts.checkbox_input")
         @slot("nombre_input", "mesas_trabajo")
-        @slot("tooltip_input", "Mesas dondes se puede trabajar")
+        @slot("tooltip_input", "Mesas donde se puede trabajar")
         @slot("label_input", "Mesas de trabajo")
     @endcomponent
 

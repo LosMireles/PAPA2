@@ -6,11 +6,15 @@
 
     <div class="col-sm-8">
         @if($variable)
+            <input type="hidden" name="{{$nombre_input}}" value="0" checked @yield('extra_checkbox')>
+            </input>
             <input type="checkbox" name="{{$nombre_input}}" value="1" checked @yield('extra_checkbox')>
                 {{$descripcion or $label_input}}
             </input>
         @else
-            <input type="checkbox" name="{{$nombre_input}}" value="0" @yield('extra_checkbox')>
+            <input type="hidden" name="{{$nombre_input}}" value="0" @yield('extra_checkbox')>
+            </input>
+            <input type="checkbox" name="{{$nombre_input}}" value="1" @yield('extra_checkbox')>
                 {{$descripcion or $label_input}}
             </input>
         @endif
