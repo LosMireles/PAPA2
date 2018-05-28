@@ -46,6 +46,7 @@
             <th>Cubiculo</th>
             <th>Profesor</th>
             <th>Cantidad equipo</th>
+            <th></th>
         @endslot
 
         @slot('cuerpo_tabla')
@@ -67,6 +68,12 @@
                     @endslot
                 @endcomponent
 
+                <td class="text-center">
+                    <a href="{{action('CubiculoController@viewImg', [ 'nombre' => $cubiculo->nombre])}}" class="btn btn-warning">
+                        Fotografías
+                    </a>
+                </td>
+
             </tr>
             @endforeach
         @endslot
@@ -76,6 +83,31 @@
 <!-- ------------ SECCION DE FOTOGRAFIAS, EVIDENCIAS, ETC------------- -->
 
 @section('Fotografias')
+<style type='text/css'>
+  .img_div {
+    float: left;
+    margin-right: 10px;
+    margin-bottom: 15px;
+
+  }
+  .trailer_button{
+    z-index:999;
+    margin:1 20 -20 20;
+    width:120px;
+    border-radius:10px;
+    margin-bottom: 15px;
+
+  }
+  .buttonimg{
+    width:auto;
+    height:auto;
+
+  }
+  img{
+    width: auto;
+    max-height: 100%
+  }
+</style>
     <h3 align="center">
         Fotografias del inciso 9.2.11
     </h3>
@@ -90,12 +122,15 @@
     ?>
 
     @foreach ($images as $image)
-			<tr>
-      <td>
-        <img src="<?php echo asset($image)?>" width="320" height="200"
-							alt="<?php echo $image?>"></img>
-        <figcaption><?php echo pathinfo($image)['filename']?></figcaption>
-      </td>
+    <figure>
+      <div class="buttonimg">
+        <div class="img_div">
+          <img src="<?php echo asset($image)?>" height="220"
+                alt="<?php echo $image?>"/>
+          <figcaption class="text-center"><?php echo pathinfo($image)['basename']?></figcaption>
+        </div>
+      </div>
+    </figura>
 
 		@endforeach
   @endforeach
@@ -114,7 +149,7 @@
           <input type="checkbox" name="terminado" value="si">
         @endif
       </div>
-      
+
         {{ Form::submit('Guardar', ['class' => 'btn btn-success']) }}
         {{ Form::close() }}
     </div>
