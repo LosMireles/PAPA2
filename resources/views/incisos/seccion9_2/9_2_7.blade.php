@@ -111,6 +111,7 @@
             <th>Almacenamiento</th>
             <th>RAM</th>
             <th>Otras caracteristicas</th>
+            <th></th>
         @endslot
 
         @slot('cuerpo_tabla')
@@ -134,13 +135,9 @@
                     @endslot
                 @endcomponent
 
-
-                @component('layouts.boton_editar')
-                  @slot('controlador_editar')
-                    {{Form::open( ['action' => ['EquipoController@crear_igual', $equipo->serial]] )}}
-                  @endslot
-                @endcomponent
-                <td>{{$equipo->serial}}</td>
+                <td>
+                  <a href="{{action('EquipoController@crear_igual', $equipo->serial)}}" class="btn btn-success">Agregar igual</a>
+                </td>
                   
             </tr>
             @endforeach

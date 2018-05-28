@@ -38,7 +38,8 @@ class EquipoController extends Controller
             ->with([
                 'softwares' => $softwares,
                 'tipos'     => $this->tipos,
-                'equipo'    => $equipo
+                'equipo'    => $equipo,
+                'url_previous' => url()->previous()
             ]);
     }
 

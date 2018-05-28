@@ -88,7 +88,7 @@
         @slot("tooltip_input", "Alguna otra caracteristica importante a tomar en cuenta")
         @slot("label_input", "Otras caracteristicas")
         @slot("placeholder_input", "Tarjeta grafica")
-        @slot("valor_default", $equipo->otras_caracterisiticas)
+        @slot("valor_default", $equipo->otras_caracteristicas)
     @endcomponent
 
 @endsection
