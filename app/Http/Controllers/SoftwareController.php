@@ -28,7 +28,8 @@ class SoftwareController extends Controller {
         return view('equipamiento.softwares.create')
             ->with([
                 //'asignaturas' => $asignaturas,
-                'url_previous'      => url()->previous()
+                'clases'        => $this->clases,
+                'url_previous'  => url()->previous()
             ]);
 	}
 
