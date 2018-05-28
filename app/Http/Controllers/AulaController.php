@@ -108,7 +108,8 @@ class AulaController extends Controller
         $aula->save();
 
         #echo "Elemento insertado exitosamente!";
-        return redirect($request->url_previous);
+        return redirect($request->url_previous)
+            ->with('status', 'Elemento agregado exitosamente');
     }
 
 	//-----------------------------------------------------------
@@ -168,8 +169,9 @@ class AulaController extends Controller
 							'conexiones'                         => $conexiones,
 							'asesoria'                           => $asesoria]);
 
-		#echo "Elemento insertado exitosamenteeee!";
-        return redirect($request->url_previous);
+		echo "Elemento insertado exitosamente!";
+        return redirect($request->url_previous)
+            ->with('status', 'Elemento actualizado con exito');
 	}
 
 	//--------------------------------------------------------------
@@ -187,7 +189,8 @@ class AulaController extends Controller
     $aula->delete();
 
 		echo "Elemento borrado exitosamente!";
-        return back();
+        return redirect()->back()
+            ->with('status', 'Elemento borrado exitosamente');
 	}
 
 	//--------------------------------------------------------------

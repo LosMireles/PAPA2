@@ -21,7 +21,10 @@ class SanitarioController extends Controller
 
     //--------------------------------------------------------
 	public function create(){
-	  return view('infraestructura.sanitarios.create');
+	  return view('infraestructura.sanitarios.create')
+        ->with([
+            'url_previous' => url()->previous()
+        ]);
 	}
 
     //--------------------------------------------------------
@@ -36,14 +39,15 @@ class SanitarioController extends Controller
 
         $sanitario = new Sanitario;
 
-        $sanitario->nombre	= $request->nombre;
-    	$sanitario->sexo       	= $request->sexo;
-
+        $sanitario->nombre             = $request->nombre;
+    	$sanitario->sexo       = $request->sexo;
 
         $sanitario->save();
 
 		echo "Elemento insertado exitosamente!";
-        return redirect()->action('Inciso9_1_13Controller@index');
+
+        return redirect($request->url_previous)->with('status', 'Elemento agregado exitosamente');
+
     }
 
 
@@ -52,7 +56,10 @@ class SanitarioController extends Controller
 		$sanitario  = Sanitario::where('nombre', $nombre)->first();
 
     return view('infraestructura.sanitarios.edit')
-        ->with(['sanitario'=>$sanitario]);
+        ->with([
+            'sanitario'     => $sanitario,
+            'url_previous'  => url()->previous()
+        ]);
 	}
 
 	//--------------------------------------------------------------
@@ -65,15 +72,18 @@ class SanitarioController extends Controller
           }
         }
 
-	    $nombre_nuevo	= $request->nombre;
-	    $sexo       	= $request->sexo;
+	    $nombre_nuevo       = $request->nombre;
+	    $sexo       = $request->sexo;
 
-	    Sanitario::where('nombre', $nombre)->update(['nombre'   => $nombre_nuevo,
-													'sexo'       => $sexo]);
+
+	    Sanitario::where('nombre', $nombre)->update(['nombre'        => $nombre_nuevo,
+											'sexo'       => $sexo]);
 
 		echo "Elemento editado exitosamente!";
-    return redirect()->action('Inciso9_1_13Controller@index');
-	}
+
+        return redirect($request->url_previous)
+            ->with('status', 'Elemento actualizado con exito');
+    }
 
 	//--------------------------------------------------------------
 	public function destroy($nombre){
@@ -87,8 +97,10 @@ class SanitarioController extends Controller
     $sanitario->delete();
 
 		echo "Elemento borrado exitosamente!";
-    return redirect()->action('Inciso9_1_13Controller@index');
-	}
+
+        return redirect()->back()
+            ->with('status', 'Elemento borrado exitosamente');
+    }
 
 	//--------------------------------------------------------------
 	public function rules($nombre = null){
@@ -96,7 +108,6 @@ class SanitarioController extends Controller
             'nombre'             => ['required',
                                    Rule::unique('sanitarios')->ignore($nombre, 'nombre')],
             'sexo'        => 'required|alpha',
-
         ];
     }
 
