@@ -39,7 +39,7 @@
         @slot("extra", "required")
 		@slot("valor_default", $curso->no_estudiantes)
     @endcomponent
-	
+
 	@component("layouts.text_input")
         @slot("nombre_input", "no_grupo")
         @slot("tooltip_input", "Identificador")
@@ -54,31 +54,27 @@
         @slot("tooltip_input", "Que lo imparte")
         @slot("label_input", "Departamento")
         @slot("extra", "required")
-		@slot("valor_default", $curso->departamento)
         @slot('opciones')
-             @foreach($licenciaturas as $licenciatura)
-                <option value="{{$licenciatura}}">
-                    {{$licenciatura}}
-                </option>
-            @endforeach
+            @component('layouts.option_foreach_if')
+                @slot('conjunto_variables', $licenciaturas)
+                @slot('var', $curso->departamento)
+            @endcomponent
         @endslot
     @endcomponent
-	
+
 	@component("layouts.select_input")
         @slot("nombre_input", "donde")
         @slot("tooltip_input", "Donde se da")
         @slot("label_input", "Aula")
         @slot("extra", "required")
         @slot('opciones')
-             @foreach($aulas as $aula)
+            @foreach($aulas as $aula)
                 <option value="{{$aula->nombre}}">
                     {{$aula->nombre}}
                 </option>
             @endforeach
         @endslot
-    @endcomponent	
+    @endcomponent
 
 @endsection
-
-
 
