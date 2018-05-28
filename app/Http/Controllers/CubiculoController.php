@@ -45,7 +45,7 @@ class CubiculoController extends Controller {
         $cubiculo->save();
 
         echo "Elemento insertado exitosamente!";
-        return redirect()->action('CubiculoController@index');
+        return redirect()->action('Inciso9_1_9Controller@index');
   }
 
     //----------------------------------------------------------------
@@ -76,7 +76,7 @@ class CubiculoController extends Controller {
         $cubiculo->update($data);
 
 		echo "Elemento insertado exitosamente!";
-        return redirect()->action('CubiculoController@index');
+        return redirect()->action('Inciso9_1_9Controller@index');
 	}
 
     //----------------------------------------------------------------
@@ -91,7 +91,7 @@ class CubiculoController extends Controller {
         $cubiculo->delete();
 
 		echo "Elemento borrado exitosamente!";
-        return redirect()->action('CubiculoController@index');
+        return redirect()->action('Inciso9_1_9Controller@index');
 	}
 
     //----------------------------------------------------------------

@@ -78,9 +78,9 @@ class Inciso9_1_11Controller extends Controller
     {
         $preguntas = Pregunta::where('inciso', '9.2.11')->get();
 
-        $arr[] = array_slice($request->all(), 3);
+        $arr[] = array_slice($request->all(), 2);
 
-        $respuestas = array_slice($request->all(), 3);
+        $respuestas = array_slice($request->all(), 2);
 	$estado = $request->terminado == "si" ? 1 : 0;
 	
         for($i = 0; $i < sizeof($preguntas); $i++){

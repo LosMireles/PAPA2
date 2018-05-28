@@ -29,38 +29,42 @@
 @endsection
 
 <!-- ------------ LAS TABLAS QUE CORRESPONDAN------------- -->
-@section('tablas_inciso_general')
-    @component('layouts.componentes.tabla_incisos_agregar')
-        @slot('cabeza_tabla')
+
+
+@section('evidencias_tabla')
+  <div class="row text-right" style="margin: 2px;">
+    <a href="{{ action('CubiculoController@create') }}" class="btn btn-success">Agregar</a>
+  </div>
+  @component('layouts.componentes.tabla_incisos_agregar')
+      @slot('cabeza_tabla')
             <th>Identificador cubiculo</th>
             <th>Profesor</th>
             <th>Cantidad equipo</th>
         @endslot
 
-        @slot('cuerpo_tabla')
-            @foreach($cubiculos as $cubiculo)
-            <tr>
-                <td>{{$cubiculo->nombre}}</td>
+      @slot('cuerpo_tabla')
+        @foreach($cubiculos as $cubiculo)
+          <tr>
+            	<td>{{$cubiculo->nombre}}</td>
                 <td>{{$cubiculo->profesor}}</td>
                 <td>{{$cubiculo->cantidad_equipo}}</td>
 
-                @component('layouts.boton_editar')
-                    @slot('controlador_editar')
-                        {{ Form::open(['action' => ['CubiculoController@edit', $cubiculo->nombre]]) }}
-                    @endslot
-                @endcomponent
+            <td>
+              <a href="{{ action('CubiculoController@edit', $cubiculo->nombre)}}" class="btn btn-warning">Editar</a>
+            </td>
 
-                @component('layouts.boton_borrar')
-                    @slot('controlador_borrar')
-                        {{ Form::open(['action' => ['CubiculoController@edit', $cubiculo->nombre]]) }}
-                    @endslot
-                @endcomponent
+              @component('layouts.boton_borrar')
+                @slot('controlador_borrar')
+                  {{Form::open(['action' => ['CubiculoController@destroy', $cubiculo->nombre]])}}
+                @endslot
+              @endcomponent
 
-            </tr>
-            @endforeach
-        @endslot
+          </tr>
+        @endforeach
+      @endslot
     @endcomponent
 @endsection
+
 
 
 
