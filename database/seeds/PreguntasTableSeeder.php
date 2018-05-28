@@ -136,25 +136,6 @@ class PreguntasTableSeeder extends Seeder
         ));
 
         App\Pregunta::create(array(
-        	'inciso' => '9.1.12',
-        	'numero' => '1',
-        	'titulo' => '¿Numero de lugares disponibles?',
-        ));
-
-        App\Pregunta::create(array(
-            'inciso' => '9.1.12',
-            'numero' => '2',
-            'titulo' => '¿Ofrece condiciones adecuadas de higiene?',
-        ));
-
-        App\Pregunta::create(array(
-            'inciso' => '9.1.12',
-            'numero' => '3',
-            'titulo' => '¿Ofrece condiciones adecuadas de seguridad?',
-
-        ));
-
-        App\Pregunta::create(array(
             'inciso' => '9.1.12',
             'numero' => '1',
             'titulo' => 'De los espacios mencionados en el punto 9.1.11, se debe tener un lugar cómodo por cada diez estudiantes inscritos en el programa, ofreciendo las condiciones adecuadas de higiene y seguridad. ¿Cuántos lugares disponibles existen?',

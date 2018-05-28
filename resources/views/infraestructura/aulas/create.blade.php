@@ -205,6 +205,4 @@
 			<input type='file' class="form-control" name='Fotografias[]' id="Fotografias" multiple accept=".gif,.bmp,.jpg,.png, .jpeg"/>
 		</div>
 	</div>
-
 @endsection
-
