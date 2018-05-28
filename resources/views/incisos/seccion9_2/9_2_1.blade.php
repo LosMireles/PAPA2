@@ -31,14 +31,24 @@
 <!-- ------------ LAS TABLAS QUE CORRESPONDAN------------- -->
 @section('tablas_inciso_general')
 	<div class="row text-right" style="margin: 2px;">
-    	<a href="{{ action('SoftwareController@create') }}" class="btn btn-success">Agregar</a>
+    	<a href="{{ action('CursoController@create') }}" class="btn btn-success">
+    	    Agregar nuevo curso
+    	</a>
+
+    	<a href="{{ action('SoftwareController@create') }}" class="btn btn-success">
+    	    Agregar nuevo software
+    	</a>
+
+    	<a href="{{ action('SoftwareController@create') }}" class="btn btn-primary">
+    	    Relacionar curso y softwares
+    	</a>
   	</div>
 
     @component('layouts.componentes.tabla_incisos_agregar')
 
-        <h4>Tabla de softwares y asignaturas que lo utilizan</h4>
+        <h4>Tabla cursos y los software que utilizan</h4>
         @slot('cabeza_tabla')
-            <th>Asignatura</th>
+            <th>Curso</th>
             <th>Nombre software</th>
             <th>Disponibilidad software</th>
         @endslot
