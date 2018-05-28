@@ -40,18 +40,27 @@
 						<?php $respuesta = DB::table('preguntas')->where('inciso','9.1.4')->first();?>
 						@if ($respuesta->estado == 1)
 							<img src="storage/recursos/semaforos/Green_rect.png" alt="Green_rect.png">
-							<?php  $estado = 'Completo';?>
+							<?php
+								$estado = 'Completo';
+								$mensaje = 'Inciso completado';
+							?>
 						@elseif ($respuesta->respuesta != '')
 							<img src="storage/recursos/semaforos/Yellow_rect.png" alt="Yellow_rect.png">
-							<?php $estado = 'Incompleto'; ?>
+							<?php
+								$estado = 'Incompleto';
+								$mensaje = 'Hay preguntas sin contestar';
+							?>
 						@else
 							<img src="storage/recursos/semaforos/Red_rect.png" alt="Red_rect.png">
-							<?php $estado = 'Vacío'; ?>
+							<?php
+								$estado = 'Vacío';
+								$mensaje = 'Todas las preguntas no tienen respuesta';
+							?>
 						@endif
 
 						@component('layouts.componentes.tooltip_general_link')
 							@slot('url', '#')
-							@slot('titulo','Hay preguntas sin contestar')
+							@slot('titulo', $mensaje)
 							@slot('mensaje', $estado)
 						@endcomponent
 					</li>
@@ -60,17 +69,26 @@
 						<?php $respuesta = DB::table('preguntas')->where('inciso','9.1.6')->first();?>
 						@if ($respuesta->estado == 1)
 							<img src="storage/recursos/semaforos/Green_rect.png" alt="Green_rect.png">
-							<?php  $estado = 'Completo';?>
+							<?php
+								$estado = 'Completo';
+								$mensaje = 'Inciso completado'
+							?>
 						@elseif ($respuesta->respuesta != '')
 							<img src="storage/recursos/semaforos/Yellow_rect.png" alt="Yellow_rect.png">
-							<?php $estado = 'Incompleto'; ?>
+							<?php
+								$estado = 'Incompleto';
+								$mensaje = 'Hay preguntas sin contestar';
+							?>
 						@else
 							<img src="storage/recursos/semaforos/Red_rect.png" alt="Red_rect.png">
-							<?php $estado = 'Vacío'; ?>
+							<?php
+								$estado = 'Vacío';
+								$mensaje = 'Todas las preguntas no tienen respuesta';
+							?>
 						@endif
 						@component('layouts.componentes.tooltip_general_link')
 							@slot('url', '#')
-							@slot('titulo','Hay preguntas sin contestar')
+							@slot('titulo',$mensaje)
 							@slot('mensaje', $estado)
 						@endcomponent
 					</li>
@@ -80,17 +98,26 @@
 						<?php $respuesta = DB::table('preguntas')->where('inciso','9.1.7')->first();?>
 						@if ($respuesta->estado == 1)
 							<img src="storage/recursos/semaforos/Green_rect.png" alt="Green_rect.png">
-							<?php  $estado = 'Completo';?>
+							<?php
+								$estado = 'Completo';
+								$mensaje = 'Inciso completado'
+							?>
 						@elseif ($respuesta->respuesta != '')
 							<img src="storage/recursos/semaforos/Yellow_rect.png" alt="Yellow_rect.png">
-							<?php $estado = 'Incompleto'; ?>
+							<?php
+								$estado = 'Incompleto';
+								$mensaje = 'Hay preguntas sin contestar';
+							?>
 						@else
 							<img src="storage/recursos/semaforos/Red_rect.png" alt="Red_rect.png">
-							<?php $estado = 'Vacío'; ?>
+							<?php
+								$estado = 'Vacío';
+								$mensaje = 'Todas las preguntas no tienen respuesta';
+							?>
 						@endif
 						@component('layouts.componentes.tooltip_general_link')
 							@slot('url', '#')
-							@slot('titulo','Hay preguntas sin contestar')
+							@slot('titulo',$mensaje)
 							@slot('mensaje', $estado)
 						@endcomponent
 					</li>
@@ -103,7 +130,10 @@
 						?>
 						@if ($respuesta->estado == 1)
 							<img src="storage/recursos/semaforos/Green_rect.png" alt="Green_rect.png">
-							@php $estado = 'Completo'; @endphp
+							@php
+								$estado = 'Completo';
+								$mensaje = 'Inciso completado'
+							@endphp
 						@else
 							<?php
 								$respuestas = DB::table('preguntas')->where('inciso','9.1.8')->get();
@@ -119,15 +149,21 @@
 
 							@if ($noRespContest == sizeof($respuestas))
 								<img src="storage/recursos/semaforos/Red_rect.png" alt="Red_rect.png">
-								<?php $estado = 'Vacío'; ?>
+								<?php
+									$estado = 'Vacío';
+									$mensaje = 'Todas las preguntas no tienen respuesta';
+								?>
 							@else
 								<img src="storage/recursos/semaforos/Yellow_rect.png" alt="Yellow_rect.png">
-								<?php $estado = 'Incompleto'; ?>
+								<?php
+								 	$estado = 'Incompleto';
+									$mensaje = 'Hay preguntas sin contestar';
+								?>
 							@endif
 						@endif
 						@component('layouts.componentes.tooltip_general_link')
 							@slot('url', '#')
-							@slot('titulo','Hay preguntas sin contestar')
+							@slot('titulo', $mensaje)
 							@slot('mensaje', $estado)
 						@endcomponent
 					</li>
@@ -140,7 +176,10 @@
 						?>
 						@if ($respuesta->estado == 1)
 							<img src="storage/recursos/semaforos/Green_rect.png" alt="Green_rect.png">
-							@php $estado = 'Completo'; @endphp
+							@php
+								$estado = 'Completo';
+								$mensaje = 'Inciso completado'
+							@endphp
 						@else
 							<?php
 								$respuestas = DB::table('preguntas')->where('inciso','9.1.9')->get();
@@ -156,15 +195,21 @@
 
 							@if ($noRespContest == sizeof($respuestas))
 								<img src="storage/recursos/semaforos/Red_rect.png" alt="Red_rect.png">
-								<?php $estado = 'Vacío'; ?>
+								<?php
+									$estado = 'Vacío';
+									$mensaje = 'Todas las preguntas no tienen respuesta';
+								?>
 							@else
 								<img src="storage/recursos/semaforos/Yellow_rect.png" alt="Yellow_rect.png">
-								<?php $estado = 'Incompleto'; ?>
+								<?php
+								 	$estado = 'Incompleto';
+									$mensaje = 'Hay preguntas sin contestar';
+								?>
 							@endif
 						@endif
 						@component('layouts.componentes.tooltip_general_link')
 							@slot('url', '#')
-							@slot('titulo','Hay preguntas sin contestar')
+							@slot('titulo', $mensaje)
 							@slot('mensaje', $estado)
 						@endcomponent
 					</li>
@@ -174,17 +219,26 @@
 						<?php $respuesta = DB::table('preguntas')->where('inciso','9.1.10')->first();?>
 						@if ($respuesta->estado == 1)
 							<img src="storage/recursos/semaforos/Green_rect.png" alt="Green_rect.png">
-							<?php  $estado = 'Completo';?>
+							<?php
+								$estado = 'Completo';
+								$mensaje = 'Inciso completado';
+							?>
 						@elseif ($respuesta->respuesta != '')
 							<img src="storage/recursos/semaforos/Yellow_rect.png" alt="Yellow_rect.png">
-							<?php $estado = 'Incompleto'; ?>
+							<?php
+								$estado = 'Incompleto';
+								$mensaje = 'Hay preguntas sin contestar';
+							?>
 						@else
 							<img src="storage/recursos/semaforos/Red_rect.png" alt="Red_rect.png">
-							<?php $estado = 'Vacío'; ?>
+							<?php
+								$estado = 'Vacío';
+								$mensaje = 'Todas las preguntas no tienen respuesta';
+							?>
 						@endif
 						@component('layouts.componentes.tooltip_general_link')
 							@slot('url', '#')
-							@slot('titulo','Hay preguntas sin contestar')
+							@slot('titulo', $mensaje)
 							@slot('mensaje', $estado)
 						@endcomponent
 					</li>
@@ -194,17 +248,26 @@
 						<?php $respuesta = DB::table('preguntas')->where('inciso','9.1.11')->first();?>
 						@if ($respuesta->estado == 1)
 							<img src="storage/recursos/semaforos/Green_rect.png" alt="Green_rect.png">
-							<?php  $estado = 'Completo';?>
+							<?php
+								$estado = 'Completo';
+								$mensaje = 'Inciso completado';
+							?>
 						@elseif ($respuesta->respuesta != '')
 							<img src="storage/recursos/semaforos/Yellow_rect.png" alt="Yellow_rect.png">
-							<?php $estado = 'Incompleto'; ?>
+							<?php
+								$estado = 'Incompleto';
+								$mensaje = 'Hay preguntas sin contestar';
+							?>
 						@else
 							<img src="storage/recursos/semaforos/Red_rect.png" alt="Red_rect.png">
-							<?php $estado = 'Vacío'; ?>
+							<?php
+								$estado = 'Vacío';
+								$mensaje = 'Todas las preguntas no tienen respuesta';
+							?>
 						@endif
 						@component('layouts.componentes.tooltip_general_link')
 							@slot('url', '#')
-							@slot('titulo','Hay preguntas sin contestar')
+							@slot('titulo', $mensaje)
 							@slot('mensaje', $estado)
 						@endcomponent
 					</li>
@@ -214,17 +277,26 @@
 						<?php $respuesta = DB::table('preguntas')->where('inciso','9.1.12')->first();?>
 						@if ($respuesta->estado == 1)
 							<img src="storage/recursos/semaforos/Green_rect.png" alt="Green_rect.png">
-							<?php  $estado = 'Completo';?>
+							<?php
+								$estado = 'Completo';
+								$mensaje = 'Inciso completado';
+							?>
 						@elseif ($respuesta->respuesta != '')
 							<img src="storage/recursos/semaforos/Yellow_rect.png" alt="Yellow_rect.png">
-							<?php $estado = 'Incompleto'; ?>
+							<?php
+								$estado = 'Incompleto';
+								$mensaje = 'Hay preguntas sin contestar';
+							?>
 						@else
 							<img src="storage/recursos/semaforos/Red_rect.png" alt="Red_rect.png">
-							<?php $estado = 'Vacío'; ?>
+							<?php
+								$estado = 'Vacío';
+								$mensaje = 'Todas las preguntas no tienen respuesta';
+							?>
 						@endif
 						@component('layouts.componentes.tooltip_general_link')
 							@slot('url', '#')
-							@slot('titulo','Hay preguntas sin contestar')
+							@slot('titulo',$mensaje)
 							@slot('mensaje', $estado)
 						@endcomponent
 					</li>
@@ -237,7 +309,10 @@
 						?>
 						@if ($respuesta->estado == 1)
 							<img src="storage/recursos/semaforos/Green_rect.png" alt="Green_rect.png">
-							@php $estado = 'Completo'; @endphp
+							@php
+								$estado = 'Completo';
+								$mensaje = 'Inciso completado';
+							@endphp
 						@else
 							<?php
 								$respuestas = DB::table('preguntas')->where('inciso','9.1.13')->get();
@@ -253,15 +328,21 @@
 
 							@if ($noRespContest == sizeof($respuestas))
 								<img src="storage/recursos/semaforos/Red_rect.png" alt="Red_rect.png">
-								<?php $estado = 'Vacío'; ?>
+								<?php
+									$estado = 'Vacío';
+									$mensaje = 'Todas las preguntas no tienen respuesta';
+								?>
 							@else
 								<img src="storage/recursos/semaforos/Yellow_rect.png" alt="Yellow_rect.png">
-								<?php $estado = 'Incompleto'; ?>
+								<?php
+									$estado = 'Incompleto';
+									$mensaje = 'Hay preguntas sin contestar';
+								?>
 							@endif
 						@endif
 						@component('layouts.componentes.tooltip_general_link')
 							@slot('url', '#')
-							@slot('titulo','Hay preguntas sin contestar')
+							@slot('titulo', $mensaje)
 							@slot('mensaje', $estado)
 						@endcomponent
 					</li>
@@ -290,17 +371,26 @@
 						<?php $respuesta = DB::table('preguntas')->where('inciso','9.2.1')->first();?>
 						@if ($respuesta->estado == 1)
 							<img src="storage/recursos/semaforos/Green_rect.png" alt="Green_rect.png">
-							<?php  $estado = 'Completo';?>
+							<?php
+								$estado = 'Completo';
+								$mensaje = 'Inciso completado';
+							?>
 						@elseif ($respuesta->respuesta != '')
 							<img src="storage/recursos/semaforos/Yellow_rect.png" alt="Yellow_rect.png">
-							<?php $estado = 'Incompleto'; ?>
+							<?php
+								$estado = 'Incompleto';
+								$mensaje = 'Hay preguntas sin contestar';
+							?>
 						@else
 							<img src="storage/recursos/semaforos/Red_rect.png" alt="Red_rect.png">
-							<?php $estado = 'Vacío'; ?>
+							<?php
+								$estado = 'Vacío';
+								$mensaje = 'Todas las preguntas no tienen respuesta';
+							?>
 						@endif
 						@component('layouts.componentes.tooltip_general_link')
 							@slot('url', '#')
-							@slot('titulo','Hay preguntas sin contestar')
+							@slot('titulo',$mensaje)
 							@slot('mensaje', $estado)
 						@endcomponent
 					</li>
@@ -313,7 +403,10 @@
 						?>
 						@if ($respuesta->estado == 1)
 							<img src="storage/recursos/semaforos/Green_rect.png" alt="Green_rect.png">
-							@php $estado = 'Completo'; @endphp
+							@php
+								$estado = 'Completo';
+								$mensaje = 'Inciso completado';
+							@endphp
 						@else
 							<?php
 								$respuestas = DB::table('preguntas')->where('inciso','9.2.2')->get();
@@ -329,15 +422,21 @@
 
 							@if ($noRespContest == sizeof($respuestas))
 								<img src="storage/recursos/semaforos/Red_rect.png" alt="Red_rect.png">
-								<?php $estado = 'Vacío'; ?>
+								<?php
+									$estado = 'Vacío';
+									$mensaje = 'Todas las preguntas no tienen respuesta';
+								?>
 							@else
 								<img src="storage/recursos/semaforos/Yellow_rect.png" alt="Yellow_rect.png">
-								<?php $estado = 'Incompleto'; ?>
+								<?php
+									$estado = 'Incompleto';
+									$mensaje = 'Hay preguntas sin contestar';
+								?>
 							@endif
 						@endif
 						@component('layouts.componentes.tooltip_general_link')
 							@slot('url', '#')
-							@slot('titulo','Hay preguntas sin contestar')
+							@slot('titulo', $mensaje)
 							@slot('mensaje', $estado)
 						@endcomponent
 					</li>
@@ -347,17 +446,26 @@
 						<?php $respuesta = DB::table('preguntas')->where('inciso','9.2.5')->first();?>
 						@if ($respuesta->estado == 1)
 							<img src="storage/recursos/semaforos/Green_rect.png" alt="Green_rect.png">
-							<?php  $estado = 'Completo';?>
+							<?php
+								$estado = 'Completo';
+								$mensaje = 'Inciso completado';
+							?>
 						@elseif ($respuesta->respuesta != '')
 							<img src="storage/recursos/semaforos/Yellow_rect.png" alt="Yellow_rect.png">
-							<?php $estado = 'Incompleto'; ?>
+							<?php
+								$estado = 'Incompleto';
+								$mensaje = 'Hay preguntas sin contestar';
+							?>
 						@else
 							<img src="storage/recursos/semaforos/Red_rect.png" alt="Red_rect.png">
-							<?php $estado = 'Vacío'; ?>
+							<?php
+								$estado = 'Vacío';
+								$mensaje = 'Todas las preguntas no tienen respuesta';
+							?>
 						@endif
 						@component('layouts.componentes.tooltip_general_link')
 							@slot('url', '#')
-							@slot('titulo','Hay preguntas sin contestar')
+							@slot('titulo', $mensaje)
 							@slot('mensaje', $estado)
 						@endcomponent
 					</li>
@@ -370,7 +478,10 @@
 						?>
 						@if ($respuesta->estado == 1)
 							<img src="storage/recursos/semaforos/Green_rect.png" alt="Green_rect.png">
-							@php $estado = 'Completo'; @endphp
+							@php
+								$estado = 'Completo';
+								$mensaje = 'Inciso completado';
+							@endphp
 						@else
 							<?php
 								$respuestas = DB::table('preguntas')->where('inciso','9.2.7')->get();
@@ -386,15 +497,21 @@
 
 							@if ($noRespContest == sizeof($respuestas))
 								<img src="storage/recursos/semaforos/Red_rect.png" alt="Red_rect.png">
-								<?php $estado = 'Vacío'; ?>
+								<?php
+									$estado = 'Vacío';
+									$mensaje = 'Todas las preguntas no tienen respuesta';
+								?>
 							@else
 								<img src="storage/recursos/semaforos/Yellow_rect.png" alt="Yellow_rect.png">
-								<?php $estado = 'Incompleto'; ?>
+								<?php
+									$estado = 'Incompleto';
+									$mensaje = 'Hay preguntas sin contestar';
+								?>
 							@endif
 						@endif
 						@component('layouts.componentes.tooltip_general_link')
 							@slot('url', '#')
-							@slot('titulo','Hay preguntas sin contestar')
+							@slot('titulo', $mensaje)
 							@slot('mensaje', $estado)
 						@endcomponent
 					</li>
@@ -404,17 +521,26 @@
 						<?php $respuesta = DB::table('preguntas')->where('inciso','9.2.11')->first();?>
 						@if ($respuesta->estado == 1)
 							<img src="storage/recursos/semaforos/Green_rect.png" alt="Green_rect.png">
-							<?php  $estado = 'Completo';?>
+							<?php
+								$estado = 'Completo';
+								$mensaje = 'Inciso completado';
+							?>
 						@elseif ($respuesta->respuesta != '')
 							<img src="storage/recursos/semaforos/Yellow_rect.png" alt="Yellow_rect.png">
-							<?php $estado = 'Incompleto'; ?>
+							<?php
+								$estado = 'Incompleto';
+								$mensaje = 'Hay preguntas sin contestar';
+							?>
 						@else
 							<img src="storage/recursos/semaforos/Red_rect.png" alt="Red_rect.png">
-							<?php $estado = 'Vacío'; ?>
+							<?php
+								$estado = 'Vacío';
+								$mensaje = 'Todas las preguntas no tienen respuesta';
+							?>
 						@endif
 						@component('layouts.componentes.tooltip_general_link')
 							@slot('url', '#')
-							@slot('titulo','Hay preguntas sin contestar')
+							@slot('titulo', $mensaje)
 							@slot('mensaje', $estado)
 						@endcomponent
 					</li>
@@ -427,7 +553,10 @@
 						?>
 						@if ($respuesta->estado == 1)
 							<img src="storage/recursos/semaforos/Green_rect.png" alt="Green_rect.png">
-							@php $estado = 'Completo'; @endphp
+							@php
+								$estado = 'Completo';
+								$mensaje = 'Inciso completado';
+							@endphp
 						@else
 							<?php
 								$respuestas = DB::table('preguntas')->where('inciso','9.2.12')->get();
@@ -443,15 +572,21 @@
 
 							@if ($noRespContest == sizeof($respuestas))
 								<img src="storage/recursos/semaforos/Red_rect.png" alt="Red_rect.png">
-								<?php $estado = 'Vacío'; ?>
+								<?php
+									$estado = 'Vacío';
+									$mensaje = 'Todas las preguntas no tienen respuesta';
+								?>
 							@else
 								<img src="storage/recursos/semaforos/Yellow_rect.png" alt="Yellow_rect.png">
-								<?php $estado = 'Incompleto'; ?>
+								<?php
+									$estado = 'Incompleto';
+									$mensaje = 'Hay preguntas sin contestar';
+								?>
 							@endif
 						@endif
 						@component('layouts.componentes.tooltip_general_link')
 							@slot('url', '#')
-							@slot('titulo','Hay preguntas sin contestar')
+							@slot('titulo', $mensaje)
 							@slot('mensaje', $estado)
 						@endcomponent
 					</li>
@@ -460,17 +595,26 @@
 						<?php $respuesta = DB::table('preguntas')->where('inciso','9.2.14')->first();?>
 						@if ($respuesta->estado == 1)
 							<img src="storage/recursos/semaforos/Green_rect.png" alt="Green_rect.png">
-							<?php  $estado = 'Completo';?>
+							<?php
+								$estado = 'Completo';
+								$mensaje = 'Inciso completado';
+							?>
 						@elseif ($respuesta->respuesta != '')
 							<img src="storage/recursos/semaforos/Yellow_rect.png" alt="Yellow_rect.png">
-							<?php $estado = 'Incompleto'; ?>
+							<?php
+								$estado = 'Incompleto';
+								$mensaje = 'Hay preguntas sin contestar';
+							?>
 						@else
 							<img src="storage/recursos/semaforos/Red_rect.png" alt="Red_rect.png">
-							<?php $estado = 'Vacío'; ?>
+							<?php
+								$estado = 'Vacío';
+								$mensaje = 'Todas las preguntas no tienen respuesta';
+							?>
 						@endif
 						@component('layouts.componentes.tooltip_general_link')
 							@slot('url', '#')
-							@slot('titulo','Hay preguntas sin contestar')
+							@slot('titulo', $mensaje)
 							@slot('mensaje', $estado)
 						@endcomponent
 					</li>
