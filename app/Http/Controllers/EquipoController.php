@@ -49,12 +49,12 @@ class EquipoController extends Controller
         $equipo->save();
 
 		echo "Elemento insertado exitosamente!";
-        return redirect(url()->previous());
+        return redirect($request->url_previous)->with('status', 'Elemento agregado exitosamente');
     }
 
     //----------------------------------------------------------------
     public function edit($serial){
-    	$equipo           = Equipo::where('serial', $serial)->first();
+    	$equipo = Equipo::where('serial', $serial)->first();
 
     	return view('equipamiento.equipos.edit')
             ->with([
@@ -84,7 +84,8 @@ class EquipoController extends Controller
         $equipo->update($data);
 
 		echo "Elemento editado exitosamente!";
-        return redirect(url()->previous());
+        return redirect($request->url_previous)
+            ->with('status', 'Elemento actualizado con exito');
     }
 
     //----------------------------------------------------------------
@@ -98,7 +99,8 @@ class EquipoController extends Controller
         $equipo->delete();
 
 		echo "Elemento borrado exitosamente!";
-        return back();
+        return redirect()->back()
+            ->with('status', 'Elemento borrado exitosamente');
     }
 
     //----------------------------------------------------------------
