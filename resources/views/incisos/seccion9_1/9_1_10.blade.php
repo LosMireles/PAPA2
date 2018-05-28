@@ -13,29 +13,25 @@
                   'class'  => 'form'])}}
 @endsection
 
-<!-------------- LAS PREGUNTAS Y SUS RESPUESTAS--------------->
+<!-- ------------ LAS PREGUNTAS Y SUS RESPUESTAS------------- -->
 
 @section('contenido_formulario')
 
-    <!--Pregunta 1-->
+    <!-- Pregunta 1 -->
     <div class="form-group">
-        <label for="{{$preguntas[0]->id}}" class="control-label">
-            {{$preguntas[0]->titulo}}
-        </label>
+        <label for="{{$preguntas[0]->id}}" class="control-label">{{$preguntas[0]->titulo}}</label>
 
-        <div class="col-sm-8">
+        <div>
             <input type="text" class="form-control" id="{{$preguntas[0]->id}}" name="{{$preguntas[0]->id}}" value="{{$preguntas[0]->respuesta}}">
         </div>
     </div>
 
     <!--Pregunta 2-->
     <div class="form-group">
-        <label for="{{$preguntas[1]->id}}" class="control-label">
-            {{$preguntas[1]->titulo}}
-        </label>
+        <label for="{{$preguntas[1]->id}}" class="control-label">{{$preguntas[1]->titulo}}</label>
 
         <div>
-            <textarea class="form-control" id="{{$preguntas[1]->id}}" name="{{$preguntas[1]->id}}"value="{{$preguntas[1]->respuesta}}"></textarea>
+            <textarea class="form-control" id="{{$preguntas[1]->id}}" name="{{$preguntas[1]->id}}">{{$preguntas[1]->respuesta}}</textarea>
         </div>
     </div>
 
@@ -43,30 +39,6 @@
 
 
 <!-- ------------ LAS TABLAS QUE CORRESPONDAN------------- -->
-
-@section('cabeza_tabla')
-  <tr>
-    <td data-toggle="tooltip" title="Identificador de la asesoria">Tipo</td>
-    <td data-toggle="tooltip" title="Hora de inicio">Hora de inicio</td>
-    <td data-toggle="tooltip" title="Hora de finalización">Hora de finalizacion</td>
-    <td data-toggle="tooltip" title="Día de inicio">Dia de inicio</td>
-    <td data-toggle="tooltip" title="Día de finalización">Dia de finalizacion</td>
-    <td data-toggle="tooltip" title="Asignatura que se imparte">Materia</td>
-  </tr>
-@endsection
-
-@section('cuerpo_tabla')
-  @foreach ($asesorias as $asesoria)
-  <tr>
-    <td>{{ $asesoria->Tipo }}</td>
-    <td>{{ $asesoria->InicioHora }}</td>
-    <td>{{ $asesoria->FinHora }}</td>
-    <td>{{ $asesoria->InicioDia }}</td>
-    <td>{{ $asesoria->FinDia }}</td>
-    <td>{{ $asesoria->Materia }}</td>
-   </tr>
-   @endforeach
-@endsection
 
 <!-- ------------ SECCION DE FOTOGRAFIAS, EVIDENCIAS, ETC------------- -->
 
@@ -104,3 +76,8 @@
     </div>
 @endsection
 
+
+
+@section('Fotografias')
+  
+@endsection

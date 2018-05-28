@@ -20,6 +20,8 @@ Route::get('/equipamiento', 'RoutesController@equipamiento');
 
 Route::get('pruebaPdf','Inciso9_1_6Controller@imprimir');
 
+Route::get('/aulas/create_asesoria', 'AulaController@create_asesoria');
+
 // Técnicos académicos -------------------------------------------------------------------
 
 Route::get('/error', function($mensaje = null){

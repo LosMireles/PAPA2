@@ -26,6 +26,11 @@ class AulaController extends Controller
             ->with(['calificaciones' => $calificaciones]);
 	}
 
+	//----------------------------------------------------------------
+
+	public function create_asesoria(){
+		return view('infraestructura/asesorias/create');
+	}
   //----------------------------------------------------------------
   public function store(Request $request)
   {

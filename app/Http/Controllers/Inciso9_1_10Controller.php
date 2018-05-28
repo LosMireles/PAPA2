@@ -18,7 +18,8 @@ class Inciso9_1_10Controller extends Controller
     {
         $preguntas = Pregunta::where('inciso', '9.1.10')->get();
         $id = $preguntas[0]->id;
-        $asesorias = Asesoria::get();
+        $asesorias = Asesoria::all();
+
         return view('incisos/seccion9_1/9_1_10', ['preguntas' => $preguntas, 'id' => $id, 'asesorias' => $asesorias]);
     }
 

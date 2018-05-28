@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
 
 use App\Asesoria;
+use App\Aula;
 
 class AsesoriaController extends Controller
 {
@@ -24,28 +25,29 @@ class AsesoriaController extends Controller
     //----------------------------------------------------------------
     public function create()
     {
-        return view('infraestructura.asesorias.create');
+      $aulas = Aula::all();
+      return view('infraestructura.asesorias.create', ['aulas' => $aulas]);
     }
 
     //----------------------------------------------------------------
     public function store(Request $request)
     {
-        $request->validate($this->rules());
+      $request->validate($this->rules());
 
-        $asesoria = new Asesoria;
-        if ($request->hasFile('Fotografias')) {
-          foreach($request->Fotografias as $foto){
-            $foto->storeAs('infraestructura/asesorias/' . $request->Tipo, $foto->getClientOriginalName());
-          }
+      $asesoria = new Aula;
+      if ($request->hasFile('Fotografias')) {
+        foreach($request->Fotografias as $foto){
+          $foto->storeAs('infraestructura/asesorias/' . $request->Tipo, $foto->getClientOriginalName());
         }
+      }
 
-        $asesoria->Tipo       = $request->Tipo;
-		$asesoria->InicioHora = $request->InicioHora;
-		$asesoria->FinHora    = $request->FinHora;
-        $asesoria->InicioDia  = $request->InicioDia;
-		$asesoria->FinDia     = $request->FinDia;
-        $asesoria->Materia    = $request->Materia;
-        $asesoria->espacio_id = $request->espacio_id;
+      $asesoria->Tipo       = $request->Tipo;
+	    $asesoria->InicioHora = $request->InicioHora;
+	    $asesoria->FinHora    = $request->FinHora;
+      $asesoria->InicioDia  = $request->InicioDia;
+	    $asesoria->FinDia     = $request->FinDia;
+      $asesoria->Materia    = $request->Materia;
+      $asesoria->espacio_id = $request->espacio_id;
 
       $asesoria->save();
 

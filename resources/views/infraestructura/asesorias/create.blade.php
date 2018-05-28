@@ -16,72 +16,18 @@
 @endsection
 
 @section('contenido_formulario')
-   	<div class="form-group">
-		<label for="Tipo" class="col-sm-4 control-label" data-toggle="tooltip" title="Identificador de la asesoria">Identificador de la asesoria</label>
+   	@component("layouts.select_input")
+        @slot("nombre_input", "aula")
+        @slot("tooltip_input", "En que aula se imparte")
+        @slot("label_input", "Código del aula")
+        @slot("extra", "required")
+        @slot('opciones')
+             @foreach($aulas as $aula)
+                <option value="{{$aula->nombre}}">
+                    {{$aula->nombre}}
+                </option>
+            @endforeach
+        @endslot
+    @endcomponent
 
-		<div class="col-sm-8">
-      		<input type="text-center" class="form-control" name="Tipo" placeholder="Nombre asesoria">
-
-      		</div>
-	</div>
-
-	<div class="form-group">
-		<label for="InicioHora" class="col-sm-4 control-label" data-toggle="tooltip" title="">Hora de inicio</label>
-
-		<div class="col-sm-8">
-			<input type='time' class="form-control" name='InicioHora' placeholder="00:00" required>
-		</div>
-	</div>
-
-	<div class="form-group">
-		<label for="FinHora" class="col-sm-4 control-label" data-toggle="tooltip" title="">Hora de finalizacion</label>
-
-		<div class="col-sm-8">
-			<input type='time' class="form-control" name='FinHora' placeholder="12:00" required>
-		</div>
-	</div>
-
-	<div class="form-group">
-		<label for="InicioDia" class="col-sm-4 control-label" data-toggle="tooltip" title="">Día de inicio</label>
-
-		<div class="col-sm-8">
-			<input type='date' class="form-control" name='InicioDia' placeholder="Lunes" required>
-		</div>
-	</div>
-
-	<div class="form-group">
-		<label for="FinDia" class="col-sm-4 control-label" data-toggle="tooltip" title="">Día de finalización</label>
-
-		<div class="col-sm-8">
-			<input type='date' class="form-control" name='FinDia' placeholder="Sábado" required>
-		</div>
-	</div>
-
-	<div class="form-group">
-		<label for="Materia" class="col-sm-4 control-label" data-toggle="tooltip" title="">Asignatura: </label>
-
-		<div class="col-sm-8">
-			<input type='text' class="form-control" name='Materia' placeholder="Asignatura" required>
-		</div>
-	</div>
-
-	<div class="form-group">
-		<label for="espacio_id" class="col-sm-4 control-label" data-toggle="tooltip" title="Espacio donde se ecuentra la asesoría">Espacio</label>
-
-		<div class="col-sm-8">
-			<input type="radio"  name="espacio_id" value="{{$espacio_id}}" checked> {{$espacio_tipo}}
-		</div>
-	</div>
-
-  <div class="form-group">
-		<h3 class="text-center">Evidencias: </h3>
-	</div>
-
-	<div class="form-group">
-		<label for="Fotografias" class="col-sm-4 control-label" data-toggle="tooltip" title="Suba evidencias fotograficas">Fotografias</label>
-
-		<div class="col-sm-8">
-			<input type='file' class="form-control" name='Fotografias[]' id="Fotografias" multiple accept=".gif,.bmp,.jpg,.png, .jpeg"/>
-		</div>
-	</div>
 @endsection

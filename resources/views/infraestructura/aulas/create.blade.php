@@ -1,6 +1,6 @@
 @extends('layouts.formulario_create_general')
 
-@section('title' , "Formulario 9.1.6")
+@section('title' , "Agregar un aula")
 @section("objeto_informacion", "un aula")
 
 @section('ruta_regresar')
