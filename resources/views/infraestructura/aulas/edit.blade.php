@@ -51,17 +51,10 @@
         @slot("label_input", "Pizarrón")
         @section('extra', "required")
         @slot('opciones')
-            @foreach($calificaciones as $numero)
-                @if($aula->pizarron == $numero)
-                    <option value="{{$numero}}" selected>
-                        {{$numero}}
-                    </option>
-                @else
-                    <option value="{{$numero}}">
-                        {{$numero}}
-                    </option>
-                @endif
-            @endforeach
+            @component('layouts.option_foreach_if')
+                @slot('conjunto_variables', $calificaciones)
+                @slot('var', $aula->pizarron)
+            @endcomponent
         @endslot
     @endcomponent
 
@@ -72,17 +65,10 @@
         @slot("label_input", "Iluminación")
         @section('extra', "required")
         @slot('opciones')
-            @foreach($calificaciones as $numero)
-                @if($aula->iluminacion == $numero)
-                    <option value="{{$numero}}" selected>
-                        {{$numero}}
-                    </option>
-                @else
-                    <option value="{{$numero}}">
-                        {{$numero}}
-                    </option>
-                @endif
-            @endforeach
+            @component('layouts.option_foreach_if')
+                @slot('conjunto_variables', $calificaciones)
+                @slot('var', $aula->iluminacion)
+            @endcomponent
         @endslot
     @endcomponent
 
@@ -92,11 +78,10 @@
         @slot("label_input", "Aislamiento al ruido")
         @section('extra', "required")
         @slot('opciones')
-            @foreach($calificaciones as $numero)
-                <option value="{{$numero}}">
-                    {{$numero}}
-                </option>
-            @endforeach
+            @component('layouts.option_foreach_if')
+                @slot('conjunto_variables', $calificaciones)
+                @slot('var', $aula->aislamiento_ruido)
+            @endcomponent
         @endslot
     @endcomponent
 
@@ -108,11 +93,10 @@
         @slot("label_input", "Ventilación")
         @section('extra', "required")
         @slot('opciones')
-            @foreach($calificaciones as $numero)
-                <option value="{{$numero}}">
-                    {{$numero}}
-                </option>
-            @endforeach
+            @component('layouts.option_foreach_if')
+                @slot('conjunto_variables', $calificaciones)
+                @slot('var', $aula->ventilacion)
+            @endcomponent
         @endslot
     @endcomponent
 
@@ -123,11 +107,10 @@
         @slot("label_input", "Temperatura")
         @section('extra', "required")
         @slot('opciones')
-            @foreach($calificaciones as $numero)
-                <option value="{{$numero}}">
-                    {{$numero}}
-                </option>
-            @endforeach
+            @component('layouts.option_foreach_if')
+                @slot('conjunto_variables', $calificaciones)
+                @slot('var', $aula->temperatura)
+            @endcomponent
         @endslot
     @endcomponent
 
@@ -139,11 +122,10 @@
         @slot("label_input", "Espacio")
         @section('extra', "required")
         @slot('opciones')
-            @foreach($calificaciones as $numero)
-                <option value="{{$numero}}">
-                    {{$numero}}
-                </option>
-            @endforeach
+            @component('layouts.option_foreach_if')
+                @slot('conjunto_variables', $calificaciones)
+                @slot('var', $aula->espacio)
+            @endcomponent
         @endslot
     @endcomponent
 
@@ -155,11 +137,10 @@
         @slot("label_input", "Mobiliario")
         @section('extra', "required")
         @slot('opciones')
-            @foreach($calificaciones as $numero)
-                <option value="{{$numero}}">
-                    {{$numero}}
-                </option>
-            @endforeach
+            @component('layouts.option_foreach_if')
+                @slot('conjunto_variables', $calificaciones)
+                @slot('var', $aula->mobilario)
+            @endcomponent
         @endslot
     @endcomponent
 
@@ -171,11 +152,10 @@
         @slot("label_input", "Conexiones")
         @section('extra', "required")
         @slot('opciones')
-            @foreach($calificaciones as $numero)
-                <option value="{{$numero}}">
-                    {{$numero}}
-                </option>
-            @endforeach
+            @component('layouts.option_foreach_if')
+                @slot('conjunto_variables', $calificaciones)
+                @slot('var', $aula->conexiones)
+            @endcomponent
         @endslot
     @endcomponent
 

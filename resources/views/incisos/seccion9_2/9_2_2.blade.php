@@ -48,29 +48,29 @@
                                         sizeof($bds),
                                         sizeof($paqueterias))); $i++)
             <tr>
+                <td>
             @if($i < sizeof($lenguajes))
-                <td>
                     {{$lenguajes[$i]}} <br>
-                </td>
             @endif
+                </td>
 
+                <td>
             @if($i < sizeof($cases))
-                <td>
                     {{$cases[$i]}} <br>
-                </td>
             @endif
+                </td>
 
+                <td>
             @if($i < sizeof($bds))
-                <td>
                     {{$bds[$i]}} <br>
-                </td>
             @endif
+                </td>
 
-            @if($i < sizeof($paqueterias))
                 <td>
+            @if($i < sizeof($paqueterias))
                     {{$paqueterias[$i]}} <br>
-                </td>
             @endif
+                </td>
             </tr>
             @endfor
         @endslot

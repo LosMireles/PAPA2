@@ -37,7 +37,7 @@ class AulaController extends Controller
   //----------------------------------------------------------------
   public function store(Request $request)
   {
-        //$request->validate($this->rules());
+        $request->validate($this->rules());
 
         if ($request->hasFile('Fotografias')) {
           foreach($request->Fotografias as $foto){
@@ -47,55 +47,16 @@ class AulaController extends Controller
 
         $aula = new Aula;
 
-        $aula->nombre     = $request->nombre;
-        $aula->superficie = $request->superficie;
-        $aula->capacidad  = $request->capacidad;
+        $aula->nombre            = $request->nombre;
+        $aula->superficie        = $request->superficie;
+        $aula->capacidad         = $request->capacidad;
 
-		if(isset($request->sillas_paleta) &&
-		$request->sillas_paleta == '1')
-		{
-			$aula->sillas_paleta = '1';
-		}
-		else
-		{
-			$aula->sillas_paleta = '0';
-		}
-		if(isset($request->mesas_trabajo) &&
-		$request->mesas_trabajo == '1')
-		{
-			$aula->mesas_trabajo = '1';
-		}
-		else
-		{
-			$aula->mesas_trabajo = '0';
-		}
-		if(isset($request->isotopica) &&
-		$request->isotopica == '1')
-		{
-			$aula->isotopica = '1';
-		}
-		else
-		{
-			$aula->isotopica = '0';
-		}
-		if(isset($request->estrado) &&
-		$request->estrado == '1')
-		{
-			$aula->estrado = '1';
-		}
-		else
-		{
-			$aula->estrado = '0';
-		}
-		if(isset($request->asesoria) &&
-		$request->asesoria == '1')
-		{
-			$aula->asesoria = '1';
-		}
-		else
-		{
-			$aula->asesoria = '0';
-		}
+        $aula->sillas_paleta     = $request->sillas_paleta;
+        $aula->mesas_trabajo     = $request->mesas_trabajo;
+        $aula->isotopica         = $request->isotopica;
+        $aula->estrado           = $request->estrado;
+        $aula->asesoria          = $request->asesoria;
+
 		$aula->pizarron          = $request->pizarron;
 		$aula->iluminacion       = $request->iluminacion;
 		$aula->aislamiento_ruido = $request->aislamiento_ruido;

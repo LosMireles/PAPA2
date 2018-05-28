@@ -23,14 +23,12 @@ class SoftwareController extends Controller {
 
     //----------------------------------------------------------------
     public function create(){
-        //$equipos = Equipo::all();
         //$asignaturas = Asignatura::all();
+
         return view('equipamiento.softwares.create')
             ->with([
-                    //'equipos'     => $equipos,
-                    //'asignaturas' => $asignaturas,
-                'clases'      => $this->clases,
-                'url_previous'=> url()->previous()
+                //'asignaturas' => $asignaturas,
+                'url_previous'      => url()->previous()
             ]);
 	}
 

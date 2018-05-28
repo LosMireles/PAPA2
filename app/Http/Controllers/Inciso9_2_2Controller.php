@@ -20,14 +20,18 @@ class Inciso9_2_2Controller extends Controller
         $lenguajes   = Software::where('clase', 'Lenguaje')     -> pluck('nombre');
         $cases       = Software::where('clase', 'Case')         -> pluck('nombre');
         $bds         = Software::where('clase', 'Manejador BD') -> pluck('nombre');
-        $paqueterias = Software::where('clase', 'Librerias')    -> pluck('nombre');
+        $paqueterias = Software::where('clase', 'Paqueteria')   -> pluck('nombre');
+        $otros = Software::where('clase', 'Otro')               -> pluck('nombre');
+
         return view('incisos/seccion9_2/9_2_2')
             ->with(['preguntas'    => $preguntas,
                      'id'          => $preguntas[0]->id,
                      'lenguajes'   => $lenguajes,
                      'cases'       => $cases,
                      'bds'         => $bds,
-                     'paqueterias' => $paqueterias]);
+                     'paqueterias' => $paqueterias,
+                     'otros'       => $otros
+                 ]);
     }
 
     /**

@@ -30,6 +30,18 @@
         @slot("valor_default", $software->version)
     @endcomponent
 
+    @component("layouts.select_input")
+        @slot("nombre_input", "clase")
+        @slot("tooltip_input", "Si el software es un lenguaje, una herramienta case, un manejador de bases de datos, paqueteria o algun otro")
+        @slot("label_input", "clase")
+        @slot("opciones")
+            @component('layouts.option_foreach_if')
+                @slot('conjunto_variables', $clases)
+                @slot('var', $software->clase)
+            @endcomponent
+        @endslot
+    @endcomponent
+
     @component("layouts.text_input")
         @slot("nombre_input", "disponibilidad")
         @slot("tooltip_input", "Como fue que se consiguio el software. Si se tiene licencia o si es libre")
