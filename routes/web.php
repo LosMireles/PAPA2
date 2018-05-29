@@ -104,6 +104,7 @@ Route::resources(
      'cursos'              => 'CursoController',
      'softwares'           => 'SoftwareController',
      'equipos'             => 'EquipoController',
+	 'equiposMini'         => 'EquipoMiniController',
      'asignaturas'         => 'AsignaturaController',
      'tecnicos_academicos' => 'TecnicoAcademicoController',
      'inciso_9_1_3'        => 'Inciso9_1_3Controller',
