@@ -28,7 +28,7 @@
         @slot("placeholder_input", "100")
         @slot("extra", "required")
     @endcomponent
-<!--
+
     <div class="form-group">
 		<h3 class="text-center">Evidencias: </h3>
     </div>
@@ -40,5 +40,4 @@
       <input type='file' class="form-control" name='Fotografias[]' id="Fotografias" multiple accept=".gif,.bmp,.jpg,.png, .jpeg"/>
 		</div>
   </div>
--->
 @endsection
