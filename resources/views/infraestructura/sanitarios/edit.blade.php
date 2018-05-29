@@ -17,7 +17,8 @@
 
 @section('formopen')
     {{Form::open(['action' => ['SanitarioController@update', $sanitario->nombre],
-                'class' => 'form-horizontal'])}}
+                'class' => 'form-horizontal',
+                'files' => true])}}
 @endsection
 
 @section('contenido_formulario')

@@ -55,6 +55,7 @@
 		@slot('cabeza_tabla')
 			<th>Nombre</th>
 			<th>Sexo</th>
+      <th></th>
 		@endslot
 
 		@slot('cuerpo_tabla')
@@ -72,6 +73,13 @@
 	                {{ Form::open(['action' => ['SanitarioController@destroy', $sanitario->nombre]]) }}
 	              @endslot
 	            @endcomponent
+
+              <!--Boton ver fotos-->
+              <td class="text-center">
+                  <a href="{{action('SanitarioController@viewImg', [ 'nombre' => $sanitario->nombre])}}" class="btn btn-warning">
+                      Fotografías
+                  </a>
+              </td>
 
 
 			</tr>
