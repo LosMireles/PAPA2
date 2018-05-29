@@ -212,6 +212,17 @@ class AulaController extends Controller
     }
 
     public function relacionar_equipos_post(Request $request, $id){
+        //desenlaza todos los equipos con el aula en cuestion y vuelve a
+        //enlazarlos si es necesario
+        $equipos = Equipo::where('aula_id', $id)->get();
+        if(!empty($equipos)){
+            foreach($equipos as $equipo){
+                $equipo->update([
+                    'aula_id' => null
+                ]);
+            }
+        }
+
         if($request->computos){
             foreach($request->computos as $serial){
                 $equipo = Equipo::where('serial', $serial)->update([
