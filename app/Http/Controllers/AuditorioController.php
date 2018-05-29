@@ -117,7 +117,7 @@ class AuditorioController extends Controller
     public function guardarImg(Request $request, $nombre){
       if ($request->hasFile('Fotografias')) {
         foreach($request->Fotografias as $foto){
-          $foto->storeAs('infraestructura/auditorios/' . $nombre.'/'. $foto->getClientOriginalName());
+          $foto->storeAs('infraestructura/auditorios/' . $nombre.'/', $foto->getClientOriginalName());
         }
       }
       return redirect('/auditorios/'. $nombre .'/viewImg')->with(['nombre' => $nombre]);

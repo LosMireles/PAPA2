@@ -21,9 +21,12 @@ class Inciso9_1_6Controller extends Controller
     $preguntas = Pregunta::where('inciso', '9.1.6')->get();
 	$aulas  = Aula::all();
 
-	return view('incisos/seccion9_1/9_1_6',['preguntas' => $preguntas,
-                                            'id'        => $preguntas[0]->id,
-											'aulas'		=> $aulas]);
+    return view('incisos/seccion9_1/9_1_6')
+        ->with([
+            'preguntas' => $preguntas,
+            'id'        => $preguntas[0]->id,
+            'aulas'     => $aulas
+        ]);
     }
 
     /**
@@ -81,19 +84,18 @@ class Inciso9_1_6Controller extends Controller
         // Volver a obtener los elementos del inciso 9.1.6
         $preguntas = Pregunta::where('inciso', '9.1.6')->get();
 
-        $arr[] = array_slice($request->all(), 2);
-
         $respuestas = array_slice($request->all(), 2);
         $estado = $request->terminado == "si" ? 1 : 0;
 
         for($i = 0; $i < sizeof($preguntas); $i++){
             $preguntas[$i]->update([
                 'respuesta' => $respuestas[$i],
-                'estado' => $estado
+                'estado'    => $estado
             ]);
         }
 
-        return redirect()->action('Inciso9_1_6Controller@index');
+        return redirect()->action('Inciso9_1_6Controller@index')
+            ->with('status', 'Respuestas guardadas');
     }
 
     /**
