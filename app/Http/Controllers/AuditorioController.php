@@ -29,14 +29,12 @@ class AuditorioController extends Controller
 
     //----------------------------------------------------------------
     public function store(Request $request){
-/*
-      $request->validate($this->rules());
+      #$request->validate($this->rules());
       if ($request->hasFile('Fotografias')) {
         foreach($request->Fotografias as $foto){
-          $foto->storeAs('infraestructura/auditorios/' . $request->Tipo, $foto->getClientOriginalName());
+          $foto->storeAs('infraestructura/auditorios/' . $request->nombre, $foto->getClientOriginalName());
         }
       }
-*/
 
 
         $auditorio = new Auditorio;
@@ -63,13 +61,13 @@ class AuditorioController extends Controller
 
     //----------------------------------------------------------------
     public function update(Request $request, $nombre) {
-/*
+
       if ($request->hasFile('Fotografias')) {
         foreach($request->Fotografias as $foto){
-          $foto->storeAs('infraestructura/auditorios/' . $request->Tipo, $foto->getClientOriginalName());
+          $foto->storeAs('infraestructura/auditorios/' . $nombre, $foto->getClientOriginalName());
         }
       }
-*/
+
         $request->validate($this->rules($nombre));
 
         $nombre_nuevo	= $request->nombre;
@@ -119,7 +117,7 @@ class AuditorioController extends Controller
     public function guardarImg(Request $request, $nombre){
       if ($request->hasFile('Fotografias')) {
         foreach($request->Fotografias as $foto){
-          $foto->storeAs('infraestructura/auditorios/' . $nombre, $foto->getClientOriginalName());
+          $foto->storeAs('infraestructura/auditorios/' . $nombre.'/'. $foto->getClientOriginalName());
         }
       }
       return redirect('/auditorios/'. $nombre .'/viewImg')->with(['nombre' => $nombre]);
