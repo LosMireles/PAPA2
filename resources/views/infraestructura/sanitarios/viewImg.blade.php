@@ -1,7 +1,8 @@
+<?php namespace App; ?>
 @extends('layouts.verImagenes')
 
 @section('title')
-	 editar sanitario <?php $nombre; ?>
+	 Fotografias sanitario <?php $nombre; ?>
 @endsection
 
 @section('descripcion')
@@ -27,7 +28,9 @@
 	<h1 class="text-center">Evidencias de sanitario <?php echo $nombre; ?></h1>
 
 	<?php
-    $dirname = 'storage/infraestructura/sanitarios/' . $nombre . '/';
+		$sanitario = Sanitario::where('nombre', $nombre)->first();
+		$id = $sanitario->id;
+    $dirname = 'storage/infraestructura/sanitarios/' . $id . '/';
     $images= glob($dirname . "*.{[jJ][pP][gG],[pP][nN][gG],[gG][iI][fF],[jJ][pP][eE][gG]}", GLOB_BRACE);
 	?>
 

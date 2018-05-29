@@ -56,7 +56,7 @@
 
               @component('layouts.boton_borrar')
                 @slot('controlador_borrar')
-                  {{Form::open(['action' => ['CubiculoController@destroy', $cubiculo->nombre]])}}
+                  {{Form::open(['action' => ['CubiculoMiniController@destroy', $cubiculo->nombre]])}}
                 @endslot
               @endcomponent
 
