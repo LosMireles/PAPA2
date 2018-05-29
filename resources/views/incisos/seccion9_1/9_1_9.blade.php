@@ -32,8 +32,9 @@
 
 
 @section('evidencias_tabla')
+  <h3 class="text-center">Listado de cubículos y su profesor asignado</h3>
   <div class="row text-right" style="margin: 2px;">
-    <a href="{{ action('CubiculoMiniController@create') }}" class="btn btn-success">Agregar</a>
+    <a href="{{ action('CubiculoMiniController@create') }}" class="btn btn-success">Agregar cubículo</a>
   </div>
   @component('layouts.componentes.tabla_incisos_agregar')
       @slot('cabeza_tabla')

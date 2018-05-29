@@ -50,6 +50,7 @@
 
 @section('evidencias_tabla')
 	<div class="row text-right" style="margin: 2px;">
+		<a href="{{ action('AulaController@create') }}" class="btn btn-success">Agregar aula</a>
     	<a href="{{ action('CursoController@create') }}" class="btn btn-success">Agregar</a>
   	</div>
 	@component('layouts.componentes.tabla_incisos_agregar')

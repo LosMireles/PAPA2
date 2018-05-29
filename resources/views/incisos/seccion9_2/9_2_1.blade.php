@@ -30,6 +30,7 @@
 
 <!-- ------------ LAS TABLAS QUE CORRESPONDAN------------- -->
 @section('tablas_inciso_general')
+    <h3 class="text-center">Listado relación curso-software</h3>
 	<div class="row text-right" style="margin: 2px;">
     	<a href="{{ action('CursoController@create') }}" class="btn btn-success">
     	    Agregar nuevo curso

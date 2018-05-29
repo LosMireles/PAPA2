@@ -32,14 +32,34 @@
     @endcomponent
 
 
-	@component("layouts.text_input")
-        @slot("nombre_input", "sexo")
-        @slot("tooltip_input", "Superficie en metros cuadrados que abarca el aula")
-        @slot("label_input", "Sexo")
-        @slot("placeholder_input", "Mujer")
-		@slot("valor_default", $sanitario->sexo)
-        @slot("extra", "required")
-    @endcomponent
+    <div class="form-group">
+        <label for="sexo" class="col-sm-4 control-label" data-toggle="tooltip" title="Sexo de los usuarios">
+            Sexo
+        </label>
+
+        <div class="col-sm-8">
+            <select class="form-control" name="sexo">
+                @if($sanitario->sexo == 'hombres')
+                  <option value="hombres" selected>Hombres</option>
+                  <option value="mujeres">Muejes</option>
+                  <option value="unisex">Unisex</option>
+                @elseif($sanitario->sexo == 'mujeres')
+                  <option value="hombres">Hombres</option>
+                  <option value="mujeres" selected>Mujeres</option>
+                  <option value="unisex">Unisex</option>
+                @elseif($sanitario->sexo == 'unisex')
+                  <option value="hombres">Hombres</option>
+                  <option value="mujeres">Muejes</option>
+                  <option value="unisex" selected>Unisex</option>
+                @else
+                  <option value="hombres">Hombres</option>
+                  <option value="mujeres">Muejes</option>
+                  <option value="unisex">Unisex</option>
+                @endif
+            </select>
+        </div>
+    </div>
+
 
 
     <div class="form-group">
