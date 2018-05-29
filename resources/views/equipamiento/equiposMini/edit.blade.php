@@ -1,7 +1,7 @@
 @extends('layouts.formulario_edit_general')
 
 @section('title' , "Editar equipo")
-@section("objeto_informacion", "un equipo")
+@section("objeto_informacion", "editar un equipo")
 
 @section('ruta_regresar')
     {{action('Inciso9_2_5Controller@index')}}

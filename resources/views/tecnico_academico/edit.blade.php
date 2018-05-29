@@ -1,7 +1,7 @@
 @extends('layouts.formulario_edit_general')
 
 @section('title' , "Editar técnico académico")
-@section("objeto_informacion", "un técnico académico")
+@section("objeto_informacion", "editar un técnico académico")
 
 @section('formopen')
     {{Form::open( array( 'action' => ['TecnicoAcademicoController@update', $tecnico->id], 'class' => 'form-horizontal',

@@ -31,11 +31,6 @@ class SanitarioController extends Controller
     public function store(Request $request)
     {
         $request->validate($this->rules());
-        if ($request->hasFile('Fotografias')) {
-          foreach($request->Fotografias as $foto){
-            $foto->storeAs('infraestructura/sanitarios/' . $request->nombre, $foto->getClientOriginalName());
-          }
-        }
 
         $sanitario = new Sanitario;
 
@@ -44,7 +39,15 @@ class SanitarioController extends Controller
 
         $sanitario->save();
 
-		echo "Elemento insertado exitosamente!";
+        $sanAux = Sanitario::where('nombre', $request->nombre)->first();
+        $id = $sanAux->id;
+        if ($request->hasFile('Fotografias')) {
+          foreach($request->Fotografias as $foto){
+            $foto->storeAs('infraestructura/sanitarios/' . $id, $foto->getClientOriginalName());
+          }
+        }
+
+		      echo "Elemento insertado exitosamente!";
 
         return redirect($request->url_previous)->with('status', 'Elemento agregado exitosamente');
 
@@ -66,9 +69,11 @@ class SanitarioController extends Controller
 	public function update(Request $request, $nombre) {
         $request->validate($this->rules($nombre));
 
+        $sanAux = Sanitario::where('nombre', $nombre)->first();
+        $id = $sanAux->id;
         if ($request->hasFile('Fotografias')) {
           foreach($request->Fotografias as $foto){
-            $foto->storeAs('infraestructura/sanitarios/' . $request->nombre, $foto->getClientOriginalName());
+            $foto->storeAs('infraestructura/sanitarios/' . $id, $foto->getClientOriginalName());
           }
         }
 
@@ -87,7 +92,9 @@ class SanitarioController extends Controller
 
 	//--------------------------------------------------------------
 	public function destroy($nombre){
-    Storage::deleteDirectory('infraestructura/sanitarios/'. $nombre . '/');
+    $sanAux = Sanitario::where('nombre', $nombre)->first();
+    $id = $sanAux->id;
+    Storage::deleteDirectory('infraestructura/sanitarios/'. $id . '/');
     $sanitario = Sanitario::where('nombre', $nombre)->first();
     if(!$sanitario){
         $mensaje = "No existe sanitario con nombre: ".$nombre;
@@ -116,17 +123,22 @@ class SanitarioController extends Controller
   }
 
   public function guardarImg(Request $request, $nombre){
+    $sanAux = Sanitario::where('nombre', $nombre)->first();
+    $id = $sanAux->id;
     if ($request->hasFile('Fotografias')) {
       foreach($request->Fotografias as $foto){
-        $foto->storeAs('infraestructura/sanitarios/' . $nombre, $foto->getClientOriginalName());
+        $foto->storeAs('infraestructura/sanitarios/' . $id, $foto->getClientOriginalName());
       }
     }
+
     return redirect('/sanitarios/'. $nombre .'/viewImg')->with(['nombre' => $nombre]);
   }
 
   public function borrarImg($nombre, $imagen)
   {
-    $dirImagen = 'infraestructura/sanitarios/' . $nombre . '/' . $imagen;
+    $sanAux = Sanitario::where('nombre', $nombre)->first();
+    $id = $sanAux->id;
+    $dirImagen = 'infraestructura/sanitarios/' . $id . '/' . $imagen;
     Storage::delete($dirImagen);
     return redirect('/sanitarios/'. $nombre .'/viewImg')->with(['nombre' => $nombre]);
   }

@@ -40,12 +40,6 @@ class AulaController extends Controller
   {
         $request->validate($this->rules());
 
-        if ($request->hasFile('Fotografias')) {
-          foreach($request->Fotografias as $foto){
-            $foto->storeAs('infraestructura/aulas/' . $request->nombre, $foto->getClientOriginalName());
-          }
-        }
-
         $aula = new Aula;
 
         $aula->nombre            = $request->nombre;
@@ -69,6 +63,14 @@ class AulaController extends Controller
 
         $aula->save();
 
+        $audAux = Aula::where('nombre', $request->nombre)->first();
+        $id = $audAux->id;
+        if ($request->hasFile('Fotografias')) {
+          foreach($request->Fotografias as $foto){
+            $foto->storeAs('infraestructura/aulas/' . $request->nombre, $foto->getClientOriginalName());
+          }
+        }
+
         #echo "Elemento insertado exitosamente!";
         return redirect($request->url_previous)
             ->with('status', 'Elemento agregado exitosamente');
@@ -91,9 +93,11 @@ class AulaController extends Controller
 	public function update(Request $request, $nombre) {
         //$request->validate($this->rules($nombre));
 
+        $audAux = Aula::where('nombre', $request->nombre)->first();
+        $id = $audAux->id;
         if ($request->hasFile('Fotografias')) {
           foreach($request->Fotografias as $foto){
-            $foto->storeAs('infraestructura/aulas/' . $request->nombre, $foto->getClientOriginalName());
+            $foto->storeAs('infraestructura/aulas/' . $id, $foto->getClientOriginalName());
           }
         }
 
@@ -180,9 +184,11 @@ class AulaController extends Controller
   }
 
   public function guardarImg(Request $request, $nombre){
+    $audAux = Aula::where('nombre', $nombre)->first();
+    $id = $audAux->id;
     if ($request->hasFile('Fotografias')) {
       foreach($request->Fotografias as $foto){
-        $foto->storeAs('infraestructura/aulas/' . $nombre, $foto->getClientOriginalName());
+        $foto->storeAs('infraestructura/aulas/' . $id, $foto->getClientOriginalName());
       }
     }
     return redirect('/aulas/'. $nombre .'/viewImg')->with(['nombre' => $nombre]);
@@ -190,7 +196,9 @@ class AulaController extends Controller
 
   public function borrarImg($nombre, $imagen)
   {
-    $dirImagen = 'infraestructura/aulas/' . $nombre . '/' . $imagen;
+    $audAux -> Aula::where('nombre', $nombre)->first();
+    $id = $audAux->id;
+    $dirImagen = 'infraestructura/aulas/' . $id . '/' . $imagen;
     Storage::delete($dirImagen);
     return redirect('/aulas/'. $nombre .'/viewImg')->with(['nombre' => $nombre]);
   }
@@ -243,4 +251,3 @@ class AulaController extends Controller
             ->with('status', 'Elemento agregado exitosamente');
     }
 }
-
