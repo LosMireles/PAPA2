@@ -13,7 +13,7 @@
 @endsection
 
 @section('metodo_envio_formulario')
-    <form class="form" action = "@yield('accion')" method="POST" enctype="multipart/form-data">
+    <form class="form-horizontal" action = "@yield('accion')" method="POST" enctype="multipart/form-data">
 @endsection
 
 @section('contenido_formulario')
