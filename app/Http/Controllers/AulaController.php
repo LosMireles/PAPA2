@@ -196,7 +196,7 @@ class AulaController extends Controller
 
   public function borrarImg($nombre, $imagen)
   {
-    $audAux -> Aula::where('nombre', $nombre)->first();
+    $audAux = Aula::where('nombre', $nombre)->first();
     $id = $audAux->id;
     $dirImagen = 'infraestructura/aulas/' . $id . '/' . $imagen;
     Storage::delete($dirImagen);

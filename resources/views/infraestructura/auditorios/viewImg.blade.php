@@ -34,7 +34,6 @@
 		$id = $auditorio->id;
     $dirname = 'storage/infraestructura/auditorios/' . $id . '/';
     $images= glob($dirname . "*.{[jJ][pP][gG],[pP][nN][gG],[gG][iI][fF],[jJ][pP][eE][gG]}", GLOB_BRACE);
-		echo "string";
 	?>
 
 	<head>

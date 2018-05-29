@@ -147,6 +147,7 @@ class CubiculoController extends Controller {
     $cubAux = Cubiculo::where('nombre', $nombre)->first();
     $id = $cubAux->id;
     $dirImagen = 'infraestructura/cubiculos/' . $id . '/' . $imagen;
+    Storage::delete($dirImagen);
     $dirImagen = 'infraestructura/cubiculosMini/' . $id . '/' . $imagen;
     Storage::delete($dirImagen);
     return redirect('/cubiculos/'. $nombre .'/viewImg')->with(['nombre' => $nombre]);
