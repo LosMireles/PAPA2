@@ -48,11 +48,6 @@ class CubiculoMiniController extends Controller
     {
         $request->validate($this->rules());
 
-        if ($request->hasFile('Fotografias')) {
-          foreach($request->Fotografias as $foto){
-            $foto->storeAs('infraestructura/cubiculosMini/' . $request->nombre, $foto->getClientOriginalName());
-          }
-        }
 
         $cubiculo = new Cubiculo;
 
@@ -61,6 +56,14 @@ class CubiculoMiniController extends Controller
 		$cubiculo->cantidad_equipo = '0';
 
         $cubiculo->save();
+
+        $cubAux = Cubiculo::where('nombre', $request->nombre)->first();
+        $id = $cubAux->id;
+        if ($request->hasFile('Fotografias')) {
+          foreach($request->Fotografias as $foto){
+            $foto->storeAs('infraestructura/cubiculosMini/' . $id, $foto->getClientOriginalName());
+          }
+        }
 
         echo "Elemento insertado exitosamente!";
         return redirect($request->url_previous)
@@ -105,9 +108,11 @@ class CubiculoMiniController extends Controller
     public function update(Request $request,$nombre) {
         $request->validate($this->rules($nombre));
 
+        $cubAux = Cubiculo::where('nombre', $request->nombre)->first();
+        $id = $cubAux->id;
         if ($request->hasFile('Fotografias')) {
           foreach($request->Fotografias as $foto){
-            $foto->storeAs('infraestructura/cubiculosMini/' . $request->nombre, $foto->getClientOriginalName());
+            $foto->storeAs('infraestructura/cubiculosMini/' . $id, $foto->getClientOriginalName());
           }
         }
 
@@ -132,7 +137,9 @@ class CubiculoMiniController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy(Request $request, $nombre){
-        Storage::deleteDirectory('infraestructura/cubiculosMini/'. $nombre . '/');
+      $cubiculo = Cubiculo::where('nombre', $nombre)->first();
+      Storage::deleteDirectory('infraestructura/cubiculosMini/'. $cubiculo->id . '/');
+      Storage::deleteDirectory('infraestructura/cubiculos/'. $cubiculo->id . '/');
         $cubiculo = Cubiculo::where('nombre', $nombre)->first();
         if(!$cubiculo){
             $mensaje = "No existe cubiculo con nombre: ".$nombre;
@@ -160,9 +167,11 @@ class CubiculoMiniController extends Controller
   }
 
   public function guardarImg(Request $request, $nombre){
+    $cubAux = Cubiculo::where('nombre', $nombre)->first();
+    $id = $cubAux->id;
     if ($request->hasFile('Fotografias')) {
       foreach($request->Fotografias as $foto){
-        $foto->storeAs('infraestructura/cubiculosMini/' . $nombre, $foto->getClientOriginalName());
+        $foto->storeAs('infraestructura/cubiculosMini/' . $id, $foto->getClientOriginalName());
       }
     }
     return redirect('/cubiculosMini/'. $nombre .'/viewImg')->with(['nombre' => $nombre]);
@@ -170,7 +179,9 @@ class CubiculoMiniController extends Controller
 
   public function borrarImg($nombre, $imagen)
   {
-    $dirImagen = 'infraestructura/cubiculosMini/' . $nombre . '/' . $imagen;
+    $cubAux = Cubiculo::where('nombre', $nombre)->first();
+    $id = $cubAux->id;
+    $dirImagen = 'infraestructura/cubiculosMini/' . $id . '/' . $imagen;
     Storage::delete($dirImagen);
     return redirect('/cubiculosMini/'. $nombre .'/viewImg')->with(['nombre' => $nombre]);
   }
