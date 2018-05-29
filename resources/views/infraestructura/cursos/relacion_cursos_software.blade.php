@@ -15,15 +15,26 @@
 			<th>Cursos disponibles</th>
 		</thead>
 			<tr>
+				<!-- Obtener las id de los cursos en los que es usado el software -->
+				<?php 
+					$temp = array(); 
+				?>
+				@foreach($software->cursos as $curso)
+					<?php 
+						$temp[] = $curso->pivot->curso_id 
+					?>
+				@endforeach
+				
 				<td>{{$software->nombre}}</td>
 
 				<td>
 					@foreach($cursos as $curso)
-						@if(in_array($curso, (array) $software->cursos))
+						<!-- Si el curso_id esta en los cursos donde el software es usado es checked -->
+						@if(in_array($curso->id, $temp))
 							<input type="checkbox" name="cursos[]" value="{{$curso->id}}" checked> {{$curso->nombre}} <br>
 						@else
 							<input type="checkbox" name="cursos[]" value="{{$curso->id}}"> {{$curso->nombre}} <br>
-						@endif
+						@endif		
 					@endforeach
 				</td>
 			</tr>
