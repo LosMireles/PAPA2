@@ -46,6 +46,7 @@
         @slot('cabeza_tabla')
             <th>Curso</th>
             <th>Nombre software</th>
+			<th>Version</th>
             <th>Disponibilidad software</th>
             <th></th>
         @endslot
@@ -61,6 +62,7 @@
                     @endif
                 </td>
                 <td>{{$software->nombre}}</td>
+				<td>{{$software->version}}</td>
                 <td>{{$software->disponibilidad}}</td>
 
                 @component('layouts.boton_editar')

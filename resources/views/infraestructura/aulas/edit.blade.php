@@ -9,7 +9,8 @@
 
 @section('formopen')
     {{Form::open(['action' => ['AulaController@update', $aula->nombre],
-                'class' => 'form-horizontal'])}}
+                'class' => 'form-horizontal',
+                'files' => true])}}
 @endsection
 
 @section('contenido_formulario')

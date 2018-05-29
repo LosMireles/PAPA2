@@ -34,7 +34,42 @@
 @endsection
 
 <!-- ------------ LAS TABLAS QUE CORRESPONDAN------------- -->
+@section('tablas_inciso_general')
+    <div class="row text-right" style="margin: 2px;">
+    	 <a href="{{ action('EquipoMiniController@create') }}" class="btn btn-success">Agregar</a>
+    </div>
+    @component('layouts.componentes.tabla_incisos_agregar')
+        <h4>Tabla de equipos de redes</h4>
+        @slot('cabeza_tabla')
+            <th>Serial equipo</th>
+            <th>Sistema Operativo</th>
+			<th>Marca</th>
+            <th></th>
+        @endslot
 
+        @slot('cuerpo_tabla')
+            @foreach($equipos as $equipo)
+            <tr>
+                <td>{{$equipo->serial}}</td>
+                <td>{{$equipo->sistema_operativo}}</td>
+				<td>{{$equipo->marca}}</td>
+
+                @component('layouts.boton_editar')
+                    @slot('controlador_editar')
+                        {{ Form::open(['action' => ['EquipoMiniController@edit', $equipo->serial]]) }}
+                    @endslot
+                @endcomponent
+
+                @component('layouts.boton_borrar')
+                    @slot('controlador_borrar')
+                        {{ Form::open(['action' => ['EquipoMiniController@destroy', $equipo->serial]]) }}
+                    @endslot
+                @endcomponent                  
+            </tr>
+            @endforeach
+        @endslot
+    @endcomponent
+@endsection
 <!-- ------------ SECCION DE FOTOGRAFIAS, EVIDENCIAS, ETC------------- -->
 
 @section('boton_guardar')
