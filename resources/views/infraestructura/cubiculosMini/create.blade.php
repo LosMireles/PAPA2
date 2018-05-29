@@ -8,15 +8,6 @@
 @endsection
 
 @section('contenido_formulario')
-	
-	@component("layouts.text_input")
-        @slot("nombre_input", "profesor")
-        @slot("tooltip_input", "Profesor asignado al cubiculo")
-        @slot("label_input", "Profesor")
-        @slot("placeholder_input", "Julio Waissman Villanova")
-		@slot("extra", "required")
-    @endcomponent
-    
 	@component("layouts.text_input")
         @slot("nombre_input", "nombre")
         @slot("tooltip_input", "Nombre escrito en las puertas de los cubiculos")
@@ -24,7 +15,15 @@
         @slot("placeholder_input", "Cubiculo 1 3K-4")
         @slot("extra", "required")
     @endcomponent
-	
+
+	@component("layouts.text_input")
+        @slot("nombre_input", "profesor")
+        @slot("tooltip_input", "Profesor asignado al cubiculo")
+        @slot("label_input", "Profesor")
+        @slot("placeholder_input", "Julio Waissman Villanova")
+		@slot("extra", "required")
+    @endcomponent
+
 	<div class="form-group">
 		<h3 class="text-center">Evidencias: </h3>
 	</div>

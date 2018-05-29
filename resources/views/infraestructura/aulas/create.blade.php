@@ -17,22 +17,22 @@
     @endcomponent
 
     @component("layouts.text_input")
+        @slot("tipo", "number")
         @slot("nombre_input", "superficie")
         @slot("tooltip_input", "Superficie en metros cuadrados que abarca el aula")
         @slot("label_input", "Superficie")
         @slot("placeholder_input", "100")
-        @slot("extra", "min=0")
+        @slot("extra", "step=0.1 min=0")
     @endcomponent
 
     @component("layouts.text_input")
         @slot("tipo", "number")
         @slot("nombre_input", "capacidad")
-        @slot("tooltip_input", "Capacidad máxima del aula")
-        @slot("label_input", "Capacidad máxima de personas")
+        @slot("tooltip_input", "Capacidad máxima de personas que caben en el aula")
+        @slot("label_input", "Capacidad")
         @slot("placeholder_input", "10")
         @slot("extra", "min=0")
     @endcomponent
-
 
 	<div class="form-group">
 		<h3 class="text-center">En una escala del 1 al 4 (1 es peor, 4 es mejor), califique la calidad de:</h3>
@@ -42,7 +42,6 @@
         @slot("nombre_input", "pizarron")
         @slot("tooltip_input", "Calidad en la que se encuentra el pizarrón")
         @slot("label_input", "Pizarrón")
-        @slot("extra", "required")
         @slot('opciones')
             @foreach($calificaciones as $numero)
                 <option value="{{$numero}}">
@@ -52,12 +51,10 @@
         @endslot
     @endcomponent
 
-
     @component("layouts.select_input")
         @slot("nombre_input", "iluminacion")
         @slot("tooltip_input", "Calidad de la Illuminación en el aula")
         @slot("label_input", "Iluminación")
-        @slot("extra", "required")
         @slot('opciones')
             @foreach($calificaciones as $numero)
                 <option value="{{$numero}}">
@@ -70,8 +67,7 @@
     @component("layouts.select_input")
         @slot("nombre_input", "aislamiento_ruido")
         @slot("tooltip_input", "Que tan aislado está del ruido anterior")
-        @slot("label_input", "Aislamiento al ruido")
-        @slot("extra", "required")
+        @slot("label_input", "Aislamiento ruido")
         @slot('opciones')
             @foreach($calificaciones as $numero)
                 <option value="{{$numero}}">
@@ -80,14 +76,11 @@
             @endforeach
         @endslot
     @endcomponent
-
-
 
     @component("layouts.select_input")
         @slot("nombre_input", "ventilacion")
         @slot("tooltip_input", "Califique la ventilación en el aula")
         @slot("label_input", "Ventilación")
-        @slot("extra", "required")
         @slot('opciones')
             @foreach($calificaciones as $numero)
                 <option value="{{$numero}}">
@@ -97,12 +90,10 @@
         @endslot
     @endcomponent
 
-
     @component("layouts.select_input")
         @slot("nombre_input", "temperatura")
         @slot("tooltip_input", "Califique la calidad de la temperatura en el aula")
         @slot("label_input", "Temperatura")
-        @slot("extra", "required")
         @slot('opciones')
             @foreach($calificaciones as $numero)
                 <option value="{{$numero}}">
@@ -118,7 +109,6 @@
         @slot("nombre_input", "espacio")
         @slot("tooltip_input", "Califique el espacio en el aula")
         @slot("label_input", "Espacio")
-        @slot("extra", "required")
         @slot('opciones')
             @foreach($calificaciones as $numero)
                 <option value="{{$numero}}">
@@ -134,7 +124,6 @@
         @slot("nombre_input", "mobilario")
         @slot("tooltip_input", "Califique la calidad del mobiliario en el aula")
         @slot("label_input", "Mobiliario")
-        @slot("extra", "required")
         @slot('opciones')
             @foreach($calificaciones as $numero)
                 <option value="{{$numero}}">
@@ -150,7 +139,6 @@
         @slot("nombre_input", "conexiones")
         @slot("tooltip_input", "Califique la calidad de las conexiones de todo tipo en el aula")
         @slot("label_input", "Conexiones")
-        @slot("extra", "required")
         @slot('opciones')
             @foreach($calificaciones as $numero)
                 <option value="{{$numero}}">
@@ -188,13 +176,6 @@
         @slot("label_input", "Estrado")
     @endcomponent
 
-	@component("layouts.checkbox_input")
-        @slot("nombre_input", "asesoria")
-        @slot("tooltip_input", "Elevación para el profesor")
-        @slot("label_input", "Asesoria")
-    @endcomponent
-
-
 	<div class="form-group">
 		<h3 class="text-center">Evidencias: </h3>
 	</div>
@@ -207,3 +188,4 @@
 		</div>
 	</div>
 @endsection
+
