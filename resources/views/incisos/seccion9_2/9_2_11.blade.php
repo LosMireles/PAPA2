@@ -36,14 +36,15 @@
 
 <!-- ------------ LAS TABLAS QUE CORRESPONDAN------------- -->
 @section('tablas_inciso_general')
+    <h3 class="text-center">Cantidad de equipo en los cubículos de maestros</h3>
     <div class="row text-right" style="margin: 2px;">
-    	 <a href="{{ action('CubiculoController@create') }}" class="btn btn-success">Agregar</a>
+    	 <a href="{{ action('CubiculoController@create') }}" class="btn btn-success">Agregar cubículo</a>
     </div>
     @component('layouts.componentes.tabla_incisos_agregar')
 
         <h4>Tabla de equipos de redes</h4>
         @slot('cabeza_tabla')
-            <th>Cubiculo</th>
+            <th>Cubículo</th>
             <th>Profesor</th>
             <th>Cantidad equipo</th>
             <th></th>

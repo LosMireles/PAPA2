@@ -1,7 +1,7 @@
 @extends('layouts.formulario_edit_general')
 
 @section('title' , "Agregar cubiculo")
-@section("objeto_informacion", "un cubiculo")
+@section("objeto_informacion", "editar $cubiculo->nombre")
 
 @section('ruta_regresar')
     {{action('CubiculoMiniController@index')}}

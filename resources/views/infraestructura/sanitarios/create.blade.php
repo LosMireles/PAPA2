@@ -1,7 +1,7 @@
 @extends('layouts.formulario_create_general')
 
 @section('title' , "Agregar Sanitario")
-@section("objeto_informacion", "un sanitario")
+@section("objeto_informacion", "agregar un sanitario")
 
 @section('ruta_regresar')
     {{action('Inciso9_1_13Controller@index')}}
@@ -20,13 +20,19 @@
         @slot("extra", "required")
     @endcomponent
 
-    @component("layouts.text_input")
-        @slot("nombre_input", "sexo")
-        @slot("tooltip_input", "Sexo de los usuarios")
-        @slot("label_input", "Sexo")
-        @slot("placeholder_input", "Hombres")
-        @slot("extra", "required")
-    @endcomponent
+    <div class="form-group">
+        <label for="sexo" class="col-sm-4 control-label" data-toggle="tooltip" title="Sexo de los usuarios">
+            Sexo
+        </label>
+
+        <div class="col-sm-8">
+            <select class="form-control" name="sexo">
+                <option value="hombres">Hombres</option>
+                <option value="mujeres">Muejes</option>
+                <option value="unisex">Unisex</option>
+            </select>
+        </div>
+    </div>
 
   <div class="form-group">
 		<h3 class="text-center">Evidencias: </h3>

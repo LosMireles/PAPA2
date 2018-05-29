@@ -55,8 +55,9 @@
 <!-- ------------ LAS TABLAS QUE CORRESPONDAN------------- -->
 
 @section('tablas_inciso_general')
-	<div class="row text-right" style="margin: 2px;">
-    	<a href="{{ action('AulaController@create') }}" class="btn btn-success">Agregar</a>
+	<h3 class="text-center">Listado de aulas y sus características</h3>
+  <div class="row text-right" style="margin: 2px;">
+    	<a href="{{ action('AulaController@create') }}" class="btn btn-success">Agregar aula</a>
   	</div>
 
 	@component('layouts.componentes.tabla_incisos_agregar')
