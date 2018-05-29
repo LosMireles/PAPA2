@@ -56,7 +56,7 @@
 	  		<a href="#1" role="tab" data-toggle="tab">Criterios de evaluación: captura y modificación de información</a>
 	  	</li>
 	  	<li>
-	  		<a href="#2" role="tab" data-toggle="tab">Generación de informe</a>
+	  		<a href="#2" role="tab" data-toggle="tab">Reporte</a>
 	  	</li>
 	  	<li>
 	  		<a href="#3" role="tab" data-toggle="tab">Ayuda</a>
@@ -72,7 +72,7 @@
 	  	<div class="tab-pane" id="2">
 	  		
 	  		<div class="row text-right">
-	  			<a href="#" class="btn btn-danger" style="margin: 15px;">Generar informe</a>
+	  			<a href="#" class="btn btn-danger" style="margin: 15px;">Generar reporte</a>
 	  		</div>
 	  		
 	  		@component('layouts.componentes_inicio.formulario_salida')
