@@ -1,7 +1,7 @@
 @extends('layouts.formulario_create_general')
 
 @section('title' , "Agregar equipo")
-@section("objeto_informacion", "un equipo")
+@section("objeto_informacion", "agregar un equipo")
 
 @section('ruta_regresar')
     {{action('Inciso9_2_5Controller@index')}}

@@ -77,17 +77,16 @@
                     Capacidad: <br>
                     Pizarron: <br>
                     Iluminacion: <br>
-                    Aislamiento_ruido: <br>
+                    Aislamiento ruido: <br>
                     Ventilacion: <br>
                     Temperatura: <br>
                     Espacio: <br>
                     Mobilario: <br>
                     Conexiones: <br>
-                    Sillas_paleta: <br>
-                    Mesas_trabajo: <br>
+                    Sillas paleta: <br>
+                    Mesas trabajo: <br>
                     Isotopica: <br>
-                    Estrado: <br>
-                    Asesoria:
+                    Estrado:
                 </td>
 
                 <td>
@@ -129,14 +128,8 @@
                     @else
                         No
                     @endif
-                        hay <br>
+                        hay
 
-                    @if($aula->asesoria)
-                        Si
-                    @else
-                        No
-                    @endif
-                        hay <br>
                 </td>
 
                 <td>

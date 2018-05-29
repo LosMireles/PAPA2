@@ -1,7 +1,7 @@
 @extends('layouts.formulario_create_general')
 
 @section('title' , "Formulario 9.1.7")
-@section("objeto_informacion", "un curso")
+@section("objeto_informacion", "agregar un curso")
 
 @section('ruta_regresar')
     {{action('Inciso9_1_7Controller@index')}}
