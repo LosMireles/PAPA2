@@ -63,6 +63,7 @@
 		@slot('cabeza_tabla')
 		    <th>Titulo</th>
 		    <th>Respuesta</th>
+        <th></th>
 		@endslot
 
 		@slot('cuerpo_tabla')
@@ -146,6 +147,13 @@
                         {{Form::open(['action' => ['AulaController@destroy', $aula->nombre]])}}
                     @endslot
                 @endcomponent
+
+                <!--Boton ver fotos-->
+                <td class="text-center">
+                    <a href="{{action('AulaController@viewImg', [ 'nombre' => $aula->nombre])}}" class="btn btn-warning">
+                        Fotografías
+                    </a>
+                </td>
 
 			</tr>
 			@endforeach
