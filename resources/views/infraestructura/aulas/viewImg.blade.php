@@ -5,7 +5,7 @@
 @endsection
 
 @section('descripcion')
-    <a href="{{url()->previous()}}" class="btn btn-primary">
+    <a href="\inciso_9_1_6" class="btn btn-primary">
         Regresar
     </a>
 
