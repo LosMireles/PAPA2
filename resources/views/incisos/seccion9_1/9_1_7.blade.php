@@ -49,9 +49,10 @@
 @endsection
 
 @section('evidencias_tabla')
+	<h3 class="text-center">Listado de cursos impartidos</h3>
 	<div class="row text-right" style="margin: 2px;">
 		<a href="{{ action('AulaController@create') }}" class="btn btn-success">Agregar aula</a>
-    	<a href="{{ action('CursoController@create') }}" class="btn btn-success">Agregar</a>
+    	<a href="{{ action('CursoController@create') }}" class="btn btn-success">Agregar curso</a>
   	</div>
 	@component('layouts.componentes.tabla_incisos_agregar')
 
