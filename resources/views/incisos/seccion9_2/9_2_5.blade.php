@@ -15,6 +15,9 @@
                   'class'  => 'form'])}}
 @endsection
 
+@php
+    $variable = "inciso_9_2_5";
+@endphp
 <!-- ------------ LAS PREGUNTAS Y SUS RESPUESTAS------------- -->
 
 @section('contenido_formulario')
@@ -37,7 +40,7 @@
 @section('tablas_inciso_general')
     <h3 class="text-center">Listado de plataformas</h3>
     <div class="row text-right" style="margin: 2px;">
-    	 <a href="{{ action('EquipoMiniController@create') }}" class="btn btn-success">Agregar plataforma</a>
+    	 <a href="{{ action('EquipoMiniController@create', $variable) }}" class="btn btn-success">Agregar plataforma</a>
     </div>
     @component('layouts.componentes.tabla_incisos_agregar')
         <h4>Tabla de equipos de redes</h4>
@@ -57,15 +60,15 @@
 
                 @component('layouts.boton_editar')
                     @slot('controlador_editar')
-                        {{ Form::open(['action' => ['EquipoMiniController@edit', $equipo->serial]]) }}
+                        {{ Form::open(['action' => ['EquipoMiniController@edit', $equipo->serial, $variable]]) }}
                     @endslot
                 @endcomponent
 
                 @component('layouts.boton_borrar')
                     @slot('controlador_borrar')
-                        {{ Form::open(['action' => ['EquipoMiniController@destroy', $equipo->serial]]) }}
+                        {{ Form::open(['action' => ['EquipoMiniController@destroy', $equipo->serial, $variable]]) }}
                     @endslot
-                @endcomponent                  
+                @endcomponent
             </tr>
             @endforeach
         @endslot
@@ -90,3 +93,4 @@
         {{ Form::close() }}
     </div>
 @endsection
+

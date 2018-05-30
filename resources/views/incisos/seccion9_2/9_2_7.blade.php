@@ -14,7 +14,10 @@
     {{Form::open(['action' => ['Inciso9_2_7Controller@update', $id]])}}
 @endsection
 
-<!-------------- LAS PREGUNTAS Y SUS RESPUESTAS--------------->
+@php
+    $variable = "inciso_9_2_7";
+@endphp
+<!-- ------------ LAS PREGUNTAS Y SUS RESPUESTAS------------- -->
 
 @section('contenido_formulario')
 
@@ -101,7 +104,7 @@
 @section('tablas_inciso_general')
     <h3 class="text-center">Listado de equipos soportado por la red</h3>
     <div class="row text-right" style="margin: 2px;">
-    	 <a href="{{ action('EquipoController@create') }}" class="btn btn-success">Agregar equipo</a>
+    	 <a href="{{ action('EquipoController@create', $variable) }}" class="btn btn-success">Agregar equipo</a>
     </div>
     @component('layouts.componentes.tabla_incisos_agregar')
         <h4>Tabla de equipos de redes</h4>
@@ -125,20 +128,20 @@
 
                 @component('layouts.boton_editar')
                     @slot('controlador_editar')
-                        {{ Form::open(['action' => ['EquipoController@edit', $equipo->serial]]) }}
+                        {{ Form::open(['action' => ['EquipoController@edit', $equipo->serial, $variable]]) }}
                     @endslot
                 @endcomponent
 
                 @component('layouts.boton_borrar')
                     @slot('controlador_borrar')
-                        {{ Form::open(['action' => ['EquipoController@destroy', $equipo->serial]]) }}
+                        {{ Form::open(['action' => ['EquipoController@destroy', $equipo->serial, $variable]]) }}
                     @endslot
                 @endcomponent
 
                 <td>
                   <a href="{{action('EquipoController@crear_igual', $equipo->serial)}}" class="btn btn-success">Agregar igual</a>
                 </td>
-                  
+
             </tr>
             @endforeach
         @endslot

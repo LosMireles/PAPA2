@@ -25,12 +25,15 @@
 	@endforeach
 @endsection
 
+@php
+    $variable = "inciso_9_1_2";
+@endphp
 <!-- ------------ LAS TABLAS QUE CORRESPONDAN------------- -->
 
 @section('tablas_inciso_general')
     <h3 class="text-center">Listado de software</h3>
 	<div class="row text-right" style="margin: 2px;">
-    	<a href="{{ action('SoftwareController@create') }}" class="btn btn-success">Agregar software</a>
+    	<a href="{{ action('SoftwareController@create', $variable) }}" class="btn btn-success">Agregar software</a>
   	</div>
 
     @component('layouts.componentes.tabla_incisos_agregar')

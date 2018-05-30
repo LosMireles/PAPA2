@@ -45,7 +45,7 @@
     	    Agregar nueva aula
     	</a>
 
-    	<a href="{{ action('EquipoController@create') }}" class="btn btn-success">
+    	<a href="{{ action('EquipoController@create', $variable) }}" class="btn btn-success">
     	    Agregar nuevo equipo
     	</a>
 
