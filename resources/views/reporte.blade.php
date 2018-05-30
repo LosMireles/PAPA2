@@ -494,6 +494,7 @@
     </div>
 
     @component('layouts.componentes.tabla_incisos')
+	@slot('fotos')
           <style type='text/css'>
             .img_div {
               float: left;
@@ -554,30 +555,6 @@
       @endslot
     @endcomponent
   <!-- ************************** FINAL 9.1.10 ************************** -->
-	<!-- ************************** INICIO 9.1.11 ************************* -->
-	<h3 class="text-justify">Inciso 9.1.11: El programa debe disponer de auditorios
-   	y/o salas debidamente acondicionadas para actividades académicas, investigación,
-  	y de preservación y difusión de la cultura</h3>
-
-	@foreach($preguntas_9_1_11 as $pregunta_9_1_11)
-		<div class="form-group">
-			<label for="{{$pregunta->id}}" class="control-label">
-			    {{$pregunta->titulo}}
-			</label>
-
-			<div>
-                <textarea class="form-control" id="{{$pregunta->id}}" name="{{$pregunta->id}}"value="{{$pregunta->respuesta}}">{{$pregunta->respuesta}}</textarea>
-			</div>
-		</div>
-	@endforeach
-
-	@component('layouts.componentes.tabla_incisos_agregar')
-		@slot('cabeza_tabla')
-		  <tr>
-		    <td>Nombre</td>
-		    <td>Capacidad</td>
-		</tr>
-		@endslot
   <!-- ************************** INICIO 9.1.11 ************************* -->
   <h3 class="text-justify">Inciso 9.1.11: El programa debe disponer de auditorios
   y/o salas debidamente acondicionadas para actividades académicas, investigación,
