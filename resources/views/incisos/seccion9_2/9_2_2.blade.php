@@ -79,6 +79,9 @@
             @endfor
         @endslot
     @endcomponent
+    @if(count($lenguajes) == 0 && count($cases) == 0 && count($bds) == 0 && count($paqueterias) == 0)
+      <h2 class="text-center">No hay registros en la base de datos</h2>
+    @endif
 @endsection
 
 <!-- ------------ SECCION DE FOTOGRAFIAS, EVIDENCIAS, ETC------------- -->

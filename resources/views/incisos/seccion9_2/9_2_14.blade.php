@@ -117,4 +117,7 @@
         @endforeach
       @endslot
     @endcomponent
+    @if(count($tecnicos) == 0)
+      <h2 class="text-center">No hay registros en la base de datos</h2>
+    @endif
 @endsection
