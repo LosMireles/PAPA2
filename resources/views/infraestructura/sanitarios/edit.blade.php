@@ -11,8 +11,12 @@
 	<h1 class="text-center">Edición del sanitario {{$sanitario->nombre}}</h1>
 @endsection
 
+@section('accion')
+    action = "{{action('SanitarioController@update', $sanitario->nombre, $url_regreso)}}"
+@endsection
+
 @section('formopen')
-    {{Form::open(['action' => ['SanitarioController@update', $sanitario->nombre, $url_regreso],
+    {{Form::open(['action' => ['SanitarioController@update', $sanitario->nombre],
                 'class' => 'form-horizontal',
                 'files' => true])}}
 @endsection

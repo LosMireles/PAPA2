@@ -73,4 +73,3 @@
         @endslot
     @endcomponent
 @endsection
-

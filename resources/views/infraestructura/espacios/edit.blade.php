@@ -12,7 +12,7 @@
 @endsection
 
 @section('accion')
-    action = "{{action('EspacioController@update', $espacio->tipo)}}"
+    action = "{{action('EspacioController@update', $espacio->tipo, $url_regreso)}}"
 @endsection
 
 @section('formopen')
@@ -80,4 +80,3 @@
 	</div>
 
 @endsection
-
