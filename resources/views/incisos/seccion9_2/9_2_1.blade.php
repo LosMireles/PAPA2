@@ -87,7 +87,7 @@
                 @endcomponent
 
                 <td>
-                    <a href="{{action('CursoController@relacionar_cursos_software', $curso->id, $variable)}}" class="btn btn-primary">
+                    <a href="{{action('CursoController@relacionar_cursos_software', [$curso->id, $variable])}}" class="btn btn-primary">
                         Vicular software
                     </a>
                 </td>
