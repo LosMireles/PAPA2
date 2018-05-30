@@ -8,7 +8,7 @@
 @endsection
 
 @section('accion')
-    {{action('SanitarioController@store')}}
+    {{action('SanitarioController@store', $url_regreso)}}
 @endsection
 
 @section('contenido_formulario')
@@ -46,6 +46,3 @@
 		</div>
 	</div>
 @endsection
-
-
-

@@ -8,7 +8,7 @@
 @endsection
 
 @section('accion')
-    {{action('CursoController@store')}}
+    {{action('CursoController@store', $url_regreso)}}
 @endsection
 
 
@@ -43,8 +43,8 @@
         @slot("label_input", "Pertenecientes a LCC")
         @slot("placeholder_input", "1")
         @slot("extra", "required")
-    @endcomponent	
-	
+    @endcomponent
+
 	@component("layouts.select_input")
         @slot("nombre_input", "departamento")
         @slot("tooltip_input", "Que lo imparte")
@@ -58,7 +58,7 @@
             @endforeach
         @endslot
     @endcomponent
-	
+
 	@component("layouts.select_input")
         @slot("nombre_input", "donde")
         @slot("tooltip_input", "Donde se da")
@@ -73,4 +73,3 @@
         @endslot
     @endcomponent
 @endsection
-

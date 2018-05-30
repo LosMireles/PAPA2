@@ -139,3 +139,4 @@ class EquipoController extends Controller
                ];
     }
 }
+

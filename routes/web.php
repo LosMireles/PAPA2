@@ -51,8 +51,8 @@ Route::post('/sanitarios/{tipo}/guardarImg', 'SanitarioController@guardarImg');
 Route::get('/equipos/crear_igual/{id}', 'EquipoController@crear_igual');
 
 // Ruta para la relacion de cursos software
-Route::get('/cursos/relacionar_cursos_software/{id}', 'CursoController@relacionar_cursos_software');
-Route::post('/cursos/crear_relacion/{id}', 'CursoController@crear_relacion');
+Route::get('/cursos/relacionar_cursos_software/{id}/{inciso?}', 'CursoController@relacionar_cursos_software');
+Route::post('/cursos/crear_relacion/{id}/{inciso?}', 'CursoController@crear_relacion');
 
 // Rutas para borrar imagenes de infraestructura
 // Aulas
@@ -153,15 +153,65 @@ Route::get('cubiculosMini/{cubiculoMini}/edit/{inciso?}', 'CubiculoMiniControlle
 Route::patch('cubiculosMini/{cubiculoMini}/{inciso?}', 'CubiculoMiniController@update');
 //delete
 Route::delete('cubiculosMini/{cubiculoMini}/{inciso?}', 'CubiculoMiniController@destroy');
+
+//Auditorios arreglar
+//create, store
+Route::get('auditorios/create/{inciso?}', 'AuditorioController@create');
+Route::post('auditorios/{inciso?}', 'AuditorioController@store');
+//edit, update
+Route::get('auditorios/{auditorio}/edit/{inciso?}', 'AuditorioController@edit');
+Route::patch('auditorios/{auditorio}/{inciso?}', 'AuditorioController@update');
+//delete
+Route::delete('auditorios/{auditorio}/{inciso?}', 'AuditorioController@destroy');
      //'aulas'               => 'AulaController',
      //'cubiculos'           => 'CubiculoController',
 	 //'cubiculosMini'       => 'CubiculoMiniController',
-     //'asesorias'           => 'AsesoriaController',
      //'sanitarios'          => 'SanitarioController',
      //'auditorios'          => 'AuditorioController',
+
      //'cursos'              => 'CursoController',
-     //'softwares'           => 'SoftwareController',
+
+Route::get('cursos/create/{inciso?}', 'CursoController@create');
+Route::post('cursos/{inciso?}', 'CursoController@store');
+//edit, update
+Route::get('cursos/{curso}/edit/{inciso?}', 'CursoController@edit');
+Route::patch('cursos/{curso}/{inciso?}', 'CursoController@update');
+//delete
+Route::delete('cursos/{curso}/{inciso?}', 'CursoController@destroy');
+
+ //'softwares'           => 'SoftwareController',
+Route::get('softwares/create/{inciso?}', 'SoftwareController@create');
+Route::post('softwares/{inciso?}', 'SoftwareController@store');
+//edit, update
+Route::get('softwares/{software}/edit/{inciso?}', 'SoftwareController@edit');
+Route::patch('softwares/{software}/{inciso?}', 'SoftwareController@update');
+//delete
+Route::delete('softwares/{software}/{inciso?}', 'SoftwareController@destroy');
+
      //'equipos'             => 'EquipoController',
+Route::get('equipos/create/{inciso?}', 'EquipoController@create');
+Route::post('equipos/{inciso?}', 'EquipoController@store');
+//edit, update
+Route::get('equipos/{equipo}/edit/{inciso?}', 'EquipoController@edit');
+Route::patch('equipos/{equipo}/{inciso?}', 'EquipoController@update');
+//delete
+Route::delete('equipos/{equipo}/{inciso?}', 'EquipoController@destroy');
+
 	 //'equiposMini'         => 'EquipoMiniController',
-     //'asignaturas'         => 'AsignaturaController',
+Route::get('equiposMini/create/{inciso?}', 'EquipoMiniController@create');
+Route::post('equiposMini/{inciso?}', 'EquipoMiniController@store');
+//edit, update
+Route::get('equiposMini/{equipo}/edit/{inciso?}', 'EquipoMiniController@edit');
+Route::patch('equiposMini/{equipo}/{inciso?}', 'EquipoMiniController@update');
+//delete
+Route::delete('equiposMini/{equipo}/{inciso?}', 'EquipoMiniController@destroy');
+
+
      //'tecnicos_academicos' => 'TecnicoAcademicoController',
+Route::get('tecnicos_academicos/create/{inciso?}', 'TecnicoAcademicoController@create');
+Route::post('tecnicos_academicos/{inciso?}', 'TecnicoAcademicoController@store');
+//edit, update
+Route::get('tecnicos_academicos/{tecnico_academico}/edit/{inciso?}', 'TecnicoAcademicoController@edit');
+Route::patch('tecnicos_academicos/{tecnico_academico}/{inciso?}', 'TecnicoAcademicoController@update');
+//delete
+Route::delete('tecnicos_academicos/{tecnico_academico}/{inciso?}', 'TecnicoAcademicoController@destroy');

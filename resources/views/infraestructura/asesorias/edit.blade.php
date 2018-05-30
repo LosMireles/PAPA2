@@ -12,7 +12,7 @@
 @endsection
 
 @section('accion')
-    action = "{{action('AsesoriaController@update', $asesoria->Tipo)}}"
+    action = "{{action('AsesoriaController@update', $asesoria->Tipo, $url_regreso)}}"
 @endsection
 
 @section('formopen')

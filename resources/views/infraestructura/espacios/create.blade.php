@@ -12,7 +12,7 @@
 @endsection
 
 @section('accion')
-   action = "{{action('EspacioController@store')}}"
+   action = "{{action('EspacioController@store', $url_regreso)}}"
 @endsection
 
 @section('contenido_formulario')
@@ -62,4 +62,3 @@
 	</div>
 
 @endsection
-

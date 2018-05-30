@@ -16,7 +16,11 @@
 @endsection
 
 <!-- ------------ LAS PREGUNTAS Y SUS RESPUESTAS------------- -->
-
+<!-- ------------ -->
+@php
+    $variable = "inciso9_1_11";
+@endphp
+<!-- ------------ -->
 @section('contenido_formulario')
 
 	@foreach($preguntas as $pregunta)
@@ -38,7 +42,8 @@
 @section('evidencias_tabla')
   <h3 class="text-center">Listado de auditorios</h3>
   <div class="row text-right" style="margin: 2px;">
-    <a href="{{ action('AuditorioController@create') }}" class="btn btn-success">Agregar auditorio</a>
+      <!-- ------------ -->
+    <a href="{{ action('AuditorioController@create',$variable) }}" class="btn btn-success">Agregar auditorio</a>
   </div>
   @component('layouts.componentes.tabla_incisos_agregar')
 	@section('cabeza_tabla')
@@ -60,13 +65,19 @@
         <td>{{ $auditorio->nombre }}</td>
         <td>{{ $auditorio->Capacidad }}</td>
 
-		<td>
-              <a href="{{ action('AuditorioController@edit', $auditorio->nombre) }}" class="btn btn-warning">Editar</a>
-        </td>
+            @component('layouts.boton_editar')
+                @slot('controlador_editar')
+                <!-- ------------ -->
+                    {{Form::open(['action' => ['AuditorioController@edit',
+                                               $auditorio->nombre,
+                                               $variable]])}}
+                @endslot
+            @endcomponent
 
               @component('layouts.boton_borrar')
                 @slot('controlador_borrar')
-                  {{Form::open(['action' => ['AuditorioController@destroy', $auditorio->nombre]])}}
+                <!-- ------------ -->
+                  {{Form::open(['action' => ['AuditorioController@destroy', $auditorio->nombre, $variable ]])}}
                 @endslot
               @endcomponent
 
@@ -90,65 +101,51 @@
       margin-bottom: 15px;
 
     }
+    .trailer_button{
+      z-index:999;
+      margin:1 20 -20 20;
+      width:120px;
+      border-radius:10px;
+      margin-bottom: 15px;
+
+    }
+    .buttonimg{
+      width:auto;
+      height:auto;
+
+    }
+
     img{
       width: auto;
       max-height: 100%
     }
-    .line{
-      border-bottom: 1px solid #111;
-      display: block;
-      margin-top: 60px;
-      padding-top: 10px;
-      position: relative;
-    }
   </style>
-
-  <?php
-    $dirs = array_filter(glob('storage/infraestructura/auditorios/*'), 'is_dir');
-    $hayImagen = 0;
-    foreach ($dirs as $path) {
-      $dir = $path.'/';
-      $imagenes= glob($dir . "*.{[jJ][pP][gG],[pP][nN][gG],[gG][iI][fF],[jJ][pP][eE][gG]}", GLOB_BRACE);
-      if (sizeof($imagenes) != 0) {
-        $hayImagen = 1;
-        break;
-      }
-    }
-  ?>
-
-  @if($hayImagen == 1)
     <h3 align="center">
         Fotografias del inciso 9.1.11
     </h3>
-    @foreach($dirs as $path)
-      <?php
-        $dirname = $path.'/';
-        $images= glob($dirname . "*.{[jJ][pP][gG],[pP][nN][gG],[gG][iI][fF],[jJ][pP][eE][gG]}", GLOB_BRACE);
-        $sanitarioID = substr($path, strlen('storage/infraestructura/auditorios/'));
-        $sanitarioReg = App\auditorio::where('id', $sanitarioID)->first();
-        $sanitarioNombre = $sanitarioReg->nombre;
-      ?>
-      @if(sizeof($images) != 0)
-        <h3  class="line"> <?php echo $sanitarioNombre ?> </h3>
-      @endif
 
-      @foreach ($images as $image)
-      <figure>
-        <div class="buttonimg">
-          <div class="img_div">
-            <img src="<?php echo asset($image)?>" height="220"
-                  alt="<?php echo $image?>"/>
-            <figcaption class="text-center"><?php echo pathinfo($image)['basename']?></figcaption>
-          </div>
+  <?php
+    $dirs = array_filter(glob('storage/infraestructura/auditorios/*'), 'is_dir');
+  ?>
+  @foreach($dirs as $path)
+    <?php
+      $dirname = $path.'/';
+      $images= glob($dirname . "*.{[jJ][pP][gG],[pP][nN][gG],[gG][iI][fF],[jJ][pP][eE][gG]}", GLOB_BRACE);
+    ?>
+
+    @foreach ($images as $image)
+    <figure>
+      <div class="buttonimg">
+        <div class="img_div">
+          <img src="<?php echo asset($image)?>" height="220"
+                alt="<?php echo $image?>"/>
+          <figcaption class="text-center"><?php echo pathinfo($image)['basename']?></figcaption>
         </div>
-      </figura>
+      </div>
+    </figura>
 
-  		@endforeach
-      <br clear='all'/>
-    @endforeach
-  @else
-    <h3 align="center">No hay imagenes </h3>
-  @endif
+		@endforeach
+  @endforeach
 @endsection
 
 @section('boton_guardar')
