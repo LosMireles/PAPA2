@@ -28,7 +28,7 @@
 		<label for="certificados" class="col-sm-4 control-label" data-toggle="tooltip" title="Certificados obtenidos">Certificados: </label>
 
 		<div class="col-sm-8">
-			<textarea name="certificados" class="form-control"></textarea>
+			<textarea name="certificados" class="form-control" placeholder="Certificaciones del técnico"></textarea>
 		</div>
 	</div>
 

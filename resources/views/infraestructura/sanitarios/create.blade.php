@@ -14,14 +14,14 @@
 @section('contenido_formulario')
     @component("layouts.text_input")
         @slot("nombre_input", "nombre")
-        @slot("tooltip_input", "Nombre escrito en las puertas")
-        @slot("label_input", "Código del sanitario")
-        @slot("placeholder_input", "Código de sanitario")
+        @slot("tooltip_input", "Identificador del sanitario")
+        @slot("label_input", "Nombre sanitario")
+        @slot("placeholder_input", "Sanitario planta superior hombres")
         @slot("extra", "maxlength=80 required")
     @endcomponent
 
     <div class="form-group">
-        <label for="sexo" class="col-sm-4 control-label" data-toggle="tooltip" title="Sexo de los usuarios">
+        <label for="sexo" class="col-sm-4 control-label" data-toggle="tooltip" title="Si el sanitario es para hombre, mujeres o es unisex">
             Sexo
         </label>
 

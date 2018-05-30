@@ -27,7 +27,7 @@ class AuditorioController extends Controller
 
     //----------------------------------------------------------------
     public function store(Request $request, $url_regreso = null){
-      #$request->validate($this->rules());
+        $request->validate($this->rules());
 
         $auditorio = new Auditorio;
         $auditorio->nombre               = $request->nombre;

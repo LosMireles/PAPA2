@@ -21,7 +21,7 @@
 		</div>
 	@endforeach
 	<!-- ************************** FINAL 9.1.4 ************************** -->
-	
+
   <!-- ************************** INICIO 9.1.6 ************************* -->
   <h3 class="text-justify">Inciso 9.1.6: Las aulas deben ser funcionales, disponer
   de espacio suficiente para cada estudiante y tener las condiciones adecuadas de
@@ -430,7 +430,7 @@
           ?>
           @if($hayImagen == 1)
             <h3 align="center">
-                Fotografías del inciso 9.1.6
+                Fotografías del inciso 9.1.9
             </h3>
             @foreach($dirs as $path)
               <?php
@@ -715,7 +715,7 @@
         @endif
       </div>
     </div>
-	
+
 	<div class="form-group">
     <label for="{{$preguntas_9_1_12[2]->id}}" class="control-label"> {{$preguntas_9_1_12[2]->titulo}} </label>
 
@@ -786,7 +786,7 @@
         </tr>
         @endforeach
       @endslot
-      
+
       @slot('fotos')
         <style type='text/css'>
           .img_div {
@@ -965,7 +965,7 @@
             @endfor
         @endslot
     @endcomponent
-	<!-- ************************** FINAL 9.2.5 *************************** -->
+	<!-- ************************** FINAL 9.2.2 *************************** -->
 
 
 	<!-- ************************** INICIO 9.2.5 ************************** -->
@@ -1272,7 +1272,7 @@
 		</div>
 	</div>
 	<!-- ************************** FINAL 9.2.12 ************************** -->
-	
+
 	<!-- ************************** INICIO 9.2.14 ************************* -->
 	<h3 class="text-justify">Inciso 9.2.14: Especificamente, el personal técnico,
     es suficiente y cuenta con el perfil adecuado para dar soporte, no solo a la
@@ -1337,3 +1337,4 @@
     @endcomponent
 	<!-- ************************** FINAL 9.1.12 ************************* -->
 @endsection
+

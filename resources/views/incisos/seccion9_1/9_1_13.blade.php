@@ -157,7 +157,7 @@
         $sanitarioNombre = $sanitarioReg->nombre;
       ?>
       @if(sizeof($images) != 0)
-        <h3  class="line">Aula <?php echo $sanitarioNombre ?> </h3>
+        <h3  class="line"><?php echo $sanitarioNombre ?> </h3>
       @endif
 
       @foreach ($images as $image)
