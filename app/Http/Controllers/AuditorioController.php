@@ -120,8 +120,6 @@ class AuditorioController extends Controller
         return [
             'nombre'               => ['required',
                                      Rule::unique('auditorios')->ignore($nombre, 'nombre')],
-            'Capacidad'          => 'required|integer'
-
         ];
     }
 

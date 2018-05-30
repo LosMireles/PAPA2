@@ -127,7 +127,6 @@ class SanitarioController extends Controller
         return [
             'nombre'             => ['required',
                                    Rule::unique('sanitarios')->ignore($nombre, 'nombre')],
-            'sexo'        => 'required|alpha',
         ];
     }
 

@@ -138,7 +138,7 @@ class PreguntasTableSeeder extends Seeder
         App\Pregunta::create(array(
             'inciso' => '9.1.12',
             'numero' => '1',
-            'titulo' => 'De los espacios mencionados en el punto 9.1.11, se debe tener un lugar cómodo por cada diez estudiantes inscritos en el programa, ofreciendo las condiciones adecuadas de higiene y seguridad. ¿Cuántos lugares disponibles existen?',
+            'titulo' => 'De los espacios mencionados en el inciso 9.1.11, se debe tener un lugar cómodo por cada diez estudiantes inscritos en el programa, ofreciendo las condiciones adecuadas de higiene y seguridad. ¿Cuántos lugares disponibles existen?',
                         # Explicacion
             'respuesta' => '',
         ));
@@ -184,31 +184,7 @@ class PreguntasTableSeeder extends Seeder
         App\Pregunta::create(array(
             'inciso' => '9.2.2',
             'numero' => '1',
-            'titulo' => 'Describa los lenguajes de programación utilizados en el programa',
-                    # Describalos
-            'respuesta' => '',
-        ));
-
-        App\Pregunta::create(array(
-            'inciso' => '9.2.2',
-            'numero' => '2',
-            'titulo' => 'Describa las herramientas CASE utilizados en el programa',
-                    # Describalos
-            'respuesta' => '',
-        ));
-
-        App\Pregunta::create(array(
-            'inciso' => '9.2.2',
-            'numero' => '3',
-            'titulo' => 'Describa los manejadores de base de datos utilizados en el programa',
-                    # Describalos
-            'respuesta' => '',
-        ));
-
-        App\Pregunta::create(array(
-            'inciso' => '9.2.2',
-            'numero' => '4',
-            'titulo' => 'Describa la paqueteria en general utilizados en el programa',
+            'titulo' => 'Describa los lenguajes de programación, las herramientas CASE, los manejadores de base de datos y la paquetería en general utilizados en el programa.',
                     # Describalos
             'respuesta' => '',
         ));
