@@ -24,11 +24,12 @@
     @endcomponent
 
     @component("layouts.text_input")
+        @slot("tipo", "number")
         @slot("nombre_input", "Capacidad")
         @slot("tooltip_input", "Capacidad máxima del auditorio")
         @slot("label_input", "Capacidad")
         @slot("placeholder_input", "100")
-        @slot("extra", "required")
+        @slot("extra", "min=0")
 		@slot("valor_default", $auditorio->Capacidad)
     @endcomponent
 

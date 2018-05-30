@@ -158,7 +158,7 @@
 
                 <!--Boton ver fotos-->
                 <td class="text-center">
-                    <a href="{{action($controlador_objeto_informacion.'@viewImg', [ 'nombre' => $aula->nombre])}}" class="btn btn-warning">
+                    <a href="{{action('AulaController@viewImg', [ 'nombre' => $aula->nombre, 'uurl' => '916'])}}" class="btn btn-warning">
                         Fotografías
                     </a>
                 </td>

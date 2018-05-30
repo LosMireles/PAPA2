@@ -34,7 +34,7 @@ Route::get('/tecnicos_academicos/ver_curriculo/{id}', 'TecnicoAcademicoControlle
 
 
 // Rutas para ver imagenes de infraestructura
-Route::get('/aulas/{tipo}/viewImg', 'AulaController@viewImg');
+Route::get('/aulas/{tipo}/viewImg/{uurl}', 'AulaController@viewImg');
 Route::get('/cubiculos/{tipo}/viewImg', 'CubiculoController@viewImg');
 Route::get('/cubiculosMini/{tipo}/viewImg', 'CubiculoMiniController@viewImg');
 Route::get('/asesorias/{tipo}/viewImg', 'AsesoriaController@viewImg');
@@ -42,7 +42,7 @@ Route::get('/auditorios/{tipo}/viewImg', 'AuditorioController@viewImg');
 Route::get('/sanitarios/{tipo}/viewImg', 'SanitarioController@viewImg');
 
 // Rutas para agregar imagenes a infraestructura
-Route::post('/aulas/{tipo}/guardarImg', 'AulaController@guardarImg');
+Route::post('/aulas/{tipo}/guardarImg/{uurl}', 'AulaController@guardarImg');
 Route::post('/asesorias/{tipo}/guardarImg', 'AsesoriaController@guardarImg');
 Route::post('/auditorios/{tipo}/guardarImg', 'AuditorioController@guardarImg');
 Route::post('/cubiculos/{tipo}/guardarImg', 'CubiculoController@guardarImg');
@@ -59,7 +59,7 @@ Route::post('/cursos/crear_relacion/{id}/{inciso?}', 'CursoController@crear_rela
 
 // Rutas para borrar imagenes de infraestructura
 // Aulas
-Route::post('/aulas/{tipo}/borrarImg/{imagen}', [
+Route::post('/aulas/{tipo}/borrarImg/{uurl}/{imagen}', [
   'uses' => 'AulaController@borrarImg',
   'as' => 'borrarImgAula'
 ]);
@@ -226,4 +226,3 @@ Route::get('sanitarios/{sanitario}/edit/{inciso?}', 'SanitarioController@edit');
 Route::patch('sanitarios/{sanitario}/{inciso?}', 'SanitarioController@update');
 //delete
 Route::delete('sanitarios/{sanitario}/{inciso?}', 'SanitarioController@destroy');
-
