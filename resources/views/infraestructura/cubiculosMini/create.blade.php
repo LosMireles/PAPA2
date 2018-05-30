@@ -13,7 +13,7 @@
         @slot("tooltip_input", "Nombre escrito en las puertas de los cubiculos")
         @slot("label_input", "Identificador del cubiculo")
         @slot("placeholder_input", "Cubiculo 1 3K-4")
-        @slot("extra", "required")
+        @slot("extra", "maxlength=80 required")
     @endcomponent
 
 	@component("layouts.text_input")
@@ -21,7 +21,7 @@
         @slot("tooltip_input", "Profesor asignado al cubiculo")
         @slot("label_input", "Profesor")
         @slot("placeholder_input", "Julio Waissman Villanova")
-		@slot("extra", "required")
+        @slot("extra", "maxlength=80")
     @endcomponent
 
 	<div class="form-group">

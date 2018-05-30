@@ -20,7 +20,7 @@
         @slot("label_input", "Código del aula")
         @slot("placeholder_input", "Código de aula")
         @slot("valor_default", $aula->nombre)
-        @section("extra", "required")
+        @slot("extra", "maxlength=80 required")
     @endcomponent
 
 	@component("layouts.text_input")
@@ -30,7 +30,7 @@
         @slot("label_input", "Superficie")
         @slot("placeholder_input", "100")
 		@slot("valor_default", $aula->superficie)
-        @slot("extra", "slot=0.1 min=0")
+        @slot("extra", "slot=0.1 min=0 max=10000")
     @endcomponent
 
     @component("layouts.text_input")
@@ -40,7 +40,7 @@
         @slot("label_input", "Capacidad máxima de personas")
         @slot("placeholder_input", "10")
         @slot("valor_default", $aula->capacidad)
-        @slot("extra", "min=0")
+        @slot("extra", "min=0 max=10000")
     @endcomponent
 
 

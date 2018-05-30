@@ -13,7 +13,7 @@
         @slot("tooltip_input", "Nombre escrito en las puertas")
         @slot("label_input", "Código del aula")
         @slot("placeholder_input", "Código de aula")
-        @slot("extra", "required")
+        @slot("extra", "maxlength=80 required")
     @endcomponent
 
     @component("layouts.text_input")
@@ -22,7 +22,7 @@
         @slot("tooltip_input", "Superficie en metros cuadrados que abarca el aula")
         @slot("label_input", "Superficie")
         @slot("placeholder_input", "100")
-        @slot("extra", "step=0.1 min=0")
+        @slot("extra", "step=0.1 min=0 max=10000")
     @endcomponent
 
     @component("layouts.text_input")
@@ -31,7 +31,7 @@
         @slot("tooltip_input", "Capacidad máxima de personas que caben en el aula")
         @slot("label_input", "Capacidad")
         @slot("placeholder_input", "10")
-        @slot("extra", "min=0")
+        @slot("extra", "min=0 max=10000")
     @endcomponent
 
 	<div class="form-group">

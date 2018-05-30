@@ -18,7 +18,7 @@
         @slot("tooltip_input", "Nombre del auditorio")
         @slot("label_input", "Nombre")
         @slot("placeholder_input", "Nombre")
-        @slot("extra", "required")
+        @slot("extra", "maxlength=80 required")
     @endcomponent
 
     @component("layouts.text_input")
@@ -27,7 +27,7 @@
         @slot("tooltip_input", "Capacidad máxima del auditorio")
         @slot("label_input", "Capacidad")
         @slot("placeholder_input", "100")
-        @slot("extra", "min=0")
+        @slot("extra", "min=0 max=1000000")
     @endcomponent
 
     <div class="form-group">

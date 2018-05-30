@@ -18,7 +18,7 @@
         @slot("tooltip_input", "Nombre del Curso")
         @slot("label_input", "Nombre")
         @slot("placeholder_input", "Nombre")
-        @slot("extra", "required")
+        @slot("extra", "maxlength=80 required")
     @endcomponent
 
     @component("layouts.text_input")
@@ -26,23 +26,25 @@
         @slot("tooltip_input", "Ciclo en el que se imparte")
         @slot("label_input", "Periodo")
         @slot("placeholder_input", "2018-2")
-        @slot("extra", "required")
+        @slot("extra", "maxlength=6")
     @endcomponent
 
 	@component("layouts.text_input")
+	    @slot("tipo", "number")
         @slot("nombre_input", "no_grupo")
         @slot("tooltip_input", "Identificador del grupo")
         @slot("label_input", "Grupo")
         @slot("placeholder_input", "1")
-        @slot("extra", "required")
+        @slot("extra", "min=0 max=1000")
     @endcomponent
 
 	@component("layouts.text_input")
+	    @slot("tipo", "number")
         @slot("nombre_input", "no_estudiantes")
         @slot("tooltip_input", "Numero de estudiantes")
         @slot("label_input", "Pertenecientes a LCC")
         @slot("placeholder_input", "1")
-        @slot("extra", "required")
+        @slot("extra", "min=0 max=40")
     @endcomponent
 
 	@component("layouts.select_input")

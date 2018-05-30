@@ -17,7 +17,7 @@
         @slot("tooltip_input", "Nombre escrito en las puertas")
         @slot("label_input", "Código del sanitario")
         @slot("placeholder_input", "Código de sanitario")
-        @slot("extra", "required")
+        @slot("extra", "maxlength=80 required")
     @endcomponent
 
     <div class="form-group">
