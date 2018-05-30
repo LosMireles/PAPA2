@@ -32,15 +32,15 @@
 		</div>
 	</div>
 
-	@component('layouts.componentes.input_text_script')
-		@slot('nombre_input', 'exp')
-		@slot('tooltip_input', 'Años de experiencia del técnico en el área')
-		@slot('label_input', 'Años de experiencia')
-		@slot('placeholder_input', '1')
-		@slot('nombre', 'text')
-		@slot('patron', '.{1,2}')
-		@slot('titulo_error', 'El número debe contener entre 1 y 2 dígitos')
-	@endcomponent
+    @component("layouts.text_input")
+        @slot("tipo", "number")
+        @slot("nombre_input", "exp")
+        @slot("tooltip_input", "Años de experiencia del técnico en el área")
+        @slot("label_input", "Años de experiencia")
+        @slot("placeholder_input", "2")
+        @slot("extra", "min=0 max=100")
+    @endcomponent
+
 
 @endsection
 
