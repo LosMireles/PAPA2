@@ -494,7 +494,6 @@
     </div>
 
     @component('layouts.componentes.tabla_incisos')
-      @slot('fotos')
           <style type='text/css'>
             .img_div {
               float: left;
@@ -579,22 +578,116 @@
 		    <td>Capacidad</td>
 		</tr>
 		@endslot
+  <!-- ************************** INICIO 9.1.11 ************************* -->
+  <h3 class="text-justify">Inciso 9.1.11: El programa debe disponer de auditorios
+  y/o salas debidamente acondicionadas para actividades académicas, investigación,
+  y de preservación y difusión de la cultura</h3>
 
-		@slot('cuerpo_tabla')
-		@foreach($auditorios as $auditorio)
-	      <tr>
-		<td>{{ $auditorio->nombre }}</td>
-		<td>{{ $auditorio->Capacidad }}</td>
-	      </tr>
-	    @endforeach
-	      @endslot
-		@endcomponent
-	  @if(count($auditorios) == 0)
-	    <h2 class="text-center">No hay registros en la base de datos</h2>
-	  @endif
-	@endsection
+  @foreach($preguntas_9_1_11 as $pregunta_9_1_11)
+    <div class="form-group">
+      <label for="{{$pregunta_9_1_11->id}}" class="control-label">
+          {{$pregunta_9_1_11->titulo}}
+      </label>
 
-	<!-- ************************** FINAL 9.1.11 ************************** -->
+      <div>
+        <textarea class="form-control" id="{{$pregunta_9_1_11->id}}" name="{{$pregunta_9_1_11->id}}"value="{{$pregunta_9_1_11->respuesta}}" disabled>{{$pregunta_9_1_11->respuesta}}</textarea>
+      </div>
+    </div>
+  @endforeach
+
+  @component('layouts.componentes.tabla_incisos')
+  @section('cabeza_tabla')
+    <tr>
+      <td>Nombre</td>
+      <td>Capacidad</td>
+  </tr>
+  @endsection
+
+  @slot('cabeza_tabla')
+        <th>Nombre</th>
+        <th>Capacidad</th>
+    @endslot
+
+  @slot('cuerpo_tabla')
+        @foreach($auditorios as $auditorio)
+      <tr>
+        <td>{{ $auditorio->nombre }}</td>
+        <td>{{ $auditorio->Capacidad }}</td>
+      </tr>
+    @endforeach
+      @endslot
+
+    @slot('fotos')
+      <style type='text/css'>
+      .img_div {
+        float: left;
+        margin-right: 10px;
+        margin-bottom: 15px;
+      }
+
+      img{
+        width: auto;
+        max-height: 100%
+      }
+      .line{
+        border-bottom: 1px solid #111;
+        display: block;
+        margin-top: 60px;
+        padding-top: 10px;
+        position: relative;
+      }
+      </style>
+
+      <?php
+        $dirs = array_filter(glob('storage/infraestructura/auditorios/*'), 'is_dir');
+        $hayImagen = 0;
+        foreach ($dirs as $path) {
+          $dir = $path.'/';
+          $imagenes= glob($dir . "*.{[jJ][pP][gG],[pP][nN][gG],[gG][iI][fF],[jJ][pP][eE][gG]}", GLOB_BRACE);
+          if (sizeof($imagenes) != 0) {
+            $hayImagen = 1;
+            break;
+          }
+        }
+      ?>
+      @if($hayImagen == 1)
+        <h3 align="center">
+            Fotografías del inciso 9.1.11
+        </h3>
+
+        @foreach($dirs as $path)
+          <?php
+            $dirname = $path.'/';
+            $images= glob($dirname . "*.{[jJ][pP][gG],[pP][nN][gG],[gG][iI][fF],[jJ][pP][eE][gG]}", GLOB_BRACE);
+            $auditorioID = substr($path, strlen('storage/infraestructura/auditorios/'));
+            $auditorioReg = App\Auditorio::where('id', $auditorioID)->first();
+            $auditorioNombre = $auditorioReg->nombre
+          ?>
+
+          @if(sizeof($images) != 0)
+            <h2 class="line"><?php echo $auditorioNombre ?></h2>
+          @endif
+
+          @foreach ($images as $image)
+          <figure>
+            <div class="buttonimg">
+              <div class="img_div">
+                <img src="<?php echo asset($image)?>" height="220"
+                      alt="<?php echo $image?>"/>
+                <figcaption class="text-center"><?php echo pathinfo($image)['basename']?></figcaption>
+              </div>
+            </div>
+          </figura>
+
+          @endforeach
+          <br clear='all'/>
+        @endforeach
+      @else
+        <h2 align="center">No hay imagenes</h2>
+      @endif
+    @endslot
+  @endcomponent
+  <!-- ************************** FINAL 9.1.11 ************************** -->
 	<!-- ************************** INICIO 9.1.12 ************************* -->
 	<h3 class="text-justify">Inciso 9.1.12: En los espacios mencionados en el inciso 9.1.11, se debe
     tener un lugar comodo por cada diez estudiantes inscritos en el programa,
