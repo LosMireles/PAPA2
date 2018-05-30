@@ -155,15 +155,6 @@
 							@slot('mensaje', '9.2.2 (Tipos de Software del programa (case, lenguajes, manejadores de BD, paquetería en general))')
 						@endcomponent
 					</li>
-					<li>
-						@component("layouts.componentes.tooltip_general_link")
-							@slot('url')
-								{{ url('/inciso_9_2_1') }}
-							@endslot
-							@slot('titulo', 'Haga clic para ir al inciso')
-							@slot('mensaje', '9.2.1 (Software usados por asignatura)')
-						@endcomponent
-					</li>
 				</ul>
 			</td>
 		</tr>
@@ -252,6 +243,15 @@
 							@endslot
 							@slot('titulo', 'Haga clic para ir al inciso')
 							@slot('mensaje', '9.1.7 (Mostrar la relación aulas - cursos)')
+						@endcomponent
+					</li>
+					<li>
+						@component("layouts.componentes.tooltip_general_link")
+							@slot('url')
+								{{ url('/inciso_9_2_1') }}
+							@endslot
+							@slot('titulo', 'Haga clic para ir al inciso')
+							@slot('mensaje', '9.2.1 (Software usados por asignatura)')
 						@endcomponent
 					</li>
 				</ul>

@@ -62,24 +62,41 @@
         @endslot
     @endcomponent
 
-	@component("layouts.select_input")
-        @slot("nombre_input", "donde")
-        @slot("tooltip_input", "Donde se da")
-        @slot("label_input", "Aula")
-        @slot("extra", "required")
-        @slot('opciones')
-            @if(!$aulas->isEmpty())
-                @foreach($aulas as $aula)
-                    <option value="{{$aula->nombre}}">
-                        {{$aula->nombre}}
+
+    <div class="form-group">
+        <label for="donde" class="col-sm-4 control-label" data-toggle="tooltip" title="Donde se da">
+            Aula
+        </label>
+
+        <?php
+            $temp = array();
+        ?>
+        @foreach($curso->aulas as $aula)
+            <?php
+                $temp[] = $aula->pivot->aula_id
+            ?>
+        @endforeach
+        
+        <div class="col-sm-8">
+            <select name="donde" class="form-control">
+                @if(!$aulas->isEmpty())
+                    @foreach($aulas as $aula)
+                        @if(in_array($aula->id, $temp))
+                            <option value="{{$aula->nombre}}" selected>{{$aula->nombre}}</option>
+                        @else
+                            <option value="{{$aula->nombre}}">{{$aula->nombre}}</option>
+                        @endif
+                    @endforeach
+                @else
+                    <option value="no hay aulas">
+                        No hay aulas
                     </option>
-                @endforeach
-            @else
-                <option value="no hay aulas">
-                    No hay aulas
-                </option>
-            @endif
-        @endslot
-    @endcomponent
+                @endif
+            </select>
+        </div>
+    </div>
+
+
+	
 
 @endsection
