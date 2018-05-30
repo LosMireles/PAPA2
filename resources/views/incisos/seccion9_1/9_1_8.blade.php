@@ -16,7 +16,7 @@
 @endsection
 
 @php
-    $variable = "inciso_9_1_8"
+    $variable = "inciso_9_1_8";
 @endphp
 <!-- ------------ LAS PREGUNTAS Y SUS RESPUESTAS------------- -->
 

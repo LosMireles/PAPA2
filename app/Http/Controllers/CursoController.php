@@ -144,13 +144,13 @@ class CursoController extends Controller {
     }
 	//*-----------------------------------------------------------------
 
-    public function relacionar_cursos_software($id_software, $url_regreso = null){
-        $software = Software::where('id', $id_software)->first();
-        $cursos = Curso::all();
+    public function relacionar_cursos_software($id_curso, $url_regreso = null){
+        $curso = Curso::where('id', $id_curso)->first();
+        $softwares = Software::all();
         return view('infraestructura/cursos/relacion_cursos_software')
             ->with([
-                'cursos'      => $cursos,
-                'software'    => $software,
+                'curso'       => $curso,
+                'softwares'   => $softwares,
                 'url_regreso' => $url_regreso
             ]);
     }
@@ -158,10 +158,10 @@ class CursoController extends Controller {
     //*-----------------------------------------------------------------
 
     public function crear_relacion(Request $request, $id, $url_regreso = null){
-        $software = Software::where('id', $id)->first();
+        $curso = Curso::where('id', $id)->first();
 
-        $vars = $request->cursos;
-        $software->cursos()->sync($vars);
+        $vars = $request->softwares;
+        $curso->softwares()->sync($vars);
 
         return redirect()->action('Inciso9_2_1Controller@index');
     }

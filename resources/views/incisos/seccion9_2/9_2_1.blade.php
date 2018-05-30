@@ -50,42 +50,45 @@
         <h4>Tabla cursos y los software que utilizan</h4>
         @slot('cabeza_tabla')
             <th>Curso</th>
-            <th>Nombre software</th>
-			<th>Version</th>
-            <th>Disponibilidad software</th>
+            <th>Periodo</th>
+            <th>Licenciatura</th>
+			<th>Grupo</th>
+            <th>Numero estudiantes</th>
+            <th>Softwares</th>
             <th></th>
         @endslot
 
         @slot('cuerpo_tabla')
-            @foreach($softwares as $software)
+            @foreach($cursos as $curso)
             <tr>
+                <td>{{$curso->nombre}}</td>
+                <td>{{$curso->periodo}}</td>
+                <td>{{$curso->departamento}}</td>
+                <td>{{$curso->no_grupo}}</td>
+                <td>{{$curso->no_estudiantes}}</td>
                 <td>
-                    @if(!empty($cursos))
-                        @foreach($software->cursos as $curso)
-                            {{$curso->nombre}} <br>
+                    @if(!empty($cursos_softwares))
+                        @foreach($curso->softwares as $software)
+                            {{$software->nombre}} <br>
                         @endforeach
                     @endif
                 </td>
-                <td>{{$software->nombre}}</td>
-				<td>{{$software->version}}</td>
-                <td>{{$software->disponibilidad}}</td>
 
                 @component('layouts.boton_editar')
                     @slot('controlador_editar')
-                        {{ Form::open(['action' => ['SoftwareController@edit', $software->nombre, $variable]]) }}
+                        {{ Form::open(['action' => ['CursoController@edit', $curso->nombre, $variable]]) }}
                     @endslot
                 @endcomponent
 
                 @component('layouts.boton_borrar')
                     @slot('controlador_borrar')
-                        {{ Form::open(['action' => ['SoftwareController@destroy', $software->nombre, $variable]]) }}
+                        {{ Form::open(['action' => ['CursoController@destroy', $curso->nombre, $variable]]) }}
                     @endslot
                 @endcomponent
 
                 <td>
-                    <!--Por que esta en curso controller??????-->
-                    <a href="{{action('CursoController@relacionar_cursos_software', $software->id, $variable)}}" class="btn btn-primary">
-                        Vicular cursos
+                    <a href="{{action('CursoController@relacionar_cursos_software', $curso->id, $variable)}}" class="btn btn-primary">
+                        Vicular software
                     </a>
                 </td>
 
@@ -93,7 +96,7 @@
             @endforeach
         @endslot
     @endcomponent
-    @if(count($softwares) == 0)
+    @if(count($cursos) == 0)
       <h2 class="text-center">No hay registros en la base de datos</h2>
     @endif
 @endsection

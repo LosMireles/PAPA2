@@ -5,38 +5,37 @@
 @section('objeto_informacion', 'relacionar cursos y software')
 
 @section('accion')
-	{{action('CursoController@crear_relacion', $software->id, $url_regreso)}}
+	{{action('CursoController@crear_relacion', $curso->id, $url_regreso)}}
 @endsection
 
 @section('contenido_formulario')
 	<table class="table">
 		<thead>
-			<th>Software</th>
-			<th>Cursos disponibles</th>
+			<th>Curso</th>
+			<th>Softwares disponibles</th>
 		</thead>
 			<tr>
-				<!-- Obtener las id de los cursos en los que es usado el software -->
-				<?php
-					$temp = array();
-				?>
-				@foreach($software->cursos as $curso)
-					<?php
-						$temp[] = $curso->pivot->curso_id
-					?>
-				@endforeach
+				<!-- Obtener las id de los softwares en los que es usado el curso -->
+                @php
+					$softwares_usados = array();
+                    foreach($curso->softwares as $software){
+						$softwares_usados[] = $software->pivot->software_id;
+                    }
+                @endphp
 
-				<td>{{$software->nombre}}</td>
+				<td>{{$curso->nombre}}</td>
 
 				<td>
-					@foreach($cursos as $curso)
+					@foreach($softwares as $software)
 						<!-- Si el curso_id esta en los cursos donde el software es usado es checked -->
-						@if(in_array($curso->id, $temp))
-							<input type="checkbox" name="cursos[]" value="{{$curso->id}}" checked> {{$curso->nombre}} <br>
+						@if(in_array($software->id, $softwares_usados))
+							<input type="checkbox" name="softwares[]" value="{{$software->id}}" checked> {{$software->nombre}} <br>
 						@else
-							<input type="checkbox" name="cursos[]" value="{{$curso->id}}"> {{$curso->nombre}} <br>
+							<input type="checkbox" name="softwares[]" value="{{$software->id}}"> {{$software->nombre}} <br>
 						@endif
 					@endforeach
 				</td>
 			</tr>
 	</table>
 @endsection
+
