@@ -14,10 +14,7 @@ use App\Equipo;
 class AulaController extends Controller
 {
     public function index(){
-      	$aulas  = Aula::all();
-
-      	return view('infraestructura.aulas.index')
-          ->with(['aulas'=>$aulas]);
+        return redirect("/");
     }
 
     //----------------------------------------------------------------

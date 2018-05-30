@@ -13,10 +13,7 @@ use App\Auditorio;
 class AuditorioController extends Controller
 {
     public function index(){
-      $auditorios = Auditorio::all();
-
-      return view('infraestructura.auditorios.index')
-          ->with(['auditorios' => $auditorios]);
+        return redirect("/");
      }
 
     //----------------------------------------------------------------

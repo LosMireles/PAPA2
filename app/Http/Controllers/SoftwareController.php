@@ -16,9 +16,7 @@ class SoftwareController extends Controller {
     private $clases = ["Lenguaje", "Case", "Manejador BD", "Paqueteria", "Otro"];
 
     public function index(){
-        $softwares  = Software::all();
-        return view('equipamiento.softwares.index')
-            ->with('softwares', $softwares);
+        return redirect("/");
     }
 
     //----------------------------------------------------------------

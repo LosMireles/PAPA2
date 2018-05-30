@@ -14,10 +14,7 @@ use App\Cubiculo;
 class CubiculoController extends Controller {
 
   public function index(){
-    $cubiculos  = Cubiculo::all();
-
-    return view('infraestructura.cubiculos.index')
-        ->with(['cubiculos'=>$cubiculos]);
+      return redirect("/");
    }
 
     //----------------------------------------------------------------
