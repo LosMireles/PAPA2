@@ -64,7 +64,7 @@ class EquipoController extends Controller
             return redirect(url($url_regreso))
                 ->with('status', 'Elemento agregado exitosamente');
         }else{
-            return redirect(url('/'))
+            return redirect(url('/inciso_9_2_7'))
                 ->with('status', 'Elemento agregado exitosamente');
         }
     }
