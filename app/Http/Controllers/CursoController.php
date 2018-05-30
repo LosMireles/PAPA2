@@ -147,15 +147,20 @@ class CursoController extends Controller {
     }
 	//*-----------------------------------------------------------------
 
-    public function relacionar_cursos_software($id_software){
+    public function relacionar_cursos_software($id_software, $url_regreso = null){
         $software = Software::where('id', $id_software)->first();
         $cursos = Curso::all();
-        return view('infraestructura/cursos/relacion_cursos_software', ['cursos' => $cursos, 'software' => $software]);
+        return view('infraestructura/cursos/relacion_cursos_software')
+            ->with([
+                'cursos'      => $cursos,
+                'software'    => $software,
+                'url_regreso' => $url_regreso
+            ]);
     }
 
     //*-----------------------------------------------------------------
 
-    public function crear_relacion(Request $request, $id){
+    public function crear_relacion(Request $request, $id, $url_regreso = null){
         $software = Software::where('id', $id)->first();
 
         $vars = $request->cursos;

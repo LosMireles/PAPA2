@@ -51,8 +51,8 @@ Route::post('/sanitarios/{tipo}/guardarImg', 'SanitarioController@guardarImg');
 Route::get('/equipos/crear_igual/{id}', 'EquipoController@crear_igual');
 
 // Ruta para la relacion de cursos software
-Route::get('/cursos/relacionar_cursos_software/{id}', 'CursoController@relacionar_cursos_software');
-Route::post('/cursos/crear_relacion/{id}', 'CursoController@crear_relacion');
+Route::get('/cursos/relacionar_cursos_software/{id}/{inciso?}', 'CursoController@relacionar_cursos_software');
+Route::post('/cursos/crear_relacion/{id}/{inciso?}', 'CursoController@crear_relacion');
 
 // Rutas para borrar imagenes de infraestructura
 // Aulas
@@ -168,7 +168,7 @@ Route::delete('auditorios/{auditorio}/{inciso?}', 'AuditorioController@destroy')
 	 //'cubiculosMini'       => 'CubiculoMiniController',
      //'sanitarios'          => 'SanitarioController',
      //'auditorios'          => 'AuditorioController',
-     
+
      //'cursos'              => 'CursoController',
 
 Route::get('cursos/create/{inciso?}', 'CursoController@create');

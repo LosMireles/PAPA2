@@ -71,6 +71,7 @@
                     @foreach($aula->equipos as $equipo)
                         @if($equipo->tipo == "Computo")
                             {{$equipo->serial}}
+                            <br>
                         @endif
                     @endforeach
                     </td>
@@ -79,6 +80,7 @@
                     @foreach($aula->equipos as $equipo)
                         @if($equipo->tipo == "Audiovisual")
                             {{$equipo->serial}}
+                            <br>
                         @endif
                     @endforeach
                     </td>
@@ -99,7 +101,7 @@
 
                 <td>
                 <a href="{{ action('AulaController@relacionar_equipos', $aula->id) }}" class="btn btn-primary">
-                    Relacionar aulas y equipos
+                    Relacionar aula con equipos
                 </a>
                 </td>
 

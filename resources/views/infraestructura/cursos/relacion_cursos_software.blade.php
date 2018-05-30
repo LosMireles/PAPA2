@@ -5,7 +5,7 @@
 @section('objeto_informacion', 'relacionar cursos y software')
 
 @section('accion')
-	{{action('CursoController@crear_relacion', $software->id)}}
+	{{action('CursoController@crear_relacion', $software->id, $url_regreso)}}
 @endsection
 
 @section('contenido_formulario')
@@ -16,15 +16,15 @@
 		</thead>
 			<tr>
 				<!-- Obtener las id de los cursos en los que es usado el software -->
-				<?php 
-					$temp = array(); 
+				<?php
+					$temp = array();
 				?>
 				@foreach($software->cursos as $curso)
-					<?php 
-						$temp[] = $curso->pivot->curso_id 
+					<?php
+						$temp[] = $curso->pivot->curso_id
 					?>
 				@endforeach
-				
+
 				<td>{{$software->nombre}}</td>
 
 				<td>
@@ -34,7 +34,7 @@
 							<input type="checkbox" name="cursos[]" value="{{$curso->id}}" checked> {{$curso->nombre}} <br>
 						@else
 							<input type="checkbox" name="cursos[]" value="{{$curso->id}}"> {{$curso->nombre}} <br>
-						@endif		
+						@endif
 					@endforeach
 				</td>
 			</tr>
