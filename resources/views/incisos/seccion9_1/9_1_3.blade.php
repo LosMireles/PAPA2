@@ -43,7 +43,7 @@
     @endslot
   @endcomponent
 
-    
+
 @endsection
 
 @section('Fotografias')
