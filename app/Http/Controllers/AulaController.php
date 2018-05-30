@@ -96,7 +96,7 @@ class AulaController extends Controller
 
 	//-----------------------------------------------------------
 	public function update(Request $request, $nombre, $url_regreso = null) {
-        //$request->validate($this->rules($nombre));
+        $request->validate($this->rules($nombre));
 
         $audAux = Aula::where('nombre', $request->nombre)->first();
         $id = $audAux->id;
@@ -176,8 +176,8 @@ class AulaController extends Controller
 	//--------------------------------------------------------------
     public function rules($nombre = null){
         return [
-            'nombre'           => ['required',
-                                 Rule::unique('aulas')->ignore($nombre, 'nombre')]
+            'nombre' => ['required',
+                     Rule::unique('aulas')->ignore($nombre, 'nombre')]
         ];
     }
 	//--------------------------------------------------------------
@@ -256,3 +256,4 @@ class AulaController extends Controller
             ->with('status', 'Elemento agregado exitosamente');
     }
 }
+

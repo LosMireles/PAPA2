@@ -15,6 +15,9 @@
                   'class'  => 'form'])}}
 @endsection
 
+@php
+    $variable = "inciso_9_1_9";
+@endphp
 <!-- ------------ LAS PREGUNTAS Y SUS RESPUESTAS------------- -->
 
 @section('contenido_formulario')
@@ -32,10 +35,14 @@
 
 
 @section('evidencias_tabla')
-  <h3 class="text-center">Listado de cubículos y su profesor asignado</h3>
-  <div class="row text-right" style="margin: 2px;">
-    <a href="{{ action('CubiculoMiniController@create') }}" class="btn btn-success">Agregar cubículo</a>
-  </div>
+    <h3 class="text-center">Listado de cubículos y su profesor asignado</h3>
+
+    <div class="row text-right" style="margin: 2px;">
+        <a href="{{ action('CubiculoMiniController@create', $variable) }}" class="btn btn-success">
+            Agregar nuevo cubículo
+        </a>
+    </div>
+
   @component('layouts.componentes.tabla_incisos_agregar')
       @slot('cabeza_tabla')
             <th>Identificador cubiculo</th>
@@ -51,13 +58,18 @@
                 <td>{{$cubiculo->profesor}}</td>
 
 
-            <td>
-              <a href="{{ action('CubiculoMiniController@edit', $cubiculo->nombre)}}" class="btn btn-warning">Editar</a>
-            </td>
+                @component('layouts.boton_editar')
+                    @slot('controlador_editar')
+                        {{Form::open(['action' => ['CubiculoMiniController@edit',
+                                                   $cubiculo->nombre,
+                                                   $variable]])}}
+                    @endslot
+                @endcomponent
+
 
               @component('layouts.boton_borrar')
                 @slot('controlador_borrar')
-                  {{Form::open(['action' => ['CubiculoMiniController@destroy', $cubiculo->nombre]])}}
+                  {{Form::open(['action' => ['CubiculoMiniController@destroy', $cubiculo->nombre, $variable]])}}
                 @endslot
               @endcomponent
 
@@ -72,9 +84,6 @@
       @endslot
     @endcomponent
 @endsection
-
-
-
 
 <!-- ------------ SECCION DE FOTOGRAFIAS, EVIDENCIAS, ETC------------- -->
 

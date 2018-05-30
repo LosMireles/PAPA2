@@ -8,10 +8,17 @@
 @endsection
 
 @section('accion')
-    {{action('CubiculoController@store')}}
+    {{action('CubiculoController@store', $url_regreso)}}
 @endsection
 
 @section('contenido_formulario')
+    @component("layouts.text_input")
+        @slot("nombre_input", "nombre")
+        @slot("tooltip_input", "Nombre escrito en las puertas de los cubiculos")
+        @slot("label_input", "Identificador del cubiculo")
+        @slot("placeholder_input", "Cubiculo 1 3K-4")
+        @slot("extra", "required")
+    @endcomponent
 
 	@component("layouts.text_input")
         @slot("nombre_input", "profesor")
@@ -28,15 +35,6 @@
         @slot("placeholder_input", "1")
         @slot("extra", "min=0")
     @endcomponent
-
-    @component("layouts.text_input")
-        @slot("nombre_input", "nombre")
-        @slot("tooltip_input", "Nombre escrito en las puertas de los cubiculos")
-        @slot("label_input", "Identificador del cubiculo")
-        @slot("placeholder_input", "Cubiculo 1 3K-4")
-        @slot("extra", "required")
-    @endcomponent
-    
 
   <div class="form-group">
 		<h3 class="text-center">Evidencias: </h3>

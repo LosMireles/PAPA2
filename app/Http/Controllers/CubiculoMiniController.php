@@ -15,36 +15,16 @@ use App\Cubiculo;
 
 class CubiculoMiniController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
+	public function create($url_regreso = null){
         return view('infraestructura.cubiculosMini.create')
-        ->with([
-            'url_previous'  => url()->previous()
-        ]);
-    }
+            ->with([
+                'url_previous'   => url()->previous(),
+                'url_regreso'    => $url_regreso
+            ]);
+	}
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+
+    public function store(Request $request, $url_regreso = null)
     {
         $request->validate($this->rules());
 
@@ -65,47 +45,29 @@ class CubiculoMiniController extends Controller
           }
         }
 
-        echo "Elemento insertado exitosamente!";
-        return redirect($request->url_previous)
-            ->with('status', 'Elemento agregado exitosamente');
+        if($url_regreso != null){
+            return redirect(url($url_regreso))
+                ->with('status', 'Elemento agregado exitosamente');
+        }else{
+            return redirect(url('/'))
+                ->with('status', 'Elemento agregado exitosamente');
+        }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+	public function edit($nombre, $url_regreso = null)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($nombre)
-    {
+        dd($url_regreso);
         $cubiculo  = Cubiculo::where('nombre', $nombre)->first();
 
 		return view('infraestructura.cubiculosMini.edit')
 		    ->with([
 		        'cubiculo'      => $cubiculo,
-		        'url_previous'  => url()->previous()
+		        'url_previous'  => url()->previous(),
+                'url_regreso'    => $url_regreso
 		    ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request,$nombre) {
+	public function update(Request $request, $nombre, $url_regreso = null) {
         $request->validate($this->rules($nombre));
 
         $cubAux = Cubiculo::where('nombre', $request->nombre)->first();
@@ -125,9 +87,13 @@ class CubiculoMiniController extends Controller
 
         $cubiculo->update($data);
 
-		echo "Elemento insertado exitosamente!";
-        return redirect($request->url_previous)
-            ->with('status', 'Elemento actualizado con exito');
+        if($url_regreso != null){
+            return redirect(url($url_regreso))
+                ->with('status', 'Elemento actualizado exitosamente');
+        }else{
+            return redirect(url('/'))
+                ->with('status', 'Elemento actualizado exitosamente');
+        }
     }
 
     /**
@@ -136,11 +102,10 @@ class CubiculoMiniController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request, $nombre){
-      $cubiculo = Cubiculo::where('nombre', $nombre)->first();
-      Storage::deleteDirectory('infraestructura/cubiculosMini/'. $cubiculo->id . '/');
-      Storage::deleteDirectory('infraestructura/cubiculos/'. $cubiculo->id . '/');
+    public function destroy($nombre, $url_regreso = null){
         $cubiculo = Cubiculo::where('nombre', $nombre)->first();
+        Storage::deleteDirectory('infraestructura/cubiculosMini/'. $cubiculo->id . '/');
+        Storage::deleteDirectory('infraestructura/cubiculos/'. $cubiculo->id . '/');
         if(!$cubiculo){
             $mensaje = "No existe cubiculo con nombre: ".$nombre;
             return view('general.error')
@@ -148,9 +113,13 @@ class CubiculoMiniController extends Controller
         }
         $cubiculo->delete();
 
-		echo "Elemento borrado exitosamente!";
-        return redirect()->back()
-            ->with('status', 'Elemento borrado exitosamente');
+        if($url_regreso != null){
+            return redirect(url($url_regreso))
+                ->with('status', 'Elemento borrado exitosamente');
+        }else{
+            return redirect(url('/'))
+                ->with('status', 'Elemento borrado exitosamente');
+        }
     }
 
 
@@ -186,3 +155,4 @@ class CubiculoMiniController extends Controller
     return redirect('/cubiculosMini/'. $nombre .'/viewImg')->with(['nombre' => $nombre]);
   }
 }
+

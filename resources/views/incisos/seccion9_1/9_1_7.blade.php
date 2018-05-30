@@ -14,6 +14,9 @@
                   'class'  => 'form'])}}
 @endsection
 
+@php
+    $variable = "inciso_9_1_7";
+@endphp
 <!-- ------------ LAS PREGUNTAS Y SUS RESPUESTAS------------- -->
 
 @section('contenido_formulario')
@@ -51,8 +54,12 @@
 @section('evidencias_tabla')
 	<h3 class="text-center">Listado de cursos impartidos</h3>
 	<div class="row text-right" style="margin: 2px;">
-		<a href="{{ action('AulaController@create') }}" class="btn btn-success">Agregar aula</a>
-    	<a href="{{ action('CursoController@create') }}" class="btn btn-success">Agregar curso</a>
+    	<a href="{{ action('AulaController@create', $variable) }}" class="btn btn-success">
+		    Agregar nueva aula
+		</a>
+    	<a href="{{ action('CursoController@create') }}" class="btn btn-success">
+    	    Agregar nuevo curso
+    	</a>
   	</div>
 	@component('layouts.componentes.tabla_incisos_agregar')
 

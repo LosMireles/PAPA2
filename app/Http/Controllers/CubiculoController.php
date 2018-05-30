@@ -21,15 +21,16 @@ class CubiculoController extends Controller {
    }
 
     //----------------------------------------------------------------
-	public function create(){
+	public function create($url_regreso = null){
 	  return view('infraestructura.cubiculos.create')
         ->with([
-            'url_previous'  => url()->previous()
+            'url_previous'  => url()->previous(),
+            'url_regreso'    => $url_regreso
         ]);
 	}
 
     //----------------------------------------------------------------
-    public function store(Request $request)
+    public function store(Request $request, $url_regreso = null)
     {
         $request->validate($this->rules());
 
@@ -41,7 +42,7 @@ class CubiculoController extends Controller {
 
         $cubiculo->save();
 
-        $cubAux -> Cubiculo::where('nombre', $request->nombre)->first();
+        $cubAux = Cubiculo::where('nombre', $request->nombre)->first();
         $id = $cubAux->id;
         if ($request->hasFile('Fotografias')) {
           foreach($request->Fotografias as $foto){
@@ -49,25 +50,29 @@ class CubiculoController extends Controller {
           }
         }
 
-        echo "Elemento insertado exitosamente!";
-        return redirect($request->url_previous)
-            ->with('status', 'Elemento agregado exitosamente');
-  }
-
+        if($url_regreso != null){
+            return redirect(url($url_regreso))
+                ->with('status', 'Elemento agregado exitosamente');
+        }else{
+            return redirect(url('/'))
+                ->with('status', 'Elemento agregado exitosamente');
+        }
+    }
 
     //----------------------------------------------------------------
-	public function edit($nombre) {
+	public function edit($nombre, $url_regreso = null) {
         $cubiculo  = Cubiculo::where('nombre', $nombre)->first();
 
     return view('infraestructura.cubiculos.edit')
         ->with([
             'cubiculo'      => $cubiculo,
-            'url_previous'  => url()->previous()
+            'url_previous'  => url()->previous(),
+            'url_regreso'    => $url_regreso
         ]);
 	}
 
     //----------------------------------------------------------------
-	public function update(Request $request, $nombre) {
+	public function update(Request $request, $nombre, $url_regreso = null) {
         $request->validate($this->rules($nombre));
 
         $cubAux = Cubiculo::where('nombre', $nombre)->first();
@@ -87,13 +92,17 @@ class CubiculoController extends Controller {
 
         $cubiculo->update($data);
 
-		echo "Elemento insertado exitosamente!";
-        return redirect($request->url_previous)
-            ->with('status', 'Elemento actualizado con exito');
+        if($url_regreso != null){
+            return redirect(url($url_regreso))
+                ->with('status', 'Elemento actualizado exitosamente');
+        }else{
+            return redirect(url('/'))
+                ->with('status', 'Elemento actualizado exitosamente');
+        }
 	}
 
     //----------------------------------------------------------------
-	public function destroy(Request $request, $nombre){
+	public function destroy($nombre, $url_regreso = null){
         $cubiculo = Cubiculo::where('nombre', $nombre)->first();
         Storage::deleteDirectory('infraestructura/cubiculos/'. $cubiculo->id . '/');
         Storage::deleteDirectory('infraestructura/cubiculosMini/'. $cubiculo->id . '/');
@@ -105,9 +114,13 @@ class CubiculoController extends Controller {
         }
         $cubiculo->delete();
 
-		echo "Elemento borrado exitosamente!";
-        return redirect()->back()
-            ->with('status', 'Elemento borrado exitosamente');
+        if($url_regreso != null){
+            return redirect(url($url_regreso))
+                ->with('status', 'Elemento borrado exitosamente');
+        }else{
+            return redirect(url('/'))
+                ->with('status', 'Elemento borrado exitosamente');
+        }
 	}
 
     //----------------------------------------------------------------

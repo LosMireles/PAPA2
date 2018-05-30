@@ -8,7 +8,7 @@
 @endsection
 
 @section('formopen')
-    {{Form::open(['action' => ['CubiculoController@update', $cubiculo->nombre],
+    {{Form::open(['action' => ['CubiculoController@update', $cubiculo->nombre, $url_regreso],
                 'class' => 'form-horizontal'])}}
 @endsection
 

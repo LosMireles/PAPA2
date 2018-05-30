@@ -92,7 +92,7 @@
 
                 @component('layouts.boton_borrar')
                     @slot('controlador_borrar')
-                        {{ Form::open(['action' => ['AulaController@destroy', $aula->nombre]]) }}
+                        {{ Form::open(['action' => ['AulaController@destroy', $aula->nombre, $variable]]) }}
                     @endslot
                 @endcomponent
 

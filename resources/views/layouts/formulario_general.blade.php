@@ -14,7 +14,7 @@
 @endsection
 
 @section('content')
-    <a href="{{url()->previous()}}" class="btn btn-primary">
+    <a href="/{{$url_regreso}}" class="btn btn-primary">
         Regresar
     </a>
 

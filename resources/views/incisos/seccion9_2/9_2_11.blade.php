@@ -17,6 +17,9 @@
                   'class'  => 'form'])}}
 @endsection
 
+@php
+    $variable = "inciso_9_2_11";
+@endphp
 <!-- ------------ LAS PREGUNTAS Y SUS RESPUESTAS------------- -->
 
 @section('contenido_formulario')
@@ -38,7 +41,7 @@
 @section('tablas_inciso_general')
     <h3 class="text-center">Cantidad de equipo en los cubículos de maestros</h3>
     <div class="row text-right" style="margin: 2px;">
-    	 <a href="{{ action('CubiculoController@create') }}" class="btn btn-success">Agregar cubículo</a>
+    	 <a href="{{ action('CubiculoController@create', $variable) }}" class="btn btn-success">Agregar cubículo</a>
     </div>
     @component('layouts.componentes.tabla_incisos_agregar')
 
@@ -59,13 +62,17 @@
 
                 @component('layouts.boton_editar')
                     @slot('controlador_editar')
-                        {{ Form::open(['action' => ['CubiculoController@edit', $cubiculo->nombre]]) }}
+                        {{ Form::open(['action' => ['CubiculoController@edit',
+                                                    $cubiculo->nombre,
+                                                    $variable]]) }}
                     @endslot
                 @endcomponent
 
                 @component('layouts.boton_borrar')
                     @slot('controlador_borrar')
-                        {{ Form::open(['action' => ['CubiculoController@destroy', $cubiculo->nombre]]) }}
+                        {{ Form::open(['action' => ['CubiculoController@destroy',
+                                                    $cubiculo->nombre,
+                                                    $variable]]) }}
                     @endslot
                 @endcomponent
 

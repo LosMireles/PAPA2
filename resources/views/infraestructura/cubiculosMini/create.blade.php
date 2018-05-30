@@ -4,7 +4,7 @@
 @section("objeto_informacion", "agregar un cubículo")
 
 @section('accion')
-    {{action('CubiculoMiniController@store')}}
+    {{action('CubiculoMiniController@store', $url_regreso)}}
 @endsection
 
 @section('contenido_formulario')

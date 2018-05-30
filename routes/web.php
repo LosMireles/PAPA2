@@ -131,12 +131,41 @@ Route::resources(
 
     ['except' => 'show']);
 
-//crete, store
+//create, store
 Route::get('aulas/create/{inciso?}', 'AulaController@create');
 Route::post('aulas/{inciso?}', 'AulaController@store');
 //edit, update
 Route::get('aulas/{aula}/edit/{inciso?}', 'AulaController@edit');
 Route::patch('aulas/{aula}/{inciso?}', 'AulaController@update');
-
+//delete
 Route::delete('aulas/{aula}/{inciso?}', 'AulaController@destroy');
 
+//create, store
+Route::get('cubiculos/create/{inciso?}', 'CubiculoController@create');
+Route::post('cubiculos/{inciso?}', 'CubiculoController@store');
+//edit, update
+Route::get('cubiculos/{cubiculo}/edit/{inciso?}', 'CubiculoController@edit');
+Route::patch('cubiculos/{cubiculo}/{inciso?}', 'CubiculoController@update');
+//delete
+Route::delete('cubiculos/{cubiculo}/{inciso?}', 'CubiculoController@destroy');
+
+//create, store
+Route::get('cubiculosMini/create/{inciso?}', 'CubiculoMiniController@create');
+Route::post('cubiculosMini/{inciso?}', 'CubiculoMiniController@store');
+//edit, update
+Route::get('cubiculosMini/{cubiculoMini}/edit/{inciso?}', 'CubiculoMiniController@edit');
+Route::patch('cubiculosMini/{cubiculoMini}/{inciso?}', 'CubiculoMiniController@update');
+//delete
+Route::delete('cubiculosMini/{cubiculoMini}/{inciso?}', 'CubiculoMiniController@destroy');
+     //'aulas'               => 'AulaController',
+     //'cubiculos'           => 'CubiculoController',
+	 //'cubiculosMini'       => 'CubiculoMiniController',
+     //'asesorias'           => 'AsesoriaController',
+     //'sanitarios'          => 'SanitarioController',
+     //'auditorios'          => 'AuditorioController',
+     //'cursos'              => 'CursoController',
+     //'softwares'           => 'SoftwareController',
+     //'equipos'             => 'EquipoController',
+	 //'equiposMini'         => 'EquipoMiniController',
+     //'asignaturas'         => 'AsignaturaController',
+     //'tecnicos_academicos' => 'TecnicoAcademicoController',
