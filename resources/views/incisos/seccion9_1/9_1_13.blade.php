@@ -45,7 +45,7 @@
 
 <!-- ------------ LAS TABLAS QUE CORRESPONDAN------------- -->
 @php
-    $variable = "inciso9_1_13";
+    $variable = "inciso_9_1_13";
 @endphp
 @section('evidencias_tabla')
   <h3 class="text-center">Listado de sanitarios</h3>

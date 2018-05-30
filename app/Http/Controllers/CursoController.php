@@ -14,10 +14,7 @@ class CursoController extends Controller {
     private $licenciaturas = ["LCC", "LM", "Otro"];
 
     public function index(){
-        $cursos = Curso::all();
-
-        return view('infraestructura.cursos.index')
-            ->with(['cursos' => $cursos]);
+        return redirect("/");
     }
 
     //----------------------------------------------------------------

@@ -16,10 +16,7 @@ class AsesoriaController extends Controller
 {
     public function index()
     {
-        $asesorias = Asesoria::all();
-
-        return view('infraestructura.asesorias.index')
-            ->with(['asesorias' => $asesorias]);
+        return redirect("/");
     }
 
     //----------------------------------------------------------------

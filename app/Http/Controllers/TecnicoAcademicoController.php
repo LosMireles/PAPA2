@@ -24,8 +24,7 @@ class TecnicoAcademicoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(){
-        $tecnicos = TecnicoAcademico::all();
-        return view('tecnico_academico/index',['tecnicos'=>$tecnicos]);
+        return redirect("/");
     }
 
     /**

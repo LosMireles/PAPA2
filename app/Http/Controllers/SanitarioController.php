@@ -13,10 +13,7 @@ use App\Sanitario;
 class SanitarioController extends Controller
 {
   public function index(){
-    $sanitarios  = Sanitario::all();
-
-    return view('infraestructura.sanitarios.index')
-        ->with(['sanitarios'=>$sanitarios]);
+      return redirect("/");
   }
 
     //--------------------------------------------------------
