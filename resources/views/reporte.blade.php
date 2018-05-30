@@ -366,6 +366,105 @@
 
 	<!-- ************************** FINAL 9.1.8 *************************** -->
 
+  <!-- ************************** INICIO 9.1.9 ************************* -->
+  <h3 class="text-justify">Inciso 9.1.9: Los profesores de tiempo completo, tres cuartos
+  y medio tiempo deben contar con cubículos. El resto de los profesores deben contar
+  con lugares adecuados para su trabajo</h3>
+
+  @foreach($preguntas_9_1_9 as $pregunta_9_1_9)
+      @component('layouts.textarea_input')
+            @slot("nombre_input", $pregunta_9_1_9->id)
+            @slot("label_input", $pregunta_9_1_9->titulo)
+            @slot("valor_default", $pregunta_9_1_9->respuesta)
+            @slot('extra', 'disabled')
+        @endcomponent
+  @endforeach
+
+  @component('layouts.componentes.tabla_incisos')
+      @slot('cabeza_tabla')
+            <th>Identificador cubiculo</th>
+            <th>Profesor</th>
+        @endslot
+
+      @slot('cuerpo_tabla')
+        @foreach($cubiculos as $cubiculo)
+          <tr>
+              <td>{{$cubiculo->nombre}}</td>
+                <td>{{$cubiculo->profesor}}</td>
+          </tr>
+        @endforeach
+      @endslot
+
+      @slot('fotos')
+        <style type='text/css'>
+          .img_div {
+            float: left;
+            margin-right: 10px;
+            margin-bottom: 15px;
+
+          }
+          img{
+            width: auto;
+            max-height: 100%
+          }
+          .line{
+            border-bottom: 1px solid #111;
+            display: block;
+            margin-top: 60px;
+            padding-top: 10px;
+            position: relative;
+          }
+        </style>
+
+          <?php
+            $dirs = array_filter(glob('storage/infraestructura/cubiculosMini/*'), 'is_dir');
+            $hayImagen = 0;
+            foreach ($dirs as $path) {
+              $dir = $path.'/';
+              $imagenes= glob($dir . "*.{[jJ][pP][gG],[pP][nN][gG],[gG][iI][fF],[jJ][pP][eE][gG]}", GLOB_BRACE);
+              if (sizeof($imagenes) != 0) {
+                $hayImagen = 1;
+                break;
+              }
+            }
+          ?>
+          @if($hayImagen == 1)
+            <h3 align="center">
+                Fotografías del inciso 9.1.6
+            </h3>
+            @foreach($dirs as $path)
+              <?php
+                $dirname = $path.'/';
+                $images= glob($dirname . "*.{[jJ][pP][gG],[pP][nN][gG],[gG][iI][fF],[jJ][pP][eE][gG]}", GLOB_BRACE);
+                $cubiculoID = substr($path, strlen('storage/infraestructura/cubiculosMini/'));
+                $cubiculoReg = App\Cubiculo::where('id', $cubiculoID)->first();
+                $cubiculoNombre = $cubiculoReg->nombre;
+              ?>
+              @if(sizeof($images) != 0)
+                <h2 class="line"><?php echo $cubiculoNombre ?></h2>
+              @endif
+
+              @foreach ($images as $image)
+                <figure>
+                  <div class="buttonimg">
+                    <div class="img_div">
+                      <img src="<?php echo asset($image)?>" height="220"
+                            alt="<?php echo $image?>"/>
+                      <figcaption class="text-center"><?php echo pathinfo($image)['basename']?></figcaption>
+                    </div>
+                  </div>
+                </figura>
+
+              @endforeach
+              <br clear='all'/>
+            @endforeach
+          @else
+            <h2 align="center">No hay imagenes</h2>
+          @endif
+      @endslot
+    @endcomponent
+  <!-- ************************** FINAL 9.1.9 ************************** -->
+
 
 	<!-- ************************** INICIO 9.1.12 ************************* -->
 	<h3 class="text-justify">Inciso 9.1.12: En los espacios mencionados en el inciso 9.1.11, se debe
