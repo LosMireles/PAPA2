@@ -20,12 +20,14 @@ class Inciso9_1_6Controller extends Controller
     {
     $preguntas = Pregunta::where('inciso', '9.1.6')->get();
 	$aulas  = Aula::all();
+    $controlador = "AulaController";
 
     return view('incisos/seccion9_1/9_1_6')
         ->with([
-            'preguntas' => $preguntas,
-            'id'        => $preguntas[0]->id,
-            'aulas'     => $aulas
+            'preguntas'                      => $preguntas,
+            'id'                             => $preguntas[0]->id,
+            'aulas'                          => $aulas,
+            'controlador_objeto_informacion' => $controlador
         ]);
     }
 

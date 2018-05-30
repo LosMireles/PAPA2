@@ -28,9 +28,7 @@
 				<input type = "hidden" name = "_token" value = "{{csrf_token()}}">
 				@yield('contenido_formulario')
 
-                <input type="hidden" name='url_previous' value="{{$url_previous or "/"}}">
-                </input>
-
+                <input type="hidden" name='url_previous' value="{{$url_previous or "/"}}"/>
 
 				<div class="form-group">
 				    @yield('boton_submit_formulario')

@@ -15,6 +15,9 @@
                   'class'  => 'form'])}}
 @endsection
 
+@php
+    $variable = "inciso_9_1_8"
+@endphp
 <!-- ------------ LAS PREGUNTAS Y SUS RESPUESTAS------------- -->
 
 @section('contenido_formulario')
@@ -38,7 +41,7 @@
 @section('tablas_inciso_general')
   <h3 class="text-center">Listado de equipos instalados en las aulas</h3>
 	<div class="row text-right" style="margin: 2px;">
-    	<a href="{{ action('AulaController@create') }}" class="btn btn-success">
+    	<a href="{{ action('AulaController@create', $variable) }}" class="btn btn-success">
     	    Agregar nueva aula
     	</a>
 
@@ -83,7 +86,7 @@
 
                 @component('layouts.boton_editar')
                     @slot('controlador_editar')
-                        {{ Form::open(['action' => ['AulaController@edit', $aula->nombre]]) }}
+                        {{ Form::open(['action' => ['AulaController@edit', $aula->nombre, $variable]]) }}
                     @endslot
                 @endcomponent
 

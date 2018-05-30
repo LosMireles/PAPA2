@@ -4,7 +4,7 @@
 @section("objeto_informacion", "crear un aula")
 
 @section('accion')
-    {{action('AulaController@store')}}
+    {{action('AulaController@store', $url_regreso)}}
 @endsection
 
 @section('contenido_formulario')

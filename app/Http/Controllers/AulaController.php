@@ -21,23 +21,24 @@ class AulaController extends Controller
     }
 
     //----------------------------------------------------------------
-	public function create(){
+	public function create($url_regreso = null){
     	$calificaciones = [1, 2, 3, 4];
         return view('infraestructura.aulas.create')
             ->with([
                 'calificaciones' => $calificaciones,
-                'url_previous' => url()->previous()
+                'url_previous'   => url()->previous(),
+                'url_regreso'    => $url_regreso
             ]);
 	}
 
-	//----------------------------------------------------------------
-
+    //----------------------------------------------------------------
 	public function create_asesoria(){
 		return view('infraestructura/asesorias/create');
 	}
-  //----------------------------------------------------------------
-  public function store(Request $request)
-  {
+
+    //----------------------------------------------------------------
+    public function store(Request $request, $url_regreso = null)
+    {
         $request->validate($this->rules());
 
         $aula = new Aula;
@@ -71,26 +72,30 @@ class AulaController extends Controller
           }
         }
 
-        #echo "Elemento insertado exitosamente!";
-        return redirect($request->url_previous)
-            ->with('status', 'Elemento agregado exitosamente');
+        if($url_regreso != null){
+            return redirect(url($url_regreso))
+                ->with('status', 'Elemento agregado exitosamente');
+        }else{
+            return redirect(url('/'))
+                ->with('status', 'Elemento agregado exitosamente');
+        }
     }
 
 	//-----------------------------------------------------------
-	public function edit($nombre) {
-
+	public function edit($nombre, $url_regreso = null) {
         $calificaciones = [1, 2, 3, 4];
         $aula           = Aula::where('nombre', $nombre)->first();
 
         return view('infraestructura.aulas.edit')
             ->with(['aula'           => $aula,
                     'calificaciones' => $calificaciones,
-                    'url_previous' => url()->previous()
+                    'url_previous' => url()->previous(),
+                    'url_regreso'    => $url_regreso
                 ]);
 	}
 
 	//-----------------------------------------------------------
-	public function update(Request $request, $nombre) {
+	public function update(Request $request, $nombre, $url_regreso = null) {
         //$request->validate($this->rules($nombre));
 
         $audAux = Aula::where('nombre', $request->nombre)->first();
@@ -118,69 +123,69 @@ class AulaController extends Controller
 		$mobilario         = $request->mobilario;
 		$conexiones        = $request->conexiones;
 
-		Aula::where('nombre', $nombre)->update(['nombre'         => $nombre_nuevo,
-                            'superficie'                         => $superficie,
-							'capacidad'                          => $capacidad,
-							'sillas_paleta'                      => $sillas_paleta,
-							'mesas_trabajo'                      => $mesas_trabajo,
-							'isotopica'                          => $isotopica,
-							'estrado'                            => $estrado,
-							'pizarron'                           => $pizarron,
-							'iluminacion'                        => $iluminacion,
-							'aislamiento_ruido'                  => $aislamiento_ruido,
-							'ventilacion'                        => $ventilacion,
-							'temperatura'                        => $temperatura,
-							'espacio'                            => $espacio,
-							'mobilario'                          => $mobilario,
-							'conexiones'                         => $conexiones,
-							'asesoria'                           => $asesoria]);
+        Aula::where('nombre', $nombre)->update([
+            'nombre'            => $nombre_nuevo,
+            'superficie'        => $superficie,
+            'capacidad'         => $capacidad,
+            'sillas_paleta'     => $sillas_paleta,
+            'mesas_trabajo'     => $mesas_trabajo,
+            'isotopica'         => $isotopica,
+            'estrado'           => $estrado,
+            'pizarron'          => $pizarron,
+            'iluminacion'       => $iluminacion,
+            'aislamiento_ruido' => $aislamiento_ruido,
+            'ventilacion'       => $ventilacion,
+            'temperatura'       => $temperatura,
+            'espacio'           => $espacio,
+            'mobilario'         => $mobilario,
+            'conexiones'        => $conexiones,
+            'asesoria'          => $asesoria
+        ]);
 
-		echo "Elemento insertado exitosamente!";
-        return redirect($request->url_previous)
-            ->with('status', 'Elemento actualizado con exito');
+        if($url_regreso != null){
+            return redirect(url($url_regreso))
+                ->with('status', 'Elemento actualizado exitosamente');
+        }else{
+            return redirect(url('/'))
+                ->with('status', 'Elemento actualizado exitosamente');
+        }
 	}
 
 	//--------------------------------------------------------------
-	public function destroy($nombre){
+	public function destroy($nombre, $url_regreso = null){
+        # Borra los archivos subidos a la carpeta del objeto
+        Storage::deleteDirectory('infraestructura/aulas/'. $nombre . '/');
 
-    # Borra los archivos subidos a la carpeta del objeto
-    Storage::deleteDirectory('infraestructura/aulas/'. $nombre . '/');
+        $aula = Aula::where('nombre', $nombre)->first();
+        if(!$aula){
+            $mensaje = "No existe aula con nombre: ".$nombre;
+            return view('general/error')
+                ->with(['mensaje' => $mensaje]);
+        }
+        $aula->delete();
 
-    $aula = Aula::where('nombre', $nombre)->first();
-    if(!$aula){
-        $mensaje = "No existe aula con nombre: ".$nombre;
-        return view('general/error')
-            ->with(['mensaje' => $mensaje]);
-    }
-    $aula->delete();
-
-		echo "Elemento borrado exitosamente!";
-        return redirect()->back()
-            ->with('status', 'Elemento borrado exitosamente');
+        if($url_regreso != null){
+            return redirect(url($url_regreso))
+                ->with('status', 'Elemento borrado exitosamente');
+        }else{
+            return redirect(url('/'))
+                ->with('status', 'Elemento borrado exitosamente');
+        }
 	}
 
 	//--------------------------------------------------------------
     public function rules($nombre = null){
         return [
             'nombre'           => ['required',
-                                 Rule::unique('aulas')->ignore($nombre, 'nombre')],
-
-            'capacidad'      => 'required|integer',
-
-            'pizarron'     => 'required|integer|min:1|max:4',
-            'iluminacion' => 'required|integer|min:1|max:4',
-            'aislamiento_ruido' => 'required|integer|min:1|max:4',
-            'ventilacion'  => 'required|integer|min:1|max:4',
-            'temperatura'  => 'required|integer|min:1|max:4',
-            'espacio'      => 'required|integer|min:1|max:4',
-            'mobilario'    => 'required|integer|min:1|max:4',
-            'conexiones'   => 'required|integer|min:1|max:4'
+                                 Rule::unique('aulas')->ignore($nombre, 'nombre')]
         ];
     }
 	//--------------------------------------------------------------
 
   public function viewImg($nombre){
-    return view('infraestructura.aulas.viewImg')->with(['nombre' => $nombre]);
+      return view('infraestructura.aulas.viewImg')->with([
+          'nombre' => $nombre
+      ]);
   }
 
   public function guardarImg(Request $request, $nombre){

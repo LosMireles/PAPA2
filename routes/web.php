@@ -38,7 +38,6 @@ Route::get('/cubiculosMini/{tipo}/viewImg', 'CubiculoMiniController@viewImg');
 Route::get('/asesorias/{tipo}/viewImg', 'AsesoriaController@viewImg');
 Route::get('/auditorios/{tipo}/viewImg', 'AuditorioController@viewImg');
 Route::get('/sanitarios/{tipo}/viewImg', 'SanitarioController@viewImg');
-#Route::get('/aulas/{tipo}deleteImg', 'AulaController@deleteImg');
 
 // Rutas para agregar imagenes a infraestructura
 Route::post('/aulas/{tipo}/guardarImg', 'AulaController@guardarImg');
@@ -59,6 +58,10 @@ Route::post('/cursos/crear_relacion/{id}', 'CursoController@crear_relacion');
 // Aulas
 Route::post('/aulas/{tipo}/borrarImg/{imagen}', [
   'uses' => 'AulaController@borrarImg',
+  'as' => 'borrarImgAula'
+]);
+Route::post('/aulas/{tipo}/borrarImg/{imagen}', [
+    'uses' => 'Aula9_1_6Controller@borrarImg',
   'as' => 'borrarImgAula'
 ]);
 
@@ -127,3 +130,13 @@ Route::resources(
      'incisos'             => 'IncisoController'],
 
     ['except' => 'show']);
+
+//crete, store
+Route::get('aulas/create/{inciso?}', 'AulaController@create');
+Route::post('aulas/{inciso?}', 'AulaController@store');
+//edit, update
+Route::get('aulas/{aula}/edit/{inciso?}', 'AulaController@edit');
+Route::patch('aulas/{aula}/{inciso?}', 'AulaController@update');
+
+Route::delete('aulas/{aula}/{inciso?}', 'AulaController@destroy');
+
