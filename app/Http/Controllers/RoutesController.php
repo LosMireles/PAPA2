@@ -6,6 +6,13 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\Pregunta;
+use App\Auditorio;
+use App\TecnicoAcademico;
+use App\Curso;
+
+use DB;
+
 class RoutesController extends Controller
 {
     public function index() {
@@ -50,5 +57,28 @@ class RoutesController extends Controller
 
     public function Curso(){
       return view('infraestructura/curso/curso_index');
+    }
+
+    public function generar_reporte(){
+        $preguntas_9_1_12 = Pregunta::where('inciso', '9.1.12')->get();
+        $preguntas_9_1_4 = Pregunta::where('inciso', '9.1.4')->get();
+        $preguntas_9_2_12 = Pregunta::where('inciso', '9.2.12')->get();
+        $preguntas_9_2_1 = Pregunta::where('inciso', '9.2.1')->get();
+
+        $cursos_softwares = DB::table('curso_software')->get();
+        
+        $cursos = Curso::all();
+        $tecnicos  = TecnicoAcademico::all();
+        $auditorios = Auditorio::all();
+
+        return view('reporte')->with([  'preguntas_9_1_12'  => $preguntas_9_1_12,
+                                        'preguntas_9_1_4'   => $preguntas_9_1_4,
+                                        'preguntas_9_2_12'  => $preguntas_9_2_12,
+                                        'preguntas_9_2_1'   => $preguntas_9_2_1,
+
+                                        'cursos'            => $cursos,
+                                        'tecnicos'          => $tecnicos,
+                                        'auditorios'        => $auditorios,
+                                        'cursos_softwares'  => $cursos_softwares]);
     }
 }

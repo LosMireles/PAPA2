@@ -140,15 +140,6 @@
 					<li>
 						@component("layouts.componentes.tooltip_general_link")
 							@slot('url')
-								{{ url('/inciso_9_2_5') }}
-							@endslot
-							@slot('titulo', 'Haga clic para ir al inciso')
-							@slot('mensaje', '9.2.5 (Plataformas de cómputo (Sistemas operativos))')
-						@endcomponent
-					</li>
-					<li>
-						@component("layouts.componentes.tooltip_general_link")
-							@slot('url')
 								{{ url('/inciso_9_2_2') }}
 							@endslot
 							@slot('titulo', 'Haga clic para ir al inciso')
@@ -174,6 +165,15 @@
 							@endslot
 							@slot('titulo', 'Haga clic para ir al inciso')
 							@slot('mensaje', '9.2.7 (Redes disponibles para el programa)')
+						@endcomponent
+					</li>
+					<li>
+						@component("layouts.componentes.tooltip_general_link")
+							@slot('url')
+								{{ url('/inciso_9_2_5') }}
+							@endslot
+							@slot('titulo', 'Haga clic para ir al inciso')
+							@slot('mensaje', '9.2.5 (Plataformas de cómputo (Sistemas operativos))')
 						@endcomponent
 					</li>
 					<li>

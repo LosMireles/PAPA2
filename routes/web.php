@@ -12,6 +12,8 @@
 */
 
 
+Route::get('/Reporte', 'RoutesController@generar_reporte');
+
 Route::get('/', 'RoutesController@index');
 
 Route::get('/infraestructura', 'RoutesController@infraestructura');
