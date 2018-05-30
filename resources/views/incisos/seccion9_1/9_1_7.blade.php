@@ -105,4 +105,7 @@
 		  @endforeach
 		@endslot
 	  @endcomponent
+	@if(count($cursos) == 0)
+      <h2 class="text-center">No hay cursos en la base de datos</h2>
+    @endif
 @endsection

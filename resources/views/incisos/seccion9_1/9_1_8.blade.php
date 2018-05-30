@@ -113,6 +113,9 @@
             @endforeach
         @endslot
     @endcomponent
+    @if(count($aulas) == 0)
+      <h2 class="text-center">No hay aulas para relacionar en la base de datos</h2>
+    @endif
 @endsection
 
 
