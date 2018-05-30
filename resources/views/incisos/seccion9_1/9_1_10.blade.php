@@ -16,11 +16,6 @@
 <!-- ------------ LAS PREGUNTAS Y SUS RESPUESTAS------------- -->
 
 @section('contenido_formulario')
-    <script type="text/javascript">
-      $('input[name={{$preguntas[0]->id}}]').click(function() {
-          alert($('input[name={{$preguntas[0]->id}}]:checked').val());
-      });
-    </script>
     <!-- Pregunta 1 -->
     <div class="form-group">
         <label for="{{$preguntas[0]->id}}" class="control-label">{{$preguntas[0]->titulo}}</label>
