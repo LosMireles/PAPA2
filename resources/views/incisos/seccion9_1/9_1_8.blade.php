@@ -106,7 +106,7 @@
                 </td>
 
                 <td class="text-center">
-                    <a href="{{action('AulaController@viewImg', [ 'nombre' => $aula->nombre])}}" class="btn btn-warning">
+                    <a href="{{action('AulaController@viewImg', [ 'nombre' => $aula->nombre, 'url' => 918])}}" class="btn btn-warning">
                         Fotografías
                     </a>
                 </td>

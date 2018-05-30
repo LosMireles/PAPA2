@@ -1,0 +1,619 @@
+@extends('layouts.inciso_general')
+
+@section('title')
+	Reporte final
+@endsection
+
+@section('contenido_formulario')
+	<!-- ************************** INICIO 9.1.4 ************************* -->
+	<h3 class="text-justify">Inciso 9.1.4: Los responsables del centro de cómputo
+  	deben ser personal con experiencia y perfil relacionado con el área</h3>
+
+  	@foreach($preguntas_9_1_4 as $pregunta_9_1_4)
+		<div class="form-group">
+			<label for="{{$pregunta_9_1_4->id}}" class="control-label">
+			    {{$pregunta_9_1_4->titulo}}
+			</label>
+
+			<div>
+                <textarea class="form-control" id="{{$pregunta_9_1_4->id}}" name="{{$pregunta_9_1_4->id}}" disabled>{{$pregunta_9_1_4->respuesta}}</textarea>
+			</div>
+		</div>
+	@endforeach
+	<!-- ************************** FINAL 9.1.4 ************************** -->
+	
+	<!-- ************************** INICIO 9.1.7 ************************* -->
+	<h3 class="text-justify">Inciso 9.1.7: El número de aulas habrá de ser suficiente
+   	para antender la impartición de cursos que se programen en cada periodo escolar</h3>
+
+	@foreach($preguntas_9_1_7 as $pregunta_9_1_7)
+		<div class="form-group">
+			<label for="{{$pregunta_9_1_7->id}}" class="control-label">
+			    {{$pregunta_9_1_7->titulo}}
+			</label>
+
+			<div>
+                <textarea class="form-control" id="{{$pregunta_9_1_7->id}}" name="{{$pregunta_9_1_7->id}}" disabled>{{$pregunta_9_1_7->respuesta}}</textarea>
+			</div>
+		</div>
+	@endforeach
+
+	@component('layouts.componentes.tabla_incisos')
+		<!-- Tabla de todos los grupos -->
+		@slot('cabeza_tabla')
+			<th>Nombre</th>
+			<th>Período</th>
+			<th>Grupo</th>
+			<th>Numero de Estudiantes</th>
+			<th>Pertenencia</th>
+			<th>Espacios</th>
+		@endslot
+
+		@slot('cuerpo_tabla')
+		  @foreach ($cursos as $curso)
+			<tr>
+			  	<td>{{ $curso->nombre }}</td>
+			  	<td>{{ $curso->periodo }}</td>
+			  	<td>{{ $curso->no_grupo }}</td>
+			  	<td>{{ $curso->no_estudiantes }}</td>
+			  	<td>{{ $curso->departamento }}</td>
+
+                <td>
+                    @if(!empty($curso->aulas))
+                        @foreach($curso->aulas as $aula)
+                            {{$aula->nombre}} <!--Solo para uno, cambiar foreach en caso de mas-->
+                        @endforeach
+                    @endif
+                </td>
+			</tr>
+		  @endforeach
+		@endslot
+	  @endcomponent
+	<!-- ************************** FINAL 9.1.7 ************************** -->
+
+	<!-- ************************** INICIO 9.1.8 ************************** -->
+	<h3 class="text-justify">Inciso 9.1.8: El programa debe disponer de al menos una
+  	aula con equipo de cómputo y audiovisual permanentemente instalado que podrá ser
+ 	utilizada para cursos normales y especializados</h3>
+
+ 	@foreach($preguntas_9_1_8 as $pregunta_9_1_8)
+		<div class="form-group">
+			<label for="{{$pregunta_9_1_8->id}}" class="control-label">
+			    {{$pregunta_9_1_8->titulo}}
+			</label>
+
+			<div>
+				<input type="text" class="form-control" id="{{$pregunta_9_1_8->id}}" name="{{$pregunta_9_1_8->id}}" value="{{$pregunta_9_1_8->respuesta}}" required disabled>
+			</div>
+		</div>
+	@endforeach
+
+	@component('layouts.componentes.tabla_incisos')
+
+        <h4>Tabla de equipos de redes</h4>
+        @slot('cabeza_tabla')
+            <th>Aula</th>
+            <th>Serial Equipo computo</th>
+            <th>Serial equipo audiovisual</th>
+        @endslot
+
+        @slot('cuerpo_tabla')
+            @foreach($aulas as $aula)
+            <tr>
+                <td>{{$aula->nombre}}</td>
+
+                @if(!empty($aula->equipos))
+                    <td>
+                    @foreach($aula->equipos as $equipo)
+                        @if($equipo->tipo == "Computo")
+                            {{$equipo->serial}}
+                            <br>
+                        @endif
+                    @endforeach
+                    </td>
+
+                    <td>
+                    @foreach($aula->equipos as $equipo)
+                        @if($equipo->tipo == "Audiovisual")
+                            {{$equipo->serial}}
+                            <br>
+                        @endif
+                    @endforeach
+                    </td>
+                @endif
+            </tr>
+            @endforeach
+        @endslot
+
+      @slot('fotos')
+        <style type='text/css'>
+        .img_div {
+          float: left;
+          margin-right: 10px;
+          margin-bottom: 15px;
+
+        }
+        img{
+          width: auto;
+          max-height: 100%
+        }
+        .line{
+          border-bottom: 1px solid #111;
+          display: block;
+          margin-top: 60px;
+          padding-top: 10px;
+          position: relative;
+        }
+      </style>
+
+      <?php
+        $dirs = array_filter(glob('storage/infraestructura/aulas/*'), 'is_dir');
+        $hayImagen = 0;
+        foreach ($dirs as $path) {
+          $dir = $path.'/';
+          $imagenes= glob($dir . "*.{[jJ][pP][gG],[pP][nN][gG],[gG][iI][fF],[jJ][pP][eE][gG]}", GLOB_BRACE);
+          if (sizeof($imagenes) != 0) {
+            $hayImagen = 1;
+            break;
+          }
+        }
+      ?>
+      @if($hayImagen == 1)
+        <h3 align="center">
+            Fotografías del inciso 9.1.8
+        </h3>
+        @foreach($dirs as $path)
+          <?php
+            $dirname = $path.'/';
+            $images= glob($dirname . "*.{[jJ][pP][gG],[pP][nN][gG],[gG][iI][fF],[jJ][pP][eE][gG]}", GLOB_BRACE);
+            $aulaID = substr($path, strlen('storage/infraestructura/aulas/'));
+            $aulaReg = App\Aula::where('id', $aulaID)->first();
+            $aulaNombre = $aulaReg->nombre;
+          ?>
+
+          @if(sizeof($images) != 0)
+            <h2 class="line"><?php echo $aulaNombre ?></h2>
+          @endif
+
+          @foreach ($images as $image)
+          <figure>
+            <div class="buttonimg">
+              <div class="img_div">
+                <img src="<?php echo asset($image)?>" height="220"
+                      alt="<?php echo $image?>"/>
+                <figcaption class="text-center"><?php echo pathinfo($image)['basename']?></figcaption>
+              </div>
+            </div>
+          </figura>
+
+          @endforeach
+          <br clear='all'/>
+        @endforeach
+      @else
+        <h2 align="center">No hay imagenes</h2>
+      @endif
+      @endslot
+
+    @endcomponent
+
+    <!-- PONER LO DE LAS FOTOS -->
+
+	<!-- ************************** FINAL 9.1.8 *************************** -->
+
+
+	<!-- ************************** INICIO 9.1.12 ************************* -->
+	<h3 class="text-justify">Inciso 9.1.12: En los espacios mencionados en el inciso 9.1.11, se debe
+    tener un lugar comodo por cada diez estudiantes inscritos en el programa,
+    ofreciendo las condiciones adecuadas de higiene y seguridad. </h3>
+	<div class="form-group">
+		<label for="{{$preguntas_9_1_12[0]->id}}" class="control-label"> {{$preguntas_9_1_12[0]->titulo}} </label>
+
+		<div>
+		  <textarea class="form-control" id="{{$preguntas_9_1_12[0]->id}}" name="{{$preguntas_9_1_12[0]->id}}" disabled>{{$preguntas_9_1_12[0]->respuesta}}</textarea>
+		</div>
+	</div>
+
+	<div class="form-group">
+    <label for="{{$preguntas_9_1_12[1]->id}}" class="control-label"> {{$preguntas_9_1_12[1]->titulo}} </label>
+
+      <div>
+        @if($preguntas_9_1_12[1]->respuesta == 'Si')
+          <input type="radio" name="{{$preguntas_9_1_12[1]->id}}" value="Si" checked disabled> Sí <br>
+          <input type="radio" name="{{$preguntas_9_1_12[1]->id}}" value="No" disabled> No
+        @elseif($preguntas_9_1_12[1]->respuesta == 'No')
+          <input type="radio" name="{{$preguntas_9_1_12[1]->id}}" value="Si" disabled> Sí <br>
+          <input type="radio" name="{{$preguntas_9_1_12[1]->id}}" value="No" checked disabled> No
+        @else
+          <input type="radio" name="{{$preguntas_9_1_12[1]->id}}" value="Si" checked disabled> Sí <br>
+          <input type="radio" name="{{$preguntas_9_1_12[1]->id}}" value="No" disabled> No
+        @endif
+      </div>
+    </div>
+	
+	<div class="form-group">
+    <label for="{{$preguntas_9_1_12[2]->id}}" class="control-label"> {{$preguntas_9_1_12[2]->titulo}} </label>
+
+	<div>
+        @if($preguntas_9_1_12[2]->respuesta == 'Si')
+          <input type="radio" name="{{$preguntas_9_1_12[2]->id}}" value="Si" checked disabled> Sí <br>
+          <input type="radio" name="{{$preguntas_9_1_12[2]->id}}" value="No" disabled> No
+        @elseif($preguntas_9_1_12[2]->respuesta == 'No')
+          <input type="radio" name="{{$preguntas_9_1_12[2]->id}}" value="Si" disabled> Sí <br>
+          <input type="radio" name="{{$preguntas_9_1_12[2]->id}}" value="No" checked disabled> No
+        @else
+          <input type="radio" name="{{$preguntas_9_1_12[2]->id}}" value="Si" checked disabled> Sí <br>
+          <input type="radio" name="{{$preguntas_9_1_12[2]->id}}" value="No" disabled> No
+        @endif
+      </div>
+    </div>
+	<!-- ************************** FINAL 9.1.12 ************************** -->
+
+	<!-- ************************** INICIO 9.2.1 ************************** -->
+	<h3 class="text-justify">Inciso 9.2.1: Para cada asignatura mencionar el software
+   	que se utiliza y si está disponible dentro de la institución</h3>
+
+   	@foreach($preguntas_9_2_1 as $pregunta_9_2_1)
+	    @component('layouts.textarea_input')
+            @slot("nombre_input", $pregunta_9_2_1->id)
+            @slot("label_input", $pregunta_9_2_1->titulo)
+            @slot("valor_default", $pregunta_9_2_1->respuesta)
+            @slot('extra')
+            	disabled
+            @endslot
+        @endcomponent
+	@endforeach
+
+	@component('layouts.componentes.tabla_incisos')
+
+        <h4>Tabla cursos y los software que utilizan</h4>
+        @slot('cabeza_tabla')
+            <th>Curso</th>
+            <th>Periodo</th>
+            <th>Licenciatura</th>
+			<th>Grupo</th>
+            <th>Numero estudiantes</th>
+            <th>Softwares</th>
+        @endslot
+
+        @slot('cuerpo_tabla')
+            @foreach($cursos as $curso)
+            <tr>
+                <td>{{$curso->nombre}}</td>
+                <td>{{$curso->periodo}}</td>
+                <td>{{$curso->departamento}}</td>
+                <td>{{$curso->no_grupo}}</td>
+                <td>{{$curso->no_estudiantes}}</td>
+                <td>
+                    @if(!empty($cursos_softwares))
+                        @foreach($curso->softwares as $software)
+                            {{$software->nombre}} <br>
+                        @endforeach
+                    @endif
+                </td>
+            </tr>
+            @endforeach
+        @endslot
+    @endcomponent
+	<!-- ************************** FINAL 9.2.1 *************************** -->
+
+	<!-- ************************** INICIO 9.2.2 ************************** -->
+	<h3 class="text-justify">Inciso 9.2.2: Todo programa debe contar como mínimo con
+   	el siguiente software: Lenguajes de programación, herramientas CASE, manejadores
+  	de base de datos y paquetería en general</h3>
+
+  	@foreach($preguntas_9_2_2 as $pregunta_9_2_2)
+	    @component('layouts.textarea_input')
+            @slot("nombre_input", $pregunta_9_2_2->id)
+            @slot("label_input", $pregunta_9_2_2->titulo)
+            @slot("valor_default", $pregunta_9_2_2->respuesta)
+            @slot('extra', 'disabled')
+        @endcomponent
+	@endforeach
+
+	@component('layouts.componentes.tabla_incisos_agregar')
+
+        <h4>Tabla de lenguajes, herramientas case, manejadores de bases de datos y paqueteria</h4>
+        @slot('cabeza_tabla')
+            <th>Lenguajes de programación</th>
+            <th>Herramientas CASE</th>
+            <th>Manejadores de base de datos</th>
+            <th>Paquetería general</th>
+        @endslot
+
+        @slot('cuerpo_tabla')
+            @for($i = 0; $i < max(array(sizeof($lenguajes),
+                                        sizeof($cases),
+                                        sizeof($bds),
+                                        sizeof($paqueterias))); $i++)
+            <tr>
+                <td>
+            @if($i < sizeof($lenguajes))
+                    {{$lenguajes[$i]}} <br>
+            @endif
+                </td>
+
+                <td>
+            @if($i < sizeof($cases))
+                    {{$cases[$i]}} <br>
+            @endif
+                </td>
+
+                <td>
+            @if($i < sizeof($bds))
+                    {{$bds[$i]}} <br>
+            @endif
+                </td>
+
+                <td>
+            @if($i < sizeof($paqueterias))
+                    {{$paqueterias[$i]}} <br>
+            @endif
+                </td>
+            </tr>
+            @endfor
+        @endslot
+    @endcomponent
+	<!-- ************************** FINAL 9.2.5 *************************** -->
+
+
+	<!-- ************************** INICIO 9.2.5 ************************** -->
+	<h3 class="text-justify">Inciso 9.2.5: Se debe contar con al menos tres plataformas
+   	de cómputo diferentes que estén disponibles y accesibles para los estudiantes y
+  	el personal docente del programa</h3>
+
+  	@foreach($preguntas_9_2_5 as $pregunta_9_2_5)
+		<div class="form-group">
+			<label for="{{$pregunta_9_2_5->id}}" class="control-label">
+			    {{$pregunta_9_2_5->titulo}}
+			</label>
+
+			<div>
+                <textarea class="form-control" id="{{$pregunta_9_2_5->id}}" name="{{$pregunta_9_2_5->id}}" disabled="">{{$pregunta_9_2_5->respuesta}}</textarea>
+			</div>
+		</div>
+	@endforeach
+
+	@component('layouts.componentes.tabla_incisos')
+        <h4>Tabla de equipos de redes</h4>
+        @slot('cabeza_tabla')
+            <th>Serial equipo</th>
+            <th>Sistema Operativo</th>
+			<th>Marca</th>
+        @endslot
+
+        @slot('cuerpo_tabla')
+            @foreach($equipos as $equipo)
+            <tr>
+                <td>{{$equipo->serial}}</td>
+                <td>{{$equipo->sistema_operativo}}</td>
+				<td>{{$equipo->marca}}</td>
+            </tr>
+            @endforeach
+        @endslot
+    @endcomponent
+	<!-- ************************** FINAL 9.2.5 ************************** -->
+
+	<!-- ************************** INICIO 9.2.7 ************************** -->
+	<h3 class="text-justify">Inciso 9.2.7: Debe contarse con al menos una red de área
+   	local y una amplia, con software adecuado para las aplicaciones más comunes del
+  	programa.</h3>
+
+  	<div class="form-group">
+		<label for="{{$preguntas_9_2_7[0]->id}}" class="control-label">{{$preguntas_9_2_7[0]->titulo}}</label>
+
+        <div>
+            @if($preguntas_9_2_7[0]->respuesta == 'Si')
+              <input type="radio" name="{{$preguntas_9_2_7[0]->id}}" value="Si" checked disabled> Sí <br>
+              <input type="radio" name="{{$preguntas_9_2_7[0]->id}}" value="No" disabled> No
+            @elseif($preguntas_9_2_7[0]->respuesta == 'No')
+              <input type="radio" name="{{$preguntas_9_2_7[0]->id}}" value="Si" disabled> Sí <br>
+              <input type="radio" name="{{$preguntas_9_2_7[0]->id}}" value="No" checked disabled> No
+            @else
+              <input type="radio" name="{{$preguntas_9_2_7[0]->id}}" value="Si" checked disabled> Sí <br>
+              <input type="radio" name="{{$preguntas_9_2_7[0]->id}}" value="No" disabled> No
+            @endif
+        </div>
+    </div>
+	<!-- ******************************************************************************************************** -->
+	<div class="form-group">
+		<label for="{{$preguntas_9_2_7[1]->id}}" class="control-label text-center">{{$preguntas_9_2_7[1]->titulo}}</label>
+
+		<div>
+            <textarea class="form-control" id="{{$preguntas_9_2_7[1]->id}}" name="{{$preguntas_9_2_7[1]->id}}" disabled>{{$preguntas_9_2_7[1]->respuesta}}</textarea>
+		</div>
+	</div>
+	<!-- ******************************************************************************************************** -->
+	<div class="form-group">
+		<label for="{{$preguntas_9_2_7[2]->id}}" class="control-label">{{$preguntas_9_2_7[2]->titulo}}</label>
+
+        <div>
+            @if($preguntas_9_2_7[2]->respuesta == 'Si')
+              <input type="radio" name="{{$preguntas_9_2_7[2]->id}}" value="Si" checked disabled> Sí <br>
+              <input type="radio" name="{{$preguntas_9_2_7[2]->id}}" value="No" disabled> No
+            @elseif($preguntas_9_2_7[2]->respuesta == 'No')
+              <input type="radio" name="{{$preguntas_9_2_7[2]->id}}" value="Si" disabled> Sí <br>
+              <input type="radio" name="{{$preguntas_9_2_7[2]->id}}" value="No" checked disabled> No
+            @else
+              <input type="radio" name="{{$preguntas_9_2_7[2]->id}}" value="Si" checked disabled> Sí <br>
+              <input type="radio" name="{{$preguntas_9_2_7[2]->id}}" value="No" disabled> No
+            @endif
+        </div>
+	</div>
+	<!-- ******************************************************************************************************** -->
+	<div class="form-group">
+		<label for="{{$preguntas_9_2_7[3]->id}}" class="control-label">{{$preguntas_9_2_7[3]->titulo}}</label>
+
+        <div>
+            @if($preguntas_9_2_7[3]->respuesta == 'Si')
+              <input type="radio" name="{{$preguntas_9_2_7[3]->id}}" value="Si" checked disabled> Sí <br>
+              <input type="radio" name="{{$preguntas_9_2_7[3]->id}}" value="No" disabled> No
+            @elseif($preguntas_9_2_7[3]->respuesta == 'No')
+              <input type="radio" name="{{$preguntas_9_2_7[3]->id}}" value="Si" disabled> Sí <br>
+              <input type="radio" name="{{$preguntas_9_2_7[3]->id}}" value="No" checked disabled> No
+            @else
+              <input type="radio" name="{{$preguntas_9_2_7[3]->id}}" value="Si" checked disabled> Sí <br>
+              <input type="radio" name="{{$preguntas_9_2_7[3]->id}}" value="No" disabled> No
+            @endif
+        </div>
+	</div>
+	<!-- ******************************************************************************************************** -->
+	<div class="form-group">
+		<label for="{{$preguntas_9_2_7[4]->id}}" class="control-label">{{$preguntas_9_2_7[4]->titulo}}</label>
+
+		<div>
+            <textarea class="form-control" id="{{$preguntas_9_2_7[4]->id}}" name="{{$preguntas_9_2_7[4]->id}}" disabled>{{$preguntas_9_2_7[4]->respuesta}}</textarea>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="{{$preguntas_9_2_7[5]->id}}" class="control-label">{{$preguntas_9_2_7[5]->titulo}}</label>
+
+		<div>
+            <textarea class="form-control" id="{{$preguntas_9_2_7[5]->id}}" name="{{$preguntas_9_2_7[5]->id}}" disabled>{{$preguntas_9_2_7[5]->respuesta}}</textarea>
+		</div>
+	</div>
+
+	@component('layouts.componentes.tabla_incisos')
+        <h4>Tabla de equipos de redes</h4>
+        @slot('cabeza_tabla')
+            <th>Serial equipo</th>
+            <th>CPU</th>
+            <th>Almacenamiento</th>
+            <th>RAM</th>
+            <th>Otras caracteristicas</th>
+        @endslot
+
+        @slot('cuerpo_tabla')
+            @foreach($equipos as $equipo)
+            <tr>
+                <td>{{$equipo->serial}}</td>
+                <td>{{$equipo->cpu}}</td>
+                <td>{{$equipo->almacenamiento}}</td>
+                <td>{{$equipo->ram}}</td>
+                <td>{{$equipo->otras_caracteristicas}}</td>
+
+            </tr>
+            @endforeach
+        @endslot
+    @endcomponent
+	<!-- ************************** FINAL 9.2.7 *************************** -->
+
+
+	<!-- ************************** INICIO 9.2.12 ************************* -->
+	<h3 class="text-justify">Inciso 9.2.12: Los Servicios de Cómputo deben contar
+   	con el soporte técnico adecuado</h3>
+
+   	<div class="form-group">
+		<label for="{{$preguntas_9_2_12[0]->id}}" class="control-label"> {{$preguntas_9_2_12[0]->titulo}} </label>
+
+		<div>
+            <textarea class="form-control" id="{{$preguntas_9_2_12[0]->id}}" name="{{$preguntas_9_2_12[0]->id}}" disabled>{{$preguntas_9_2_12[0]->respuesta}}</textarea>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="{{$preguntas_9_2_12[1]->id}}" class="control-label"> {{$preguntas_9_2_12[1]->titulo}} </label>
+
+		<div>
+            <textarea class="form-control" id="{{$preguntas_9_2_12[1]->id}}" name="{{$preguntas_9_2_12[1]->id}}" disabled="">{{$preguntas_9_2_12[1]->respuesta}}</textarea>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="{{$preguntas_9_2_12[2]->id}}" class="control-label"> {{$preguntas_9_2_12[2]->titulo}} </label>
+
+		<div>
+            @if($preguntas_9_2_12[2]->respuesta == 'Si')
+	          <input type="radio" name="{{$preguntas_9_2_12[2]->id}}" value="Si" checked disabled> Sí <br>
+	          <input type="radio" name="{{$preguntas_9_2_12[2]->id}}" value="No" disabled> No
+	        @elseif($preguntas_9_2_12[2]->respuesta == 'No')
+	          <input type="radio" name="{{$preguntas_9_2_12[2]->id}}" value="Si" disabled> Sí <br>
+	          <input type="radio" name="{{$preguntas_9_2_12[2]->id}}" value="No" checked disabled> No
+	        @else
+	          <input type="radio" name="{{$preguntas_9_2_12[2]->id}}" value="Si" checked disabled> Sí <br>
+	          <input type="radio" name="{{$preguntas_9_2_12[2]->id}}" value="No" disabled> No
+	        @endif
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="{{$preguntas_9_2_12[3]->id}}" class="control-label"> {{$preguntas_9_2_12[3]->titulo}} </label>
+
+		<div>
+            <textarea class="form-control" id="{{$preguntas_9_2_12[3]->id}}" name="{{$preguntas_9_2_12[3]->id}}" disabled>{{$preguntas_9_2_12[3]->respuesta}}</textarea>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="{{$preguntas_9_2_12[4]->id}}" class="control-label"> {{$preguntas_9_2_12[4]->titulo}} </label>
+
+		<div>
+            <textarea class="form-control" id="{{$preguntas_9_2_12[4]->id}}" name="{{$preguntas_9_2_12[4]->id}}" disabled>{{$preguntas_9_2_12[4]->respuesta}}</textarea>
+		</div>
+	</div>
+	<!-- ************************** FINAL 9.2.12 ************************** -->
+	
+	<!-- ************************** INICIO 9.2.14 ************************* -->
+	<h3 class="text-justify">Inciso 9.2.14: Especificamente, el personal técnico,
+    es suficiente y cuenta con el perfil adecuado para dar soporte, no solo a la
+     infraestructura de telecomunicaciones y redes, sino también para el desarrollo
+     de aplicaciones, incorporación de tecnologías emergentes, administración y
+     hospedaje, desarrollo web, minería de datos, soluciones inteligentes, reingeniería
+     de procesos mediante el use de las TIC y la administracion de la propia
+     plataforma tecnológica y de aprendizaje que soporta el modelo educativo, ya
+      sea a distancia o presencial. </h3>
+
+	<div class="form-group">
+	    <label for="{{$preguntas_9_2_14[0]->id}}" class="control-label"> {{$preguntas_9_2_14[0]->titulo}} </label>
+
+	      <div>
+	        @if($preguntas_9_2_14[0]->respuesta == 'Si')
+	          <input type="radio" name="{{$preguntas_9_2_14[0]->id}}" value="Si" checked disabled> Sí <br>
+	          <input type="radio" name="{{$preguntas_9_2_14[0]->id}}" value="No" disabled> No
+	        @elseif($preguntas_9_2_14[0]->respuesta == 'No')
+	          <input type="radio" name="{{$preguntas_9_2_14[0]->id}}" value="Si" disabled> Sí <br>
+	          <input type="radio" name="{{$preguntas_9_2_14[0]->id}}" value="No" checked disabled> No
+	        @else
+	          <input type="radio" name="{{$preguntas_9_2_14[0]->id}}" value="Si" checked disabled> Sí <br>
+	          <input type="radio" name="{{$preguntas_9_2_14[0]->id}}" value="No" disabled> No
+	        @endif
+	      </div>
+	    </div>
+
+	  <div class="form-group">
+	    <label for="{{$preguntas_9_2_14[1]->id}}" class="control-label"> {{$preguntas_9_2_14[1]->titulo}} </label>
+
+	    <div>
+	      <textarea class="form-control" id="{{$preguntas_9_2_14[1]->id}}" name="{{$preguntas_9_2_14[1]->id}}" disabled>{{$preguntas_9_2_14[1]->respuesta}}</textarea>
+	    </div>
+	  </div>
+
+	  <div class="form-group">
+	    <label for="{{$preguntas_9_2_14[2]->id}}" class="control-label"> {{$preguntas_9_2_14[2]->titulo}} </label>
+
+	    <div>
+	      <input type="text" class="form-control" id="{{$preguntas_9_2_14[2]->id}}" name="{{$preguntas_9_2_14[2]->id}}" placeholder="Véase la tabla de abajo" value="{{$preguntas_9_2_14[2]->respuesta}}" disabled>
+	    </div>
+	  </div>
+
+	  @component('layouts.componentes.tabla_incisos')
+      @slot('cabeza_tabla')
+        <th>Nombre</th>
+        <th>Grado académico</th>
+        <th>Certificados</th>
+        <th>Años de experiencia</th>
+      @endslot
+
+      @slot('cuerpo_tabla')
+        @foreach($tecnicos as $tecnico)
+          <tr>
+            <td>{{$tecnico->nombre}}</td>
+            <td>{{$tecnico->grado_academico}}</td>
+            <td>{{$tecnico->certificados}}</td>
+            <td>{{$tecnico->anios_exp}}</td>
+          </tr>
+        @endforeach
+      @endslot
+    @endcomponent
+	<!-- ************************** FINAL 9.1.12 ************************* -->
+@endsection

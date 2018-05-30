@@ -46,7 +46,7 @@
 <div class="container">
 	<br>
 	<h1>PAPA</h1>
-	<h5>Prototipo de apoya para la acreditacion</h5>
+	<h5>Prototipo de apoya para la acreditación</h5>
 	<h3>Categoría considerada: <strong data-toggle="tooltip" title="Categoría número 9 considerada en el documento de CONAIC. Este prototipo trabaja con dicha categoría.">Infraestructura</strong></h3>
 	<br>
 </div>
@@ -73,7 +73,7 @@
 	  	<div class="tab-pane" id="2">
 	  		
 	  		<div class="row text-right">
-	  			<a href="#" class="btn btn-danger" style="margin: 15px;">Generar reporte</a>
+	  			<a href="{{url('/Reporte')}}" class="btn btn-danger" style="margin: 15px;">Generar reporte</a>
 	  		</div>
 	  		
 	  		@component('layouts.componentes_inicio.formulario_salida')

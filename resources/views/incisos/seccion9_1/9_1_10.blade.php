@@ -16,21 +16,25 @@
 <!-- ------------ LAS PREGUNTAS Y SUS RESPUESTAS------------- -->
 
 @section('contenido_formulario')
-
+    <script type="text/javascript">
+      $('input[name={{$preguntas[0]->id}}]').click(function() {
+          alert($('input[name={{$preguntas[0]->id}}]:checked').val());
+      });
+    </script>
     <!-- Pregunta 1 -->
     <div class="form-group">
         <label for="{{$preguntas[0]->id}}" class="control-label">{{$preguntas[0]->titulo}}</label>
 
         <div>
           @if($preguntas[0]->respuesta == 'Si')
-            <input type="radio" name="{{$preguntas[0]->id}}" value="Si" checked> Sí <br>
-            <input type="radio" name="{{$preguntas[0]->id}}" value="No"> No
+            <input type="radio" id="{{$preguntas[0]->id}}" name="{{$preguntas[0]->id}}" value="Si" checked> Sí <br>
+            <input type="radio" id="{{$preguntas[0]->id}}" name="{{$preguntas[0]->id}}" value="No"> No
           @elseif($preguntas[0]->respuesta == 'No')
-            <input type="radio" name="{{$preguntas[0]->id}}" value="Si"> Sí <br>
-            <input type="radio" name="{{$preguntas[0]->id}}" value="No" checked> No
+            <input type="radio" id="{{$preguntas[0]->id}}" name="{{$preguntas[0]->id}}" value="Si"> Sí <br>
+            <input type="radio" id="{{$preguntas[0]->id}}" name="{{$preguntas[0]->id}}" value="No" checked> No
           @else
-            <input type="radio" name="{{$preguntas[0]->id}}" value="Si" checked> Sí <br>
-            <input type="radio" name="{{$preguntas[0]->id}}" value="No"> No
+            <input type="radio" id="{{$preguntas[0]->id}}" name="{{$preguntas[0]->id}}" value="Si" checked> Sí <br>
+            <input type="radio" id="{{$preguntas[0]->id}}" name="{{$preguntas[0]->id}}" value="No"> No
           @endif
         </div>
     </div>

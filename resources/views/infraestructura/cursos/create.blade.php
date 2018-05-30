@@ -49,7 +49,7 @@
 
 	@component("layouts.select_input")
         @slot("nombre_input", "departamento")
-        @slot("tooltip_input", "Que lo imparte")
+        @slot("tooltip_input", "Departamento que lo imparte")
         @slot("label_input", "Departamento")
         @slot("extra", "required")
         @slot('opciones')
@@ -63,7 +63,7 @@
 
 	@component("layouts.select_input")
         @slot("nombre_input", "donde")
-        @slot("tooltip_input", "Donde se da")
+        @slot("tooltip_input", "Aula donde se se imparte")
         @slot("label_input", "Aula")
         @slot("extra", "required")
         @slot('opciones')
