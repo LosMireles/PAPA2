@@ -8,7 +8,7 @@
 @endsection
 
 @section('formopen')
-    {{Form::open(['action' => ['AuditorioController@update', $auditorio->nombre],
+    {{Form::open(['action' => ['AuditorioController@update', $auditorio->nombre, $url_regreso],
                 'class' => 'form-horizontal',
                 'files' => true])}}
 @endsection
@@ -44,3 +44,4 @@
   		</div>
   	</div>
 @endsection
+
