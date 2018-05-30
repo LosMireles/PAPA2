@@ -19,7 +19,7 @@
         @slot("label_input", "Nombre")
         @slot("placeholder_input", "Nombre del software")
         @slot("valor_default", $software->nombre)
-        @section("extra", "required")
+        @slot("extra", "maxlength=80 required")
     @endcomponent
 
     @component("layouts.text_input")
@@ -28,6 +28,7 @@
         @slot("label_input", "Version")
         @slot("placeholder_input", "1.0")
         @slot("valor_default", $software->version)
+        @slot("extra", "maxlength=80")
     @endcomponent
 
     @component("layouts.select_input")
@@ -48,6 +49,7 @@
         @slot("label_input", "Disponibilidad")
         @slot("placeholder_input", "Libre")
         @slot("valor_default", $software->disponibilidad)
+        @slot("extra", "maxlength=80")
     @endcomponent
 
 @endsection

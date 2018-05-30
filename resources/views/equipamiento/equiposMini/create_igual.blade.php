@@ -18,7 +18,7 @@
         @slot("tooltip_input", "Serial del equipo. Identificador del equipo")
         @slot("label_input", "Serial")
         @slot("placeholder_input", "NA00013")
-        @slot("extra", "required")
+        @slot("extra", "maxlength=80 required")
     @endcomponent
 
     @component("layouts.select_input")
@@ -46,6 +46,7 @@
         @slot("tooltip_input", "Sistema operativo principal que tiene el equipo")
         @slot("label_input", "Sistema operativo")
         @slot("placeholder_input", "Windows 10")
+        @slot("extra", "maxlength=80")
         @slot("valor_default", $equipo->sistema_operativo)
     @endcomponent
 
@@ -54,6 +55,7 @@
         @slot("tooltip_input", "Marca del manufacturador. Ejemplo LANIX")
         @slot("label_input", "Marca")
         @slot("placeholder_input", "LANIX")
+        @slot("extra", "maxlength=80")
         @slot("valor_default", $equipo->marca)
     @endcomponent
 
@@ -62,6 +64,7 @@
         @slot("tooltip_input", "Que especificaciones tiene la CPU del equipo")
         @slot("label_input", "CPU")
         @slot("placeholder_input", "Qualcorexeon X5460 2X 6MB Cache")
+        @slot("extra", "maxlength=80")
         @slot("valor_default", $equipo->cpu)
     @endcomponent
 
@@ -70,6 +73,7 @@
         @slot("tooltip_input", "Que especificaciones tiene la memoria RAM del equipo")
         @slot("label_input", "RAM")
         @slot("placeholder_input", "8GB 667 MHZ (4X2 GB)")
+        @slot("extra", "maxlength=80")
         @slot("valor_default", $equipo->ram)
     @endcomponent
 
@@ -78,6 +82,7 @@
         @slot("tooltip_input", "Que especificaciones tiene la memoria de almacenamiento del equipo")
         @slot("label_input", "Memoria almacenamiento")
         @slot("placeholder_input", "HDD 300 GB")
+        @slot("extra", "maxlength=80")
         @slot("valor_default", $equipo->almacenamiento)
     @endcomponent
 
@@ -87,6 +92,7 @@
         @slot("label_input", "Otras caracteristicas")
         @slot("placeholder_input", "Tarjeta grafica")
         @slot("valor_default", $equipo->otras_caracteristicas)
+        @slot("extra", "maxlength=80")
     @endcomponent
 
 @endsection
