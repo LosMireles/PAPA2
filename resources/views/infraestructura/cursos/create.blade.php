@@ -65,11 +65,17 @@
         @slot("label_input", "Aula")
         @slot("extra", "required")
         @slot('opciones')
-             @foreach($aulas as $aula)
-                <option value="{{$aula->nombre}}">
-                    {{$aula->nombre}}
+            @if(!$aulas->isEmpty())
+                @foreach($aulas as $aula)
+                    <option value="{{$aula->nombre}}">
+                        {{$aula->nombre}}
+                    </option>
+                @endforeach
+            @else
+                <option value="no hay aulas">
+                    No hay aulas
                 </option>
-            @endforeach
+            @endif
         @endslot
     @endcomponent
 @endsection
