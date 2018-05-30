@@ -69,7 +69,6 @@
 
                 @component('layouts.boton_editar')
                     @slot('controlador_editar')
-                    <!-- ------------ -->
                         {{Form::open(['action' => ['SanitarioController@edit',
                                                    $sanitario->nombre,
                                                    $variable]])}}
