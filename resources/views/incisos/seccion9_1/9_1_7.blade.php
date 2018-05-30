@@ -57,7 +57,7 @@
     	<a href="{{ action('AulaController@create', $variable) }}" class="btn btn-success">
 		    Agregar nueva aula
 		</a>
-    	<a href="{{ action('CursoController@create') }}" class="btn btn-success">
+    	<a href="{{ action('CursoController@create', $variable) }}" class="btn btn-success">
     	    Agregar nuevo curso
     	</a>
   	</div>
