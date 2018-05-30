@@ -14,10 +14,7 @@ use App\Equipo;
 class AulaController extends Controller
 {
     public function index(){
-      	$aulas  = Aula::all();
-
-      	return view('infraestructura.aulas.index')
-          ->with(['aulas'=>$aulas]);
+        return redirect("/");
     }
 
     //----------------------------------------------------------------
@@ -209,7 +206,7 @@ class AulaController extends Controller
     return redirect('/aulas/'. $nombre .'/viewImg')->with(['nombre' => $nombre]);
   }
 
-    public function relacionar_equipos($id){
+    public function relacionar_equipos($id, $url_regreso = null){
         $aula                  = Aula::where('id', $id)->first();
         $equipos_computo       = Equipo::where('tipo', 'Computo')
                                        ->get();
@@ -221,11 +218,12 @@ class AulaController extends Controller
                 'aula'                  => $aula,
                 'equipos_computo'       => $equipos_computo,
                 'equipos_audiovisuales' => $equipos_audiovisuales,
-                'url_previous'          => url()->previous()
+                'url_previous'          => url()->previous(),
+                'url_regreso'           => $url_regreso
             ]);
     }
 
-    public function relacionar_equipos_post(Request $request, $id){
+    public function relacionar_equipos_post(Request $request, $id, $url_regreso = null){
         //desenlaza todos los equipos con el aula en cuestion y vuelve a
         //enlazarlos si es necesario
         $equipos = Equipo::where('aula_id', $id)->get();
@@ -253,7 +251,7 @@ class AulaController extends Controller
             }
         }
 
-        return redirect($request->url_previous)
+        return redirect()->action('Inciso9_1_8Controller@index')
             ->with('status', 'Elemento agregado exitosamente');
     }
 }

@@ -37,6 +37,7 @@
 @endsection
 
 <!-- ------------ LAS TABLAS QUE CORRESPONDAN------------- -->
+
 @section('tablas_inciso_general')
     <h3 class="text-center">Listado de plataformas</h3>
     <div class="row text-right" style="margin: 2px;">
@@ -96,4 +97,3 @@
         {{ Form::close() }}
     </div>
 @endsection
-

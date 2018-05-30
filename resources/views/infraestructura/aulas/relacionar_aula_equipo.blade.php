@@ -1,10 +1,11 @@
-@extends('layouts.formulario_edit_general')
+@extends('layouts.formulario_create_general')
 
 @section('title', "Relacion aulas equipos")
 
-@section('formopen')
-    {{Form::open(['action' => ['AulaController@relacionar_equipos_post', $aula->id],
-                'class' => 'form-horizontal'])}}
+@section('objeto_informacion', 'relacionar un aula y equipos')
+
+@section('accion')
+	{{action('AulaController@relacionar_equipos_post', $aula->id, $url_regreso)}}
 @endsection
 
 

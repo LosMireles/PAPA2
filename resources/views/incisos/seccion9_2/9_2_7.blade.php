@@ -139,7 +139,7 @@
                 @endcomponent
 
                 <td>
-                  <a href="{{action('EquipoController@crear_igual', $equipo->serial)}}" class="btn btn-success">Agregar igual</a>
+                  <a href="{{action('EquipoController@crear_igual', $equipo->serial, $variable)}}" class="btn btn-success">Agregar igual</a>
                 </td>
 
             </tr>
@@ -171,4 +171,3 @@
       {{ Form::close() }}
     </div>
 @endsection
-

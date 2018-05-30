@@ -14,11 +14,7 @@ use App\Software;
 class AsignaturaController extends Controller
 {
     public function index(){
-        $asignaturas = Asignatura::with('curso')->get();
-        $cursos      = Curso::all();
-        return view('asignaturas.index')
-            ->with(['asignaturas' => $asignaturas,
-                    'cursos'      => $cursos]);
+        return redirect("/");
     }
 
     //----------------------------------------------------------------

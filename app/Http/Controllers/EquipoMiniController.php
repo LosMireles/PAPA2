@@ -20,7 +20,7 @@ class EquipoMiniController extends Controller
      */
     public function index()
     {
-        //
+        return redirect("/");
     }
 
     /**

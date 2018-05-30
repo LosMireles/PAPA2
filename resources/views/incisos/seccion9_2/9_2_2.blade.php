@@ -26,7 +26,7 @@
 @endsection
 
 @php
-    $variable = "inciso_9_1_2";
+    $variable = "inciso_9_2_2";
 @endphp
 <!-- ------------ LAS TABLAS QUE CORRESPONDAN------------- -->
 
@@ -125,4 +125,3 @@
         {{ Form::close() }}
     </div>
 @endsection
-

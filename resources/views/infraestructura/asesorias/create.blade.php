@@ -12,7 +12,7 @@
 @endsection
 
 @section('accion')
-   action = "{{action('AsesoriaController@store')}}"
+   action = "{{action('AsesoriaController@store', $url_regreso)}}"
 @endsection
 
 @section('contenido_formulario')

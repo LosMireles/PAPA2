@@ -44,11 +44,13 @@
 @endsection
 
 <!-- ------------ LAS TABLAS QUE CORRESPONDAN------------- -->
-
+@php
+    $variable = "inciso_9_1_13";
+@endphp
 @section('evidencias_tabla')
   <h3 class="text-center">Listado de sanitarios</h3>
 	<div class="row text-right" style="margin: 2px;">
-    	<a href="{{ action('SanitarioController@create') }}" class="btn btn-success">Agregar sanitario</a>
+    	<a href="{{ action('SanitarioController@create', $variable) }}" class="btn btn-success">Agregar sanitario</a>
   	</div>
 	@component('layouts.componentes.tabla_incisos_agregar')
 
@@ -65,13 +67,18 @@
 			  	<td>{{ $sanitario->nombre }}</td>
 			  	<td>{{ $sanitario->sexo }}</td>
 
-			    <td>
-	              <a href="{{ action('SanitarioController@edit', $sanitario->nombre) }}" class="btn btn-warning">Editar</a>
-	            </td>
+                @component('layouts.boton_editar')
+                    @slot('controlador_editar')
+                    <!-- ------------ -->
+                        {{Form::open(['action' => ['SanitarioController@edit',
+                                                   $sanitario->nombre,
+                                                   $variable]])}}
+                    @endslot
+                @endcomponent
 
 				@component('layouts.boton_borrar')
 	              @slot('controlador_borrar')
-	                {{ Form::open(['action' => ['SanitarioController@destroy', $sanitario->nombre]]) }}
+	                {{ Form::open(['action' => ['SanitarioController@destroy', $sanitario->nombre, $variable]]) }}
 	              @endslot
 	            @endcomponent
 
@@ -105,13 +112,12 @@
       width: auto;
       max-height: 100%
     }
-    .line{
-      border-bottom: 1px solid #111;
+    .line
+    { border-top: 1px solid #111;
       display: block;
       margin-top: 60px;
       padding-top: 10px;
-      position: relative;
-    }
+      position: relative; }
 
 
   </style>
@@ -141,7 +147,7 @@
         $sanitarioNombre = $sanitarioReg->nombre;
       ?>
       @if(sizeof($images) != 0)
-        <h3  class="line"><?php echo $sanitarioNombre ?> </h3>
+        <h3  class="line">Aula <?php echo $sanitarioNombre ?> </h3>
       @endif
 
       @foreach ($images as $image)

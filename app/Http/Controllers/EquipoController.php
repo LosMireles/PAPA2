@@ -15,9 +15,7 @@ class EquipoController extends Controller
     private $tipos = ["Computo", "Redes", "Audiovisual", "Servidor"];
 
 	public function index(){
-    	$equipos = Equipo::all();
-        return view('equipamiento.equipos.index')
-            ->with('equipos', $equipos);
+        return redirect("/");
     }
 
     //----------------------------------------------------------------
@@ -139,3 +137,4 @@ class EquipoController extends Controller
                ];
     }
 }
+

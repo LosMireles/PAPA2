@@ -4,7 +4,7 @@
 @section("objeto_informacion", "agregar un técnico académico")
 
 @section('accion')
-    {{action('TecnicoAcademicoController@store')}}
+    {{action('TecnicoAcademicoController@store', $url_regreso)}}
 @endsection
 
 @section('contenido_formulario')

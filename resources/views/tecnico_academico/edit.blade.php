@@ -4,7 +4,7 @@
 @section("objeto_informacion", "editar un técnico académico")
 
 @section('formopen')
-    {{Form::open( array( 'action' => ['TecnicoAcademicoController@update', $tecnico->id], 'class' => 'form-horizontal',
+    {{Form::open( array( 'action' => ['TecnicoAcademicoController@update', $tecnico->id, $url_regreso], 'class' => 'form-horizontal',
     'files' => true ) )}}
 @endsection
 

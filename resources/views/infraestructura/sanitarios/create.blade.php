@@ -8,7 +8,7 @@
 @endsection
 
 @section('accion')
-    {{action('SanitarioController@store')}}
+    {{action('SanitarioController@store', $url_regreso)}}
 @endsection
 
 @section('contenido_formulario')
@@ -28,7 +28,7 @@
         <div class="col-sm-8">
             <select class="form-control" name="sexo">
                 <option value="hombres">Hombres</option>
-                <option value="mujeres">Muejes</option>
+                <option value="mujeres">Mujeres</option>
                 <option value="unisex">Unisex</option>
             </select>
         </div>
@@ -46,6 +46,3 @@
 		</div>
 	</div>
 @endsection
-
-
-

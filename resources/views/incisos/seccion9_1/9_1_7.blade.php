@@ -90,13 +90,18 @@
                     @endif
                 </td>
 
-			    <td>
-	              <a href="{{ action('CursoController@edit', $curso->nombre) }}" class="btn btn-warning">Editar</a>
-	            </td>
+                @component('layouts.boton_editar')
+                    @slot('controlador_editar')
+                    <!-- ------------ -->
+                        {{Form::open(['action' => ['CursoController@edit',
+                                                   $curso->nombre,
+                                                   $variable]])}}
+                    @endslot
+                @endcomponent
 
 				@component('layouts.boton_borrar')
 	              @slot('controlador_borrar')
-	                {{ Form::open(['action' => ['CursoController@destroy', $curso->nombre]]) }}
+	                {{ Form::open(['action' => ['CursoController@destroy', $curso->nombre, $variable]]) }}
 	              @endslot
 	            @endcomponent
 

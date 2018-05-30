@@ -32,6 +32,7 @@
 @endsection
 
 <!-- ------------ LAS TABLAS QUE CORRESPONDAN------------- -->
+
 @section('tablas_inciso_general')
     <h3 class="text-center">Listado relación curso-software</h3>
 	<div class="row text-right" style="margin: 2px;">
@@ -83,7 +84,7 @@
 
                 <td>
                     <!--Por que esta en curso controller??????-->
-                    <a href="{{action('CursoController@relacionar_cursos_software', $software->id)}}" class="btn btn-primary">
+                    <a href="{{action('CursoController@relacionar_cursos_software', $software->id, $variable)}}" class="btn btn-primary">
                         Vicular cursos
                     </a>
                 </td>
@@ -118,4 +119,3 @@
         {{ Form::close() }}
     </div>
 @endsection
-

@@ -71,6 +71,7 @@
                     @foreach($aula->equipos as $equipo)
                         @if($equipo->tipo == "Computo")
                             {{$equipo->serial}}
+                            <br>
                         @endif
                     @endforeach
                     </td>
@@ -79,6 +80,7 @@
                     @foreach($aula->equipos as $equipo)
                         @if($equipo->tipo == "Audiovisual")
                             {{$equipo->serial}}
+                            <br>
                         @endif
                     @endforeach
                     </td>
@@ -99,7 +101,7 @@
 
                 <td>
                 <a href="{{ action('AulaController@relacionar_equipos', $aula->id) }}" class="btn btn-primary">
-                    Relacionar aulas y equipos
+                    Relacionar aula con equipos
                 </a>
                 </td>
 
@@ -130,39 +132,65 @@
       margin-bottom: 15px;
 
     }
-
     img{
       width: auto;
       max-height: 100%
     }
+    .line{
+      border-bottom: 1px solid #111;
+      display: block;
+      margin-top: 60px;
+      padding-top: 10px;
+      position: relative;
+    }
   </style>
-    <h3 align="center">
-        Fotografias del inciso 9.1.8
-    </h3>
-
 
   <?php
     $dirs = array_filter(glob('storage/infraestructura/aulas/*'), 'is_dir');
+    $hayImagen = 0;
+    foreach ($dirs as $path) {
+      $dir = $path.'/';
+      $imagenes= glob($dir . "*.{[jJ][pP][gG],[pP][nN][gG],[gG][iI][fF],[jJ][pP][eE][gG]}", GLOB_BRACE);
+      if (sizeof($imagenes) != 0) {
+        $hayImagen = 1;
+        break;
+      }
+    }
   ?>
-  @foreach($dirs as $path)
-    <?php
-      $dirname = $path.'/';
-      $images= glob($dirname . "*.{[jJ][pP][gG],[pP][nN][gG],[gG][iI][fF],[jJ][pP][eE][gG]}", GLOB_BRACE);
-    ?>
+  @if($hayImagen == 1)
+    <h3 align="center">
+        Fotografías del inciso 9.1.8
+    </h3>
+    @foreach($dirs as $path)
+      <?php
+        $dirname = $path.'/';
+        $images= glob($dirname . "*.{[jJ][pP][gG],[pP][nN][gG],[gG][iI][fF],[jJ][pP][eE][gG]}", GLOB_BRACE);
+        $aulaID = substr($path, strlen('storage/infraestructura/aulas/'));
+        $aulaReg = App\Aula::where('id', $aulaID)->first();
+        $aulaNombre = $aulaReg->nombre;
+      ?>
 
-    @foreach ($images as $image)
-    <figure>
-      <div class="buttonimg">
-        <div class="img_div">
-          <img src="<?php echo asset($image)?>" height="220"
-                alt="<?php echo $image?>"/>
-          <figcaption class="text-center"><?php echo pathinfo($image)['basename']?></figcaption>
+      @if(sizeof($images) != 0)
+        <h2 class="line"><?php echo $aulaNombre ?></h2>
+      @endif
+
+      @foreach ($images as $image)
+      <figure>
+        <div class="buttonimg">
+          <div class="img_div">
+            <img src="<?php echo asset($image)?>" height="220"
+                  alt="<?php echo $image?>"/>
+            <figcaption class="text-center"><?php echo pathinfo($image)['basename']?></figcaption>
+          </div>
         </div>
-      </div>
-    </figura>
+      </figura>
 
-		@endforeach
-  @endforeach
+  		@endforeach
+      <br clear='all'/>
+    @endforeach
+  @else
+    <h2 align="center">No hay imagenes</h2>
+  @endif
 @endsection
 
 @section('boton_guardar')
