@@ -25,10 +25,20 @@
             {{$preguntas[0]->titulo}}
         </label>
 
-        <div>
-            <input type="text" class="form-control" id="{{$preguntas[0]->id}}" name="{{$preguntas[0]->id}}" value="{{$preguntas[0]->respuesta}}">
-        </div>
+      <div>
+        @if($preguntas[0]->respuesta == 'Si')
+          <input type="radio" name="{{$preguntas[0]->id}}" value="Si" checked> Sí <br>
+          <input type="radio" name="{{$preguntas[0]->id}}" value="No"> No
+        @elseif($preguntas[0]->respuesta == 'No')
+          <input type="radio" name="{{$preguntas[0]->id}}" value="Si"> Sí <br>
+          <input type="radio" name="{{$preguntas[0]->id}}" value="No" checked> No
+        @else
+          <input type="radio" name="{{$preguntas[0]->id}}" value="Si" checked> Sí <br>
+          <input type="radio" name="{{$preguntas[0]->id}}" value="No"> No
+        @endif
+      </div>
     </div>
+
 
     <!--Pregunta 2-->
     <div class="form-group">
