@@ -5,7 +5,7 @@
     -->
         {{$controlador_borrar}}
         {{ Form::hidden('_method', 'DELETE') }}
-        {{ Form::submit('Borrar', ['class' => 'btn btn-danger']) }}
+        {{ Form::submit('Borrar', ['class' => 'btn btn-danger',
+                                    'onclick' => "return confirm('¿Estas seguro que deseas borrar este registro?')"]) }}
     {{ Form::close() }}
 </td>
-
