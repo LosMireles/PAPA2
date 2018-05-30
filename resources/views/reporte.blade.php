@@ -40,7 +40,7 @@
     </div>
   @endforeach
 
-  @component('layouts.componentes.tabla_incisos_agregar')
+  @component('layouts.componentes.tabla_incisos')
     @slot('cabeza_tabla')
         <th>Titulo</th>
         <th>Respuesta</th>
@@ -588,7 +588,7 @@
     </div>
   @endforeach
 
-  @component('layouts.componentes.tabla_incisos_agregar')
+  @component('layouts.componentes.tabla_incisos')
   @section('cabeza_tabla')
     <tr>
       <td>Nombre</td>
