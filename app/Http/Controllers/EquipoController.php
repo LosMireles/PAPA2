@@ -21,17 +21,18 @@ class EquipoController extends Controller
     }
 
     //----------------------------------------------------------------
-    public function create(){
+    public function create($url_regreso = null){
     	$softwares = Software::all();
         return view('equipamiento.equipos.create')
             ->with([
-                'softwares'    => $softwares,
-                'tipos'        => $this->tipos,
-                'url_previous' => url()->previous()
+                'softwares'     => $softwares,
+                'tipos'         => $this->tipos,
+                'url_previous'  => url()->previous(),
+                'url_regreso'   => $url_regreso
             ]);
     }
     //----------------------------------------------------------------
-    public function crear_igual($serial){
+    public function crear_igual($serial, $url_regreso = null){
         $equipo = Equipo::where('serial', $serial)->first();
         $softwares = Software::all();
         return view('equipamiento.equipos.create_igual')
@@ -39,12 +40,13 @@ class EquipoController extends Controller
                 'softwares' => $softwares,
                 'tipos'     => $this->tipos,
                 'equipo'    => $equipo,
-                'url_previous' => url()->previous()
+                'url_previous' => url()->previous(),
+                'url_regreso'  => $url_regreso
             ]);
     }
 
     //----------------------------------------------------------------
-    public function store(Request $request){
+    public function store(Request $request, $url_regreso = null){
         $request->validate($this->rules());
 
     	$equipo = new Equipo;
@@ -60,25 +62,30 @@ class EquipoController extends Controller
 
         $equipo->save();
 
-		echo "Elemento insertado exitosamente!";
-        return redirect($request->url_previous)
-            ->with('status', 'Elemento agregado exitosamente');
+        if($url_regreso != null){
+            return redirect(url($url_regreso))
+                ->with('status', 'Elemento agregado exitosamente');
+        }else{
+            return redirect(url('/'))
+                ->with('status', 'Elemento agregado exitosamente');
+        }
     }
 
     //----------------------------------------------------------------
-    public function edit($serial){
+    public function edit($serial, $url_regreso = null){
     	$equipo = Equipo::where('serial', $serial)->first();
 
     	return view('equipamiento.equipos.edit')
             ->with([
                 'equipo'       => $equipo,
                 'tipos'        => $this->tipos,
-                'url_previous' => url()->previous()
+                'url_previous' => url()->previous(),
+                'url_regreso'  => $url_regreso
             ]);
     }
 
     //----------------------------------------------------------------
-    public function update(Request $request, $serial){
+    public function update(Request $request, $serial, $url_regreso = null){
         $request->validate($this->rules($serial));
 
         $equipo = Equipo::where('serial', $serial)->first();
@@ -96,13 +103,17 @@ class EquipoController extends Controller
 
         $equipo->update($data);
 
-		echo "Elemento editado exitosamente!";
-        return redirect($request->url_previous)
-            ->with('status', 'Elemento actualizado con exito');
+        if($url_regreso != null){
+            return redirect(url($url_regreso))
+                ->with('status', 'Elemento actualizado exitosamente');
+        }else{
+            return redirect(url('/'))
+                ->with('status', 'Elemento actualizado exitosamente');
+        }
     }
 
     //----------------------------------------------------------------
-    public function destroy($serial){
+    public function destroy($serial, $url_regreso = null){
         $equipo = Equipo::where('serial', $serial)->first();
         if(!$equipo){
             $mensaje = "No existe equipo con serial: ".$serial;
@@ -111,9 +122,13 @@ class EquipoController extends Controller
         }
         $equipo->delete();
 
-		echo "Elemento borrado exitosamente!";
-        return redirect()->back()
-            ->with('status', 'Elemento borrado exitosamente');
+        if($url_regreso != null){
+            return redirect(url($url_regreso))
+                ->with('status', 'Elemento borrado exitosamente');
+        }else{
+            return redirect(url('/'))
+                ->with('status', 'Elemento borrado exitosamente');
+        }
     }
 
     //----------------------------------------------------------------
@@ -124,4 +139,3 @@ class EquipoController extends Controller
                ];
     }
 }
-

@@ -20,15 +20,16 @@ class AuditorioController extends Controller
      }
 
     //----------------------------------------------------------------
-    public function create(){
+    public function create($url_regreso = null){
         return view('infraestructura.auditorios.create')
             ->with([
-                'url_previous' => url()->previous()
+                'url_previous'  => url()->previous(),
+                'url_regreso'   => $url_regreso
             ]);
     }
 
     //----------------------------------------------------------------
-    public function store(Request $request){
+    public function store(Request $request, $url_regreso = null){
       #$request->validate($this->rules());
 
         $auditorio = new Auditorio;
@@ -45,24 +46,29 @@ class AuditorioController extends Controller
           }
         }
 
-	    echo "Elemento insertado exitosamente!";
-        return redirect($request->url_previous)
-            ->with('status', 'Elemento agregado exitosamente');
+        if($url_regreso != null){
+            return redirect(url($url_regreso))
+                ->with('status', 'Elemento agregado exitosamente');
+        }else{
+            return redirect(url('/'))
+                ->with('status', 'Elemento agregado exitosamente');
+        }
     }
 
     //----------------------------------------------------------------
-    public function edit($nombre) {
+    public function edit($nombre, $url_regreso = null) {
       $auditorio  = Auditorio::where('nombre', $nombre)->first();
 
       return view('infraestructura.auditorios.edit')
           ->with([
               'auditorio'   => $auditorio,
-              'url_previous'=> url()->previous()
+              'url_previous'=> url()->previous(),
+              'url_regreso' => $url_regreso
           ]);
     }
 
     //----------------------------------------------------------------
-    public function update(Request $request, $nombre) {
+    public function update(Request $request, $nombre, $url_regreso = null) {
       $audAux = Auditorio::where('nombre', $nombre)->first();
       $id = $audAux->id;
 
@@ -83,15 +89,19 @@ class AuditorioController extends Controller
             'Capacidad'          => $Capacidad
         ]);
 
-		echo "Elemento editado exitosamente!";
-        return redirect($request->url_previous)
-            ->with('status', 'Elemento actualizado con exito');
+        if($url_regreso != null){
+            return redirect(url($url_regreso))
+                ->with('status', 'Elemento actualizado exitosamente');
+        }else{
+            return redirect(url('/'))
+                ->with('status', 'Elemento actualizado exitosamente');
+        }
     }
 
     //----------------------------------------------------------------
-    public function destroy($nombre){
-      $auditorio = Auditorio::where('nombre', $nombre)->first();
-      Storage::deleteDirectory('infraestructura/auditorios/'. $auditorio->id . '/');
+    public function destroy($nombre, $url_regreso = null){
+        $auditorio = Auditorio::where('nombre', $nombre)->first();
+        Storage::deleteDirectory('infraestructura/auditorios/'. $auditorio->id . '/');
         if(!$auditorio){
             $mensaje = "No existe auditorio con nombre: ".$nombre;
             return view('general/error')
@@ -99,9 +109,13 @@ class AuditorioController extends Controller
         }
         $auditorio->delete();
 
-	      echo "Elemento borrado exitosamente!";
-          return redirect()->back()
-              ->with('status', 'Elemento borrado exitosamente');
+        if($url_regreso != null){
+            return redirect(url($url_regreso))
+                ->with('status', 'Elemento borrado exitosamente');
+        }else{
+            return redirect(url('/'))
+                ->with('status', 'Elemento borrado exitosamente');
+        }
     }
 
     //----------------------------------------------------------------

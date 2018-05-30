@@ -20,15 +20,16 @@ class SanitarioController extends Controller
   }
 
     //--------------------------------------------------------
-	public function create(){
+	public function create($url_regreso = null){
 	  return view('infraestructura.sanitarios.create')
         ->with([
-            'url_previous' => url()->previous()
+            'url_previous' => url()->previous(),
+            'url_regreso' => $url_regreso
         ]);
 	}
 
     //--------------------------------------------------------
-    public function store(Request $request)
+    public function store(Request $request, $url_regreso = null)
     {
         $request->validate($this->rules());
 
@@ -47,26 +48,31 @@ class SanitarioController extends Controller
           }
         }
 
-		      echo "Elemento insertado exitosamente!";
-
-        return redirect($request->url_previous)->with('status', 'Elemento agregado exitosamente');
+        if($url_regreso != null){
+            return redirect(url($url_regreso))
+                ->with('status', 'Elemento agregado exitosamente');
+        }else{
+            return redirect(url('/'))
+                ->with('status', 'Elemento agregado exitosamente');
+        }
 
     }
 
 
 	//-----------------------------------------------------------
-	public function edit($nombre) {
+	public function edit($nombre, $url_regreso = null) {
 		$sanitario  = Sanitario::where('nombre', $nombre)->first();
 
     return view('infraestructura.sanitarios.edit')
         ->with([
             'sanitario'     => $sanitario,
-            'url_previous'  => url()->previous()
+            'url_previous'  => url()->previous(),
+            'url_regreso'   => $url_regreso
         ]);
 	}
 
 	//--------------------------------------------------------------
-	public function update(Request $request, $nombre) {
+	public function update(Request $request, $nombre, $url_regreso = null) {
         $request->validate($this->rules($nombre));
 
         $sanAux = Sanitario::where('nombre', $nombre)->first();
@@ -86,12 +92,17 @@ class SanitarioController extends Controller
 
 		echo "Elemento editado exitosamente!";
 
-        return redirect($request->url_previous)
-            ->with('status', 'Elemento actualizado con exito');
+        if($url_regreso != null){
+            return redirect(url($url_regreso))
+                ->with('status', 'Elemento actualizado exitosamente');
+        }else{
+            return redirect(url('/'))
+                ->with('status', 'Elemento actualizado exitosamente');
+        }
     }
 
 	//--------------------------------------------------------------
-	public function destroy($nombre){
+	public function destroy($nombre, $url_regreso = null){
     $sanAux = Sanitario::where('nombre', $nombre)->first();
     $id = $sanAux->id;
     Storage::deleteDirectory('infraestructura/sanitarios/'. $id . '/');
@@ -105,8 +116,13 @@ class SanitarioController extends Controller
 
 		echo "Elemento borrado exitosamente!";
 
-        return redirect()->back()
-            ->with('status', 'Elemento borrado exitosamente');
+        if($url_regreso != null){
+            return redirect(url($url_regreso))
+                ->with('status', 'Elemento borrado exitosamente');
+        }else{
+            return redirect(url('/'))
+                ->with('status', 'Elemento borrado exitosamente');
+        }
     }
 
 	//--------------------------------------------------------------

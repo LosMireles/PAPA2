@@ -22,19 +22,20 @@ class SoftwareController extends Controller {
     }
 
     //----------------------------------------------------------------
-    public function create(){
+    public function create($url_regreso = null){
         //$asignaturas = Asignatura::all();
 
         return view('equipamiento.softwares.create')
             ->with([
                 //'asignaturas' => $asignaturas,
                 'clases'        => $this->clases,
-                'url_previous'  => url()->previous()
+                'url_previous'  => url()->previous(),
+                'url_regreso'   => $url_regreso
             ]);
 	}
 
     //----------------------------------------------------------------
-    public function store(Request $request)
+    public function store(Request $request, $url_regreso = null)
     {
         $request->validate($this->rules());
 
@@ -63,12 +64,17 @@ class SoftwareController extends Controller {
             //}
         //}
 
-		echo "Elemento insertado exitosamente!";
-        return redirect($request->url_previous)->with('status', 'Elemento agregado exitosamente');
+        if($url_regreso != null){
+            return redirect(url($url_regreso))
+                ->with('status', 'Elemento agregado exitosamente');
+        }else{
+            return redirect(url('/'))
+                ->with('status', 'Elemento agregado exitosamente');
+        }
     }
 
 	//*-----------------------------------------------------------------
-	public function edit($nombre) {
+	public function edit($nombre, $url_regreso = null) {
         //$equipo_softwares      = DB::table('equipo_software')->get();
         //$asignaturas_softwares = DB::table('asignatura_software')->get();
 		$software              = Software::where('nombre', $nombre)->first();
@@ -82,12 +88,13 @@ class SoftwareController extends Controller {
                     'clases'               => $this->clases,
                     //'equipo_softwares'     => $equipo_softwares,
                     //'asignaturas_softwares' => $asignaturas_softwares
-                    'url_previous'         => url()->previous()
+                    'url_previous'         => url()->previous(),
+                    'url_regreso'          => $url_regreso
                 ]);
 	}
 
 	//*-----------------------------------------------------------------
-    public function update(Request $request, $nombre){
+    public function update(Request $request, $nombre, $url_regreso = null){
         $request->validate($this->rules($nombre));
 
         $software = Software::where('nombre', $nombre)->first();
@@ -100,13 +107,17 @@ class SoftwareController extends Controller {
         ];
         $software->update($data);
 
-		echo "Elemento editado exitosamente!";
-        return redirect($request->url_previous)
-            ->with('status', 'Elemento actualizado con exito');
+        if($url_regreso != null){
+            return redirect(url($url_regreso))
+                ->with('status', 'Elemento actualizado exitosamente');
+        }else{
+            return redirect(url('/'))
+                ->with('status', 'Elemento actualizado exitosamente');
+        }
     }
 
     //*-----------------------------------------------------------------
-	public function destroy($nombre){
+	public function destroy($nombre, $url_regreso = null){
         $software = Software::where('nombre', $nombre)->first();
         if(!$software){
             $mensaje = "No existe software con nombre: ".$nombre;
@@ -115,9 +126,13 @@ class SoftwareController extends Controller {
         }
         $software->delete();
 
-		echo "Elemento borrado exitosamente!";
-        return redirect()->back()
-            ->with('status', 'Elemento borrado exitosamente');
+        if($url_regreso != null){
+            return redirect(url($url_regreso))
+                ->with('status', 'Elemento borrado exitosamente');
+        }else{
+            return redirect(url('/'))
+                ->with('status', 'Elemento borrado exitosamente');
+        }
     }
 
     //Valida los datos de los formularios create y edit
