@@ -25,7 +25,7 @@
 @endsection
 
 @section('Fotografias')
-	<h1 class="text-center">Evidencias de sanitario <?php echo $nombre; ?></h1>
+	<h1 class="text-center">Fotografías de <?php echo $nombre; ?></h1>
 
 	<?php
 		$sanitario = Sanitario::where('nombre', $nombre)->first();

@@ -136,10 +136,6 @@ class CursoController extends Controller {
         return [
             'nombre'        => ['required',
                                 Rule::unique('cursos')->ignore($nombre, 'nombre')],
-            'periodo'       => 'required|alpha_dash',
-            'no_grupo'         => 'required|integer',
-            'no_estudiantes' => 'required|integer',
-            'departamento'   => 'required|alpha'
         ];
     }
 	//*-----------------------------------------------------------------

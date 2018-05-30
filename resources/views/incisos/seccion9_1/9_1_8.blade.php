@@ -100,7 +100,7 @@
 
 
                 <td>
-                <a href="{{ action('AulaController@relacionar_equipos', $aula->id) }}" class="btn btn-primary">
+                <a href="{{ action('AulaController@relacionar_equipos', [$aula->id, $variable]) }}" class="btn btn-primary">
                     Relacionar aula con equipos
                 </a>
                 </td>

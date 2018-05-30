@@ -10,6 +10,15 @@
 
 
 @section('contenido_formulario')
+    <p align="justify"><font size="4">
+        <b>Nota:</b> sólo se muestran los equipos que marcados como relacionados al
+        aula o aquellos equipos que no esten relacionados con algun aula.
+        Si desea relacionar un equipo que este en otra aula, primero deseleccionelo
+        de aquella aula y despues relacionelo con esta.
+
+        Si no hay equipos para relacionar, le recomendamos agregar mas y después
+        relacionarlos.
+    </p>
     @component('layouts.componentes.tabla_general')
         @slot('cabeza_tabla')
             <th>Aulas</th>

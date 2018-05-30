@@ -35,8 +35,8 @@
 						@endif
 					@endforeach
 
-					@if(count($cursos) == 0)
-						No hay cursos registrados en la base de datos
+					@if(count($softwares) == 0)
+						No hay softwares registrados en la base de datos
 					@endif
 				</td>
 			</tr>
