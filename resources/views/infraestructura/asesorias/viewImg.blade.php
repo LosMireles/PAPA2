@@ -25,7 +25,7 @@
 @endsection
 
 @section('Fotografias')
-	<h1 class="text-center">Evidencias de asesoria <?php echo $tipo; ?></h1>
+	<h1 class="text-center">Fotografías de  <?php echo $tipo; ?></h1>
 
   <?php
     $dirname = 'storage/infraestructura/asesorias/' . $tipo . '/';
