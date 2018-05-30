@@ -68,7 +68,7 @@ class AulaController extends Controller
         $id = $audAux->id;
         if ($request->hasFile('Fotografias')) {
           foreach($request->Fotografias as $foto){
-            $foto->storeAs('infraestructura/aulas/' . $request->nombre, $foto->getClientOriginalName());
+            $foto->storeAs('infraestructura/aulas/' . $id, $foto->getClientOriginalName());
           }
         }
 
@@ -154,7 +154,8 @@ class AulaController extends Controller
 	//--------------------------------------------------------------
 	public function destroy($nombre, $url_regreso = null){
         # Borra los archivos subidos a la carpeta del objeto
-        Storage::deleteDirectory('infraestructura/aulas/'. $nombre . '/');
+        $aula = Aula::where('nombre', $nombre)->first();
+        Storage::deleteDirectory('infraestructura/aulas/'. $aula->id . '/');
 
         $aula = Aula::where('nombre', $nombre)->first();
         if(!$aula){
