@@ -18,7 +18,7 @@
 <!-- ------------ LAS PREGUNTAS Y SUS RESPUESTAS------------- -->
 <!-- ------------ -->
 @php
-    $variable = "inciso9_1_11";
+    $variable = "inciso_9_1_11";
 @endphp
 <!-- ------------ -->
 @section('contenido_formulario')

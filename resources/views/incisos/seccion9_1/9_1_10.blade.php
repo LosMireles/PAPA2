@@ -52,18 +52,6 @@
 <!-- ------------ SECCION DE FOTOGRAFIAS, EVIDENCIAS, ETC------------- -->
 
 @section('Fotografias')
-<div class="row text-center">
-  <div class="col-md-6 col-md-offset-3">
-    <form class="form-horizontal" action = "{{action('Inciso9_1_10Controller@guardarImg')}}" method="POST" enctype="multipart/form-data">
-      <input type = "hidden" name = "_token" value = "{{csrf_token()}}">
-
-      <div class="col-sm-8">
-        <input type='file' class="form-control" name='Fotografias[]' id="Fotografias" multiple accept=".gif,.bmp,.jpg,.png, .jpeg"/>
-      </div>
-      <button type='submit' class="btn btn-primary">Agregar fotografía</button>
-    </form>
-  </div>
-</div>
   <style type='text/css'>
     .img_div {
       float: left;
@@ -82,50 +70,41 @@
     .buttonimg{
       width:auto;
       height:auto;
+
     }
 
     img{
       width: auto;
       max-height: 100%
     }
-    .line{
-      border-bottom: 1px solid #111;
-      display: block;
-      margin-top: 60px;
-      padding-top: 10px;
-      position: relative;
-    }
   </style>
+    <h3 align="center">
+        Fotografias del inciso 9.1.10
+    </h3>
 
+
+  <?php
+    $dirs = array_filter(glob('storage/infraestructura/aulas/*'), 'is_dir');
+  ?>
+  @foreach($dirs as $path)
     <?php
-      $dirname = 'storage/infraestructura/asesorias/';
+      $dirname = $path.'/';
       $images= glob($dirname . "*.{[jJ][pP][gG],[pP][nN][gG],[gG][iI][fF],[jJ][pP][eE][gG]}", GLOB_BRACE);
     ?>
 
-    @if(sizeof($images) != 0)
-      <h3 align="center">
-          Fotografias del inciso 9.1.10
-      </h3>
-      @foreach ($images as $image)
-        <figure>
-          <div class='buttonimg'>
-            <div class="img_div">
-              <img src="<?php echo asset($image)?>" height="220"
+    @foreach ($images as $image)
+    <figure>
+      <div class="buttonimg">
+        <div class="img_div">
+          <img src="<?php echo asset($image)?>" height="220"
                 alt="<?php echo $image?>"/>
-              <figcaption class="text-center"><?php echo pathinfo($image)['basename']?></figcaption>
-              <div class="row text-center">
-                <form action="{{ route('borrarImgInciso9_1_10', ['imagen' => pathinfo($image)['basename']]) }}" method="post">
-                  {{ csrf_field() }}
-                  <button class="trailer_button" type="submit" name="button">Borrar</button>
-                </form>
-              </div>
-            </div>
-          </div>
-        </figure>
-  		@endforeach
-    @else
-      <h2 align="center">No hay imagenes</h2>
-    @endif
+          <figcaption class="text-center"><?php echo pathinfo($image)['basename']?></figcaption>
+        </div>
+      </div>
+    </figura>
+
+		@endforeach
+  @endforeach
 @endsection
 
 @section('boton_guardar')

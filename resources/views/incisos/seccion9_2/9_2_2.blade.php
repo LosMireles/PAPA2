@@ -122,4 +122,3 @@
         {{ Form::close() }}
     </div>
 @endsection
-
