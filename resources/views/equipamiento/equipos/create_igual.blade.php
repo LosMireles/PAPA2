@@ -47,7 +47,7 @@
         @slot("tooltip_input", "Serial del equipo. Identificador del equipo")
         @slot("label_input", "Serial")
         @slot("placeholder_input", "NA00013")
-        @slot("extra", "required")
+        @slot("extra", "maxlength=80 required")
     @endcomponent
 
     <div class="form-group">
@@ -68,7 +68,7 @@
                             @slot('var', $tipo)
                         @endcomponent
                     @endif
-                @endforeach 
+                @endforeach
             </select>
         </div>
     </div>
@@ -80,7 +80,7 @@
         @slot("placeholder_input", "Windows 10")
         @slot("valor_default", $equipo->sistema_operativo)
         @slot('extra')
-            id = "sistema_operativo"
+            id = "sistema_operativo" maxlength=80
         @endslot
     @endcomponent
 
@@ -89,6 +89,7 @@
         @slot("tooltip_input", "Marca del manufacturador. Ejemplo LANIX")
         @slot("label_input", "Marca")
         @slot("placeholder_input", "LANIX")
+        @slot("extra", "maxlength=80")
         @slot("valor_default", $equipo->marca)
     @endcomponent
 
@@ -99,7 +100,7 @@
         @slot("placeholder_input", "Qualcorexeon X5460 2X 6MB Cache")
         @slot("valor_default", $equipo->cpu)
         @slot('extra')
-            id = "cpu"
+            id = "cpu" maxlenght=80
         @endslot
     @endcomponent
 
@@ -110,7 +111,7 @@
         @slot("placeholder_input", "8GB 667 MHZ (4X2 GB)")
         @slot("valor_default", $equipo->ram)
         @slot('extra')
-            id = "ram"
+            id = "ram" maxlenght=80
         @endslot
     @endcomponent
 
@@ -121,7 +122,7 @@
         @slot("placeholder_input", "HDD 300 GB")
         @slot("valor_default", $equipo->almacenamiento)
         @slot('extra')
-            id = "almacenamiento"
+            id = "almacenamiento" maxlenght=80
         @endslot
     @endcomponent
 
@@ -129,7 +130,7 @@
         @slot("nombre_input", "otras_caracteristicas")
         @slot("tooltip_input", "Alguna otra caracteristica importante a tomar en cuenta")
         @slot("label_input", "Otras caracteristicas")
-        @slot("placeholder_input", "Tarjeta grafica")
+        @slot("placeholder_input", "Tarjeta gráfica o algún otra característica que se debería mencionar")
         @slot("valor_default", $equipo->otras_caracteristicas)
     @endcomponent
 

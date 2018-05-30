@@ -20,7 +20,7 @@
         @slot("label_input", "Serial")
         @slot("placeholder_input", "NA00013")
         @slot("valor_default", $equipo->serial)
-        @slot("extra", "required")
+        @slot("extra", "maxlength=80 required")
     @endcomponent
 
     @component("layouts.text_input")
@@ -28,6 +28,7 @@
         @slot("tooltip_input", "Sistema operativo principal que tiene el equipo")
         @slot("label_input", "Sistema operativo")
         @slot("placeholder_input", "Windows 10")
+        @slot("extra", "maxlength=80")
         @slot("valor_default", $equipo->sistema_operativo)
     @endcomponent
 
@@ -36,6 +37,7 @@
         @slot("tooltip_input", "Fabricante del equipo")
         @slot("label_input", "Marca")
         @slot("placeholder_input", "Lanix")
+        @slot("extra", "maxlength=80")
 		@slot("valor_default", $equipo->marca)
     @endcomponent
 

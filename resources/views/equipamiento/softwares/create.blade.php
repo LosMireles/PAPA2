@@ -17,7 +17,7 @@
         @slot("tooltip_input", "Nombre del software")
         @slot("label_input", "Nombre")
         @slot("placeholder_input", "Nombre del software")
-        @slot("extra", "required")
+        @slot("extra", "maxlength=80 required")
     @endcomponent
 
     @component("layouts.text_input")
@@ -25,6 +25,7 @@
         @slot("tooltip_input", "Version del software")
         @slot("label_input", "Version")
         @slot("placeholder_input", "1.0")
+        @slot("extra", "maxlength=80")
     @endcomponent
 
     @component("layouts.select_input")
@@ -45,6 +46,7 @@
         @slot("tooltip_input", "Como fue que se consiguio el software. Si se tiene licencia o si es libre")
         @slot("label_input", "Disponibilidad")
         @slot("placeholder_input", "Libre")
+        @slot("extra", "maxlength=80")
     @endcomponent
 
 @endsection
