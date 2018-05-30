@@ -502,10 +502,6 @@
             <form class="form-horizontal" action = "{{action('Inciso9_1_10Controller@guardarImg')}}" method="POST" enctype="multipart/form-data">
               <input type = "hidden" name = "_token" value = "{{csrf_token()}}">
 
-              <div class="col-sm-8">
-                <input type='file' class="form-control" name='Fotografias[]' id="Fotografias" multiple accept=".gif,.bmp,.jpg,.png, .jpeg"/>
-              </div>
-              <button type='submit' class="btn btn-primary">Agregar fotografía</button>
             </form>
           </div>
         </div>
