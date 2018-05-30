@@ -22,17 +22,17 @@ class SanitarioTableSeeder extends Seeder
     */
         App\Sanitario::create(array(
             'nombre'=> 'Sanitario 3K4',
-            'sexo'  => 'hombres',
+            'sexo'  => 'Hombres',
         ));
 
         App\Sanitario::create(array(
             'nombre'=> 'Sanitario 3K2',
-            'sexo'  => 'mujeres',
+            'sexo'  => 'Mujeres',
         ));
 
         App\Sanitario::create(array(
             'nombre'=> 'Sanitario Biblioteca',
-            'sexo'  => 'mujeres',
+            'sexo'  => 'Unisex',
         ));
     }
 }
