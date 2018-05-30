@@ -763,6 +763,114 @@
     @endcomponent
 	<!-- ************************** FINAL 9.2.7 *************************** -->
 
+  <!-- ************************** INICIO 9.2.12 ************************* -->
+  <h3 class="text-justify">Inciso 9.2.11: Los profesores del programa deben contar
+  con equipo de cómputo que les permita desempeñar adecuadamente su función. En
+  el caso de los profesores de tiempo completo, estos deberán de contar con una
+  computadora para su uso exclusivo</h3>
+
+  @foreach($preguntas_9_2_11 as $pregunta_9_2_11)
+    <div class="form-group">
+      <label for="{{$pregunta_9_2_11->id}}" class="control-label">
+          {{$pregunta_9_2_11->titulo}}
+      </label>
+
+      <div>
+                <textarea class="form-control" id="{{$pregunta_9_2_11->id}}" name="{{$pregunta_9_2_11->id}}" disabled>{{$pregunta_9_2_11->respuesta}}</textarea>
+      </div>
+    </div>
+  @endforeach
+
+  @component('layouts.componentes.tabla_incisos')
+
+        <h4>Tabla de equipos de redes</h4>
+        @slot('cabeza_tabla')
+            <th>Cubículo</th>
+            <th>Profesor</th>
+            <th>Cantidad equipo</th>
+        @endslot
+
+        @slot('cuerpo_tabla')
+            @foreach($cubiculos as $cubiculo)
+            <tr>
+                <td>{{$cubiculo->nombre}}</td>
+                <td>{{$cubiculo->profesor}}</td>
+                <td>{{$cubiculo->cantidad_equipo}}</td>
+            </tr>
+            @endforeach
+        @endslot
+
+        @slot('fotos')
+          <style type='text/css'>
+            .img_div {
+              float: left;
+              margin-right: 10px;
+              margin-bottom: 15px;
+
+            }
+            img{
+              width: auto;
+              max-height: 100%
+            }
+            .line{
+              border-bottom: 1px solid #111;
+              display: block;
+              margin-top: 60px;
+              padding-top: 10px;
+              position: relative;
+            }
+          </style>
+
+            <?php
+              $dirs = array_filter(glob('storage/infraestructura/cubiculos/*'), 'is_dir');
+              $hayImagen = 0;
+              foreach ($dirs as $path) {
+                $dir = $path.'/';
+                $imagenes= glob($dir . "*.{[jJ][pP][gG],[pP][nN][gG],[gG][iI][fF],[jJ][pP][eE][gG]}", GLOB_BRACE);
+                if (sizeof($imagenes) != 0) {
+                  $hayImagen = 1;
+                  break;
+                }
+              }
+            ?>
+            @if($hayImagen == 1)
+              <h3 align="center">
+                  Fotografías del inciso 9.2.11
+              </h3>
+              @foreach($dirs as $path)
+                <?php
+                  $dirname = $path.'/';
+                  $images= glob($dirname . "*.{[jJ][pP][gG],[pP][nN][gG],[gG][iI][fF],[jJ][pP][eE][gG]}", GLOB_BRACE);
+                  $cubiculoID = substr($path, strlen('storage/infraestructura/cubiculos/'));
+                  $cubiculoReg = App\Cubiculo::where('id', $cubiculoID)->first();
+                  $cubiculoNombre = $cubiculoReg->nombre;
+                ?>
+
+                @if(sizeof($images) != 0)
+                  <h2 class="line"><?php echo $cubiculoNombre ?></h2>
+                @endif
+
+                @foreach ($images as $image)
+                <figure>
+                  <div class="buttonimg">
+                    <div class="img_div">
+                      <img src="<?php echo asset($image)?>" height="220"
+                            alt="<?php echo $image?>"/>
+                      <figcaption class="text-center"><?php echo pathinfo($image)['basename']?></figcaption>
+                    </div>
+                  </div>
+                </figura>
+
+                @endforeach
+                <br clear='all'/>
+              @endforeach
+            @else
+              <h2 align="center">No hay imagenes</h2>
+            @endif
+        @endslot
+    @endcomponent
+  <!-- ************************** FINAL 9.2.12 ************************** -->
+
 
 	<!-- ************************** INICIO 9.2.12 ************************* -->
 	<h3 class="text-justify">Inciso 9.2.12: Los Servicios de Cómputo deben contar
