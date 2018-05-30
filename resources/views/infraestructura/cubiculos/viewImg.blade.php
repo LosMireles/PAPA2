@@ -69,7 +69,7 @@
 							<div class="row text-center">
 								<form action="{{ route('borrarImgCubiculo', ['nombre'=> $nombre, 'imagen' => pathinfo($image)['basename']]) }}" method="post">
                   {{ csrf_field() }}
-                  <button class="trailer_button" type="submit" name="button">Borrar</button>
+                  <button class="btn btn-danger" onclick="return confirm('¿Estas seguro que deseas borrar esta fotografía?')" type="submit" name="button">Borrar</button>
 								</form>
 							</div>
 						</div>
