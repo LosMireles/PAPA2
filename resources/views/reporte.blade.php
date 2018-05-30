@@ -40,7 +40,7 @@
     </div>
   @endforeach
 
-  @component('layouts.componentes.tabla_incisos_agregar')
+  @component('layouts.componentes.tabla_incisos')
     @slot('cabeza_tabla')
         <th>Titulo</th>
         <th>Respuesta</th>
@@ -115,13 +115,13 @@
     @endslot
 
     @slot('fotos')
-      <style type='text/css'>
+        <style type='text/css'>
         .img_div {
           float: left;
           margin-right: 10px;
           margin-bottom: 15px;
-        }
 
+        }
         img{
           width: auto;
           max-height: 100%
@@ -147,7 +147,6 @@
           }
         }
       ?>
-
       @if($hayImagen == 1)
         <h3 align="center">
             Fotografías del inciso 9.1.6
@@ -164,7 +163,6 @@
           @if(sizeof($images) != 0)
             <h2 class="line"><?php echo $aulaNombre ?></h2>
           @endif
-
 
           @foreach ($images as $image)
           <figure>
@@ -183,7 +181,7 @@
       @else
         <h2 align="center">No hay imagenes</h2>
       @endif
-    @endslot
+      @endslot
   @endcomponent
   <!-- ************************** FINAL 9.1.6 ************************** -->
 
