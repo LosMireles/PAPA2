@@ -115,8 +115,7 @@
 							?>
 						@endif
 
-						@component('layouts.componentes.tooltip_general_link')
-							@slot('url', '#')
+						@component('layouts.componentes.tooltip_general')
 							@slot('titulo', $mensaje)
 							@slot('mensaje', $estado)
 						@endcomponent
@@ -143,9 +142,8 @@
 								$mensaje = 'Todas las preguntas no tienen respuesta';
 							?>
 						@endif
-						@component('layouts.componentes.tooltip_general_link')
-							@slot('url', '#')
-							@slot('titulo',$mensaje)
+						@component('layouts.componentes.tooltip_general')
+							@slot('titulo', $mensaje)
 							@slot('mensaje', $estado)
 						@endcomponent
 					</li>
@@ -172,9 +170,8 @@
 								$mensaje = 'Todas las preguntas no tienen respuesta';
 							?>
 						@endif
-						@component('layouts.componentes.tooltip_general_link')
-							@slot('url', '#')
-							@slot('titulo',$mensaje)
+						@component('layouts.componentes.tooltip_general')
+							@slot('titulo', $mensaje)
 							@slot('mensaje', $estado)
 						@endcomponent
 					</li>
@@ -218,8 +215,7 @@
 								?>
 							@endif
 						@endif
-						@component('layouts.componentes.tooltip_general_link')
-							@slot('url', '#')
+						@component('layouts.componentes.tooltip_general')
 							@slot('titulo', $mensaje)
 							@slot('mensaje', $estado)
 						@endcomponent
@@ -264,8 +260,7 @@
 								?>
 							@endif
 						@endif
-						@component('layouts.componentes.tooltip_general_link')
-							@slot('url', '#')
+						@component('layouts.componentes.tooltip_general')
 							@slot('titulo', $mensaje)
 							@slot('mensaje', $estado)
 						@endcomponent
@@ -293,8 +288,7 @@
 								$mensaje = 'Todas las preguntas no tienen respuesta';
 							?>
 						@endif
-						@component('layouts.componentes.tooltip_general_link')
-							@slot('url', '#')
+						@component('layouts.componentes.tooltip_general')
 							@slot('titulo', $mensaje)
 							@slot('mensaje', $estado)
 						@endcomponent
@@ -322,8 +316,7 @@
 								$mensaje = 'Todas las preguntas no tienen respuesta';
 							?>
 						@endif
-						@component('layouts.componentes.tooltip_general_link')
-							@slot('url', '#')
+						@component('layouts.componentes.tooltip_general')
 							@slot('titulo', $mensaje)
 							@slot('mensaje', $estado)
 						@endcomponent
@@ -351,9 +344,8 @@
 								$mensaje = 'Todas las preguntas no tienen respuesta';
 							?>
 						@endif
-						@component('layouts.componentes.tooltip_general_link')
-							@slot('url', '#')
-							@slot('titulo',$mensaje)
+						@component('layouts.componentes.tooltip_general')
+							@slot('titulo', $mensaje)
 							@slot('mensaje', $estado)
 						@endcomponent
 					</li>
@@ -397,8 +389,7 @@
 								?>
 							@endif
 						@endif
-						@component('layouts.componentes.tooltip_general_link')
-							@slot('url', '#')
+						@component('layouts.componentes.tooltip_general')
 							@slot('titulo', $mensaje)
 							@slot('mensaje', $estado)
 						@endcomponent
@@ -487,9 +478,8 @@
 								$mensaje = 'Todas las preguntas no tienen respuesta';
 							?>
 						@endif
-						@component('layouts.componentes.tooltip_general_link')
-							@slot('url', '#')
-							@slot('titulo',$mensaje)
+						@component('layouts.componentes.tooltip_general')
+							@slot('titulo', $mensaje)
 							@slot('mensaje', $estado)
 						@endcomponent
 					</li>
@@ -533,8 +523,7 @@
 								?>
 							@endif
 						@endif
-						@component('layouts.componentes.tooltip_general_link')
-							@slot('url', '#')
+						@component('layouts.componentes.tooltip_general')
 							@slot('titulo', $mensaje)
 							@slot('mensaje', $estado)
 						@endcomponent
@@ -562,8 +551,7 @@
 								$mensaje = 'Todas las preguntas no tienen respuesta';
 							?>
 						@endif
-						@component('layouts.componentes.tooltip_general_link')
-							@slot('url', '#')
+						@component('layouts.componentes.tooltip_general')
 							@slot('titulo', $mensaje)
 							@slot('mensaje', $estado)
 						@endcomponent
@@ -608,8 +596,7 @@
 								?>
 							@endif
 						@endif
-						@component('layouts.componentes.tooltip_general_link')
-							@slot('url', '#')
+						@component('layouts.componentes.tooltip_general')
 							@slot('titulo', $mensaje)
 							@slot('mensaje', $estado)
 						@endcomponent
@@ -637,8 +624,7 @@
 								$mensaje = 'Todas las preguntas no tienen respuesta';
 							?>
 						@endif
-						@component('layouts.componentes.tooltip_general_link')
-							@slot('url', '#')
+						@component('layouts.componentes.tooltip_general')
 							@slot('titulo', $mensaje)
 							@slot('mensaje', $estado)
 						@endcomponent
@@ -683,8 +669,7 @@
 								?>
 							@endif
 						@endif
-						@component('layouts.componentes.tooltip_general_link')
-							@slot('url', '#')
+						@component('layouts.componentes.tooltip_general')
 							@slot('titulo', $mensaje)
 							@slot('mensaje', $estado)
 						@endcomponent
@@ -711,8 +696,7 @@
 								$mensaje = 'Todas las preguntas no tienen respuesta';
 							?>
 						@endif
-						@component('layouts.componentes.tooltip_general_link')
-							@slot('url', '#')
+						@component('layouts.componentes.tooltip_general')
 							@slot('titulo', $mensaje)
 							@slot('mensaje', $estado)
 						@endcomponent
