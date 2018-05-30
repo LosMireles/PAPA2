@@ -177,7 +177,7 @@
     @endcomponent
 
 	<div class="form-group">
-		<h3 class="text-center">Evidencias: </h3>
+		<h3 class="text-center">Evidencias fotográficas: </h3>
 	</div>
 
 	<div class="form-group">
@@ -188,4 +188,3 @@
 		</div>
 	</div>
 @endsection
-

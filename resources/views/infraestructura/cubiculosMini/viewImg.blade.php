@@ -25,7 +25,7 @@
 @endsection
 
 @section('Fotografias')
-	<h1 class="text-center">Evidencias de cubiculo <?php echo $nombre; ?></h1>
+	<h1 class="text-center">Fotografías de <?php echo $nombre; ?></h1>
 
   <?php
 		$cubiculo = Cubiculo::where('nombre', $nombre)->first();

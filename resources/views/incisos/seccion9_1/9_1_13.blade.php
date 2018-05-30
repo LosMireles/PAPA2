@@ -136,7 +136,7 @@
   ?>
   @if($hayImagen == 1)
     <h3 align="center">
-        Fotografias del inciso 9.1.13
+        Fotografías del inciso 9.1.13
     </h3>
     @foreach($dirs as $path)
       <?php
