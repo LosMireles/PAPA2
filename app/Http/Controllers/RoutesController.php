@@ -10,6 +10,9 @@ use App\Pregunta;
 use App\Auditorio;
 use App\TecnicoAcademico;
 use App\Curso;
+use App\Aula;
+use App\Equipo;
+use App\Software;
 
 use DB;
 
@@ -64,10 +67,27 @@ class RoutesController extends Controller
         $preguntas_9_1_4 = Pregunta::where('inciso', '9.1.4')->get();
         $preguntas_9_2_12 = Pregunta::where('inciso', '9.2.12')->get();
         $preguntas_9_2_1 = Pregunta::where('inciso', '9.2.1')->get();
+        $preguntas_9_1_7 = Pregunta::where('inciso', '9.1.7')->get();
+        $preguntas_9_2_14 = Pregunta::where('inciso', '9.2.14')->get();
+        $preguntas_9_1_8 = Pregunta::where('inciso', '9.1.8')->get();
+        $preguntas_9_2_5 = Pregunta::where('inciso', '9.2.5')->get();
+        $preguntas_9_2_7 = Pregunta::where('inciso', '9.2.7')->get();
+        $preguntas_9_2_2 = Pregunta::where('inciso', '9.2.2')-> get();
 
         $cursos_softwares = DB::table('curso_software')->get();
-        
+        $cursosLCC = Curso::where('departamento', 'LCC')->get();
+        $cursosLM = Curso::where('departamento', 'LM')->get();
+        $cursosOtros = Curso::where('departamento', 'Otros')->get();
+
+        $lenguajes   = Software::where('clase', 'Lenguaje')     -> pluck('nombre');
+        $cases       = Software::where('clase', 'Case')         -> pluck('nombre');
+        $bds         = Software::where('clase', 'Manejador BD') -> pluck('nombre');
+        $paqueterias = Software::where('clase', 'Paqueteria')   -> pluck('nombre');
+        $otros = Software::where('clase', 'Otro')               -> pluck('nombre');
+
         $cursos = Curso::all();
+        $aulas = Aula::all();
+        $equipos = Equipo::all();
         $tecnicos  = TecnicoAcademico::all();
         $auditorios = Auditorio::all();
 
@@ -75,10 +95,27 @@ class RoutesController extends Controller
                                         'preguntas_9_1_4'   => $preguntas_9_1_4,
                                         'preguntas_9_2_12'  => $preguntas_9_2_12,
                                         'preguntas_9_2_1'   => $preguntas_9_2_1,
+                                        'preguntas_9_1_7'   => $preguntas_9_1_7,
+                                        'preguntas_9_2_14'  => $preguntas_9_2_14,
+                                        'preguntas_9_1_8'   => $preguntas_9_1_8,
+                                        'preguntas_9_2_5'   => $preguntas_9_2_5,
+                                        'preguntas_9_2_7'   => $preguntas_9_2_7,
+                                        'preguntas_9_2_2'   => $preguntas_9_2_2,
 
                                         'cursos'            => $cursos,
                                         'tecnicos'          => $tecnicos,
                                         'auditorios'        => $auditorios,
-                                        'cursos_softwares'  => $cursos_softwares]);
+                                        'aulas'             => $aulas,
+                                        'equipos'           => $equipos,
+
+                                        'cursos_softwares'  => $cursos_softwares,
+                                        'cursosLCC'         => $cursosLCC,
+                                        'cursosLM'          => $cursosLM,
+                                        'cursosOtros'       => $cursosOtros,
+                                        'lenguajes'         => $lenguajes,
+                                        'cases'             => $cases,
+                                        'bds'               => $bds,
+                                        'paqueterias'       => $paqueterias,
+                                        'otros'             => $otros]);
     }
 }

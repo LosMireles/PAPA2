@@ -73,7 +73,7 @@
 	  	<div class="tab-pane" id="2">
 	  		
 	  		<div class="row text-right">
-	  			<a href="#" class="btn btn-danger" style="margin: 15px;">Generar reporte</a>
+	  			<a href="{{url('/Reporte')}}" class="btn btn-danger" style="margin: 15px;">Generar reporte</a>
 	  		</div>
 	  		
 	  		@component('layouts.componentes_inicio.formulario_salida')
