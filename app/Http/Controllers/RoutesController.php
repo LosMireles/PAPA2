@@ -15,6 +15,7 @@ use App\Equipo;
 use App\Software;
 use App\Cubiculo;
 use App\Asesoria;
+use App\Sanitario;
 
 use DB;
 
@@ -79,6 +80,7 @@ class RoutesController extends Controller
         $preguntas_9_1_9 = Pregunta::where('inciso', '9.1.9')->get();
         $preguntas_9_2_11 = Pregunta::where('inciso', '9.2.11')->get();
         $preguntas_9_1_10 = Pregunta::where('inciso', '9.1.10')->get();
+        $preguntas_9_1_13 = Pregunta::where('inciso', '9.1.13')->get();
 
         $cursos_softwares = DB::table('curso_software')->get();
         $cursosLCC = Curso::where('departamento', 'LCC')->get();
@@ -98,6 +100,7 @@ class RoutesController extends Controller
         $auditorios = Auditorio::all();
         $cubiculos = Cubiculo::all();
         $asesorias = Asesoria::all();
+        $sanitarios = Sanitario::all();
 
         return view('reporte')->with([  'preguntas_9_1_12'  => $preguntas_9_1_12,
                                         'preguntas_9_1_4'   => $preguntas_9_1_4,
@@ -113,6 +116,7 @@ class RoutesController extends Controller
                                         'preguntas_9_1_9'   => $preguntas_9_1_9,
                                         'preguntas_9_2_11'  => $preguntas_9_2_11,
                                         'preguntas_9_1_10'  => $preguntas_9_1_10,
+                                        'preguntas_9_1_13'  => $preguntas_9_1_13,
 
                                         'cursos'            => $cursos,
                                         'tecnicos'          => $tecnicos,
@@ -121,6 +125,7 @@ class RoutesController extends Controller
                                         'equipos'           => $equipos,
                                         'cubiculos'         => $cubiculos,
                                         'asesorias'         => $asesorias,
+                                        'sanitarios'        => $sanitarios,
 
                                         'cursos_softwares'  => $cursos_softwares,
                                         'cursosLCC'         => $cursosLCC,

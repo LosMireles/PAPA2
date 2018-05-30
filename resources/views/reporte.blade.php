@@ -623,6 +623,132 @@
     </div>
 	<!-- ************************** FINAL 9.1.12 ************************** -->
 
+  <!-- ************************** INICIO 9.1.13 ************************* -->
+  <h3 class="text-justify">Inciso 9.1.13: Las facilidades sanitarias para los estudiantes
+  y profesores del programa deben ser adecuadas</h3>
+
+  <div class="form-group">
+        <label for="{{$preguntas_9_1_13[0]->id}}" class="control-label">
+            {{$preguntas_9_1_13[0]->titulo}}
+        </label>
+
+      <div>
+        @if($preguntas_9_1_13[0]->respuesta == 'Si')
+          <input type="radio" name="{{$preguntas_9_1_13[0]->id}}" value="Si" checked disabled> Sí <br>
+          <input type="radio" name="{{$preguntas_9_1_13[0]->id}}" value="No" disabled> No
+        @elseif($preguntas_9_1_13[0]->respuesta == 'No')
+          <input type="radio" name="{{$preguntas_9_1_13[0]->id}}" value="Si" disabled> Sí <br>
+          <input type="radio" name="{{$preguntas_9_1_13[0]->id}}" value="No" checked disabled> No
+        @else
+          <input type="radio" name="{{$preguntas_9_1_13[0]->id}}" value="Si" checked disabled> Sí <br>
+          <input type="radio" name="{{$preguntas_9_1_13[0]->id}}" value="No" disabled> No
+        @endif
+      </div>
+    </div>
+
+
+    <!--Pregunta 2-->
+    <div class="form-group">
+        <label for="{{$preguntas_9_1_13[1]->id}}" class="control-label">
+            {{$preguntas_9_1_13[1]->titulo}}
+        </label>
+
+        <div>
+            <textarea class="form-control" id="{{$preguntas_9_1_13[1]->id}}" name="{{$preguntas_9_1_13[1]->id}}" disabled>{{$preguntas_9_1_13[1]->respuesta}}</textarea>
+        </div>
+    </div>
+
+    @component('layouts.componentes.tabla_incisos')
+
+      <!-- Tabla de todos los grupos -->
+      @slot('cabeza_tabla')
+        <th>Nombre</th>
+        <th>Sexo</th>
+      @endslot
+
+      @slot('cuerpo_tabla')
+        @foreach ($sanitarios as $sanitario)
+        <tr>
+            <td>{{ $sanitario->nombre }}</td>
+            <td>{{ $sanitario->sexo }}</td>
+
+        </tr>
+        @endforeach
+      @endslot
+      
+      @slot('fotos')
+        <style type='text/css'>
+          .img_div {
+            float: left;
+            margin-right: 10px;
+            margin-bottom: 15px;
+          }
+
+          img{
+            width: auto;
+            max-height: 100%
+          }
+          .line{
+            border-bottom: 1px solid #111;
+            display: block;
+            margin-top: 60px;
+            padding-top: 10px;
+            position: relative;
+          }
+
+
+        </style>
+
+        <?php
+          $dirs = array_filter(glob('storage/infraestructura/sanitarios/*'), 'is_dir');
+          $hayImagen = 0;
+          foreach ($dirs as $path) {
+            $dir = $path.'/';
+            $imagenes= glob($dir . "*.{[jJ][pP][gG],[pP][nN][gG],[gG][iI][fF],[jJ][pP][eE][gG]}", GLOB_BRACE);
+            if (sizeof($imagenes) != 0) {
+              $hayImagen = 1;
+              break;
+            }
+          }
+        ?>
+        @if($hayImagen == 1)
+          <h3 align="center">
+              Fotografías del inciso 9.1.13
+          </h3>
+          @foreach($dirs as $path)
+            <?php
+              $dirname = $path.'/';
+              $images= glob($dirname . "*.{[jJ][pP][gG],[pP][nN][gG],[gG][iI][fF],[jJ][pP][eE][gG]}", GLOB_BRACE);
+              $sanitarioID = substr($path, strlen('storage/infraestructura/sanitarios/'));
+              $sanitarioReg = App\Sanitario::where('id', $sanitarioID)->first();
+              $sanitarioNombre = $sanitarioReg->nombre;
+            ?>
+            @if(sizeof($images) != 0)
+              <h3  class="line">Aula <?php echo $sanitarioNombre ?> </h3>
+            @endif
+
+            @foreach ($images as $image)
+            <figure>
+              <div class="buttonimg">
+                <div class="img_div">
+                  <img src="<?php echo asset($image)?>" height="220"
+                        alt="<?php echo $image?>"/>
+                  <figcaption class="text-center"><?php echo pathinfo($image)['basename']?></figcaption>
+                </div>
+              </div>
+            </figura>
+
+            @endforeach
+            <br clear='all'/>
+          @endforeach
+        @else
+          <h3 align="center">No hay imagenes </h3>
+        @endif
+      @endslot
+    @endcomponent
+  <!-- ************************** FINAL 9.1.13 ************************** -->
+
+
 	<!-- ************************** INICIO 9.2.1 ************************** -->
 	<h3 class="text-justify">Inciso 9.2.1: Para cada asignatura mencionar el software
    	que se utiliza y si está disponible dentro de la institución</h3>
