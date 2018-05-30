@@ -46,6 +46,7 @@ Route::post('/auditorios/{tipo}/guardarImg', 'AuditorioController@guardarImg');
 Route::post('/cubiculos/{tipo}/guardarImg', 'CubiculoController@guardarImg');
 Route::post('/cubiculosMini/{tipo}/guardarImg', 'CubiculoMiniController@guardarImg');
 Route::post('/sanitarios/{tipo}/guardarImg', 'SanitarioController@guardarImg');
+Route::post('/inciso_9_1_10/guardarImg', 'Inciso9_1_10Controller@guardarImg');
 
 // Rutas para agregar igual
 Route::get('/equipos/crear_igual/{id}', 'EquipoController@crear_igual');
@@ -89,6 +90,12 @@ Route::post('/cubiculosMini/{tipo}/borrarImg/{imagen}', [
 Route::post('/sanitarios/{tipo}/borrarImg/{imagen}', [
   'uses' => 'SanitarioController@borrarImg',
   'as' => 'borrarImgSanitario'
+]);
+
+// Inciso 9.1.10
+Route::post('/inciso_9_1_10/borrarImg/{imagen}', [
+  'uses' => 'Inciso9_1_10Controller@borrarImg',
+  'as' => 'borrarImgInciso9_1_10'
 ]);
 
 //

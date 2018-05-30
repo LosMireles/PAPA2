@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Pregunta;
 use App\Asesoria;
+use Illuminate\Support\Facades\Storage;
 
 class Inciso9_1_10Controller extends Controller
 {
@@ -49,7 +50,23 @@ class Inciso9_1_10Controller extends Controller
         }
 
         return redirect()->action('Inciso9_1_10Controller@index')
-            ->with('status', 'Respuestas guardadas');;
+            ->with('status', 'Respuestas guardadas');
+    }
+
+    public function guardarImg(Request $request){
+      if ($request->hasFile('Fotografias')) {
+        foreach($request->Fotografias as $foto){
+          $foto->storeAs('infraestructura/asesorias/', $foto->getClientOriginalName());
+        }
+      }
+      return redirect('/inciso_9_1_10');
+    }
+
+    public function borrarImg($imagen)
+    {
+      $dirImagen = 'infraestructura/asesorias/'. $imagen;
+      Storage::delete($dirImagen);
+      return redirect('/inciso_9_1_10');
     }
 
 }
