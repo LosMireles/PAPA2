@@ -170,13 +170,6 @@ Route::get('auditorios/{auditorio}/edit/{inciso?}', 'AuditorioController@edit');
 Route::patch('auditorios/{auditorio}/{inciso?}', 'AuditorioController@update');
 //delete
 Route::delete('auditorios/{auditorio}/{inciso?}', 'AuditorioController@destroy');
-     //'aulas'               => 'AulaController',
-     //'cubiculos'           => 'CubiculoController',
-	 //'cubiculosMini'       => 'CubiculoMiniController',
-     //'sanitarios'          => 'SanitarioController',
-     //'auditorios'          => 'AuditorioController',
-
-     //'cursos'              => 'CursoController',
 
 Route::get('cursos/create/{inciso?}', 'CursoController@create');
 Route::post('cursos/{inciso?}', 'CursoController@store');
@@ -222,3 +215,13 @@ Route::get('tecnicos_academicos/{tecnico_academico}/edit/{inciso?}', 'TecnicoAca
 Route::patch('tecnicos_academicos/{tecnico_academico}/{inciso?}', 'TecnicoAcademicoController@update');
 //delete
 Route::delete('tecnicos_academicos/{tecnico_academico}/{inciso?}', 'TecnicoAcademicoController@destroy');
+
+//create, store
+Route::get('sanitarios/create/{inciso?}', 'SanitarioController@create');
+Route::post('sanitarios/{inciso?}', 'SanitarioController@store');
+//edit, update
+Route::get('sanitarios/{sanitario}/edit/{inciso?}', 'SanitarioController@edit');
+Route::patch('sanitarios/{sanitario}/{inciso?}', 'SanitarioController@update');
+//delete
+Route::delete('sanitarios/{sanitario}/{inciso?}', 'SanitarioController@destroy');
+

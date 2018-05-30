@@ -70,7 +70,9 @@
 		@slot('cabeza_tabla')
 		    <th>Titulo</th>
 		    <th>Respuesta</th>
-        <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
 		@endslot
 
 		@slot('cuerpo_tabla')

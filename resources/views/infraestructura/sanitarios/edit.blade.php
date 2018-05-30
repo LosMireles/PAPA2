@@ -13,12 +13,8 @@
 
 @section('objeto_informacion', 'un sanitario')
 
-@section('accion')
-    action = "{{action('SanitarioController@update', $sanitario->nombre, $url_regreso)}}"
-@endsection
-
 @section('formopen')
-    {{Form::open(['action' => ['SanitarioController@update', $sanitario->nombre],
+    {{Form::open(['action' => ['SanitarioController@update', $sanitario->nombre, $url_regreso],
                 'class' => 'form-horizontal',
                 'files' => true])}}
 @endsection
