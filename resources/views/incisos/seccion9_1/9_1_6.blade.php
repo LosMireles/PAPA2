@@ -64,7 +64,7 @@
     	<a href="{{ action($controlador_objeto_informacion.'@create', $variable) }}" class="btn btn-success">
     	    Agregar nueva aula
     	</a>
-  	</div>
+  </div>
 
 	@component('layouts.componentes.tabla_incisos_agregar')
 		@slot('cabeza_tabla')
@@ -167,6 +167,9 @@
 			@endforeach
 		@endslot
 	@endcomponent
+  @if(count($aulas) == 0)
+    <h2 class="text-center">No hay registros en la base de datos</h2>
+  @endif
 @endsection
 
 <!--Fotossss -->

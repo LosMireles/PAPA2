@@ -41,14 +41,6 @@
 				margin-bottom: 15px;
 
 			}
-			.trailer_button{
-				z-index:999;
-				margin:1 20 -20 20;
-				width:120px;
-				border-radius:10px;
-				margin-bottom: 15px;
-
-			}
 			.buttonimg{
 				width:auto;
 				height:auto;
@@ -74,7 +66,7 @@
 							<div class="row text-center">
 								<form action="{{ route('borrarImgAula', ['nombre'=> $nombre, 'imagen' => pathinfo($image)['basename']]) }}" method="post">
                   {{ csrf_field() }}
-                  <button class="trailer_button" type="submit" name="button">Borrar</button>
+                  <button class="btn btn-danger" onclick="return confirm('¿Estas seguro que deseas borrar esta fotografía?')" type="submit" name="button">Borrar</button>
 								</form>
 							</div>
 						</div>
