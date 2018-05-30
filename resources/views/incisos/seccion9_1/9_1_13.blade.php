@@ -102,12 +102,13 @@
       width: auto;
       max-height: 100%
     }
-    .line
-    { border-top: 1px solid #111;
+    .line{
+      border-bottom: 1px solid #111;
       display: block;
       margin-top: 60px;
       padding-top: 10px;
-      position: relative; }
+      position: relative;
+    }
 
 
   </style>
@@ -137,7 +138,7 @@
         $sanitarioNombre = $sanitarioReg->nombre;
       ?>
       @if(sizeof($images) != 0)
-        <h3  class="line">Aula <?php echo $sanitarioNombre ?> </h3>
+        <h3  class="line"><?php echo $sanitarioNombre ?> </h3>
       @endif
 
       @foreach ($images as $image)

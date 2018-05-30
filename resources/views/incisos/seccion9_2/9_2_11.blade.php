@@ -88,7 +88,7 @@
     @endcomponent
 @endsection
 
-<!-- ------------ SECCION DE FOTOGRAFIAS, EVIDENCIAS, ETC------------- -->
+<!--~~~~~~~~~~~Fotos~~~~~~~~~~~~~~~~-->
 
 @section('Fotografias')
 <style type='text/css'>
@@ -101,6 +101,13 @@
   img{
     width: auto;
     max-height: 100%
+  }
+  .line{
+    border-bottom: 1px solid #111;
+    display: block;
+    margin-top: 60px;
+    padding-top: 10px;
+    position: relative;
   }
 </style>
 
@@ -130,7 +137,7 @@
       ?>
 
       @if(sizeof($images) != 0)
-        <h2>Aula <?php echo $cubiculoNombre ?></h2>
+        <h2  class="line"> <?php echo $cubiculoNombre ?></h2>
       @endif
 
       @foreach ($images as $image)
@@ -145,6 +152,7 @@
       </figura>
 
   		@endforeach
+      <br clear='all'/>
     @endforeach
   @else
     <h2 align="center">No hay imagenes</h2>

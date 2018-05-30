@@ -90,51 +90,65 @@
       margin-bottom: 15px;
 
     }
-    .trailer_button{
-      z-index:999;
-      margin:1 20 -20 20;
-      width:120px;
-      border-radius:10px;
-      margin-bottom: 15px;
-
-    }
-    .buttonimg{
-      width:auto;
-      height:auto;
-
-    }
-
     img{
       width: auto;
       max-height: 100%
     }
+    .line{
+      border-bottom: 1px solid #111;
+      display: block;
+      margin-top: 60px;
+      padding-top: 10px;
+      position: relative;
+    }
   </style>
-    <h3 align="center">
-        Fotografias del inciso 9.1.11
-    </h3>
 
   <?php
     $dirs = array_filter(glob('storage/infraestructura/auditorios/*'), 'is_dir');
+    $hayImagen = 0;
+    foreach ($dirs as $path) {
+      $dir = $path.'/';
+      $imagenes= glob($dir . "*.{[jJ][pP][gG],[pP][nN][gG],[gG][iI][fF],[jJ][pP][eE][gG]}", GLOB_BRACE);
+      if (sizeof($imagenes) != 0) {
+        $hayImagen = 1;
+        break;
+      }
+    }
   ?>
-  @foreach($dirs as $path)
-    <?php
-      $dirname = $path.'/';
-      $images= glob($dirname . "*.{[jJ][pP][gG],[pP][nN][gG],[gG][iI][fF],[jJ][pP][eE][gG]}", GLOB_BRACE);
-    ?>
 
-    @foreach ($images as $image)
-    <figure>
-      <div class="buttonimg">
-        <div class="img_div">
-          <img src="<?php echo asset($image)?>" height="220"
-                alt="<?php echo $image?>"/>
-          <figcaption class="text-center"><?php echo pathinfo($image)['basename']?></figcaption>
+  @if($hayImagen == 1)
+    <h3 align="center">
+        Fotografias del inciso 9.1.11
+    </h3>
+    @foreach($dirs as $path)
+      <?php
+        $dirname = $path.'/';
+        $images= glob($dirname . "*.{[jJ][pP][gG],[pP][nN][gG],[gG][iI][fF],[jJ][pP][eE][gG]}", GLOB_BRACE);
+        $sanitarioID = substr($path, strlen('storage/infraestructura/auditorios/'));
+        $sanitarioReg = App\auditorio::where('id', $sanitarioID)->first();
+        $sanitarioNombre = $sanitarioReg->nombre;
+      ?>
+      @if(sizeof($images) != 0)
+        <h3  class="line"> <?php echo $sanitarioNombre ?> </h3>
+      @endif
+
+      @foreach ($images as $image)
+      <figure>
+        <div class="buttonimg">
+          <div class="img_div">
+            <img src="<?php echo asset($image)?>" height="220"
+                  alt="<?php echo $image?>"/>
+            <figcaption class="text-center"><?php echo pathinfo($image)['basename']?></figcaption>
+          </div>
         </div>
-      </div>
-    </figura>
+      </figura>
 
-		@endforeach
-  @endforeach
+  		@endforeach
+      <br clear='all'/>
+    @endforeach
+  @else
+    <h3 align="center">No hay imagenes </h3>
+  @endif
 @endsection
 
 @section('boton_guardar')

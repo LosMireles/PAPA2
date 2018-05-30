@@ -24,53 +24,52 @@ class CubiculoMiniController extends Controller
 	}
 
 
-    public function store(Request $request, $url_regreso = null)
-    {
-        $request->validate($this->rules());
+  public function store(Request $request, $url_regreso = null)
+  {
+      $request->validate($this->rules());
 
 
-        $cubiculo = new Cubiculo;
+      $cubiculo = new Cubiculo;
 
-        $cubiculo->nombre          = $request->nombre;
-		$cubiculo->profesor        = $request->profesor;
-		$cubiculo->cantidad_equipo = '0';
+      $cubiculo->nombre          = $request->nombre;
+			$cubiculo->profesor        = $request->profesor;
+			$cubiculo->cantidad_equipo = '0';
 
-        $cubiculo->save();
+      $cubiculo->save();
 
-        $cubAux = Cubiculo::where('nombre', $request->nombre)->first();
-        $id = $cubAux->id;
-        if ($request->hasFile('Fotografias')) {
-          foreach($request->Fotografias as $foto){
-            $foto->storeAs('infraestructura/cubiculosMini/' . $id, $foto->getClientOriginalName());
-          }
+      $cubAux = Cubiculo::where('nombre', $request->nombre)->first();
+      $id = $cubAux->id;
+      if ($request->hasFile('Fotografias')) {
+        foreach($request->Fotografias as $foto){
+          $foto->storeAs('infraestructura/cubiculosMini/' . $id, $foto->getClientOriginalName());
         }
+      }
 
-        if($url_regreso != null){
-            return redirect(url($url_regreso))
-                ->with('status', 'Elemento agregado exitosamente');
-        }else{
-            return redirect(url('/'))
-                ->with('status', 'Elemento agregado exitosamente');
-        }
-    }
+      if($url_regreso != null){
+          return redirect(url($url_regreso))
+              ->with('status', 'Elemento agregado exitosamente');
+      }else{
+          return redirect(url('/'))
+              ->with('status', 'Elemento agregado exitosamente');
+      }
+  }
 
 	public function edit($nombre, $url_regreso = null)
     {
-        dd($url_regreso);
         $cubiculo  = Cubiculo::where('nombre', $nombre)->first();
 
-		return view('infraestructura.cubiculosMini.edit')
-		    ->with([
-		        'cubiculo'      => $cubiculo,
-		        'url_previous'  => url()->previous(),
-                'url_regreso'    => $url_regreso
-		    ]);
+				return view('infraestructura.cubiculosMini.edit')
+		    	->with([
+		        	'cubiculo'      => $cubiculo,
+		        	'url_previous'  => url()->previous(),
+                	'url_regreso'    => $url_regreso
+		    	]);
     }
 
 	public function update(Request $request, $nombre, $url_regreso = null) {
         $request->validate($this->rules($nombre));
 
-        $cubAux = Cubiculo::where('nombre', $request->nombre)->first();
+        $cubAux = Cubiculo::where('nombre', $nombre)->first();
         $id = $cubAux->id;
         if ($request->hasFile('Fotografias')) {
           foreach($request->Fotografias as $foto){
@@ -155,4 +154,3 @@ class CubiculoMiniController extends Controller
     return redirect('/cubiculosMini/'. $nombre .'/viewImg')->with(['nombre' => $nombre]);
   }
 }
-

@@ -9,7 +9,8 @@
 
 @section('formopen')
     {{Form::open(['action' => ['CubiculoMiniController@update', $cubiculo->nombre, $url_regreso],
-                'class' => 'form-horizontal'])}}
+                'class' => 'form-horizontal',
+                'files' => true])}}
 @endsection
 
 @section('contenido_formulario')
@@ -42,4 +43,3 @@
  		</div>
  	</div>
 @endsection
-

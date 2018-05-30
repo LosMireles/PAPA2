@@ -37,7 +37,7 @@ class AuditorioController extends Controller
 
       	$auditorio->save();
 
-        $audAux -> Auditorio::where('nombre', $request->nombre)->first();
+        $audAux = Auditorio::where('nombre', $request->nombre)->first();
         $id = $audAux->id;
         if ($request->hasFile('Fotografias')) {
           foreach($request->Fotografias as $foto){

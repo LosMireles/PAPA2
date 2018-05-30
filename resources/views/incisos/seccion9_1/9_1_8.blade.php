@@ -127,19 +127,6 @@
       margin-bottom: 15px;
 
     }
-    .trailer_button{
-      z-index:999;
-      margin:1 20 -20 20;
-      width:120px;
-      border-radius:10px;
-      margin-bottom: 15px;
-
-    }
-    .buttonimg{
-      width:auto;
-      height:auto;
-
-    }
 
     img{
       width: auto;

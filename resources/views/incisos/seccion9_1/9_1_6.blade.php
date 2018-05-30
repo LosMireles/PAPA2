@@ -181,6 +181,13 @@
       width: auto;
       max-height: 100%
     }
+    .line{
+      border-bottom: 1px solid #111;
+      display: block;
+      margin-top: 60px;
+      padding-top: 10px;
+      position: relative;
+    }
   </style>
 
   <?php
@@ -210,7 +217,7 @@
       ?>
 
       @if(sizeof($images) != 0)
-        <h2>Aula <?php echo $aulaNombre ?></h2>
+        <h2 class="line"><?php echo $aulaNombre ?></h2>
       @endif
 
 
