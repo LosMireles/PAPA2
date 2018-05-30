@@ -11,6 +11,8 @@
 	<h1 class="text-center">Edición del sanitario {{$sanitario->nombre}}</h1>
 @endsection
 
+@section('objeto_informacion', 'un sanitario')
+
 @section('accion')
     action = "{{action('SanitarioController@update', $sanitario->nombre, $url_regreso)}}"
 @endsection

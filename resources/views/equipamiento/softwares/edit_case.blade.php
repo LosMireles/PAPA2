@@ -1,7 +1,7 @@
 @extends('layouts.formulario_edit_general')
 
 @section('title' , "Agregar software")
-@section("objeto_informacion", "un software")
+@section("objeto_informacion", "editar software")
 
 @section('ruta_regresar')
     {{action('SoftwareController@index')}}
