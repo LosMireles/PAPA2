@@ -20,7 +20,7 @@
 		<label for="grado" class="col-sm-4 control-label" data-toggle="tooltip" title="Grado académico alcanzado">Grado académico: </label>
 
 		<div class="col-sm-8">
-			<input type="text" class="form-control" name="grado" value="" placeholder="Licenciatura" required>
+			<input type="text" class="form-control" name="grado" value="" placeholder="Licenciatura">
 		</div>
 	</div>
 

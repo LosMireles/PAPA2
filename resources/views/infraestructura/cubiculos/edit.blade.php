@@ -20,7 +20,7 @@
         @slot("label_input", "Identificador del cubiculo")
         @slot("placeholder_input", "Cubiculo 1 3K-4")
         @slot("valor_default", $cubiculo->nombre)
-        @slot("extra", "required")
+        @slot("extra", "maxlength=80 required")
     @endcomponent
 
     @component("layouts.text_input")
@@ -29,6 +29,7 @@
         @slot("label_input", "Profesor")
         @slot("placeholder_input", "Julio Waissman Villanova")
         @slot("valor_default", $cubiculo->profesor)
+        @slot("extra", "maxlength=80")
     @endcomponent
 
     @component("layouts.text_input")
@@ -38,7 +39,7 @@
         @slot("label_input", "Cantidad de equipo")
         @slot("placeholder_input", "1")
         @slot("valor_default", $cubiculo->cantidad_equipo)
-        @slot("extra", "min=0")
+        @slot("extra", "min=0 max=1000")
     @endcomponent
 
    <div class="form-group">

@@ -19,7 +19,7 @@
         @slot("tooltip_input", "Nombre del Auditorio")
         @slot("label_input", "Nombre")
         @slot("placeholder_input", "Nombre")
-        @slot("extra", "required")
+        @slot("extra", "maxlength=80 required")
 		@slot("valor_default", $auditorio->nombre)
     @endcomponent
 
@@ -29,7 +29,7 @@
         @slot("tooltip_input", "Capacidad máxima del auditorio")
         @slot("label_input", "Capacidad")
         @slot("placeholder_input", "100")
-        @slot("extra", "min=0")
+        @slot("extra", "min=0 max=1000000")
 		@slot("valor_default", $auditorio->Capacidad)
     @endcomponent
 

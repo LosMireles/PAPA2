@@ -26,7 +26,7 @@
         @slot("label_input", "Nombre")
         @slot("placeholder_input", "Nombre")
         @slot("valor_default", $sanitario->nombre)
-        @section("extra", "required")
+        @slot("extra", "maxlength=80 required")
     @endcomponent
 
 

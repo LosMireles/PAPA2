@@ -17,7 +17,7 @@
         @slot("tooltip_input", "Nombre escrito en las puertas de los cubiculos")
         @slot("label_input", "Identificador del cubiculo")
         @slot("placeholder_input", "Cubiculo 1 3K-4")
-        @slot("extra", "required")
+        @slot("extra", "maxlength=80 required")
     @endcomponent
 
 	@component("layouts.text_input")
@@ -25,6 +25,7 @@
         @slot("tooltip_input", "Profesor asignado al cubiculo")
         @slot("label_input", "Profesor")
         @slot("placeholder_input", "Julio Waissman Villanova")
+        @slot("extra", "maxlength=80")
     @endcomponent
 
 	@component("layouts.text_input")
@@ -33,7 +34,7 @@
         @slot("tooltip_input", "Cantidad de computadoras que hay en el cubículo")
         @slot("label_input", "Cantidad de equipo")
         @slot("placeholder_input", "1")
-        @slot("extra", "min=0")
+        @slot("extra", "min=0 max=1000")
     @endcomponent
 
   <div class="form-group">
