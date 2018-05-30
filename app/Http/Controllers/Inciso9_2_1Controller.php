@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Pregunta;
 use App\Software;
+use App\Curso;
 
 use DB;
 
@@ -19,14 +20,15 @@ class Inciso9_2_1Controller extends Controller
     public function index()
     {
         $preguntas = Pregunta::where('inciso', '9.2.1')->get();
-        $softwares = Software::all();
-        $cursos = DB::table('curso_software')->get();
+        $cursos = Curso::all();
+        $cursos_softwares = DB::table('curso_software')->get();
 
         return view('incisos/seccion9_2/9_2_1')
-            ->with(['preguntas'  => $preguntas,
-                     'id'        => $preguntas[0]->id,
-                     'softwares' => $softwares,
-                     'cursos'    => $cursos]);
+            ->with(['preguntas'         => $preguntas,
+                     'id'               => $preguntas[0]->id,
+                     'cursos'           => $cursos,
+                     'cursos_softwares' => $cursos_softwares
+                 ]);
     }
 
     /**
@@ -40,8 +42,6 @@ class Inciso9_2_1Controller extends Controller
     {
         // Volver a obtener los elementos del inciso 9.2.1
         $preguntas = Pregunta::where('inciso', '9.2.1')->get();
-
-        $arr[] = array_slice($request->all(), 2);
 
         $respuestas = array_slice($request->all(), 2);
         $estado = $request->terminado == "si" ? 1 : 0;
@@ -57,5 +57,5 @@ class Inciso9_2_1Controller extends Controller
             ->with('status', 'Respuestas guardadas');;
     }
 
-
 }
+
