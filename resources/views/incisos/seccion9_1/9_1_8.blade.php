@@ -39,6 +39,7 @@
 <!-- ------------ LAS TABLAS QUE CORRESPONDAN------------- -->
 
 @section('tablas_inciso_general')
+  <h3 class="text-center">Listado de equipos instalados en las aulas</h3>
 	<div class="row text-right" style="margin: 2px;">
     	<a href="{{ action('AulaController@create', $variable) }}" class="btn btn-success">
     	    Agregar nueva aula

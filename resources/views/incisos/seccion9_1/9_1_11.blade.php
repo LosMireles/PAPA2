@@ -36,8 +36,9 @@
 <!-- ------------ LAS TABLAS QUE CORRESPONDAN------------- -->
 
 @section('evidencias_tabla')
+  <h3 class="text-center">Listado de auditorios</h3>
   <div class="row text-right" style="margin: 2px;">
-    <a href="{{ action('AuditorioController@create') }}" class="btn btn-success">Agregar</a>
+    <a href="{{ action('AuditorioController@create') }}" class="btn btn-success">Agregar auditorio</a>
   </div>
   @component('layouts.componentes.tabla_incisos_agregar')
 	@section('cabeza_tabla')

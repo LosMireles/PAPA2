@@ -58,6 +58,8 @@
     $variable = "inciso_9_1_6"
 @endphp
 @section('tablas_inciso_general')
+	<h3 class="text-center">Listado de aulas y sus características</h3>
+
 	<div class="row text-right" style="margin: 2px;">
     	<a href="{{ action($controlador_objeto_informacion.'@create', $variable) }}" class="btn btn-success">
     	    Agregar nueva aula
@@ -81,17 +83,16 @@
                     Capacidad: <br>
                     Pizarron: <br>
                     Iluminacion: <br>
-                    Aislamiento_ruido: <br>
+                    Aislamiento ruido: <br>
                     Ventilacion: <br>
                     Temperatura: <br>
                     Espacio: <br>
                     Mobilario: <br>
                     Conexiones: <br>
-                    Sillas_paleta: <br>
-                    Mesas_trabajo: <br>
+                    Sillas paleta: <br>
+                    Mesas trabajo: <br>
                     Isotopica: <br>
-                    Estrado: <br>
-                    Asesoria:
+                    Estrado:
                 </td>
 
                 <td>
@@ -133,14 +134,8 @@
                     @else
                         No
                     @endif
-                        hay <br>
+                        hay
 
-                    @if($aula->asesoria)
-                        Si
-                    @else
-                        No
-                    @endif
-                        hay <br>
                 </td>
 
                 @component('layouts.boton_editar')

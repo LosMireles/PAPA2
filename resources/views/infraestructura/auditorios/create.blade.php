@@ -1,7 +1,7 @@
 @extends('layouts.formulario_create_general')
 
 @section('title' , "Formulario 9.1.11")
-@section("objeto_informacion", "un auditorio")
+@section("objeto_informacion", "agregar un auditorio")
 
 @section('ruta_regresar')
     {{action('AuditorioController@index')}}
@@ -23,7 +23,7 @@
 
     @component("layouts.text_input")
         @slot("nombre_input", "Capacidad")
-        @slot("tooltip_input", "Maxima")
+        @slot("tooltip_input", "Capacidad máxima del auditorio")
         @slot("label_input", "Capacidad")
         @slot("placeholder_input", "100")
         @slot("extra", "required")

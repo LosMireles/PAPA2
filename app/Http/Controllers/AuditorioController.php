@@ -30,18 +30,20 @@ class AuditorioController extends Controller
     //----------------------------------------------------------------
     public function store(Request $request){
       #$request->validate($this->rules());
-      if ($request->hasFile('Fotografias')) {
-        foreach($request->Fotografias as $foto){
-          $foto->storeAs('infraestructura/auditorios/' . $request->nombre, $foto->getClientOriginalName());
-        }
-      }
-
 
         $auditorio = new Auditorio;
         $auditorio->nombre               = $request->nombre;
         $auditorio->Capacidad          = $request->Capacidad;
 
       	$auditorio->save();
+
+        $audAux -> Auditorio::where('nombre', $request->nombre)->first();
+        $id = $audAux->id;
+        if ($request->hasFile('Fotografias')) {
+          foreach($request->Fotografias as $foto){
+            $foto->storeAs('infraestructura/auditorios/' . $id, $foto->getClientOriginalName());
+          }
+        }
 
 	    echo "Elemento insertado exitosamente!";
         return redirect($request->url_previous)
@@ -61,10 +63,12 @@ class AuditorioController extends Controller
 
     //----------------------------------------------------------------
     public function update(Request $request, $nombre) {
+      $audAux = Auditorio::where('nombre', $nombre)->first();
+      $id = $audAux->id;
 
       if ($request->hasFile('Fotografias')) {
         foreach($request->Fotografias as $foto){
-          $foto->storeAs('infraestructura/auditorios/' . $nombre, $foto->getClientOriginalName());
+          $foto->storeAs('infraestructura/auditorios/' . $id, $foto->getClientOriginalName());
         }
       }
 
@@ -86,8 +90,8 @@ class AuditorioController extends Controller
 
     //----------------------------------------------------------------
     public function destroy($nombre){
-      Storage::deleteDirectory('infraestructura/auditorios/'. $nombre . '/');
-        $auditorio = auditorio::where('nombre', $nombre)->first();
+      $auditorio = Auditorio::where('nombre', $nombre)->first();
+      Storage::deleteDirectory('infraestructura/auditorios/'. $auditorio->id . '/');
         if(!$auditorio){
             $mensaje = "No existe auditorio con nombre: ".$nombre;
             return view('general/error')
@@ -115,9 +119,11 @@ class AuditorioController extends Controller
     }
 
     public function guardarImg(Request $request, $nombre){
+      $auditorio = Auditorio::where('nombre', $nombre)->first();
+      $id = $auditorio->id;
       if ($request->hasFile('Fotografias')) {
         foreach($request->Fotografias as $foto){
-          $foto->storeAs('infraestructura/auditorios/' . $nombre.'/', $foto->getClientOriginalName());
+          $foto->storeAs('infraestructura/auditorios/' . $id.'/', $foto->getClientOriginalName());
         }
       }
       return redirect('/auditorios/'. $nombre .'/viewImg')->with(['nombre' => $nombre]);
@@ -125,7 +131,9 @@ class AuditorioController extends Controller
 
     public function borrarImg($nombre, $imagen)
     {
-      $dirImagen = 'infraestructura/auditorios/' . $nombre . '/' . $imagen;
+      $auditorio = Auditorio::where('nombre', $nombre)->first();
+      $id = $auditorio->id;
+      $dirImagen = 'infraestructura/auditorios/' . $id . '/' . $imagen;
       Storage::delete($dirImagen);
       return redirect('/auditorios/'. $nombre .'/viewImg')->with(['nombre' => $nombre]);
     }

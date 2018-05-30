@@ -1,3 +1,4 @@
+<?php namespace App; ?>
 @extends('layouts.verImagenes')
 
 @section('title')
@@ -26,7 +27,9 @@
 @section('Fotografias')
   <h1 class="text-center">Fotografías de aula <?php echo $nombre; ?></h1>
   <?php
-    $dirname = 'storage/infraestructura/aulas/' . $nombre . '/';
+		$aula = Aula::where('nombre', $nombre)->first();
+		$id = $aula->id;
+    $dirname = 'storage/infraestructura/aulas/' . $id . '/';
     $images= glob($dirname . "*.{[jJ][pP][gG],[pP][nN][gG],[gG][iI][fF],[jJ][pP][eE][gG]}", GLOB_BRACE);
 	?>
 

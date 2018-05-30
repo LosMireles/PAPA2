@@ -20,7 +20,7 @@
 							@endslot
 							@slot('titulo', 'Haga clic para ir al inciso')
 							@slot('mensaje', '9.1.4 (Perfil y experiencia de los responsables de los servicios de cómputo)')
-						@endcomponent					
+						@endcomponent
 					</li>
 					<li>@component("layouts.componentes.tooltip_general_link")
 							@slot('url')
@@ -86,7 +86,7 @@
 			<style>
 				img{
 					border-radius: 50%;
-					width: 2%
+					width: 3%
 				}
 			</style>
 

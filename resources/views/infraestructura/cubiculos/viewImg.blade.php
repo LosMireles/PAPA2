@@ -1,3 +1,5 @@
+<?php namespace App; ?>
+
 @extends('layouts.verImagenes')
 
 @section('title')
@@ -27,7 +29,9 @@
 	<h1 class="text-center">Evidencias de cubiculo <?php echo $nombre; ?></h1>
 
   <?php
-    $dirname = 'storage/infraestructura/cubiculos/' . $nombre . '/';
+		$cubiculo = Cubiculo::where('nombre', $nombre)->first();
+		$id = $cubiculo->id;
+    $dirname = 'storage/infraestructura/cubiculos/' . $id . '/';
     $images= glob($dirname . "*.{[jJ][pP][gG],[pP][nN][gG],[gG][iI][fF],[jJ][pP][eE][gG]}", GLOB_BRACE);
 	?>
 

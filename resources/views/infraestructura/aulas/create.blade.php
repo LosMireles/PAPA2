@@ -1,7 +1,7 @@
 @extends('layouts.formulario_create_general')
 
 @section('title' , "Agregar un aula")
-@section("objeto_informacion", "un aula")
+@section("objeto_informacion", "crear un aula")
 
 @section('accion')
     {{action('AulaController@store', $url_regreso)}}

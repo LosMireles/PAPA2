@@ -1,7 +1,9 @@
+<?php namespace App; ?>
+
 @extends('layouts.verImagenes')
 
 @section('title')
-	 editar auditorio <?php $nombre; ?>
+	 Fotografias auditorio <?php $nombre; ?>
 @endsection
 
 @section('descripcion')
@@ -15,7 +17,7 @@
 					<input type = "hidden" name = "_token" value = "{{csrf_token()}}">
 
 					<div class="col-sm-8">
-            <input type='file' class="form-control" name='Fotografias[]' id="Fotografias" multiple accept=".gif,.bmp,.jpg,.png, .jpeg"/>
+            <input type='file' class="form-control" name='Fotografias[]' id="Fotografias" multiple accept=".gif,.bmp,.jpg,.png,.jpeg"/>
 					</div>
 					<button type='submit' class="btn btn-primary">Agregar fotografía</button>
 				</form>
@@ -28,7 +30,9 @@
 	<h1 class="text-center">Evidencias de auditorio <?php echo $nombre; ?></h1>
 
   <?php
-    $dirname = 'storage/infraestructura/auditorios/' . $nombre . '/';
+		$auditorio = Auditorio::where('nombre', $nombre)->first();
+		$id = $auditorio->id;
+    $dirname = 'storage/infraestructura/auditorios/' . $id . '/';
     $images= glob($dirname . "*.{[jJ][pP][gG],[pP][nN][gG],[gG][iI][fF],[jJ][pP][eE][gG]}", GLOB_BRACE);
 	?>
 
@@ -38,19 +42,6 @@
 				float: left;
 				margin-right: 10px;
 				margin-bottom: 15px;}
-			.trailer_button{
-				z-index:999;
-				margin:1 20 -20 20;
-				width:181px;
-				border-radius:10px;
-				margin-bottom: 15px;
-
-			}
-			.buttonimg{
-				width:auto;
-				height:auto;
-
-			}
 		</style>
 	</head>
 

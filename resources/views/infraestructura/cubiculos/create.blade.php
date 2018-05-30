@@ -1,7 +1,7 @@
 @extends('layouts.formulario_create_general')
 
 @section('title' , "Agregar cubiculo")
-@section("objeto_informacion", "un cubiculo")
+@section("objeto_informacion", "agregar un cubículo")
 
 @section('ruta_regresar')
     {{action('CubiculoController@index')}}

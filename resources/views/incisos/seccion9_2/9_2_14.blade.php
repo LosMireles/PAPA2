@@ -83,8 +83,9 @@
 @endsection
 
 @section('evidencias_tabla')
+  <h3 class="text-center">Personal de soporte técnico</h3>
   <div class="row text-right" style="margin: 2px;">
-    <a href="{{ action('TecnicoAcademicoController@create') }}" class="btn btn-success">Agregar</a>
+    <a href="{{ action('TecnicoAcademicoController@create') }}" class="btn btn-success">Agregar un técnico académico</a>
   </div>
   @component('layouts.componentes.tabla_incisos_agregar')
       @slot('cabeza_tabla')
