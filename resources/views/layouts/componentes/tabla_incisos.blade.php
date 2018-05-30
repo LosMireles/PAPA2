@@ -6,3 +6,5 @@
 		{{$cuerpo_tabla}}
 	</tbody>
 </table>
+
+{{$fotos or ""}}

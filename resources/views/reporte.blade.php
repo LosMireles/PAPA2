@@ -124,6 +124,76 @@
             </tr>
             @endforeach
         @endslot
+
+      @slot('fotos')
+        <style type='text/css'>
+        .img_div {
+          float: left;
+          margin-right: 10px;
+          margin-bottom: 15px;
+
+        }
+        img{
+          width: auto;
+          max-height: 100%
+        }
+        .line{
+          border-bottom: 1px solid #111;
+          display: block;
+          margin-top: 60px;
+          padding-top: 10px;
+          position: relative;
+        }
+      </style>
+
+      <?php
+        $dirs = array_filter(glob('storage/infraestructura/aulas/*'), 'is_dir');
+        $hayImagen = 0;
+        foreach ($dirs as $path) {
+          $dir = $path.'/';
+          $imagenes= glob($dir . "*.{[jJ][pP][gG],[pP][nN][gG],[gG][iI][fF],[jJ][pP][eE][gG]}", GLOB_BRACE);
+          if (sizeof($imagenes) != 0) {
+            $hayImagen = 1;
+            break;
+          }
+        }
+      ?>
+      @if($hayImagen == 1)
+        <h3 align="center">
+            Fotografías del inciso 9.1.8
+        </h3>
+        @foreach($dirs as $path)
+          <?php
+            $dirname = $path.'/';
+            $images= glob($dirname . "*.{[jJ][pP][gG],[pP][nN][gG],[gG][iI][fF],[jJ][pP][eE][gG]}", GLOB_BRACE);
+            $aulaID = substr($path, strlen('storage/infraestructura/aulas/'));
+            $aulaReg = App\Aula::where('id', $aulaID)->first();
+            $aulaNombre = $aulaReg->nombre;
+          ?>
+
+          @if(sizeof($images) != 0)
+            <h2 class="line"><?php echo $aulaNombre ?></h2>
+          @endif
+
+          @foreach ($images as $image)
+          <figure>
+            <div class="buttonimg">
+              <div class="img_div">
+                <img src="<?php echo asset($image)?>" height="220"
+                      alt="<?php echo $image?>"/>
+                <figcaption class="text-center"><?php echo pathinfo($image)['basename']?></figcaption>
+              </div>
+            </div>
+          </figura>
+
+          @endforeach
+          <br clear='all'/>
+        @endforeach
+      @else
+        <h2 align="center">No hay imagenes</h2>
+      @endif
+      @endslot
+
     @endcomponent
 
     <!-- PONER LO DE LAS FOTOS -->
