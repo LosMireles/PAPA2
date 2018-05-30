@@ -73,6 +73,7 @@ class RoutesController extends Controller
         $preguntas_9_2_5 = Pregunta::where('inciso', '9.2.5')->get();
         $preguntas_9_2_7 = Pregunta::where('inciso', '9.2.7')->get();
         $preguntas_9_2_2 = Pregunta::where('inciso', '9.2.2')-> get();
+        $preguntas_9_1_6 = Pregunta::where('inciso', '9.1.6')->get();
 
         $cursos_softwares = DB::table('curso_software')->get();
         $cursosLCC = Curso::where('departamento', 'LCC')->get();
@@ -101,6 +102,7 @@ class RoutesController extends Controller
                                         'preguntas_9_2_5'   => $preguntas_9_2_5,
                                         'preguntas_9_2_7'   => $preguntas_9_2_7,
                                         'preguntas_9_2_2'   => $preguntas_9_2_2,
+                                        'preguntas_9_1_6'   => $preguntas_9_1_6,
 
                                         'cursos'            => $cursos,
                                         'tecnicos'          => $tecnicos,

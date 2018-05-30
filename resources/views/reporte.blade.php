@@ -22,6 +22,101 @@
 	@endforeach
 	<!-- ************************** FINAL 9.1.4 ************************** -->
 	
+  <!-- ************************** INICIO 9.1.6 ************************* -->
+  <h3 class="text-justify">Inciso 9.1.6: Las aulas deben ser funcionales, disponer
+  de espacio suficiente para cada estudiante y tener las condiciones adecuadas de
+  higiene, seguridad, iluminación, ventilación, temperatura, aislamiento del ruido
+  y mobiliario</h3>
+
+  @foreach($preguntas_9_1_6 as $pregunta_9_1_6)
+    <div class="form-group">
+      <label for="{{$pregunta_9_1_6->id}}" class="control-label">
+          {{$pregunta_9_1_6->titulo}}
+      </label>
+
+      <div>
+        <textarea class="form-control" id="{{$pregunta_9_1_6->id}}" name="{{$pregunta_9_1_6->id}}" disabled="">{{$pregunta_9_1_6->respuesta}}</textarea>
+      </div>
+    </div>
+  @endforeach
+
+  @component('layouts.componentes.tabla_incisos_agregar')
+    @slot('cabeza_tabla')
+        <th>Titulo</th>
+        <th>Respuesta</th>
+    @endslot
+
+    @slot('cuerpo_tabla')
+      @foreach ($aulas as $aula)
+      <tr>
+
+                <td>
+                    Nombre: <br>
+                    Superficie: <br>
+                    Capacidad: <br>
+                    Pizarron: <br>
+                    Iluminacion: <br>
+                    Aislamiento ruido: <br>
+                    Ventilacion: <br>
+                    Temperatura: <br>
+                    Espacio: <br>
+                    Mobilario: <br>
+                    Conexiones: <br>
+                    Sillas paleta: <br>
+                    Mesas trabajo: <br>
+                    Isotopica: <br>
+                    Estrado:
+                </td>
+
+                <td>
+                    {{ $aula->nombre}} <br>
+                    {{ $aula->superficie }} <br>
+                    {{ $aula->capacidad }} <br>
+                    {{ $aula->pizarron}} <br>
+                    {{ $aula->iluminacion}} <br>
+                    {{ $aula->aislamiento_ruido}} <br>
+                    {{ $aula->ventilacion}} <br>
+                    {{ $aula->temperatura}} <br>
+                    {{ $aula->espacio}} <br>
+                    {{ $aula->mobilario}} <br>
+                    {{ $aula->conexiones}} <br>
+
+                    @if($aula->sillas_paleta)
+                        Si
+                    @else
+                        No
+                    @endif
+                        hay <br>
+
+                    @if($aula->mesas_trabajo)
+                        Si
+                    @else
+                        No
+                    @endif
+                        hay <br>
+
+                    @if($aula->isotopica)
+                        Si
+                    @else
+                        No
+                    @endif
+                        hay <br>
+
+                    @if($aula->estrado)
+                        Si
+                    @else
+                        No
+                    @endif
+                        hay
+
+                </td>
+      </tr>
+      @endforeach
+    @endslot
+  @endcomponent
+  <!-- ************************** FINAL 9.1.6 ************************** -->
+
+
 	<!-- ************************** INICIO 9.1.7 ************************* -->
 	<h3 class="text-justify">Inciso 9.1.7: El número de aulas habrá de ser suficiente
    	para antender la impartición de cursos que se programen en cada periodo escolar</h3>
@@ -68,6 +163,77 @@
 			</tr>
 		  @endforeach
 		@endslot
+
+    @slot('fotos')
+      <style type='text/css'>
+        .img_div {
+          float: left;
+          margin-right: 10px;
+          margin-bottom: 15px;
+        }
+
+        img{
+          width: auto;
+          max-height: 100%
+        }
+        .line{
+          border-bottom: 1px solid #111;
+          display: block;
+          margin-top: 60px;
+          padding-top: 10px;
+          position: relative;
+        }
+      </style>
+
+      <?php
+        $dirs = array_filter(glob('storage/infraestructura/aulas/*'), 'is_dir');
+        $hayImagen = 0;
+        foreach ($dirs as $path) {
+          $dir = $path.'/';
+          $imagenes= glob($dir . "*.{[jJ][pP][gG],[pP][nN][gG],[gG][iI][fF],[jJ][pP][eE][gG]}", GLOB_BRACE);
+          if (sizeof($imagenes) != 0) {
+            $hayImagen = 1;
+            break;
+          }
+        }
+      ?>
+
+      @if($hayImagen == 1)
+        <h3 align="center">
+            Fotografías del inciso 9.1.6
+        </h3>
+        @foreach($dirs as $path)
+          <?php
+            $dirname = $path.'/';
+            $images= glob($dirname . "*.{[jJ][pP][gG],[pP][nN][gG],[gG][iI][fF],[jJ][pP][eE][gG]}", GLOB_BRACE);
+            $aulaID = substr($path, strlen('storage/infraestructura/aulas/'));
+            $aulaReg = App\Aula::where('id', $aulaID)->first();
+            $aulaNombre = $aulaReg->nombre;
+          ?>
+
+          @if(sizeof($images) != 0)
+            <h2 class="line"><?php echo $aulaNombre ?></h2>
+          @endif
+
+
+          @foreach ($images as $image)
+          <figure>
+            <div class="buttonimg">
+              <div class="img_div">
+                <img src="<?php echo asset($image)?>" height="220"
+                      alt="<?php echo $image?>"/>
+                <figcaption class="text-center"><?php echo pathinfo($image)['basename']?></figcaption>
+              </div>
+            </div>
+          </figura>
+
+          @endforeach
+          <br clear='all'/>
+        @endforeach
+      @else
+        <h2 align="center">No hay imagenes</h2>
+      @endif
+    @endslot
 	  @endcomponent
 	<!-- ************************** FINAL 9.1.7 ************************** -->
 
