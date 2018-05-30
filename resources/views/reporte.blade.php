@@ -113,56 +113,6 @@
       </tr>
       @endforeach
     @endslot
-  @endcomponent
-  <!-- ************************** FINAL 9.1.6 ************************** -->
-
-
-	<!-- ************************** INICIO 9.1.7 ************************* -->
-	<h3 class="text-justify">Inciso 9.1.7: El número de aulas habrá de ser suficiente
-   	para antender la impartición de cursos que se programen en cada periodo escolar</h3>
-
-	@foreach($preguntas_9_1_7 as $pregunta_9_1_7)
-		<div class="form-group">
-			<label for="{{$pregunta_9_1_7->id}}" class="control-label">
-			    {{$pregunta_9_1_7->titulo}}
-			</label>
-
-			<div>
-                <textarea class="form-control" id="{{$pregunta_9_1_7->id}}" name="{{$pregunta_9_1_7->id}}" disabled>{{$pregunta_9_1_7->respuesta}}</textarea>
-			</div>
-		</div>
-	@endforeach
-
-	@component('layouts.componentes.tabla_incisos')
-		<!-- Tabla de todos los grupos -->
-		@slot('cabeza_tabla')
-			<th>Nombre</th>
-			<th>Período</th>
-			<th>Grupo</th>
-			<th>Numero de Estudiantes</th>
-			<th>Pertenencia</th>
-			<th>Espacios</th>
-		@endslot
-
-		@slot('cuerpo_tabla')
-		  @foreach ($cursos as $curso)
-			<tr>
-			  	<td>{{ $curso->nombre }}</td>
-			  	<td>{{ $curso->periodo }}</td>
-			  	<td>{{ $curso->no_grupo }}</td>
-			  	<td>{{ $curso->no_estudiantes }}</td>
-			  	<td>{{ $curso->departamento }}</td>
-
-                <td>
-                    @if(!empty($curso->aulas))
-                        @foreach($curso->aulas as $aula)
-                            {{$aula->nombre}} <!--Solo para uno, cambiar foreach en caso de mas-->
-                        @endforeach
-                    @endif
-                </td>
-			</tr>
-		  @endforeach
-		@endslot
 
     @slot('fotos')
       <style type='text/css'>
@@ -234,6 +184,56 @@
         <h2 align="center">No hay imagenes</h2>
       @endif
     @endslot
+  @endcomponent
+  <!-- ************************** FINAL 9.1.6 ************************** -->
+
+
+	<!-- ************************** INICIO 9.1.7 ************************* -->
+	<h3 class="text-justify">Inciso 9.1.7: El número de aulas habrá de ser suficiente
+   	para antender la impartición de cursos que se programen en cada periodo escolar</h3>
+
+	@foreach($preguntas_9_1_7 as $pregunta_9_1_7)
+		<div class="form-group">
+			<label for="{{$pregunta_9_1_7->id}}" class="control-label">
+			    {{$pregunta_9_1_7->titulo}}
+			</label>
+
+			<div>
+                <textarea class="form-control" id="{{$pregunta_9_1_7->id}}" name="{{$pregunta_9_1_7->id}}" disabled>{{$pregunta_9_1_7->respuesta}}</textarea>
+			</div>
+		</div>
+	@endforeach
+
+	@component('layouts.componentes.tabla_incisos')
+		<!-- Tabla de todos los grupos -->
+		@slot('cabeza_tabla')
+			<th>Nombre</th>
+			<th>Período</th>
+			<th>Grupo</th>
+			<th>Numero de Estudiantes</th>
+			<th>Pertenencia</th>
+			<th>Espacios</th>
+		@endslot
+
+		@slot('cuerpo_tabla')
+		  @foreach ($cursos as $curso)
+			<tr>
+			  	<td>{{ $curso->nombre }}</td>
+			  	<td>{{ $curso->periodo }}</td>
+			  	<td>{{ $curso->no_grupo }}</td>
+			  	<td>{{ $curso->no_estudiantes }}</td>
+			  	<td>{{ $curso->departamento }}</td>
+
+                <td>
+                    @if(!empty($curso->aulas))
+                        @foreach($curso->aulas as $aula)
+                            {{$aula->nombre}} <!--Solo para uno, cambiar foreach en caso de mas-->
+                        @endforeach
+                    @endif
+                </td>
+			</tr>
+		  @endforeach
+		@endslot
 	  @endcomponent
 	<!-- ************************** FINAL 9.1.7 ************************** -->
 
