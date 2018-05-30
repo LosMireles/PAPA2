@@ -104,7 +104,7 @@
 
     @if(sizeof($images) != 0)
       <h3 align="center">
-          Fotografias del inciso 9.1.10
+          Fotografías del inciso 9.1.10
       </h3>
       @foreach ($images as $image)
         <figure>
