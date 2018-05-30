@@ -54,9 +54,14 @@
 
 <!-- ------------ LAS TABLAS QUE CORRESPONDAN------------- -->
 
+@php
+    $variable = "inciso_9_1_6"
+@endphp
 @section('tablas_inciso_general')
 	<div class="row text-right" style="margin: 2px;">
-    	<a href="{{ action('AulaController@create') }}" class="btn btn-success">Agregar</a>
+    	<a href="{{ action($controlador_objeto_informacion.'@create', $variable) }}" class="btn btn-success">
+    	    Agregar nueva aula
+    	</a>
   	</div>
 
 	@component('layouts.componentes.tabla_incisos_agregar')
@@ -138,19 +143,25 @@
                         hay <br>
                 </td>
 
-                <td>
-                    <a href="{{ action('AulaController@edit', $aula->nombre) }}" class="btn btn-warning">Editar</a>
-                </td>
+                @component('layouts.boton_editar')
+                    @slot('controlador_editar')
+                        {{Form::open(['action' => [$controlador_objeto_informacion.'@edit',
+                                                   $aula->nombre,
+                                                   $variable]])}}
+                    @endslot
+                @endcomponent
 
                 @component('layouts.boton_borrar')
                     @slot('controlador_borrar')
-                        {{Form::open(['action' => ['AulaController@destroy', $aula->nombre]])}}
+                        {{Form::open(['action' => [$controlador_objeto_informacion.'@destroy',
+                                                   $aula->nombre,
+                                                   $variable]])}}
                     @endslot
                 @endcomponent
 
                 <!--Boton ver fotos-->
                 <td class="text-center">
-                    <a href="{{action('AulaController@viewImg', [ 'nombre' => $aula->nombre])}}" class="btn btn-warning">
+                    <a href="{{action($controlador_objeto_informacion.'@viewImg', [ 'nombre' => $aula->nombre])}}" class="btn btn-warning">
                         Fotografías
                     </a>
                 </td>
@@ -218,3 +229,4 @@
 		@endforeach
   @endforeach
 @endsection
+
