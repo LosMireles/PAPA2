@@ -59,11 +59,7 @@ Route::post('/cursos/crear_relacion/{id}', 'CursoController@crear_relacion');
 Route::post('/aulas/{tipo}/borrarImg/{imagen}', [
   'uses' => 'AulaController@borrarImg',
   'as' => 'borrarImgAula'
-]);
-Route::post('/aulas/{tipo}/borrarImg/{imagen}', [
-    'uses' => 'Aula9_1_6Controller@borrarImg',
-  'as' => 'borrarImgAula'
-]);
+]); 
 
 Route::get('/aulas/relacionar_equipos/{id}', 'AulaController@relacionar_equipos');
 Route::patch('/aulas/relacionar_equipos/{id}', 'AulaController@relacionar_equipos_post');
@@ -139,4 +135,3 @@ Route::get('aulas/{aula}/edit/{inciso?}', 'AulaController@edit');
 Route::patch('aulas/{aula}/{inciso?}', 'AulaController@update');
 
 Route::delete('aulas/{aula}/{inciso?}', 'AulaController@destroy');
-

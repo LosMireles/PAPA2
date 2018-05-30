@@ -226,9 +226,9 @@
       </figura>
 
   		@endforeach
+      <br clear='all'/>
     @endforeach
   @else
     <h2 align="center">No hay imagenes</h2>
   @endif
 @endsection
-
