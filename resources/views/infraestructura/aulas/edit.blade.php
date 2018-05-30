@@ -1,7 +1,7 @@
 @extends('layouts.formulario_edit_general')
 
 @section('title' , "Editar aula")
-@section("objeto_informacion", "editar el aula $aula->nombre")
+@section("objeto_informacion", "editar un aula")
 
 @section('ruta_regresar')
     {{action('AulaController@index')}}

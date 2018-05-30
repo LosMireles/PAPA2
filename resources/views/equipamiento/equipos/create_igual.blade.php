@@ -12,7 +12,36 @@
 @endsection
 
 @section('contenido_formulario')
+    <script type="text/javascript">
+        function deshabilitar(){
+            var x = document.getElementById("mySelect").value;
 
+            if(x == 'Audiovisual'){
+                document.getElementById('sistema_operativo').disabled = true;
+                document.getElementById('cpu').disabled = true;
+                document.getElementById('ram').disabled = true;
+                document.getElementById('almacenamiento').disabled = true;
+            }else{
+                document.getElementById('sistema_operativo').disabled = false;
+                document.getElementById('cpu').disabled = false;
+                document.getElementById('ram').disabled = false;
+                document.getElementById('almacenamiento').disabled = false;
+            }
+        }
+        $(document).ready(function(){
+            if($("#mySelect").val() == 'Audiovisual'){
+                $('#sistema_operativo').attr('disabled', true);
+                $('#cpu').attr('disabled', true);
+                $('#ram').attr('disabled', true);
+                $('#almacenamiento').attr('disabled', true);
+            }else{
+                $('#sistema_operativo').attr('disabled', false);
+                $('#cpu').attr('disabled', false);
+                $('#ram').attr('disabled', false);
+                $('#almacenamiento').attr('disabled', false);
+            }
+        });
+    </script>
     @component("layouts.text_input")
         @slot("nombre_input", "serial")
         @slot("tooltip_input", "Serial del equipo. Identificador del equipo")
@@ -21,25 +50,28 @@
         @slot("extra", "required")
     @endcomponent
 
-    @component("layouts.select_input")
-        @slot("nombre_input", "tipo")
-        @slot("tooltip_input", "Que tipo de equipo es, de computo, redes, audiovisual o de servidor")
-        @slot("label_input", "tipo")
-        @slot("opciones")
-            @foreach($tipos as $tipo)
-                @if($equipo->tipo == $tipo)
-                    @component('layouts.option_general')
-                        @slot('var', $tipo)
-                        @slot('extra', "selected")
-                    @endcomponent
-                @else
-                    @component('layouts.option_general')
-                        @slot('var', $tipo)
-                    @endcomponent
-                @endif
-            @endforeach
-        @endslot
-    @endcomponent
+    <div class="form-group">
+        <label for="tipo" class="col-sm-4 control-label" data-toggle="tooltip" title="Que tipo de equipo es, de computo, redes, audiovisual o de servidor">
+            Tipo
+        </label>
+
+        <div class="col-sm-8">
+            <select id="mySelect" name="tipo" class="form-control" onchange="deshabilitar()">
+                @foreach($tipos as $tipo)
+                    @if($equipo->tipo == $tipo)
+                        @component('layouts.option_general')
+                            @slot('var', $tipo)
+                            @slot('extra', "selected")
+                        @endcomponent
+                    @else
+                        @component('layouts.option_general')
+                            @slot('var', $tipo)
+                        @endcomponent
+                    @endif
+                @endforeach 
+            </select>
+        </div>
+    </div>
 
     @component("layouts.text_input")
         @slot("nombre_input", "sistema_operativo")
@@ -47,6 +79,9 @@
         @slot("label_input", "Sistema operativo")
         @slot("placeholder_input", "Windows 10")
         @slot("valor_default", $equipo->sistema_operativo)
+        @slot('extra')
+            id = "sistema_operativo"
+        @endslot
     @endcomponent
 
     @component("layouts.text_input")
@@ -63,6 +98,9 @@
         @slot("label_input", "CPU")
         @slot("placeholder_input", "Qualcorexeon X5460 2X 6MB Cache")
         @slot("valor_default", $equipo->cpu)
+        @slot('extra')
+            id = "cpu"
+        @endslot
     @endcomponent
 
     @component("layouts.text_input")
@@ -71,6 +109,9 @@
         @slot("label_input", "RAM")
         @slot("placeholder_input", "8GB 667 MHZ (4X2 GB)")
         @slot("valor_default", $equipo->ram)
+        @slot('extra')
+            id = "ram"
+        @endslot
     @endcomponent
 
     @component("layouts.text_input")
@@ -79,6 +120,9 @@
         @slot("label_input", "Memoria almacenamiento")
         @slot("placeholder_input", "HDD 300 GB")
         @slot("valor_default", $equipo->almacenamiento)
+        @slot('extra')
+            id = "almacenamiento"
+        @endslot
     @endcomponent
 
     @component("layouts.textarea_input")

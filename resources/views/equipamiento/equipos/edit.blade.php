@@ -1,7 +1,7 @@
 @extends('layouts.formulario_edit_general')
 
 @section('title' , "Editar equipo")
-@section("objeto_informacion", "editar el equipo $equipo->serial")
+@section("objeto_informacion", "editar un equipo")
 
 @section('ruta_regresar')
     {{action('EquipoController@index')}}
@@ -43,8 +43,6 @@
             }
         });
     </script>
-
-    <p id="demo"></p>
 
     @component("layouts.text_input")
         @slot("nombre_input", "serial")

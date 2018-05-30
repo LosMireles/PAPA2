@@ -27,7 +27,7 @@
 @endsection
 
 @section('Fotografias')
-	<h1 class="text-center">Evidencias de auditorio <?php echo $nombre; ?></h1>
+	<h1 class="text-center">Fotografías de <?php echo $nombre; ?></h1>
 
   <?php
 		$auditorio = Auditorio::where('nombre', $nombre)->first();
@@ -41,7 +41,19 @@
 			.img_div {
 				float: left;
 				margin-right: 10px;
-				margin-bottom: 15px;}
+				margin-bottom: 15px;
+
+			}
+			.buttonimg{
+				width:auto;
+				height:auto;
+
+			}
+
+			img{
+				width: auto;
+				max-height: 100%
+			}
 		</style>
 	</head>
 
@@ -51,7 +63,7 @@
 				<figure>
 					<div class='buttonimg'>
 						<div class="img_div">
-							<img src="<?php echo asset($image)?>" width="320" height="200"
+							<img src="<?php echo asset($image)?>" height="200"
 								alt="<?php echo $image?>"/>
 							<figcaption class="text-center"><?php echo pathinfo($image)['basename']?></figcaption>
 							<div class="row text-center">

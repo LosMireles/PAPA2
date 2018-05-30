@@ -1,7 +1,7 @@
 @extends('layouts.formulario_edit_general')
 
 @section('title' , "Agregar cubiculo")
-@section("objeto_informacion", "editar $cubiculo->nombre")
+@section("objeto_informacion", "editar un cubículo")
 
 @section('ruta_regresar')
     {{action('CubiculoMiniController@index')}}
@@ -9,7 +9,8 @@
 
 @section('formopen')
     {{Form::open(['action' => ['CubiculoMiniController@update', $cubiculo->nombre, $url_regreso],
-                'class' => 'form-horizontal'])}}
+                'class' => 'form-horizontal',
+                'files' => true])}}
 @endsection
 
 @section('contenido_formulario')
@@ -42,4 +43,3 @@
  		</div>
  	</div>
 @endsection
-

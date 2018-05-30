@@ -1,7 +1,7 @@
 @extends('layouts.actualizar')
 
 @section('title')
-   editar espacio de asesoria <?php echo $asesoria->Tipo; ?>
+   editar un espacio de asesoria
 @endsection
 
 @section('descripcion')

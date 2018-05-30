@@ -54,6 +54,10 @@
 				height:auto;
 
 			}
+			img{
+				width: auto;
+				max-height: 100%
+			}
 		</style>
 	</head>
 
@@ -63,7 +67,7 @@
 				<figure>
 					<div class='buttonimg'>
 						<div class="img_div">
-							<img src="<?php echo asset($image)?>" width="320" height="200"
+							<img src="<?php echo asset($image)?>" height="220"
 								alt="<?php echo $image?>"/>
 							<figcaption class="text-center"><?php echo pathinfo($image)['basename']?></figcaption>
 							<div class="row text-center">

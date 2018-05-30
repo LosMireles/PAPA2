@@ -34,6 +34,10 @@
 							<input type="checkbox" name="softwares[]" value="{{$software->id}}"> {{$software->nombre}} <br>
 						@endif
 					@endforeach
+
+					@if(count($cursos) == 0)
+						No hay cursos registrados en la base de datos
+					@endif
 				</td>
 			</tr>
 	</table>

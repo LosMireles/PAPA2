@@ -111,12 +111,13 @@
       width: auto;
       max-height: 100%
     }
-    .line
-    { border-top: 1px solid #111;
+    .line{
+      border-bottom: 1px solid #111;
       display: block;
       margin-top: 60px;
       padding-top: 10px;
-      position: relative; }
+      position: relative;
+    }
 
 
   </style>
