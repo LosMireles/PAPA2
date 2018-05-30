@@ -15,6 +15,9 @@
                   'class'  => 'form'])}}
 @endsection
 
+@php
+    $variable = "inciso_9_2_1";
+@endphp
 <!-- ------------ LAS PREGUNTAS Y SUS RESPUESTAS------------- -->
 
 @section('contenido_formulario')
@@ -32,11 +35,11 @@
 @section('tablas_inciso_general')
     <h3 class="text-center">Listado relación curso-software</h3>
 	<div class="row text-right" style="margin: 2px;">
-    	<a href="{{ action('CursoController@create') }}" class="btn btn-success">
+    	<a href="{{ action('CursoController@create', $variable) }}" class="btn btn-success">
     	    Agregar nuevo curso
     	</a>
 
-    	<a href="{{ action('SoftwareController@create') }}" class="btn btn-success">
+    	<a href="{{ action('SoftwareController@create', $variable) }}" class="btn btn-success">
     	    Agregar nuevo software
     	</a>
   	</div>
@@ -68,19 +71,21 @@
 
                 @component('layouts.boton_editar')
                     @slot('controlador_editar')
-                        {{ Form::open(['action' => ['SoftwareController@edit', $software->nombre]]) }}
+                        {{ Form::open(['action' => ['SoftwareController@edit', $software->nombre, $variable]]) }}
                     @endslot
                 @endcomponent
 
                 @component('layouts.boton_borrar')
                     @slot('controlador_borrar')
-                        {{ Form::open(['action' => ['SoftwareController@destroy', $software->nombre]]) }}
+                        {{ Form::open(['action' => ['SoftwareController@destroy', $software->nombre, $variable]]) }}
                     @endslot
                 @endcomponent
 
                 <td>
                     <!--Por que esta en curso controller??????-->
-                    <a href="{{action('CursoController@relacionar_cursos_software', $software->id)}}" class="btn btn-primary">Vicular cursos</a>
+                    <a href="{{action('CursoController@relacionar_cursos_software', $software->id)}}" class="btn btn-primary">
+                        Vicular cursos
+                    </a>
                 </td>
 
             </tr>

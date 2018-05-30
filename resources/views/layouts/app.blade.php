@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html style="height: 100% !important;">
 <head>
 	<meta charset="utf-8">
 	<title>
@@ -29,29 +29,32 @@
 
     @yield('estilo_personalizado')
 </head>
-<body style="margin-top: 50px;">
+<!--<body style="margin-top: 50px; height: auto; background-color: #1b70f9;">-->
+<body style="margin-top: 50px; height: 100%; background-color: #1b70f9;">
     @component('layouts.navbar.navbar')
     @endcomponent
-    <div style="background-color: #1b70f9; height: auto;">
-        <div class="container" style="background-color: white;">
+    <div style="background-color: #1b70f9; height: 100%;">
+        <!--<div class="container" style="background-color: white; height: 100%;">-->
+        <div class="container" style="background-color: white; height: 100% !important; padding: 0;">
+            <div class="container" style="background-color: white; height: auto !important;">
+                @if (session('status'))
+                    <div class="alert alert-success">
+                        {{ session('status') }}
+                    </div>
+                @endif
 
-            @if (session('status'))
-                <div class="alert alert-success">
-                    {{ session('status') }}
-                </div>
-            @endif
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                        </ul>
+                    </div>
+                @endif
 
-            @if ($errors->any())
-                <div class="alert alert-danger">
-                    <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                    </ul>
-                </div>
-            @endif
-
-            @yield('content')
+                @yield('content')
+            </div>
 
             <script>
             $(document).ready(function(){

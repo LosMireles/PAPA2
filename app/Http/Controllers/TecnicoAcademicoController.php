@@ -33,10 +33,11 @@ class TecnicoAcademicoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(){
+    public function create($url_regreso = null){
         return view('tecnico_academico/create')
         ->with([
-            'url_previous' => url()->previous()
+            'url_previous' => url()->previous(),
+            'url_regreso' => $url_regreso
         ]);
     }
 
@@ -46,7 +47,7 @@ class TecnicoAcademicoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $url_regreso = null)
     {
         $request->validate($this->rules());
 
@@ -66,20 +67,15 @@ class TecnicoAcademicoController extends Controller
 
         $tecnico->save();
 
-        echo "Elemento insertado exitosamente!";
-        return redirect($request->url_previous)->with('status', 'Elemento agregado exitosamente');
+        if($url_regreso != null){
+            return redirect(url($url_regreso))
+                ->with('status', 'Elemento agregado exitosamente');
+        }else{
+            return redirect(url('/'))
+                ->with('status', 'Elemento agregado exitosamente');
+        }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -87,13 +83,14 @@ class TecnicoAcademicoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id, $url_regreso = null)
     {
         $tecnico = TecnicoAcademico::where('id', $id)->first();
         return view('tecnico_academico/edit')
             ->with([
                 'tecnico'       => $tecnico,
-                'url_previous'  => url()->previous()
+                'url_previous'  => url()->previous(),
+                'url_regreso'   => $url_regreso
             ]);
     }
 
@@ -104,7 +101,7 @@ class TecnicoAcademicoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id, $url_regreso = null)
     {
         $tecnico = TecnicoAcademico::where('id',$id)->first();
         $request->validate($this->rules($tecnico->nombre));
@@ -120,8 +117,14 @@ class TecnicoAcademicoController extends Controller
             'certificados'      => $certificados,
             'anios_exp'         => $exp,
         ]);
-        return redirect($request->url_previous)
-            ->with('status', 'Elemento actualizado con exito');
+
+        if($url_regreso != null){
+            return redirect(url($url_regreso))
+                ->with('status', 'Elemento actualizado exitosamente');
+        }else{
+            return redirect(url('/'))
+                ->with('status', 'Elemento actualizado exitosamente');
+        }
     }
 
     /**
@@ -130,7 +133,7 @@ class TecnicoAcademicoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id){
+    public function destroy($id, $url_regreso = null){
         $tecnico = TecnicoAcademico::where('id', $id)->first();
         if(!$tecnico){
             //$mensaje = "No existe software con nombre: ".$nombre;
@@ -138,8 +141,14 @@ class TecnicoAcademicoController extends Controller
         }
         $tecnico->delete();
         echo "Elemento borrado exitosamente!";
-        return redirect()->back()
-            ->with('status', 'Elemento borrado exitosamente');
+
+        if($url_regreso != null){
+            return redirect(url($url_regreso))
+                ->with('status', 'Elemento borrado exitosamente');
+        }else{
+            return redirect(url('/'))
+                ->with('status', 'Elemento borrado exitosamente');
+        }
     }
 
     public function rules($nombre = null){

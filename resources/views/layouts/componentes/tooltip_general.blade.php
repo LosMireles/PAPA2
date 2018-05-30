@@ -1,1 +1,1 @@
-<p data-toggle="tooltip" title="{{$titulo}}">{{$mensaje}}</p>
+<a data-toggle="tooltip" title="{{$titulo}}" style="color: inherit; text-decoration: none;">{{$mensaje}}</a>

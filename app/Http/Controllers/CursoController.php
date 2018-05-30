@@ -21,18 +21,19 @@ class CursoController extends Controller {
     }
 
     //----------------------------------------------------------------
-	public function create(){
+	public function create($url_regreso = null){
 		$aulas	= Aula::all();
         return view('infraestructura.cursos.create')
             ->with([
                 'licenciaturas' => $this->licenciaturas,
                 'aulas'         => $aulas,
-                'url_previous'  => url()->previous()
+                'url_previous'  => url()->previous(),
+                'url_regreso'   => $url_regreso
             ]);
 	}
 
     //----------------------------------------------------------------
-    public function store(Request $request)
+    public function store(Request $request, $url_regreso = null)
     {
         $request->validate($this->rules());
 
@@ -56,12 +57,17 @@ class CursoController extends Controller {
 		$aulaId = DB::table('aulas')->where('nombre', $request->donde)->value('id');
         $curso->aulas()->attach($aulaId);
 
-		echo "Elemento insertado exitosamente!";
-        return redirect($request->url_previous)->with('status', 'Elemento agregado exitosamente');
+        if($url_regreso != null){
+            return redirect(url($url_regreso))
+                ->with('status', 'Elemento agregado exitosamente');
+        }else{
+            return redirect(url('/'))
+                ->with('status', 'Elemento agregado exitosamente');
+        }
     }
 
 	//-----------------------------------------------------------
-	public function edit($nombre) {
+	public function edit($nombre, $url_regreso = null) {
 		$curso  = Curso::where('nombre', $nombre)->first();
 		$aulas	= Aula::all();
 	  	//$espacios      = Espacio::all();
@@ -71,12 +77,13 @@ class CursoController extends Controller {
 	  	    ->with(['curso'         => $curso,
                     'licenciaturas' => $this->licenciaturas,
                     'aulas'         => $aulas,
-                    'url_previous'  => url()->previous()
+                    'url_previous'  => url()->previous(),
+                    'url_regreso'   => $url_regreso
                 ]);
 	}
 
 	//-----------------------------------------------------------
-    public function update(Request $request, $nombre) {
+    public function update(Request $request, $nombre, $url_regreso = null) {
         //$request->validate($this->rules($nombre));
 
 	  	$nombre_nuevo  = $request->nombre;
@@ -100,13 +107,17 @@ class CursoController extends Controller {
 
         $curso->aulas()->sync($idAula);
 
-		echo "Elemento editado exitosamente!";
-        return redirect($request->url_previous)
-            ->with('status', 'Elemento actualizado con exito');
+        if($url_regreso != null){
+            return redirect(url($url_regreso))
+                ->with('status', 'Elemento actualizado exitosamente');
+        }else{
+            return redirect(url('/'))
+                ->with('status', 'Elemento actualizado exitosamente');
+        }
     }
 
 	//-----------------------------------------------------------
-    public function destroy($nombre){
+    public function destroy($nombre, $url_regreso = null){
         $curso = Curso::where('nombre', $nombre)->first();
         if(!$curso){
             $mensaje = "No existe curso con nombre: ".$nombre;
@@ -115,9 +126,13 @@ class CursoController extends Controller {
         }
         $curso->delete();
 
-		echo "Elemento borrado exitosamente!";
-        return redirect()->back()
-            ->with('status', 'Elemento borrado exitosamente');
+        if($url_regreso != null){
+            return redirect(url($url_regreso))
+                ->with('status', 'Elemento borrado exitosamente');
+        }else{
+            return redirect(url('/'))
+                ->with('status', 'Elemento borrado exitosamente');
+        }
     }
 
     public function rules($nombre = null){

@@ -45,7 +45,7 @@
 @section('content')
 <div class="container">
 	<br>
-	<h2>Prototipo PAPA</h2>
+	<h2>PAPA</h2>
 	<h3>Categoría considerada: <a href="#" data-toggle="tooltip" title="Categoría número 9 considerada en el documento de CONAIC. Este prototipo trabaja con dicha categoría.">Infraestructura</a></h3>
 	<br>
 </div>

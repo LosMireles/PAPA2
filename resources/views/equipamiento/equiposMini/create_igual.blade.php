@@ -8,7 +8,7 @@
 @endsection
 
 @section('accion')
-    {{action('EquipoController@store')}}
+    {{action('EquipoController@store', $url_regreso)}}
 @endsection
 
 @section('contenido_formulario')
