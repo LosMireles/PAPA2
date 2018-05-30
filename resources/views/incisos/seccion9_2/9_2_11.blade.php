@@ -42,7 +42,9 @@
 @section('tablas_inciso_general')
     <h3 class="text-center">Cantidad de equipo en los cubículos de maestros</h3>
     <div class="row text-right" style="margin: 2px;">
-    	 <a href="{{ action('CubiculoController@create', $variable) }}" class="btn btn-success">Agregar cubículo</a>
+    	 <a href="{{ action('CubiculoController@create', $variable) }}" class="btn btn-success">
+    	     Agregar nuevo cubículo
+    	 </a>
     </div>
     @component('layouts.componentes.tabla_incisos_agregar')
 

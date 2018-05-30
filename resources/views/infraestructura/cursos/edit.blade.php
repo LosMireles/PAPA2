@@ -34,28 +34,28 @@
 
 	@component("layouts.text_input")
 	    @slot("tipo", "number")
-        @slot("nombre_input", "no_estudiantes")
-        @slot("tooltip_input", "Pertenecientes a LCC")
-        @slot("label_input", "Numero de estudiantes")
-        @slot("placeholder_input", "1")
-        @slot("extra", "min=0 max=1000")
-		@slot("valor_default", $curso->no_estudiantes)
-    @endcomponent
-
-	@component("layouts.text_input")
-	    @slot("tipo", "number")
         @slot("nombre_input", "no_grupo")
-        @slot("tooltip_input", "Identificador")
-        @slot("label_input", "Numero de grupo ")
+        @slot("tooltip_input", "Número de grupo dado por la universidad")
+        @slot("label_input", "Numero grupo")
         @slot("placeholder_input", "1")
         @slot("extra", "min=0 max=40")
 		@slot("valor_default", $curso->no_grupo)
     @endcomponent
 
+	@component("layouts.text_input")
+	    @slot("tipo", "number")
+        @slot("nombre_input", "no_estudiantes")
+        @slot("tooltip_input", "Pertenecientes a LCC")
+        @slot("label_input", "Número de estudiantes en el curso que pertenecen a LCC")
+        @slot("placeholder_input", "1")
+        @slot("extra", "min=0 max=1000")
+		@slot("valor_default", $curso->no_estudiantes)
+    @endcomponent
+
 	@component("layouts.select_input")
         @slot("nombre_input", "departamento")
-        @slot("tooltip_input", "Que lo imparte")
-        @slot("label_input", "Departamento")
+        @slot("tooltip_input", "A que licenciatura pertenece la materia")
+        @slot("label_input", "Licenciatura")
         @slot('opciones')
             @component('layouts.option_foreach_if')
                 @slot('conjunto_variables', $licenciaturas)
