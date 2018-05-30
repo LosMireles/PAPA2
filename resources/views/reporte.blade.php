@@ -494,19 +494,7 @@
     </div>
 
     @component('layouts.componentes.tabla_incisos')
-      @section('Fotografias')
-        <div class="row text-center">
-          <div class="col-md-6 col-md-offset-3">
-            <form class="form-horizontal" action = "{{action('Inciso9_1_10Controller@guardarImg')}}" method="POST" enctype="multipart/form-data">
-              <input type = "hidden" name = "_token" value = "{{csrf_token()}}">
-
-              <div class="col-sm-8">
-                <input type='file' class="form-control" name='Fotografias[]' id="Fotografias" multiple accept=".gif,.bmp,.jpg,.png, .jpeg"/>
-              </div>
-              <button type='submit' class="btn btn-primary">Agregar fotografía</button>
-            </form>
-          </div>
-        </div>
+      @slot('fotos')
           <style type='text/css'>
             .img_div {
               float: left;
@@ -555,25 +543,58 @@
                     <div class="img_div">
                       <img src="<?php echo asset($image)?>" height="220"
                         alt="<?php echo $image?>"/>
-                      <figcaption class="text-center"><?php echo pathinfo($image)['basename']?></figcaption>
-                      <div class="row text-center">
-                        <form action="{{ route('borrarImgInciso9_1_10', ['imagen' => pathinfo($image)['basename']]) }}" method="post">
-                          {{ csrf_field() }}
-                          <button class="btn btn-danger" onclick="return confirm('¿Estas seguro que deseas borrar esta fotografía?')" type="submit" name="button">Borrar</button>
-                        </form>
-                      </div>
+                      <figcaption class="text-center"><?php echo pathinfo($image)['basename']?></figcaption>  
                     </div>
                   </div>
                 </figure>
               @endforeach
+		<br clear='all'/>
             @else
               <h2 align="center">No hay imagenes</h2>
             @endif
-      @endsection
+      @endslot
     @endcomponent
   <!-- ************************** FINAL 9.1.10 ************************** -->
+	<!-- ************************** INICIO 9.1.11 ************************* -->
+	<h3 class="text-justify">Inciso 9.1.11: El programa debe disponer de auditorios
+   	y/o salas debidamente acondicionadas para actividades académicas, investigación,
+  	y de preservación y difusión de la cultura</h3>
 
+	@foreach($preguntas_9_1_11 as $pregunta_9_1_11)
+		<div class="form-group">
+			<label for="{{$pregunta->id}}" class="control-label">
+			    {{$pregunta->titulo}}
+			</label>
 
+			<div>
+                <textarea class="form-control" id="{{$pregunta->id}}" name="{{$pregunta->id}}"value="{{$pregunta->respuesta}}">{{$pregunta->respuesta}}</textarea>
+			</div>
+		</div>
+	@endforeach
+
+	@component('layouts.componentes.tabla_incisos_agregar')
+		@slot('cabeza_tabla')
+		  <tr>
+		    <td>Nombre</td>
+		    <td>Capacidad</td>
+		</tr>
+		@endslot
+
+		@slot('cuerpo_tabla')
+		@foreach($auditorios as $auditorio)
+	      <tr>
+		<td>{{ $auditorio->nombre }}</td>
+		<td>{{ $auditorio->Capacidad }}</td>
+	      </tr>
+	    @endforeach
+	      @endslot
+		@endcomponent
+	  @if(count($auditorios) == 0)
+	    <h2 class="text-center">No hay registros en la base de datos</h2>
+	  @endif
+	@endsection
+
+	<!-- ************************** FINAL 9.1.11 ************************** -->
 	<!-- ************************** INICIO 9.1.12 ************************* -->
 	<h3 class="text-justify">Inciso 9.1.12: En los espacios mencionados en el inciso 9.1.11, se debe
     tener un lugar comodo por cada diez estudiantes inscritos en el programa,
