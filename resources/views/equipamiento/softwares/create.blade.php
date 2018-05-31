@@ -4,7 +4,7 @@
 @section("objeto_informacion", "agregar software")
 
 @section('ruta_regresar')
-    ssaction('SoftwareController@index')}}
+    {{action('SoftwareController@index')}}
 @endsection
 
 @section('accion')
@@ -31,7 +31,7 @@
     @component("layouts.select_input")
         @slot("nombre_input", "clase")
         @slot("tooltip_input", "Si el software es un lenguaje, una herramienta case, un manejador de bases de datos, paqueteria o algun otro")
-        @slot("label_input", "clase")
+        @slot("label_input", "Clase")
         @slot('opciones')
             @foreach($clases as $clase)
                 @component('layouts.option_general')

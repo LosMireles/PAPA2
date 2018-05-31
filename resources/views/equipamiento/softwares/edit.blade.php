@@ -34,7 +34,7 @@
     @component("layouts.select_input")
         @slot("nombre_input", "clase")
         @slot("tooltip_input", "Si el software es un lenguaje, una herramienta case, un manejador de bases de datos, paqueteria o algun otro")
-        @slot("label_input", "clase")
+        @slot("label_input", "Clase")
         @slot("opciones")
             @component('layouts.option_foreach_if')
                 @slot('conjunto_variables', $clases)
