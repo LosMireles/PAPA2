@@ -36,17 +36,28 @@
     	<a href="{{ action('SoftwareController@create', $variable) }}" class="btn btn-success">Agregar software</a>
   	</div>
 
-    @component('layouts.componentes.tabla_incisos_agregar')
+    <table class="table table-hover">
+        <caption>Softwares acomodados por su clase: lenguajes, herramientas CASE,
+                 manejadores de bases de datos o de paqueteria general
+        </caption>
+        <!-- Estilo del subtitulo de las tablas -->
+        <style type="text/css">
+            caption {
+              background-color: white;
+              color: black;
+              font-weight: bold;
+            }
+        </style>
 
-        <h4>Tabla de lenguajes, herramientas case, manejadores de bases de datos y paqueteria</h4>
-        @slot('cabeza_tabla')
+        <thead style="background-color: #1b70f9; color: white;">
             <th>Lenguajes de programación</th>
             <th>Herramientas CASE</th>
             <th>Manejadores de base de datos</th>
             <th>Paquetería general</th>
-        @endslot
-
-        @slot('cuerpo_tabla')
+            <th></th> <!-- Espacio para el boton de editar -->
+            <th></th> <!-- Espacio para el boton eliminar -->
+        </thead>
+        <tbody>
             @for($i = 0; $i < max(array(sizeof($lenguajes),
                                         sizeof($cases),
                                         sizeof($bds),
@@ -77,11 +88,66 @@
                 </td>
             </tr>
             @endfor
-        @endslot
-    @endcomponent
+        </tbody>
+    </table>
+
     @if(count($lenguajes) == 0 && count($cases) == 0 && count($bds) == 0 && count($paqueterias) == 0)
       <h2 class="text-center">No hay registros en la base de datos</h2>
     @endif
+
+
+    <table class="table table-hover">
+        <caption>Softwares registrados</caption>
+        <!-- Estilo del subtitulo de las tablas -->
+        <style type="text/css">
+            caption {
+              background-color: white;
+              color: black;
+              font-weight: bold;
+            }
+        </style>
+
+        <thead style="background-color: #1b70f9; color: white;">
+            <th>Software</th>
+            <th>Versión</th>
+            <th>Clase</th>
+            <th>Disponibilidad</th>
+            <th></th> <!-- Espacio para el boton de editar -->
+            <th></th> <!-- Espacio para el boton eliminar -->
+        </thead>
+        <tbody>
+            @foreach($softwares as $software)
+            <tr>
+            	<td>{{$software->nombre}}</td>
+                <td>{{$software->version}}</td>
+            	<td>{{$software->clase}}</td>
+                <td>{{$software->disponibilidad}}</td>
+
+
+                @component('layouts.boton_editar')
+                    @slot('controlador_editar')
+                        {{Form::open(['action' => ['SoftwareController@edit',
+                                                   $software->nombre,
+                                                   $variable]])}}
+                    @endslot
+                @endcomponent
+
+
+                @component('layouts.boton_borrar')
+                    @slot('controlador_borrar')
+                      {{Form::open(['action' => ['SoftwareController@destroy', $software->nombre, $variable]])}}
+                    @endslot
+                @endcomponent
+
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
+
+    @if(count($softwares) == 0)
+      <h2 class="text-center">No hay registros en la base de datos</h2>
+    @endif
+
 @endsection
 
 <!-- ------------ SECCION DE FOTOGRAFIAS, EVIDENCIAS, ETC------------- -->

@@ -24,8 +24,8 @@
 
     @component("layouts.text_input")
         @slot("nombre_input", "version")
-        @slot("tooltip_input", "Version del software")
-        @slot("label_input", "Version")
+        @slot("tooltip_input", "Versión del software")
+        @slot("label_input", "Versión")
         @slot("placeholder_input", "1.0")
         @slot("valor_default", $software->version)
         @slot("extra", "maxlength=80")
