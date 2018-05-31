@@ -50,7 +50,7 @@
 
         <h4>Tabla de equipos de redes</h4>
         @slot('cabeza_tabla')
-            <th>Cubículo</th>
+            <th>Identificador cubículo</th>
             <th>Profesor</th>
             <th>Cantidad equipo</th>
             <th></th>

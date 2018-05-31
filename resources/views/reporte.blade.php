@@ -205,10 +205,10 @@
 	@component('layouts.componentes.tabla_incisos')
 		<!-- Tabla de todos los grupos -->
 		@slot('cabeza_tabla')
-			<th>Nombre</th>
+			<th>Curso</th>
 			<th>Período</th>
 			<th>Grupo</th>
-			<th>Numero de Estudiantes</th>
+			<th>Número de Estudiantes</th>
 			<th>Pertenencia</th>
 			<th>Espacios</th>
 		@endslot
@@ -543,7 +543,7 @@
                     <div class="img_div">
                       <img src="<?php echo asset($image)?>" height="220"
                         alt="<?php echo $image?>"/>
-                      <figcaption class="text-center"><?php echo pathinfo($image)['basename']?></figcaption>  
+                      <figcaption class="text-center"><?php echo pathinfo($image)['basename']?></figcaption>
                     </div>
                   </div>
                 </figure>
@@ -1110,7 +1110,7 @@
 
         <h4>Tabla de equipos de redes</h4>
         @slot('cabeza_tabla')
-            <th>Cubículo</th>
+            <th>Identificador cubículo</th>
             <th>Profesor</th>
             <th>Cantidad equipo</th>
         @endslot

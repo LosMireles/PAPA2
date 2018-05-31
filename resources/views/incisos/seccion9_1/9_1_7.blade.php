@@ -65,10 +65,10 @@
 
 		<!-- Tabla de todos los grupos -->
 		@slot('cabeza_tabla')
-			<th>Nombre</th>
+			<th>Curso</th>
 			<th>Período</th>
 			<th>Grupo</th>
-			<th>Numero de Estudiantes</th>
+			<th>Número de Estudiantes</th>
 			<th>Pertenencia</th>
 			<th>Espacios</th>
 		@endslot
