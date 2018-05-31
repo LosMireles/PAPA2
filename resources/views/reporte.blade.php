@@ -179,7 +179,7 @@
           <br clear='all'/>
         @endforeach
       @else
-        <h2 align="center">No hay imagenes</h2>
+        <h2 align="center">No hay imágenes</h2>
       @endif
       @endslot
   @endcomponent
@@ -354,7 +354,7 @@
           <br clear='all'/>
         @endforeach
       @else
-        <h2 align="center">No hay imagenes</h2>
+        <h2 align="center">No hay imágenes</h2>
       @endif
       @endslot
 
@@ -457,7 +457,7 @@
               <br clear='all'/>
             @endforeach
           @else
-            <h2 align="center">No hay imagenes</h2>
+            <h2 align="center">No hay imágenes</h2>
           @endif
       @endslot
     @endcomponent
@@ -550,7 +550,7 @@
               @endforeach
 		<br clear='all'/>
             @else
-              <h2 align="center">No hay imagenes</h2>
+              <h2 align="center">No hay imágenes</h2>
             @endif
       @endslot
     @endcomponent
@@ -660,7 +660,7 @@
           <br clear='all'/>
         @endforeach
       @else
-        <h2 align="center">No hay imagenes</h2>
+        <h2 align="center">No hay imágenes</h2>
       @endif
     @endslot
   @endcomponent
@@ -831,7 +831,7 @@
             <br clear='all'/>
           @endforeach
         @else
-          <h3 align="center">No hay imagenes </h3>
+          <h3 align="center">No hay imágenes </h3>
         @endif
       @endslot
     @endcomponent
@@ -1190,7 +1190,7 @@
                 <br clear='all'/>
               @endforeach
             @else
-              <h2 align="center">No hay imagenes</h2>
+              <h2 align="center">No hay imágenes</h2>
             @endif
         @endslot
     @endcomponent

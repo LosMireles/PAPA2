@@ -55,9 +55,10 @@
     <label for="{{$preguntas[2]->id}}" class="control-label"> {{$preguntas[2]->titulo}} </label>
 
     <div>
-      <input type="text" class="form-control" id="{{$preguntas[2]->id}}" name="{{$preguntas[2]->id}}" placeholder="Véase la tabla de abajo" value="{{$preguntas[2]->respuesta}}">
+      <textarea class="form-control" id="{{$preguntas[2]->id}}" name="{{$preguntas[2]->id}}">{{$preguntas[2]->respuesta}}</textarea>
     </div>
   </div>
+
 @endsection
 
 <!-- ------------ LAS TABLAS QUE CORRESPONDAN------------- -->

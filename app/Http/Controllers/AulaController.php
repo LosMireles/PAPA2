@@ -253,6 +253,6 @@ class AulaController extends Controller
         }
 
         return redirect()->action('Inciso9_1_8Controller@index')
-            ->with('status', 'Elemento agregado exitosamente');
+            ->with('status', 'Vinculo actualizado exitosamente');
     }
 }

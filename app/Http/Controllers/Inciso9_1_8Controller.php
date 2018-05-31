@@ -20,8 +20,17 @@ class Inciso9_1_8Controller extends Controller
     {
         $preguntas = Pregunta::where('inciso', '9.1.8')->get();
         $aulas = Aula::all();
+        $total_computo = -1;
+        $total_audiovisual = -1;
 
-        return view('incisos/seccion9_1/9_1_8', ['preguntas' => $preguntas,'id' => $preguntas[0]->id,'id', 'aulas'=>$aulas]);
+        return view('incisos/seccion9_1/9_1_8')
+            ->with([
+                'preguntas' => $preguntas,
+                'id' => $preguntas[0]->id,
+                'aulas'=>$aulas,
+                'total_computo' => $total_computo,
+                'total_audiovisual' => $total_audiovisual
+            ]);
     }
 
     /**

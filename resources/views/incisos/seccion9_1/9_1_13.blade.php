@@ -175,7 +175,7 @@
       <br clear='all'/>
     @endforeach
   @else
-    <h3 align="center">No hay imagenes </h3>
+    <h3 align="center">No hay imágenes </h3>
   @endif
 @endsection
 

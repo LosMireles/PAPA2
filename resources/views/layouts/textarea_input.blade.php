@@ -5,7 +5,7 @@
     </label>
 
     <div>
-        <textarea class="form-control" name="{{$nombre_input}}" placeholder="{{$placeholder_input or ""}} "{{$extra or ""}})>{{$valor_default or ""}}</textarea>
+        <textarea class="form-control" name="{{$nombre_input}}" placeholder="{{$placeholder_input or ""}} "{{$extra or ""}}>{{$valor_default or ""}}</textarea>
     </div>
 
 </div>

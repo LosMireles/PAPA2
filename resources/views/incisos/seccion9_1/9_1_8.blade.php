@@ -39,7 +39,7 @@
 <!-- ------------ LAS TABLAS QUE CORRESPONDAN------------- -->
 
 @section('tablas_inciso_general')
-  <h3 class="text-center">Listado de equipos instalados en las aulas</h3>
+    <h3 class="text-center">Listado de equipos instalados en las aulas</h3>
 	<div class="row text-right" style="margin: 2px;">
     	<a href="{{ action('AulaController@create', $variable) }}" class="btn btn-success">
     	    Agregar nueva aula
@@ -101,7 +101,7 @@
 
                 <td>
                 <a href="{{ action('AulaController@relacionar_equipos', [$aula->id, $variable]) }}" class="btn btn-primary">
-                    Relacionar aula con equipos
+                    Vincular equipos
                 </a>
                 </td>
 
@@ -189,7 +189,7 @@
       <br clear='all'/>
     @endforeach
   @else
-    <h2 align="center">No hay imagenes</h2>
+    <h2 align="center">No hay imágenes</h2>
   @endif
 @endsection
 
