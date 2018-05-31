@@ -24,17 +24,17 @@
 
     @component("layouts.text_input")
         @slot("nombre_input", "version")
-        @slot("tooltip_input", "Version del software")
-        @slot("label_input", "Version")
+        @slot("tooltip_input", "Versión  del software")
+        @slot("label_input", "Versión ")
         @slot("placeholder_input", "1.0")
         @slot("valor_default", $software->version)
         @slot("extra", "maxlength=80")
     @endcomponent
 
     @component("layouts.select_input")
-        @slot("nombre_input", "clase")
+        @slot("nombre_input", "Clase")
         @slot("tooltip_input", "Si el software es un lenguaje, una herramienta case, un manejador de bases de datos, paqueteria o algun otro")
-        @slot("label_input", "clase")
+        @slot("label_input", "Clase")
         @slot("opciones")
             @component('layouts.option_foreach_if')
                 @slot('conjunto_variables', $clases)
