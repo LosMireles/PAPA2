@@ -6,7 +6,7 @@
 
 @section('descripcion')
   <h3 class="text-justify">Inciso 9.1.12: En los espacios mencionados en el inciso 9.1.11, se debe
-      tener un lugar comodo por cada diez estudiantes inscritos en el programa,
+      tener un lugar cómodo por cada diez estudiantes inscritos en el programa,
       ofreciendo las condiciones adecuadas de higiene y seguridad. </h3>
 @endsection
 

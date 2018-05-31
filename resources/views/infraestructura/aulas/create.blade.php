@@ -167,7 +167,7 @@
     @component("layouts.checkbox_input")
         @slot("nombre_input", "isotopica")
         @slot("tooltip_input", "Vista")
-        @slot("label_input", "Isotopica")
+        @slot("label_input", "Isotópica")
     @endcomponent
 
     @component("layouts.checkbox_input")

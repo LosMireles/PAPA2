@@ -6,7 +6,7 @@
 
 @section('descripcion')
   <h3 class="text-justify">Inciso 9.1.7: El número de aulas habrá de ser suficiente
-   para antender la impartición de cursos que se programen en cada periodo escolar</h3>
+   para atender la impartición de cursos que se programen en cada periodo escolar</h3>
 @endsection
 
 @section('formopen')

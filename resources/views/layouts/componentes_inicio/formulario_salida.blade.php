@@ -10,7 +10,7 @@
 
 	@slot("cuerpo_tabla")
 		<tr>
-			<td>9.1 Inmobilario</td>
+			<td>9.1 Inmobiliario</td>
 			<td>
 				<ul class="list-unstyled">
 					<li>
@@ -77,7 +77,7 @@
 								{{ url('/inciso_9_1_13') }}
 							@endslot
 							@slot('titulo', 'Haga clic para ir al inciso')
-							@slot('mensaje', '9.1.13 (Características de los Sanitarios)')
+							@slot('mensaje', '9.1.13 (Características de los sanitarios)')
 						@endcomponent</li>
 				</ul>
 			</td>
@@ -414,7 +414,7 @@
 								{{ url('/inciso_9_2_2') }}
 							@endslot
 							@slot('titulo', 'Haga clic para ir al inciso')
-							@slot('mensaje', '9.2.2 (Tipos de Software del programa (case, lenguajes, manejadores de BD, paquetería en general))')
+							@slot('mensaje', '9.2.2 (Tipos de software del programa (case, lenguajes, manejadores de BD, paquetería en general))')
 						@endcomponent</li>
 					<li>@component("layouts.componentes.tooltip_general_link")
 							@slot('url')

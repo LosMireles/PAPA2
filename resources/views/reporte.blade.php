@@ -188,7 +188,7 @@
 
 	<!-- ************************** INICIO 9.1.7 ************************* -->
 	<h3 class="text-justify">Inciso 9.1.7: El número de aulas habrá de ser suficiente
-   	para antender la impartición de cursos que se programen en cada periodo escolar</h3>
+   	para atender la impartición de cursos que se programen en cada periodo escolar</h3>
 
 	@foreach($preguntas_9_1_7 as $pregunta_9_1_7)
 		<div class="form-group">
@@ -380,7 +380,7 @@
 
   @component('layouts.componentes.tabla_incisos')
       @slot('cabeza_tabla')
-            <th>Identificador cubiculo</th>
+            <th>Identificador cubículo</th>
             <th>Profesor</th>
         @endslot
 
@@ -464,7 +464,7 @@
   <!-- ************************** FINAL 9.1.9 ************************** -->
 
   <!-- ************************** INICIO 9.1.10 ************************* -->
-  <h3 class="text-justify">Inciso 9.1.10: Debe existir espacios para asesorías a estudiantes</h3>
+  <h3 class="text-justify">Inciso 9.1.10: Deben existir espacios para asesorías a estudiantes</h3>
 
   <!-- Pregunta 1 -->
     <div class="form-group">
@@ -667,7 +667,7 @@
   <!-- ************************** FINAL 9.1.11 ************************** -->
 	<!-- ************************** INICIO 9.1.12 ************************* -->
 	<h3 class="text-justify">Inciso 9.1.12: En los espacios mencionados en el inciso 9.1.11, se debe
-    tener un lugar comodo por cada diez estudiantes inscritos en el programa,
+    tener un lugar cómodo por cada diez estudiantes inscritos en el programa,
     ofreciendo las condiciones adecuadas de higiene y seguridad. </h3>
 	<div class="form-group">
 		<label for="{{$preguntas_9_1_12[0]->id}}" class="control-label"> {{$preguntas_9_1_12[0]->titulo}} </label>
@@ -1070,7 +1070,7 @@
             <th>CPU</th>
             <th>Almacenamiento</th>
             <th>RAM</th>
-            <th>Otras caracteristicas</th>
+            <th>Otras características</th>
         @endslot
 
         @slot('cuerpo_tabla')
@@ -1252,12 +1252,12 @@
 	<!-- ************************** FINAL 9.2.12 ************************** -->
 
 	<!-- ************************** INICIO 9.2.14 ************************* -->
-	<h3 class="text-justify">Inciso 9.2.14: Especificamente, el personal técnico,
+	<h3 class="text-justify">Inciso 9.2.14: Específicamente, el personal técnico,
     es suficiente y cuenta con el perfil adecuado para dar soporte, no solo a la
      infraestructura de telecomunicaciones y redes, sino también para el desarrollo
      de aplicaciones, incorporación de tecnologías emergentes, administración y
      hospedaje, desarrollo web, minería de datos, soluciones inteligentes, reingeniería
-     de procesos mediante el use de las TIC y la administracion de la propia
+     de procesos mediante el use de las TIC y la administración  de la propia
      plataforma tecnológica y de aprendizaje que soporta el modelo educativo, ya
       sea a distancia o presencial. </h3>
 

@@ -5,12 +5,12 @@
 @endsection
 
 @section('descripcion')
-  <h3 class="text-justify">Inciso 9.2.14: Especificamente, el personal técnico,
+  <h3 class="text-justify">Inciso 9.2.14: Específicamente, el personal técnico,
     es suficiente y cuenta con el perfil adecuado para dar soporte, no solo a la
      infraestructura de telecomunicaciones y redes, sino también para el desarrollo
      de aplicaciones, incorporación de tecnologías emergentes, administración y
      hospedaje, desarrollo web, minería de datos, soluciones inteligentes, reingeniería
-     de procesos mediante el use de las TIC y la administracion de la propia
+     de procesos mediante el use de las TIC y la administración  de la propia
      plataforma tecnológica y de aprendizaje que soporta el modelo educativo, ya
       sea a distancia o presencial. </h3>
 @endsection

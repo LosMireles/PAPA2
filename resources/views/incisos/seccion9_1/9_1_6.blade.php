@@ -68,7 +68,7 @@
 
 	@component('layouts.componentes.tabla_incisos_agregar')
 		@slot('cabeza_tabla')
-		    <th>Titulo</th>
+		    <th>Registro</th>
 		    <th>Respuesta</th>
             <th></th>
             <th></th>
@@ -93,7 +93,7 @@
                     Conexiones: <br>
                     Sillas paleta: <br>
                     Mesas trabajo: <br>
-                    Isotopica: <br>
+                    Isotópica: <br>
                     Estrado:
                 </td>
 

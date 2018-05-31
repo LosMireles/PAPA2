@@ -92,7 +92,7 @@
 								{{ url('/inciso_9_1_13') }}
 							@endslot
 							@slot('titulo', 'Haga clic para ir al inciso')
-							@slot('mensaje', '9.1.13 (Características de los Sanitarios)')
+							@slot('mensaje', '9.1.13 (Características de los sanitarios)')
 						@endcomponent
 					</li>
 				</ul>
@@ -143,7 +143,7 @@
 								{{ url('/inciso_9_2_2') }}
 							@endslot
 							@slot('titulo', 'Haga clic para ir al inciso')
-							@slot('mensaje', '9.2.2 (Tipos de Software del programa (case, lenguajes, manejadores de BD, paquetería en general))')
+							@slot('mensaje', '9.2.2 (Tipos de software del programa (case, lenguajes, manejadores de BD, paquetería en general))')
 						@endcomponent
 					</li>
 				</ul>

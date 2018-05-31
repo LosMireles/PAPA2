@@ -113,7 +113,7 @@
             <th>CPU</th>
             <th>Almacenamiento</th>
             <th>RAM</th>
-            <th>Otras caracteristicas</th>
+            <th>Otras características</th>
             <th></th>
         @endslot
 

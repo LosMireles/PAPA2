@@ -46,7 +46,7 @@
 <div class="container">
 	<br>
 	<h1>PAPA</h1>
-	<h5>Prototipo de apoya para la acreditación</h5>
+	<h5>Prototipo de apoyo para la acreditación</h5>
 	<h3>Categoría considerada: <strong data-toggle="tooltip" title="Categoría número 9 considerada en el documento de CONAIC. Este prototipo trabaja con dicha categoría.">Infraestructura</strong></h3>
 	<br>
 </div>

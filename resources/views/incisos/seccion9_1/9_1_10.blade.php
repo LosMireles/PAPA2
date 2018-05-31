@@ -5,7 +5,7 @@
 @endsection
 
 @section('descripcion')
-  <h3 class="text-justify">Inciso 9.1.10: Debe existir espacios para asesorías a estudiantes</h3>
+  <h3 class="text-justify">Inciso 9.1.10: Deben existir espacios para asesorías a estudiantes</h3>
 @endsection
 
 @section('formopen')

@@ -45,7 +45,7 @@
 
   @component('layouts.componentes.tabla_incisos_agregar')
       @slot('cabeza_tabla')
-            <th>Identificador cubiculo</th>
+            <th>Identificador cubículo</th>
             <th>Profesor</th>
             <th></th>
 	    	<th></th>

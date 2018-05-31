@@ -183,7 +183,7 @@
     @component("layouts.checkbox_input2")
         @slot("nombre_input", "isotopica")
         @slot("tooltip_input", "Vista")
-        @slot("label_input", "Isotopica")
+        @slot("label_input", "Isotópica")
         @slot("variable", $aula->isotopica)
     @endcomponent
 

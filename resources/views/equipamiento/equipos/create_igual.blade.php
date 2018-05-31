@@ -128,8 +128,8 @@
 
     @component("layouts.textarea_input")
         @slot("nombre_input", "otras_caracteristicas")
-        @slot("tooltip_input", "Alguna otra caracteristica importante a tomar en cuenta")
-        @slot("label_input", "Otras caracteristicas")
+        @slot("tooltip_input", "Alguna otra característica importante a tomar en cuenta")
+        @slot("label_input", "Otras características")
         @slot("placeholder_input", "Tarjeta gráfica o algún otra característica que se debería mencionar")
         @slot("valor_default", $equipo->otras_caracteristicas)
     @endcomponent

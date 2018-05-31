@@ -224,7 +224,7 @@ class PreguntasTableSeeder extends Seeder
         App\Pregunta::create(array(
             'inciso' => '9.2.7',
             'numero' => '1',
-            'titulo' => 'El equipo de cómputo de la institución, ¿esta conectado a la red?',
+            'titulo' => 'El equipo de cómputo de la institución, ¿está  conectado a la red?',
                     # Describalos
             'respuesta' => '',
         ));
@@ -392,7 +392,7 @@ class PreguntasTableSeeder extends Seeder
         App\Pregunta::create(array(
             'inciso' => '9.2.14',
             'numero' => '3',
-            'titulo' => 'Proporcione el Curriculum de cada uno, así como una lista de sus nombres, grados académicos, certificados pertinenetes, años de experiencia en el área de competencia relacionados con lo aquí señalado',
+            'titulo' => 'Proporcione el Currículum de cada uno, así como una lista de sus nombres, grados académicos, certificados pertinentes, años de experiencia en el área de competencia relacionados con lo aquí señalado',
                     # Dar descripción.
             'respuesta' => '',
         ));
