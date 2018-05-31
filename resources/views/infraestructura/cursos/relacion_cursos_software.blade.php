@@ -1,11 +1,11 @@
-@extends('layouts.formulario_create_general')
+@extends('layouts.formulario_general')
 
-@section('title', 'relacion cursos software')
+@section('title', 'Vincular cursos software')
 
-@section('objeto_informacion', 'relacionar cursos y software')
+@section('objeto_informacion', 'vincular cursos y software')
 
-@section('accion')
-	{{action('CursoController@crear_relacion', $curso->id, $url_regreso)}}
+@section('metodo_envio_formulario')
+    <form class="form-horizontal" action = "{{action('CursoController@crear_relacion', $curso->id, $url_regreso)}}" method="POST" enctype="multipart/form-data">
 @endsection
 
 @section('contenido_formulario')
@@ -41,5 +41,12 @@
 				</td>
 			</tr>
 	</table>
+@endsection
+
+@section('boton_submit_formulario')
+    <div class="col-sm-offset-4 col-sm-8">
+        {{ Form::submit('Vincular', ['class' => 'btn btn-primary']) }}
+        {{ Form::close() }}
+    </div>
 @endsection
 

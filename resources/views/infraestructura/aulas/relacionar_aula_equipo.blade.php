@@ -1,13 +1,12 @@
-@extends('layouts.formulario_create_general')
+@extends('layouts.formulario_general')
 
-@section('title', "Relacion aulas equipos")
+@section('title', "Vincular aulas equipos")
 
-@section('objeto_informacion', 'relacionar un aula y equipos')
+@section('objeto_informacion', 'vincular un aula y equipos')
 
-@section('accion')
-	{{action('AulaController@relacionar_equipos_post', $aula->id, $url_regreso)}}
+@section('metodo_envio_formulario')
+    <form class="form-horizontal" action = "{{action('AulaController@relacionar_equipos_post', $aula->id, $url_regreso)}}" method="POST" enctype="multipart/form-data">
 @endsection
-
 
 @section('contenido_formulario')
     <p align="justify"><font size="4">
@@ -64,5 +63,12 @@
             @endif
         @endslot
     @endcomponent
+@endsection
+
+@section('boton_submit_formulario')
+    <div class="col-sm-offset-4 col-sm-8">
+        {{ Form::submit('Vincular', ['class' => 'btn btn-primary']) }}
+        {{ Form::close() }}
+    </div>
 @endsection
 
