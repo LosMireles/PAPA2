@@ -28,7 +28,7 @@
         @slot("tooltip_input", "Ciclo en el que se imparte")
         @slot("label_input", "Periodo")
         @slot("placeholder_input", "2018-2")
-        @slot("extra", "maxlength=6")
+        @slot("extra", "maxlength=80")
 		@slot("valor_default", $curso->periodo)
     @endcomponent
 

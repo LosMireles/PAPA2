@@ -115,6 +115,8 @@
 				</li>
 			
 			</h4></ul>
+			
+			<h4>Al inicio de todos los formularios siempre esta un campo que consideramos como un identificador, por lo tanto no puede estar repetido es obligatorio llenar al menos ese campo para poder guardar la información del formulario</h4>
 
 	  		<h3>Información extra en formularios</h3>
 			<h4>Al inicio de todos los formularios siempre esta un campo que consideramos como un identificador, por lo tanto no puede estar repetido es obligatorio llenar al menos ese campo para poder guardar la información del formulario.</h4>

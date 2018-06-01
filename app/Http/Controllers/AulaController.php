@@ -95,7 +95,7 @@ class AulaController extends Controller
 	public function update(Request $request, $nombre, $url_regreso = null) {
         $request->validate($this->rules($nombre));
 
-        $audAux = Aula::where('nombre', $request->nombre)->first();
+        $audAux = Aula::where('nombre', $nombre)->first();
         $id = $audAux->id;
         if ($request->hasFile('Fotografias')) {
           foreach($request->Fotografias as $foto){
@@ -253,6 +253,6 @@ class AulaController extends Controller
         }
 
         return redirect()->action('Inciso9_1_8Controller@index')
-            ->with('status', 'Elemento agregado exitosamente');
+            ->with('status', 'Vinculo actualizado exitosamente');
     }
 }

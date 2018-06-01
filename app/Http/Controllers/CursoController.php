@@ -159,7 +159,8 @@ class CursoController extends Controller {
         $vars = $request->softwares;
         $curso->softwares()->sync($vars);
 
-        return redirect()->action('Inciso9_2_1Controller@index');
+        return redirect()->action('Inciso9_2_1Controller@index')
+            ->with('status', 'Vinculo actualizado exitosamente');
     }
 }
 

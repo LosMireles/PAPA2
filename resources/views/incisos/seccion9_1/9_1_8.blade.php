@@ -101,7 +101,7 @@
 
                 <td>
                 <a href="{{ action('AulaController@relacionar_equipos', [$aula->id, $variable]) }}" class="btn btn-primary">
-                    Relacionar aula con equipos
+                    Vincular aula con equipos
                 </a>
                 </td>
 
@@ -189,7 +189,7 @@
       <br clear='all'/>
     @endforeach
   @else
-    <h2 align="center">No hay imagenes</h2>
+    <h2 align="center">No hay imágenes</h2>
   @endif
 @endsection
 

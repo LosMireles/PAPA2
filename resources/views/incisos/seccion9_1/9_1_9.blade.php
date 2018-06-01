@@ -45,7 +45,7 @@
 
   @component('layouts.componentes.tabla_incisos_agregar')
       @slot('cabeza_tabla')
-            <th>Identificador cubículo</th>
+            <th>Cubículo</th>
             <th>Profesor</th>
             <th></th>
 	    	<th></th>
@@ -154,7 +154,7 @@
       <br clear='all'/>
     @endforeach
   @else
-    <h2 align="center">No hay imagenes</h2>
+    <h2 align="center">No hay imágenes</h2>
   @endif
 
     @section('boton_guardar')
