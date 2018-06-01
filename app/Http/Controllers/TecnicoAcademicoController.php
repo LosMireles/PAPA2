@@ -70,7 +70,7 @@ class TecnicoAcademicoController extends Controller
             return redirect(url($url_regreso))
                 ->with('status', 'Elemento agregado exitosamente');
         }else{
-            return redirect(url('/'))
+            return redirect(url('/inciso_9_2_14'))
                 ->with('status', 'Elemento agregado exitosamente');
         }
     }
@@ -121,7 +121,7 @@ class TecnicoAcademicoController extends Controller
             return redirect(url($url_regreso))
                 ->with('status', 'Elemento actualizado exitosamente');
         }else{
-            return redirect(url('/'))
+            return redirect(url('/inciso_9_2_14'))
                 ->with('status', 'Elemento actualizado exitosamente');
         }
     }
@@ -145,7 +145,7 @@ class TecnicoAcademicoController extends Controller
             return redirect(url($url_regreso))
                 ->with('status', 'Elemento borrado exitosamente');
         }else{
-            return redirect(url('/'))
+            return redirect(url('/inciso_9_2_14'))
                 ->with('status', 'Elemento borrado exitosamente');
         }
     }
